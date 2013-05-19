@@ -1,0 +1,199 @@
+RPU 2013 Analyse
+========================================================
+```{r date}
+date()
+```
+source: RPU2013
+Ce document exploite le fichier RData préparé à partir de la table *RPU__* de Sagec. Voir le document *RPU_2013_Preparation.Rmd* du dossier Resural.
+
+Librairies nécessaires:
+-----------------------
+```{r library , message=FALSE}
+library("gdata")
+library("rgrs")
+library("lubridate")
+library("rattle")
+library("epicalc")
+library("zoo")
+library("xts")
+```
+Chargement des routines perso
+-----------------------------
+```{r routines}
+source("mes_fonctions.R")
+```
+
+Lecture du fichier des données
+---------------------------------------
+On lit le fichier de travail créé:
+```{r Lecture fichier}
+load("rpu2013.Rda")
+attach(d1)
+```
+Les données sont enregistrées dans un data.frame appelé *d1*.
+
+Analyse des données
+===================
+```{r}
+n<-dim(d1)
+print(n)
+names(d1)
+str(d1)
+summary(d1)
+```
+Stuctures hospitaliéres participantes
+=====================================
+- *Alk* CH d' Alkirch
+- *Col* CH Colmar (Pasteur + Parc)
+- *Dia* Diaconat-Fonderie
+- *2Fr* Clinique des trois frontières
+- *Geb* CH de Guebwiller
+- *Hag* CH de Haguenau
+- *Hus* Hôpiaux Universitaires de Strasbourg
+- *Mul* CH de Mulhouse
+- *Odi* Clinique Ste Odile
+- *Sel* CH de Sélestat
+- *Wis* CH de Wissembourg
+Hôpitaux ne transmettant pas de données:
+- *Sav* CH de Saverne
+- *Tha* CH de Thann
+- *Ann* Clinique Ste Anne
+```{r}
+summary(d1$FINESS)
+a<-table(d1$FINESS)
+round(prop.table(a)*100,digits=2)
+```
+Projection sur l'année:
+```{r projection}
+summary(d1$FINESS)*3
+sum(summary(d1$FINESS)*3)
+
+t1<-table(d1$FINESS)
+t2<-table(d1$FINESS)*3
+t3<-rbind(t1,t2)
+rownames(t3)<-c("1er Quadrimestre","Projection 2013")
+xtable(t(t3))
+```
+### Origine temporelle des données:
+```{r}
+b<-tapply(as.Date(d1$ENTREE),d1$FINESS,min)
+c<-as.Date(b,origin="1970-01-01")
+cbind(as.character(sort(c)))
+```
+Exhaustivité des données
+------------------------
+Il faut tranformer les valeurs NULL en NA pour pouvoir les comptabiliser. Les valeurs NULL apparaissent pour les factors: DP, MOTIF, TRANSPORT, ORIENTATION,GRAVITE, SORTIE. Il faut les transformer en charecter pour leur attriber la valeur NA au lieu de NULL:
+```{r}
+a<-as.character(d1$DP)
+a[a=="NULL"]<-NA
+sum(is.na(a))
+mean(is.na(a))
+```
+sum(is.na(a)) retourne le nombre de lignes concernées et *mean(is.na(a))* donne directement le pourcentage de valeurs nulles (R in action pp 356)
+```{r}
+d1$DP<-a
+
+a<-as.character(d1$MOTIF)
+a[a=="NULL"]<-NA
+d1$MOTIF<-a
+
+a<-as.character(d1$TRANSPORT)
+a[a=="NULL"]<-NA
+d1$TRANSPORT<-a
+
+a<-as.character(d1$ORIENTATION)
+a[a=="NULL"]<-NA
+d1$ORIENTATION<-a
+
+a<-as.character(d1$GRAVITE)
+a[a=="NULL"]<-NA
+d1$GRAVITE<-a
+
+a<-as.character(d1$SORTIE)
+a[a=="NULL"]<-NA
+d1$SORTIE<-a
+
+a<-as.character(d1$ENTREE)
+a[a=="NULL"]<-NA
+d1$ENTREE<-a
+```
+Les 2 lignes qui suivent comptent les NA
+```{r}
+a<-is.na(d1)
+b<-apply(a,2,mean)
+a<-cbind(sort(round(b*100,2)))
+colnames(a)<-"%"
+a
+```
+MODE_SORTIE (hospitalisation ou retour à domicile): dans 14.86% des cas on ne sait pas ce que devient le patient. Pour sélectionner les hospitalisés et éliminer les NA et les valeurs nulles:
+```{r}
+a<-d1$MODE_SORTIE[MODE_SORTIE=="Mutation" | MODE_SORTIE == "Transfert"]
+a<-na.omit(a)
+a<-as.factor(as.character(a))
+summary(a)
+round(prop.table(table(a))*100,2)
+
+a<-d1[MODE_SORTIE=="Mutation" | MODE_SORTIE == "Transfert",]
+a<-na.omit(a)
+summary(a$DESTINATION)
+summary(as.factor(a$ORIENTATION))
+round(prop.table(table(as.factor(a$ORIENTATION)))*100,2)
+
+tab1(as.factor(a$ORIENTATION),sort.group="decreasing",horiz=TRUE,cex.names = 0.8,xlab="",main="Orientation des patients hospitalisés")
+
+a<-d1[MODE_SORTIE=="Domicile" ,]
+summary(as.factor(a$ORIENTATION))
+t<-table(as.factor(a$ORIENTATION))
+round(prop.table(t)*100,2)
+tab1(as.factor(a$ORIENTATION),sort.group="decreasing",horiz=TRUE,cex.names = 0.8,xlab="",main="Orientation des patients non hospitalisés")
+```
+La table ci-dessus liste le devenir des patients non hospitalisés. On note des incohérences: REA, HDT, SI, Med, CHIR, UHCD. La ligne *Missing* correspond aux patients rentrés sur avis médical.
+
+Adultes
+-------
+Répartition de la population adulte (18 ans et plus)
+```{r}
+a<-d1[AGE > 17,c("AGE","FINESS")]
+boxplot(a$AGE~a$FINESS,main="Patients de 18 as et plus",col="slategray1")
+```
+
+Mineurs
+-------
+```{r mineurs}
+a<-d1$AGE[d1$AGE<=18]
+#a
+summary(a)
+hist(a,main="Moins de 18 ans",xlab="Age (années)",col="yellow")
+
+a<-d1$AGE[FINESS=="Col" & d1$AGE<18]
+#a
+a<-d1$AGE[FINESS=="Hag" & d1$AGE<18]
+#a
+a<-d1$AGE[FINESS=="Mul" & d1$AGE<18]
+#a
+table(FINESS)
+```
+Durée d'attente
+===============
+On utilise les données de Sélestat comme étude pilote:
+```{r selestat}
+sel<-d1[d1$FINESS=="Sel",]
+e<-ymd_hms(sel$ENTREE)
+s<-ymd_hms(sel$SORTIE)
+q<-s-e
+sel$attente<-q
+summary(as.numeric(q))
+```
+Attente cumulée par jour (pour chaque jour, on cumule les durées d'attente) en mn:
+```{r attente}
+q<-tapply(sel$attente,as.Date(sel$ENTREE),sum,na.rm=TRUE)
+summary(q)
+hist(q,main="Attente cumulée par 24h",xlab="Durée de passage (en mn)",ylab="Fréquence")
+
+z<-zoo(q,unique(as.Date(sel$ENTREE)))
+plot(z,main="Attente cumulée par 24h",xlab="Sélestat 2013")
+plot(xts(z))
+plot(rollmean(z, 7),main="Attente cumulée par 24h (moyenne lissée)")
+plot(rollmean(xts(z), 7))
+```
+

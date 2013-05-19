@@ -1,0 +1,101 @@
+RPU 2013 Préparation
+========================================================
+Les données du premier quadrimestre 2013 ont été transmises le 15/05/2013 par Mr Nold, sous la forme d'un dump mysql: *rpu_2013_dump.sql*. Le fichier non compressé pèse environ 80 Mo. Il ne peut pas être importé par *phpmyadmin*. Dans un premier temps, le fichier est stocké dans le dosssier *dossier personnel*. En mode console, on lance l'instruction suivante: *mysql -u root -pmarion pma < rpu_2013_dump.sql*. Le contenu de la base *pma* a été préalablement sauvegardé sous le nom de *rpu2012*. La vouvelle base pma comporte 105979 enregistrements, ce qui permet d'estimer le nombre de RPU pour 2013 à *317 937*.
+
+Initialisation
+==============
+Définir le working directory:
+```{r}
+setwd("~/Documents/Resural/Stat Resural/RPU2013")
+```
+Mise à jour:
+```{r}
+date()
+```
+etape 1
+-------
+Cette étape permet de récupérer les données à partir de la table *rpu* de la base de données *pma*. A l'issue, un fichier de travail *rpu2012_2.txt* esr créé. Si ce fichier a déjà été créé, passer directement à l'étape 4.
+
+Chargement des library nécessaires:
+```{r}
+library("RMySQL", lib.loc="/usr/lib/R/site-library")
+library("rgrs")
+
+```
+Création d'un connecteur:
+```{r}
+con<-dbConnect(MySQL(),group = "pma") 
+```
+Liste des tables de la base *pma*
+```{r}
+dbListTables(con)
+```
+Liste des champs de la table *rpu__*
+```{r}
+dbListFields(con,"RPU__")
+```
+Lecture des enregistrements de la table compris entre le 1er janvier et le 31 décembre 2013 (cette étape peu être longue):
+```{r}
+rs<-dbSendQuery(con,"SELECT * FROM RPU__ WHERE ENTREE BETWEEN '2013-01-01' AND '2014-01-01' ")
+d1<-fetch(rs,n=-1,encoding = "UTF-8")
+max(d1$ENTREE)
+min(d1$ENTREE)
+```
+etape 2: nettoyage des données
+------------------------------
+Suppression de la colonne 16, intitulée RAW. Cette colonne a été rajoutée par mr Nold pour stocker le RPU tel que fournit par le SAU:
+```{r}
+d1<-d1[,-16]
+```
+d1 est le dataframe par défaut:
+```{r}
+attach(d1)
+```
+création de FINESS unique pour un établissement par transformation du finess juridique en finess geographique
+```{r}
+a<-FINESS
+a[a=="670000397"]<-"Sel"
+a[a=="680000684"]<-"Col"
+a[a=="670016237"]<-"Odi"
+a[a=="670000272"]<-"Wis"
+a[a=="680000700"]<-"Geb"
+a[a=="670780055"]<-"Hus"
+a[a=="680000197"]<-"3Fr"
+a[a=="680000627"]<-"Mul"
+a[a=="670000157"]<-"Hag"
+a[a=="680000320"]<-"Dia"
+a[a=="680000395"]<-"Alk"
+unique(a)
+d1$FINESS<-as.factor(a)
+rm(a)
+```
+Transformation en facteur:
+```{r}
+d1$CODE_POSTAL<-as.factor(CODE_POSTAL)
+d1$COMMUNE<-as.factor(COMMUNE)
+d1$SEXE<-as.factor(SEXE)
+d1$TRANSPORT<-as.factor(TRANSPORT)
+d1$TRANSPORT_PEC<-as.factor(TRANSPORT_PEC)
+d1$GRAVITE<-as.factor(GRAVITE)
+d1$ORIENTATION<-as.factor(ORIENTATION)
+
+d1$MODE_ENTREE<-factor(MODE_ENTREE,levels=c(0,6,7,8),labels=c('NA','Mutation','Transfert','Domicile'))
+d1$PROVENANCE<-factor(PROVENANCE,levels=c(0,1,2,3,4,5,8),labels=c('NA','MCO','SSR','SLD','PSY','PEA','PEO'))
+d1$MODE_SORTIE<-factor(MODE_SORTIE,levels=c(0,6,7,8,4),labels=c('NA','Mutation','Transfert','Domicile','Décès'))
+d1$DESTINATION<-factor(DESTINATION,levels=c(0,1,2,3,4,6,7),labels=c('NA','MCO','SSR','SLD','PSY','HAD','HMS'))
+```
+Création d'une variable AGE:
+```{r-age1}
+d1$AGE<-floor(as.numeric(as.Date(d1$ENTREE)-as.Date(d1$NAISSANCE))/365)
+```
+Correction des ages supérieurs à 120 ans (3 cas) ou inférieur à 0 (2 cas)
+```{r age}
+d1$AGE[d1$AGE > 120]<-NA
+d1$AGE[d1$AGE < 0]<-NA
+```
+etape 3: sauvegarde des données nettoyées
+```{r-sauvegarde}
+# write.table(d1,"rpu2012_2.txt",sep=',',quote=TRUE,na="NA")
+save(d1,file="rpu2013.Rda")
+# load("rpu2013.Rda")
+```

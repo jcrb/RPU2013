@@ -1,0 +1,32 @@
+Notes techniques
+========================================================
+
+gdata est utile pour la méthode drop.levels() qui supprime les levels inutiles:
+(ref: http://rwiki.sciviews.org/doku.phpéid=tips:data-manip:drop_unused_levels)
+
+note: pour supprimer les messages inutiles *{r message=FALSE}*
+
+note: pour supprimer les warnings: *{r warning=FALSE}*
+
+# A NE FAIRE QU'UNE FOIS AU DEBUT DE LA SESSION:
+# loadhistory(file = ".Rhistory")
+# timestamp()
+# A FAIRE SI ON CHANGE DE WORKING DIRECTORY
+# sauvegarde: savehistory(file = ".Rhistory")
+
+Pour que les légendes de l'axe des Y soient perpendiculaires a ce dernier, rajouter *las = 1*
+Pour que les légendes de l'axe des X soient perpendiculaires a ce dernier, rajouter *las = 2*
+Pour que les légendes soient perpendiculaires aux 2 axes, rajouter *las = 3*
+Par défaut *las = 0*
+
+L'utilisation de la méthode *SweaveInput* provoque un erreur si le fichier à inclure comporte des caractéres accenués (méme enregistrés en UTF8)
+
+Création d'un tableau avec *cbind* et une matrice (et xtable pour pdf): voir exhaustivité des données
+
+Version:
+```{r version}
+sessionInfo()
+toLatex(sessionInfo())
+```
+Pour présenter en latex un tableau type *summary*:
+stargazer(as.data.frame(a2[1:length(a)]),summary=TRUE,digit.separator=" ",digits=2,median=TRUE,iqr=TRUE)
