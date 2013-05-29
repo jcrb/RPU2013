@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Sun May 19 17:54:09 2013"
+## [1] "Wed May 29 19:03:28 2013"
 ```
 
 source: RPU2013
@@ -189,6 +189,17 @@ round(prop.table(a) * 100, digits = 2)
 ##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis 
 ##  4.92  0.84 20.61  9.06  4.54 10.97 12.36 15.84  7.94  9.14  3.78
 ```
+
+Passages déclarés au serveur régional:
+
+   ALK  | COL  | CTF |  DIA |  GEB |  HUS |  MUL |  ODI |  SAV |  SEL  | TAN |  WIS 
+   ----|-------|-----|------|------|------|-------|------|-----|-------|-----|-----
+  4577 |21353 | 5475 | 3136  |4926 |41561 |20160 | 8417 | 8961 | 9670 | 4840 | 3052
+  
+  First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
 
 Projection sur l'année:
 
@@ -524,7 +535,7 @@ summary(as.numeric(q))
 ##       1      85     137     162     217     841     237
 ```
 
-Attente cumulée par jour (pour chaque jour, on cumule les durées d'attente):
+Attente cumulée par jour (pour chaque jour, on cumule les durées d'attente) en mn:
 
 ```r
 q <- tapply(sel$attente, as.Date(sel$ENTREE), sum, na.rm = TRUE)
@@ -538,7 +549,7 @@ summary(q)
 
 ```r
 hist(q, main = "Attente cumulée par 24h", xlab = "Durée de passage (en mn)", 
-    ylab = "Fréquence")
+    ylab = "Fréquence", col = "orange")
 ```
 
 ![plot of chunk attente](figure/attente1.png) 
@@ -564,9 +575,319 @@ plot(rollmean(z, 7), main = "Attente cumulée par 24h (moyenne lissée)")
 ![plot of chunk attente](figure/attente4.png) 
 
 ```r
-plot(rollmean(xts(z), 7))
+plot(rollmean(xts(z), 7), main = "Attente cumulée (lissée) par 24h", xlab = "Durée de passage (en mn)", 
+    ylab = "Fréquence")
 ```
 
 ![plot of chunk attente](figure/attente5.png) 
+
+Ensemble des SAU
+----------------
+attente en mn:
+
+```r
+e <- ymd_hms(d1$ENTREE)
+s <- ymd_hms(d1$SORTIE)
+q <- s - e
+d1$passage <- q/60
+
+tapply(d1$passage, d1$FINESS, mean, na.rm = TRUE)
+```
+
+```
+##    3Fr    Alk    Col    Dia    Geb    Hag    Hus    Mul    Odi    Sel 
+## 139.19 146.60 171.62 170.58  80.39 377.98  73.93 179.18 100.30 161.90 
+##    Wis 
+## 146.62
+```
+
+```r
+tapply(d1$passage, d1$FINESS, sd, na.rm = TRUE)
+```
+
+```
+##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis 
+## 141.7 179.6 179.8 149.2 133.4 359.0 271.7 136.2 109.5 104.1 185.5
+```
+
+```r
+tapply(d1$passage, d1$FINESS, median, na.rm = TRUE)
+```
+
+```
+## 3Fr Alk Col Dia Geb Hag Hus Mul Odi Sel Wis 
+## 114 101 121 141  51 262   1 144  81 137  97
+```
+
+```r
+boxplot(as.numeric(d1$passage) ~ d1$FINESS, col = "pink")
+```
+
+![plot of chunk attente_sau](figure/attente_sau.png) 
+
+attente de moins d'une journée:
+
+```r
+h24 <- d1[as.numeric(d1$passage) < 1000, c("passage", "FINESS")]
+boxplot(as.numeric(h24$passage) ~ h24$FINESS, col = "pink", main = "Durée moyenne de passage (pour t<24h)", 
+    ylab = "Temps en minutes", xlab = "SAU - 2013")
+```
+
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-91.png) 
+
+```r
+boxplot(as.numeric(h24$passage) ~ h24$FINESS, col = "yellow", range = 0, notch = TRUE, 
+    border = "blue", main = "Durée moyenne de passage", ylab = "Temps en minutes", 
+    xlab = "SAU - 2013")
+```
+
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-92.png) 
+
+Maladies infectieuses
+=====================
+Codes CIM 10:
+- bronchiolite: J11
+- Grippe: J11, J10, J09
+- Gastroenterite: A09
+
+Regroupement | Code CIM 10 | Description
+------------ | ------------ | -----------
+Hyperthermies |T67 | Effets de la chaleur et de la lumière
+Hyperthermies | X30 |Exposition à une chaleur naturelle excessive
+Déshydratations |E86 |Hypovolémie
+Hyponatrémies | E871 | Hypo-osmolarité et hyponatrémie
+Malaises | R42 | Etourdissements et éblouissements
+Malaises |R53| Malaise et fatigue
+Malaises | R55| Syncope et collapsus
+Asthme|J45 | Asthme
+Asthme |J46 | Etat de mal asthmatique
+Piqûres arthropodes ou autres |T63 |Effet toxique d’un contact avec un animal venimeux
+Piqûres arthropodes ou autres |W57 |Morsure ou piqûre non venimeuse d’insectes et arthropodes
+Piqûres arthropodes ou autres |X20→X29 | Contact avec des animaux ou des plantes venimeuses
+
+Pendant toute la durée du Plan Canicule, du 1er juin au 31 août.
+
+
+on veut mettre 3 graphiques sur le même dessin
+
+```r
+par(mfrow = c(3, 1))
+```
+
+
+gastro
+------
+
+```r
+gastro <- d1[substr(d1$DP, 1, 3) == "A09", c("DP", "ENTREE")]
+g <- gastro[complete.cases(gastro), ]
+g$date <- as.Date(g$ENTREE)
+hist(g$date, breaks = 18, freq = TRUE, col = "slategray1", main = "2013 - Gastroentérites", 
+    xlab = "")
+```
+
+![plot of chunk gastro](figure/gastro1.png) 
+
+```r
+g$date2 <- ymd_hms(g$ENTREE)
+wg <- week(g$date2)
+barplot(summary(as.factor(wg)))
+```
+
+![plot of chunk gastro](figure/gastro2.png) 
+
+bronchiolite
+------------
+
+```r
+bronchio <- d1[substr(d1$DP, 1, 3) == "J21", c("DP", "ENTREE")]
+bronchio <- bronchio[complete.cases(bronchio), ]
+bronchio$date <- as.Date(bronchio$ENTREE)
+hist(bronchio$date, breaks = 18, freq = TRUE, col = "slategray1", main = "2013 - Bronchiolites", 
+    xlab = "")
+```
+
+![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
+
+Grippe
+------
+
+```r
+grippe <- d1[substr(d1$DP, 1, 3) == "J11" | substr(d1$DP, 1, 3) == "J10" | substr(d1$DP, 
+    1, 3) == "J09", c("DP", "ENTREE")]
+grippe <- grippe[complete.cases(grippe), ]
+grippe$date <- as.Date(grippe$ENTREE)
+hist(grippe$date, breaks = 18, freq = TRUE, col = "slategray1", main = "2013 - Syndromes grippaux", 
+    xlab = "")
+```
+
+![plot of chunk grippe](figure/grippe.png) 
+
+```r
+
+par(mfrow = c(1, 1))
+```
+
+malaises
+--------
+
+```r
+malaise <- d1[substr(d1$DP, 1, 3) == "R55", c("DP", "ENTREE")]
+malaise <- malaise[complete.cases(malaise), ]
+malaise$date <- as.Date(malaise$ENTREE)
+hist(malaise$date, breaks = 18, freq = TRUE, col = "slategray1")
+```
+
+![plot of chunk malaises](figure/malaises.png) 
+
+malaise selon INVS (canicule):
+
+```r
+malaise <- d1[substr(d1$DP, 1, 3) == "R55" | substr(d1$DP, 1, 3) == "R53" | 
+    substr(d1$DP, 1, 3) == "R42", c("DP", "ENTREE")]
+malaise <- malaise[complete.cases(malaise), ]
+malaise$date <- as.Date(malaise$ENTREE)
+hist(malaise$date, breaks = 18, freq = TRUE, col = "slategray1", main = "Malaises (INVS)")
+```
+
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-121.png) 
+
+```r
+plot(as.factor(malaise$date), col = "slategray1", las = 1, main = "Malaises (INVS)")
+```
+
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-122.png) 
+
+AVC
+----
+code SIM10: I60 à I64
+**complete.cases** permet de supprimer les enregistrements vides
+
+```r
+avc <- d1[substr(d1$DP, 1, 3) >= "I60" & substr(d1$DP, 1, 3) <= "I64", c("DP", 
+    "ENTREE", "FINESS", "AGE", "SEXE")]
+avc <- avc[complete.cases(avc), ]
+nrow(avc)
+```
+
+```
+## [1] 635
+```
+
+```r
+summary(avc$FINESS)
+```
+
+```
+## 3Fr Alk Col Dia Geb Hag Hus Mul Odi Sel Wis 
+##  19   2 141   0   4 162  76 146   1  66  18
+```
+
+```r
+summary(avc$AGE)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     7.0    62.0    76.0    71.8    83.0    96.0
+```
+
+```r
+summary(avc$SEXE)
+```
+
+```
+##   F   I   M 
+## 323   0 312
+```
+
+Le SAU des HUS reçoit peu d' AVC alors que c'est la meilleure filière. Les résultats sont faussés par l'UNV.
+
+Douleur thoracique
+------------------
+code SIM10: I20 à I25
+
+```r
+idm <- d1[substr(d1$DP, 1, 3) >= "I20" & substr(d1$DP, 1, 3) <= "I25", c("DP", 
+    "ENTREE", "FINESS", "AGE", "SEXE")]
+idm <- idm[complete.cases(idm), ]
+nrow(idm)
+```
+
+```
+## [1] 320
+```
+
+```r
+summary(idm$FINESS)
+```
+
+```
+## 3Fr Alk Col Dia Geb Hag Hus Mul Odi Sel Wis 
+##  21   2  42   0  14  45 103  42   0  34  17
+```
+
+```r
+summary(idm$AGE)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     2.0    54.0    68.5    66.3    81.0    98.0
+```
+
+```r
+summary(idm$SEXE)
+```
+
+```
+##   F   I   M 
+## 123   0 197
+```
+
+Lésions traumatiques
+--------------------
+codes CIM10 S00–T98
+
+```r
+trauma <- d1[substr(d1$DP, 1, 3) >= "S00" & substr(d1$DP, 1, 3) <= "T98", c("DP", 
+    "ENTREE", "FINESS", "AGE", "SEXE")]
+trauma <- trauma[complete.cases(trauma), ]
+nrow(trauma)
+```
+
+```
+## [1] 26364
+```
+
+```r
+summary(trauma$FINESS)
+```
+
+```
+##  3Fr  Alk  Col  Dia  Geb  Hag  Hus  Mul  Odi  Sel  Wis 
+## 1685  339 7474    0 2308 3630  488 3264 1621 4258 1297
+```
+
+```r
+summary(trauma$AGE)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     0.0    13.0    28.0    33.9    51.0   106.0
+```
+
+```r
+summary(trauma$SEXE)
+```
+
+```
+##     F     I     M 
+## 11730     1 14633
+```
+
+
+
 
 
