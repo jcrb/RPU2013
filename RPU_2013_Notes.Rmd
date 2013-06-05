@@ -69,8 +69,178 @@ Notes sur les populations
 -departements.asp?annee=2010 (fichier excel)
   - http://www.insee.fr/fr/ppp/bases-de-donnees/recensement/populations-legales/departement.asp?dep=67&annee=2010
   - http://www.insee.fr/fr/ppp/bases-de-donnees/recensement/populations-legales/departement.asp?dep=68&annee=2010
+  - Liste des cantons, communes, arrondissements, pays: http://www.insee.fr/fr/methodes/nomenclatures/cog/telechargement.asp
   
 - population légale 2010: 
   - Alsace   1 845 687
-  - 67 |  Bas-Rhin |	527 communes| Population municipale : 1 095 905 |Population totale : 1 115 226 |
-  - 68 |	Haut-Rhin | 377 communes |Population municipale : 749 782 |Population totale : 765 634 	   	
+
+N°  |  Département  |  nb.communes  |  Pop.municipale  |  Pop.totale
+----|---------------|---------------|------------------|-------------
+67 |  Bas-Rhin |	527 |  1 095 905 | 1 115 226 
+68 |	Haut-Rhin | 377  | 749 782 | 765 634 
+
+
+Fichier ville de la base *pma*
+------------------------------
+Fichier exporté de la base *pma* sous le nom de *ville.csv* (5/6/2013)
+
+```{r}
+file<-"ville.csv"
+v<-read.csv(file, header=TRUE, sep=",")
+names(v)
+```
+On ne retient que les villes d'Alsace:
+```{r}
+va<-v[v$region_ID=="42",]
+```
+mise en forme:
+```{r}
+va$zone_proximite<-as.factor(va$zone_proximite)
+va$territoire_sante<-as.factor(va$territoire_sante)
+```
+Résultats:
+```{r}
+summary(va$zone_proximite)
+```
+Combinaisons des fichiers
+-------------------------
+On forme un fichier commun avec
+- pop67
+- pop68
+- va
+de façon a avoir dans une même base les zones de proximité (va) et les populations correspondantes:
+```{r}
+load("~/Documents/Resural/Stat Resural/carto&pop/pop68.rda")
+load("~/Documents/Resural/Stat Resural/carto&pop/pop67.rda")
+base1<-merge(va,pop67,by.x="ville_insee",by.y="insee")
+base2<-merge(va,pop68,by.x="ville_insee",by.y="insee")
+base<-rbind(base1,base2)
+names(base)
+```
+Communes où la zone de proximité est manquante:
+```{r}
+a<-base[base$zone_proximite==0,c(1,3)]
+a
+```
+corrections:
+```{r}
+base$zone_proximite[53]<-3
+base$territoire_sante[53]<-1
+base$zone_proximite[572]<-11
+base$territoire_sante[572]<-4
+base$zone_proximite[57]<-3
+```
+
+
+population de la région:
+```{r}
+a<-sum(base$Population.totale)
+a
+```
+Population par zone de proximité:
+```{r}
+a<-tapply(base$Population.totale,base$zone_proximite,sum)
+b<-round(prop.table(a)*100,2)
+c<-cbind(a,b)
+c
+barplot(sort(b),cex.names=0.8,xlab="Territoire de proximité",ylab="% de la population totale",main="Répartition de la population par territoire de santé")
+```
+Créer une zone de proximité
+---------------------------
+On veut faire la liste de tous les coses INSEE de la zone de proximité1:
+```{r}
+zip1<-base$ville_insee[base$zone_proximite==1]
+head(zip1)
+```
+On veut faire la liste des villes correspondant à ces codes:
+```
+b<-paste(zip1,sep=",")
+a<-base$ville_nom[base$ville_insee %in% b]
+head(a)
+```
+essai de carto associée:
+------------------------
+La méthode dessine tous les polygones présents qui répondent à un critère de sélection. On utilise le fichier *carto_alsace.rda* qui produit un objet *SpatialPolygonsDataFrame* appelé *als*.
+```{r als}
+library("maptools")
+load("/home/jcb/Documents/Resural/Stat Resural/carto&pop/carto_alsace.rda")
+names(als)
+contour<-unionSpatialPolygons(als,IDs=als@data$CODE_ARR)
+plot(contour)
+```
+Contour de la zone de proximié n°1 (code INSEE stockés dans b) dans la région Alsace
+```{r contour}
+b<-paste(zip1,sep=",")
+a<-base$ville_nom[base$ville_insee %in% b]
+contour<-unionSpatialPolygons(als,IDs=als@data$INSEE_COM %in% b)
+plot(contour)
+```
+Contour de la zone de proximié n°1 (seule)
+
+```{r zp1}
+b<-paste(zip1,sep=",")
+a<-base$ville_nom[base$ville_insee %in% b]
+zp1<-als[als@data$INSEE_COM %in% b,]
+plot(zp1)
+```
+*zp1* est également un *SpatialPolygonsDataFrame* qui contient les mêmes éléments que l'élément racine:
+```{r}
+names(zp1)
+```
+On peut donc lui appliquer les mêmes fonctions. Par exemple on peut tracer une figure qui représente les contours de la zone de proximité:
+```{r}
+contour<-unionSpatialPolygons(zp1,IDs=zp1@data$CODE_ARR)
+plot(contour,axes=T)
+```
+*contour* est un *SpatialPolygons*.
+
+Il est possible de superposer les 2 graphiques en ajoutant add=TRUE:
+```{r}
+plot(contour,axes=T,xlab="axe x",col="red")
+plot(zp1, add=T)
+```
+modifier l'aspect:
+- lty = 1 (normal), 2, 3, 4, 5... (pointillés)
+- lwd = 1 épaisseur du trait
+- fg = "red" couleur des axes
+- bg = "blue" couleur de fond de l'image
+- col = "green" couleur de fond du polygone. col=NA or col="transparent" pour un fond transparent.
+- border = "red" couleur de la bordure
+
+exemple:
+```{r}
+plot(zp1,,axes=T)
+plot(contour,axes=T,lty=1,lwd=2,fg="blue",border="red",add=T)
+```
+Certains caractères accentués posent des pb comme dans *préfecture*:
+```{r}
+summary(zp1$STATUT)
+```
+Avec la fonction *gsub*, on remplace les caractères anormaux par *e*:
+```{r}
+zp1$STATUT<-gsub("\xe9","e",zp1$STATUT,fixed=F)
+summary(as.factor(zp1$STATUT))
+```
+Il est alorspossible de récupérer les coordonées de la sous-préfecture. Il faut d'abord récupérer le dataframe associé à zp1. NB il faut multiplier les coordonnées x et y par 100 pour être cohérent avec la carte. pch = 19 désigne le symbole rond plein.
+```{r}
+a<-zp1@data
+head(a)
+
+sp<-a[a$STATUT == "Sous-prefecture",]
+sp
+
+x<-sp$X_CHF_LIEU * 100
+y<-sp$Y_CHF_LIEU * 100
+nom<-sp$NOM_COMM
+
+plot(contour)
+points(x,y,pch=19,col=3)
+text(x,y,labels=nom,cex=0.8,pos=3)
+```
+
+
+
+
+
+
+
