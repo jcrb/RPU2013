@@ -116,6 +116,7 @@ base1<-merge(va,pop67,by.x="ville_insee",by.y="insee")
 base2<-merge(va,pop68,by.x="ville_insee",by.y="insee")
 base<-rbind(base1,base2)
 names(base)
+rm(base1,base2)
 ```
 Communes où la zone de proximité est manquante:
 ```{r}
@@ -134,16 +135,18 @@ base$zone_proximite[57]<-3
 
 population de la région:
 ```{r}
-a<-sum(base$Population.totale)
-a
+n<-sum(base$Population.totale)
+n
 ```
 Population par zone de proximité:
 ```{r}
-a<-tapply(base$Population.totale,base$zone_proximite,sum)
-b<-round(prop.table(a)*100,2)
-c<-cbind(a,b)
+effectif<-tapply(base$Population.totale,as.factor(base$zone_proximite),sum,na.rm=TRUE)
+effectif
+pourcentage<-round(prop.table(effectif)*100,2)
+pourcentage
+c<-cbind(effectif,pourcentage)
 c
-barplot(sort(b),cex.names=0.8,xlab="Territoire de proximité",ylab="% de la population totale",main="Répartition de la population par territoire de santé")
+barplot(sort(effectif),cex.names=0.8,xlab="Territoire de proximité",ylab="% de la population totale",main="Répartition de la population par territoire de santé")
 ```
 Créer une zone de proximité
 ---------------------------

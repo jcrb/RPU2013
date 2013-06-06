@@ -201,6 +201,10 @@ names(base)
 ## [31] "Population.totale"
 ```
 
+```r
+rm(base1, base2)
+```
+
 Communes où la zone de proximité est manquante:
 
 ```r
@@ -229,8 +233,8 @@ base$zone_proximite[57] <- 3
 population de la région:
 
 ```r
-a <- sum(base$Population.totale)
-a
+n <- sum(base$Population.totale)
+n
 ```
 
 ```
@@ -240,53 +244,56 @@ a
 Population par zone de proximité:
 
 ```r
-a <- tapply(base$Population.totale, base$zone_proximite, sum)
-b <- round(prop.table(a) * 100, 2)
-c <- cbind(a, b)
+effectif <- tapply(base$Population.totale, as.factor(base$zone_proximite), sum, 
+    na.rm = TRUE)
+effectif
+```
+
+```
+##      0      1      2      3      4      5      6      7      8      9 
+##     NA  70306 201951  81144 197768  90538 262034 165002  96112 115883 
+##     10     11     12 
+## 493558  68467  58047
+```
+
+```r
+pourcentage <- round(prop.table(effectif) * 100, 2)
+pourcentage
+```
+
+```
+##  0  1  2  3  4  5  6  7  8  9 10 11 12 
+## NA NA NA NA NA NA NA NA NA NA NA NA NA
+```
+
+```r
+c <- cbind(effectif, pourcentage)
 c
 ```
 
 ```
-##         a  b
-## 0      NA NA
-## 1   70306 NA
-## 2  201951 NA
-## 3   81144 NA
-## 4  197768 NA
-## 5   90538 NA
-## 6  262034 NA
-## 7  165002 NA
-## 8   96112 NA
-## 9  115883 NA
-## 10 493558 NA
-## 11  68467 NA
-## 12  58047 NA
+##    effectif pourcentage
+## 0        NA          NA
+## 1     70306          NA
+## 2    201951          NA
+## 3     81144          NA
+## 4    197768          NA
+## 5     90538          NA
+## 6    262034          NA
+## 7    165002          NA
+## 8     96112          NA
+## 9    115883          NA
+## 10   493558          NA
+## 11    68467          NA
+## 12    58047          NA
 ```
 
 ```r
-barplot(sort(b), cex.names = 0.8, xlab = "Territoire de proximité", ylab = "% de la population totale", 
-    main = "Répartition de la population par territoire de santé")
+barplot(sort(effectif), cex.names = 0.8, xlab = "Territoire de proximité", 
+    ylab = "% de la population totale", main = "Répartition de la population par territoire de santé")
 ```
 
-```
-## Warning: aucun argument trouvé pour min ; Inf est renvoyé
-```
-
-```
-## Warning: aucun argument pour max ; -Inf est renvoyé
-```
-
-```
-## Warning: aucun argument trouvé pour min ; Inf est renvoyé
-```
-
-```
-## Warning: aucun argument pour max ; -Inf est renvoyé
-```
-
-```
-## Error: 'xlim' nécessite des valeurs finies
-```
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9.png) 
 
 Créer une zone de proximité
 ---------------------------
