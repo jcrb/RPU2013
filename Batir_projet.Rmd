@@ -1,0 +1,16 @@
+Batir un projet
+========================================================
+
+Pour commencer un projet de recherche, créer un *dépot* pour ce projet dans gitHub. Un projet qui dérive de façon sustantielle d'un travail antérieur peuvent débuter comme un *clone* de ce travail. Une nouvelle direction à partir d'un projet existant peut comencer comme une branche de ce projet et être secondairement fusionné ou totalement scindé.
+
+Chaque dépot est organisé comme un package R, avec les *répertoires* de base:
+- R/
+- src/
+- man/
+- data/
+- inst/examples/
+- inst/doc
+- DESCRIPTION: fichier de type metadata donnant des inforations comme l'auteur ou les déoendances
+- README.md: fournit une description des dossiers
+
+Le paquet est installable directement à partir de gitHub.
