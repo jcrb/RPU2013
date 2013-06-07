@@ -7,6 +7,9 @@ Table des matières
 3. population
 
 
+
+
+
 Notes techniques
 ================
 
@@ -98,6 +101,12 @@ mise en forme:
 va$zone_proximite<-as.factor(va$zone_proximite)
 va$territoire_sante<-as.factor(va$territoire_sante)
 ```
+villes où la ZP est manquante:
+```{r}
+a<-va[va$zone_proximite==0,c(1:3)]
+a
+```
+
 Résultats:
 ```{r}
 summary(va$zone_proximite)
@@ -127,8 +136,10 @@ corrections:
 ```{r}
 base$zone_proximite[53]<-3
 base$territoire_sante[53]<-1
-base$zone_proximite[572]<-11
-base$territoire_sante[572]<-4
+
+#base$zone_proximite[572]<-1
+#base$territoire_sante[572]<-4
+
 base$zone_proximite[57]<-3
 ```
 
@@ -173,6 +184,7 @@ plot(contour)
 ```
 Contour de la zone de proximié n°1 (code INSEE stockés dans b) dans la région Alsace
 ```{r contour}
+library("maptools")
 b<-paste(zip1,sep=",")
 a<-base$ville_nom[base$ville_insee %in% b]
 contour<-unionSpatialPolygons(als,IDs=als@data$INSEE_COM %in% b)
@@ -181,6 +193,7 @@ plot(contour)
 Contour de la zone de proximié n°1 (seule)
 
 ```{r zp1}
+
 b<-paste(zip1,sep=",")
 a<-base$ville_nom[base$ville_insee %in% b]
 zp1<-als[als@data$INSEE_COM %in% b,]
@@ -239,6 +252,11 @@ nom<-sp$NOM_COMM
 plot(contour)
 points(x,y,pch=19,col=3)
 text(x,y,labels=nom,cex=0.8,pos=3)
+```
+Les zones de proximités officielles sont dans le fichier zp.csv
+```{r}
+zpo<-read.csv("zp.csv",header=TRUE, sep=",")
+names(zpo)
 ```
 
 

@@ -7,6 +7,9 @@ Table des matières
 3. population
 
 
+
+
+
 Notes techniques
 ================
 
@@ -154,6 +157,38 @@ va$zone_proximite <- as.factor(va$zone_proximite)
 va$territoire_sante <- as.factor(va$territoire_sante)
 ```
 
+villes où la ZP est manquante:
+
+```r
+a <- va[va$zone_proximite == 0, c(1:3)]
+a
+```
+
+```
+##      ville_ID             ville_nom ville_insee
+## 145       161               Rouffac          NA
+## 151       168         Bad Krozingen          NA
+## 154       171              Breisach          NA
+## 1044     1061              AVENHEIM       67015
+## 1045     1062            BEHLENHEIM       67024
+## 1046     1063            BIRLENBACH       67042
+## 1047     1064  BISCHTROFF-SUR-SARRE       67376
+## 1049     1066           BREMMELBACH       67064
+## 1050     1067       EBERBACH-WOERTH       67114
+## 1051     1068              GIMBRETT       67157
+## 1052     1069             GRIESBACH       67170
+## 1053     1070 GRIESBACH-LE-BASTBERG       67171
+## 1054     1071         HERMERSWILLER       67193
+## 1055     1072             HOHWILLER       67211
+## 1056     1073              IMBSHEIM       67219
+## 1057     1074      KLEINFRANKENHEIM       67243
+## 1058     1075            KUHLENDORF       67251
+## 1059     1076         LEITERSWILLER       67262
+## 1060     1077             MATTSTALL       67284
+## 1061     1078            MITSCHDORF       67294
+```
+
+
 Résultats:
 
 ```r
@@ -162,7 +197,7 @@ summary(va$zone_proximite)
 
 ```
 ##   0   1   2   3   4   5   6   7   8   9  10  11  12 
-##  22 112  94  43  96  64  34 104  42 158  54  49  52
+##  20 111  94  45  96  64  34 104  42 158  54  50  52
 ```
 
 Combinaisons des fichiers
@@ -213,9 +248,8 @@ a
 ```
 
 ```
-##     ville_insee     ville_nom
-## 53        67057 BOSSELSHAUSEN
-## 572       68049    BOUXWILLER
+## [1] ville_insee ville_nom  
+## <0 rows> (or 0-length row.names)
 ```
 
 corrections:
@@ -223,8 +257,9 @@ corrections:
 ```r
 base$zone_proximite[53] <- 3
 base$territoire_sante[53] <- 1
-base$zone_proximite[572] <- 11
-base$territoire_sante[572] <- 4
+
+# base$zone_proximite[572]<-1 base$territoire_sante[572]<-4
+
 base$zone_proximite[57] <- 3
 ```
 
@@ -251,9 +286,9 @@ effectif
 
 ```
 ##      0      1      2      3      4      5      6      7      8      9 
-##     NA  70306 201951  81144 197768  90538 262034 165002  96112 115883 
+##     NA  70118 201951  81144 197768  90538 262034 165002  96112 115883 
 ##     10     11     12 
-## 493558  68467  58047
+## 493558  68655  58047
 ```
 
 ```r
@@ -274,7 +309,7 @@ c
 ```
 ##    effectif pourcentage
 ## 0        NA          NA
-## 1     70306          NA
+## 1     70118          NA
 ## 2    201951          NA
 ## 3     81144          NA
 ## 4    197768          NA
@@ -284,7 +319,7 @@ c
 ## 8     96112          NA
 ## 9    115883          NA
 ## 10   493558          NA
-## 11    68467          NA
+## 11    68655          NA
 ## 12    58047          NA
 ```
 
@@ -293,7 +328,7 @@ barplot(sort(effectif), cex.names = 0.8, xlab = "Territoire de proximité",
     ylab = "% de la population totale", main = "Répartition de la population par territoire de santé")
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9.png) 
+![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
 
 Créer une zone de proximité
 ---------------------------
@@ -376,6 +411,7 @@ plot(contour)
 Contour de la zone de proximié n°1 (code INSEE stockés dans b) dans la région Alsace
 
 ```r
+library("maptools")
 b <- paste(zip1, sep = ",")
 a <- base$ville_nom[base$ville_insee %in% b]
 contour <- unionSpatialPolygons(als, IDs = als@data$INSEE_COM %in% b)
@@ -388,6 +424,7 @@ Contour de la zone de proximié n°1 (seule)
 
 
 ```r
+
 b <- paste(zip1, sep = ",")
 a <- base$ville_nom[base$ville_insee %in% b]
 zp1 <- als[als@data$INSEE_COM %in% b, ]
@@ -416,7 +453,7 @@ contour <- unionSpatialPolygons(zp1, IDs = zp1@data$CODE_ARR)
 plot(contour, axes = T)
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12.png) 
+![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13.png) 
 
 *contour* est un *SpatialPolygons*.
 
@@ -427,7 +464,7 @@ plot(contour, axes = T, xlab = "axe x", col = "red")
 plot(zp1, add = T)
 ```
 
-![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13.png) 
+![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14.png) 
 
 modifier l'aspect:
 - lty = 1 (normal), 2, 3, 4, 5... (pointillés)
@@ -444,7 +481,7 @@ plot(zp1, , axes = T)
 plot(contour, axes = T, lty = 1, lwd = 2, fg = "blue", border = "red", add = T)
 ```
 
-![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14.png) 
+![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15.png) 
 
 Certains caractères accentués posent des pb comme dans *préfecture*:
 
@@ -530,7 +567,20 @@ points(x, y, pch = 19, col = 3)
 text(x, y, labels = nom, cex = 0.8, pos = 3)
 ```
 
-![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17.png) 
+![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-18.png) 
+
+Les zones de proximités officielles sont dans le fichier zp.csv
+
+```r
+zpo <- read.csv("zp.csv", header = TRUE, sep = ",")
+names(zpo)
+```
+
+```
+## [1] "CODE.DEP"                         "CODE.COMMUNE"                    
+## [3] "LIBELLE.DES.COMMUNES"             "LIBELLE.DES.TERRITOIRES.DE.SANTE"
+## [5] "CODE.ZONES.DE.PROXIMITE"          "LIBELLE.DES.ZONES.DE.PROXIMITE"
+```
 
 
 
