@@ -137,8 +137,8 @@ corrections:
 base$zone_proximite[53]<-3
 base$territoire_sante[53]<-1
 
-#base$zone_proximite[572]<-1
-#base$territoire_sante[572]<-4
+base$zone_proximite[572]<-1
+base$territoire_sante[572]<-4
 
 base$zone_proximite[57]<-3
 ```
