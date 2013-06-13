@@ -240,6 +240,8 @@ names(base)
 rm(base1, base2)
 ```
 
+Note: le résultat pourrait être simplifié car des colonnes sont redondantes;
+
 Communes où la zone de proximité est manquante:
 
 ```r
@@ -258,7 +260,8 @@ corrections:
 base$zone_proximite[53] <- 3
 base$territoire_sante[53] <- 1
 
-# base$zone_proximite[572]<-1 base$territoire_sante[572]<-4
+base$zone_proximite[572] <- 1
+base$territoire_sante[572] <- 4
 
 base$zone_proximite[57] <- 3
 ```
@@ -332,7 +335,7 @@ barplot(sort(effectif), cex.names = 0.8, xlab = "Territoire de proximité",
 
 Créer une zone de proximité
 ---------------------------
-On veut faire la liste de tous les coses INSEE de la zone de proximité1:
+On fait la liste de tous les codes INSEE de la zone de proximité1:
 
 ```r
 zip1 <- base$ville_insee[base$zone_proximite == 1]
@@ -343,11 +346,11 @@ head(zip1)
 ## [1] 68002 68004 68006 68010 68017 68018
 ```
 
-On veut faire la liste des villes correspondant à ces codes:
+Puis on fait la liste des villes correspondant à ces codes:
 ```
 b<-paste(zip1,sep=",")
 a<-base$ville_nom[base$ville_insee %in% b]
-head(a)
+a[1:5]
 ```
 essai de carto associée:
 ------------------------
@@ -582,6 +585,148 @@ names(zpo)
 ## [5] "CODE.ZONES.DE.PROXIMITE"          "LIBELLE.DES.ZONES.DE.PROXIMITE"
 ```
 
+```r
+print("Nb de communes par territoire de santé")
+```
+
+```
+## [1] "Nb de communes par territoire de santé"
+```
+
+```r
+a <- zpo$LIBELLE.DES.TERRITOIRES.DE.SANTE
+summary(a)
+```
+
+```
+## TERRITOIRE DE SANTE 1 TERRITOIRE DE SANTE 2 TERRITOIRE DE SANTE 3 
+##                   306                   144                   213 
+## TERRITOIRE DE SANTE 4 
+##                   241
+```
+
+```r
+print("Nb de communes par territoire de proximité")
+```
+
+```
+## [1] "Nb de communes par territoire de proximité"
+```
+
+```r
+a <- zpo$LIBELLE.DES.ZONES.DE.PROXIMITE
+summary(a)
+```
+
+```
+##           ALTKIRCH             COLMAR         GUEBWILLER 
+##                111                 94                 42 
+##           HAGUENAU MOLSHEIM SCHIRMECK           MULHOUSE 
+##                 90                 92                 40 
+##   OBERNAI-SELESTAT        SAINT-LOUIS            SAVERNE 
+##                101                 40                162 
+##         STRASBOURG              THANN        WISSEMBOURG 
+##                 28                 50                 54
+```
+
+NB: la numérotation ARS des territoires de proximité de proximité ne correspond pas à celle de Sagec. Le code commune du fichier zpo correspond au code INSEE.
+
+Utilisation du fichier *zpo* à la place du fichier *ville*
+-----------------------------------------------------------
+Crée un objet *zone de proximité 2*, en dessine le contour ainsi que le chef lieu:
+
+
+```r
+zpo <- read.csv("zp.csv", header = TRUE, sep = ",")
+base1 <- merge(zpo, pop67, by.x = "CODE.COMMUNE", by.y = "insee")
+base2 <- merge(zpo, pop68, by.x = "CODE.COMMUNE", by.y = "insee")
+base <- rbind(base1, base2)
+rm(base1, base2)
+names(base)
+```
+
+```
+##  [1] "CODE.COMMUNE"                     "CODE.DEP"                        
+##  [3] "LIBELLE.DES.COMMUNES"             "LIBELLE.DES.TERRITOIRES.DE.SANTE"
+##  [5] "CODE.ZONES.DE.PROXIMITE"          "LIBELLE.DES.ZONES.DE.PROXIMITE"  
+##  [7] "Code.région"                      "Nom.de.la.région"                
+##  [9] "Code.département"                 "Code.arrondissement"             
+## [11] "Code.canton"                      "Code.commune"                    
+## [13] "Nom.de.la.commune"                "Population.municipale"           
+## [15] "Population.comptée.à.part"        "Population.totale"
+```
+
+```r
+
+# spécifique de la zone de proximité 2
+zip2 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 2]
+b <- paste(zip2, sep = ",")
+zp2 <- als[als@data$INSEE_COM %in% b, ]
+plot(zp2)
+```
+
+![plot of chunk unnamed-chunk-20](figure/unnamed-chunk-201.png) 
+
+```r
+
+contour2 <- unionSpatialPolygons(zp2, IDs = zp2@data$CODE_DEPT)
+plot(contour2)
+
+zp2$STATUT <- gsub("\xe9", "e", zp2$STATUT, fixed = F)
+a <- zp2@data
+sp <- a[a$STATUT == "Sous-prefecture", ]
+x <- sp$X_CHF_LIEU * 100
+y <- sp$Y_CHF_LIEU * 100
+nom <- sp$NOM_COMM
+points(x, y, pch = 19, col = 3)
+text(x, y, labels = nom, cex = 0.8, pos = 3)
+```
+
+![plot of chunk unnamed-chunk-20](figure/unnamed-chunk-202.png) 
+
+Zone de proximité 3
+
+
+```r
+zip3 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 3]
+b <- paste(zip3, sep = ",")
+zp3 <- als[als@data$INSEE_COM %in% b, ]
+plot(zp3)
+```
+
+![plot of chunk unnamed-chunk-21](figure/unnamed-chunk-211.png) 
+
+```r
+
+contour3 <- unionSpatialPolygons(zp3, IDs = zp3@data$CODE_DEPT)
+plot(contour3)
+
+zp3$STATUT <- gsub("\xe9", "e", zp2$STATUT, fixed = F)
+```
+
+```
+## Error: replacement has 90 rows, data has 162
+```
+
+```r
+a <- zp3@data
+sp <- a[a$STATUT == "Sous-prefecture", ]
+x <- sp$X_CHF_LIEU * 100
+y <- sp$Y_CHF_LIEU * 100
+nom <- sp$NOM_COMM
+points(x, y, pch = 19, col = 3)
+text(x, y, labels = nom, cex = 0.8, pos = 3)
+```
+
+```
+## Error: 'labels' de taille nulle
+```
+
+```r
+plot(contour2, add = T)
+```
+
+![plot of chunk unnamed-chunk-21](figure/unnamed-chunk-212.png) 
 
 
 
