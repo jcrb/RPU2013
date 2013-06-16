@@ -20,11 +20,11 @@ note: pour supprimer les messages inutiles *{r message=FALSE}*
 
 note: pour supprimer les warnings: *{r warning=FALSE}*
 
-# A NE FAIRE QU'UNE FOIS AU DEBUT DE LA SESSION:
-# loadhistory(file = ".Rhistory")
-# timestamp()
-# A FAIRE SI ON CHANGE DE WORKING DIRECTORY
-# sauvegarde: savehistory(file = ".Rhistory")
+#### A NE FAIRE QU'UNE FOIS AU DEBUT DE LA SESSION:
+- loadhistory(file = ".Rhistory")
+- timestamp()
+- A FAIRE SI ON CHANGE DE WORKING DIRECTORY
+- sauvegarde: savehistory(file = ".Rhistory")
 
 Pour que les légendes de l'axe des Y soient perpendiculaires a ce dernier, rajouter *las = 1*
 Pour que les légendes de l'axe des X soient perpendiculaires a ce dernier, rajouter *las = 2*
@@ -685,6 +685,7 @@ text(x, y, labels = nom, cex = 0.8, pos = 3)
 ![plot of chunk unnamed-chunk-20](figure/unnamed-chunk-202.png) 
 
 Zone de proximité 3
+--------------------
 
 
 ```r
@@ -701,14 +702,7 @@ plot(zp3)
 contour3 <- unionSpatialPolygons(zp3, IDs = zp3@data$CODE_DEPT)
 plot(contour3)
 
-zp3$STATUT <- gsub("\xe9", "e", zp2$STATUT, fixed = F)
-```
-
-```
-## Error: replacement has 90 rows, data has 162
-```
-
-```r
+zp3$STATUT <- gsub("\xe9", "e", zp3$STATUT, fixed = F)
 a <- zp3@data
 sp <- a[a$STATUT == "Sous-prefecture", ]
 x <- sp$X_CHF_LIEU * 100
@@ -716,21 +710,324 @@ y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 3)
 text(x, y, labels = nom, cex = 0.8, pos = 3)
-```
-
-```
-## Error: 'labels' de taille nulle
-```
-
-```r
 plot(contour2, add = T)
 ```
 
 ![plot of chunk unnamed-chunk-21](figure/unnamed-chunk-212.png) 
 
+Zone de proximité 4
+--------------------
 
 
+```r
+zip4 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 4]
+b <- paste(zip4, sep = ",")
+zp4 <- als[als@data$INSEE_COM %in% b, ]
+plot(zp4)
+```
+
+![plot of chunk unnamed-chunk-22](figure/unnamed-chunk-221.png) 
+
+```r
+
+contour4 <- unionSpatialPolygons(zp4, IDs = zp4@data$CODE_DEPT)
+plot(contour4)
+
+zp4$STATUT <- gsub("\xe9", "e", zp4$STATUT, fixed = F)
+a <- zp4@data
+sp <- a[a$STATUT == "Prefecture de region", ]
+x <- sp$X_CHF_LIEU * 100
+y <- sp$Y_CHF_LIEU * 100
+nom <- sp$NOM_COMM
+points(x, y, pch = 19, col = 3)
+text(x, y, labels = nom, cex = 0.8, pos = 3)
+plot(contour4, add = T)
+```
+
+![plot of chunk unnamed-chunk-22](figure/unnamed-chunk-222.png) 
 
 
+Zone de proximité 1 (Wissembourg)
+--------------------
 
+
+```r
+zip1 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 1]
+b <- paste(zip1, sep = ",")
+zp1 <- als[als@data$INSEE_COM %in% b, ]
+plot(zp1)
+```
+
+![plot of chunk unnamed-chunk-23](figure/unnamed-chunk-231.png) 
+
+```r
+
+contour1 <- unionSpatialPolygons(zp1, IDs = zp1@data$CODE_DEPT)
+plot(contour1)
+
+zp1$STATUT <- gsub("\xe9", "e", zp1$STATUT, fixed = F)
+a <- zp1@data
+sp <- a[a$STATUT == "Sous-prefecture", ]
+x <- sp$X_CHF_LIEU * 100
+y <- sp$Y_CHF_LIEU * 100
+nom <- sp$NOM_COMM
+points(x, y, pch = 19, col = 1)
+text(x, y, labels = nom, cex = 0.8, pos = 1)
+plot(contour1, add = T)
+```
+
+![plot of chunk unnamed-chunk-23](figure/unnamed-chunk-232.png) 
+
+Zone de proximité 5 (Molsheim)
+--------------------
+
+
+```r
+zip5 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 5]
+b <- paste(zip5, sep = ",")
+zp5 <- als[als@data$INSEE_COM %in% b, ]
+plot(zp5)
+```
+
+![plot of chunk unnamed-chunk-24](figure/unnamed-chunk-241.png) 
+
+```r
+
+contour5 <- unionSpatialPolygons(zp5, IDs = zp5@data$CODE_DEPT)
+plot(contour5)
+
+zp5$STATUT <- gsub("\xe9", "e", zp5$STATUT, fixed = F)
+a <- zp5@data
+sp <- a[a$STATUT == "Sous-prefecture", ]
+x <- sp$X_CHF_LIEU * 100
+y <- sp$Y_CHF_LIEU * 100
+nom <- sp$NOM_COMM
+points(x, y, pch = 19, col = 1)
+text(x, y, labels = nom, cex = 0.8, pos = 1)
+plot(contour5, add = T)
+```
+
+![plot of chunk unnamed-chunk-24](figure/unnamed-chunk-242.png) 
+
+Zone de proximité 6 (Selestat)
+--------------------
+
+
+```r
+zip6 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 6]
+b <- paste(zip6, sep = ",")
+zp6 <- als[als@data$INSEE_COM %in% b, ]
+plot(zp6)
+```
+
+![plot of chunk unnamed-chunk-25](figure/unnamed-chunk-251.png) 
+
+```r
+
+contour6 <- unionSpatialPolygons(zp6, IDs = zp6@data$CODE_DEPT)
+plot(contour6)
+
+zp6$STATUT <- gsub("\xe9", "e", zp6$STATUT, fixed = F)
+a <- zp6@data
+sp <- a[a$STATUT == "Sous-prefecture", ]
+x <- sp$X_CHF_LIEU * 100
+y <- sp$Y_CHF_LIEU * 100
+nom <- sp$NOM_COMM
+points(x, y, pch = 19, col = 1)
+text(x, y, labels = nom, cex = 0.8, pos = 1)
+plot(contour6, add = T)
+```
+
+![plot of chunk unnamed-chunk-25](figure/unnamed-chunk-252.png) 
+
+Zone de proximité 7 (Colmar)
+--------------------
+
+
+```r
+zip7 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 7]
+b <- paste(zip7, sep = ",")
+zp7 <- als[als@data$INSEE_COM %in% b, ]
+plot(zp7)
+```
+
+![plot of chunk unnamed-chunk-26](figure/unnamed-chunk-261.png) 
+
+```r
+
+contour7 <- unionSpatialPolygons(zp7, IDs = zp7@data$CODE_DEPT)
+plot(contour7)
+
+zp7$STATUT <- gsub("\xe9", "e", zp7$STATUT, fixed = F)
+a <- zp7@data
+sp <- a[a$STATUT == "Prefecture", ]
+x <- sp$X_CHF_LIEU * 100
+y <- sp$Y_CHF_LIEU * 100
+nom <- sp$NOM_COMM
+points(x, y, pch = 19, col = 1)
+text(x, y, labels = nom, cex = 0.8, pos = 1)
+plot(contour7, add = T)
+```
+
+![plot of chunk unnamed-chunk-26](figure/unnamed-chunk-262.png) 
+
+Zone de proximité 8 (Guebwiller)
+--------------------
+
+
+```r
+zip8 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 8]
+b <- paste(zip8, sep = ",")
+zp8 <- als[als@data$INSEE_COM %in% b, ]
+plot(zp8)
+```
+
+![plot of chunk unnamed-chunk-27](figure/unnamed-chunk-271.png) 
+
+```r
+
+contour8 <- unionSpatialPolygons(zp8, IDs = zp8@data$CODE_DEPT)
+plot(contour8)
+
+zp8$STATUT <- gsub("\xe9", "e", zp8$STATUT, fixed = F)
+a <- zp8@data
+sp <- a[a$STATUT == "Sous-prefecture", ]
+x <- sp$X_CHF_LIEU * 100
+y <- sp$Y_CHF_LIEU * 100
+nom <- sp$NOM_COMM
+points(x, y, pch = 19, col = 1)
+text(x, y, labels = nom, cex = 0.8, pos = 1)
+plot(contour8, add = T)
+```
+
+![plot of chunk unnamed-chunk-27](figure/unnamed-chunk-272.png) 
+
+Zone de proximité 9 (Thann)
+--------------------
+
+
+```r
+zip9 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 9]
+b <- paste(zip9, sep = ",")
+zp9 <- als[als@data$INSEE_COM %in% b, ]
+plot(zp9)
+```
+
+![plot of chunk unnamed-chunk-28](figure/unnamed-chunk-281.png) 
+
+```r
+
+contour9 <- unionSpatialPolygons(zp9, IDs = zp9@data$CODE_DEPT)
+plot(contour9)
+
+zp9$STATUT <- gsub("\xe9", "e", zp9$STATUT, fixed = F)
+a <- zp9@data
+sp <- a[a$STATUT == "Sous-prefecture", ]
+x <- sp$X_CHF_LIEU * 100
+y <- sp$Y_CHF_LIEU * 100
+nom <- sp$NOM_COMM
+points(x, y, pch = 19, col = 1)
+text(x, y, labels = nom, cex = 0.8, pos = 1)
+plot(contour9, add = T)
+```
+
+![plot of chunk unnamed-chunk-28](figure/unnamed-chunk-282.png) 
+
+Zone de proximité 10 (Mulhouse)
+--------------------
+
+
+```r
+zip10 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 10]
+b <- paste(zip10, sep = ",")
+zp10 <- als[als@data$INSEE_COM %in% b, ]
+plot(zp10)
+```
+
+![plot of chunk unnamed-chunk-29](figure/unnamed-chunk-291.png) 
+
+```r
+
+contour10 <- unionSpatialPolygons(zp10, IDs = zp10@data$CODE_DEPT)
+plot(contour10)
+
+zp10$STATUT <- gsub("\xe9", "e", zp10$STATUT, fixed = F)
+a <- zp10@data
+sp <- a[a$STATUT == "Sous-prefecture", ]
+x <- sp$X_CHF_LIEU * 100
+y <- sp$Y_CHF_LIEU * 100
+nom <- sp$NOM_COMM
+points(x, y, pch = 19, col = 1)
+text(x, y, labels = nom, cex = 0.8, pos = 1)
+plot(contour10, add = T)
+```
+
+![plot of chunk unnamed-chunk-29](figure/unnamed-chunk-292.png) 
+
+Zone de proximité 11 (Altkirch)
+--------------------
+
+
+```r
+zip11 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 11]
+b <- paste(zip11, sep = ",")
+zp11 <- als[als@data$INSEE_COM %in% b, ]
+plot(zp11)
+```
+
+![plot of chunk unnamed-chunk-30](figure/unnamed-chunk-301.png) 
+
+```r
+
+contour11 <- unionSpatialPolygons(zp11, IDs = zp11@data$CODE_DEPT)
+plot(contour11)
+
+zp11$STATUT <- gsub("\xe9", "e", zp11$STATUT, fixed = F)
+a <- zp11@data
+sp <- a[a$STATUT == "Sous-prefecture", ]
+x <- sp$X_CHF_LIEU * 100
+y <- sp$Y_CHF_LIEU * 100
+nom <- sp$NOM_COMM
+points(x, y, pch = 19, col = 1)
+text(x, y, labels = nom, cex = 0.8, pos = 1)
+plot(contour11, add = T)
+```
+
+![plot of chunk unnamed-chunk-30](figure/unnamed-chunk-302.png) 
+
+Zone de proximité 12
+--------------------
+
+
+```r
+zip12 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 12]
+b <- paste(zip12, sep = ",")
+zp12 <- als[als@data$INSEE_COM %in% b, ]
+plot(zp12)
+```
+
+![plot of chunk unnamed-chunk-31](figure/unnamed-chunk-311.png) 
+
+```r
+
+contour12 <- unionSpatialPolygons(zp12, IDs = zp12@data$CODE_DEPT)
+plot(contour12)
+
+zp12$STATUT <- gsub("\xe9", "e", zp12$STATUT, fixed = F)
+a <- zp12@data
+b <- a[a$NOM_COMM == "SAINT-LOUIS", ]
+x <- b$X_CHF_LIEU * 100
+y <- b$Y_CHF_LIEU * 100
+nom <- b$NOM_COMM
+points(x, y, pch = 19, col = 1)
+text(x, y, labels = nom, cex = 0.8, pos = 2)
+```
+
+![plot of chunk unnamed-chunk-31](figure/unnamed-chunk-312.png) 
+
+```r
+plot(contour12, xlab = "Zone de proximité 12")
+```
+
+![plot of chunk unnamed-chunk-31](figure/unnamed-chunk-313.png) 
 
