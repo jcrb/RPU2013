@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Wed May 29 22:49:21 2013"
+## [1] "Sun Jun 23 22:48:32 2013"
 ```
 
 source: RPU2013
@@ -23,6 +23,7 @@ library("rattle")
 library("epicalc")
 library("zoo")
 library("xts")
+library("xtable")
 ```
 
 Chargement des routines perso
@@ -230,7 +231,28 @@ xtable(t(t3))
 ```
 
 ```
-## Error: impossible de trouver la fonction "xtable"
+## % latex table generated in R 2.15.1 by xtable 1.7-1 package
+## % Sun Jun 23 22:48:41 2013
+## \begin{table}[ht]
+## \centering
+## \begin{tabular}{rrr}
+##   \hline
+##  & 1er Quadrimestre & Projection 2013 \\ 
+##   \hline
+## 3Fr & 5212.00 & 15636.00 \\ 
+##   Alk & 891.00 & 2673.00 \\ 
+##   Col & 21841.00 & 65523.00 \\ 
+##   Dia & 9605.00 & 28815.00 \\ 
+##   Geb & 4807.00 & 14421.00 \\ 
+##   Hag & 11627.00 & 34881.00 \\ 
+##   Hus & 13095.00 & 39285.00 \\ 
+##   Mul & 16790.00 & 50370.00 \\ 
+##   Odi & 8415.00 & 25245.00 \\ 
+##   Sel & 9685.00 & 29055.00 \\ 
+##   Wis & 4011.00 & 12033.00 \\ 
+##    \hline
+## \end{tabular}
+## \end{table}
 ```
 
 ### Origine temporelle des données:
@@ -258,7 +280,7 @@ cbind(as.character(sort(c)))
 
 Exhaustivité des données
 ------------------------
-Il faut tranformer les valeurs NULL en NA pour pouvoir les comptabiliser. Les valeurs NULL apparaissent pour les factors: DP, MOTIF, TRANSPORT, ORIENTATION,GRAVITE, SORTIE. Il faut les transformer en charecter pour leur attriber la valeur NA au lieu de NULL:
+Il faut tranformer les valeurs NULL en NA pour pouvoir les comptabiliser. Les valeurs NULL apparaissent pour les factors: DP, MOTIF, TRANSPORT, ORIENTATION,GRAVITE, SORTIE. Il faut les transformer en character pour leur attriber la valeur NA au lieu de NULL:
 
 ```r
 a <- as.character(d1$DP)
@@ -468,16 +490,583 @@ tab1(as.factor(a$ORIENTATION), sort.group = "decreasing", horiz = TRUE, cex.name
 
 La table ci-dessus liste le devenir des patients non hospitalisés. On note des incohérences: REA, HDT, SI, Med, CHIR, UHCD. La ligne *Missing* correspond aux patients rentrés sur avis médical.
 
+Etude des patients hospitalisés
+--------------------------------
+La rubrique mode de sortie peut se décomposer en 3 éléments
+- *hosp*: patient hospitalisés, cad gardé en milieu de soins par *MUTATION* ou *TRANSFERT*
+- *dom*: retour à domicile ou équivalent
+- *dcd*: patients décédés aux urgences
+Dans l'échantillon *d1* c'est la colonne *MODE_SORTIE* qui renseigne sur le devenir du patient à la sortie des urgences:
+
+
+```
+## [1] "d1 compte  105979  lignes"
+```
+
+Il y a deux façons de former des sous ensembles avec R:
+- sélectionner en utilisant la notation vectorielle: hosp<-d1[d1$MODE_SORTIE=="Mutation" | d1$MODE_SORTIE=="Transfert",]
+- sélectionner avec la méthode **subset**: b<-subset(d1,MODE_SORTIE=="Mutation" | MODE_SORTIE=="Transfert")
+
+La première méthode sélectionne toutes les lignes correspondant aux critères ET celles où le critère vaut *NA*. ie, la méthode 1 retourne un data frame de 39224 lignes et 20 colonnes.
+
+La méthode *subset* ne tient pas compte des lignes où le critère vaut NA. Dans l'exemple, retourne un dataframe de 23473 lignes et 20 colonnes.
+
+
+```r
+hosp <- d1[d1$MODE_SORTIE == "Mutation" | d1$MODE_SORTIE == "Transfert", ]
+dom <- d1[d1$MODE_SORTIE == "Domicile", ]
+dcd <- d1[d1$MODE_SORTIE == "Deces", ]
+nbna <- nrow(hosp) + nrow(dom) + nrow(dcd) - nrow(d1)
+pna <- round(nbna * 100/nrow(d1), 2)
+
+print(paste("hosp = ", nrow(hosp), " lignes"))
+```
+
+```
+## [1] "hosp =  39224  lignes"
+```
+
+```r
+print(paste("dom = ", nrow(dom), " lignes"))
+```
+
+```
+## [1] "dom =  82506  lignes"
+```
+
+```r
+print(paste("dcd = ", nrow(dcd), " lignes"))
+```
+
+```
+## [1] "dcd =  15751  lignes"
+```
+
+```r
+
+print(paste("La différence du nombre de lignes entre d1 et hosp, dom et dcd indique le nmbre de lignes correspondant à NA et qui sont incluses dans le décompte des lignes de chaque sous ensemble: ", 
+    nbna, "correspondant aux mode de sortie non renseignés soit ", pna, " %"))
+```
+
+```
+## [1] "La différence du nombre de lignes entre d1 et hosp, dom et dcd indique le nmbre de lignes correspondant à NA et qui sont incluses dans le décompte des lignes de chaque sous ensemble:  31502 correspondant aux mode de sortie non renseignés soit  29.72  %"
+```
+
+Avec *subset* on élimine ces lignes parasites:
+
+```r
+a <- subset(d1, MODE_SORTIE == "Domicile")
+b <- subset(d1, MODE_SORTIE == "Mutation" | MODE_SORTIE == "Transfert")
+nrow(a)
+```
+
+```
+## [1] 66755
+```
+
+```r
+nrow(b)
+```
+
+```
+## [1] 23473
+```
+
+```r
+nrow(d1) - nrow(a) - nrow(b)
+```
+
+```
+## [1] 15751
+```
+
+```r
+
+print("O")
+```
+
+```
+## [1] "O"
+```
+
+```r
+t <- table(b$ORIENTATION, b$FINESS, useNA = "ifany")
+m1 <- margin.table(t, 1)
+t2 <- cbind(t, m1)
+m2 <- margin.table(t2, 2)
+rbind(t2, m2)
+```
+
+```
+##      3Fr Alk  Col Dia Geb  Hag  Hus  Mul Odi  Sel Wis    m1
+## CHIR   0   0  995   7   0  372    0  402  52  426   4  2258
+## HDT    0   0   19   0   1    0    0    1   0    0   2    23
+## HO     0   0    4   0   0    0    0    2   0    0   6    12
+## MED    0   0 2278   1   0  768  185  779  22 1513  12  5558
+## OBST   0   0   16   0   0   16    0    0   1    5   0    38
+## PSA    0   0    0   1   0    0    0    0   0    0   0     1
+## REA    0   0  120   0   0   65    0   71   0   35   2   293
+## REO    2   1    0   4   0    0    0    0   1    0   0     8
+## SC     0   0  140   0   0   36    0  233   0    0   7   416
+## SI     0   0  223   0   0  104    0   85   2    2   4   420
+## UHCD   0   0 1658   1   0 1588 7020  219   0  134  14 10634
+## <NA> 125 148  160 781   6  674    0  677 315    0 926  3812
+## m2   127 149 5613 795   7 3623 7205 2469 393 2115 977 23473
+```
+
+```r
+
+summary(a$MODE_SORTIE)
+```
+
+```
+##        NA  Mutation Transfert  Domicile     Décès 
+##         0         0         0     66755         0
+```
+
+```r
+summary(b$MODE_SORTIE)
+```
+
+```
+##        NA  Mutation Transfert  Domicile     Décès 
+##         0     21950      1523         0         0
+```
+
+- nb total de lignes = 105979
+- total hospitalisés = 21950 +  1523
+- total non hospitalisés = 66755 
+- non réponses = 105979-90228 = 15751
+
+```r
+summary(b$DESTINATION)
+```
+
+```
+##    NA   MCO   SSR   SLD   PSY   HAD   HMS  NA's 
+##     0 22935    17     4   395     0     0   122
+```
+
+```r
+summary(b$ORIENTATION)
+```
+
+```
+##    Length     Class      Mode 
+##     23473 character character
+```
+
+```r
+summary(a$DESTINATION)
+```
+
+```
+##    NA   MCO   SSR   SLD   PSY   HAD   HMS  NA's 
+##     0   118     0     0     0     0     8 66629
+```
+
+```r
+summary(a$ORIENTATION)
+```
+
+```
+##    Length     Class      Mode 
+##     66755 character character
+```
+
+
+
+
+
+on forme un dataframe *hosp* des patients hospitalisés par mutation ou transfert:
+
+```r
+hosp <- d1[d1$MODE_SORTIE == "Mutation" | d1$MODE_SORTIE == "Transfert", ]
+summary(d1$MODE_SORTIE)
+```
+
+```
+##        NA  Mutation Transfert  Domicile     Décès      NA's 
+##         0     21950      1523     66755         0     15751
+```
+
+```r
+prop.table(summary(d1$MODE_SORTIE)) * 100
+```
+
+```
+##        NA  Mutation Transfert  Domicile     Décès      NA's 
+##     0.000    20.712     1.437    62.989     0.000    14.862
+```
+
+#### Destinations
+
+```r
+summary(hosp$DESTINATION)
+```
+
+```
+##    NA   MCO   SSR   SLD   PSY   HAD   HMS  NA's 
+##     0 22935    17     4   395     0     0 15873
+```
+
+```r
+prop.table(summary(hosp$DESTINATION))
+```
+
+```
+##        NA       MCO       SSR       SLD       PSY       HAD       HMS 
+## 0.0000000 0.5847185 0.0004334 0.0001020 0.0100704 0.0000000 0.0000000 
+##      NA's 
+## 0.4046757
+```
+
+```r
+# sans les NA
+table(hosp$DESTINATION)
+```
+
+```
+## 
+##    NA   MCO   SSR   SLD   PSY   HAD   HMS 
+##     0 22935    17     4   395     0     0
+```
+
+```r
+prop.table(table(hosp$DESTINATION)) * 100
+```
+
+```
+## 
+##       NA      MCO      SSR      SLD      PSY      HAD      HMS 
+##  0.00000 98.21849  0.07280  0.01713  1.69158  0.00000  0.00000
+```
+
+
+#### Orientation des hospitalisés MCO (avec et sans les NA):
+
+```r
+a <- as.factor(hosp$ORIENTATION[hosp$DESTINATION == "MCO"])
+a <- summary(a)
+a
+```
+
+```
+##  CHIR   HDT    HO   MED  OBST   PSA   REA   REO    SC    SI  UHCD  NA's 
+##  2208     1     6  5464    38     1   290     8   414   420 10619 19339
+```
+
+```r
+round(prop.table(a) * 100, 2)
+```
+
+```
+##  CHIR   HDT    HO   MED  OBST   PSA   REA   REO    SC    SI  UHCD  NA's 
+##  5.69  0.00  0.02 14.08  0.10  0.00  0.75  0.02  1.07  1.08 27.36 49.83
+```
+
+```r
+
+a <- table(hosp$ORIENTATION[hosp$DESTINATION == "MCO"])
+a
+```
+
+```
+## 
+##  CHIR   HDT    HO   MED  OBST   PSA   REA   REO    SC    SI  UHCD 
+##  2208     1     6  5464    38     1   290     8   414   420 10619
+```
+
+```r
+a <- prop.table(a) * 100
+a
+```
+
+```
+## 
+##      CHIR       HDT        HO       MED      OBST       PSA       REA 
+## 11.341106  0.005136  0.030818 28.065129  0.195182  0.005136  1.489547 
+##       REO        SC        SI      UHCD 
+##  0.041091  2.126457  2.157276 54.543120
+```
+
+```r
+sce_chauds <- a["REA"] + a["SI"] + a["SC"]
+print(paste("Services chauds: ", round(sce_chauds, 2), " %"))
+```
+
+```
+## [1] "Services chauds:  5.77  %"
+```
+
+```r
+mco <- a["CHIR"] + a["MED"] + a["OBST"]
+print(paste("MCO: ", round(mco, 2), " %"))
+```
+
+```
+## [1] "MCO:  39.6  %"
+```
+
+```r
+print(paste("UHTCD: ", round(a["UHCD"], 2), " %"))
+```
+
+```
+## [1] "UHTCD:  54.54  %"
+```
+
+```r
+print(paste("Atypiques: ", round(a["FUGUE"] + a["PSA"] + a["SCAM"] + a["REO"], 
+    2), " %"))
+```
+
+```
+## [1] "Atypiques:  NA  %"
+```
+
+```r
+print(paste("HDT-HO: ", round(a["HDT"] + a["HO"], 2), " %"))
+```
+
+```
+## [1] "HDT-HO:  0.04  %"
+```
+
+Quelques erreurs de codage:
+- Fugue, HDT, HO, PSA,REO, SCAM devraient être nuls
+dom<-d1
+#### Orientation des patients hospitalisés en Psychiatrie:
+
+```r
+a <- summary(hosp$ORIENTATION[hosp$DESTINATION == "PSY"])
+a
+```
+
+```
+##    Length     Class      Mode 
+##     16268 character character
+```
+
+```r
+a <- table(hosp$ORIENTATION[hosp$DESTINATION == "PSY"])
+a
+```
+
+```
+## 
+## CHIR  HDT   HO  MED  REA   SC UHCD 
+##   50   22    6   92    3    2    5
+```
+
+```r
+
+a <- d1[d1$DESTINATION == "PSY", ]
+a$DESTINATION <- as.character(a$DESTINATION)
+a <- a[!is.na(a$DESTINATION), ]
+summary(a$ORIENTATION)
+```
+
+```
+##    Length     Class      Mode 
+##       399 character character
+```
+
+```r
+round(prop.table(summary(a$ORIENTATION)) * 100, 3)
+```
+
+```
+## Error: 'type' (character) de l'argument incorrect
+```
+
+#### Analyse de l'ensemble de la rubrique **ORIENTATION**
+
+```r
+d1$ORIENTATION <- as.factor(d1$ORIENTATION)
+a <- summary(d1$ORIENTATION)
+a
+```
+
+```
+##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    SC  SCAM    SI 
+##  2342    72    39    12  5662    38   954   321   422   427   150   445 
+##  UHCD  NA's 
+## 11496 83599
+```
+
+```r
+a <- round(prop.table(a) * 100, 4)
+
+sce_chauds <- a["REA"] + a["SI"] + a["SC"]
+print(paste("Services chauds: ", round(sce_chauds, 2), " %"))
+```
+
+```
+## [1] "Services chauds:  1.13  %"
+```
+
+```r
+mco <- a["CHIR"] + a["MED"] + a["OBST"]
+print(paste("MCO: ", round(mco, 2), " %"))
+```
+
+```
+## [1] "MCO:  7.59  %"
+```
+
+```r
+uhcd <- a["UHCD"]
+print(paste("UHTCD: ", round(uhcd, 2), " %"))
+```
+
+```
+## [1] "UHTCD:  10.85  %"
+```
+
+```r
+atypique <- a["FUGUE"] + a["PSA"] + a["SCAM"] + a["REO"]
+print(paste("Atypiques: ", round(atypique, 2), " %"))
+```
+
+```
+## [1] "Atypiques:  1.51  %"
+```
+
+```r
+psy <- a["HDT"] + a["HO"]
+print(paste("HDT-HO: ", round(psy, 2), " %"))
+```
+
+```
+## [1] "HDT-HO:  0.05  %"
+```
+
+```r
+nr <- a["NA's"]
+
+als <- c(mco, uhcd, nr, atypique, sce_chauds, psy)
+lor <- c(49.39, 19.12, 17.25, 8.92, 5.24, 0.07)
+
+r <- rbind(als, lor)
+barplot(r, las = 2, beside = T, legend = T, ylab = "% des RPU", xlab = "", sub = "(Ref. ORULOR 2011 p.50)", 
+    names.arg = c("MCO", "UHCD", "NR", "Atypiques", "REA", "PSY"), main = "Orientation des patients hospitalisés", 
+    cex.sub = 0.6)
+```
+
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
+
+en fonction de l'établissement (NOTE: utilisation de useNA="ifany"):
+
+```r
+# analyse brute
+t <- table(d1$ORIENTATION, d1$FINESS)
+t
+```
+
+```
+##        
+##          3Fr  Alk  Col  Dia  Geb  Hag  Hus  Mul  Odi  Sel  Wis
+##   CHIR     2    0  996   22    1  372    0  433   85  426    5
+##   FUGUE    0    0   35    4    0   12    0    0   10    1   10
+##   HDT      0    0   20    0    1    0    0   16    0    0    2
+##   HO       0    0    4    0    0    0    0    2    0    0    6
+##   MED      0    0 2287    2    2  768  185  851   33 1520   14
+##   OBST     0    0   16    0    0   16    0    0    1    5    0
+##   PSA      1   15  316  370    0  145    0   63   10    2   32
+##   REA      0    0  120    0    0   65    0   99    0   35    2
+##   REO     18    3  359   39    0    0    0    0    2    0    1
+##   SC       0    0  140    0    0   36    0  242    0    0    9
+##   SCAM     1    0   66    5    1   47    0    4   12    0   14
+##   SI       0    0  223    2    0  104    0  100    3    9    4
+##   UHCD     0    0 1660    3    0 1588 7412  680    0  134   19
+```
+
+```r
+# analyse brute incluant les NA
+t <- table(d1$ORIENTATION, d1$FINESS, useNA = "ifany")
+t
+```
+
+```
+##        
+##           3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis
+##   CHIR      2     0   996    22     1   372     0   433    85   426     5
+##   FUGUE     0     0    35     4     0    12     0     0    10     1    10
+##   HDT       0     0    20     0     1     0     0    16     0     0     2
+##   HO        0     0     4     0     0     0     0     2     0     0     6
+##   MED       0     0  2287     2     2   768   185   851    33  1520    14
+##   OBST      0     0    16     0     0    16     0     0     1     5     0
+##   PSA       1    15   316   370     0   145     0    63    10     2    32
+##   REA       0     0   120     0     0    65     0    99     0    35     2
+##   REO      18     3   359    39     0     0     0     0     2     0     1
+##   SC        0     0   140     0     0    36     0   242     0     0     9
+##   SCAM      1     0    66     5     1    47     0     4    12     0    14
+##   SI        0     0   223     2     0   104     0   100     3     9     4
+##   UHCD      0     0  1660     3     0  1588  7412   680     0   134    19
+##   <NA>   5190   873 15599  9158  4802  8474  5498 14300  8259  7553  3893
+```
+
+```r
+# cette analyse ne permet pas de séparer les vraies non réponses des
+# retours à domicile
+hosp <- d1[d1$MODE_SORTIE == "Mutation" | d1$MODE_SORTIE == "Transfert", ]
+t <- table(hosp$ORIENTATION, hosp$FINESS, useNA = "ifany")
+t
+```
+
+```
+##        
+##           3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis
+##   CHIR      0     0   995     7     0   372     0   402    52   426     4
+##   FUGUE     0     0     0     0     0     0     0     0     0     0     0
+##   HDT       0     0    19     0     1     0     0     1     0     0     2
+##   HO        0     0     4     0     0     0     0     2     0     0     6
+##   MED       0     0  2278     1     0   768   185   779    22  1513    12
+##   OBST      0     0    16     0     0    16     0     0     1     5     0
+##   PSA       0     0     0     1     0     0     0     0     0     0     0
+##   REA       0     0   120     0     0    65     0    71     0    35     2
+##   REO       2     1     0     4     0     0     0     0     1     0     0
+##   SC        0     0   140     0     0    36     0   233     0     0     7
+##   SCAM      0     0     0     0     0     0     0     0     0     0     0
+##   SI        0     0   223     0     0   104     0    85     2     2     4
+##   UHCD      0     0  1658     1     0  1588  7020   219     0   134    14
+##   <NA>    125   148   160   781     6   674     0   677   315     0   926
+##        
+##          <NA>
+##   CHIR      0
+##   FUGUE     0
+##   HDT       0
+##   HO        0
+##   MED       0
+##   OBST      0
+##   PSA       0
+##   REA       0
+##   REO       0
+##   SC        0
+##   SCAM      0
+##   SI        0
+##   UHCD      0
+##   <NA>  15751
+```
+
+```r
+# non hospitalisés
+dom <- d1[d1$MODE_SORTIE == "Domicile", ]
+```
+
+
+
 Adultes
 -------
 Répartition de la population adulte (18 ans et plus)
 
 ```r
 a <- d1[AGE > 17, c("AGE", "FINESS")]
-boxplot(a$AGE ~ a$FINESS, main = "Patients de 18 as et plus", col = "slategray1")
+boxplot(a$AGE ~ a$FINESS, main = "Patients de 18 ans et plus", col = "slategray1")
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9.png) 
 
 
 Mineurs
@@ -633,7 +1222,7 @@ boxplot(as.numeric(h24$passage) ~ h24$FINESS, col = "pink", main = "Durée moyen
     ylab = "Temps en minutes", xlab = "SAU - 2013")
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-91.png) 
+![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-101.png) 
 
 ```r
 boxplot(as.numeric(h24$passage) ~ h24$FINESS, col = "yellow", range = 0, notch = TRUE, 
@@ -641,7 +1230,7 @@ boxplot(as.numeric(h24$passage) ~ h24$FINESS, col = "yellow", range = 0, notch =
     xlab = "SAU - 2013")
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-92.png) 
+![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-102.png) 
 
 Maladies infectieuses
 =====================
@@ -707,7 +1296,7 @@ hist(bronchio$date, breaks = 18, freq = TRUE, col = "slategray1", main = "2013 -
     xlab = "")
 ```
 
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12.png) 
 
 Grippe
 ------
@@ -750,13 +1339,13 @@ malaise$date <- as.Date(malaise$ENTREE)
 hist(malaise$date, breaks = 18, freq = TRUE, col = "slategray1", main = "Malaises (INVS)")
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-121.png) 
+![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-131.png) 
 
 ```r
 plot(as.factor(malaise$date), col = "slategray1", las = 1, main = "Malaises (INVS)")
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-122.png) 
+![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-132.png) 
 
 AVC
 ----

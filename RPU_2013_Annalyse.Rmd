@@ -16,6 +16,7 @@ library("rattle")
 library("epicalc")
 library("zoo")
 library("xts")
+library("xtable")
 ```
 Chargement des routines perso
 -----------------------------
@@ -93,7 +94,7 @@ cbind(as.character(sort(c)))
 ```
 Exhaustivité des données
 ------------------------
-Il faut tranformer les valeurs NULL en NA pour pouvoir les comptabiliser. Les valeurs NULL apparaissent pour les factors: DP, MOTIF, TRANSPORT, ORIENTATION,GRAVITE, SORTIE. Il faut les transformer en charecter pour leur attriber la valeur NA au lieu de NULL:
+Il faut tranformer les valeurs NULL en NA pour pouvoir les comptabiliser. Les valeurs NULL apparaissent pour les factors: DP, MOTIF, TRANSPORT, ORIENTATION,GRAVITE, SORTIE. Il faut les transformer en character pour leur attriber la valeur NA au lieu de NULL:
 ```{r}
 a<-as.character(d1$DP)
 a[a=="NULL"]<-NA
@@ -160,12 +161,168 @@ tab1(as.factor(a$ORIENTATION),sort.group="decreasing",horiz=TRUE,cex.names = 0.8
 ```
 La table ci-dessus liste le devenir des patients non hospitalisés. On note des incohérences: REA, HDT, SI, Med, CHIR, UHCD. La ligne *Missing* correspond aux patients rentrés sur avis médical.
 
+Etude des patients hospitalisés
+--------------------------------
+La rubrique mode de sortie peut se décomposer en 3 éléments
+- *hosp*: patient hospitalisés, cad gardé en milieu de soins par *MUTATION* ou *TRANSFERT*
+- *dom*: retour à domicile ou équivalent
+- *dcd*: patients décédés aux urgences
+Dans l'échantillon *d1* c'est la colonne *MODE_SORTIE* qui renseigne sur le devenir du patient à la sortie des urgences:
+
+```{r mode_sortie, echo=FALSE}
+print(paste("d1 compte ",nrow(d1)," lignes"))
+```
+Il y a deux façons de former des sous ensembles avec R:
+- sélectionner en utilisant la notation vectorielle: hosp<-d1[d1$MODE_SORTIE=="Mutation" | d1$MODE_SORTIE=="Transfert",]
+- sélectionner avec la méthode **subset**: b<-subset(d1,MODE_SORTIE=="Mutation" | MODE_SORTIE=="Transfert")
+
+La première méthode sélectionne toutes les lignes correspondant aux critères ET celles où le critère vaut *NA*. ie, la méthode 1 retourne un data frame de 39224 lignes et 20 colonnes.
+
+La méthode *subset* ne tient pas compte des lignes où le critère vaut NA. Dans l'exemple, retourne un dataframe de 23473 lignes et 20 colonnes.
+
+```{r subset,echo=TRUE}
+hosp<-d1[d1$MODE_SORTIE=="Mutation" | d1$MODE_SORTIE=="Transfert",]
+dom<-d1[d1$MODE_SORTIE=="Domicile",]
+dcd<-d1[d1$MODE_SORTIE=="Deces",]
+nbna<-nrow(hosp)+nrow(dom)+nrow(dcd)-nrow(d1)
+pna<-round(nbna*100/nrow(d1),2)
+
+print(paste("hosp = ",nrow(hosp)," lignes"))
+print(paste("dom = ",nrow(dom)," lignes"))
+print(paste("dcd = ",nrow(dcd)," lignes"))
+
+print(paste("La différence du nombre de lignes entre d1 et hosp, dom et dcd indique le nmbre de lignes correspondant à NA et qui sont incluses dans le décompte des lignes de chaque sous ensemble: ",nbna,"correspondant aux mode de sortie non renseignés soit ",pna," %"))
+```
+Avec *subset* on élimine ces lignes parasites:
+```{r subset2}
+a<-subset(d1,MODE_SORTIE=="Domicile")
+b<-subset(d1,MODE_SORTIE=="Mutation" | MODE_SORTIE=="Transfert")
+nrow(a)
+nrow(b)
+nrow(d1)-nrow(a)-nrow(b)
+
+print("O")
+t<-table(b$ORIENTATION,b$FINESS,useNA="ifany")
+m1<-margin.table(t,1)
+t2<-cbind(t,m1)
+m2<-margin.table(t2,2)
+rbind(t2,m2)
+
+summary(a$MODE_SORTIE)
+summary(b$MODE_SORTIE)
+```
+- nb total de lignes = 105979
+- total hospitalisés = 21950 +  1523
+- total non hospitalisés = 66755 
+- non réponses = 105979-90228 = 15751
+```{r analyse}
+summary(b$DESTINATION)
+summary(b$ORIENTATION)
+summary(a$DESTINATION)
+summary(a$ORIENTATION)
+```
+
+
+
+
+on forme un dataframe *hosp* des patients hospitalisés par mutation ou transfert:
+```{r hosp}
+ hosp<-d1[d1$MODE_SORTIE=="Mutation" | d1$MODE_SORTIE=="Transfert",]
+summary(d1$MODE_SORTIE)
+prop.table(summary(d1$MODE_SORTIE))*100
+```
+#### Destinations
+```{r hosp_destination}
+summary(hosp$DESTINATION)
+prop.table(summary(hosp$DESTINATION))
+# sans les NA
+table(hosp$DESTINATION)
+prop.table(table(hosp$DESTINATION))*100
+```
+
+#### Orientation des hospitalisés MCO (avec et sans les NA):
+```{r mco}
+a<-as.factor(hosp$ORIENTATION[hosp$DESTINATION=="MCO"])
+a<-summary(a)
+a
+round(prop.table(a)*100,2)
+
+a<-table(hosp$ORIENTATION[hosp$DESTINATION=="MCO"])
+a
+a<-prop.table(a)*100
+a
+sce_chauds<-a["REA"]+a["SI"]+a["SC"]
+print(paste("Services chauds: ",round(sce_chauds,2)," %"))
+mco<-a["CHIR"]+a["MED"]+a["OBST"]
+print(paste("MCO: ",round(mco,2)," %"))
+print(paste("UHTCD: ",round(a["UHCD"],2)," %"))
+print(paste("Atypiques: ",round(a["FUGUE"]+a["PSA"]+a["SCAM"]+a["REO"],2)," %"))
+print(paste("HDT-HO: ",round(a["HDT"]+a["HO"],2)," %"))
+```
+Quelques erreurs de codage:
+- Fugue, HDT, HO, PSA,REO, SCAM devraient être nuls
+dom<-d1
+#### Orientation des patients hospitalisés en Psychiatrie:
+```{r psy}
+a<-summary(hosp$ORIENTATION[hosp$DESTINATION=="PSY"])
+a
+a<-table(hosp$ORIENTATION[hosp$DESTINATION=="PSY"])
+a
+
+a<-d1[d1$DESTINATION=="PSY",]
+a$DESTINATION<-as.character(a$DESTINATION)
+a<-a[!is.na(a$DESTINATION),]
+summary(a$ORIENTATION)
+round(prop.table(summary(a$ORIENTATION))*100,3)
+```
+#### Analyse de l'ensemble de la rubrique **ORIENTATION**
+```{r}
+d1$ORIENTATION<-as.factor(d1$ORIENTATION)
+a<-summary(d1$ORIENTATION)
+a
+a<-round(prop.table(a)*100,4)
+
+sce_chauds<-a["REA"]+a["SI"]+a["SC"]
+print(paste("Services chauds: ",round(sce_chauds,2)," %"))
+mco<-a["CHIR"]+a["MED"]+a["OBST"]
+print(paste("MCO: ",round(mco,2)," %"))
+uhcd<-a["UHCD"]
+print(paste("UHTCD: ",round(uhcd,2)," %"))
+atypique<-a["FUGUE"]+a["PSA"]+a["SCAM"]+a["REO"]
+print(paste("Atypiques: ",round(atypique,2)," %"))
+psy<-a["HDT"]+a["HO"]
+print(paste("HDT-HO: ",round(psy,2)," %"))
+nr<-a["NA's"]
+
+als<-c(mco,uhcd,nr,atypique,sce_chauds,psy)
+lor<-c(49.39,19.12,17.25,8.92,5.24,0.07)
+
+r<-rbind(als,lor)
+barplot(r,las=2,beside=T,legend=T,ylab="% des RPU",xlab="",sub="(Ref. ORULOR 2011 p.50)",names.arg=c("MCO","UHCD","NR","Atypiques","REA","PSY"),main="Orientation des patients hospitalisés",cex.sub=0.6)
+```
+en fonction de l'établissement (NOTE: utilisation de useNA="ifany"):
+```{r orientation_Finess}
+# analyse brute
+t<-table(d1$ORIENTATION,d1$FINESS)
+t
+# analyse brute incluant les NA
+t<-table(d1$ORIENTATION,d1$FINESS,useNA="ifany")
+t
+# cette analyse ne permet pas de séparer les vraies non réponses des retours à domicile
+hosp<-d1[d1$MODE_SORTIE=="Mutation" | d1$MODE_SORTIE=="Transfert",]
+t<-table(hosp$ORIENTATION,hosp$FINESS,useNA="ifany")
+t
+# non hospitalisés
+dom<-d1[d1$MODE_SORTIE=="Domicile",]
+```
+
+
 Adultes
 -------
 Répartition de la population adulte (18 ans et plus)
 ```{r}
 a<-d1[AGE > 17,c("AGE","FINESS")]
-boxplot(a$AGE~a$FINESS,main="Patients de 18 as et plus",col="slategray1")
+boxplot(a$AGE~a$FINESS,main="Patients de 18 ans et plus",col="slategray1")
 ```
 
 Mineurs
