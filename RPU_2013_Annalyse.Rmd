@@ -17,11 +17,13 @@ library("epicalc")
 library("zoo")
 library("xts")
 library("xtable")
+library("plotrix")
+library("openintro")
 ```
 Chargement des routines perso
 -----------------------------
 ```{r routines}
-source("mes_fonctions.R")
+source("../mes_fonctions.R")
 ```
 
 Lecture du fichier des données
@@ -495,6 +497,132 @@ summary(trauma$FINESS)
 summary(trauma$AGE)
 summary(trauma$SEXE)
 ```
+Etude Guebwiller
+----------------
+```{r guebwiller}
+geb<-d1[d1$FINESS=="Geb",]
+```
+Orientation des patients 
+```{r geb_orient}
+summary(geb$MODE_SORTIE)
+summary(geb$ORIENTATION)
+```
+Mode d'arrivée aux urgences:
+```{r geb_urg}
+summary(as.factor(geb$TRANSPORT))
+```
+Heure d'arrivée aux urgences
+```{r geb_arrive}
+e<-ymd_hms(geb$ENTREE)
+h<-hour(e)
+summary(h)
+hist(h,breaks=23,xlab="Heures",main="CH Guebwiller - Horaire de fréquentation du SU")
+t<-table(h)
+t2<-as.integer(t)
+c<-clock24.plot(t2,clock.pos=1:24,lwd=3)
+c<-clock24.plot(t2,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures d'arrivée aux urgences",show.grid.labels=F)
+# nécessite la librairie openintro
+clock24.plot(t2,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,poly.col=fadeColor("blue", fade = "10"))
+clock24.plot(t2,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,poly.col=fadeColor("blue", fade = "10"),line.col=fadeColor("blue", fade = "10"))
+```
+Idem pour les sorties
+```{r geb_sorties}
+s<-ymd_hms(geb$SORTIE)
+t3<-as.integer(table(hour(s)))
+clock24.plot(t3,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures de sortie des urgences",show.grid.labels=F)
+```
+Combinaison entrée-sortie
+```{r geb_es}
+t4<-rbind(t2,t3)
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures d'arrivée aux urgences",show.grid.labels=F)
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c("red","blue"))
+fadeBlue<-fadeColor("blue", fade = "15")
+fadeRed<-fadeColor("red", fade = "15")
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c(fadeRed,fadeBlue),poly.col=c(fadeRed,fadeBlue))
+```
+Entrées selon la période du jour: nuit profonde NP (0h-8h = 1), journée JO (8h-20h = 2), soir SR (20h-24h = 3). La date/heure d'entrée est transformée en heure entière par la fonction *hour*. hest à son tour segmenté en 3 périodes.
+```{r geb jour}
+e<-ymd_hms(geb$ENTREE)
+h<-hour(e)
+b<-cut(h,c(0,8,20,24),labels=c("NP","JO","SR"))
+bp<-summary(as.factor(b))
+barplot(bp)
+round(prop.table(bp)*100,2)
+barplot(round(prop.table(bp)*100,2),ylab="% des passages",sub="NP = 0h-8h",ylim=c(0,100),main="CH Guebwiller\n Passages nuit profonde - jour - soirée")
+t<-table(geb$GRAVITE,b)
+t
+barplot(t,beside=T,col=1:7)
+```
+Mode sortie en fonction de la période
+```{r geb_sortie_periode}
+t<-table(geb$MODE_SORTIE,b)
+t
+t<-table(geb$ORIENTATION,b)
+```
+CCL: à Guebwiller tout le monde rentre à la maison !
+
+#### Calcul des heures d'arrivées pour l'ensemble des établissements
+```{r total arrivee}
+e<-ymd_hms(d1$ENTREE)
+h<-hour(e)
+summary(h)
+hist(h,breaks=23,xlab="Heures",main="Alsace - Horaire de fréquentation du SU")
+t<-table(h)
+als_entree<-as.integer(t)
+c<-clock24.plot(als_entree,clock.pos=1:24,lwd=3,show.grid.labels=F)
+c<-clock24.plot(als_entree,clock.pos=1:24,rp.type="p",main="Alsace",xlab="Heures d'arrivée aux urgences",show.grid.labels=F)
+```
+#### Comparaison Alsace - Guebwiller
+Les calculs sont exprimés en %
+```{r als-geb}
+e<-ymd_hms(geb$ENTREE)
+h<-hour(e)
+t<-table(h)
+t2<-as.integer(t)
+t4<-rbind(prop.table(t2),prop.table(als_entree))
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="Alsace - CH de Guebwiller (rouge)",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c("red","blue"),radial.lim=c(0,0.1))
+legend(0.09,-0.09,c("CH","Alsace"),col=c("red","blue"),lty=1,cex=0.8)
+
+# Profil entrées de Guebwiller versus le profil régional
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="Alsace - CH de Guebwiller (rouge)",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c("red",fadeBlue),poly.col=c(NA,fadeBlue),radial.lim=c(0,0.1))
+
+```
+#### Comparaison Alsace - Wissembourg
+```{r als-wis}
+wis<-d1[d1$FINESS=="Wis",]
+e<-ymd_hms(wis$ENTREE)
+h<-hour(e)
+t<-table(h)
+t2<-as.integer(t)
+t4<-rbind(prop.table(t2),prop.table(als_entree))
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="Alsace - CH de Wissembourg",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c("red","blue"),radial.lim=c(0,0.1))
+legend(0.09,-0.09,c("CH","Alsace"),col=c("red","blue"),lty=1,cex=0.8)
+```
+#### comparaison Alsace - HUS
+```{r}
+hus<-d1[d1$FINESS=="Hus",]
+e<-ymd_hms(hus$ENTREE)
+h<-hour(e)
+t<-table(h)
+t2<-as.integer(t)
+t4<-rbind(prop.table(t2),prop.table(als_entree))
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="Alsace - CHU Strasbourg",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c("red","blue"),radial.lim=c(0,0.1))
+legend(0.09,-0.09,c("CH","Alsace"),col=c("red","blue"),lty=1,cex=0.8)
+```
+#### Test de la fonction*passages*
+```{r passages}
+par(mfrow = c(2, 2))
+source("../mes_fonctions.R")
+passages("Hus","HUS",sens=3)
+passages("Mul","CH Mulhouse",sens=3)
+passages("Col","CH Colmar",sens=3)
+passages("Hag","CH Haguenau",sens=3)
+par(mfrow = c(1, 1))
+```
+
+
+
+
 
 
 
