@@ -1,0 +1,67 @@
+% test2.Rnw
+
+L'activité horaire des services d'urgence en Alsace est totalement superposable à celui de l'ensamble des SU (figure \ref{passage:als} page \pageref{passage:als}). L'activité diminue fortement en nuit profonde à partir de une heure du matin pour redémarrer vers 9 heures et s'intensifier progressivement en matinée. Après un premier pic en fin de matinée, la croissance reprend pour culminer vers 19 heures, puis décroître lentement jusqu'en fin de soirée.
+
+Ce phénomène cyclique se répète tous les jours selon un profil immuable. La projection de ces données sur un graphique en radar représentant les 24 tranches horaires (figure \ref{radar:als} page \pageref{radar:als}) montre qu'il existe trois pics d'égale amplitude à 11, 15 et 19 heures. Ce point mérite d'être analysé car s'il se confirme, cela pourrait indiquer que le pointage de 11 heures permet d'avoir une prévision sur l'intensité de la fréquentation avant la garde du soir. On peut en rapprocher le fait que la médiane des passages se situe vers 14h, c'est à dire qu'au ointage de 15 heures on peut évaluer la quantité totale de patients qui vont se présenter dans les heures qui viennent.
+
+%----------------------------------------------------------------------------- Summary
+<<fig24,echo=FALSE,comment="">>=
+e<-ymd_hms(d1$ENTREE)
+h<-hour(e)
+print("Résumé des horaires de passage:")
+summary(h)
+@
+%---------------------------------------------------------------------- HISTOGRAMME
+
+\begin{figure}
+\begin{center}
+<<test23, echo=FALSE,fig = TRUE,fig.height=5>>=
+hist(h,breaks=23,xlab="Heures",main="Alsace - Horaire de fréquentation du SU",col="pink")
+@
+\end{center}
+\caption{Horaires d'arrivée aux urgences en Alsace 2013}
+\label{passage:als}
+\end{figure}
+%---------------------------------------------------------------------------- RADAR 1
+
+\begin{figure}
+\begin{center}
+<<test25, echo=FALSE,fig = TRUE,fig.height=10>>=
+t<-table(h)
+als_entree<-as.integer(t)
+par(mfrow = c(2, 1))
+c<-clock24.plot(als_entree,clock.pos=1:24,lwd=3,show.grid.labels=F)
+c<-clock24.plot(als_entree,clock.pos=1:24,rp.type="p",main="Alsace",xlab="Heures d'arrivée aux urgences",show.grid.labels=F)
+par(mfrow = c(1, 1))
+@
+\end{center}
+\caption{Horaires d'arrivée aux urgences en Alsace 2013}
+\label{radar:als}
+\end{figure}
+
+%---------------------------------------------------------Radar HUS
+\begin{figure}
+\begin{center}
+  <<test2, echo=FALSE,fig = TRUE,fig.height=5>>=
+    passages("Hus","HUS",sens=3)
+    @
+\end{center}
+\caption{HUS: répartition des arrivées et départs aux urgences}
+\label{passage:hus}
+\end{figure}
+
+%----------------------------------------------------------------
+\begin{figure}
+\begin{center}
+  <<test22, echo=FALSE,fig = TRUE,fig.height=5>>=
+    par(mfrow = c(1, 2))
+    passages("Col","CH Colmar",sens=3)
+    passages("Mul","CH Mulhouse",sens=3)
+    par(mfrow = c(1, 1))
+    @
+\end{center}
+\caption{CH Colmar et Mulhouse: répartition des arrivées et départs aux urgences}
+\label{passage:col}
+\end{figure}
+
+

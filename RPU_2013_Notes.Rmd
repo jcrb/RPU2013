@@ -272,7 +272,7 @@ Utilisation du fichier *zpo* à la place du fichier *ville*
 -----------------------------------------------------------
 Crée un objet *zone de proximité 2*, en dessine le contour ainsi que le chef lieu:
 
-```{r}
+```{r zp2_haguenau}
 zpo<-read.csv("zp.csv",header=TRUE, sep=",")
 base1<-merge(zpo,pop67,by.x="CODE.COMMUNE",by.y="insee")
 base2<-merge(zpo,pop68,by.x="CODE.COMMUNE",by.y="insee")
@@ -298,10 +298,10 @@ nom<-sp$NOM_COMM
 points(x,y,pch=19,col=3)
 text(x,y,labels=nom,cex=0.8,pos=3)
 ```
-Zone de proximité 3
+Zone de proximité 3 (Saverne)
 --------------------
 
-```{r}
+```{r zp3_saverne}
 zip3<-base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE==3]
 b<-paste(zip3,sep=",")
 zp3<-als[als@data$INSEE_COM %in% b,]
@@ -323,7 +323,7 @@ plot(contour2,add=T)
 Zone de proximité 4
 --------------------
 
-```{r}
+```{r zp4_strasbourg}
 zip4<-base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE==4]
 b<-paste(zip4,sep=",")
 zp4<-als[als@data$INSEE_COM %in% b,]
@@ -346,7 +346,7 @@ plot(contour4,add=T)
 Zone de proximité 1 (Wissembourg)
 --------------------
 
-```{r}
+```{r zp1_wissembourg}
 zip1<-base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE==1]
 b<-paste(zip1,sep=",")
 zp1<-als[als@data$INSEE_COM %in% b,]
@@ -368,7 +368,7 @@ plot(contour1,add=T)
 Zone de proximité 5 (Molsheim)
 --------------------
 
-```{r}
+```{r zp5_molsheim}
 zip5<-base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE==5]
 b<-paste(zip5,sep=",")
 zp5<-als[als@data$INSEE_COM %in% b,]
@@ -390,7 +390,7 @@ plot(contour5,add=T)
 Zone de proximité 6 (Selestat)
 --------------------
 
-```{r}
+```{r zp6_selestat}
 zip6<-base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE==6]
 b<-paste(zip6,sep=",")
 zp6<-als[als@data$INSEE_COM %in% b,]
@@ -412,7 +412,7 @@ plot(contour6,add=T)
 Zone de proximité 7 (Colmar)
 --------------------
 
-```{r}
+```{r zp7_colmar}
 zip7<-base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE==7]
 b<-paste(zip7,sep=",")
 zp7<-als[als@data$INSEE_COM %in% b,]
@@ -434,7 +434,7 @@ plot(contour7,add=T)
 Zone de proximité 8 (Guebwiller)
 --------------------
 
-```{r}
+```{r zp8_guebwiller}
 zip8<-base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE==8]
 b<-paste(zip8,sep=",")
 zp8<-als[als@data$INSEE_COM %in% b,]
@@ -456,7 +456,7 @@ plot(contour8,add=T)
 Zone de proximité 9 (Thann)
 --------------------
 
-```{r}
+```{r zp9_thann}
 zip9<-base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE==9]
 b<-paste(zip9,sep=",")
 zp9<-als[als@data$INSEE_COM %in% b,]
@@ -478,7 +478,7 @@ plot(contour9,add=T)
 Zone de proximité 10 (Mulhouse)
 --------------------
 
-```{r}
+```{r zp10_mulhouse}
 zip10<-base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE==10]
 b<-paste(zip10,sep=",")
 zp10<-als[als@data$INSEE_COM %in% b,]
@@ -500,7 +500,7 @@ plot(contour10,add=T)
 Zone de proximité 11 (Altkirch)
 --------------------
 
-```{r}
+```{r zp11_altkirch}
 zip11<-base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE==11]
 b<-paste(zip11,sep=",")
 zp11<-als[als@data$INSEE_COM %in% b,]
@@ -522,7 +522,7 @@ plot(contour11,add=T)
 Zone de proximité 12
 --------------------
 
-```{r}
+```{r zp12_stLouis}
 zip12<-base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE==12]
 b<-paste(zip12,sep=",")
 zp12<-als[als@data$INSEE_COM %in% b,]

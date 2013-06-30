@@ -1,0 +1,138 @@
+\documentclass[12pt,english,french]{report}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+% inclu un fichier de bibliothèques
+\include{rpu-2012.sty}
+
+\usepackage{numprint}
+% la ligne qui suit donne un titre interne au document pdf et crée des liens cliquables en bleu sur les tables et figures
+\usepackage[pdftitle={RPU2012-Resural}, colorlinks=true, linkcolor=blue,citecolor=blue, urlcolor=blue, linktocpage=true, breaklinks=true]{hyperref}
+
+\usepackage{makeidx}
+\makeindex
+\makeglossary
+\bibliographystyle{plain}
+
+\begin{document}
+
+\title{Analyse des données RPU 2013 de la région Alsace}
+\author{RESURAL}
+\date{\today}
+\maketitle
+
+%\SweaveOpts{concordance=TRUE}
+%\SweaveOpts{fig.path='./figure/rpu2013-', comment=NA, prompt=FALSE}
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+<<setup,echo=FALSE,cache=FALSE,message=FALSE,warning=FALSE>>=
+# setwd("~/Documents/Resural/Stat Resural/RPU_2012")
+# setwd("~/rdev/RPU2012")
+library("gdata")
+library("rgrs")
+library("lubridate")
+library("xtable")
+library("stargazer")
+library("knitr")
+source("../mes_fonctions.R")
+
+library("rattle")
+library("epicalc")
+library("zoo")
+library("xts")
+library("plotrix")
+library("openintro")
+
+load("../rpu2013.Rda")
+attach(d1)
+@
+%======================================================== PARTIE 1
+\part{Le Réseau des urgences en Alsace}
+\chapter{Historique}
+
+\chapter{Organisation géographique}
+<<child='geographie.Rnw'>>=
+@
+\chapter{Les acteurs}
+<<child='acteurs.Rnw'>>=
+@
+\chapter{RESURAL}
+\chapter{L'observatoire des urgences en Alsace (ORUDAL)}
+  \section*{Les partenaires}
+  \subsection*{Agence Régionale de Santé}
+  \subsection*{Alsace e-santé}
+  \subsection*{CIRE-INVS}
+  \subsection*{Collège de médecine d'urgence (CMUNE)}
+\chapter{Le Résumé du passage aux urgences}
+
+%========================================================== PARTIE 2
+\part{Activité des services d'urgence d'Alsace}
+\chapter{Activité régionale totale}
+\section*{Nombre total de passages}
+\section*{Nombre total de passages par SU}
+\subsection*{En valeur absolue}
+\subsection*{En pourcentage}
+\subsection*{Taux de recours aux urgences}
+\subsection*{Activité par mois}
+\subsection*{Activité par jour de la semaine}
+\subsection*{Activité horaire}
+<<child='test2.Rnw'>>=
+@
+\subsection*{Passages par tranches d'âge}
+
+\chapter{Modalité d'admission}
+\section*{Origine des patients}
+\section*{Mode de transport}
+\section*{Origine géographique}
+
+\chapter{Durée de passage}
+\section*{Selon l'heure}
+\section*{Selon l'âge}
+\section*{Selon le jour de la semaine}
+\section*{Selon la structure}
+\subsection*{Pourcentage de passages en moins de 4 heures par établissement}
+\section*{Selon l'orientation}
+\section*{Selon la gravité}
+
+\chapter{Codage diagnostic}
+
+\chapter{Modalités de sortie}
+
+\chapter{Modalités d'orientation}
+
+\chapter{Courbes d'activité régionale}
+\section*{Variation du nombre total de passages journaliers}
+\section*{Variation du pourcentage journalier de retour à domicile}
+
+%===================================================================== PARTIE 3
+\part{Activité des SAMU d'Alsace}
+
+
+\chapter{Test un}
+<<child='test.Rnw'>>=
+@
+
+\chapter{test deux}
+<<>>=
+
+str(d1)
+summary(d1)
+@
+
+\index{test}
+\index{Eclipse@Eclipse!solaire}
+\index{Orbite!périgée@périgée}
+test biblio \cite{1}
+%===================================================================== PARTIE 4
+\part{Annexes}
+\appendix
+\chapter{RPU}
+\chapter{Bibliographie}
+\bibliography{../../rpu}
+\chapter{Index}
+\printindex
+\end{document}

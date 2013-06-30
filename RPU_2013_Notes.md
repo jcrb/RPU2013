@@ -60,7 +60,7 @@ sessionInfo()
 ## [1] knitr_1.2
 ## 
 ## loaded via a namespace (and not attached):
-## [1] digest_0.6.3   evaluate_0.4.3 formatR_0.7    stringr_0.6.2 
+## [1] digest_0.6.3   evaluate_0.4.3 formatR_0.8    stringr_0.6.2 
 ## [5] tools_2.15.1
 ```
 
@@ -76,7 +76,7 @@ toLatex(sessionInfo())
 ##     methods, stats, utils
 ##   \item Other packages: knitr~1.2
 ##   \item Loaded via a namespace (and not attached): digest~0.6.3,
-##     evaluate~0.4.3, formatR~0.7, stringr~0.6.2, tools~2.15.1
+##     evaluate~0.4.3, formatR~0.8, stringr~0.6.2, tools~2.15.1
 ## \end{itemize}
 ```
 
@@ -401,7 +401,7 @@ contour <- unionSpatialPolygons(als, IDs = als@data$CODE_ARR)
 ```
 
 ```
-## rgeos version: 0.2-17, (SVN revision ) GEOS runtime version:
+## rgeos version: 0.2-19, (SVN revision 394) GEOS runtime version:
 ## 3.3.3-CAPI-1.7.4 Polygon checking: TRUE
 ```
 
@@ -665,7 +665,7 @@ zp2 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp2)
 ```
 
-![plot of chunk unnamed-chunk-20](figure/unnamed-chunk-201.png) 
+![plot of chunk zp2_haguenau](figure/zp2_haguenau1.png) 
 
 ```r
 
@@ -682,9 +682,9 @@ points(x, y, pch = 19, col = 3)
 text(x, y, labels = nom, cex = 0.8, pos = 3)
 ```
 
-![plot of chunk unnamed-chunk-20](figure/unnamed-chunk-202.png) 
+![plot of chunk zp2_haguenau](figure/zp2_haguenau2.png) 
 
-Zone de proximité 3
+Zone de proximité 3 (Saverne)
 --------------------
 
 
@@ -695,7 +695,7 @@ zp3 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp3)
 ```
 
-![plot of chunk unnamed-chunk-21](figure/unnamed-chunk-211.png) 
+![plot of chunk zp3_saverne](figure/zp3_saverne1.png) 
 
 ```r
 
@@ -713,7 +713,7 @@ text(x, y, labels = nom, cex = 0.8, pos = 3)
 plot(contour2, add = T)
 ```
 
-![plot of chunk unnamed-chunk-21](figure/unnamed-chunk-212.png) 
+![plot of chunk zp3_saverne](figure/zp3_saverne2.png) 
 
 Zone de proximité 4
 --------------------
@@ -726,7 +726,7 @@ zp4 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp4)
 ```
 
-![plot of chunk unnamed-chunk-22](figure/unnamed-chunk-221.png) 
+![plot of chunk zp4_strasbourg](figure/zp4_strasbourg1.png) 
 
 ```r
 
@@ -744,7 +744,7 @@ text(x, y, labels = nom, cex = 0.8, pos = 3)
 plot(contour4, add = T)
 ```
 
-![plot of chunk unnamed-chunk-22](figure/unnamed-chunk-222.png) 
+![plot of chunk zp4_strasbourg](figure/zp4_strasbourg2.png) 
 
 
 Zone de proximité 1 (Wissembourg)
@@ -758,7 +758,7 @@ zp1 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp1)
 ```
 
-![plot of chunk unnamed-chunk-23](figure/unnamed-chunk-231.png) 
+![plot of chunk zp1_wissembourg](figure/zp1_wissembourg1.png) 
 
 ```r
 
@@ -776,7 +776,7 @@ text(x, y, labels = nom, cex = 0.8, pos = 1)
 plot(contour1, add = T)
 ```
 
-![plot of chunk unnamed-chunk-23](figure/unnamed-chunk-232.png) 
+![plot of chunk zp1_wissembourg](figure/zp1_wissembourg2.png) 
 
 Zone de proximité 5 (Molsheim)
 --------------------
@@ -789,7 +789,7 @@ zp5 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp5)
 ```
 
-![plot of chunk unnamed-chunk-24](figure/unnamed-chunk-241.png) 
+![plot of chunk zp5_molsheim](figure/zp5_molsheim1.png) 
 
 ```r
 
@@ -807,7 +807,7 @@ text(x, y, labels = nom, cex = 0.8, pos = 1)
 plot(contour5, add = T)
 ```
 
-![plot of chunk unnamed-chunk-24](figure/unnamed-chunk-242.png) 
+![plot of chunk zp5_molsheim](figure/zp5_molsheim2.png) 
 
 Zone de proximité 6 (Selestat)
 --------------------
@@ -820,7 +820,7 @@ zp6 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp6)
 ```
 
-![plot of chunk unnamed-chunk-25](figure/unnamed-chunk-251.png) 
+![plot of chunk zp6_selestat](figure/zp6_selestat1.png) 
 
 ```r
 
@@ -838,7 +838,7 @@ text(x, y, labels = nom, cex = 0.8, pos = 1)
 plot(contour6, add = T)
 ```
 
-![plot of chunk unnamed-chunk-25](figure/unnamed-chunk-252.png) 
+![plot of chunk zp6_selestat](figure/zp6_selestat2.png) 
 
 Zone de proximité 7 (Colmar)
 --------------------
@@ -851,7 +851,7 @@ zp7 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp7)
 ```
 
-![plot of chunk unnamed-chunk-26](figure/unnamed-chunk-261.png) 
+![plot of chunk zp7_colmar](figure/zp7_colmar1.png) 
 
 ```r
 
@@ -869,7 +869,7 @@ text(x, y, labels = nom, cex = 0.8, pos = 1)
 plot(contour7, add = T)
 ```
 
-![plot of chunk unnamed-chunk-26](figure/unnamed-chunk-262.png) 
+![plot of chunk zp7_colmar](figure/zp7_colmar2.png) 
 
 Zone de proximité 8 (Guebwiller)
 --------------------
@@ -882,7 +882,7 @@ zp8 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp8)
 ```
 
-![plot of chunk unnamed-chunk-27](figure/unnamed-chunk-271.png) 
+![plot of chunk zp8_guebwiller](figure/zp8_guebwiller1.png) 
 
 ```r
 
@@ -900,7 +900,7 @@ text(x, y, labels = nom, cex = 0.8, pos = 1)
 plot(contour8, add = T)
 ```
 
-![plot of chunk unnamed-chunk-27](figure/unnamed-chunk-272.png) 
+![plot of chunk zp8_guebwiller](figure/zp8_guebwiller2.png) 
 
 Zone de proximité 9 (Thann)
 --------------------
@@ -913,7 +913,7 @@ zp9 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp9)
 ```
 
-![plot of chunk unnamed-chunk-28](figure/unnamed-chunk-281.png) 
+![plot of chunk zp9_thann](figure/zp9_thann1.png) 
 
 ```r
 
@@ -931,7 +931,7 @@ text(x, y, labels = nom, cex = 0.8, pos = 1)
 plot(contour9, add = T)
 ```
 
-![plot of chunk unnamed-chunk-28](figure/unnamed-chunk-282.png) 
+![plot of chunk zp9_thann](figure/zp9_thann2.png) 
 
 Zone de proximité 10 (Mulhouse)
 --------------------
@@ -944,7 +944,7 @@ zp10 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp10)
 ```
 
-![plot of chunk unnamed-chunk-29](figure/unnamed-chunk-291.png) 
+![plot of chunk zp10_mulhouse](figure/zp10_mulhouse1.png) 
 
 ```r
 
@@ -962,7 +962,7 @@ text(x, y, labels = nom, cex = 0.8, pos = 1)
 plot(contour10, add = T)
 ```
 
-![plot of chunk unnamed-chunk-29](figure/unnamed-chunk-292.png) 
+![plot of chunk zp10_mulhouse](figure/zp10_mulhouse2.png) 
 
 Zone de proximité 11 (Altkirch)
 --------------------
@@ -975,7 +975,7 @@ zp11 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp11)
 ```
 
-![plot of chunk unnamed-chunk-30](figure/unnamed-chunk-301.png) 
+![plot of chunk zp11_altkirch](figure/zp11_altkirch1.png) 
 
 ```r
 
@@ -993,7 +993,7 @@ text(x, y, labels = nom, cex = 0.8, pos = 1)
 plot(contour11, add = T)
 ```
 
-![plot of chunk unnamed-chunk-30](figure/unnamed-chunk-302.png) 
+![plot of chunk zp11_altkirch](figure/zp11_altkirch2.png) 
 
 Zone de proximité 12
 --------------------
@@ -1006,7 +1006,7 @@ zp12 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp12)
 ```
 
-![plot of chunk unnamed-chunk-31](figure/unnamed-chunk-311.png) 
+![plot of chunk zp12_stLouis](figure/zp12_stLouis1.png) 
 
 ```r
 
@@ -1021,13 +1021,8 @@ y <- b$Y_CHF_LIEU * 100
 nom <- b$NOM_COMM
 points(x, y, pch = 19, col = 1)
 text(x, y, labels = nom, cex = 0.8, pos = 2)
+plot(contour12, add = T)
 ```
 
-![plot of chunk unnamed-chunk-31](figure/unnamed-chunk-312.png) 
-
-```r
-plot(contour12, xlab = "Zone de proximité 12")
-```
-
-![plot of chunk unnamed-chunk-31](figure/unnamed-chunk-313.png) 
+![plot of chunk zp12_stLouis](figure/zp12_stLouis2.png) 
 

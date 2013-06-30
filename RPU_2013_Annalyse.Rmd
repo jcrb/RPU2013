@@ -49,7 +49,7 @@ Stuctures hospitaliéres participantes
 - *Alk* CH d' Alkirch
 - *Col* CH Colmar (Pasteur + Parc)
 - *Dia* Diaconat-Fonderie
-- *2Fr* Clinique des trois frontières
+- *3Fr* Clinique des trois frontières
 - *Geb* CH de Guebwiller
 - *Hag* CH de Haguenau
 - *Hus* Hôpiaux Universitaires de Strasbourg
@@ -617,6 +617,15 @@ passages("Hus","HUS",sens=3)
 passages("Mul","CH Mulhouse",sens=3)
 passages("Col","CH Colmar",sens=3)
 passages("Hag","CH Haguenau",sens=3)
+
+passages("Sel","CH Selestat",sens=3)
+passages("Odi","Clinique Ste Odile",sens=3)
+passages("Dia","Diaconnat - Fonderie",sens=3)
+passages("Tan","CH Thann",sens=3)
+
+passages("3Fr","Trois frontières",sens=3)
+passages("Alk","CH Alkirch",sens=3)
+passages("Sav","CH Saverne",sens=3)
 par(mfrow = c(1, 1))
 ```
 

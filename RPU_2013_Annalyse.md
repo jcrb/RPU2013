@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Wed Jun 26 14:57:35 2013"
+## [1] "Sat Jun 29 10:35:25 2013"
 ```
 
 source: RPU2013
@@ -151,7 +151,7 @@ Stuctures hospitaliéres participantes
 - *Alk* CH d' Alkirch
 - *Col* CH Colmar (Pasteur + Parc)
 - *Dia* Diaconat-Fonderie
-- *2Fr* Clinique des trois frontières
+- *3Fr* Clinique des trois frontières
 - *Geb* CH de Guebwiller
 - *Hag* CH de Haguenau
 - *Hus* Hôpiaux Universitaires de Strasbourg
@@ -225,7 +225,7 @@ xtable(t(t3))
 
 ```
 ## % latex table generated in R 2.15.1 by xtable 1.7-1 package
-## % Wed Jun 26 14:57:41 2013
+## % Sat Jun 29 10:35:34 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rrr}
@@ -1725,6 +1725,7 @@ legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.
 
 ```r
 
+# Profil entrées de Guebwiller versus le profil régional
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - CH de Guebwiller (rouge)", 
     xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, line.col = c("red", 
         fadeBlue), poly.col = c(NA, fadeBlue), radial.lim = c(0, 0.1))
@@ -1777,11 +1778,46 @@ passages("Col", "CH Colmar", sens = 3)
 passages("Hag", "CH Haguenau", sens = 3)
 ```
 
-![plot of chunk passages](figure/passages.png) 
+![plot of chunk passages](figure/passages1.png) 
+
+```r
+
+passages("Sel", "CH Selestat", sens = 3)
+passages("Odi", "Clinique Ste Odile", sens = 3)
+passages("Dia", "Diaconnat - Fonderie", sens = 3)
+passages("Tan", "CH Thann", sens = 3)
+```
+
+```
+## Warning: All formats failed to parse. No formats found.
+```
+
+```
+## Warning: All formats failed to parse. No formats found.
+```
+
+![plot of chunk passages](figure/passages2.png) 
+
+```r
+
+passages("3Fr", "Trois frontières", sens = 3)
+passages("Alk", "CH Alkirch", sens = 3)
+passages("Sav", "CH Saverne", sens = 3)
+```
+
+```
+## Warning: All formats failed to parse. No formats found.
+```
+
+```
+## Warning: All formats failed to parse. No formats found.
+```
 
 ```r
 par(mfrow = c(1, 1))
 ```
+
+![plot of chunk passages](figure/passages3.png) 
 
 
 

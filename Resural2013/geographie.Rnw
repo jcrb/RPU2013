@@ -1,0 +1,83 @@
+% geographie.Rnw
+
+L'Alsace est la plus petite région de France (n°42) avec la Corse. Elle est formée de deux départements, le bas-Rhin (67) et le haut-Rhin (68), sont les chef-lieu sont respectivement Strasbourg et Colmar.
+
+\section{Les secteurs sanitaires}
+
+L'alsace est divisée en quatre secteurs sanitaires
+\begin{enumerate}
+  \item secteur 1: Haguenau, Wissembourg et Saverne
+  \item secteur 2: Strasbourg
+  \item secteur 3: Sélestat et Colmar
+  \item secteur 4: Mulhouse
+\end{enumerate}
+
+\section{Les zones de proximité}
+
+Il existe neuf territoires de proximité:
+\begin{enumerate}
+  \item territoire 1: Wissembourg
+  \item territoire 2: Haguenau
+  \item territoire 3: Saverne
+  \item territoire 4: Strasbourg
+  \item territoire 5: Molsheim-Schirmeck
+  \item territoire 6: Sélestat-Obernai
+  \item territoire 7: Colmar
+  \item territoire 8: Guebwiller
+  \item territoire 9: Thann
+  \item territoire 10: Mulhouse
+  \item territoire 11: Altkirch
+  \item territoire 12: Saint-Louis
+\end{enumerate}
+
+\section{Démographie}
+Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'ensemble de la population par commune et par tranches de un an. La version utilisée est celle du 1er janvier 2010 (tab.\ref{pop}).
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|l|r|r|}
+  \hline
+  Tranche d'age & Abréviation & Effectif & Pourcentage \\
+  \hline
+  \hline
+  Moins de 1 an & pop0 & $21903.14$ & 1.19 \\
+  De 1 à 75 ans & pop1\_75 & $1690073.00$ & 92.00 \\
+  Plus de 75 ans& pop75 & $125110.90$ & 6.81 \\
+  \hline
+  Total & pop\_tot & $1837087.00$ & 100.00 \\
+  \hline
+\end{tabular}
+\caption{Population d'Alsace (janvier 2010)}
+\label{pop}
+\end{center}
+\end{table}
+
+\section{Les services d'accueil des urgences (SAU)}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|l|}
+  \hline
+& Finess utilisé & Finess géographique & Finess Juridique & Structure \\
+  \hline
+  \hline
+1 & 670780055 &   & 670780055 & HUS \\
+2 & 670780543 & 670000272 & 670780543 & CH Wissembourg \\
+3 & 670000397 & 670000397  & 670780691 & CH Selestat \\
+4 & 670780337 & 670000157 & 670780337 & CH Haguenau \\
+5 &   & 670000165 & 670780345 & CH Saverne \\
+6 & 670016237  & 670016237  & 670016211 & Clinique ste Odile \\
+7 &   & 670780212 & 670014604 & Clinique Ste Anne \\
+8 & 680000973 & 680000684 & 680000973 & CH Colmar \\
+9 & 680000197  & 680000197  & 680000049 & Clinique des trois frontières \\
+10 & 680000486 & 680000544  & 680000395 & CH Altkirch \\
+11 & 680000700 & 680000700 & 680001005 & CH Guebwiller \\
+12 & 680000627 & 680000627 & 680000486 & CH Mulhouse FG \\
+13 &   & 680000601 & 680000437 & CH Thann \\
+14 &   & 680000320  & 680000643 & Diaconat-Fonderie (St Sauveur) \\
+\hline
+\end{tabular}
+\caption{Service d'accueil des urgences d'Alsace}
+\label{summary}
+\end{center}
+\end{table}
