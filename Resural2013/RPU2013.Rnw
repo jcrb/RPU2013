@@ -18,7 +18,8 @@
 \begin{document}
 
 \title{Analyse des données RPU 2013 de la région Alsace}
-\author{RESURAL}
+\author{RESURAL\thanks{Réseau des urgences en Alsace - Equipe de coordination Dr J.C.
+Bartier & Madame Christine Hecker}}
 \date{\today}
 \maketitle
 

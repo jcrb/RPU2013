@@ -50,7 +50,7 @@ Stuctures hospitaliéres participantes
 - *Col* CH Colmar (Pasteur + Parc)
 - *Dia* Diaconat-Fonderie
 - *3Fr* Clinique des trois frontières
-- *Geb* CH de Guebwiller
+- *Geb* HUS
 - *Hag* CH de Haguenau
 - *Hus* Hôpiaux Universitaires de Strasbourg
 - *Mul* CH de Mulhouse
@@ -497,9 +497,9 @@ summary(trauma$FINESS)
 summary(trauma$AGE)
 summary(trauma$SEXE)
 ```
-Etude Guebwiller
+Etude HUS
 ----------------
-```{r guebwiller}
+```{r HUS}
 geb<-d1[d1$FINESS=="Geb",]
 ```
 Orientation des patients 
@@ -516,29 +516,29 @@ Heure d'arrivée aux urgences
 e<-ymd_hms(geb$ENTREE)
 h<-hour(e)
 summary(h)
-hist(h,breaks=23,xlab="Heures",main="CH Guebwiller - Horaire de fréquentation du SU")
+hist(h,breaks=23,xlab="Heures",main="CH HUS - Horaire de fréquentation du SU")
 t<-table(h)
 t2<-as.integer(t)
 c<-clock24.plot(t2,clock.pos=1:24,lwd=3)
-c<-clock24.plot(t2,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures d'arrivée aux urgences",show.grid.labels=F)
+c<-clock24.plot(t2,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures d'arrivée aux urgences",show.grid.labels=F)
 # nécessite la librairie openintro
-clock24.plot(t2,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,poly.col=fadeColor("blue", fade = "10"))
-clock24.plot(t2,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,poly.col=fadeColor("blue", fade = "10"),line.col=fadeColor("blue", fade = "10"))
+clock24.plot(t2,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,poly.col=fadeColor("blue", fade = "10"))
+clock24.plot(t2,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,poly.col=fadeColor("blue", fade = "10"),line.col=fadeColor("blue", fade = "10"))
 ```
 Idem pour les sorties
 ```{r geb_sorties}
 s<-ymd_hms(geb$SORTIE)
 t3<-as.integer(table(hour(s)))
-clock24.plot(t3,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures de sortie des urgences",show.grid.labels=F)
+clock24.plot(t3,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures de sortie des urgences",show.grid.labels=F)
 ```
 Combinaison entrée-sortie
 ```{r geb_es}
 t4<-rbind(t2,t3)
-clock24.plot(t4,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures d'arrivée aux urgences",show.grid.labels=F)
-clock24.plot(t4,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c("red","blue"))
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures d'arrivée aux urgences",show.grid.labels=F)
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c("red","blue"))
 fadeBlue<-fadeColor("blue", fade = "15")
 fadeRed<-fadeColor("red", fade = "15")
-clock24.plot(t4,clock.pos=1:24,rp.type="p",main="CH de Guebwiller",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c(fadeRed,fadeBlue),poly.col=c(fadeRed,fadeBlue))
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c(fadeRed,fadeBlue),poly.col=c(fadeRed,fadeBlue))
 ```
 Entrées selon la période du jour: nuit profonde NP (0h-8h = 1), journée JO (8h-20h = 2), soir SR (20h-24h = 3). La date/heure d'entrée est transformée en heure entière par la fonction *hour*. hest à son tour segmenté en 3 périodes.
 ```{r geb jour}
@@ -548,7 +548,7 @@ b<-cut(h,c(0,8,20,24),labels=c("NP","JO","SR"))
 bp<-summary(as.factor(b))
 barplot(bp)
 round(prop.table(bp)*100,2)
-barplot(round(prop.table(bp)*100,2),ylab="% des passages",sub="NP = 0h-8h",ylim=c(0,100),main="CH Guebwiller\n Passages nuit profonde - jour - soirée")
+barplot(round(prop.table(bp)*100,2),ylab="% des passages",sub="NP = 0h-8h",ylim=c(0,100),main="CH HUS\n Passages nuit profonde - jour - soirée")
 t<-table(geb$GRAVITE,b)
 t
 barplot(t,beside=T,col=1:7)
@@ -559,7 +559,7 @@ t<-table(geb$MODE_SORTIE,b)
 t
 t<-table(geb$ORIENTATION,b)
 ```
-CCL: à Guebwiller tout le monde rentre à la maison !
+CCL: à HUS tout le monde rentre à la maison !
 
 #### Calcul des heures d'arrivées pour l'ensemble des établissements
 ```{r total arrivee}
@@ -572,7 +572,7 @@ als_entree<-as.integer(t)
 c<-clock24.plot(als_entree,clock.pos=1:24,lwd=3,show.grid.labels=F)
 c<-clock24.plot(als_entree,clock.pos=1:24,rp.type="p",main="Alsace",xlab="Heures d'arrivée aux urgences",show.grid.labels=F)
 ```
-#### Comparaison Alsace - Guebwiller
+#### Comparaison Alsace - HUS
 Les calculs sont exprimés en %
 ```{r als-geb}
 e<-ymd_hms(geb$ENTREE)
@@ -580,11 +580,11 @@ h<-hour(e)
 t<-table(h)
 t2<-as.integer(t)
 t4<-rbind(prop.table(t2),prop.table(als_entree))
-clock24.plot(t4,clock.pos=1:24,rp.type="p",main="Alsace - CH de Guebwiller (rouge)",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c("red","blue"),radial.lim=c(0,0.1))
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="Alsace - HUS (rouge)",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c("red","blue"),radial.lim=c(0,0.1))
 legend(0.09,-0.09,c("CH","Alsace"),col=c("red","blue"),lty=1,cex=0.8)
 
-# Profil entrées de Guebwiller versus le profil régional
-clock24.plot(t4,clock.pos=1:24,rp.type="p",main="Alsace - CH de Guebwiller (rouge)",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c("red",fadeBlue),poly.col=c(NA,fadeBlue),radial.lim=c(0,0.1))
+# Profil entrées de HUS versus le profil régional
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="Alsace - HUS (rouge)",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c("red",fadeBlue),poly.col=c(NA,fadeBlue),radial.lim=c(0,0.1))
 
 ```
 #### Comparaison Alsace - Wissembourg
@@ -629,7 +629,84 @@ passages("Sav","CH Saverne",sens=3)
 par(mfrow = c(1, 1))
 ```
 
+Etude HUS
+----------------
+```{r hus}
+Hus<-d1[d1$FINESS=="Hus",]
+```
+Orientation des patients 
+```{r Hus_orient}
+summary(Hus$MODE_SORTIE)
+mean(is.na(Hus$MODE_SORTIE))
+summary(Hus$ORIENTATION)
+mean(is.na(Hus$ORIENTATION))
 
+mean(is.na(Hus$MOTIF))
+mean(is.na(Hus$DESTINATION))
+mean(is.na(Hus$TRANSPORT_PEC))
+mean(is.na(Hus$PROVENANCE))
+mean(is.na(Hus$TRANSPORT))
+mean(is.na(Hus$MODE_ENTREE))
+mean(is.na(Hus$COMMUNE))
+mean(is.na(Hus$GRAVITE))
+mean(is.na(Hus$DP))
+
+```
+Mode d'arrivée aux urgences:
+```{r Hus_urg}
+summary(as.factor(Hus$TRANSPORT))
+mean(is.na(Hus$TRANSPORT))
+```
+Heure d'arrivée aux urgences
+```{r Hus_arrive}
+e<-ymd_hms(Hus$ENTREE)
+h<-hour(e)
+summary(h)
+hist(h,breaks=23,xlab="Heures",main="CH HUS - Horaire de fréquentation du SU",col=c(rep(1,8),rep(2,12),rep(3,4)))
+t<-table(h)
+t2<-as.integer(t)
+c<-clock24.plot(t2,clock.pos=1:24,lwd=3)
+c<-clock24.plot(t2,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures d'arrivée aux urgences",show.grid.labels=F)
+# nécessite la librairie openintro
+clock24.plot(t2,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,poly.col=fadeColor("blue", fade = "10"))
+clock24.plot(t2,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,poly.col=fadeColor("blue", fade = "10"),line.col=fadeColor("blue", fade = "10"))
+```
+Idem pour les sorties
+```{r Hus_sorties}
+s<-ymd_hms(Hus$SORTIE)
+mean(is.na(s))
+t3<-as.integer(table(hour(s)))
+clock24.plot(t3,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures de sortie des urgences",show.grid.labels=F)
+```
+Combinaison entrée-sortie
+```{r Hus_es}
+t4<-rbind(t2,t3)
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures d'arrivée aux urgences",show.grid.labels=F)
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c("red","blue"))
+fadeBlue<-fadeColor("blue", fade = "15")
+fadeRed<-fadeColor("red", fade = "15")
+clock24.plot(t4,clock.pos=1:24,rp.type="p",main="HUS",xlab="Heures d'arrivée aux urgences",show.grid.labels=F,line.col=c(fadeRed,fadeBlue),poly.col=c(fadeRed,fadeBlue))
+```
+Entrées selon la période du jour: nuit profonde NP (0h-8h = 1), journée JO (8h-20h = 2), soir SR (20h-24h = 3). La date/heure d'entrée est transformée en heure entière par la fonction *hour*. hest à son tour segmenté en 3 périodes.
+```{r Hus jour}
+e<-ymd_hms(Hus$ENTREE)
+h<-hour(e)
+b<-cut(h,c(0,8,20,24),labels=c("NP","JO","SR"))
+bp<-summary(as.factor(b))
+barplot(bp)
+round(prop.table(bp)*100,2)
+barplot(round(prop.table(bp)*100,2),ylab="% des passages",sub="NP = 0h-8h",ylim=c(0,100),main="CH HUS\n Passages nuit profonde - jour - soirée")
+t<-table(Hus$GRAVITE,b)
+t
+barplot(t,beside=T,col=1:5,main="Gravité en fonction de la période")
+legend(1,2000,c(1:5),col=c(1:5),pch=15,cex=0.8)
+```
+Mode sortie en fonction de la période
+```{r Hus_sortie_periode}
+t<-table(Hus$MODE_SORTIE,b)
+t
+t<-table(Hus$ORIENTATION,b)
+```
 
 
 

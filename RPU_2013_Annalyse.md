@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Sat Jun 29 10:35:25 2013"
+## [1] "Mon Jul  1 15:10:36 2013"
 ```
 
 source: RPU2013
@@ -152,7 +152,7 @@ Stuctures hospitaliéres participantes
 - *Col* CH Colmar (Pasteur + Parc)
 - *Dia* Diaconat-Fonderie
 - *3Fr* Clinique des trois frontières
-- *Geb* CH de Guebwiller
+- *Geb* HUS
 - *Hag* CH de Haguenau
 - *Hus* Hôpiaux Universitaires de Strasbourg
 - *Mul* CH de Mulhouse
@@ -225,7 +225,7 @@ xtable(t(t3))
 
 ```
 ## % latex table generated in R 2.15.1 by xtable 1.7-1 package
-## % Sat Jun 29 10:35:34 2013
+## % Mon Jul  1 15:10:42 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rrr}
@@ -1469,7 +1469,7 @@ summary(trauma$SEXE)
 ## 11730     1 14633
 ```
 
-Etude Guebwiller
+Etude HUS
 ----------------
 
 ```r
@@ -1523,7 +1523,7 @@ summary(h)
 ```
 
 ```r
-hist(h, breaks = 23, xlab = "Heures", main = "CH Guebwiller - Horaire de fréquentation du SU")
+hist(h, breaks = 23, xlab = "Heures", main = "CH HUS - Horaire de fréquentation du SU")
 ```
 
 ![plot of chunk geb_arrive](figure/geb_arrive1.png) 
@@ -1537,25 +1537,24 @@ c <- clock24.plot(t2, clock.pos = 1:24, lwd = 3)
 ![plot of chunk geb_arrive](figure/geb_arrive2.png) 
 
 ```r
-c <- clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "CH de Guebwiller", 
-    xlab = "Heures d'arrivée aux urgences", show.grid.labels = F)
+c <- clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
+    show.grid.labels = F)
 ```
 
 ![plot of chunk geb_arrive](figure/geb_arrive3.png) 
 
 ```r
 # nécessite la librairie openintro
-clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "CH de Guebwiller", 
-    xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, poly.col = fadeColor("blue", 
-        fade = "10"))
+clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
+    show.grid.labels = F, poly.col = fadeColor("blue", fade = "10"))
 ```
 
 ![plot of chunk geb_arrive](figure/geb_arrive4.png) 
 
 ```r
-clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "CH de Guebwiller", 
-    xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, poly.col = fadeColor("blue", 
-        fade = "10"), line.col = fadeColor("blue", fade = "10"))
+clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
+    show.grid.labels = F, poly.col = fadeColor("blue", fade = "10"), line.col = fadeColor("blue", 
+        fade = "10"))
 ```
 
 ![plot of chunk geb_arrive](figure/geb_arrive5.png) 
@@ -1565,8 +1564,8 @@ Idem pour les sorties
 ```r
 s <- ymd_hms(geb$SORTIE)
 t3 <- as.integer(table(hour(s)))
-clock24.plot(t3, clock.pos = 1:24, rp.type = "p", main = "CH de Guebwiller", 
-    xlab = "Heures de sortie des urgences", show.grid.labels = F)
+clock24.plot(t3, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures de sortie des urgences", 
+    show.grid.labels = F)
 ```
 
 ![plot of chunk geb_sorties](figure/geb_sorties.png) 
@@ -1575,16 +1574,15 @@ Combinaison entrée-sortie
 
 ```r
 t4 <- rbind(t2, t3)
-clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "CH de Guebwiller", 
-    xlab = "Heures d'arrivée aux urgences", show.grid.labels = F)
+clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
+    show.grid.labels = F)
 ```
 
 ![plot of chunk geb_es](figure/geb_es1.png) 
 
 ```r
-clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "CH de Guebwiller", 
-    xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, line.col = c("red", 
-        "blue"))
+clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
+    show.grid.labels = F, line.col = c("red", "blue"))
 ```
 
 ![plot of chunk geb_es](figure/geb_es2.png) 
@@ -1592,9 +1590,9 @@ clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "CH de Guebwiller",
 ```r
 fadeBlue <- fadeColor("blue", fade = "15")
 fadeRed <- fadeColor("red", fade = "15")
-clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "CH de Guebwiller", 
-    xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, line.col = c(fadeRed, 
-        fadeBlue), poly.col = c(fadeRed, fadeBlue))
+clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
+    show.grid.labels = F, line.col = c(fadeRed, fadeBlue), poly.col = c(fadeRed, 
+        fadeBlue))
 ```
 
 ![plot of chunk geb_es](figure/geb_es3.png) 
@@ -1622,7 +1620,7 @@ round(prop.table(bp) * 100, 2)
 
 ```r
 barplot(round(prop.table(bp) * 100, 2), ylab = "% des passages", sub = "NP = 0h-8h", 
-    ylim = c(0, 100), main = "CH Guebwiller\n Passages nuit profonde - jour - soirée")
+    ylim = c(0, 100), main = "CH HUS\n Passages nuit profonde - jour - soirée")
 ```
 
 ![plot of chunk geb jour](figure/geb jour2.png) 
@@ -1670,7 +1668,7 @@ t
 t <- table(geb$ORIENTATION, b)
 ```
 
-CCL: à Guebwiller tout le monde rentre à la maison !
+CCL: à HUS tout le monde rentre à la maison !
 
 #### Calcul des heures d'arrivées pour l'ensemble des établissements
 
@@ -1706,7 +1704,7 @@ c <- clock24.plot(als_entree, clock.pos = 1:24, rp.type = "p", main = "Alsace",
 
 ![plot of chunk total arrivee](figure/total arrivee3.png) 
 
-#### Comparaison Alsace - Guebwiller
+#### Comparaison Alsace - HUS
 Les calculs sont exprimés en %
 
 ```r
@@ -1715,7 +1713,7 @@ h <- hour(e)
 t <- table(h)
 t2 <- as.integer(t)
 t4 <- rbind(prop.table(t2), prop.table(als_entree))
-clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - CH de Guebwiller (rouge)", 
+clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - HUS (rouge)", 
     xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, line.col = c("red", 
         "blue"), radial.lim = c(0, 0.1))
 legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.8)
@@ -1725,8 +1723,8 @@ legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.
 
 ```r
 
-# Profil entrées de Guebwiller versus le profil régional
-clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - CH de Guebwiller (rouge)", 
+# Profil entrées de HUS versus le profil régional
+clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - HUS (rouge)", 
     xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, line.col = c("red", 
         fadeBlue), poly.col = c(NA, fadeBlue), radial.lim = c(0, 0.1))
 ```
@@ -1820,6 +1818,310 @@ par(mfrow = c(1, 1))
 ![plot of chunk passages](figure/passages3.png) 
 
 
+Etude HUS
+----------------
+
+```r
+Hus <- d1[d1$FINESS == "Hus", ]
+```
+
+Orientation des patients 
+
+```r
+summary(Hus$MODE_SORTIE)
+```
+
+```
+##        NA  Mutation Transfert  Domicile     Décès      NA's 
+##         0      7205         0       398         0      5492
+```
+
+```r
+mean(is.na(Hus$MODE_SORTIE))
+```
+
+```
+## [1] 0.4194
+```
+
+```r
+summary(Hus$ORIENTATION)
+```
+
+```
+##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    SC  SCAM    SI 
+##     0     0     0     0   185     0     0     0     0     0     0     0 
+##  UHCD  NA's 
+##  7412  5498
+```
+
+```r
+mean(is.na(Hus$ORIENTATION))
+```
+
+```
+## [1] 0.4199
+```
+
+```r
+
+mean(is.na(Hus$MOTIF))
+```
+
+```
+## [1] 1
+```
+
+```r
+mean(is.na(Hus$DESTINATION))
+```
+
+```
+## [1] 0.4408
+```
+
+```r
+mean(is.na(Hus$TRANSPORT_PEC))
+```
+
+```
+## [1] 0.9984
+```
+
+```r
+mean(is.na(Hus$PROVENANCE))
+```
+
+```
+## [1] 0.9565
+```
+
+```r
+mean(is.na(Hus$TRANSPORT))
+```
+
+```
+## [1] 0.7153
+```
+
+```r
+mean(is.na(Hus$MODE_ENTREE))
+```
+
+```
+## [1] 0
+```
+
+```r
+mean(is.na(Hus$COMMUNE))
+```
+
+```
+## [1] 0
+```
+
+```r
+mean(is.na(Hus$GRAVITE))
+```
+
+```
+## [1] 0.5575
+```
+
+```r
+mean(is.na(Hus$DP))
+```
+
+```
+## [1] 0.679
+```
+
+Mode d'arrivée aux urgences:
+
+```r
+summary(as.factor(Hus$TRANSPORT))
+```
+
+```
+##  AMBU    FO PERSO  SMUR  VSAB  NA's 
+##  1984     9   657   243   835  9367
+```
+
+```r
+mean(is.na(Hus$TRANSPORT))
+```
+
+```
+## [1] 0.7153
+```
+
+Heure d'arrivée aux urgences
+
+```r
+e <- ymd_hms(Hus$ENTREE)
+h <- hour(e)
+summary(h)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     0.0    11.0    16.0    14.6    19.0    23.0
+```
+
+```r
+hist(h, breaks = 23, xlab = "Heures", main = "CH HUS - Horaire de fréquentation du SU", 
+    col = c(rep(1, 8), rep(2, 12), rep(3, 4)))
+```
+
+![plot of chunk Hus_arrive](figure/Hus_arrive1.png) 
+
+```r
+t <- table(h)
+t2 <- as.integer(t)
+c <- clock24.plot(t2, clock.pos = 1:24, lwd = 3)
+```
+
+![plot of chunk Hus_arrive](figure/Hus_arrive2.png) 
+
+```r
+c <- clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
+    show.grid.labels = F)
+```
+
+![plot of chunk Hus_arrive](figure/Hus_arrive3.png) 
+
+```r
+# nécessite la librairie openintro
+clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
+    show.grid.labels = F, poly.col = fadeColor("blue", fade = "10"))
+```
+
+![plot of chunk Hus_arrive](figure/Hus_arrive4.png) 
+
+```r
+clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
+    show.grid.labels = F, poly.col = fadeColor("blue", fade = "10"), line.col = fadeColor("blue", 
+        fade = "10"))
+```
+
+![plot of chunk Hus_arrive](figure/Hus_arrive5.png) 
+
+Idem pour les sorties
+
+```r
+s <- ymd_hms(Hus$SORTIE)
+mean(is.na(s))
+```
+
+```
+## [1] 0.3394
+```
+
+```r
+t3 <- as.integer(table(hour(s)))
+clock24.plot(t3, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures de sortie des urgences", 
+    show.grid.labels = F)
+```
+
+![plot of chunk Hus_sorties](figure/Hus_sorties.png) 
+
+Combinaison entrée-sortie
+
+```r
+t4 <- rbind(t2, t3)
+clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
+    show.grid.labels = F)
+```
+
+![plot of chunk Hus_es](figure/Hus_es1.png) 
+
+```r
+clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
+    show.grid.labels = F, line.col = c("red", "blue"))
+```
+
+![plot of chunk Hus_es](figure/Hus_es2.png) 
+
+```r
+fadeBlue <- fadeColor("blue", fade = "15")
+fadeRed <- fadeColor("red", fade = "15")
+clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
+    show.grid.labels = F, line.col = c(fadeRed, fadeBlue), poly.col = c(fadeRed, 
+        fadeBlue))
+```
+
+![plot of chunk Hus_es](figure/Hus_es3.png) 
+
+Entrées selon la période du jour: nuit profonde NP (0h-8h = 1), journée JO (8h-20h = 2), soir SR (20h-24h = 3). La date/heure d'entrée est transformée en heure entière par la fonction *hour*. hest à son tour segmenté en 3 périodes.
+
+```r
+e <- ymd_hms(Hus$ENTREE)
+h <- hour(e)
+b <- cut(h, c(0, 8, 20, 24), labels = c("NP", "JO", "SR"))
+bp <- summary(as.factor(b))
+barplot(bp)
+```
+
+![plot of chunk Hus jour](figure/Hus jour1.png) 
+
+```r
+round(prop.table(bp) * 100, 2)
+```
+
+```
+##    NP    JO    SR  NA's 
+## 11.81 69.94 16.33  1.92
+```
+
+```r
+barplot(round(prop.table(bp) * 100, 2), ylab = "% des passages", sub = "NP = 0h-8h", 
+    ylim = c(0, 100), main = "CH HUS\n Passages nuit profonde - jour - soirée")
+```
+
+![plot of chunk Hus jour](figure/Hus jour2.png) 
+
+```r
+t <- table(Hus$GRAVITE, b)
+t
+```
+
+```
+##    b
+##       NP   JO   SR
+##   1  103  546   74
+##   2  696 2225  258
+##   3  324 1012  116
+##   4   40  151   18
+##   5    9   23    5
+```
+
+```r
+barplot(t, beside = T, col = 1:5, main = "Gravité en fonction de la période")
+legend(1, 2000, c(1:5), col = c(1:5), pch = 15, cex = 0.8)
+```
+
+![plot of chunk Hus jour](figure/Hus jour3.png) 
+
+Mode sortie en fonction de la période
+
+```r
+t <- table(Hus$MODE_SORTIE, b)
+t
+```
+
+```
+##            b
+##               NP   JO   SR
+##   NA           0    0    0
+##   Mutation  1406 5004  555
+##   Transfert    0    0    0
+##   Domicile    52  304   38
+##   Décès        0    0    0
+```
+
+```r
+t <- table(Hus$ORIENTATION, b)
+```
 
 
 
