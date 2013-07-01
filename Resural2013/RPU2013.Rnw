@@ -19,7 +19,7 @@
 
 \title{Analyse des données RPU 2013 de la région Alsace}
 \author{RESURAL\thanks{Réseau des urgences en Alsace - Equipe de coordination Dr J.C.
-Bartier & Madame Christine Hecker}}
+Bartier \& Madame Christine Hecker}}
 \date{\today}
 \maketitle
 
@@ -110,8 +110,14 @@ attach(d1)
 \section*{Variation du pourcentage journalier de retour à domicile}
 
 %===================================================================== PARTIE 3
-\part{Activité des SAMU d'Alsace}
+\part{Activité par service d'urgence}
 
+\chapter{SAU des Hôpitaux universitaires}
+<<child='SuHus.Rnw'>>=
+@
+
+%===================================================================== PARTIE 4
+\part{Activité des SAMU d'Alsace}
 
 \chapter{Test un}
 <<child='test.Rnw'>>=
@@ -128,7 +134,7 @@ summary(d1)
 \index{Eclipse@Eclipse!solaire}
 \index{Orbite!périgée@périgée}
 test biblio \cite{1}
-%===================================================================== PARTIE 4
+%===================================================================== PARTIE 5
 \part{Annexes}
 \appendix
 \chapter{RPU}

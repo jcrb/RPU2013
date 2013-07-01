@@ -183,7 +183,7 @@ hljs.initHighlightingOnLoad();
 <pre><code class="r">date()
 </code></pre>
 
-<pre><code>## [1] &quot;Mon Jul  1 15:10:36 2013&quot;
+<pre><code>## [1] &quot;Mon Jul  1 20:03:13 2013&quot;
 </code></pre>
 
 <p>source: RPU2013
@@ -418,7 +418,7 @@ xtable(t(t3))
 </code></pre>
 
 <pre><code>## % latex table generated in R 2.15.1 by xtable 1.7-1 package
-## % Mon Jul  1 15:10:42 2013
+## % Mon Jul  1 20:03:20 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rrr}
@@ -1846,6 +1846,122 @@ passages(&quot;Sav&quot;, &quot;CH Saverne&quot;, sens = 3)
 <h2>Etude HUS</h2>
 
 <pre><code class="r">Hus &lt;- d1[d1$FINESS == &quot;Hus&quot;, ]
+nrow(Hus)
+</code></pre>
+
+<pre><code>## [1] 13095
+</code></pre>
+
+<pre><code class="r">min(Hus$ENTREE)
+</code></pre>
+
+<pre><code>## [1] &quot;2013-01-01 00:11:00&quot;
+</code></pre>
+
+<pre><code class="r">max(Hus$ENTREE)
+</code></pre>
+
+<pre><code>## [1] &quot;2013-04-30 23:56:00&quot;
+</code></pre>
+
+<p>comparaison entre RPU attendu et RPU transmis. Nécessite le fichier <em>sau2013</em>. Les données sont dans le dataframe <em>d</em>. Les données hus sont isolées dans <em>dhus</em></p>
+
+<pre><code class="r">load(&quot;../SAU2013/sau2013.Rda&quot;)
+dhus &lt;- d[d$hop == &quot;HUS&quot;, ]
+sum(dhus$TOTAL.passages, na.rm = T)
+</code></pre>
+
+<pre><code>## [1] 41561
+</code></pre>
+
+<pre><code class="r">
+# hus.serv: DU des Hus. HTP adultes, HTP gynéco, HTP pédiatrie, NHC et
+# CCOM (Sos mains)
+hus.serv &lt;- as.factor(dhus$ser2)
+summary(hus.serv)
+</code></pre>
+
+<pre><code>## aHTP CCOM gHTP  NHC pHTP NA&#39;s 
+##  121  122  121  121  243  242
+</code></pre>
+
+<pre><code class="r">tapply(dhus$TOTAL.passages, hus.serv, sum)
+</code></pre>
+
+<pre><code>##  aHTP  CCOM  gHTP   NHC  pHTP 
+## 11840  2839  3310 10324 13248
+</code></pre>
+
+<pre><code class="r"># RPU uniquement du au SU HTP et NHC
+hus.rpu &lt;- subset(dhus, ser2 == &quot;aHTP&quot; | ser2 == &quot;NHC&quot;)
+n &lt;- sum(hus.rpu$TOTAL.passages)
+print(&quot;Prévision2013:&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;Prévision2013:&quot;
+</code></pre>
+
+<pre><code class="r">n * 3
+</code></pre>
+
+<pre><code>## [1] 66492
+</code></pre>
+
+<pre><code class="r">
+a &lt;- c(nrow(Hus), n)
+names(a) = c(&quot;RPU déclarés&quot;, &quot;RPU Attendus&quot;)
+barplot(a, main = &quot;HUS - 1er quadrimestre 2013&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk hus_attendu"/> </p>
+
+<pre><code class="r">a[1] * 100/a[2]
+</code></pre>
+
+<pre><code>## RPU déclarés 
+##        59.08
+</code></pre>
+
+<p>Les urgences pédiatriques sont divisées en 2, médicales et chirurgicales. Il y a donc 2 données par jour</p>
+
+<pre><code class="r">hus.ped &lt;- subset(dhus, ser2 == &quot;pHTP&quot;)
+nped &lt;- sum(hus.ped$TOTAL.passages)
+print(&quot;Prévision2013:&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;Prévision2013:&quot;
+</code></pre>
+
+<pre><code class="r">nped * 3
+</code></pre>
+
+<pre><code>## [1] 39744
+</code></pre>
+
+<pre><code class="r">
+print(&quot;Total adulte + pédiatrie:&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;Total adulte + pédiatrie:&quot;
+</code></pre>
+
+<pre><code class="r">ntot &lt;- n + nped
+ntot
+</code></pre>
+
+<pre><code>## [1] 35412
+</code></pre>
+
+<pre><code class="r">print(&quot;total annuel:&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;total annuel:&quot;
+</code></pre>
+
+<pre><code class="r">ntot * 3
+</code></pre>
+
+<pre><code>## [1] 106236
 </code></pre>
 
 <p>Orientation des patients </p>

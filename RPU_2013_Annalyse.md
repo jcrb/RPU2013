@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Mon Jul  1 15:10:36 2013"
+## [1] "Mon Jul  1 20:03:13 2013"
 ```
 
 source: RPU2013
@@ -225,7 +225,7 @@ xtable(t(t3))
 
 ```
 ## % latex table generated in R 2.15.1 by xtable 1.7-1 package
-## % Mon Jul  1 15:10:42 2013
+## % Mon Jul  1 20:03:20 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rrr}
@@ -1823,7 +1823,155 @@ Etude HUS
 
 ```r
 Hus <- d1[d1$FINESS == "Hus", ]
+nrow(Hus)
 ```
+
+```
+## [1] 13095
+```
+
+```r
+min(Hus$ENTREE)
+```
+
+```
+## [1] "2013-01-01 00:11:00"
+```
+
+```r
+max(Hus$ENTREE)
+```
+
+```
+## [1] "2013-04-30 23:56:00"
+```
+
+comparaison entre RPU attendu et RPU transmis. Nécessite le fichier *sau2013*. Les données sont dans le dataframe *d*. Les données hus sont isolées dans *dhus*
+
+```r
+load("../SAU2013/sau2013.Rda")
+dhus <- d[d$hop == "HUS", ]
+sum(dhus$TOTAL.passages, na.rm = T)
+```
+
+```
+## [1] 41561
+```
+
+```r
+
+# hus.serv: DU des Hus. HTP adultes, HTP gynéco, HTP pédiatrie, NHC et
+# CCOM (Sos mains)
+hus.serv <- as.factor(dhus$ser2)
+summary(hus.serv)
+```
+
+```
+## aHTP CCOM gHTP  NHC pHTP NA's 
+##  121  122  121  121  243  242
+```
+
+```r
+tapply(dhus$TOTAL.passages, hus.serv, sum)
+```
+
+```
+##  aHTP  CCOM  gHTP   NHC  pHTP 
+## 11840  2839  3310 10324 13248
+```
+
+```r
+# RPU uniquement du au SU HTP et NHC
+hus.rpu <- subset(dhus, ser2 == "aHTP" | ser2 == "NHC")
+n <- sum(hus.rpu$TOTAL.passages)
+print("Prévision2013:")
+```
+
+```
+## [1] "Prévision2013:"
+```
+
+```r
+n * 3
+```
+
+```
+## [1] 66492
+```
+
+```r
+
+a <- c(nrow(Hus), n)
+names(a) = c("RPU déclarés", "RPU Attendus")
+barplot(a, main = "HUS - 1er quadrimestre 2013")
+```
+
+![plot of chunk hus_attendu](figure/hus_attendu.png) 
+
+```r
+a[1] * 100/a[2]
+```
+
+```
+## RPU déclarés 
+##        59.08
+```
+
+Les urgences pédiatriques sont divisées en 2, médicales et chirurgicales. Il y a donc 2 données par jour
+
+```r
+hus.ped <- subset(dhus, ser2 == "pHTP")
+nped <- sum(hus.ped$TOTAL.passages)
+print("Prévision2013:")
+```
+
+```
+## [1] "Prévision2013:"
+```
+
+```r
+nped * 3
+```
+
+```
+## [1] 39744
+```
+
+```r
+
+print("Total adulte + pédiatrie:")
+```
+
+```
+## [1] "Total adulte + pédiatrie:"
+```
+
+```r
+ntot <- n + nped
+ntot
+```
+
+```
+## [1] 35412
+```
+
+```r
+print("total annuel:")
+```
+
+```
+## [1] "total annuel:"
+```
+
+```r
+ntot * 3
+```
+
+```
+## [1] 106236
+```
+
+
 
 Orientation des patients 
 

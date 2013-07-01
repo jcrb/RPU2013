@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.23)  29 JUN 2013 17:35
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.23)  1 JUL 2013 21:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -776,33 +776,33 @@ LaTeX Info: Redefining \nameref on input line 73.
 \@outlinefile=\write5
 \openout5 = `RPU2013.out'.
 
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 79.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 80.
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 79.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 80.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 79.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 80.
 
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 79.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 80.
 
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 79.
+(Font)              <14.4> on input line 80.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 79.
+(Font)              <10> on input line 80.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 79.
+(Font)              <7> on input line 80.
  [1
 
 
@@ -818,7 +818,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.19 ...alit\IeC {\'e}s de sortie}{24}{chapter.11}
+l.19 ...alit\IeC {\'e}s de sortie}{25}{chapter.11}
                                                    [1
 
 ])
@@ -846,441 +846,456 @@ Chapitre 1.
 
 ]
 Chapitre 2.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 98.
+(/usr/share/texmf/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [7
 
-Overfull \hbox (101.3937pt too wide) in paragraph at lines 125--146
+]
+Overfull \hbox (101.3937pt too wide) in paragraph at lines 154--175
  [] 
  []
 
-[7
-
-] [8]
+[8] [9]
 Chapitre 3.
 
-LaTeX Warning: Reference `tab1' on page 9 undefined on input line 159.
+LaTeX Warning: Reference `tab1' on page 10 undefined on input line 188.
 
 
-LaTeX Warning: Reference `tab1' on page 9 undefined on input line 159.
+LaTeX Warning: Reference `tab1' on page 10 undefined on input line 188.
 
 
-Overfull \hbox (8.39005pt too wide) in paragraph at lines 159--160
+Overfull \hbox (8.39005pt too wide) in paragraph at lines 188--189
 \T1/lmr/m/n/12 des struc-tures hos-pi-tal-ières ayant four-nit des in-for-ma-ti
 ons al-i-men-tant le présent
  []
 
-Package color Info: Redefining color shadecolor on input line 162.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 165.
+Package color Info: Redefining color shadecolor on input line 191.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 194.
 
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 165--165
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 194--194
 []\T1/lmtt/m/n/12 ## Warning: number of rows of result is not a multiple of vec
 tor
  []
 
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 190
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 219
 .
 (/usr/share/texmf/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Overfull \hbox (91.62222pt too wide) in paragraph at lines 190--190
+Overfull \hbox (91.62222pt too wide) in paragraph at lines 219--219
 []\T1/lmtt/m/n/12 ##   Dia & 9605 & 9.06 & Hôpitaux Universitaires de Strasbour
 g & 01/01/2013 \\[] 
  []
 
 
-Overfull \hbox (29.8862pt too wide) in paragraph at lines 190--190
+Overfull \hbox (29.8862pt too wide) in paragraph at lines 219--219
 []\T1/lmtt/m/n/12 ##   Hag & 11627 & 10.97 & Clinique des 3 frontières & 01/01/
 2013 \\[] 
  []
 
-[9
+[10
 
 ]
-Package color Info: Redefining color shadecolor on input line 202.
- [10]
+Package color Info: Redefining color shadecolor on input line 231.
+ [11]
 
-LaTeX Warning: Reference `tab2' on page 11 undefined on input line 243.
+LaTeX Warning: Reference `tab2' on page 12 undefined on input line 272.
 
 
-LaTeX Warning: Reference `tab2' on page 11 undefined on input line 243.
+LaTeX Warning: Reference `tab2' on page 12 undefined on input line 272.
 
-[11]
+[12]
 Chapitre 4.
-[12
-
-]
-Chapitre 5.
 [13
 
 ]
-Chapitre 6.
+Chapitre 5.
 [14
 
-] [15
+]
+Chapitre 6.
+[15
+
+] [16
 
 ]
 Chapitre 7.
-[16
+[17
 
 ]
-Package color Info: Redefining color shadecolor on input line 274.
-Package color Info: Redefining color shadecolor on input line 288.
- <figure/test23.pdf, id=251, 505.89pt x 361.35pt>
+Package color Info: Redefining color shadecolor on input line 303.
+Package color Info: Redefining color shadecolor on input line 317.
+ <figure/test23.pdf, id=290, 505.89pt x 361.35pt>
 File: figure/test23.pdf Graphic file (type pdf)
  <use figure/test23.pdf>
-Package pdftex.def Info: figure/test23.pdf used on input line 289.
+Package pdftex.def Info: figure/test23.pdf used on input line 318.
 (pdftex.def)             Requested size: 390.0pt x 278.57669pt.
-Package color Info: Redefining color shadecolor on input line 302.
+Package color Info: Redefining color shadecolor on input line 331.
 
-<figure/test25.pdf, id=252, 505.89pt x 722.7pt>
+<figure/test25.pdf, id=291, 505.89pt x 722.7pt>
 File: figure/test25.pdf Graphic file (type pdf)
  <use figure/test25.pdf>
-Package pdftex.def Info: figure/test25.pdf used on input line 303.
+Package pdftex.def Info: figure/test25.pdf used on input line 332.
 (pdftex.def)             Requested size: 390.0pt x 557.1534pt.
 
 
-LaTeX Warning: Float too large for page by 48.48671pt on input line 310.
+LaTeX Warning: Float too large for page by 48.48671pt on input line 339.
 
-Package color Info: Redefining color shadecolor on input line 316.
-<figure/test2.pdf, id=253, 505.89pt x 361.35pt>
+Package color Info: Redefining color shadecolor on input line 345.
+<figure/test2.pdf, id=292, 505.89pt x 361.35pt>
 File: figure/test2.pdf Graphic file (type pdf)
  <use figure/test2.pdf>
-Package pdftex.def Info: figure/test2.pdf used on input line 317.
+Package pdftex.def Info: figure/test2.pdf used on input line 346.
 (pdftex.def)             Requested size: 390.0pt x 278.57669pt.
-Package color Info: Redefining color shadecolor on input line 330.
+Package color Info: Redefining color shadecolor on input line 359.
 
-<figure/test22.pdf, id=254, 505.89pt x 361.35pt>
+<figure/test22.pdf, id=293, 505.89pt x 361.35pt>
 File: figure/test22.pdf Graphic file (type pdf)
  <use figure/test22.pdf>
-Package pdftex.def Info: figure/test22.pdf used on input line 331.
+Package pdftex.def Info: figure/test22.pdf used on input line 360.
 (pdftex.def)             Requested size: 390.0pt x 278.57669pt.
 
-[17 <./figure/test23.pdf>] [18 <./figure/test25.pdf>] [19 <./figure/test2.pdf>]
-[20 <./figure/test22.pdf>]
+[18 <./figure/test23.pdf>] [19 <./figure/test25.pdf>] [20 <./figure/test2.pdf>]
+[21 <./figure/test22.pdf>]
 Chapitre 8.
-[21
-
-]
-Chapitre 9.
 [22
 
 ]
-Chapitre 10.
+Chapitre 9.
 [23
 
 ]
-Chapitre 11.
+Chapitre 10.
 [24
 
 ]
-Chapitre 12.
+Chapitre 11.
 [25
 
 ]
-Chapitre 13.
+Chapitre 12.
 [26
 
-] [27
+]
+Chapitre 13.
+[27
+
+] [28
 
 ]
 Chapitre 14.
-Package color Info: Redefining color shadecolor on input line 380.
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 382.
 
-Overfull \hbox (36.07521pt too wide) in paragraph at lines 397--397
+Overfull \hbox (1.75676pt too wide) in paragraph at lines 404--406
+[]\T1/lmr/m/n/12 Les Hôpi-taux uni-ver-si-taires de Stras-bourg ont une of-fre 
+éten-due en matière
+ []
+
+[29
+
+] [30
+
+]
+Chapitre 15.
+Package color Info: Redefining color shadecolor on input line 443.
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 445.
+
+Overfull \hbox (36.07521pt too wide) in paragraph at lines 460--460
 []\T1/lmtt/m/n/12 ##  [1] "id"            "CODE_POSTAL"   "COMMUNE"       "DEST
 INATION"[] 
  []
 
 
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 397--397
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 460--460
 []\T1/lmtt/m/n/12 ##  [5] "DP"            "ENTREE"        "EXTRACT"       "FINE
 SS"[] 
  []
 
-[28
+[31
 
 ]
-Chapitre 15.
-Package color Info: Redefining color shadecolor on input line 405.
+Chapitre 16.
+Package color Info: Redefining color shadecolor on input line 468.
 
-Overfull \hbox (653.48447pt too wide) in paragraph at lines 432--432
+Overfull \hbox (653.48447pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ id           : chr  "2c9d83843bf5e01d013bf5e985d20225" 
 "2c9d83843bf5e01d013bf5e986950226" "2c9d83843bf5e01d013bf5e987620227" "2c9d8384
 3bf5e01d013bf5e988060228" ...[] 
  []
 
 
-Overfull \hbox (264.48729pt too wide) in paragraph at lines 432--432
+Overfull \hbox (264.48729pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ CODE_POSTAL  : Factor w/ 1277 levels "00000","00159",..
 : 706 706 706 706 706 701 818 706 706 706 ...[] 
  []
 
 
-Overfull \hbox (412.73639pt too wide) in paragraph at lines 432--432
+Overfull \hbox (412.73639pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ COMMUNE      : Factor w/ 2691 levels "00","01257 DRESDE
 N ALLEMAGNE",..: 2184 2184 2184 2184 741 2048 2033 2184 2184 2184 ...[] 
  []
 
 
-Overfull \hbox (178.10028pt too wide) in paragraph at lines 432--432
+Overfull \hbox (178.10028pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ DESTINATION  : Factor w/ 7 levels "NA","MCO","SSR",..: 
 NA NA NA NA NA NA 2 NA 2 NA ...[] 
  []
 
 
-Overfull \hbox (332.46135pt too wide) in paragraph at lines 432--432
+Overfull \hbox (332.46135pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ ENTREE       : chr  "2013-01-01 00:04:00" "2013-01-01 0
 0:16:00" "2013-01-01 00:26:00" "2013-01-01 00:32:00" ...[] 
  []
 
 
-Overfull \hbox (332.47536pt too wide) in paragraph at lines 432--432
+Overfull \hbox (332.47536pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ EXTRACT      : chr  "2013-01-01 05:37:00" "2013-01-01 0
 5:37:00" "2013-01-01 05:37:00" "2013-01-01 05:37:00" ...[] 
  []
 
 
-Overfull \hbox (202.8003pt too wide) in paragraph at lines 432--432
+Overfull \hbox (202.8003pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ FINESS       : Factor w/ 11 levels "3Fr","Alk","Col",..
 : 10 10 10 10 10 10 10 10 10 10 ...[] 
  []
 
 
-Overfull \hbox (122.52525pt too wide) in paragraph at lines 432--432
+Overfull \hbox (122.52525pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ GRAVITE      : Factor w/ 7 levels "1","2","3","4",..: 2
  2 3 2 2 1 3 2 2 2 ...[] 
  []
 
 
-Overfull \hbox (122.52525pt too wide) in paragraph at lines 432--432
+Overfull \hbox (122.52525pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ MODE_ENTREE  : Factor w/ 4 levels "NA","Mutation",..: 4
  4 4 4 4 4 4 4 4 4 ...[] 
  []
 
 
-Overfull \hbox (122.52525pt too wide) in paragraph at lines 432--432
+Overfull \hbox (122.52525pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ MODE_SORTIE  : Factor w/ 5 levels "NA","Mutation",..: 4
  4 4 4 4 4 2 4 2 4 ...[] 
  []
 
 
-Overfull \hbox (85.47523pt too wide) in paragraph at lines 432--432
+Overfull \hbox (85.47523pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ MOTIF        : chr  "GASTRO04" "DIVERS23" "TRAUMATO10" 
 "TRAUMATO02" ...[] 
  []
 
 
-Overfull \hbox (332.43333pt too wide) in paragraph at lines 432--432
+Overfull \hbox (332.43333pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ NAISSANCE    : chr  "1960-04-08 00:00:00" "1986-03-05 0
 0:00:00" "1971-12-22 00:00:00" "1927-04-27 00:00:00" ...[] 
  []
 
 
-Overfull \hbox (171.92528pt too wide) in paragraph at lines 432--432
+Overfull \hbox (171.92528pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ ORIENTATION  : Factor w/ 13 levels "CHIR","FUGUE",..: N
 A NA NA NA NA NA 5 NA 5 NA ...[] 
  []
 
 
-Overfull \hbox (128.63022pt too wide) in paragraph at lines 432--432
+Overfull \hbox (128.63022pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ PROVENANCE   : Factor w/ 7 levels "NA","MCO","SSR",..: 
 6 6 6 6 6 6 6 6 6 6 ...[] 
  []
 
 
-Overfull \hbox (79.30023pt too wide) in paragraph at lines 432--432
+Overfull \hbox (79.30023pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ SEXE         : Factor w/ 3 levels "F","I","M": 3 3 3 1 
 3 3 1 1 1 1 ...[] 
  []
 
 
-Overfull \hbox (332.47536pt too wide) in paragraph at lines 432--432
+Overfull \hbox (332.47536pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ SORTIE       : chr  "2013-01-01 02:38:00" "2013-01-01 0
 0:38:00" "2013-01-01 02:07:00" "2013-01-01 01:52:00" ...[] 
  []
 
 
-Overfull \hbox (141.02925pt too wide) in paragraph at lines 432--432
+Overfull \hbox (141.02925pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ TRANSPORT    : Factor w/ 6 levels "AMBU","FO","HELI",..
 : 4 4 4 1 4 4 6 6 4 4 ...[] 
  []
 
 
-Overfull \hbox (110.17525pt too wide) in paragraph at lines 432--432
+Overfull \hbox (110.17525pt too wide) in paragraph at lines 495--495
 []\T1/lmtt/m/n/12 ##  $ TRANSPORT_PEC: Factor w/ 3 levels "AUCUN","MED",..: 1 1
  1 3 1 1 2 2 1 1 ...[] 
  []
 
 
-Overfull \hbox (48.42522pt too wide) in paragraph at lines 477--477
+Overfull \hbox (48.42522pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##       id             CODE_POSTAL           COMMUNE       D
 ESTINATION[] 
  []
 
 
-Overfull \hbox (54.5652pt too wide) in paragraph at lines 477--477
+Overfull \hbox (54.5652pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##  Length:105979      68000  : 7771   MULHOUSE   :12389   MC
 O    :23062[] 
  []
 
 
-Overfull \hbox (54.5722pt too wide) in paragraph at lines 477--477
+Overfull \hbox (54.5722pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##  Class :character   68200  : 6557   STRASBOURG :11504   PS
 Y    :  399[] 
  []
 
 
-Overfull \hbox (54.5722pt too wide) in paragraph at lines 477--477
+Overfull \hbox (54.5722pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##  Mode  :character   68100  : 5866   COLMAR     : 7768   SS
 R    :   17[] 
  []
 
 
-Overfull \hbox (54.57921pt too wide) in paragraph at lines 477--477
+Overfull \hbox (54.57921pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##                     67100  : 5129   HAGUENAU   : 2267   HM
 S    :    8[] 
  []
 
 
-Overfull \hbox (54.59322pt too wide) in paragraph at lines 477--477
+Overfull \hbox (54.59322pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##                     67000  : 3757   SELESTAT   : 2000   SL
 D    :    4[] 
  []
 
 
-Overfull \hbox (54.58621pt too wide) in paragraph at lines 477--477
+Overfull \hbox (54.58621pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##                     67600  : 3005   SAINT LOUIS: 1817   (O
 ther):    0[] 
  []
 
 
-Overfull \hbox (54.57921pt too wide) in paragraph at lines 477--477
+Overfull \hbox (54.57921pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##                     (Other):73894   (Other)    :68234   NA
 \TS1/lmtt/m/n/12 '\T1/lmtt/m/n/12 s   :82489[] 
  []
 
 
-Overfull \hbox (48.42522pt too wide) in paragraph at lines 477--477
+Overfull \hbox (48.42522pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##       DP               ENTREE            EXTRACT          
     FINESS[] 
  []
 
 
-Overfull \hbox (66.9082pt too wide) in paragraph at lines 477--477
+Overfull \hbox (66.9082pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##  Length:105979      Length:105979      Length:105979      
 Col    :21841[] 
  []
 
 
-Overfull \hbox (66.93622pt too wide) in paragraph at lines 477--477
+Overfull \hbox (66.93622pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##  Class :character   Class :character   Class :character   
 Mul    :16790[] 
  []
 
 
-Overfull \hbox (66.94322pt too wide) in paragraph at lines 477--477
+Overfull \hbox (66.94322pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##  Mode  :character   Mode  :character   Mode  :character   
 Hus    :13095[] 
  []
 
 
-Overfull \hbox (66.94322pt too wide) in paragraph at lines 477--477
+Overfull \hbox (66.94322pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##                                                           
 Hag    :11627[] 
  []
 
 
-Overfull \hbox (66.93622pt too wide) in paragraph at lines 477--477
+Overfull \hbox (66.93622pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##                                                           
 Sel    : 9685[] 
  []
 
 
-Overfull \hbox (66.93622pt too wide) in paragraph at lines 477--477
+Overfull \hbox (66.93622pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##                                                           
 Dia    : 9605[] 
  []
 
 
-Overfull \hbox (66.94322pt too wide) in paragraph at lines 477--477
+Overfull \hbox (66.94322pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##                                                           
 (Other):23336[] 
  []
 
 
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 477--477
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##     GRAVITE         MODE_ENTREE       MODE_SORTIE       MO
 TIF[] 
  []
 
 
-Overfull \hbox (36.0542pt too wide) in paragraph at lines 477--477
+Overfull \hbox (36.0542pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##  2      :64451   NA       :    0   NA       :    0   Lengt
 h:105979[] 
  []
 
 
-Overfull \hbox (54.58621pt too wide) in paragraph at lines 477--477
+Overfull \hbox (54.58621pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##  3      :12856   Mutation : 1282   Mutation :21950   Class
  :character[] 
  []
 
 
-Overfull \hbox (54.59322pt too wide) in paragraph at lines 477--477
+Overfull \hbox (54.59322pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##  1      :12797   Transfert: 1128   Transfert: 1523   Mode 
  :character[] 
  []
 
 
-Overfull \hbox (5.16518pt too wide) in paragraph at lines 477--477
+Overfull \hbox (5.16518pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##  Length:105979      AMBU :16290   AUCUN  :75794   Min.   :
   0[] 
  []
 
 
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 477--477
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##  Class :character   FO   :  508   MED    : 2120   1st Qu.:
  18[] 
  []
 
 
-Overfull \hbox (5.19319pt too wide) in paragraph at lines 477--477
+Overfull \hbox (5.19319pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##  Mode  :character   HELI :   37   PARAMED: 2430   Median :
  39[] 
  []
 
 
-Overfull \hbox (5.19319pt too wide) in paragraph at lines 477--477
+Overfull \hbox (5.19319pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##                     PERSO:58281   NA\TS1/lmtt/m/n/12 '\T1/
 lmtt/m/n/12 s   :25635   Mean   : 41[] 
  []
 
 
-Overfull \hbox (5.19319pt too wide) in paragraph at lines 477--477
+Overfull \hbox (5.19319pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##                     SMUR : 1027                   3rd Qu.:
  63[] 
  []
 
 
-Overfull \hbox (5.18619pt too wide) in paragraph at lines 477--477
+Overfull \hbox (5.18619pt too wide) in paragraph at lines 540--540
 []\T1/lmtt/m/n/12 ##                     VSAB : 9263                   Max.   :
 112[] 
  []
 
-[29
+[32
 
-] [30] [31] [32
+] [33] [34] [35
 
 ]
 Annexe A.
-[33
+[36
 
 ]
 Annexe B.
-(./RPU2013.bbl [34
+(./RPU2013.bbl [37
 
 ]
 Underfull \hbox (badness 1412) in paragraph at lines 4--10
@@ -1288,49 +1303,50 @@ Underfull \hbox (badness 1412) in paragraph at lines 4--10
  / membersonly / proceedings /
  []
 
-) [35
+) [38
 
 ]
 Annexe C.
-(./RPU2013.ind [36
+(./RPU2013.ind [39
 
-] [37
+] [40
 
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 494.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 494.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 557.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 557.
  (./RPU2013.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 494.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 494.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 557.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 557.
 Package rerunfilecheck Info: File `RPU2013.out' has not changed.
-(rerunfilecheck)             Checksum: 639ED265AF2518211505DCF919FC1DDF;1740.
+(rerunfilecheck)             Checksum: E5994E2DEA734DD8E612D570E282D9DB;1954.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 494.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 557.
  ) 
 Here is how much of TeX's memory you used:
- 7398 strings out of 495059
- 107172 string characters out of 3182029
+ 7470 strings out of 495059
+ 108294 string characters out of 3182029
  209470 words of memory out of 3000000
- 10329 multiletter control sequences out of 15000+200000
- 61575 words of font info for 49 fonts, out of 3000000 for 9000
+ 10362 multiletter control sequences out of 15000+200000
+ 70927 words of font info for 53 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 29i,9n,28p,749b,513s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,11n,28p,749b,513s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/shar
 e/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm/lm
 bx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.
-pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on RPU2013.pdf (38 pages, 235050 bytes).
+fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
+Output written on RPU2013.pdf (41 pages, 286009 bytes).
 PDF statistics:
- 450 PDF objects out of 1000 (max. 8388607)
- 390 compressed objects within 4 object streams
- 102 named destinations out of 1000 (max. 500000)
- 237 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 521 PDF objects out of 1000 (max. 8388607)
+ 455 compressed objects within 5 object streams
+ 134 named destinations out of 1000 (max. 500000)
+ 261 words of extra memory for PDF output out of 10000 (max. 10000000)
 

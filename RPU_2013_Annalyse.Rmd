@@ -633,7 +633,46 @@ Etude HUS
 ----------------
 ```{r hus}
 Hus<-d1[d1$FINESS=="Hus",]
+nrow(Hus)
+min(Hus$ENTREE)
+max(Hus$ENTREE)
 ```
+comparaison entre RPU attendu et RPU transmis. Nécessite le fichier *sau2013*. Les données sont dans le dataframe *d*. Les données hus sont isolées dans *dhus*
+```{r hus_attendu}
+load("../SAU2013/sau2013.Rda")
+dhus<-d[d$hop=="HUS",]
+sum(dhus$TOTAL.passages,na.rm=T)
+
+# hus.serv: DU des Hus. HTP adultes, HTP gynéco, HTP pédiatrie, NHC et CCOM (Sos mains)
+hus.serv<-as.factor(dhus$ser2)
+summary(hus.serv)
+tapply(dhus$TOTAL.passages,hus.serv,sum)
+# RPU uniquement du au SU HTP et NHC
+hus.rpu<-subset(dhus,ser2=="aHTP" | ser2=="NHC")
+n<-sum(hus.rpu$TOTAL.passages)
+print("Prévision2013:")
+n * 3
+
+a<-c(nrow(Hus),n)
+names(a)=c("RPU déclarés","RPU Attendus")
+barplot(a,main="HUS - 1er quadrimestre 2013")
+a[1]*100/a[2]
+```
+Les urgences pédiatriques sont divisées en 2, médicales et chirurgicales. Il y a donc 2 données par jour
+```{r hus_ped}
+hus.ped<-subset(dhus,ser2=="pHTP")
+nped<-sum(hus.ped$TOTAL.passages)
+print("Prévision2013:")
+nped * 3
+
+print("Total adulte + pédiatrie:")
+ntot<- n + nped
+ntot
+print("total annuel:")
+ntot*3
+```
+
+
 Orientation des patients 
 ```{r Hus_orient}
 summary(Hus$MODE_SORTIE)

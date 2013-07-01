@@ -73,7 +73,8 @@
 \begin{document}
 
 \title{Analyse des données RPU 2013 de la région Alsace}
-\author{RESURAL}
+\author{RESURAL\thanks{Réseau des urgences en Alsace - Equipe de coordination Dr J.C.
+Bartier \& Madame Christine Hecker}}
 \date{\today}
 \maketitle
 
@@ -94,8 +95,36 @@
 
 % geographie.Rnw
 
+L'Alsace est la plus petite région de France (n°42) avec la Corse. Elle est formée de deux départements, le bas-Rhin (67) et le haut-Rhin (68), sont les chef-lieu sont respectivement Strasbourg et Colmar.
+
 \section{Les secteurs sanitaires}
+
+L'alsace est divisée en quatre secteurs sanitaires
+\begin{enumerate}
+  \item secteur 1: Haguenau, Wissembourg et Saverne
+  \item secteur 2: Strasbourg
+  \item secteur 3: Sélestat et Colmar
+  \item secteur 4: Mulhouse
+\end{enumerate}
+
 \section{Les zones de proximité}
+
+Il existe neuf territoires de proximité:
+\begin{enumerate}
+  \item territoire 1: Wissembourg
+  \item territoire 2: Haguenau
+  \item territoire 3: Saverne
+  \item territoire 4: Strasbourg
+  \item territoire 5: Molsheim-Schirmeck
+  \item territoire 6: Sélestat-Obernai
+  \item territoire 7: Colmar
+  \item territoire 8: Guebwiller
+  \item territoire 9: Thann
+  \item territoire 10: Mulhouse
+  \item territoire 11: Altkirch
+  \item territoire 12: Saint-Louis
+\end{enumerate}
+
 \section{Démographie}
 Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'ensemble de la population par commune et par tranches de un an. La version utilisée est celle du 1er janvier 2010 (tab.\ref{pop}).
 
@@ -164,7 +193,7 @@ Les données proviennent des RPU produits par les hôpitaux d'Alsace ayant l'aut
 
 {\ttfamily\noindent\color{warningcolor}{\#\# Warning: number of rows of result is not a multiple of vector length (arg 3)}}\begin{verbatim}
 ## % latex table generated in R 2.15.1 by xtable 1.7-1 package
-## % Sat Jun 29 17:35:49 2013
+## % Mon Jul  1 21:08:35 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{|l|r|r|l|r|}
@@ -202,7 +231,7 @@ Les données à caractère plus médical comme le motif de consultation ou le di
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{verbatim}
 ## % latex table generated in R 2.15.1 by xtable 1.7-1 package
-## % Sat Jun 29 17:35:50 2013
+## % Mon Jul  1 21:08:37 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{|l|r|}
@@ -366,8 +395,42 @@ Ce phénomène cyclique se répète tous les jours selon un profil immuable. La 
 \section*{Variation du pourcentage journalier de retour à domicile}
 
 %===================================================================== PARTIE 3
-\part{Activité des SAMU d'Alsace}
+\part{Activité par service d'urgence}
 
+\chapter{SAU des Hôpitaux universitaires}
+
+% SuHus.Rnw
+% Activité des SU des HUS
+Les Hôpitaux universitaires de Strasbourg ont une offre étendue en matière d'urgences et seuleument certaines activités génèrent des RPU.
+On compte:
+\begin{enumerate}
+  \item SU adulte du NHC
+  \item SU adulte de HTP
+  \item SU pédiatrique de HTP
+  \item SU SOS mains (CCOM)
+  \item SU Gynéco-obstétrique à HTP
+\end{enumerate}
+Auxquels il faut rajouter les services assurant un accueil des urgences 24h/24h et qui ne transitent pas par les SU. Ce sont les correspondants privilégiés du SAMU 67 et des transporteurs sanitaires (ASSU, VSAV, SMUR):
+\begin{enumerate}
+  \item Réanimations médicales de HTP et NHC
+  \item Réanimations chirurgicales de HTP et NHC
+  \item Réanimation pédiatrique polyvalente de HTP
+  \item Unité neuro-vasculaire (HTP)
+  \item SI cardio-vasculaire (NHC)
+\end{enumerate}
+
+\section{Activité globale}
+
+
+
+
+Entre le 2013-01-01 00:11:00 et le 2013-04-30 23:56:00, 13095 RPU ont été transmis, alors que 41561 dossiers ont été déclarés au serveur régional. 
+1, 1, 1, 1, 1
+
+
+
+%===================================================================== PARTIE 4
+\part{Activité des SAMU d'Alsace}
 
 \chapter{Test un}
 
@@ -483,7 +546,7 @@ n <- \hlfunctioncall{dim}(d1)
 \index{Eclipse@Eclipse!solaire}
 \index{Orbite!périgée@périgée}
 test biblio \cite{1}
-%===================================================================== PARTIE 4
+%===================================================================== PARTIE 5
 \part{Annexes}
 \appendix
 \chapter{RPU}
