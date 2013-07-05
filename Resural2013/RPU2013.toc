@@ -6,26 +6,27 @@
 \contentsline {section}{\numberline {2.2}Les zones de proximit\IeC {\'e}}{7}{section.2.2}
 \contentsline {section}{\numberline {2.3}D\IeC {\'e}mographie}{8}{section.2.3}
 \contentsline {section}{\numberline {2.4}Les services d'accueil des urgences (SAU)}{8}{section.2.4}
-\contentsline {chapter}{\numberline {3}Les acteurs}{10}{chapter.3}
-\contentsline {section}{\numberline {3.1}Exhaustivit\IeC {\'e} des donn\IeC {\'e}es}{11}{section.3.1}
-\contentsline {chapter}{\numberline {4}RESURAL}{13}{chapter.4}
-\contentsline {chapter}{\numberline {5}L'observatoire des urgences en Alsace (ORUDAL)}{14}{chapter.5}
-\contentsline {chapter}{\numberline {6}Le R\IeC {\'e}sum\IeC {\'e} du passage aux urgences}{15}{chapter.6}
-\contentsline {part}{II\hspace {1em}Activit\IeC {\'e} des services d'urgence d'Alsace}{16}{part.2}
-\contentsline {chapter}{\numberline {7}Activit\IeC {\'e} r\IeC {\'e}gionale totale}{17}{chapter.7}
-\contentsline {chapter}{\numberline {8}Modalit\IeC {\'e} d'admission}{22}{chapter.8}
-\contentsline {chapter}{\numberline {9}Dur\IeC {\'e}e de passage}{23}{chapter.9}
-\contentsline {chapter}{\numberline {10}Codage diagnostic}{24}{chapter.10}
-\contentsline {chapter}{\numberline {11}Modalit\IeC {\'e}s de sortie}{25}{chapter.11}
-\contentsline {chapter}{\numberline {12}Modalit\IeC {\'e}s d'orientation}{26}{chapter.12}
-\contentsline {chapter}{\numberline {13}Courbes d'activit\IeC {\'e} r\IeC {\'e}gionale}{27}{chapter.13}
-\contentsline {part}{III\hspace {1em}Activit\IeC {\'e} par service d'urgence}{28}{part.3}
-\contentsline {chapter}{\numberline {14}SAU des H\IeC {\^o}pitaux universitaires}{29}{chapter.14}
-\contentsline {section}{\numberline {14.1}Activit\IeC {\'e} globale}{29}{section.14.1}
-\contentsline {part}{IV\hspace {1em}Activit\IeC {\'e} des SAMU d'Alsace}{30}{part.4}
-\contentsline {chapter}{\numberline {15}Test un}{31}{chapter.15}
-\contentsline {chapter}{\numberline {16}test deux}{32}{chapter.16}
-\contentsline {part}{V\hspace {1em}Annexes}{35}{part.5}
-\contentsline {chapter}{\numberline {A}RPU}{36}{appendix.A}
-\contentsline {chapter}{\numberline {B}Bibliographie}{37}{appendix.B}
-\contentsline {chapter}{\numberline {C}Index}{39}{appendix.C}
+\contentsline {chapter}{\numberline {3}Les acteurs}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Exhaustivit\IeC {\'e} des donn\IeC {\'e}es}{10}{section.3.1}
+\contentsline {chapter}{\numberline {4}RESURAL}{11}{chapter.4}
+\contentsline {chapter}{\numberline {5}L'observatoire des urgences en Alsace (ORUDAL)}{12}{chapter.5}
+\contentsline {chapter}{\numberline {6}Le R\IeC {\'e}sum\IeC {\'e} du passage aux urgences}{13}{chapter.6}
+\contentsline {part}{II\hspace {1em}Activit\IeC {\'e} des services d'urgence d'Alsace}{15}{part.2}
+\contentsline {chapter}{\numberline {7}Activit\IeC {\'e} r\IeC {\'e}gionale totale}{16}{chapter.7}
+\contentsline {chapter}{\numberline {8}Modalit\IeC {\'e} d'admission}{21}{chapter.8}
+\contentsline {chapter}{\numberline {9}Dur\IeC {\'e}e de passage}{22}{chapter.9}
+\contentsline {chapter}{\numberline {10}Codage diagnostic}{23}{chapter.10}
+\contentsline {chapter}{\numberline {11}Modalit\IeC {\'e}s de sortie}{24}{chapter.11}
+\contentsline {chapter}{\numberline {12}Modalit\IeC {\'e}s d'orientation}{25}{chapter.12}
+\contentsline {chapter}{\numberline {13}Courbes d'activit\IeC {\'e} r\IeC {\'e}gionale}{26}{chapter.13}
+\contentsline {part}{III\hspace {1em}Activit\IeC {\'e} par service d'urgence}{27}{part.3}
+\contentsline {chapter}{\numberline {14}SAU des H\IeC {\^o}pitaux universitaires}{28}{chapter.14}
+\contentsline {section}{\numberline {14.1}Activit\IeC {\'e} globale}{28}{section.14.1}
+\contentsline {part}{IV\hspace {1em}Activit\IeC {\'e} des SAMU d'Alsace}{29}{part.4}
+\contentsline {chapter}{\numberline {15}Test un}{30}{chapter.15}
+\contentsline {chapter}{\numberline {16}test deux}{31}{chapter.16}
+\contentsline {part}{V\hspace {1em}Annexes}{33}{part.5}
+\contentsline {chapter}{\numberline {A}Glossaire}{34}{appendix.A}
+\contentsline {chapter}{\numberline {B}RPU}{35}{appendix.B}
+\contentsline {chapter}{\numberline {C}Bibliographie}{36}{appendix.C}
+\contentsline {chapter}{\numberline {D}Index}{38}{appendix.D}

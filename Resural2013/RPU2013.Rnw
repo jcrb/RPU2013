@@ -10,6 +10,18 @@
 % la ligne qui suit donne un titre interne au document pdf et crée des liens cliquables en bleu sur les tables et figures
 \usepackage[pdftitle={RPU2012-Resural}, colorlinks=true, linkcolor=blue,citecolor=blue, urlcolor=blue, linktocpage=true, breaklinks=true]{hyperref}
 
+\usepackage[left=4cm,right=3cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{graphicx}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xcolor} 
+\usepackage{hyperref} 
+\usepackage{tikz} 
+\usepackage{fancyvrb}
+
+
 \usepackage{makeidx}
 \makeindex
 \makeglossary
@@ -69,6 +81,8 @@ attach(d1)
   \subsection*{CIRE-INVS}
   \subsection*{Collège de médecine d'urgence (CMUNE)}
 \chapter{Le Résumé du passage aux urgences}
+<<child='rpu.Rnw'>>=
+@
 
 %========================================================== PARTIE 2
 \part{Activité des services d'urgence d'Alsace}
@@ -102,6 +116,8 @@ attach(d1)
 \chapter{Codage diagnostic}
 
 \chapter{Modalités de sortie}
+<<child='sortie.Rnw'>>=
+@
 
 \chapter{Modalités d'orientation}
 
@@ -137,6 +153,7 @@ test biblio \cite{1}
 %===================================================================== PARTIE 5
 \part{Annexes}
 \appendix
+\chapter{Glossaire}
 \chapter{RPU}
 \chapter{Bibliographie}
 \bibliography{../../rpu}

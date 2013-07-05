@@ -1,0 +1,29 @@
+% sortie.Rnw
+
+Le RPU connaît trois mode de sortie des urgences:
+\begin{enumerate}
+  \item le décès
+  \item le retour à domicile (ou ce qui en tient lieu)
+  \item l'hospitalisation
+\end{enumerate}
+Cependant la réalité est plus complexe
+
+La destination de concerne que les patients qui ont été hospitalisés.
+
+\begin{itemize}
+  \item NA:    Pas d'informations
+  \item MCO:		Hospitalisation conventionnelle
+  \item SSR:		Soins de suite et de réadaptation
+  \item SLD:		Soins de longue durée
+  \item PSY: 		Psychiatrie
+  \item HAD:		Hospitalisation à domicile
+  \item HMS:		Hébergement médico-social
+\end{itemize}
+
+<<echo=FALSE>>=
+d1$destination<-factor(d1$destination,levels=c(0,1,2,3,4,6,7),labels=c('NA','MCO','SSR','SLD','PSY','HAD','HMS'))
+
+table(d1$destination)
+
+table(d1$destination,d1$gravite)
+@

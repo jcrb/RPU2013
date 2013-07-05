@@ -1,0 +1,17 @@
+% latex table generated in R 2.15.1 by xtable 1.7-1 package
+% Thu Jul  4 17:47:05 2013
+\begin{table}[tp]
+\centering
+\begin{footnotesize}
+\begin{tabular}{rrrrr}
+  \hline
+ & Person1 & Person2 & Person3 & Person4 \\ 
+  \hline
+Age & -0.98 & 1.42 & -0.96 & -0.54 \\ 
+  Weight & -0.99 & -1.22 & 0.53 & 0.96 \\ 
+   \hline
+\end{tabular}
+\caption{String} 
+\label{t:}
+\end{footnotesize}
+\end{table}
