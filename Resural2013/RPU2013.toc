@@ -26,7 +26,8 @@
 \contentsline {chapter}{\numberline {15}Test un}{30}{chapter.15}
 \contentsline {chapter}{\numberline {16}test deux}{31}{chapter.16}
 \contentsline {part}{V\hspace {1em}Annexes}{33}{part.5}
-\contentsline {chapter}{\numberline {A}Glossaire}{34}{appendix.A}
-\contentsline {chapter}{\numberline {B}RPU}{35}{appendix.B}
-\contentsline {chapter}{\numberline {C}Bibliographie}{36}{appendix.C}
-\contentsline {chapter}{\numberline {D}Index}{38}{appendix.D}
+\contentsline {chapter}{\numberline {A}M\IeC {\'e}thodologie}{34}{appendix.A}
+\contentsline {chapter}{\numberline {B}Glossaire}{35}{appendix.B}
+\contentsline {chapter}{\numberline {C}RPU}{36}{appendix.C}
+\contentsline {chapter}{\numberline {D}Bibliographie}{37}{appendix.D}
+\contentsline {chapter}{\numberline {E}Index}{39}{appendix.E}

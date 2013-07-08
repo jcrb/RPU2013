@@ -97,7 +97,12 @@ Bartier \& Madame Christine Hecker}}
 \listoftables
 \listoffigures
 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: there is no package called 'stargazer'}}\end{kframe}
+\end{knitrout}
 
 %======================================================== PARTIE 1
 \part{Le Réseau des urgences en Alsace}
@@ -204,8 +209,8 @@ Les données proviennent des RPU produits par les hôpitaux d'Alsace ayant l'aut
 
 
 {\ttfamily\noindent\color{warningcolor}{\#\# Warning: number of rows of result is not a multiple of vector length (arg 3)}}\begin{verbatim}
-## % latex table generated in R 2.15.1 by xtable 1.7-1 package
-## % Thu Jul  4 19:49:59 2013
+## % latex table generated in R 2.15.2 by xtable 1.7-1 package
+## % Mon Jul  8 23:28:51 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{|l|r|r|l|r|}
@@ -242,8 +247,8 @@ Les données à caractère plus médical comme le motif de consultation ou le di
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{verbatim}
-## % latex table generated in R 2.15.1 by xtable 1.7-1 package
-## % Thu Jul  4 19:50:00 2013
+## % latex table generated in R 2.15.2 by xtable 1.7-1 package
+## % Mon Jul  8 23:28:52 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{|l|r|}
@@ -676,7 +681,56 @@ test biblio \cite{1}
 %===================================================================== PARTIE 5
 \part{Annexes}
 \appendix
+\chapter{Méthodologie}
+
+% methodologie.Rnw
+
+\section*{Taux de passage aux urgences}
+  \begin{displaymath}
+    \frac{\text{Nombre de passages déclarés par les SU}}{\text{Population globale d'Alsace}}
+  \end{displaymath}
+
+\section*{Taux de recours aux urgences}
+
+\section*{Taux d'intervention régional}
+
+\section*{Taux de recours régional}
+
+\section*{Rapport de masculinité ou sex-ratio}
+
+\section*{Définition de la semaine}
+
+\section*{Définition du Week-end}
+
+\section*{Moyenne mobile}
+
+\section*{Pondération annuelle et mensuelle}
+
 \chapter{Glossaire}
+
+% glossaire.Rnw
+
+\glossary{AIT Accident (Vasculaire) Ischemique Transitoire}
+
+\subsection*{AIT}
+\index{AIT}
+Accident (Vasculaire) Ischemique Transitoire
+
+\subsection*{ANTARES}
+\index{ANTARES}
+Adaptation Nationale des Trasmissions Aux Risques Et Secours
+
+\subsection*{AR}
+\index{AR}
+Ambulance de Réanimation (voir UMH)
+
+\subsection*{ARS}
+\index{ARS}
+Agence Régionale de Santé
+
+\subsection*{AVC}
+\index{Accident Vasculaire Cérébral}
+
 \chapter{RPU}
 \chapter{Bibliographie}
 \bibliography{../../rpu}

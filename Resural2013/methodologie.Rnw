@@ -1,0 +1,22 @@
+% methodologie.Rnw
+
+\section*{Taux de passage aux urgences}
+  \begin{displaymath}
+    \frac{\text{Nombre de passages déclarés par les SU}}{\text{Population globale d'Alsace}}
+  \end{displaymath}
+
+\section*{Taux de recours aux urgences}
+
+\section*{Taux d'intervention régional}
+
+\section*{Taux de recours régional}
+
+\section*{Rapport de masculinité ou sex-ratio}
+
+\section*{Définition de la semaine}
+
+\section*{Définition du Week-end}
+
+\section*{Moyenne mobile}
+
+\section*{Pondération annuelle et mensuelle}

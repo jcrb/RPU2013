@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Mon Jul  1 20:03:13 2013"
+## [1] "Mon Jul  8 10:57:28 2013"
 ```
 
 source: RPU2013
@@ -224,8 +224,8 @@ xtable(t(t3))
 ```
 
 ```
-## % latex table generated in R 2.15.1 by xtable 1.7-1 package
-## % Mon Jul  1 20:03:20 2013
+## % latex table generated in R 2.15.2 by xtable 1.7-1 package
+## % Mon Jul  8 10:57:34 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rrr}
