@@ -2,6 +2,8 @@
 
 \glossary{AIT Accident (Vasculaire) Ischemique Transitoire}
 
+
+
 \subsection*{AIT}
 \index{AIT}
 Accident (Vasculaire) Ischemique Transitoire

@@ -21,11 +21,29 @@
 \usepackage{tikz} 
 \usepackage{fancyvrb}
 
-
 \usepackage{makeidx}
 \makeindex
-\makeglossary
+
 \bibliographystyle{plain}
+
+\makeglossary
+%\makeindex -s glossaire.ist RPU2013.glo -o RPU2013.glx
+
+% \newenvironment{leglossaire}{\begin{list}{}{%
+%   \setlength{\labelwidth}{.5\textwidth}%
+%   \setlength{\labelsep}{-.8\labelwidth}%
+%   \setlength{\itemindent}{\parindent}%
+%   \setlength{\leftmargin}{25pt}%
+%   \setlength{\rightmargin}{0pt}%
+%   \setlength{\itemsep}{.8\baselineskip}%
+%   \renewcommand{\makelabel}[1]{\boiteentreeglossaire{##1}}}}
+% {\end{list}}
+%       
+% \newcommand{boiteentreeglossaire}[1]{%
+%   \parbox[b]{\labelwidth}{%
+%   \setlength{\fboxsep}{3pt}%
+%   \setlength{\fboxrule}{.4pt}%
+%   \shadow{\sffamily#1}\\\hfill\mbox{}}}
 
 \begin{document}
 
