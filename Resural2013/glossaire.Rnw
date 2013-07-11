@@ -22,3 +22,15 @@ Agence Régionale de Santé
 
 \subsection*{AVC}
 \index{Accident Vasculaire Cérébral}
+
+cellule régionale d’appui et de pilotage sanitaire (CRAPS)
+service zonal de défense et de sécurité (SZDS)
+plateforme de veille et d’urgence sanitaire (PVUS)
+cellule zonale d’appui (CZA). Structure de crise de l’ARS de zone, elle est constituée autour du SZDS qui assure une fonction de coordination en collaboration étroite avec la/les CRAPS activée(s) en ARS.
+Directeur général de la santé (DGS) ou le Haut fonctionnaire de défense et de sécurité (HFDS)
+Centre de crise sanitaire (CCS
+Centre opérationnel zonal renforcé (COZ-R) de l’état-major interministériel de zone de défense et de sécurité (EMIZDS).
+Système d’information sanitaire des alertes et crises (SISAC) de la DGS.
+
+
+

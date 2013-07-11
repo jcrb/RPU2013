@@ -6,7 +6,10 @@
 % inclu un fichier de bibliothèques
 \include{rpu-2012.sty}
 
-\usepackage{numprint}
+% la rirective suivante permet d'utiliser le séparateur de milliers. Deux formulation sont utilisables mais exclusives l'une de l'autre. L'instruction "autolanguage" permet d'utiliser \nombre{} ou \np{}
+%\usepackage{numprint}
+\usepackage[autolanguage,np]{numprint}
+
 % la ligne qui suit donne un titre interne au document pdf et crée des liens cliquables en bleu sur les tables et figures
 \usepackage[pdftitle={RPU2012-Resural}, colorlinks=true, linkcolor=blue,citecolor=blue, urlcolor=blue, linktocpage=true, breaklinks=true]{hyperref}
 
@@ -84,6 +87,11 @@ attach(d1)
 %======================================================== PARTIE 1
 \part{Le Réseau des urgences en Alsace}
 \chapter{Historique}
+utilisation de la directive \\nombre{}, par exemple: 
+Un grand nombre 300000 et avec séparation des milliers \nombre{300000}
+
+La même chose avec \\np{}: 
+Un grand nombre 300000 et avec séparation des milliers \np{300000}
 
 \chapter{Organisation géographique}
 <<child='geographie.Rnw'>>=

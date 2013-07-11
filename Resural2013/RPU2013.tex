@@ -60,7 +60,10 @@
 % inclu un fichier de bibliothèques
 \include{rpu-2012.sty}
 
-\usepackage{numprint}
+% la rirective suivante permet d'utiliser le séparateur de milliers. Deux formulation sont utilisables mais exclusives l'une de l'autre. L'instruction "autolanguage" permet d'utiliser \nombre{} ou \np{}
+%\usepackage{numprint}
+\usepackage[autolanguage,np]{numprint}
+
 % la ligne qui suit donne un titre interne au document pdf et crée des liens cliquables en bleu sur les tables et figures
 \usepackage[pdftitle={RPU2012-Resural}, colorlinks=true, linkcolor=blue,citecolor=blue, urlcolor=blue, linktocpage=true, breaklinks=true]{hyperref}
 
@@ -125,6 +128,11 @@ Bartier \& Madame Christine Hecker}}
 %======================================================== PARTIE 1
 \part{Le Réseau des urgences en Alsace}
 \chapter{Historique}
+utilisation de la directive \\nombre{}, par exemple: 
+Un grand nombre 300000 et avec séparation des milliers \nombre{300000}
+
+La même chose avec \\np{}: 
+Un grand nombre 300000 et avec séparation des milliers \np{300000}
 
 \chapter{Organisation géographique}
 
@@ -170,11 +178,11 @@ Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'en
   Tranche d'age & Abréviation & Effectif & Pourcentage \\
   \hline
   \hline
-  Moins de 1 an & pop0 & $21903.14$ & 1.19 \\
-  De 1 à 75 ans & pop1\_75 & $1690073.00$ & 92.00 \\
-  Plus de 75 ans& pop75 & $125110.90$ & 6.81 \\
+  Moins de 1 an & pop0 & \np{21903.14} & 1.19 \\
+  De 1 à 75 ans & pop1\_75 & \np{1690073.00} & 92.00 \\
+  Plus de 75 ans& pop75 & \np{125110.90} & 6.81 \\
   \hline
-  Total & pop\_tot & $1837087.00$ & 100.00 \\
+  Total & pop\_tot & \np{1837087.00} & 100.00 \\
   \hline
 \end{tabular}
 \caption{Population d'Alsace (janvier 2010)}
@@ -228,7 +236,7 @@ Les données proviennent des RPU produits par les hôpitaux d'Alsace ayant l'aut
 
 {\ttfamily\noindent\color{warningcolor}{\#\# Warning: number of rows of result is not a multiple of vector length (arg 3)}}\begin{verbatim}
 ## % latex table generated in R 2.15.2 by xtable 1.7-1 package
-## % Tue Jul  9 16:35:53 2013
+## % Thu Jul 11 10:26:34 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{|l|r|r|l|r|}
@@ -266,7 +274,7 @@ Les données à caractère plus médical comme le motif de consultation ou le di
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{verbatim}
 ## % latex table generated in R 2.15.2 by xtable 1.7-1 package
-## % Tue Jul  9 16:35:54 2013
+## % Thu Jul 11 10:26:35 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{|l|r|}
@@ -774,6 +782,18 @@ Agence Régionale de Santé
 
 \subsection*{AVC}
 \index{Accident Vasculaire Cérébral}
+
+cellule régionale d’appui et de pilotage sanitaire (CRAPS)
+service zonal de défense et de sécurité (SZDS)
+plateforme de veille et d’urgence sanitaire (PVUS)
+cellule zonale d’appui (CZA). Structure de crise de l’ARS de zone, elle est constituée autour du SZDS qui assure une fonction de coordination en collaboration étroite avec la/les CRAPS activée(s) en ARS.
+Directeur général de la santé (DGS) ou le Haut fonctionnaire de défense et de sécurité (HFDS)
+Centre de crise sanitaire (CCS
+Centre opérationnel zonal renforcé (COZ-R) de l’état-major interministériel de zone de défense et de sécurité (EMIZDS).
+Système d’information sanitaire des alertes et crises (SISAC) de la DGS.
+
+
+
 
 \chapter{RPU}
 \chapter{Bibliographie}

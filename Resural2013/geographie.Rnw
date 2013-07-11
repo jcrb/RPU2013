@@ -40,11 +40,11 @@ Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'en
   Tranche d'age & Abréviation & Effectif & Pourcentage \\
   \hline
   \hline
-  Moins de 1 an & pop0 & $21903.14$ & 1.19 \\
-  De 1 à 75 ans & pop1\_75 & $1690073.00$ & 92.00 \\
-  Plus de 75 ans& pop75 & $125110.90$ & 6.81 \\
+  Moins de 1 an & pop0 & \np{21903.14} & 1.19 \\
+  De 1 à 75 ans & pop1\_75 & \np{1690073.00} & 92.00 \\
+  Plus de 75 ans& pop75 & \np{125110.90} & 6.81 \\
   \hline
-  Total & pop\_tot & $1837087.00$ & 100.00 \\
+  Total & pop\_tot & \np{1837087.00} & 100.00 \\
   \hline
 \end{tabular}
 \caption{Population d'Alsace (janvier 2010)}
