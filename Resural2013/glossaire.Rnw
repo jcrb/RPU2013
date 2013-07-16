@@ -23,6 +23,12 @@ Agence Régionale de Santé
 \subsection*{AVC}
 \index{Accident Vasculaire Cérébral}
 
+\subsection*{Unité urbaine}
+\index{Unité urbaine}
+La notion d'unité urbaine repose sur la continuité du bâti et le nombre d'habitants. On appelle unité urbaine une commune ou un ensemble de communes présentant une zone de bâti continu (pas de coupure de plus de 200 mètres entre deux constructions) qui compte au moins 2 000 habitants.
+Si l'unité urbaine se situe sur une seule commune, elle est dénommée ville isolée. Si l'unité urbaine s'étend sur plusieurs communes, et si chacune de ces communes concentre plus de la moitié de sa population dans la zone de bâti continu, elle est dénommée agglomération multicommunale.
+Sont considérées comme rurales les communes qui ne rentrent pas dans la constitution d'une unité urbaine : les communes sans zone de bâti continu de 2000 habitants, et celles dont moins de la moitié de la population municipale est dans une zone de bâti continu (INSEE \cite{4}).
+
 cellule régionale d’appui et de pilotage sanitaire (CRAPS)
 service zonal de défense et de sécurité (SZDS)
 plateforme de veille et d’urgence sanitaire (PVUS)

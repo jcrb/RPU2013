@@ -60,7 +60,7 @@
 % inclu un fichier de bibliothèques
 \include{rpu-2012.sty}
 
-% la rirective suivante permet d'utiliser le séparateur de milliers. Deux formulation sont utilisables mais exclusives l'une de l'autre. L'instruction "autolanguage" permet d'utiliser \nombre{} ou \np{}
+% la directive suivante permet d'utiliser le séparateur de milliers. Deux formulation sont utilisables mais exclusives l'une de l'autre. L'instruction "autolanguage" permet d'utiliser \nombre{} ou \np{}
 %\usepackage{numprint}
 \usepackage[autolanguage,np]{numprint}
 
@@ -101,7 +101,12 @@
 %   \setlength{\fboxsep}{3pt}%
 %   \setlength{\fboxrule}{.4pt}%
 %   \shadow{\sffamily#1}\\\hfill\mbox{}}}
+
+% Définitions de constantes
+
+
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
 
 \begin{document}
 
@@ -236,7 +241,7 @@ Les données proviennent des RPU produits par les hôpitaux d'Alsace ayant l'aut
 
 {\ttfamily\noindent\color{warningcolor}{\#\# Warning: number of rows of result is not a multiple of vector length (arg 3)}}\begin{verbatim}
 ## % latex table generated in R 2.15.2 by xtable 1.7-1 package
-## % Thu Jul 11 10:26:34 2013
+## % Sun Jul 14 22:44:12 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{|l|r|r|l|r|}
@@ -274,7 +279,7 @@ Les données à caractère plus médical comme le motif de consultation ou le di
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{verbatim}
 ## % latex table generated in R 2.15.2 by xtable 1.7-1 package
-## % Thu Jul 11 10:26:35 2013
+## % Sun Jul 14 22:44:13 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{|l|r|}
@@ -374,6 +379,57 @@ Le logiciel R est interfacé avec le traitement de texte Latex par l'intermédia
 \part{Activité des services d'urgence d'Alsace}
 \chapter{Activité régionale totale}
 \section*{Nombre total de passages}
+
+% activite_regionale.Rnw
+
+
+%on fabrique un objet **a** qui dait la somme pae date des passages aux urgences:
+
+
+
+% vérification:
+%   a[1:10]
+% 2013-01-01 2013-01-02 2013-01-03 2013-01-04 2013-01-05 2013-01-06 2013-01-07 2013-01-08 2013-01-09 2013-01-10 
+%        884        801        686        704        722        691        876        694        683        673 
+% On supprime l'enregistrement 121 correspondant au 1er mai et qui ne contient qu'un élément:
+%a[121]  2013-05-01 1 
+
+
+% Min. 1 st Qu.  Median    Mean 3rd Qu.    Max. 
+%   642.0   848.0   895.5   883.2   957.0  1050.0 
+
+L'ensemble des SU ont déclaré \np{105979} passages en 2013, 
+soit une moyenne de \np{883} passages par jour (extrèmes 642 et \np{1050})
+
+%affichage du graphique
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/activite_plot} 
+
+\end{knitrout}
+
+% Variante avec *xts*
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/activite_plot2} 
+\begin{kframe}\begin{verbatim}
+## [1] 441062
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+Le taux de recours aux urgences \index{taux de recours aux urgences} (TRU) \index{TRU} est défini comme le nombre total de passages aux urgences, rapporté à la population de la région (INSEE 1er janvier 2010). En Lorraine, ce taux est estimé à 23,45\% en 2010 (\cite{2,3}). En supposant que la population alsacienne se comprte comme la population lorraine, le nombre de passages aux urgences devrait s'établir à \ensuremath{4.4106\times 10^{5}}.
+
+Le TRU 2013 estimé en Alsace est de 5.63\%.
+
+\subsubsection*{TODO}
+\begin{itemize}
+  \item TRU par territoire de santé
+\end{itemize}
+
+
+  
+
 \section*{Nombre total de passages par SU}
 \subsection*{En valeur absolue}
 \subsection*{En pourcentage}
@@ -782,6 +838,12 @@ Agence Régionale de Santé
 
 \subsection*{AVC}
 \index{Accident Vasculaire Cérébral}
+
+\subsection*{Unité urbaine}
+\index{Unité urbaine}
+La notion d'unité urbaine repose sur la continuité du bâti et le nombre d'habitants. On appelle unité urbaine une commune ou un ensemble de communes présentant une zone de bâti continu (pas de coupure de plus de 200 mètres entre deux constructions) qui compte au moins 2 000 habitants.
+Si l'unité urbaine se situe sur une seule commune, elle est dénommée ville isolée. Si l'unité urbaine s'étend sur plusieurs communes, et si chacune de ces communes concentre plus de la moitié de sa population dans la zone de bâti continu, elle est dénommée agglomération multicommunale.
+Sont considérées comme rurales les communes qui ne rentrent pas dans la constitution d'une unité urbaine : les communes sans zone de bâti continu de 2000 habitants, et celles dont moins de la moitié de la population municipale est dans une zone de bâti continu (INSEE \cite{4}).
 
 cellule régionale d’appui et de pilotage sanitaire (CRAPS)
 service zonal de défense et de sécurité (SZDS)

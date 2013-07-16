@@ -26,23 +26,30 @@ note: pour supprimer les warnings: *{r warning=FALSE}*
 - A FAIRE SI ON CHANGE DE WORKING DIRECTORY
 - sauvegarde: savehistory(file = ".Rhistory")
 
-Pour que les légendes de l'axe des Y soient perpendiculaires a ce dernier, rajouter *las = 1*
-Pour que les légendes de l'axe des X soient perpendiculaires a ce dernier, rajouter *las = 2*
-Pour que les légendes soient perpendiculaires aux 2 axes, rajouter *las = 3*
-Par défaut *las = 0*
+#### Légendes graphes:
+- Pour que les légendes de l'axe des Y soient perpendiculaires a ce dernier, rajouter *las = 1*
+- Pour que les légendes de l'axe des X soient perpendiculaires a ce dernier, rajouter *las = 2*
+- Pour que les légendes soient perpendiculaires aux 2 axes, rajouter *las = 3*
+- Par défaut *las = 0*
 
-L'utilisation de la méthode *SweaveInput* provoque un erreur si le fichier à inclure comporte des caractéres accenués (méme enregistrés en UTF8)
+- pour ne pas encadrer les légendes: bty = "n" (bty = box type)
+
+#### L'utilisation de la méthode *SweaveInput* 
+- provoque un erreur si le fichier à inclure comporte des caractéres accenués (méme enregistrés en UTF8)
+- lui préférer
+<<child = 'mon_fichier.Rnw'>>=
+@
 
 Création d'un tableau avec *cbind* et une matrice (et xtable pour pdf): voir exhaustivité des données
 
-Version:
+#### Version:
 
 ```r
 sessionInfo()
 ```
 
 ```
-## R version 2.15.2 (2012-10-26)
+## R version 3.0.1 (2013-05-16)
 ## Platform: i686-pc-linux-gnu (32-bit)
 ## 
 ## locale:
@@ -57,11 +64,11 @@ sessionInfo()
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] knitr_1.2
+## [1] knitr_1.3
 ## 
 ## loaded via a namespace (and not attached):
-## [1] digest_0.5.2   evaluate_0.4.4 formatR_0.8    stringr_0.6.2 
-## [5] tools_2.15.2
+## [1] digest_0.6.3   evaluate_0.4.4 formatR_0.8    stringr_0.6.2 
+## [5] tools_3.0.1
 ```
 
 ```r
@@ -70,18 +77,75 @@ toLatex(sessionInfo())
 
 ```
 ## \begin{itemize}\raggedright
-##   \item R version 2.15.2 (2012-10-26), \verb|i686-pc-linux-gnu|
+##   \item R version 3.0.1 (2013-05-16), \verb|i686-pc-linux-gnu|
 ##   \item Locale: \verb|LC_CTYPE=fr_FR.UTF-8|, \verb|LC_NUMERIC=C|, \verb|LC_TIME=fr_FR.UTF-8|, \verb|LC_COLLATE=fr_FR.UTF-8|, \verb|LC_MONETARY=fr_FR.UTF-8|, \verb|LC_MESSAGES=fr_FR.UTF-8|, \verb|LC_PAPER=C|, \verb|LC_NAME=C|, \verb|LC_ADDRESS=C|, \verb|LC_TELEPHONE=C|, \verb|LC_MEASUREMENT=fr_FR.UTF-8|, \verb|LC_IDENTIFICATION=C|
 ##   \item Base packages: base, datasets, graphics, grDevices,
 ##     methods, stats, utils
-##   \item Other packages: knitr~1.2
-##   \item Loaded via a namespace (and not attached): digest~0.5.2,
-##     evaluate~0.4.4, formatR~0.8, stringr~0.6.2, tools~2.15.2
+##   \item Other packages: knitr~1.3
+##   \item Loaded via a namespace (and not attached): digest~0.6.3,
+##     evaluate~0.4.4, formatR~0.8, stringr~0.6.2, tools~3.0.1
 ## \end{itemize}
 ```
 
-Pour présenter en latex un tableau type *summary*:
+
+#### Copyright
+
+```r
+mtext("© RESURAL 2013", cex = 0.6, side = 4, line = -1, adj = 0.1)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+
+#### Pour présenter en latex un tableau type *summary*:
 stargazer(as.data.frame(a2[1:length(a)]),summary=TRUE,digit.separator=" ",digits=2,median=TRUE,iqr=TRUE)
+
+#### Séparateur de milliers:
+\np{x} génère une erreur si x est en notation scientifique
+
+#### Se débarasser des NA
+Procéder en 2 temsps:
+- créer un vecteur de *logical* avec *!is.na*
+- extraire les valeurs qui ne sont pas de NA à l'aide du vecteur précédent
+exemple:
+
+```r
+vector <- c(1, NA, 2)
+vector
+```
+
+```
+## [1]  1 NA  2
+```
+
+```r
+select <- !is.na(vector)
+vector[select]
+```
+
+```
+## [1] 1 2
+```
+
+```r
+mean(vector)
+```
+
+```
+## [1] NA
+```
+
+```r
+mean(vector[select])
+```
+
+```
+## [1] 1.5
+```
+
+
 
 Outils de présentation
 ======================
@@ -121,11 +185,12 @@ N°  |  Département  |  nb.communes  |  Pop.municipale  |  Pop.totale
 ----|---------------|---------------|------------------|-------------
 67 |  Bas-Rhin |	527 |  1 095 905 | 1 115 226 
 68 |	Haut-Rhin | 377  | 749 782 | 765 634 
-
+pop.als.2010.totale<-1115226 + 765634
+pop.als.2010.municipale<-1095905 + 749782
 
 Fichier ville de la base *pma*
 ------------------------------
-Fichier exporté de la base *pma* sous le nom de *ville.csv* (5/6/2013)
+Fichier exporté de la base *pma* sous le nom de *ville.csv* (5/6/2013). Il contient toutes les villes connues de Sagec.
 
 
 ```r
@@ -144,20 +209,22 @@ names(v)
 ## [19] "secteur_Adps_ID"   "secteur_Vsav_ID"   "zone_proximite"
 ```
 
-On ne retient que les villes d'Alsace:
+On ne retient que les villes d'Alsace, c'est à dire celles appartenant à la région 42. On sauvegarde le dataframe dans la variable **va** (924 lignes et 21 colonnes)
 
 ```r
 va <- v[v$region_ID == "42", ]
 ```
 
 mise en forme:
+- *zone_proximite* est transformé en facteur
+- *territoire_sante* est transformé en facteur
 
 ```r
 va$zone_proximite <- as.factor(va$zone_proximite)
 va$territoire_sante <- as.factor(va$territoire_sante)
 ```
 
-villes où la ZP est manquante:
+#### villes où la ZP est manquante:
 
 ```r
 a <- va[va$zone_proximite == 0, c(1:3)]
@@ -188,6 +255,11 @@ a
 ## 1061     1078            MITSCHDORF       67294
 ```
 
+notes:
+- *Hoffe*n est une commune française, située dans le département du Bas-Rhin et la région Alsace. La commune a fusionné avec les villages de *Hermerswiller* et de *Leiterswiller* le 1er janvier 1975.
+- Depuis le 1er mai 1972, *Schnersheim* regroupe les communes associées d'*Avenheim* et de *Kleinfrankenheim*.
+- *Truchtersheim*: Depuis le 15 juillet 1974, la commune est fusionnée avec l'ancienne commune de *Behlenheim*.
+
 
 Résultats:
 
@@ -203,10 +275,13 @@ summary(va$zone_proximite)
 Combinaisons des fichiers
 -------------------------
 On forme un fichier commun avec
-- pop67
-- pop68
+- pop67: fichier INSEE de 2010
+- pop68: fichier INSEE de 2010
 - va
 de façon a avoir dans une même base les zones de proximité (va) et les populations correspondantes:
+- base1: merging de *va* et de *pop67*
+- base2: merging de *va* et de *pop68*
+base1 et base2 sont fusionné en un seul fichier *base*, puis supprrimés.
 
 ```r
 load("~/Documents/Resural/Stat Resural/carto&pop/pop68.rda")
@@ -266,9 +341,42 @@ base$territoire_sante[572] <- 4
 base$zone_proximite[57] <- 3
 ```
 
+#### Définitions INSEE
 
+La *populatio*n d'une commune comprend :
+- la population des résidences principales ;
+- la population des communautés de la commune ;
+- les personnes sans abri ou vivant dans des habitations mobiles
 
-population de la région:
+Le concept de *population totale* est défini par le décret n°2003-485 publié au Journal officiel du 8 juin 2003, relatif au recensement de la population.
+
+La population totale d'une commune est égale à la somme de la population municipale et de la population comptée à part de la commune.
+
+La population totale d'un ensemble de communes est égale à la somme des populations totales des communes qui le composent.
+
+La population totale est une population légale à laquelle de très nombreux textes législatifs ou réglementaires font référence. A la différence de la population municipale, elle n'a pas d'utilisation statistique car elle comprend des doubles comptes dès lors que l'on s'intéresse à un ensemble de plusieurs communes.
+
+Le concept de *population municipale* est défini par le décret n°2003-485 publié au Journal officiel du 8 juin 2003, relatif au recensement de la population.
+La population municipale comprend les personnes ayant leur résidence habituelle (au sens du décret) sur le territoire de la commune, dans un logement ou une communauté, les personnes détenues dans les établissements pénitentiaires de la commune, les personnes sans-abri recensées sur le territoire de la commune et les personnes résidant habituellement dans une habitation mobile recensée sur le territoire de la commune.
+La population municipale d'un ensemble de communes est égale à la somme des populations municipales des communes qui le composent.
+
+Le concept de *population municipale correspond désormais à la notion de population utilisée usuellement en statistique*. En effet, elle ne comporte pas de doubles comptes : chaque personne vivant en France est comptée une fois et une seule. En 1999, c'était le concept de population sans doubles comptes qui correspondait à la notion de population statistique.
+
+source: http://www.insee.fr/fr/methodes/default.asp?page=definitions/population-municipale-rrp.htm
+
+Le concept de *population comptée à part* est défini par le décret n°2003-485 publié au Journal officiel du 8 juin 2003, relatif au recensement de la population.
+La population comptée à part comprend certaines personnes dont la résidence habituelle (au sens du décret) est dans une autre commune mais qui ont conservé une résidence sur le territoire de la commune :
+1. Les mineurs dont la résidence familiale est dans une autre commune mais qui résident, du fait de leurs études, dans la commune.
+2. Les personnes ayant une résidence familiale sur le territoire de la commune et résidant dans une communauté d'une autre commune, dès lors que la communauté relève de l'une des catégories suivantes :
+- services de moyen ou de long séjour des établissements publics ou privés de santé, établissements sociaux de moyen ou de long séjour, maisons de retraite, foyers et résidences sociales ;
+- communautés religieuses ;
+- casernes ou établissements militaires.
+3. Les personnes majeures âgées de moins de 25 ans ayant leur résidence familiale sur le territoire de la commune et qui résident dans une autre commune pour leurs études.
+4. Les personnes sans domicile fixe rattachées à la commune au sens de la loi du 3 janvier 1969 et non recensées dans la commune.
+
+source: http://www.insee.fr/fr/methodes/default.asp?page=definitions/popul-comptee-a-part-rrp.htm
+
+#### population de la région:
 
 ```r
 n <- sum(base$Population.totale)
@@ -279,19 +387,49 @@ n
 ## [1] 1900810
 ```
 
-Population par zone de proximité:
+```r
+pop.tot <- sum(base$Population.totale)
+pop.municipale <- sum(base$Population.municipale)
+pop.a.part <- sum(base$Population.comptée.à.part)
+```
+
+Pour les raisons expliquées plus haut, les calculs statistiques font référence à la population **municipale**.
+
+#### Population par territoire de proximité:
+ATTENTION: les territoires de proximité sont dans l'ordre de SAGEC qui n'est pas celui de l'ARS
 
 ```r
-effectif <- tapply(base$Population.totale, as.factor(base$zone_proximite), sum, 
-    na.rm = TRUE)
+territoire.prox <- c("Altkirch", "Colmar", "Guebwiller", "Haguenau", "Molsheim-Schirmeck", 
+    "Mulhouse", "Sélestat-Obernai", "Saint-Louis", "Saverne", "Strasbourg", 
+    "Thann", "Wissembourg")
+effectif <- tapply(base$Population.municipale, as.factor(base$zone_proximite), 
+    sum, na.rm = TRUE)
+# on élimine la colonne 0 qui ne contient que NA
+effectif <- effectif[-1]
 effectif
 ```
 
 ```
-##      0      1      2      3      4      5      6      7      8      9 
-##     NA  70118 201951  81144 197768  90538 262034 165002  96112 115883 
-##     10     11     12 
-## 493558  68655  58047
+##      1      2      3      4      5      6      7      8      9     10 
+##  68591 196848  79628 194649  88811 257351 161331  94315 113804 485884 
+##     11     12 
+##  67191  56886
+```
+
+```r
+names(effectif) <- territoire.prox
+effectif
+```
+
+```
+##           Altkirch             Colmar         Guebwiller 
+##              68591             196848              79628 
+##           Haguenau Molsheim-Schirmeck           Mulhouse 
+##             194649              88811             257351 
+##   Sélestat-Obernai        Saint-Louis            Saverne 
+##             161331              94315             113804 
+##         Strasbourg              Thann        Wissembourg 
+##             485884              67191              56886
 ```
 
 ```r
@@ -300,8 +438,14 @@ pourcentage
 ```
 
 ```
-##  0  1  2  3  4  5  6  7  8  9 10 11 12 
-## NA NA NA NA NA NA NA NA NA NA NA NA NA
+##           Altkirch             Colmar         Guebwiller 
+##               3.68              10.55               4.27 
+##           Haguenau Molsheim-Schirmeck           Mulhouse 
+##              10.44               4.76              13.80 
+##   Sélestat-Obernai        Saint-Louis            Saverne 
+##               8.65               5.06               6.10 
+##         Strasbourg              Thann        Wissembourg 
+##              26.05               3.60               3.05
 ```
 
 ```r
@@ -310,28 +454,41 @@ c
 ```
 
 ```
-##    effectif pourcentage
-## 0        NA          NA
-## 1     70118          NA
-## 2    201951          NA
-## 3     81144          NA
-## 4    197768          NA
-## 5     90538          NA
-## 6    262034          NA
-## 7    165002          NA
-## 8     96112          NA
-## 9    115883          NA
-## 10   493558          NA
-## 11    68655          NA
-## 12    58047          NA
+##                    effectif pourcentage
+## Altkirch              68591        3.68
+## Colmar               196848       10.55
+## Guebwiller            79628        4.27
+## Haguenau             194649       10.44
+## Molsheim-Schirmeck    88811        4.76
+## Mulhouse             257351       13.80
+## Sélestat-Obernai     161331        8.65
+## Saint-Louis           94315        5.06
+## Saverne              113804        6.10
+## Strasbourg           485884       26.05
+## Thann                 67191        3.60
+## Wissembourg           56886        3.05
 ```
 
 ```r
-barplot(sort(effectif), cex.names = 0.8, xlab = "Territoire de proximité", 
-    ylab = "% de la population totale", main = "Répartition de la population par territoire de santé")
+barplot(sort(effectif), cex.names = 0.8, xlab = "", las = 2, ylab = "Effectifs", 
+    main = "Répartition de la population par territoire de proximité")
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-121.png) 
+
+```r
+
+barplot(sort(pourcentage), cex.names = 0.8, las = 2, xlab = "", ylab = "% de la population totale", 
+    main = "Répartition de la population par territoire de proximité")
+```
+
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-122.png) 
+
+Commentaires:
+- le territoire  de proximité de Strasbourg est le plus important et regroupe plus du quart de la population alsacienne
+- les territoires de santé de Wissembourg et de Thann sont les moins peuplés.
+- les territoires de proximité de Haguenau et Colmar sont sensiblement identiques
+- Strasbourg, Mulhouse et Colmar regrouppent 50% de la population.
 
 Créer une zone de proximité
 ---------------------------
@@ -361,26 +518,11 @@ library("maptools")
 ```
 
 ```
-## Loading required package: foreign
-```
-
-```
-## Loading required package: sp
-```
-
-```
-## Loading required package: lattice
-```
-
-```
-## 
-## 	Note: polygon geometry computations in maptools
-##  	depend on the package gpclib, which has a
-##  	restricted licence. It is disabled by default;
-##  	to enable gpclib, type gpclibPermit()
-## 
-## Checking rgeos availability as gpclib substitute:
-## FALSE
+## Loading required package: foreign Loading required package: sp Loading
+## required package: grid Loading required package: lattice Checking rgeos
+## availability: FALSE Note: when rgeos is not available, polygon geometry
+## computations in maptools depend on gpclib, which has a restricted licence.
+## It is disabled by default; to enable gpclib, type gpclibPermit()
 ```
 
 ```r
@@ -400,7 +542,7 @@ contour <- unionSpatialPolygons(als, IDs = als@data$CODE_ARR)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -421,7 +563,7 @@ contour <- unionSpatialPolygons(als, IDs = als@data$INSEE_COM %in% b)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -465,7 +607,7 @@ contour <- unionSpatialPolygons(zp1, IDs = zp1@data$CODE_ARR)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -493,7 +635,7 @@ plot(zp1, add = T)
 ```
 
 ```
-## Error: plot.new n'a pas encore été appelé
+## Error: plot.new has not been called yet
 ```
 
 modifier l'aspect:
@@ -510,7 +652,7 @@ exemple:
 plot(zp1, , axes = T)
 ```
 
-![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15.png) 
+![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17.png) 
 
 ```r
 plot(contour, axes = T, lty = 1, lwd = 2, fg = "blue", border = "red", add = T)
@@ -611,7 +753,7 @@ points(x, y, pch = 19, col = 3)
 ```
 
 ```
-## Error: plot.new n'a pas encore été appelé
+## Error: plot.new has not been called yet
 ```
 
 ```r
@@ -619,7 +761,7 @@ text(x, y, labels = nom, cex = 0.8, pos = 3)
 ```
 
 ```
-## Error: plot.new n'a pas encore été appelé
+## Error: plot.new has not been called yet
 ```
 
 Les zones de proximités officielles sont dans le fichier zp.csv
@@ -718,7 +860,7 @@ contour2 <- unionSpatialPolygons(zp2, IDs = zp2@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -758,7 +900,7 @@ contour3 <- unionSpatialPolygons(zp3, IDs = zp3@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -807,7 +949,7 @@ contour4 <- unionSpatialPolygons(zp4, IDs = zp4@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -857,7 +999,7 @@ contour1 <- unionSpatialPolygons(zp1, IDs = zp1@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -906,7 +1048,7 @@ contour5 <- unionSpatialPolygons(zp5, IDs = zp5@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -955,7 +1097,7 @@ contour6 <- unionSpatialPolygons(zp6, IDs = zp6@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -1004,7 +1146,7 @@ contour7 <- unionSpatialPolygons(zp7, IDs = zp7@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -1053,7 +1195,7 @@ contour8 <- unionSpatialPolygons(zp8, IDs = zp8@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -1102,7 +1244,7 @@ contour9 <- unionSpatialPolygons(zp9, IDs = zp9@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -1151,7 +1293,7 @@ contour10 <- unionSpatialPolygons(zp10, IDs = zp10@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -1200,7 +1342,7 @@ contour11 <- unionSpatialPolygons(zp11, IDs = zp11@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -1249,7 +1391,7 @@ contour12 <- unionSpatialPolygons(zp12, IDs = zp12@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) is not TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
@@ -1284,3 +1426,30 @@ plot(contour12, add = T)
 ## méthode pour la fonction 'plot' : Erreur : objet 'contour12' introuvable
 ```
 
+Analyse de la superficie
+========================
+#### superficie de l'Alsace en km2:
+surface<-sum(als$SUPERFICIE)/100
+
+#### superficie de l'arrondissement 1
+s1<-als[als$CODE_ARR=="1","SUPERFICIE"]
+summary(s1)
+names(s1)
+sum(s1$SUPERFICIE)/100
+
+#### Merging des fichiers *als* et *base*
+On fusionne les tables als et base sur la colonne INSEE, ce qui permet de mettre dans la même table las zones de proximite, la surface et la population.
+names(als)
+names(base)
+colonne commune *als$INSEE_COM* et *base$ville_insee*
+base_als<-merge(base,als,by.x="ville_insee",by.y="INSEE_COM")
+names(base_als)
+Surface de la zone de proximité 1 (Altkirch)
+szp1<-als[base_als$zone_proximite=="1","SUPERFICIE"]
+sum(szp1$SUPERFICIE)/100
+[1] 818.17
+Pour tous les territoires de proximité (faire une fonction et un dataframe):
+s<-0;for(i in 1:12){szp<-als[base_als$zone_proximite==i,"SUPERFICIE"];s1<-sum(szp$SUPERFICIE)/100;;s<-s+s1;print(paste(i," ->",s1,s,sep=" "))}
+
+à transfomer en fonction:
+s<-0;for(i in 1:12){szp<-als[base_als$zone_proximite==i,"SUPERFICIE"];s[i]<-sum(szp$SUPERFICIE)/100;s<-s+s[i];print(paste(i," ->",s[i],"(",s,")",sep=" "))}

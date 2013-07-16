@@ -75,12 +75,13 @@ a<-a[-121]
   642.0   848.0   895.5   883.2   957.0  1050.0 
   z<-zoo(a,unique(as.Date(d1$ENTREE)))
   plot(z,ylab="Nb. de passages aux Urgences",main="Passages aux SU en 2013",xlab="Période")
-  legend(2,1020,"moyenne lissée",col="red",lty=1,cex=0.8,box.col="white")
+  legend("bottomleft",legend="moyenne lissée",col="red",lty=1,cex=0.8,bty="n")
   lines(rollmean(z[,2],7),col="red")
   
 Variante avec *xts*
  x<-as.xts(z)
  plot(x)
+ legend("bottomleft",legend="moyenne lissée",col="red",lty=1,cex=0.8,bty="n")
 lines(rollmean(xts(z),7),col="red")
 
 utilisation de rollapply

@@ -6,7 +6,7 @@
 % inclu un fichier de bibliothèques
 \include{rpu-2012.sty}
 
-% la rirective suivante permet d'utiliser le séparateur de milliers. Deux formulation sont utilisables mais exclusives l'une de l'autre. L'instruction "autolanguage" permet d'utiliser \nombre{} ou \np{}
+% la directive suivante permet d'utiliser le séparateur de milliers. Deux formulation sont utilisables mais exclusives l'une de l'autre. L'instruction "autolanguage" permet d'utiliser \nombre{} ou \np{}
 %\usepackage{numprint}
 \usepackage[autolanguage,np]{numprint}
 
@@ -47,6 +47,13 @@
 %   \setlength{\fboxsep}{3pt}%
 %   \setlength{\fboxrule}{.4pt}%
 %   \shadow{\sffamily#1}\\\hfill\mbox{}}}
+
+% Définitions de constantes
+<<constantes,echo=FALSE>>=
+pop.als.2010.totale<-1115226 + 765634
+pop.als.2010.municipale<-1095905 + 749782
+@
+
 
 \begin{document}
 
@@ -114,6 +121,8 @@ Un grand nombre 300000 et avec séparation des milliers \np{300000}
 \part{Activité des services d'urgence d'Alsace}
 \chapter{Activité régionale totale}
 \section*{Nombre total de passages}
+<<child='activite_regionale.Rnw'>>=
+@
 \section*{Nombre total de passages par SU}
 \subsection*{En valeur absolue}
 \subsection*{En pourcentage}

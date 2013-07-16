@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Mon Jul  8 10:57:28 2013"
+## [1] "Tue Jul 16 18:07:01 2013"
 ```
 
 source: RPU2013
@@ -17,6 +17,13 @@ Librairies nécessaires:
 
 ```r
 library("gdata")
+```
+
+```
+## Error: there is no package called 'gdata'
+```
+
+```r
 library("rgrs")
 library("lubridate")
 library("rattle")
@@ -224,8 +231,8 @@ xtable(t(t3))
 ```
 
 ```
-## % latex table generated in R 2.15.2 by xtable 1.7-1 package
-## % Mon Jul  8 10:57:34 2013
+## % latex table generated in R 3.0.1 by xtable 1.7-1 package
+## % Tue Jul 16 18:07:06 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rrr}
@@ -1607,7 +1614,7 @@ bp <- summary(as.factor(b))
 barplot(bp)
 ```
 
-![plot of chunk geb jour](figure/geb jour1.png) 
+![plot of chunk geb jour](figure/geb_jour1.png) 
 
 ```r
 round(prop.table(bp) * 100, 2)
@@ -1623,7 +1630,7 @@ barplot(round(prop.table(bp) * 100, 2), ylab = "% des passages", sub = "NP = 0h-
     ylim = c(0, 100), main = "CH HUS\n Passages nuit profonde - jour - soirée")
 ```
 
-![plot of chunk geb jour](figure/geb jour2.png) 
+![plot of chunk geb jour](figure/geb_jour2.png) 
 
 ```r
 t <- table(geb$GRAVITE, b)
@@ -1645,7 +1652,7 @@ t
 barplot(t, beside = T, col = 1:7)
 ```
 
-![plot of chunk geb jour](figure/geb jour3.png) 
+![plot of chunk geb jour](figure/geb_jour3.png) 
 
 Mode sortie en fonction de la période
 
@@ -1687,7 +1694,7 @@ summary(h)
 hist(h, breaks = 23, xlab = "Heures", main = "Alsace - Horaire de fréquentation du SU")
 ```
 
-![plot of chunk total arrivee](figure/total arrivee1.png) 
+![plot of chunk total arrivee](figure/total_arrivee1.png) 
 
 ```r
 t <- table(h)
@@ -1695,14 +1702,14 @@ als_entree <- as.integer(t)
 c <- clock24.plot(als_entree, clock.pos = 1:24, lwd = 3, show.grid.labels = F)
 ```
 
-![plot of chunk total arrivee](figure/total arrivee2.png) 
+![plot of chunk total arrivee](figure/total_arrivee2.png) 
 
 ```r
 c <- clock24.plot(als_entree, clock.pos = 1:24, rp.type = "p", main = "Alsace", 
     xlab = "Heures d'arrivée aux urgences", show.grid.labels = F)
 ```
 
-![plot of chunk total arrivee](figure/total arrivee3.png) 
+![plot of chunk total arrivee](figure/total_arrivee3.png) 
 
 #### Comparaison Alsace - HUS
 Les calculs sont exprimés en %
@@ -1787,11 +1794,8 @@ passages("Tan", "CH Thann", sens = 3)
 ```
 
 ```
-## Warning: All formats failed to parse. No formats found.
-```
-
-```
-## Warning: All formats failed to parse. No formats found.
+## Warning: All formats failed to parse. No formats found. Warning: All
+## formats failed to parse. No formats found.
 ```
 
 ![plot of chunk passages](figure/passages2.png) 
@@ -1804,11 +1808,8 @@ passages("Sav", "CH Saverne", sens = 3)
 ```
 
 ```
-## Warning: All formats failed to parse. No formats found.
-```
-
-```
-## Warning: All formats failed to parse. No formats found.
+## Warning: All formats failed to parse. No formats found. Warning: All
+## formats failed to parse. No formats found.
 ```
 
 ```r
@@ -2210,7 +2211,7 @@ bp <- summary(as.factor(b))
 barplot(bp)
 ```
 
-![plot of chunk Hus jour](figure/Hus jour1.png) 
+![plot of chunk Hus jour](figure/Hus_jour1.png) 
 
 ```r
 round(prop.table(bp) * 100, 2)
@@ -2226,7 +2227,7 @@ barplot(round(prop.table(bp) * 100, 2), ylab = "% des passages", sub = "NP = 0h-
     ylim = c(0, 100), main = "CH HUS\n Passages nuit profonde - jour - soirée")
 ```
 
-![plot of chunk Hus jour](figure/Hus jour2.png) 
+![plot of chunk Hus jour](figure/Hus_jour2.png) 
 
 ```r
 t <- table(Hus$GRAVITE, b)
@@ -2248,7 +2249,7 @@ barplot(t, beside = T, col = 1:5, main = "Gravité en fonction de la période")
 legend(1, 2000, c(1:5), col = c(1:5), pch = 15, cex = 0.8)
 ```
 
-![plot of chunk Hus jour](figure/Hus jour3.png) 
+![plot of chunk Hus jour](figure/Hus_jour3.png) 
 
 Mode sortie en fonction de la période
 
