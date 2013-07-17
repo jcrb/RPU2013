@@ -47,11 +47,21 @@ Création d'un tableau avec *cbind* et une matrice (et xtable pour pdf): voir ex
 sessionInfo()
 toLatex(sessionInfo())
 ```
+Voir aussi les aides suivantes:
+- person
+- citation
+- bibentry
+- citEntry
+- toBibtex(object, ...)
+- toLatex(object, ...)
 
 #### Copyright
 ```{r}
  mtext("© RESURAL 2013",cex=0.6,side=4,line=-1,adj=0.1)
 ```
+####Informations de session
+sessionInfo()
+toLatex(sessionInfo(), locale = FALSE)
 
 #### Pour présenter en latex un tableau type *summary*:
 stargazer(as.data.frame(a2[1:length(a)]),summary=TRUE,digit.separator=" ",digits=2,median=TRUE,iqr=TRUE)

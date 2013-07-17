@@ -195,6 +195,9 @@ test biblio \cite{1}
 <<child='glossaire.Rnw'>>=
 @
 \chapter{RPU}
+\chapter{A propos de ce document}
+<<child='apropos.Rnw'>>=
+@
 \chapter{Bibliographie}
 \bibliography{../../rpu}
 \chapter{Index}

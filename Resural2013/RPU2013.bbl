@@ -4,6 +4,9 @@
 INSEE.
 \newblock Unité urbaine.
 \newblock 2013.
+\newblock
+  \url{http://www.insee.fr/fr/methodes/default.asp?page=definitions/unite-urba%
+ine.htm}.
 
 \bibitem{2}
 ORULOR.
@@ -15,7 +18,13 @@ ORULOR.
 ORUMIP.
 \newblock {\em L'activité des structures d'urgence en Midi-Pyrénée. Rapport
   annuel 2011}.
-\newblock URUMIP, 2011.
+\newblock ORUMIP, 2011.
+
+\bibitem{5}
+{R Core Team}.
+\newblock {\em R: A Language and Environment for Statistical Computing}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria, 2013.
+\newblock \url{http://www.R-project.org/}.
 
 \bibitem{1}
 Naomi~B. Robbins and Richard~M. Heiberger.

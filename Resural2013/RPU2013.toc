@@ -30,5 +30,6 @@
 \contentsline {chapter}{\numberline {A}M\IeC {\'e}thodologie}{36}{appendix.A}
 \contentsline {chapter}{\numberline {B}Glossaire}{38}{appendix.B}
 \contentsline {chapter}{\numberline {C}RPU}{40}{appendix.C}
-\contentsline {chapter}{\numberline {D}Bibliographie}{41}{appendix.D}
-\contentsline {chapter}{\numberline {E}Index}{43}{appendix.E}
+\contentsline {chapter}{\numberline {D}A propos de ce document}{41}{appendix.D}
+\contentsline {chapter}{\numberline {E}Bibliographie}{42}{appendix.E}
+\contentsline {chapter}{\numberline {F}Index}{44}{appendix.F}
