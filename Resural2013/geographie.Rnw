@@ -31,6 +31,17 @@ Il existe neuf territoires de proximité:
 \end{enumerate}
 
 \section{Démographie}
+\subsection{Généralités}
+En France, les populations légales sont calculées par l'INSEE sur la base de définitions réglementaires à partir de recensement de la population. Ce document utilise la \emph{Population municipale} \ref{Population_municipale} \index{Population@Population!municipale}  qui est la nouvelle dénomination de la population sans double comptes. Le chiffre est donc inférieur de celui de la \emph{Population totale} qui est égale à la somme de la population municipale et de la population comptée à part d'une commune.
+
+\subsection{Classes d'age}
+Les RPU divisent l'age des patients en trois catégories:
+\begin{enumerate}
+  \item Les moins de un an
+  \item de 1 an à 75 ans
+  \item les plus de 75 ans
+\end{enumerate}
+
 Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'ensemble de la population par commune et par tranches de un an. La version utilisée est celle du 1er janvier 2010 (tab.\ref{pop}).
 
 \begin{table}
