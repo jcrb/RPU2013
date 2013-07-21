@@ -138,19 +138,30 @@ On ne retient que les villes d'Alsace, c'est à dire celles appartenant à la r�
 ```{r}
 va<-v[v$region_ID=="42",]
 ```
-mise en forme:
-- *zone_proximite* est transformé en facteur
-- *territoire_sante* est transformé en facteur
-```{r}
-va$zone_proximite<-as.factor(va$zone_proximite)
-va$territoire_sante<-as.factor(va$territoire_sante)
-```
 #### villes où la ZP est manquante:
 ```{r}
 a<-va[va$zone_proximite==0,c(1:3)]
 a
 ```
+#### mise en forme:
+- on élimine les communes sans territoire de proximité (anciennes communes)
+- *zone_proximite* est transformé en facteur
+- *territoire_sante* est transformé en facteur
+```{r}
+va<-va[va$zone_proximite > 0,]
+va$zone_proximite<-as.factor(va$zone_proximite)
+va$territoire_sante<-as.factor(va$territoire_sante)
+```
+#### Sauvegarde: ("/home/jcb/Documents/Resural/Stat Resural/RPU2013/villes.RData")
+```{r}
+save(va,file="villes.RData")
+```
+
 notes:
+- certaines communes ont fusionné avec d'autres. Liste des anciennes communes du bas-rhin: https://fr.wikipedia.org/wiki/Liste_des_anciennes_communes_du_Bas-Rhin
+- l67 comte 527 communes. Voir: http://fr.wikipedia.org/wiki/Liste_des_communes_du_Bas-Rhin (liste des communes, code postal, code insee, arrondissement, canton et communauté dé de commune)
+- le 68 compte 377 communes. Voir: http://fr.wikipedia.org/wiki/Liste_des_communes_du_Haut-Rhin
+- l'Alsace compte 527 + 377 = 904 communes
 - *Hoffe*n est une commune française, située dans le département du Bas-Rhin et la région Alsace. La commune a fusionné avec les villages de *Hermerswiller* et de *Leiterswiller* le 1er janvier 1975.
 - Depuis le 1er mai 1972, *Schnersheim* regroupe les communes associées d'*Avenheim* et de *Kleinfrankenheim*.
 - *Truchtersheim*: Depuis le 15 juillet 1974, la commune est fusionnée avec l'ancienne commune de *Behlenheim*.
