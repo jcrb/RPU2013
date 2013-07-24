@@ -13,12 +13,18 @@ Table des matières
 Notes techniques
 ================
 
+#### gdata
 gdata est utile pour la méthode drop.levels() qui supprime les levels inutiles:
 (ref: http://rwiki.sciviews.org/doku.phpéid=tips:data-manip:drop_unused_levels)
 
 note: pour supprimer les messages inutiles *{r message=FALSE}*
 
 note: pour supprimer les warnings: *{r warning=FALSE}*
+
+#### RCurl
+Permet de lire des données via HTTP. Avant de l'installer il faut installer la librairie *libcurl4-openssl-dev*:  
+sudo apt-get install libcurl4-openssl-dev  
+ref: http://www.omegahat.org/RCurl/FAQ.html  
 
 #### A NE FAIRE QU'UNE FOIS AU DEBUT DE LA SESSION:
 - loadhistory(file = ".Rhistory")
@@ -87,6 +93,13 @@ toLatex(sessionInfo())
 ## \end{itemize}
 ```
 
+Voir aussi les aides suivantes:
+- person
+- citation
+- bibentry
+- citEntry
+- toBibtex(object, ...)
+- toLatex(object, ...)
 
 #### Copyright
 
@@ -98,6 +111,9 @@ mtext("© RESURAL 2013", cex = 0.6, side = 4, line = -1, adj = 0.1)
 ## Error: plot.new has not been called yet
 ```
 
+####Informations de session
+sessionInfo()
+toLatex(sessionInfo(), locale = FALSE)
 
 #### Pour présenter en latex un tableau type *summary*:
 stargazer(as.data.frame(a2[1:length(a)]),summary=TRUE,digit.separator=" ",digits=2,median=TRUE,iqr=TRUE)
@@ -215,15 +231,6 @@ On ne retient que les villes d'Alsace, c'est à dire celles appartenant à la r�
 va <- v[v$region_ID == "42", ]
 ```
 
-mise en forme:
-- *zone_proximite* est transformé en facteur
-- *territoire_sante* est transformé en facteur
-
-```r
-va$zone_proximite <- as.factor(va$zone_proximite)
-va$territoire_sante <- as.factor(va$territoire_sante)
-```
-
 #### villes où la ZP est manquante:
 
 ```r
@@ -255,7 +262,29 @@ a
 ## 1061     1078            MITSCHDORF       67294
 ```
 
+#### mise en forme:
+- on élimine les communes sans territoire de proximité (anciennes communes)
+- *zone_proximite* est transformé en facteur
+- *territoire_sante* est transformé en facteur
+
+```r
+va <- va[va$zone_proximite > 0, ]
+va$zone_proximite <- as.factor(va$zone_proximite)
+va$territoire_sante <- as.factor(va$territoire_sante)
+```
+
+#### Sauvegarde: ("/home/jcb/Documents/Resural/Stat Resural/RPU2013/villes.RData")
+
+```r
+save(va, file = "villes.RData")
+```
+
+
 notes:
+- certaines communes ont fusionné avec d'autres. Liste des anciennes communes du bas-rhin: https://fr.wikipedia.org/wiki/Liste_des_anciennes_communes_du_Bas-Rhin
+- l67 comte 527 communes. Voir: http://fr.wikipedia.org/wiki/Liste_des_communes_du_Bas-Rhin (liste des communes, code postal, code insee, arrondissement, canton et communauté dé de commune)
+- le 68 compte 377 communes. Voir: http://fr.wikipedia.org/wiki/Liste_des_communes_du_Haut-Rhin
+- l'Alsace compte 527 + 377 = 904 communes
 - *Hoffe*n est une commune française, située dans le département du Bas-Rhin et la région Alsace. La commune a fusionné avec les villages de *Hermerswiller* et de *Leiterswiller* le 1er janvier 1975.
 - Depuis le 1er mai 1972, *Schnersheim* regroupe les communes associées d'*Avenheim* et de *Kleinfrankenheim*.
 - *Truchtersheim*: Depuis le 15 juillet 1974, la commune est fusionnée avec l'ancienne commune de *Behlenheim*.
@@ -268,8 +297,8 @@ summary(va$zone_proximite)
 ```
 
 ```
-##   0   1   2   3   4   5   6   7   8   9  10  11  12 
-##  20 111  94  45  96  64  34 104  42 158  54  50  52
+##   1   2   3   4   5   6   7   8   9  10  11  12 
+## 111  94  45  96  64  34 104  42 158  54  50  52
 ```
 
 Combinaisons des fichiers
@@ -410,26 +439,30 @@ effectif
 ```
 
 ```
-##      1      2      3      4      5      6      7      8      9     10 
-##  68591 196848  79628 194649  88811 257351 161331  94315 113804 485884 
-##     11     12 
-##  67191  56886
+##      2      3      4      5      6      7      8      9     10     11 
+## 196848  79628 194649  88811 257351 161331  94315 113804 485884  67191 
+##     12 
+##  56886
 ```
 
 ```r
 names(effectif) <- territoire.prox
+```
+
+```
+## Error: attribut 'names' [12] doit être de même longueur que le vecteur
+## [11]
+```
+
+```r
 effectif
 ```
 
 ```
-##           Altkirch             Colmar         Guebwiller 
-##              68591             196848              79628 
-##           Haguenau Molsheim-Schirmeck           Mulhouse 
-##             194649              88811             257351 
-##   Sélestat-Obernai        Saint-Louis            Saverne 
-##             161331              94315             113804 
-##         Strasbourg              Thann        Wissembourg 
-##             485884              67191              56886
+##      2      3      4      5      6      7      8      9     10     11 
+## 196848  79628 194649  88811 257351 161331  94315 113804 485884  67191 
+##     12 
+##  56886
 ```
 
 ```r
@@ -438,14 +471,8 @@ pourcentage
 ```
 
 ```
-##           Altkirch             Colmar         Guebwiller 
-##               3.68              10.55               4.27 
-##           Haguenau Molsheim-Schirmeck           Mulhouse 
-##              10.44               4.76              13.80 
-##   Sélestat-Obernai        Saint-Louis            Saverne 
-##               8.65               5.06               6.10 
-##         Strasbourg              Thann        Wissembourg 
-##              26.05               3.60               3.05
+##     2     3     4     5     6     7     8     9    10    11    12 
+## 10.96  4.43 10.83  4.94 14.32  8.98  5.25  6.33 27.04  3.74  3.17
 ```
 
 ```r
@@ -454,19 +481,18 @@ c
 ```
 
 ```
-##                    effectif pourcentage
-## Altkirch              68591        3.68
-## Colmar               196848       10.55
-## Guebwiller            79628        4.27
-## Haguenau             194649       10.44
-## Molsheim-Schirmeck    88811        4.76
-## Mulhouse             257351       13.80
-## Sélestat-Obernai     161331        8.65
-## Saint-Louis           94315        5.06
-## Saverne              113804        6.10
-## Strasbourg           485884       26.05
-## Thann                 67191        3.60
-## Wissembourg           56886        3.05
+##    effectif pourcentage
+## 2    196848       10.96
+## 3     79628        4.43
+## 4    194649       10.83
+## 5     88811        4.94
+## 6    257351       14.32
+## 7    161331        8.98
+## 8     94315        5.25
+## 9    113804        6.33
+## 10   485884       27.04
+## 11    67191        3.74
+## 12    56886        3.17
 ```
 
 ```r
@@ -474,7 +500,7 @@ barplot(sort(effectif), cex.names = 0.8, xlab = "", las = 2, ylab = "Effectifs",
     main = "Répartition de la population par territoire de proximité")
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-121.png) 
+![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-131.png) 
 
 ```r
 
@@ -482,7 +508,7 @@ barplot(sort(pourcentage), cex.names = 0.8, las = 2, xlab = "", ylab = "% de la 
     main = "Répartition de la population par territoire de proximité")
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-122.png) 
+![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-132.png) 
 
 Commentaires:
 - le territoire  de proximité de Strasbourg est le plus important et regroupe plus du quart de la population alsacienne
@@ -595,7 +621,7 @@ contour <- unionSpatialPolygons(zp1, IDs = zp1@data$CODE_ARR)
 plot(contour, axes = T)
 ```
 
-![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15.png) 
+![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
 
 *contour* est un *SpatialPolygons*.
 
@@ -606,7 +632,7 @@ plot(contour, axes = T, xlab = "axe x", col = "red")
 plot(zp1, add = T)
 ```
 
-![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
+![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17.png) 
 
 modifier l'aspect:
 - lty = 1 (normal), 2, 3, 4, 5... (pointillés)
@@ -623,7 +649,7 @@ plot(zp1, , axes = T)
 plot(contour, axes = T, lty = 1, lwd = 2, fg = "blue", border = "red", add = T)
 ```
 
-![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17.png) 
+![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-18.png) 
 
 Certains caractères accentués posent des pb comme dans *préfecture*:
 
@@ -709,7 +735,7 @@ points(x, y, pch = 19, col = 3)
 text(x, y, labels = nom, cex = 0.8, pos = 3)
 ```
 
-![plot of chunk unnamed-chunk-20](figure/unnamed-chunk-20.png) 
+![plot of chunk unnamed-chunk-21](figure/unnamed-chunk-21.png) 
 
 Les zones de proximités officielles sont dans le fichier zp.csv
 
@@ -1192,3 +1218,94 @@ s<-0;for(i in 1:12){szp<-als[base_als$zone_proximite==i,"SUPERFICIE"];s1<-sum(sz
 
 à transfomer en fonction:
 s<-0;for(i in 1:12){szp<-als[base_als$zone_proximite==i,"SUPERFICIE"];s[i]<-sum(szp$SUPERFICIE)/100;s<-s+s[i];print(paste(i," ->",s[i],"(",s,")",sep=" "))}
+
+#### Merging des fichiers *als* et *zpo*
+
+- als est le fichier shapefile des données alsace. Sa partie donnée est accessible via *als@data* par exemple  names(als@data). Les communes sont repérées par *INSEE_COM*
+- *zpo* est le fichier des zones de proximité. Les communes sont repérées par *CODE.COMMUNE*
+- on fait un merging des 2 fichiers sur ces colonnes:
+
+```r
+zpals <- merge(zpo, als, by.x = "CODE.COMMUNE", by.y = "INSEE_COM")
+```
+
+en fait on obtient un simple dataframe et pas un spatialPolygon. Pour que celà fonctionne il faut merger uniquement les data:
+zpals<-als
+zpals@data<-merge(zpals@data,zpo,by.x="INSEE_COM",by.y="CODE.COMMUNE")
+zp<-zpals[zpals$CODE.ZONES.DE.PROXIMITE==1,]
+
+Le merging fonctionne mais les datas ne correspondent plus au shapefile ?
+
+soluttion trouvée:  
+Let df = data frame, sp = spatial polygon object and by = name or column number of common column. You can then merge the data frame into the sp object using the following line of code
+
+sp@data = data.frame(sp@data, df[match(sp@data[,by], df[,by]),])
+
+Here is how the code works. The match function inside aligns the columns so that order is preserved. So when we merge it with sp@data, order is correctly preserved. A quick check to see if the code has worked is to inspect the two columns corresponding to the common column and see if they are identical (the common columns get duplicated and it is easy to remove the copy, but i keep it as it is a good check):
+
+```r
+zpals <- als
+zpals@data <- data.frame(zpals@data, zpo[match(zpals@data[, "INSEE_COM"], zpo[, 
+    "CODE.COMMUNE"]), ])
+zp <- zpals[zpals$CODE.ZONES.DE.PROXIMITE == 1, ]
+plot(zp)
+```
+
+![plot of chunk unnamed-chunk-24](figure/unnamed-chunk-24.png) 
+
+Ca marche!!! auteur: http://stackoverflow.com/users/235349/ramnath (Ramnath Vaidyanathan is an Assistant Professor of Operations Management at the Desautels Faculty of Management, McGill University. He got his PhD from the Wharton School and worked at McKinsey & Co prior to that. )
+
+Dessin  du contour: nécessite la package *maptools*  
+czp = contour de la zone de proximité:
+
+```r
+library("maptools")
+czp <- unionSpatialPolygons(zp, IDs = zp@data$CODE_DEPT)
+plot(czp)
+title(main = "Zone de proximité de Wissembourg")
+```
+
+![plot of chunk unnamed-chunk-25](figure/unnamed-chunk-25.png) 
+
+```
+#### Dessin du contour de l'ensemble des zones de proximité (czps)
+
+```r
+czps <- unionSpatialPolygons(zpals, IDs = zpals$CODE.ZONES.DE.PROXIMITE)
+plot(czps)
+```
+
+![plot of chunk unnamed-chunk-26](figure/unnamed-chunk-261.png) 
+
+```r
+plot(czps, col = c("red", "yellow", "blue", "green", "orange"))
+title(main = "Zone de proximité en Alsace")
+```
+
+![plot of chunk unnamed-chunk-26](figure/unnamed-chunk-262.png) 
+
+#### Dessin du contour des territoires de santé (ctss)
+
+```r
+ctss <- unionSpatialPolygons(zpals, IDs = zpals$LIBELLE.DES.TERRITOIRES.DE.SANTE)
+plot(ctss)
+title(main = "Territoires de santé en Alsace")
+```
+
+![plot of chunk unnamed-chunk-27](figure/unnamed-chunk-27.png) 
+
+#### Dessin territoires de santé (ctss) et des zones de proximité (czps)
+
+```r
+plot(czps)
+plot(ctss, border = "red", add = T)
+
+plot(ctss, col = c("yellow", "blue", "green", "orange"), border = "red", add = T)
+plot(czps, add = TRUE)
+```
+
+![plot of chunk unnamed-chunk-28](figure/unnamed-chunk-28.png) 
+
+
+
+

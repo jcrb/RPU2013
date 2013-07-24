@@ -13,12 +13,18 @@ Table des matières
 Notes techniques
 ================
 
+#### gdata
 gdata est utile pour la méthode drop.levels() qui supprime les levels inutiles:
 (ref: http://rwiki.sciviews.org/doku.phpéid=tips:data-manip:drop_unused_levels)
 
 note: pour supprimer les messages inutiles *{r message=FALSE}*
 
 note: pour supprimer les warnings: *{r warning=FALSE}*
+
+#### RCurl
+Permet de lire des données via HTTP. Avant de l'installer il faut installer la librairie *libcurl4-openssl-dev*:  
+sudo apt-get install libcurl4-openssl-dev  
+ref: http://www.omegahat.org/RCurl/FAQ.html  
 
 #### A NE FAIRE QU'UNE FOIS AU DEBUT DE LA SESSION:
 - loadhistory(file = ".Rhistory")
@@ -683,3 +689,75 @@ s<-0;for(i in 1:12){szp<-als[base_als$zone_proximite==i,"SUPERFICIE"];s1<-sum(sz
 
 à transfomer en fonction:
 s<-0;for(i in 1:12){szp<-als[base_als$zone_proximite==i,"SUPERFICIE"];s[i]<-sum(szp$SUPERFICIE)/100;s<-s+s[i];print(paste(i," ->",s[i],"(",s,")",sep=" "))}
+
+#### Merging des fichiers *als* et *zpo*
+
+- als est le fichier shapefile des données alsace. Sa partie donnée est accessible via *als@data* par exemple  names(als@data). Les communes sont repérées par *INSEE_COM*
+- *zpo* est le fichier des zones de proximité. Les communes sont repérées par *CODE.COMMUNE*
+- on fait un merging des 2 fichiers sur ces colonnes:
+```{r}
+zpals<-merge(zpo,als,by.x="CODE.COMMUNE",by.y="INSEE_COM")
+```
+en fait on obtient un simple dataframe et pas un spatialPolygon. Pour que celà fonctionne il faut merger uniquement les data:
+zpals<-als
+zpals@data<-merge(zpals@data,zpo,by.x="INSEE_COM",by.y="CODE.COMMUNE")
+zp<-zpals[zpals$CODE.ZONES.DE.PROXIMITE==1,]
+
+Le merging fonctionne mais les datas ne correspondent plus au shapefile ?
+
+soluttion trouvée:  
+Let df = data frame, sp = spatial polygon object and by = name or column number of common column. You can then merge the data frame into the sp object using the following line of code
+
+sp@data = data.frame(sp@data, df[match(sp@data[,by], df[,by]),])
+
+Here is how the code works. The match function inside aligns the columns so that order is preserved. So when we merge it with sp@data, order is correctly preserved. A quick check to see if the code has worked is to inspect the two columns corresponding to the common column and see if they are identical (the common columns get duplicated and it is easy to remove the copy, but i keep it as it is a good check):
+```{r}
+zpals<-als
+zpals@data<-data.frame(zpals@data,zpo[match(zpals@data[,"INSEE_COM"] ,zpo[,"CODE.COMMUNE"]),])
+zp<-zpals[zpals$CODE.ZONES.DE.PROXIMITE==1,]
+plot(zp)
+```
+Ca marche!!! auteur: http://stackoverflow.com/users/235349/ramnath (Ramnath Vaidyanathan is an Assistant Professor of Operations Management at the Desautels Faculty of Management, McGill University. He got his PhD from the Wharton School and worked at McKinsey & Co prior to that. )
+
+Dessin  du contour: nécessite la package *maptools*  
+czp = contour de la zone de proximité:
+```{r}
+library("maptools")
+czp<-unionSpatialPolygons(zp, IDs=zp@data$CODE_DEPT)
+plot(czp)
+title(main="Zone de proximité de Wissembourg")
+```
+```
+#### Dessin du contour de l'ensemble des zones de proximité (czps)
+```{r}
+czps<-unionSpatialPolygons(zpals, IDs=zpals$CODE.ZONES.DE.PROXIMITE)
+plot(czps)
+plot(czps,col=c("red","yellow","blue","green","orange"))
+title(main="Zone de proximité en Alsace")
+```
+#### Dessin du contour des territoires de santé (ctss)
+```{r}
+ctss<-unionSpatialPolygons(zpals, IDs=zpals$LIBELLE.DES.TERRITOIRES.DE.SANTE)
+plot(ctss)
+title(main="Territoires de santé en Alsace")
+```
+#### Dessin territoires de santé (ctss) et des zones de proximité (czps)
+```{r}
+plot(czps)
+plot(ctss, border = "red",add=T)
+
+plot(ctss,col=c("yellow","blue","green","orange"), border = "red",add=T)
+plot(czps,add=TRUE)
+```
+essais avec les couleurs:
+- plot(ctss,col=heat.colors(4))
+- plot(czps,col=heat.colors(12))
+- plot(czps,col=terrain.colors(12))
+- plot(czps,col=topo.colors(12))
+- plot(czps,col=cm.colors(12))
+
+essai avec "RColorBrewer"  
+library("RColorBrewer")  
+wp<-brewer.pal(12,"Set3")
+plot(czps,col=wp)
+
