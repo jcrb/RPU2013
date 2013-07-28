@@ -851,7 +851,7 @@ c<-c(1,3,1,1,3,2,5,1,2,3,1,1)
 palette(gray(5:0/5))
 plot(czps,col=c)
 title(main="Répartition des 75 ans et plus",xlab="Chiffres INSEE 2010")
-legend("topleft",col=gray(5:0/5),legend=c("0-5%","5-10%","10-15%","15-20%","20-25%"),pch=15)
+legend("topleft",col=gray(5:0/5),legend=c("0-5%","5-10%","10-15%","15-20%","20-25%"),pch=15,cex=0.8,bty="n")
 mtext("© RESURAL 2013",cex=0.6,side=4,line=-1,adj=0.1)
 ```
 NB: pour déterminer l'ordre de traçage, on utilise la méthode suivante:
