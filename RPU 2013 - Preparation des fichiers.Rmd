@@ -1,0 +1,181 @@
+RPU 2013 - Préparation des fichiers
+========================================================
+
+Ce document décrit la préparation des données RPU depuis la ptransmission du fichier brut jusqu'à la production d'un fichier directement exploitable par R.
+Mise à jour:
+```{r}
+date()
+```
+
+Nomenclature
+------------
+- *raw* désigne les données brutes
+- *tidy* désigne les données nettoyées
+- la lettre *d* désigne les données. La lettre d peut être suivie de deux chiffres désignant le mois. Par ex. *d01* désigne les données du mois de janvier.
+
+Origine des données
+-------------------
+Les données sont constituées par les RPU produits par les servives d'urgence. Les RPU sont transmis quotidiennement selon le schéma défini par l' INVS (version 2006) au serveur régional Sagec. Ces données sont gérées par Alsace e-santé (AeS) qui transmets les informations à l'INVS et à Résural. Pour Resural, AeS adresse tous les 5 du mois courant un dump de la table RPU__ du mois précédant, sous la forme d'un fichier .sql.  
+Ce fichier .sql est accessible uniquement sur le réseau interne des HUS via un accès sécurisé au serveur HUS (**TODO** décrire la procédure).  
+Le fichier est récupéré sur ce serveur par Résural.
+
+Transfert des données brutes vers PhpMyAdmin
+--------------------------------------------
+Le fichier récupéré est ensuite importé dans une base de données MySql. La base est crée sur le poste *mint* via *PhpMyAdmin* sous le nom de *rpu*. Par défaut, le fichier récupéré est stocké dans le dossier racine de l'utilisateur, *Dossier personnel/Resural_mai_juin_2013*. Il contient les données pour les mois de:
+- mai: rpu_2013_05_dump.sql (22.7 Mo)
+- juin: rpu_2013_06_dump.sql (23.7 Mo)
+Pour les transférer, on utilise la procédure standard en ligne de commande, commençant par le mois de mai:
+```{}
+jcb@mint1:~$ mysql -u root -pmarion rpu < Resural_mai_juin_2013/rpu_2013_05_dump.sql
+```
+Création d'un fichier .my.cfg
+-----------------------------
+Le fichier caché *.my.cfg* (Dossier personnel) contient les identifiants de connexion à la base de données nécéssaires pour R:
+```{}
+[rpu] 
+user = root 
+host = localhost 
+database = rpu 
+password = marion 
+```
+Lecture du fichier dans RStudio
+-------------------------------
+
+### étape 1
+
+Cette étape permet de récupérer les données à partir de la table *rpu__* de la base de données *rpu*. A l'issue, un fichier de travail *rpu2013_05.txt* esr créé. Si ce fichier a déjà été créé, passer directement à l'étape 4.
+
+Chargement des library nécessaires:
+```{r}
+library("RMySQL")
+```
+Création d'un connecteur:
+```{r}
+con<-dbConnect(MySQL(),group = "rpu") 
+```
+Liste des tables de la base *rpu*
+```{r}
+dbListTables(con)
+```
+Liste des champs de la table *rpu__*
+```{r}
+dbListFields(con,"RPU__")
+```
+Lecture des enregistrements de la table compris entre le 1er mai et le 31 mai 2013 (cette étape peu être longue):
+```{r}
+rs<-dbSendQuery(con,"SELECT * FROM RPU__ WHERE ENTREE BETWEEN '2013-05-01' AND '2013-05-31' ")
+d05<-fetch(rs,n=-1,encoding = "UTF-8")
+max(d1$ENTREE)
+min(d1$ENTREE)
+```
+Pour la mois de juin on répète les mêmes étapes:
+- jcb@mint1:~$ mysql -u root -pmarion rpu < Resural_mai_juin_2013/rpu_2013_06_dump.sql
+- rs<-dbSendQuery(con,"SELECT * FROM RPU__ WHERE ENTREE BETWEEN '2013-06-01' AND '2013-06-31' ")
+- d06<-fetch(rs,n=-1,encoding = "UTF-8")
+Les deux fichiers peuvent être combinés en un seul avec la commande *rbind*:
+```{}
+d0506<-rbind(d05,d06)
+min(d0506$ENTREE)
+[1] "2013-05-01 00:00:00"
+max(d0506$ENTREE)
+[1] "2013-06-30 23:53:00"
+```
+
+etape 2: nettoyage des données
+------------------------------
+Suppression de la colonne 16, intitulée RAW. Cette colonne a été rajoutée par mr Nold pour stocker le RPU tel que fournit par le SAU:
+```{r}
+d05<-d05[,-16]
+```
+On ramène le nombre de variable à 19.
+
+création de FINESS unique pour un établissement par transformation du finess juridique en finess geographique
+```{r}
+a<-d05$FINESS
+a[a=="670000397"]<-"Sel"
+a[a=="680000684"]<-"Col"
+a[a=="670016237"]<-"Odi"
+a[a=="670000272"]<-"Wis"
+a[a=="680000700"]<-"Geb"
+a[a=="670780055"]<-"Hus"
+a[a=="680000197"]<-"3Fr"
+a[a=="680000627"]<-"Mul"
+a[a=="670000157"]<-"Hag"
+a[a=="680000320"]<-"Dia"
+a[a=="680000395"]<-"Alk"
+unique(a)
+d05$FINESS<-as.factor(a)
+rm(a)
+```
+Transformation en facteur:
+```{r}
+d05$CODE_POSTAL<-as.factor(d05$CODE_POSTAL)
+d05$COMMUNE<-as.factor(d05$COMMUNE)
+d05$SEXE<-as.factor(d05$SEXE)
+d05$TRANSPORT<-as.factor(d05$TRANSPORT)
+d05$TRANSPORT_PEC<-as.factor(d05$TRANSPORT_PEC)
+d05$GRAVITE<-as.factor(d05$GRAVITE)
+d05$ORIENTATION<-as.factor(d05$ORIENTATION)
+
+d05$MODE_ENTREE<-factor(d05$MODE_ENTREE,levels=c(0,6,7,8),labels=c('NA','Mutation','Transfert','Domicile'))
+d05$PROVENANCE<-factor(d05$PROVENANCE,levels=c(0,1,2,3,4,5,8),labels=c('NA','MCO','SSR','SLD','PSY','PEA','PEO'))
+d05$MODE_SORTIE<-factor(d05$MODE_SORTIE,levels=c(0,6,7,8,4),labels=c('NA','Mutation','Transfert','Domicile','Décès'))
+d05$DESTINATION<-factor(d05$DESTINATION,levels=c(0,1,2,3,4,6,7),labels=c('NA','MCO','SSR','SLD','PSY','HAD','HMS'))
+```
+Création d'une variable AGE:
+```{r-age1}
+d05$AGE<-floor(as.numeric(as.Date(d05$ENTREE)-as.Date(d05$NAISSANCE))/365)
+```
+Correction des ages supérieurs à 120 ans (3 cas) ou inférieur à 0 (2 cas)
+```{r age}
+d1$AGE[d1$AGE > 120]<-NA
+d1$AGE[d1$AGE < 0]<-NA
+```
+etape 3: sauvegarde des données nettoyées
+-----------------------------------------
+```{r-sauvegarde}
+# write.table(d05,"rpu2013_05.txt",sep=',',quote=TRUE,na="NA")
+save(d05,file="rpu2013d05.Rda")
+# load("rpu2013d05.Rda")
+```
+etape 4: chargement des données sauvegardées
+--------------------------------------------
+```{r}
+# load("rpu2013d05.Rda")
+```
+Résumé des tidy datas
+---------------------
+```{r}
+str(d05)
+summary(d05)
+```
+Fusion avec la base annuelle
+-----------------------------
+*d1* est la base annuelle provisoire
+```{r}
+d0105<-rbind(d1,d05)
+save(d0105,file="rpu2013d0105.Rda")
+```
+
+
+SUITE: voir RPU_2013_Preparation.Rmd
+
+Vérification de la complétude des données
+=========================================
+
+Nombre de passages
+------------------
+Tableau croisé des Finess et du nombre de passages quotidiens:
+```{r}
+d<-table(as.Date(d0506$ENTREE),d0506$FINESS)
+head(d)
+plot(t(d))
+```
+           3Fr Alk Col Dia Geb Hag Hus Mul Odi Sel Wis
+  2013-05-01  49   8 155  70  40 102 103 132  73  85  29
+  2013-05-02  43  41 180  85  52 104 120 123  72  89  32
+  2013-05-03  36  29 176  64  43  85 116 141  71  82  27
+  2013-05-04  47  11 184  92  42 104  87 151  74  93  34
+  2013-05-05  52  10 190  89  50  91 102 185  93  99  31
+  2013-05-06  50  46 209  97  40  99 138 174  73  98  36
+
