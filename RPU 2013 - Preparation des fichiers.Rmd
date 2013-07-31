@@ -11,7 +11,11 @@ Nomenclature
 ------------
 - *raw* désigne les données brutes
 - *tidy* désigne les données nettoyées
-- la lettre *d* désigne les données. La lettre d peut être suivie de deux chiffres désignant le mois. Par ex. *d01* désigne les données du mois de janvier.
+- la lettre *d* désigne les données. La lettre d peut être suivie de deux ou quatre chiffres désignant le mois. Par ex. *d01* désigne les données du mois de janvier et *d0506* les données des mois de mai et juin.
+- la base de donnée mysql contenant les données du mois s'appelle *rpu* et la table contenant les RPU s'appelle *RPU__* (deux soulignés).
+- les données nettoyées sont sauvegardées sous deux formats
+  - rpu2013_05.txt (rpu+année_mois.txt)
+  - rpu2013d05.Rda (rpu+année+d+mois.Rda)
 
 Origine des données
 -------------------
