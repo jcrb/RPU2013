@@ -32,9 +32,8 @@ On lit le fichier de travail créé:
 ```{r Lecture fichier}
 # load("rpu2013.Rda")
 load("rpu2013d0106.Rda")
-save(d0106,file="rpu2013d0106.Rda")
-d1<-d0105
-rm(d0105)
+d1<-d0106
+rm(d0106)
 
 attach(d1)
 ```
