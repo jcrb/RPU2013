@@ -1,7 +1,7 @@
 % activite_regionale.Rnw
 
 
-%on fabrique un objet **a** qui dait la somme pae date des passages aux urgences:
+%on fabrique un objet **a** qui fait la somme pae date des passages aux urgences:
 <<activite,echo=FALSE>>=
 e<-ymd_hms(d1$ENTREE)
 a<-tapply(e,as.Date(d1$ENTREE),length)
@@ -44,13 +44,14 @@ abline(h=mean(a),col="blue")
 
 tru2011_lorraine<-0.2345
 tru_estime<-pop.als.2010.totale*tru2011_lorraine
-tru2013_alsace<-round(length(e)*100/pop.als.2010.totale,2)
+# tru2013_alsace<-round(length(e)*100/pop.als.2010.totale,2)
+tru2013_alsace<-round(nrow(d1)*100/pop.als.2010.totale,2)
 
 print(tru_estime)
 @
 Le taux de recours aux urgences \index{taux de recours aux urgences} (TRU) \index{TRU} est défini comme le nombre total de passages aux urgences, rapporté à la population de la région (INSEE 1er janvier 2010). En Lorraine, ce taux est estimé à 23,45\% en 2010 (\cite{2,3}). En supposant que la population alsacienne se comprte comme la population lorraine, le nombre de passages aux urgences devrait s'établir à \Sexpr{tru_estime}.
 
-Le TRU 2013 estimé en Alsace est de \Sexpr{tru2013_alsace}\%.
+Le TRU 2013 estimé en Alsace à partir des RPU transmis est de \Sexpr{tru2013_alsace}\%.
 
 \subsubsection*{TODO}
 \begin{itemize}

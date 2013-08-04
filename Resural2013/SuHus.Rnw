@@ -32,6 +32,6 @@ hus.serv<-as.factor(dhus$ser2)
 ta<-tapply(dhus$TOTAL.passages,hus.serv,sum)
 @
 
-Entre le \Sexpr{m1} et le \Sexpr{m2}, \Sexpr{t} RPU ont été transmis, alors que \Sexpr{tot} dossiers ont été déclarés au serveur régional. 
+Entre le \Sexpr{m1} et le \Sexpr{m2}, \np{\Sexpr{t}} RPU ont été transmis, alors que \np{\Sexpr{tot}} dossiers ont été déclarés au serveur régional. 
 \Sexpr{table(ta)}
 

@@ -7,24 +7,23 @@ Table des matières
 3. population
 
 
-
-
-
 Notes techniques
 ================
-
+Librairies
+----------
 #### gdata
 gdata est utile pour la méthode drop.levels() qui supprime les levels inutiles:
 (ref: http://rwiki.sciviews.org/doku.phpéid=tips:data-manip:drop_unused_levels)
 
-note: pour supprimer les messages inutiles *{r message=FALSE}*
-
-note: pour supprimer les warnings: *{r warning=FALSE}*
-
 #### RCurl
 Permet de lire des données via HTTP. Avant de l'installer il faut installer la librairie *libcurl4-openssl-dev*:  
 sudo apt-get install libcurl4-openssl-dev  
-ref: http://www.omegahat.org/RCurl/FAQ.html  
+ref: http://www.omegahat.org/RCurl/FAQ.html
+
+#### Chunks
+- pour supprimer les messages inutiles *{r message=FALSE}*
+- pour supprimer les warnings: *{r warning=FALSE}*
+
 
 #### A NE FAIRE QU'UNE FOIS AU DEBUT DE LA SESSION:
 - loadhistory(file = ".Rhistory")

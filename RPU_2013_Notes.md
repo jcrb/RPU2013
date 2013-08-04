@@ -7,24 +7,23 @@ Table des matières
 3. population
 
 
-
-
-
 Notes techniques
 ================
-
+Librairies
+----------
 #### gdata
 gdata est utile pour la méthode drop.levels() qui supprime les levels inutiles:
 (ref: http://rwiki.sciviews.org/doku.phpéid=tips:data-manip:drop_unused_levels)
 
-note: pour supprimer les messages inutiles *{r message=FALSE}*
-
-note: pour supprimer les warnings: *{r warning=FALSE}*
-
 #### RCurl
 Permet de lire des données via HTTP. Avant de l'installer il faut installer la librairie *libcurl4-openssl-dev*:  
 sudo apt-get install libcurl4-openssl-dev  
-ref: http://www.omegahat.org/RCurl/FAQ.html  
+ref: http://www.omegahat.org/RCurl/FAQ.html
+
+#### Chunks
+- pour supprimer les messages inutiles *{r message=FALSE}*
+- pour supprimer les warnings: *{r warning=FALSE}*
+
 
 #### A NE FAIRE QU'UNE FOIS AU DEBUT DE LA SESSION:
 - loadhistory(file = ".Rhistory")
@@ -55,8 +54,8 @@ sessionInfo()
 ```
 
 ```
-## R version 3.0.1 (2013-05-16)
-## Platform: i686-pc-linux-gnu (32-bit)
+## R version 2.15.1 (2012-06-22)
+## Platform: x86_64-pc-linux-gnu (64-bit)
 ## 
 ## locale:
 ##  [1] LC_CTYPE=fr_FR.UTF-8       LC_NUMERIC=C              
@@ -70,11 +69,11 @@ sessionInfo()
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] knitr_1.3
+## [1] knitr_1.2
 ## 
 ## loaded via a namespace (and not attached):
-## [1] digest_0.6.3   evaluate_0.4.4 formatR_0.8    stringr_0.6.2 
-## [5] tools_3.0.1
+## [1] digest_0.6.3   evaluate_0.4.3 formatR_0.8    stringr_0.6.2 
+## [5] tools_2.15.1
 ```
 
 ```r
@@ -83,13 +82,13 @@ toLatex(sessionInfo())
 
 ```
 ## \begin{itemize}\raggedright
-##   \item R version 3.0.1 (2013-05-16), \verb|i686-pc-linux-gnu|
+##   \item R version 2.15.1 (2012-06-22), \verb|x86_64-pc-linux-gnu|
 ##   \item Locale: \verb|LC_CTYPE=fr_FR.UTF-8|, \verb|LC_NUMERIC=C|, \verb|LC_TIME=fr_FR.UTF-8|, \verb|LC_COLLATE=fr_FR.UTF-8|, \verb|LC_MONETARY=fr_FR.UTF-8|, \verb|LC_MESSAGES=fr_FR.UTF-8|, \verb|LC_PAPER=C|, \verb|LC_NAME=C|, \verb|LC_ADDRESS=C|, \verb|LC_TELEPHONE=C|, \verb|LC_MEASUREMENT=fr_FR.UTF-8|, \verb|LC_IDENTIFICATION=C|
 ##   \item Base packages: base, datasets, graphics, grDevices,
 ##     methods, stats, utils
-##   \item Other packages: knitr~1.3
+##   \item Other packages: knitr~1.2
 ##   \item Loaded via a namespace (and not attached): digest~0.6.3,
-##     evaluate~0.4.4, formatR~0.8, stringr~0.6.2, tools~3.0.1
+##     evaluate~0.4.3, formatR~0.8, stringr~0.6.2, tools~2.15.1
 ## \end{itemize}
 ```
 
@@ -108,7 +107,7 @@ mtext("© RESURAL 2013", cex = 0.6, side = 4, line = -1, adj = 0.1)
 ```
 
 ```
-## Error: plot.new has not been called yet
+## Error: plot.new n'a pas encore été appelé
 ```
 
 ####Informations de session
@@ -161,6 +160,63 @@ mean(vector[select])
 ## [1] 1.5
 ```
 
+#### couleur
+The argument col will set the colours, you could use this in conjunction with an ifelse statement  col<-
+plot(x,y,xlab="PC1",ylab="PC2", col = ifelse(x < 0,'red','green'), pch = 19 )
+
+#### notes sur les spatialPolygons
+> str(poly)
+Formal class 'SpatialPolygons' [package "sp"] with 4 slots
+  ..@ polygons   :List of 1
+  .. ..$ :Formal class 'Polygons' [package "sp"] with 5 slots
+  .. .. .. ..@ Polygons :List of 1
+  .. .. .. .. ..$ :Formal class 'Polygon' [package "sp"] with 5 slots
+  .. .. .. .. .. .. ..@ labpt  : num [1:2] 1 10
+  .. .. .. .. .. .. ..@ area   : num 1
+  .. .. .. .. .. .. ..@ hole   : logi FALSE
+  .. .. .. .. .. .. ..@ ringDir: int 1
+  .. .. .. .. .. .. ..@ coords : num [1:5, 1:2] 0.5 0.5 1.5 1.5 0.5
+9.5 10.5 10.5 9.5 9.5
+  .. .. .. .. .. .. .. ..- attr(*, "dimnames")=List of 2
+  .. .. .. .. .. .. .. .. ..$ : chr [1:5] "s1" "s1" "s1" "s1" ...
+  .. .. .. .. .. .. .. .. ..$ : chr [1:2] "x" "y"
+  .. .. .. ..@ plotOrder: int 1
+  .. .. .. ..@ labpt    : num [1:2] 1 10
+  .. .. .. ..@ ID       : chr "g1"
+  .. .. .. ..@ area     : num 1
+  ..@ plotOrder  : int 1
+  ..@ bbox       : num [1:2, 1:2] 0.5 9.5 1.5 10.5
+  .. ..- attr(*, "dimnames")=List of 2
+  .. .. ..$ : chr [1:2] "r1" "r2"
+  .. .. ..$ : chr [1:2] "min" "max"
+  ..@ proj4string:Formal class 'CRS' [package "sp"] with 1 slots
+  .. .. ..@ projargs: chr NA
+
+ I'll explain, stepping through the structure breadth first, and backwards:
+
+ @proj4string is the coordinate reference system slot
+ @bbox is the bounding box slot
+ @plotOrder is the order to plot the polygons
+ @polygons is the list of Polygons objects.
+
+ @polygons[[1]] is the first (and in this case, only) feature. It is
+an object of class 'Polygons' (non-spatial, since there's no
+@proj4string in this part of the structure).
+
+ @polygons[[1]]@Polygons is the 'Polygons' slot of class 'Polygons',
+and is a list of rings that make up the feature.
+
+ @polygons[[1]]@Polygons[[1]] is an object of class 'Polygon'.
+
+ @polygons[[1]]@Polygons[[1]]@coords is the coordinates of the Polygon:
+
+> poly@polygons[[1]]@Polygons[[1]]@coords
+     x    y
+s1 0.5  9.5
+s1 0.5 10.5
+s1 1.5 10.5
+s1 1.5  9.5
+s1 0.5  9.5
 
 
 Outils de présentation
@@ -544,9 +600,47 @@ library("maptools")
 ```
 
 ```
-## Loading required package: foreign Loading required package: sp Loading
-## required package: grid Loading required package: lattice Checking rgeos
-## availability: TRUE
+## Loading required package: foreign
+```
+
+```
+## Loading required package: sp
+```
+
+```
+## Loading required package: grid
+```
+
+```
+## Loading required package: lattice
+```
+
+```
+## Warning: A specification for class "im" in package 'maptools' seems
+## equivalent to one from package 'sp' and is not turning on duplicate class
+## definitions for this class
+```
+
+```
+## Warning: A specification for class "owin" in package 'maptools' seems
+## equivalent to one from package 'sp' and is not turning on duplicate class
+## definitions for this class
+```
+
+```
+## Warning: A specification for class "ppp" in package 'maptools' seems
+## equivalent to one from package 'sp' and is not turning on duplicate class
+## definitions for this class
+```
+
+```
+## Warning: A specification for class "psp" in package 'maptools' seems
+## equivalent to one from package 'sp' and is not turning on duplicate class
+## definitions for this class
+```
+
+```
+## Checking rgeos availability: TRUE
 ```
 
 ```r
@@ -566,8 +660,12 @@ contour <- unionSpatialPolygons(als, IDs = als@data$CODE_ARR)
 ```
 
 ```
-## Loading required package: rgeos rgeos version: 0.2-19, (SVN revision 394)
-## GEOS runtime version: 3.2.2-CAPI-1.6.2 Polygon checking: TRUE
+## Loading required package: rgeos
+```
+
+```
+## rgeos version: 0.2-19, (SVN revision 394) GEOS runtime version:
+## 3.3.3-CAPI-1.7.4 Polygon checking: TRUE
 ```
 
 ```r
@@ -1306,6 +1404,88 @@ plot(czps, add = TRUE)
 
 ![plot of chunk unnamed-chunk-28](figure/unnamed-chunk-28.png) 
 
+essais avec les couleurs:
+- plot(ctss,col=heat.colors(4))
+- plot(czps,col=heat.colors(12))
+- plot(czps,col=terrain.colors(12))
+- plot(czps,col=topo.colors(12))
+- plot(czps,col=cm.colors(12))
 
+essai avec "RColorBrewer"
+
+```r
+library("RColorBrewer")
+wp <- brewer.pal(12, "Set3")
+plot(czps, col = wp)
+title(main = "Zone de proximité en Alsace")
+```
+
+![plot of chunk unnamed-chunk-29](figure/unnamed-chunk-29.png) 
+
+couleurs prop. au % de 75 ans:  
+Le % des 75 ans par zone de proximité est donné par *pbc* (voir carto&pop)  
+pbc
+     1      2      3      4      5      6      7      8      9     10     11     12 
+ 3.425 11.743  4.161 10.036  4.785 14.772  8.449  4.212  6.863 24.431  4.071  3.051  
+avec l'ordre suivant:  
+altk, colmar, gueb, hag, mols, mul, obernai, stlouis, saverne, stras,thann, wiss (ordre alphabétique = ordre de l'ARS)  
+ce qui donne par tranche de 5% arrondi
+c
+ [1] 1 3 1 3 1 3 2 1 2 5 1 1
+ 
+Or l'ordre d'affichage des polygones est le suivant:  
+czps@plotOrder
+ [1]  6 10  9  5  8  3 11  1 12  2  7  4
+
+Peut-on changer l'ordre d'affichage ?
+
+c<-c(3,5,2,1,1,1,1,1,1,3,2,3)
+
+names(czps)
+ [1] "1"  "10" "11" "12" "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9" 
+
+*czps* dessine les *zp* dans l'ordre suivant:  
+- wis, mul, alt, stl, hag, sav, str, mols, obe, col, gue, tha
+- en chiffre: 12,6,1,8,4,9,10,5,7,2,3,11
+ce qui donne le vecteur de couleur:  
+
+```r
+c <- c(1, 3, 1, 1, 3, 2, 5, 1, 2, 3, 1, 1)
+palette(gray(5:0/5))
+plot(czps, col = c)
+title(main = "Répartition des 75 ans et plus", xlab = "Chiffres INSEE 2010")
+legend("topleft", col = gray(5:0/5), legend = c("0-5%", "5-10%", "10-15%", "15-20%", 
+    "20-25%"), pch = 15, cex = 0.8, bty = "n")
+mtext("© RESURAL 2013", cex = 0.6, side = 4, line = -1, adj = 0.1)
+```
+
+![plot of chunk unnamed-chunk-30](figure/unnamed-chunk-30.png) 
+
+NB: pour déterminer l'ordre de traçage, on utilise la méthode suivante:
+col<-c(1,2,2,2,2,2,2,2,2,2,2,2,2)
+ plot(czps,col=col)
+ col<-c(2,1,2,2,2,2,2,2,2,2,2,2,2)
+ plot(czps,col=col)
+ col<-c(2,2,1,2,2,2,2,2,2,2,2,2,2)
+ plot(czps,col=col)
+ col<-c(2,2,2,1,2,2,2,2,2,2,2,2,2)
+ plot(czps,col=col)
+ col<-c(2,2,2,2,1,2,2,2,2,2,2,2,2)
+ plot(czps,col=col)
+ col<-c(2,2,2,2,2,1,2,2,2,2,2,2,2)
+ plot(czps,col=col)
+col<-c(2,2,2,2,2,2,1,2,2,2,2,2,2)
+plot(czps,col=col)
+col<-c(2,2,2,2,2,2,2,1,2,2,2,2,2) plot(czps,col=col)
+col<-c(2,2,2,2,2,2,2,2,1,2,2,2,2)
+plot(czps,col=col)
+col<-c(2,2,2,2,2,2,2,2,2,1,2,2,2)
+plot(czps,col=col)
+col<-c(2,2,2,2,2,2,2,2,2,2,1,2,2)
+plot(czps,col=col)
+col<-c(2,2,2,2,2,2,2,2,2,2,2,1,2)
+plot(czps,col=col)
+col<-c(2,2,2,2,2,2,2,2,2,2,2,2,1)
+plot(czps,col=col)
 
 

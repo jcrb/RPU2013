@@ -6,7 +6,9 @@
 % inclu un fichier de bibliothèques
 \include{rpu-2012.sty}
 
-% la directive suivante permet d'utiliser le séparateur de milliers. Deux formulation sont utilisables mais exclusives l'une de l'autre. L'instruction "autolanguage" permet d'utiliser \nombre{} ou \np{}
+% la directive suivante permet d'utiliser le séparateur de milliers. 
+%Deux formulation sont utilisables mais exclusives l'une de l'autre. L'instruction "autolanguage" permet d'utiliser \nombre{} ou \np{}
+% exemple: L'ensemble des SU ont déclaré \np{\Sexpr{length(e)}} passages en 2013
 %\usepackage{numprint}
 \usepackage[autolanguage,np]{numprint}
 
@@ -88,7 +90,10 @@ library("xts")
 library("plotrix")
 library("openintro")
 
-load("../rpu2013.Rda")
+#  load("../rpu2013.Rda")
+load("../rpu2013d0106.Rda")
+d1<-d0106
+rm(d0106)
 attach(d1)
 @
 %======================================================== PARTIE 1

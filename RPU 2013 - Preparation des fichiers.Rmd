@@ -15,7 +15,7 @@ Nomenclature
 - la base de donnée mysql contenant les données du mois s'appelle *rpu* et la table contenant les RPU s'appelle *RPU__* (deux soulignés).
 - les données nettoyées sont sauvegardées sous deux formats
   - rpu2013_05.txt (rpu+année_mois.txt)
-  - rpu2013d05.Rda (rpu+année+d+mois.Rda)
+  - rpu2013d06.Rda (rpu+année+d+mois.Rda)
 
 Origine des données
 -------------------
@@ -182,4 +182,21 @@ plot(t(d))
   2013-05-04  47  11 184  92  42 104  87 151  74  93  34
   2013-05-05  52  10 190  89  50  91 102 185  93  99  31
   2013-05-06  50  46 209  97  40  99 138 174  73  98  36
+  
+Lignes où le nombre de données est inférieur à 20:
+```{r}
+df<-data.frame(d)
+a<-df[df$Freq<20,]
+```
+Dernier fichier sauvegardé
+==========================
+Juin 2013:  
+----------
+write.table(d06,"rpu2013_06.txt",sep=',',quote=TRUE,na="NA")
+save(d06,file="rpu2013d06.Rda")
 
+RPU du 1er janvier 2013 au 30 juin 2013:
+----------------------------------------
+d0106<-rbind(d1,d05,d06)
+save(d0106,file="rpu2013d0106.Rda")
+rm(d0106)

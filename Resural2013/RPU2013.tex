@@ -1,4 +1,4 @@
-\documentclass[12pt,english,french]{report}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[12pt,english,french]{report}\usepackage{graphicx, color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -11,16 +11,21 @@
 }
 \makeatother
 
-\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
-\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
-\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
-\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
-\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
-\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
-\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
-\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
-\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
-\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\definecolor{fgcolor}{rgb}{0.2, 0.2, 0.2}
+\newcommand{\hlnumber}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlfunctioncall}[1]{\textcolor[rgb]{0.501960784313725,0,0.329411764705882}{\textbf{#1}}}%
+\newcommand{\hlstring}[1]{\textcolor[rgb]{0.6,0.6,1}{#1}}%
+\newcommand{\hlkeyword}[1]{\textcolor[rgb]{0,0,0}{\textbf{#1}}}%
+\newcommand{\hlargument}[1]{\textcolor[rgb]{0.690196078431373,0.250980392156863,0.0196078431372549}{#1}}%
+\newcommand{\hlcomment}[1]{\textcolor[rgb]{0.180392156862745,0.6,0.341176470588235}{#1}}%
+\newcommand{\hlroxygencomment}[1]{\textcolor[rgb]{0.43921568627451,0.47843137254902,0.701960784313725}{#1}}%
+\newcommand{\hlformalargs}[1]{\textcolor[rgb]{0.690196078431373,0.250980392156863,0.0196078431372549}{#1}}%
+\newcommand{\hleqformalargs}[1]{\textcolor[rgb]{0.690196078431373,0.250980392156863,0.0196078431372549}{#1}}%
+\newcommand{\hlassignement}[1]{\textcolor[rgb]{0,0,0}{\textbf{#1}}}%
+\newcommand{\hlpackage}[1]{\textcolor[rgb]{0.588235294117647,0.709803921568627,0.145098039215686}{#1}}%
+\newcommand{\hlslot}[1]{\textit{#1}}%
+\newcommand{\hlsymbol}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlprompt}[1]{\textcolor[rgb]{0.2,0.2,0.2}{#1}}%
 
 \usepackage{framed}
 \makeatletter
@@ -55,7 +60,9 @@
 % inclu un fichier de bibliothèques
 \include{rpu-2012.sty}
 
-% la directive suivante permet d'utiliser le séparateur de milliers. Deux formulation sont utilisables mais exclusives l'une de l'autre. L'instruction "autolanguage" permet d'utiliser \nombre{} ou \np{}
+% la directive suivante permet d'utiliser le séparateur de milliers. 
+%Deux formulation sont utilisables mais exclusives l'une de l'autre. L'instruction "autolanguage" permet d'utiliser \nombre{} ou \np{}
+% exemple: L'ensemble des SU ont déclaré \np{length(e)} passages en 2013
 %\usepackage{numprint}
 \usepackage[autolanguage,np]{numprint}
 
@@ -118,12 +125,7 @@ Bartier \& Madame Christine Hecker}}
 \listoftables
 \listoffigures
 
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: there is no package called 'gdata'}}\end{kframe}
-\end{knitrout}
 
 %======================================================== PARTIE 1
 \part{Le Réseau des urgences en Alsace}
@@ -246,25 +248,25 @@ Les données proviennent des RPU produits par les hôpitaux d'Alsace ayant l'aut
 
 
 {\ttfamily\noindent\color{warningcolor}{\#\# Warning: number of rows of result is not a multiple of vector length (arg 3)}}\begin{verbatim}
-## % latex table generated in R 3.0.1 by xtable 1.7-1 package
-## % Thu Jul 18 19:03:45 2013
+## % latex table generated in R 2.15.1 by xtable 1.7-1 package
+## % Sat Aug  3 14:46:47 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{|l|r|r|l|r|}
 ##   \hline
 ##  & n & \% & Hôpitaux & Date d'inclusion \\ 
 ##   \hline
-## 3Fr & 5212 & 4.92 & CH Wissembourg & 01/01/2013 \\ 
-##   Alk & 891 & 0.84 & CH Sélestat & 01/04/2013 \\ 
-##   Col & 21841 & 20.61 & Clinique Ste Odile & 01/01/2013 \\ 
-##   Dia & 9605 & 9.06 & Hôpitaux Universitaires de Strasbourg & 01/01/2013 \\ 
-##   Geb & 4807 & 4.54 & CH Haguenau & 01/01/2013 \\ 
-##   Hag & 11627 & 10.97 & Clinique des 3 frontières & 01/01/2013 \\ 
-##   Hus & 13095 & 12.36 & CH Altkirch & 01/01/2013 \\ 
-##   Mul & 16790 & 15.84 & CH Colmar & 07/01/2013 \\ 
-##   Odi & 8415 & 7.94 & CH Guebwiller & 01/01/2013 \\ 
-##   Sel & 9685 & 9.14 & CH Wissembourg & 01/01/2013 \\ 
-##   Wis & 4011 & 3.78 & CH Sélestat & 01/01/2013 \\ 
+## 3Fr & 7998 & 4.88 & CH Wissembourg & 01/01/2013 \\ 
+##   Alk & 2759 & 1.68 & CH Sélestat & 01/04/2013 \\ 
+##   Col & 33153 & 20.23 & Clinique Ste Odile & 01/01/2013 \\ 
+##   Dia & 14695 & 8.97 & Hôpitaux Universitaires de Strasbourg & 01/01/2013 \\ 
+##   Geb & 7369 & 4.5 & CH Haguenau & 01/01/2013 \\ 
+##   Hag & 17533 & 10.7 & Clinique des 3 frontières & 01/01/2013 \\ 
+##   Hus & 19350 & 11.8 & CH Altkirch & 01/01/2013 \\ 
+##   Mul & 26911 & 16.42 & CH Colmar & 07/01/2013 \\ 
+##   Odi & 12957 & 7.9 & CH Guebwiller & 01/01/2013 \\ 
+##   Sel & 14920 & 9.1 & CH Wissembourg & 01/01/2013 \\ 
+##   Wis & 6270 & 3.83 & CH Sélestat & 01/01/2013 \\ 
 ##    \hline
 ## \end{tabular}
 ## \caption{Structures hospitalières participantes en 2012} 
@@ -284,8 +286,8 @@ Les données à caractère plus médical comme le motif de consultation ou le di
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{verbatim}
-## % latex table generated in R 3.0.1 by xtable 1.7-1 package
-## % Thu Jul 18 19:03:47 2013
+## % latex table generated in R 2.15.1 by xtable 1.7-1 package
+## % Sat Aug  3 14:46:50 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{|l|r|}
@@ -301,17 +303,17 @@ Les données à caractère plus médical comme le motif de consultation ou le di
 ##   NAISSANCE & 0.00 \\ 
 ##   SEXE & 0.00 \\ 
 ##   AGE & 0.00 \\ 
-##   SORTIE & 9.02 \\ 
-##   MODE\_ENTREE & 11.62 \\ 
-##   GRAVITE & 13.01 \\ 
-##   MODE\_SORTIE & 14.86 \\ 
-##   TRANSPORT & 19.41 \\ 
-##   TRANSPORT\_PEC & 24.19 \\ 
-##   DP & 30.91 \\ 
-##   PROVENANCE & 32.81 \\ 
-##   MOTIF & 34.87 \\ 
-##   DESTINATION & 77.84 \\ 
-##   ORIENTATION & 78.88 \\ 
+##   SORTIE & 9.23 \\ 
+##   MODE\_ENTREE & 11.47 \\ 
+##   GRAVITE & 13.39 \\ 
+##   MODE\_SORTIE & 15.27 \\ 
+##   TRANSPORT & 19.60 \\ 
+##   TRANSPORT\_PEC & 24.42 \\ 
+##   DP & 30.94 \\ 
+##   PROVENANCE & 32.72 \\ 
+##   MOTIF & 35.09 \\ 
+##   DESTINATION & 78.59 \\ 
+##   ORIENTATION & 79.72 \\ 
 ##    \hline
 ## \end{tabular}
 ## \caption{Données manquantes en 2012} 
@@ -389,7 +391,7 @@ Le logiciel R est interfacé avec le traitement de texte Latex par l'intermédia
 % activite_regionale.Rnw
 
 
-%on fabrique un objet **a** qui dait la somme pae date des passages aux urgences:
+%on fabrique un objet **a** qui fait la somme pae date des passages aux urgences:
 
 
 
@@ -404,8 +406,8 @@ Le logiciel R est interfacé avec le traitement de texte Latex par l'intermédia
 % Min. 1 st Qu.  Median    Mean 3rd Qu.    Max. 
 %   642.0   848.0   895.5   883.2   957.0  1050.0 
 
-L'ensemble des SU ont déclaré \np{105979} passages en 2013, 
-soit une moyenne de \np{883} passages par jour (extrèmes 642 et \np{1050})
+L'ensemble des SU ont déclaré \np{163915} passages en 2013, 
+soit une moyenne de \np{911} passages par jour (extrèmes 642 et \np{1160})
 
 %affichage du graphique
 \begin{knitrout}
@@ -426,7 +428,7 @@ soit une moyenne de \np{883} passages par jour (extrèmes 642 et \np{1050})
 
 Le taux de recours aux urgences \index{taux de recours aux urgences} (TRU) \index{TRU} est défini comme le nombre total de passages aux urgences, rapporté à la population de la région (INSEE 1er janvier 2010). En Lorraine, ce taux est estimé à 23,45\% en 2010 (\cite{2,3}). En supposant que la population alsacienne se comprte comme la population lorraine, le nombre de passages aux urgences devrait s'établir à \ensuremath{4.4106\times 10^{5}}.
 
-Le TRU 2013 estimé en Alsace est de 5.63\%.
+Le TRU 2013 estimé en Alsace est de 8.71\%.
 
 \subsubsection*{TODO}
 \begin{itemize}
@@ -456,7 +458,7 @@ Ce phénomène cyclique se répète tous les jours selon un profil immuable. La 
 \begin{verbatim}
 [1] "Résumé des horaires de passage:"
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    0.0    10.0    14.0    13.8    18.0    23.0 
+    0.0    10.0    14.0    13.9    18.0    23.0 
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -599,9 +601,9 @@ La destination de concerne que les patients qui ont été hospitalisés.
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 
 
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: le tableau de remplacement a 0 lignes, le tableau remplacé en a 105979}}\begin{verbatim}
-## < table of extent 0 >
-## < table of extent 0 x 0 >
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: replacement has 0 rows, data has 163915}}\begin{verbatim}
+## character(0)
+## <0 x 0 matrix>
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -644,7 +646,7 @@ Auxquels il faut rajouter les services assurant un accueil des urgences 24h/24h 
 
 
 
-Entre le 2013-01-01 00:11:00 et le 2013-04-30 23:56:00, 13095 RPU ont été transmis, alors que 41561 dossiers ont été déclarés au serveur régional. 
+Entre le 2013-01-01 00:11:00 et le 2013-06-30 23:42:00, \np{19350} RPU ont été transmis, alors que \np{41561} dossiers ont été déclarés au serveur régional. 
 1, 1, 1, 1, 1
 
 
@@ -662,14 +664,14 @@ Entre le 2013-01-01 00:11:00 et le 2013-04-30 23:56:00, 13095 RPU ont été tran
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-n <- \hlkwd{dim}(d1)
-\hlkwd{print}(n)
+n <- \hlfunctioncall{dim}(d1)
+\hlfunctioncall{print}(n)
 \end{alltt}
 \begin{verbatim}
-## [1] 105979     20
+## [1] 163915     20
 \end{verbatim}
 \begin{alltt}
-\hlkwd{names}(d1)
+\hlfunctioncall{names}(d1)
 \end{alltt}
 \begin{verbatim}
 ##  [1] "id"            "CODE_POSTAL"   "COMMUNE"       "DESTINATION"  
@@ -688,20 +690,20 @@ n <- \hlkwd{dim}(d1)
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 
-\hlkwd{str}(d1)
+\hlfunctioncall{str}(d1)
 \end{alltt}
 \begin{verbatim}
-## 'data.frame':	105979 obs. of  20 variables:
+## 'data.frame':	163915 obs. of  20 variables:
 ##  $ id           : chr  "2c9d83843bf5e01d013bf5e985d20225" "2c9d83843bf5e01d013bf5e986950226" "2c9d83843bf5e01d013bf5e987620227" "2c9d83843bf5e01d013bf5e988060228" ...
-##  $ CODE_POSTAL  : Factor w/ 1277 levels "00000","00159",..: 706 706 706 706 706 701 818 706 706 706 ...
-##  $ COMMUNE      : Factor w/ 2691 levels "00","01257 DRESDEN ALLEMAGNE",..: 2184 2184 2184 2184 741 2048 2033 2184 2184 2184 ...
+##  $ CODE_POSTAL  : Factor w/ 1755 levels "00000","00159",..: 706 706 706 706 706 701 818 706 706 706 ...
+##  $ COMMUNE      : Factor w/ 3636 levels "00","01257 DRESDEN ALLEMAGNE",..: 2184 2184 2184 2184 741 2048 2033 2184 2184 2184 ...
 ##  $ DESTINATION  : Factor w/ 7 levels "NA","MCO","SSR",..: NA NA NA NA NA NA 2 NA 2 NA ...
 ##  $ DP           : chr  "R104" "J038" "S617" "M485" ...
 ##  $ ENTREE       : chr  "2013-01-01 00:04:00" "2013-01-01 00:16:00" "2013-01-01 00:26:00" "2013-01-01 00:32:00" ...
 ##  $ EXTRACT      : chr  "2013-01-01 05:37:00" "2013-01-01 05:37:00" "2013-01-01 05:37:00" "2013-01-01 05:37:00" ...
 ##  $ FINESS       : Factor w/ 11 levels "3Fr","Alk","Col",..: 10 10 10 10 10 10 10 10 10 10 ...
 ##  $ GRAVITE      : Factor w/ 7 levels "1","2","3","4",..: 2 2 3 2 2 1 3 2 2 2 ...
-##  $ MODE_ENTREE  : Factor w/ 4 levels "NA","Mutation",..: 4 4 4 4 4 4 4 4 4 4 ...
+##  $ MODE_ENTREE  : Factor w/ 5 levels "NA","Mutation",..: 4 4 4 4 4 4 4 4 4 4 ...
 ##  $ MODE_SORTIE  : Factor w/ 5 levels "NA","Mutation",..: 4 4 4 4 4 4 2 4 2 4 ...
 ##  $ MOTIF        : chr  "GASTRO04" "DIVERS23" "TRAUMATO10" "TRAUMATO02" ...
 ##  $ NAISSANCE    : chr  "1960-04-08 00:00:00" "1986-03-05 00:00:00" "1971-12-22 00:00:00" "1927-04-27 00:00:00" ...
@@ -714,49 +716,57 @@ n <- \hlkwd{dim}(d1)
 ##  $ AGE          : num  52 26 41 85 39 9 79 50 46 18 ...
 \end{verbatim}
 \begin{alltt}
-\hlkwd{summary}(d1)
+\hlfunctioncall{summary}(d1)
 \end{alltt}
 \begin{verbatim}
-##       id             CODE_POSTAL           COMMUNE       DESTINATION   
-##  Length:105979      68000  : 7771   MULHOUSE   :12389   MCO    :23062  
-##  Class :character   68200  : 6557   STRASBOURG :11504   PSY    :  399  
-##  Mode  :character   68100  : 5866   COLMAR     : 7768   SSR    :   17  
-##                     67100  : 5129   HAGUENAU   : 2267   HMS    :    8  
-##                     67000  : 3757   SELESTAT   : 2000   SLD    :    4  
-##                     67600  : 3005   SAINT LOUIS: 1817   (Other):    0  
-##                     (Other):73894   (Other)    :68234   NA's   :82489  
+##       id             CODE_POSTAL           COMMUNE        DESTINATION    
+##  Length:163915      68000  : 11646   MULHOUSE  : 19333   MCO    : 34451  
+##  Class :character   68200  : 10226   STRASBOURG: 17272   PSY    :   596  
+##  Mode  :character   68100  :  9157   COLMAR    : 11640   SSR    :    27  
+##                     67100  :  7854   HAGUENAU  :  3428   HMS    :    16  
+##                     67000  :  5557   SELESTAT  :  3118   SLD    :     8  
+##                     67600  :  4669   (Other)   :109121   (Other):     1  
+##                     (Other):114806   NA's      :     3   NA's   :128816  
 ##       DP               ENTREE            EXTRACT              FINESS     
-##  Length:105979      Length:105979      Length:105979      Col    :21841  
-##  Class :character   Class :character   Class :character   Mul    :16790  
-##  Mode  :character   Mode  :character   Mode  :character   Hus    :13095  
-##                                                           Hag    :11627  
-##                                                           Sel    : 9685  
-##                                                           Dia    : 9605  
-##                                                           (Other):23336  
-##     GRAVITE         MODE_ENTREE       MODE_SORTIE       MOTIF          
-##  2      :64451   NA       :    0   NA       :    0   Length:105979     
-##  3      :12856   Mutation : 1282   Mutation :21950   Class :character  
-##  1      :12797   Transfert: 1128   Transfert: 1523   Mode  :character  
-##  4      : 1320   Domicile :91250   Domicile :66755                     
-##  P      :  480   NA's     :12319   Décès    :    0                     
-##  (Other):  284                     NA's     :15751                     
-##  NA's   :13791                                                         
-##   NAISSANCE          ORIENTATION      PROVENANCE    SEXE     
-##  Length:105979      UHCD   :11496   PEA    :59352   F:50853  
-##  Class :character   MED    : 5662   PEO    : 9254   I:    1  
-##  Mode  :character   CHIR   : 2342   MCO    : 2574   M:55125  
-##                     PSA    :  954   SSR    :   11            
-##                     SI     :  445   PSY    :   11            
-##                     (Other): 1481   (Other):    9            
-##                     NA's   :83599   NA's   :34768            
-##     SORTIE          TRANSPORT     TRANSPORT_PEC        AGE     
-##  Length:105979      AMBU :16290   AUCUN  :75794   Min.   :  0  
-##  Class :character   FO   :  508   MED    : 2120   1st Qu.: 18  
-##  Mode  :character   HELI :   37   PARAMED: 2430   Median : 39  
-##                     PERSO:58281   NA's   :25635   Mean   : 41  
-##                     SMUR : 1027                   3rd Qu.: 63  
-##                     VSAB : 9263                   Max.   :112  
-##                     NA's :20573                   NA's   :5
+##  Length:163915      Length:163915      Length:163915      Col    :33153  
+##  Class :character   Class :character   Class :character   Mul    :26911  
+##  Mode  :character   Mode  :character   Mode  :character   Hus    :19350  
+##                                                           Hag    :17533  
+##                                                           Sel    :14920  
+##                                                           Dia    :14695  
+##                                                           (Other):37353  
+##     GRAVITE           MODE_ENTREE        MODE_SORTIE    
+##  2      :99923   NA         :     0   NA       :     0  
+##  1      :19879   Mutation   :  1857   Mutation : 32774  
+##  3      :19174   Transfert  :  1397   Transfert:  2345  
+##  4      : 1827   Domicile   :141569   Domicile :103757  
+##  P      :  723   Transfe  rt:   294   Décès    :     2  
+##  (Other):  448   NA's       : 18798   NA's     : 25037  
+##  NA's   :21941                                          
+##     MOTIF            NAISSANCE          ORIENTATION       PROVENANCE   
+##  Length:163915      Length:163915      UHCD   : 16706   PEA    :92063  
+##  Class :character   Class :character   MED    :  8409   PEO    :14406  
+##  Mode  :character   Mode  :character   CHIR   :  3616   MCO    : 3767  
+##                                        PSA    :  1532   SSR    :   18  
+##                                        SI     :   683   PSY    :   13  
+##                                        (Other):  2288   (Other):   12  
+##                                        NA's   :130681   NA's   :53636  
+##  SEXE         SORTIE          TRANSPORT     TRANSPORT_PEC   
+##  F:77894   Length:163915      AMBU :23396   AUCUN  :117035  
+##  I:    2   Class :character   FO   :  730   MED    :  3273  
+##  M:86019   Mode  :character   HELI :   77   PARAMED:  3574  
+##                               PERSO:91821   NA's   : 40033  
+##                               SMUR : 1452                   
+##                               VSAB :14308                   
+##                               NA's :32131                   
+##       AGE       
+##  Min.   :  0.0  
+##  1st Qu.: 18.0  
+##  Median : 38.0  
+##  Mean   : 40.4  
+##  3rd Qu.: 62.0  
+##  Max.   :112.0  
+##  NA's   :6
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -849,7 +859,7 @@ Agence Régionale de Santé
 \index{Population}
 
 \subsection*{Population comptée à part}
-\index{Population@comptée à part}
+\index{Population@Population!comptée à part}
 Le concept de population comptée à part est défini par le décret n°2003-485 publié au Journal officiel du 8 juin 2003, relatif au recensement de la population.
 La population comptée à part comprend certaines personnes dont la résidence habituelle (au sens du décret) est dans une autre commune mais qui ont conservé une résidence sur le territoire de la commune :
 1. Les mineurs dont la résidence familiale est dans une autre commune mais qui résident, du fait de leurs études, dans la commune.
@@ -862,7 +872,7 @@ La population comptée à part comprend certaines personnes dont la résidence h
 
 
 \subsection*{Population totale}
-\index{Population@totale}
+\index{Population@Population!totale}r
 Le concept de *population totale* est défini par le décret n°2003-485 publié au Journal officiel du 8 juin 2003, relatif au recensement de la population.
 
 La population totale d'une commune est égale à la somme de la population municipale et de la population comptée à part de la commune.
@@ -870,7 +880,7 @@ La population totale d'un ensemble de communes est égale à la somme des popula
 La population totale est une population légale à laquelle de très nombreux textes législatifs ou réglementaires font référence. A la différence de la population municipale, elle n'a pas d'utilisation statistique car elle comprend des doubles comptes dès lors que l'on s'intéresse à un ensemble de plusieurs communes \cite{7}.
 
 \subsection*{Population municipale}
-\index{Population@municipale}
+\index{Population@Population!municipale}
 Le concept de *population municipale* est défini par le décret n°2003-485 publié au Journal officiel du 8 juin 2003, relatif au recensement de la population.
 La population municipale comprend les personnes ayant leur résidence habituelle (au sens du décret) sur le territoire de la commune, dans un logement ou une communauté, les personnes détenues dans les établissements pénitentiaires de la commune, les personnes sans-abri recensées sur le territoire de la commune et les personnes résidant habituellement dans une habitation mobile recensée sur le territoire de la commune.
 La population municipale d'un ensemble de communes est égale à la somme des populations municipales des communes qui le composent.
