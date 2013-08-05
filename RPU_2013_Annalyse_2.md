@@ -289,14 +289,22 @@ calcul de l'écart-type:
 r <- rollapply(z, 7, sd)
 z <- zoo(a, unique(as.Date(d1$ENTREE)))
 m <- rollapply(z, 7, mean)
-plot(xts(m))
+plot(xts(m), ylim = c(600, 1200))
+```
+
+![plot of chunk rooapply](figure/rooapply1.png) 
+
+```r
 ze <- rollapply(z, 7, sd)
 zes <- m + ze
 zei <- m - ze
-plot(xts(m))
+plot(xts(m), ylim = c(600, 1200), ylab = "Nb. de passages aux Urgences", main = "Passages aux SU en 2013", 
+    xlab = "Moyenne lissée")
 lines(xts(zes), col = "red")
 lines(xts(zei), col = "red")
+legend("topleft", legend = c("moyenne lissée", "écart-type"), col = c("black", 
+    "red"), lty = 1, cex = 0.8, bty = "n")
 ```
 
-![plot of chunk rooapply](figure/rooapply.png) 
+![plot of chunk rooapply](figure/rooapply2.png) 
 
