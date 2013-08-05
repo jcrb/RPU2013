@@ -186,6 +186,8 @@ N°  |  Département  |  nb.communes  |  Pop.municipale  |  Pop.totale
 68 |	Haut-Rhin | 377  | 749 782 | 765 634 
 pop.als.2010.totale<-1115226 + 765634
 pop.als.2010.municipale<-1095905 + 749782
+pop.67.2010.municipale<-1095905
+pop.68.2010.municipale<-749782
 
 Fichier ville de la base *pma*
 ------------------------------
