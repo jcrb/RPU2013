@@ -91,9 +91,9 @@ library("plotrix")
 library("openintro")
 
 #  load("../rpu2013.Rda")
-load("../rpu2013d0106.Rda")
-d1<-d0106
-rm(d0106)
+load("../rpu2013d0107.Rda")
+d1<-d0107
+rm(d0107)
 attach(d1)
 @
 %======================================================== PARTIE 1

@@ -237,91 +237,90 @@ Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'en
 
 % acteurs.Rnw
 
-penser au secteur libéral
+% penser au secteur libéral
+
+\section{Exhaustivité quantitative}
 
 
 
 Les données proviennent des RPU produits par les hôpitaux d'Alsace ayant l'autorisation de faire fonctionner un service d'urgence (SU). La liste des structures hospitalières ayant fournit des informations alimentant le présent rapport est fournie par la table \ref{tab1}, page \pageref{tab1}.
 
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+Tous ces hôpitaux fournissent des données depuis le premier janvier 2013 sauf le CH Saverne qui a commencé en Juillet 2013.
+
+Deux structures ne fournissent pas encore de RPU. Il s'agit de la clinique Sainte-Anne à Strasbourg (Groupe hospitalier Saint-Vincent) et du Centre Hospitalier de Thann.
+
+Certaines données peuvent être recoupées avec celles du serveur régional mis en place en 2006 par l'ARS: 
+
+\fbox{Voir SAU2013}
+
+% latex table generated in R 2.15.1 by xtable 1.7-1 package
+% Wed Aug  7 19:57:11 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|r|r|l|r|}
+  \hline
+ & n & \% & Hôpitaux & Date d'inclusion \\ 
+  \hline
+3Fr & 9382 & 4.86 & Clinique des 3 frontières & 01/01/2013 \\ 
+  Alk & 3784 & 1.96 & CH Altkirch & 01/04/2013 \\ 
+  Col & 38722 & 20.05 & CH Colmar & 01/01/2013 \\ 
+  Dia & 17150 & 8.88 & Diaconat Fonderie & 01/01/2013 \\ 
+  Geb & 8852 & 4.58 & CH Guebwiller & 01/01/2013 \\ 
+  Hag & 20531 & 10.63 & CH Haguenau & 01/01/2013 \\ 
+  Hus & 22438 & 11.62 & Hôpitaux Universitaires de Strasbourg & 01/01/2013 \\ 
+  Mul & 31533 & 16.33 & CH Mulhouse & 07/01/2013 \\ 
+  Odi & 15193 & 7.87 & Clinique Ste Odile & 01/01/2013 \\ 
+  Sel & 17496 & 9.06 & CH Sélestat & 01/01/2013 \\ 
+  Wis & 7431 & 3.85 & CH Wissembourg & 01/01/2013 \\ 
+  Sav & 590 & 0.31 & CH Saverne & 23/07/2013 \\ 
+   \hline
+\end{tabular}
+\caption{Structures hospitalières participantes en 2013} 
+\label{tab1}
+\end{table}
 
 
-{\ttfamily\noindent\color{warningcolor}{\#\# Warning: number of rows of result is not a multiple of vector length (arg 3)}}\begin{verbatim}
-## % latex table generated in R 2.15.1 by xtable 1.7-1 package
-## % Sat Aug  3 14:46:47 2013
-## \begin{table}[ht]
-## \centering
-## \begin{tabular}{|l|r|r|l|r|}
-##   \hline
-##  & n & \% & Hôpitaux & Date d'inclusion \\ 
-##   \hline
-## 3Fr & 7998 & 4.88 & CH Wissembourg & 01/01/2013 \\ 
-##   Alk & 2759 & 1.68 & CH Sélestat & 01/04/2013 \\ 
-##   Col & 33153 & 20.23 & Clinique Ste Odile & 01/01/2013 \\ 
-##   Dia & 14695 & 8.97 & Hôpitaux Universitaires de Strasbourg & 01/01/2013 \\ 
-##   Geb & 7369 & 4.5 & CH Haguenau & 01/01/2013 \\ 
-##   Hag & 17533 & 10.7 & Clinique des 3 frontières & 01/01/2013 \\ 
-##   Hus & 19350 & 11.8 & CH Altkirch & 01/01/2013 \\ 
-##   Mul & 26911 & 16.42 & CH Colmar & 07/01/2013 \\ 
-##   Odi & 12957 & 7.9 & CH Guebwiller & 01/01/2013 \\ 
-##   Sel & 14920 & 9.1 & CH Wissembourg & 01/01/2013 \\ 
-##   Wis & 6270 & 3.83 & CH Sélestat & 01/01/2013 \\ 
-##    \hline
-## \end{tabular}
-## \caption{Structures hospitalières participantes en 2012} 
-## \label{tab1}
-## \end{table}
-\end{verbatim}
-\end{kframe}
-\end{knitrout}
 
-
-\section{Exhaustivité des données}
+\section{Exhaustivité des qualitative}
 
 Les informations de nature administrative (code postal, commune d'origine, sexe, date de naissance,\dots ) sont correctement renseignées avec une exhaustivité de $100\%$.
 
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{verbatim}
-## % latex table generated in R 2.15.1 by xtable 1.7-1 package
-## % Sat Aug  3 14:46:50 2013
-## \begin{table}[ht]
-## \centering
-## \begin{tabular}{|l|r|}
-##   \hline
-##  & \% \\ 
-##   \hline
-## id & 0.00 \\ 
-##   CODE\_POSTAL & 0.00 \\ 
-##   COMMUNE & 0.00 \\ 
-##   ENTREE & 0.00 \\ 
-##   EXTRACT & 0.00 \\ 
-##   FINESS & 0.00 \\ 
-##   NAISSANCE & 0.00 \\ 
-##   SEXE & 0.00 \\ 
-##   AGE & 0.00 \\ 
-##   SORTIE & 9.23 \\ 
-##   MODE\_ENTREE & 11.47 \\ 
-##   GRAVITE & 13.39 \\ 
-##   MODE\_SORTIE & 15.27 \\ 
-##   TRANSPORT & 19.60 \\ 
-##   TRANSPORT\_PEC & 24.42 \\ 
-##   DP & 30.94 \\ 
-##   PROVENANCE & 32.72 \\ 
-##   MOTIF & 35.09 \\ 
-##   DESTINATION & 78.59 \\ 
-##   ORIENTATION & 79.72 \\ 
-##    \hline
-## \end{tabular}
-## \caption{Données manquantes en 2012} 
-## \label{tab2}
-## \end{table}
-\end{verbatim}
-\end{kframe}
-\end{knitrout}
+% latex table generated in R 2.15.1 by xtable 1.7-1 package
+% Wed Aug  7 19:57:14 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|r|}
+  \hline
+ & \% \\ 
+  \hline
+id & 0.00 \\ 
+  CODE\_POSTAL & 0.00 \\ 
+  COMMUNE & 0.00 \\ 
+  ENTREE & 0.00 \\ 
+  EXTRACT & 0.00 \\ 
+  FINESS & 0.00 \\ 
+  NAISSANCE & 0.00 \\ 
+  SEXE & 0.00 \\ 
+  AGE & 0.00 \\ 
+  SORTIE & 9.27 \\ 
+  MODE\_ENTREE & 10.98 \\ 
+  GRAVITE & 13.35 \\ 
+  MODE\_SORTIE & 15.02 \\ 
+  TRANSPORT & 20.07 \\ 
+  TRANSPORT\_PEC & 24.48 \\ 
+  DP & 31.16 \\ 
+  PROVENANCE & 33.15 \\ 
+  MOTIF & 35.30 \\ 
+  DESTINATION & 78.82 \\ 
+  ORIENTATION & 79.95 \\ 
+   \hline
+\end{tabular}
+\caption{Données manquantes en 2013} 
+\label{tab2}
+\end{table}
+
 
 
 
@@ -406,8 +405,8 @@ Le logiciel R est interfacé avec le traitement de texte Latex par l'intermédia
 % Min. 1 st Qu.  Median    Mean 3rd Qu.    Max. 
 %   642.0   848.0   895.5   883.2   957.0  1050.0 
 
-L'ensemble des SU ont déclaré \np{163915} passages en 2013, 
-soit une moyenne de \np{911} passages par jour (extrèmes 642 et \np{1160})
+L'ensemble des SU ont déclaré \np{193102} passages en 2013, 
+soit une moyenne de \np{916} passages par jour (extrèmes 2 et \np{1160})
 
 %affichage du graphique
 \begin{knitrout}
@@ -428,7 +427,7 @@ soit une moyenne de \np{911} passages par jour (extrèmes 642 et \np{1160})
 
 Le taux de recours aux urgences \index{taux de recours aux urgences} (TRU) \index{TRU} est défini comme le nombre total de passages aux urgences, rapporté à la population de la région (INSEE 1er janvier 2010). En Lorraine, ce taux est estimé à 23,45\% en 2010 (\cite{2,3}). En supposant que la population alsacienne se comprte comme la population lorraine, le nombre de passages aux urgences devrait s'établir à \ensuremath{4.4106\times 10^{5}}.
 
-Le TRU 2013 estimé en Alsace est de 8.71\%.
+Le TRU 2013 estimé en Alsace à partir des RPU transmis est de 10.27\%.
 
 \subsubsection*{TODO}
 \begin{itemize}
@@ -581,11 +580,42 @@ Le RPU connaît trois mode de sortie des urgences:
 \begin{enumerate}
   \item le décès
   \item le retour à domicile (ou ce qui en tient lieu)
-  \item l'hospitalisation
+  \item l'hospitalisation (mutation ou transfert)
 \end{enumerate}
-Cependant la réalité est plus complexe
 
-La destination de concerne que les patients qui ont été hospitalisés.
+\begin{kframe}
+\begin{alltt}
+s <- \hlfunctioncall{summary}(d1$MODE_SORTIE)
+na <- s[6]
+t <- \hlfunctioncall{table}(d1$MODE_SORTIE)
+r <- \hlfunctioncall{round}(\hlfunctioncall{prop.table}(t) * 100, 2)
+c <- \hlfunctioncall{cbind}(t, r)
+\hlfunctioncall{colnames}(c) <- \hlfunctioncall{c}(\hlstring{"n"}, \hlstring{"%"})
+\hlfunctioncall{xtable}(c, caption = \hlstring{"Mode de sortie des urgences"}, label = \hlstring{"tab.sortie"}, align = \hlstring{"|l|r|r|"}, 
+    digits = \hlfunctioncall{c}(0, 0, 2), table.placement = \hlstring{"ht"}, caption.placement = \hlstring{"top"})
+\end{alltt}
+\end{kframe}% latex table generated in R 2.15.1 by xtable 1.7-1 package
+% Wed Aug  7 19:57:24 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|r|r|}
+  \hline
+ & n & \% \\ 
+  \hline
+NA & 0 & 0.00 \\ 
+  Mutation & 38183 & 23.27 \\ 
+  Transfert & 2762 & 1.68 \\ 
+  Domicile & 123148 & 75.05 \\ 
+  Décès & 2 & 0.00 \\ 
+   \hline
+\end{tabular}
+\caption{Mode de sortie des urgences} 
+\label{tab.sortie}
+\end{table}
+
+
+
+Le mode de sortie est affiné par la rubrique DESTINATION avec la ventilation suivante:
 
 \begin{itemize}
   \item NA:    Pas d'informations
@@ -597,13 +627,40 @@ La destination de concerne que les patients qui ont été hospitalisés.
   \item HMS:		Hébergement médico-social
 \end{itemize}
 
+On notera que le retour à domicile proprement dit ne figure pas parmi les items et cette modalité est implicite. On peut supposer que les NA's correspondent à cette modalité. Cependant une ambiguité demeure car les non réponses sont aussi représentées par ce symbole.
+
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlfunctioncall{summary}(d1$DESTINATION)
+\end{alltt}
+\begin{verbatim}
+##     NA    MCO    SSR    SLD    PSY    HAD    HMS   NA's 
+##      0  40127     33      8    703      1     18 152212
+\end{verbatim}
+\begin{alltt}
 
+\hlfunctioncall{table}(d1$DESTINATION)
+\end{alltt}
+\begin{verbatim}
+## 
+##    NA   MCO   SSR   SLD   PSY   HAD   HMS 
+##     0 40127    33     8   703     1    18
+\end{verbatim}
+\begin{alltt}
 
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: replacement has 0 rows, data has 163915}}\begin{verbatim}
-## character(0)
-## <0 x 0 matrix>
+\hlfunctioncall{table}(d1$DESTINATION, d1$GRAVITE)
+\end{alltt}
+\begin{verbatim}
+##      
+##           1     2     3     4     5     D     P
+##   NA      0     0     0     0     0     0     0
+##   MCO  1552 15713 15628  1653   404     6    93
+##   SSR     0    15    16     2     0     0     0
+##   SLD     0     4     2     2     0     0     0
+##   PSY    31   161   107    10     5     0   369
+##   HAD     0     1     0     0     0     0     0
+##   HMS     3    12     2     0     0     0     0
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -646,7 +703,7 @@ Auxquels il faut rajouter les services assurant un accueil des urgences 24h/24h 
 
 
 
-Entre le 2013-01-01 00:11:00 et le 2013-06-30 23:42:00, \np{19350} RPU ont été transmis, alors que \np{41561} dossiers ont été déclarés au serveur régional. 
+Entre le 2013-01-01 00:11:00 et le 2013-07-30 23:55:00, \np{22438} RPU ont été transmis, alors que \np{41561} dossiers ont été déclarés au serveur régional. 
 1, 1, 1, 1, 1
 
 
@@ -668,7 +725,7 @@ n <- \hlfunctioncall{dim}(d1)
 \hlfunctioncall{print}(n)
 \end{alltt}
 \begin{verbatim}
-## [1] 163915     20
+## [1] 193102     20
 \end{verbatim}
 \begin{alltt}
 \hlfunctioncall{names}(d1)
@@ -693,15 +750,15 @@ n <- \hlfunctioncall{dim}(d1)
 \hlfunctioncall{str}(d1)
 \end{alltt}
 \begin{verbatim}
-## 'data.frame':	163915 obs. of  20 variables:
+## 'data.frame':	193102 obs. of  20 variables:
 ##  $ id           : chr  "2c9d83843bf5e01d013bf5e985d20225" "2c9d83843bf5e01d013bf5e986950226" "2c9d83843bf5e01d013bf5e987620227" "2c9d83843bf5e01d013bf5e988060228" ...
-##  $ CODE_POSTAL  : Factor w/ 1755 levels "00000","00159",..: 706 706 706 706 706 701 818 706 706 706 ...
-##  $ COMMUNE      : Factor w/ 3636 levels "00","01257 DRESDEN ALLEMAGNE",..: 2184 2184 2184 2184 741 2048 2033 2184 2184 2184 ...
+##  $ CODE_POSTAL  : Factor w/ 2116 levels "00000","00159",..: 706 706 706 706 706 701 818 706 706 706 ...
+##  $ COMMUNE      : Factor w/ 4344 levels "00","01257 DRESDEN ALLEMAGNE",..: 2184 2184 2184 2184 741 2048 2033 2184 2184 2184 ...
 ##  $ DESTINATION  : Factor w/ 7 levels "NA","MCO","SSR",..: NA NA NA NA NA NA 2 NA 2 NA ...
 ##  $ DP           : chr  "R104" "J038" "S617" "M485" ...
 ##  $ ENTREE       : chr  "2013-01-01 00:04:00" "2013-01-01 00:16:00" "2013-01-01 00:26:00" "2013-01-01 00:32:00" ...
 ##  $ EXTRACT      : chr  "2013-01-01 05:37:00" "2013-01-01 05:37:00" "2013-01-01 05:37:00" "2013-01-01 05:37:00" ...
-##  $ FINESS       : Factor w/ 11 levels "3Fr","Alk","Col",..: 10 10 10 10 10 10 10 10 10 10 ...
+##  $ FINESS       : Factor w/ 12 levels "3Fr","Alk","Col",..: 10 10 10 10 10 10 10 10 10 10 ...
 ##  $ GRAVITE      : Factor w/ 7 levels "1","2","3","4",..: 2 2 3 2 2 1 3 2 2 2 ...
 ##  $ MODE_ENTREE  : Factor w/ 5 levels "NA","Mutation",..: 4 4 4 4 4 4 4 4 4 4 ...
 ##  $ MODE_SORTIE  : Factor w/ 5 levels "NA","Mutation",..: 4 4 4 4 4 4 2 4 2 4 ...
@@ -720,51 +777,51 @@ n <- \hlfunctioncall{dim}(d1)
 \end{alltt}
 \begin{verbatim}
 ##       id             CODE_POSTAL           COMMUNE        DESTINATION    
-##  Length:163915      68000  : 11646   MULHOUSE  : 19333   MCO    : 34451  
-##  Class :character   68200  : 10226   STRASBOURG: 17272   PSY    :   596  
-##  Mode  :character   68100  :  9157   COLMAR    : 11640   SSR    :    27  
-##                     67100  :  7854   HAGUENAU  :  3428   HMS    :    16  
-##                     67000  :  5557   SELESTAT  :  3118   SLD    :     8  
-##                     67600  :  4669   (Other)   :109121   (Other):     1  
-##                     (Other):114806   NA's      :     3   NA's   :128816  
+##  Length:193102      68000  : 13531   MULHOUSE  : 22610   MCO    : 40127  
+##  Class :character   68200  : 11867   STRASBOURG: 20105   PSY    :   703  
+##  Mode  :character   68100  : 10798   COLMAR    : 13527   SSR    :    33  
+##                     67100  :  9169   HAGUENAU  :  4028   HMS    :    18  
+##                     67000  :  6454   SELESTAT  :  3654   SLD    :     8  
+##                     67600  :  5430   (Other)   :129174   (Other):     1  
+##                     (Other):135853   NA's      :     4   NA's   :152212  
 ##       DP               ENTREE            EXTRACT              FINESS     
-##  Length:163915      Length:163915      Length:163915      Col    :33153  
-##  Class :character   Class :character   Class :character   Mul    :26911  
-##  Mode  :character   Mode  :character   Mode  :character   Hus    :19350  
-##                                                           Hag    :17533  
-##                                                           Sel    :14920  
-##                                                           Dia    :14695  
-##                                                           (Other):37353  
-##     GRAVITE           MODE_ENTREE        MODE_SORTIE    
-##  2      :99923   NA         :     0   NA       :     0  
-##  1      :19879   Mutation   :  1857   Mutation : 32774  
-##  3      :19174   Transfert  :  1397   Transfert:  2345  
-##  4      : 1827   Domicile   :141569   Domicile :103757  
-##  P      :  723   Transfe  rt:   294   Décès    :     2  
-##  (Other):  448   NA's       : 18798   NA's     : 25037  
-##  NA's   :21941                                          
-##     MOTIF            NAISSANCE          ORIENTATION       PROVENANCE   
-##  Length:163915      Length:163915      UHCD   : 16706   PEA    :92063  
-##  Class :character   Class :character   MED    :  8409   PEO    :14406  
-##  Mode  :character   Mode  :character   CHIR   :  3616   MCO    : 3767  
-##                                        PSA    :  1532   SSR    :   18  
-##                                        SI     :   683   PSY    :   13  
-##                                        (Other):  2288   (Other):   12  
-##                                        NA's   :130681   NA's   :53636  
-##  SEXE         SORTIE          TRANSPORT     TRANSPORT_PEC   
-##  F:77894   Length:163915      AMBU :23396   AUCUN  :117035  
-##  I:    2   Class :character   FO   :  730   MED    :  3273  
-##  M:86019   Mode  :character   HELI :   77   PARAMED:  3574  
-##                               PERSO:91821   NA's   : 40033  
-##                               SMUR : 1452                   
-##                               VSAB :14308                   
-##                               NA's :32131                   
+##  Length:193102      Length:193102      Length:193102      Col    :38722  
+##  Class :character   Class :character   Class :character   Mul    :31533  
+##  Mode  :character   Mode  :character   Mode  :character   Hus    :22438  
+##                                                           Hag    :20531  
+##                                                           Sel    :17496  
+##                                                           Dia    :17150  
+##                                                           (Other):45232  
+##     GRAVITE            MODE_ENTREE        MODE_SORTIE    
+##  2      :118082   NA         :     0   NA       :     0  
+##  1      : 23288   Mutation   :  2167   Mutation : 38183  
+##  3      : 22494   Transfert  :  1665   Transfert:  2762  
+##  4      :  2084   Domicile   :167773   Domicile :123148  
+##  P      :   843   Transfe  rt:   294   Décès    :     2  
+##  (Other):   524   NA's       : 21203   NA's     : 29007  
+##  NA's   : 25787                                          
+##     MOTIF            NAISSANCE          ORIENTATION       PROVENANCE    
+##  Length:193102      Length:193102      UHCD   : 19300   PEA    :107747  
+##  Class :character   Class :character   MED    :  9790   PEO    : 16859  
+##  Mode  :character   Mode  :character   CHIR   :  4285   MCO    :  4427  
+##                                        PSA    :  1825   PSY    :    22  
+##                                        REO    :   793   SSR    :    20  
+##                                        (Other):  2728   (Other):    13  
+##                                        NA's   :154381   NA's   : 64014  
+##  SEXE          SORTIE          TRANSPORT      TRANSPORT_PEC   
+##  F: 91478   Length:193102      AMBU : 26860   AUCUN  :137702  
+##  I:     3   Class :character   FO   :   845   MED    :  3943  
+##  M:101621   Mode  :character   HELI :   113   PARAMED:  4186  
+##                                PERSO:108184   NA's   : 47271  
+##                                SMUR :  1653                   
+##                                VSAB : 16682                   
+##                                NA's : 38765                   
 ##       AGE       
 ##  Min.   :  0.0  
 ##  1st Qu.: 18.0  
 ##  Median : 38.0  
 ##  Mean   : 40.4  
-##  3rd Qu.: 62.0  
+##  3rd Qu.: 61.0  
 ##  Max.   :112.0  
 ##  NA's   :6
 \end{verbatim}

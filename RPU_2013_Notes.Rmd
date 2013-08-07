@@ -47,6 +47,22 @@ ref: http://www.omegahat.org/RCurl/FAQ.html
 
 Création d'un tableau avec *cbind* et une matrice (et xtable pour pdf): voir exhaustivité des données
 
+#### Transformer une *table* en *dataframe*:
+
+as.data.frame.matrix(ma_table)
+
+#### sélectionner des variables avec TRUE et FALSE
+- v<-c("ajax","troie","voiture")
+- x<-nchar(v)<6
+- x
+  [1]  TRUE  TRUE FALSE
+- v
+  [1] "ajax"    "troie"   "voiture"
+- v[x]
+  [1] "ajax"  "troie"
+- v[!x]
+  [1] "voiture"
+
 #### Version:
 ```{r version}
 sessionInfo()
@@ -67,6 +83,15 @@ Voir aussi les aides suivantes:
 ####Informations de session
 sessionInfo()
 toLatex(sessionInfo(), locale = FALSE)
+
+#### xtable
+Crée des tables en latex:  
+<<label=tab2,echo=FALSE,results='asis'>>=  
+Attention pour results mettre *asis* (et non pas *tex* qui correspond à sweawe)  
+
+xtable(c, caption = "Structures hospitalières participantes en 2013", label = "tab1",align="|l|r|r|l|r|",digits = c(0,0,2,0,0), table.placement = "ht",caption.placement = "top")  
+
+table \ref{tab1}, page \pageref{tab1}.
 
 #### Pour présenter en latex un tableau type *summary*:
 stargazer(as.data.frame(a2[1:length(a)]),summary=TRUE,digit.separator=" ",digits=2,median=TRUE,iqr=TRUE)

@@ -18,22 +18,20 @@ b4<-summary(as.factor(b3))
 b4
 ```
 ```{r}
-load("rpu2013d0106.Rda")
-d1<-d0106
-rm(d0106)
+load("rpu2013d0107.Rda")
+d1<-d0107
+rm(d0107)
 
+# nombre de RPU par type de jour de la semaine:
 e<-ymd_hms(d1$ENTREE)
 a<-summary(as.factor(wday(e)))
 a
+# nb de RPU par type de jour divisé par le nombre de fois où ce jour apparait dans l'année:
 round(a/b4,1)
-```
- a
-1     2     3     4     5     6     7 
-24545 24491 22944 22130 23280 22318 24207 
 
-round(a/b4,1)
-1     2     3     4     5     6     7 
-472.0 471.0 432.9 425.6 447.7 429.2 465.5
+barplot(a,xlab="Jour de la semaine (1 = dimanche)",ylab="Nombre de RPU")
+barplot(round(a/b4,1))
+```
 
 Utilisation de zoo - moyenne mobile (moving average)
 ====================================================
@@ -69,7 +67,7 @@ d1$count<-1
  
  On obtient une matrice de 121 lignes (1er janvier au 1er mai) et 2 colonnes, la date (*Group.1*) et le nombre de visites (*x*)
  
- On fabrique un ojet *série temporelle*:
+ On fabrique un objet *série temporelle*:
  ```{r}
 h<-ts(g,start=c(2013,1),frequency=365)
   summary(h)

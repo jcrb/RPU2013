@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Sun Aug  4 10:50:51 2013"
+## [1] "Wed Aug  7 15:30:25 2013"
 ```
 
 source: RPU2013
@@ -35,16 +35,24 @@ Chargement des routines perso
 source("../mes_fonctions.R")
 ```
 
+Variables globales:
+-------------------
+
+```r
+mois_courant <- 7
+```
+
 
 Lecture du fichier des données
 ---------------------------------------
 On lit le fichier de travail créé:
 
 ```r
+
 # load('rpu2013.Rda')
-load("rpu2013d0106.Rda")
-d1 <- d0106
-rm(d0106)
+load("rpu2013d0107.Rda")
+d1 <- d0107
+rm(d0107)
 
 attach(d1)
 ```
@@ -60,7 +68,7 @@ print(n)
 ```
 
 ```
-## [1] 163915     20
+## [1] 193102     20
 ```
 
 ```r
@@ -80,15 +88,15 @@ str(d1)
 ```
 
 ```
-## 'data.frame':	163915 obs. of  20 variables:
+## 'data.frame':	193102 obs. of  20 variables:
 ##  $ id           : chr  "2c9d83843bf5e01d013bf5e985d20225" "2c9d83843bf5e01d013bf5e986950226" "2c9d83843bf5e01d013bf5e987620227" "2c9d83843bf5e01d013bf5e988060228" ...
-##  $ CODE_POSTAL  : Factor w/ 1755 levels "00000","00159",..: 706 706 706 706 706 701 818 706 706 706 ...
-##  $ COMMUNE      : Factor w/ 3636 levels "00","01257 DRESDEN ALLEMAGNE",..: 2184 2184 2184 2184 741 2048 2033 2184 2184 2184 ...
+##  $ CODE_POSTAL  : Factor w/ 2116 levels "00000","00159",..: 706 706 706 706 706 701 818 706 706 706 ...
+##  $ COMMUNE      : Factor w/ 4344 levels "00","01257 DRESDEN ALLEMAGNE",..: 2184 2184 2184 2184 741 2048 2033 2184 2184 2184 ...
 ##  $ DESTINATION  : Factor w/ 7 levels "NA","MCO","SSR",..: NA NA NA NA NA NA 2 NA 2 NA ...
 ##  $ DP           : chr  "R104" "J038" "S617" "M485" ...
 ##  $ ENTREE       : chr  "2013-01-01 00:04:00" "2013-01-01 00:16:00" "2013-01-01 00:26:00" "2013-01-01 00:32:00" ...
 ##  $ EXTRACT      : chr  "2013-01-01 05:37:00" "2013-01-01 05:37:00" "2013-01-01 05:37:00" "2013-01-01 05:37:00" ...
-##  $ FINESS       : Factor w/ 11 levels "3Fr","Alk","Col",..: 10 10 10 10 10 10 10 10 10 10 ...
+##  $ FINESS       : Factor w/ 12 levels "3Fr","Alk","Col",..: 10 10 10 10 10 10 10 10 10 10 ...
 ##  $ GRAVITE      : Factor w/ 7 levels "1","2","3","4",..: 2 2 3 2 2 1 3 2 2 2 ...
 ##  $ MODE_ENTREE  : Factor w/ 5 levels "NA","Mutation",..: 4 4 4 4 4 4 4 4 4 4 ...
 ##  $ MODE_SORTIE  : Factor w/ 5 levels "NA","Mutation",..: 4 4 4 4 4 4 2 4 2 4 ...
@@ -109,51 +117,51 @@ summary(d1)
 
 ```
 ##       id             CODE_POSTAL           COMMUNE        DESTINATION    
-##  Length:163915      68000  : 11646   MULHOUSE  : 19333   MCO    : 34451  
-##  Class :character   68200  : 10226   STRASBOURG: 17272   PSY    :   596  
-##  Mode  :character   68100  :  9157   COLMAR    : 11640   SSR    :    27  
-##                     67100  :  7854   HAGUENAU  :  3428   HMS    :    16  
-##                     67000  :  5557   SELESTAT  :  3118   SLD    :     8  
-##                     67600  :  4669   (Other)   :109121   (Other):     1  
-##                     (Other):114806   NA's      :     3   NA's   :128816  
+##  Length:193102      68000  : 13531   MULHOUSE  : 22610   MCO    : 40127  
+##  Class :character   68200  : 11867   STRASBOURG: 20105   PSY    :   703  
+##  Mode  :character   68100  : 10798   COLMAR    : 13527   SSR    :    33  
+##                     67100  :  9169   HAGUENAU  :  4028   HMS    :    18  
+##                     67000  :  6454   SELESTAT  :  3654   SLD    :     8  
+##                     67600  :  5430   (Other)   :129174   (Other):     1  
+##                     (Other):135853   NA's      :     4   NA's   :152212  
 ##       DP               ENTREE            EXTRACT              FINESS     
-##  Length:163915      Length:163915      Length:163915      Col    :33153  
-##  Class :character   Class :character   Class :character   Mul    :26911  
-##  Mode  :character   Mode  :character   Mode  :character   Hus    :19350  
-##                                                           Hag    :17533  
-##                                                           Sel    :14920  
-##                                                           Dia    :14695  
-##                                                           (Other):37353  
-##     GRAVITE           MODE_ENTREE        MODE_SORTIE    
-##  2      :99923   NA         :     0   NA       :     0  
-##  1      :19879   Mutation   :  1857   Mutation : 32774  
-##  3      :19174   Transfert  :  1397   Transfert:  2345  
-##  4      : 1827   Domicile   :141569   Domicile :103757  
-##  P      :  723   Transfe  rt:   294   Décès    :     2  
-##  (Other):  448   NA's       : 18798   NA's     : 25037  
-##  NA's   :21941                                          
-##     MOTIF            NAISSANCE          ORIENTATION       PROVENANCE   
-##  Length:163915      Length:163915      UHCD   : 16706   PEA    :92063  
-##  Class :character   Class :character   MED    :  8409   PEO    :14406  
-##  Mode  :character   Mode  :character   CHIR   :  3616   MCO    : 3767  
-##                                        PSA    :  1532   SSR    :   18  
-##                                        SI     :   683   PSY    :   13  
-##                                        (Other):  2288   (Other):   12  
-##                                        NA's   :130681   NA's   :53636  
-##  SEXE         SORTIE          TRANSPORT     TRANSPORT_PEC   
-##  F:77894   Length:163915      AMBU :23396   AUCUN  :117035  
-##  I:    2   Class :character   FO   :  730   MED    :  3273  
-##  M:86019   Mode  :character   HELI :   77   PARAMED:  3574  
-##                               PERSO:91821   NA's   : 40033  
-##                               SMUR : 1452                   
-##                               VSAB :14308                   
-##                               NA's :32131                   
+##  Length:193102      Length:193102      Length:193102      Col    :38722  
+##  Class :character   Class :character   Class :character   Mul    :31533  
+##  Mode  :character   Mode  :character   Mode  :character   Hus    :22438  
+##                                                           Hag    :20531  
+##                                                           Sel    :17496  
+##                                                           Dia    :17150  
+##                                                           (Other):45232  
+##     GRAVITE            MODE_ENTREE        MODE_SORTIE    
+##  2      :118082   NA         :     0   NA       :     0  
+##  1      : 23288   Mutation   :  2167   Mutation : 38183  
+##  3      : 22494   Transfert  :  1665   Transfert:  2762  
+##  4      :  2084   Domicile   :167773   Domicile :123148  
+##  P      :   843   Transfe  rt:   294   Décès    :     2  
+##  (Other):   524   NA's       : 21203   NA's     : 29007  
+##  NA's   : 25787                                          
+##     MOTIF            NAISSANCE          ORIENTATION       PROVENANCE    
+##  Length:193102      Length:193102      UHCD   : 19300   PEA    :107747  
+##  Class :character   Class :character   MED    :  9790   PEO    : 16859  
+##  Mode  :character   Mode  :character   CHIR   :  4285   MCO    :  4427  
+##                                        PSA    :  1825   PSY    :    22  
+##                                        REO    :   793   SSR    :    20  
+##                                        (Other):  2728   (Other):    13  
+##                                        NA's   :154381   NA's   : 64014  
+##  SEXE          SORTIE          TRANSPORT      TRANSPORT_PEC   
+##  F: 91478   Length:193102      AMBU : 26860   AUCUN  :137702  
+##  I:     3   Class :character   FO   :   845   MED    :  3943  
+##  M:101621   Mode  :character   HELI :   113   PARAMED:  4186  
+##                                PERSO:108184   NA's   : 47271  
+##                                SMUR :  1653                   
+##                                VSAB : 16682                   
+##                                NA's : 38765                   
 ##       AGE       
 ##  Min.   :  0.0  
 ##  1st Qu.: 18.0  
 ##  Median : 38.0  
 ##  Mean   : 40.4  
-##  3rd Qu.: 62.0  
+##  3rd Qu.: 61.0  
 ##  Max.   :112.0  
 ##  NA's   :6
 ```
@@ -171,18 +179,20 @@ Stuctures hospitaliéres participantes
 - *Odi* Clinique Ste Odile
 - *Sel* CH de Sélestat
 - *Wis* CH de Wissembourg
-Hôpitaux ne transmettant pas de données:
 - *Sav* CH de Saverne
+Hôpitaux ne transmettant pas de données:
 - *Tha* CH de Thann
 - *Ann* Clinique Ste Anne
+
+Contribution (en %) des SU à la production de RPU:
 
 ```r
 summary(d1$FINESS)
 ```
 
 ```
-##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis 
-##  7998  2759 33153 14695  7369 17533 19350 26911 12957 14920  6270
+##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis   Sav 
+##  9382  3784 38722 17150  8852 20531 22438 31533 15193 17496  7431   590
 ```
 
 ```r
@@ -192,8 +202,8 @@ round(prop.table(a) * 100, digits = 2)
 
 ```
 ## 
-##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis 
-##  4.88  1.68 20.23  8.97  4.50 10.70 11.80 16.42  7.90  9.10  3.83
+##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis   Sav 
+##  4.86  1.96 20.05  8.88  4.58 10.63 11.62 16.33  7.87  9.06  3.85  0.31
 ```
 
 Passages déclarés au serveur régional:
@@ -210,51 +220,54 @@ Content Cell  | Content Cell
 Projection sur l'année:
 
 ```r
-summary(d1$FINESS) * 3
+mois_courant <- 7
+p <- 12/mois_courant
+summary(d1$FINESS) * p
 ```
 
 ```
-##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis 
-## 23994  8277 99459 44085 22107 52599 58050 80733 38871 44760 18810
+##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis   Sav 
+## 16083  6487 66381 29400 15175 35196 38465 54057 26045 29993 12739  1011
 ```
 
 ```r
-sum(summary(d1$FINESS) * 3)
+sum(summary(d1$FINESS) * p)
 ```
 
 ```
-## [1] 491745
+## [1] 331032
 ```
 
 ```r
 
 t1 <- table(d1$FINESS)
-t2 <- table(d1$FINESS) * 3
+t2 <- table(d1$FINESS) * p
 t3 <- rbind(t1, t2)
-rownames(t3) <- c("1er Quadrimestre", "Projection 2013")
+rownames(t3) <- c("Réalisé", "Projection 2013")
 xtable(t(t3))
 ```
 
 ```
 ## % latex table generated in R 2.15.1 by xtable 1.7-1 package
-## % Sun Aug  4 10:51:00 2013
+## % Wed Aug  7 15:30:37 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rrr}
 ##   \hline
-##  & 1er Quadrimestre & Projection 2013 \\ 
+##  & Réalisé & Projection 2013 \\ 
 ##   \hline
-## 3Fr & 7998.00 & 23994.00 \\ 
-##   Alk & 2759.00 & 8277.00 \\ 
-##   Col & 33153.00 & 99459.00 \\ 
-##   Dia & 14695.00 & 44085.00 \\ 
-##   Geb & 7369.00 & 22107.00 \\ 
-##   Hag & 17533.00 & 52599.00 \\ 
-##   Hus & 19350.00 & 58050.00 \\ 
-##   Mul & 26911.00 & 80733.00 \\ 
-##   Odi & 12957.00 & 38871.00 \\ 
-##   Sel & 14920.00 & 44760.00 \\ 
-##   Wis & 6270.00 & 18810.00 \\ 
+## 3Fr & 9382.00 & 16083.43 \\ 
+##   Alk & 3784.00 & 6486.86 \\ 
+##   Col & 38722.00 & 66380.57 \\ 
+##   Dia & 17150.00 & 29400.00 \\ 
+##   Geb & 8852.00 & 15174.86 \\ 
+##   Hag & 20531.00 & 35196.00 \\ 
+##   Hus & 22438.00 & 38465.14 \\ 
+##   Mul & 31533.00 & 54056.57 \\ 
+##   Odi & 15193.00 & 26045.14 \\ 
+##   Sel & 17496.00 & 29993.14 \\ 
+##   Wis & 7431.00 & 12738.86 \\ 
+##   Sav & 590.00 & 1011.43 \\ 
 ##    \hline
 ## \end{tabular}
 ## \end{table}
@@ -281,10 +294,138 @@ cbind(as.character(sort(c)))
 ## Wis "2013-01-01"
 ## Mul "2013-01-07"
 ## Alk "2013-04-01"
+## Sav "2013-07-23"
 ```
 
 Exhaustivité des données
 ------------------------
+
+#### Jours manquants:a<-as.data.frame(a)
+
+```r
+a <- table(as.Date(d1$ENTREE), d1$FINESS)
+a <- as.data.frame.matrix(a)
+head(a)
+```
+
+```
+##            3Fr Alk Col Dia Geb Hag Hus Mul Odi Sel Wis Sav
+## 2013-01-01  59   0 208  88  45 131 126   0  84 111  32   0
+## 2013-01-02  38   0 197  89  42 112 125   0  69  80  49   0
+## 2013-01-03  39   0 160  73  42  83 121   0  55  78  35   0
+## 2013-01-04  42   0 170  93  30  92 121   0  67  65  24   0
+## 2013-01-05  46   0 150  87  44 100 102   0  70  85  38   0
+## 2013-01-06  38   0 167  77  43  90  93   0  79  68  36   0
+```
+
+```r
+# liste par FINESS des jours où le nb de RPU est inférieur à 20: il faut
+# ajouter une colonne date pour que cela fonctionne.
+a$date <- seq(as.Date("2013-01-01"), as.Date("2013-07-30"), 1)
+b <- list(1:12)
+for (i in 1:12) {
+    b[[i]] <- a[a[, i] < 20, c(13, i)]
+}
+str(b)
+```
+
+```
+## List of 12
+##  $ :'data.frame':	1 obs. of  2 variables:
+##   ..$ date: Date[1:1], format: "2013-07-30"
+##   ..$ 3Fr : int 0
+##  $ :'data.frame':	115 obs. of  2 variables:
+##   ..$ date: Date[1:115], format: "2013-01-01" ...
+##   ..$ Alk : int [1:115] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ :'data.frame':	1 obs. of  2 variables:
+##   ..$ date: Date[1:1], format: "2013-07-30"
+##   ..$ Col : int 0
+##  $ :'data.frame':	1 obs. of  2 variables:
+##   ..$ date: Date[1:1], format: "2013-07-30"
+##   ..$ Dia : int 0
+##  $ :'data.frame':	6 obs. of  2 variables:
+##   ..$ date: Date[1:6], format: "2013-05-08" ...
+##   ..$ Geb : int [1:6] 0 0 0 0 0 0
+##  $ :'data.frame':	1 obs. of  2 variables:
+##   ..$ date: Date[1:1], format: "2013-07-30"
+##   ..$ Hag : int 0
+##  $ :'data.frame':	1 obs. of  2 variables:
+##   ..$ date: Date[1:1], format: "2013-07-30"
+##   ..$ Hus : int 0
+##  $ :'data.frame':	20 obs. of  2 variables:
+##   ..$ date: Date[1:20], format: "2013-01-01" ...
+##   ..$ Mul : int [1:20] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ :'data.frame':	1 obs. of  2 variables:
+##   ..$ date: Date[1:1], format: "2013-07-30"
+##   ..$ Odi : int 0
+##  $ :'data.frame':	4 obs. of  2 variables:
+##   ..$ date: Date[1:4], format: "2013-04-11" ...
+##   ..$ Sel : int [1:4] 6 1 10 0
+##  $ :'data.frame':	3 obs. of  2 variables:
+##   ..$ date: Date[1:3], format: "2013-01-30" ...
+##   ..$ Wis : int [1:3] 16 18 1
+##  $ :'data.frame':	203 obs. of  2 variables:
+##   ..$ date: Date[1:203], format: "2013-01-01" ...
+##   ..$ Sav : int [1:203] 0 0 0 0 0 0 0 0 0 0 ...
+```
+
+```r
+b[[5]]
+```
+
+```
+##                  date Geb
+## 2013-05-08 2013-05-08   0
+## 2013-05-09 2013-05-09   0
+## 2013-05-10 2013-05-10   0
+## 2013-05-11 2013-05-11   0
+## 2013-05-12 2013-05-12   0
+## 2013-07-31 2013-07-30   0
+```
+
+```r
+names(b[[5]])
+```
+
+```
+## [1] "date" "Geb"
+```
+
+```r
+b[[5]]$date
+```
+
+```
+## [1] "2013-05-08" "2013-05-09" "2013-05-10" "2013-05-11" "2013-05-12"
+## [6] "2013-07-30"
+```
+
+```r
+# liste des SU incomplets:
+for (i in 1:12) {
+    n = length(b[[i]]$date)
+    if (n > 0) {
+        print(paste(i, names(b[[i]][2]), n, sep = " "))
+    }
+}
+```
+
+```
+## [1] "1 3Fr 1"
+## [1] "2 Alk 115"
+## [1] "3 Col 1"
+## [1] "4 Dia 1"
+## [1] "5 Geb 6"
+## [1] "6 Hag 1"
+## [1] "7 Hus 1"
+## [1] "8 Mul 20"
+## [1] "9 Odi 1"
+## [1] "10 Sel 4"
+## [1] "11 Wis 3"
+## [1] "12 Sav 203"
+```
+
+#### Exhaustivité des items
 Il faut tranformer les valeurs NULL en NA pour pouvoir les comptabiliser. Les valeurs NULL apparaissent pour les factors: DP, MOTIF, TRANSPORT, ORIENTATION,GRAVITE, SORTIE. Il faut les transformer en character pour leur attriber la valeur NA au lieu de NULL:
 
 ```r
@@ -294,7 +435,7 @@ sum(is.na(a))
 ```
 
 ```
-## [1] 50718
+## [1] 60179
 ```
 
 ```r
@@ -302,7 +443,7 @@ mean(is.na(a))
 ```
 
 ```
-## [1] 0.3094
+## [1] 0.3116
 ```
 
 sum(is.na(a)) retourne le nombre de lignes concernées et *mean(is.na(a))* donne directement le pourcentage de valeurs nulles (R in action pp 356)
@@ -356,17 +497,17 @@ a
 ## NAISSANCE      0.00
 ## SEXE           0.00
 ## AGE            0.00
-## SORTIE         9.23
-## MODE_ENTREE   11.47
-## GRAVITE       13.39
-## MODE_SORTIE   15.27
-## TRANSPORT     19.60
-## TRANSPORT_PEC 24.42
-## DP            30.94
-## PROVENANCE    32.72
-## MOTIF         35.09
-## DESTINATION   78.59
-## ORIENTATION   79.72
+## SORTIE         9.27
+## MODE_ENTREE   10.98
+## GRAVITE       13.35
+## MODE_SORTIE   15.02
+## TRANSPORT     20.07
+## TRANSPORT_PEC 24.48
+## DP            31.16
+## PROVENANCE    33.15
+## MOTIF         35.30
+## DESTINATION   78.82
+## ORIENTATION   79.95
 ```
 
 MODE_SORTIE (hospitalisation ou retour à domicile): dans 14.86% des cas on ne sait pas ce que devient le patient. Pour sélectionner les hospitalisés et éliminer les NA et les valeurs nulles:
@@ -380,7 +521,7 @@ summary(a)
 
 ```
 ##  Mutation Transfert 
-##     32774      2345
+##     38183      2762
 ```
 
 ```r
@@ -390,7 +531,7 @@ round(prop.table(table(a)) * 100, 2)
 ```
 ## a
 ##  Mutation Transfert 
-##     93.32      6.68
+##     93.25      6.75
 ```
 
 ```r
@@ -402,7 +543,7 @@ summary(a$DESTINATION)
 
 ```
 ##    NA   MCO   SSR   SLD   PSY   HAD   HMS 
-##     0 12544     2     3   204     0     0
+##     0 14595     2     3   240     0     0
 ```
 
 ```r
@@ -411,7 +552,7 @@ summary(as.factor(a$ORIENTATION))
 
 ```
 ## CHIR  HDT   HO  MED OBST  REA   SC   SI UHCD 
-## 2659   29   12 6023   27  344  472  467 2720
+## 3120   36   13 6989   30  405  564  542 3141
 ```
 
 ```r
@@ -421,7 +562,7 @@ round(prop.table(table(as.factor(a$ORIENTATION))) * 100, 2)
 ```
 ## 
 ##  CHIR   HDT    HO   MED  OBST   REA    SC    SI  UHCD 
-## 20.85  0.23  0.09 47.23  0.21  2.70  3.70  3.66 21.33
+## 21.02  0.24  0.09 47.10  0.20  2.73  3.80  3.65 21.17
 ```
 
 ```r
@@ -430,21 +571,21 @@ tab1(as.factor(a$ORIENTATION), sort.group = "decreasing", horiz = TRUE, cex.name
     xlab = "", main = "Orientation des patients hospitalisés")
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-71.png) 
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-61.png) 
 
 ```
 ## as.factor(a$ORIENTATION) :  
 ##         Frequency Percent Cum. percent
-## MED          6023    47.2         47.2
-## UHCD         2720    21.3         68.6
-## CHIR         2659    20.8         89.4
-## SC            472     3.7         93.1
-## SI            467     3.7         96.8
-## REA           344     2.7         99.5
-## HDT            29     0.2         99.7
-## OBST           27     0.2         99.9
-## HO             12     0.1        100.0
-##   Total     12753   100.0        100.0
+## MED          6989    47.1         47.1
+## UHCD         3141    21.2         68.3
+## CHIR         3120    21.0         89.3
+## SC            564     3.8         93.1
+## SI            542     3.7         96.7
+## REA           405     2.7         99.5
+## HDT            36     0.2         99.7
+## OBST           30     0.2         99.9
+## HO             13     0.1        100.0
+##   Total     14840   100.0        100.0
 ```
 
 ```r
@@ -455,9 +596,9 @@ summary(as.factor(a$ORIENTATION))
 
 ```
 ##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
-##     66    113      7      1     38      1   1501      4    646      1 
+##     73    146      9      1     48      1   1791      6    774      2 
 ##   SCAM     SI   UHCD   NA's 
-##    232     16    110 126058
+##    280     21    141 148862
 ```
 
 ```r
@@ -468,9 +609,9 @@ round(prop.table(t) * 100, 2)
 ```
 ## 
 ##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    SC  SCAM    SI 
-##  2.41  4.13  0.26  0.04  1.39  0.04 54.86  0.15 23.61  0.04  8.48  0.58 
+##  2.22  4.43  0.27  0.03  1.46  0.03 54.39  0.18 23.50  0.06  8.50  0.64 
 ##  UHCD 
-##  4.02
+##  4.28
 ```
 
 ```r
@@ -478,26 +619,26 @@ tab1(as.factor(a$ORIENTATION), sort.group = "decreasing", horiz = TRUE, cex.name
     xlab = "", main = "Orientation des patients non hospitalisés")
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-72.png) 
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-62.png) 
 
 ```
 ## as.factor(a$ORIENTATION) :  
 ##         Frequency   %(NA+)   %(NA-)
-## NA's       126058     97.9      0.0
-## PSA          1501      1.2     54.9
-## REO           646      0.5     23.6
-## SCAM          232      0.2      8.5
-## FUGUE         113      0.1      4.1
-## UHCD          110      0.1      4.0
-## CHIR           66      0.1      2.4
-## MED            38      0.0      1.4
-## SI             16      0.0      0.6
-## HDT             7      0.0      0.3
-## REA             4      0.0      0.1
+## NA's       148862     97.8      0.0
+## PSA          1791      1.2     54.4
+## REO           774      0.5     23.5
+## SCAM          280      0.2      8.5
+## FUGUE         146      0.1      4.4
+## UHCD          141      0.1      4.3
+## CHIR           73      0.0      2.2
+## MED            48      0.0      1.5
+## SI             21      0.0      0.6
+## HDT             9      0.0      0.3
+## REA             6      0.0      0.2
+## SC              2      0.0      0.1
 ## HO              1      0.0      0.0
 ## OBST            1      0.0      0.0
-## SC              1      0.0      0.0
-##   Total    128794    100.0    100.0
+##   Total    152155    100.0    100.0
 ```
 
 La table ci-dessus liste le devenir des patients non hospitalisés. On note des incohérences: REA, HDT, SI, Med, CHIR, UHCD. La ligne *Missing* correspond aux patients rentrés sur avis médical.
@@ -512,7 +653,7 @@ Dans l'échantillon *d1* c'est la colonne *MODE_SORTIE* qui renseigne sur le dev
 
 
 ```
-## [1] "d1 compte  163915  lignes"
+## [1] "d1 compte  193102  lignes"
 ```
 
 Il y a deux façons de former des sous ensembles avec R:
@@ -535,7 +676,7 @@ print(paste("hosp = ", nrow(hosp), " lignes"))
 ```
 
 ```
-## [1] "hosp =  60156  lignes"
+## [1] "hosp =  69952  lignes"
 ```
 
 ```r
@@ -543,7 +684,7 @@ print(paste("dom = ", nrow(dom), " lignes"))
 ```
 
 ```
-## [1] "dom =  128794  lignes"
+## [1] "dom =  152155  lignes"
 ```
 
 ```r
@@ -551,7 +692,7 @@ print(paste("dcd = ", nrow(dcd), " lignes"))
 ```
 
 ```
-## [1] "dcd =  25037  lignes"
+## [1] "dcd =  29007  lignes"
 ```
 
 ```r
@@ -561,7 +702,7 @@ print(paste("La différence du nombre de lignes entre d1 et hosp, dom et dcd ind
 ```
 
 ```
-## [1] "La différence du nombre de lignes entre d1 et hosp, dom et dcd indique le nmbre de lignes correspondant à NA et qui sont incluses dans le décompte des lignes de chaque sous ensemble:  50072 correspondant aux mode de sortie non renseignés soit  30.55  %"
+## [1] "La différence du nombre de lignes entre d1 et hosp, dom et dcd indique le nmbre de lignes correspondant à NA et qui sont incluses dans le décompte des lignes de chaque sous ensemble:  58012 correspondant aux mode de sortie non renseignés soit  30.04  %"
 ```
 
 Avec *subset* on élimine ces lignes parasites:
@@ -573,7 +714,7 @@ nrow(a)
 ```
 
 ```
-## [1] 103757
+## [1] 123148
 ```
 
 ```r
@@ -581,7 +722,7 @@ nrow(b)
 ```
 
 ```
-## [1] 35119
+## [1] 40945
 ```
 
 ```r
@@ -589,7 +730,7 @@ nrow(d1) - nrow(a) - nrow(b)
 ```
 
 ```
-## [1] 25039
+## [1] 29009
 ```
 
 ```r
@@ -610,20 +751,20 @@ rbind(t2, m2)
 ```
 
 ```
-##      3Fr Alk  Col  Dia Geb  Hag   Hus  Mul Odi  Sel  Wis    m1
-## CHIR   0   0 1486   18   0  545     0  685  83  656    6  3479
-## HDT    0   0   28    0   1    0     0    2   0    0    9    40
-## HO     0   0    5    0   0    0     0    3   0    0    7    15
-## MED    0   0 3359    4   0 1093   271 1267  26 2221   14  8255
-## OBST   0   0   18    0   0   23     0    0   1    9    0    51
-## PSA    0   1    0    4   0    0     0    0   0    0    0     5
-## REA    0   0  186    1   0   82     0  125   0   49    3   446
-## REO    3   4    0    5   0    0     0    0   1    0    0    13
-## SC     0   0  219    0   0   41     0  366   0    1   14   641
-## SI     0   0  321    0   0  147     0  145   5    4    9   631
-## UHCD   0   0 2451    3   0 2154 10268  338   0  200   17 15431
-## <NA> 173 450  231 1347   6 1035     0  968 510    0 1392  6112
-## m2   176 455 8304 1382   7 5120 10539 3899 626 3140 1471 35119
+##      3Fr Alk  Col  Dia Geb  Hag   Hus  Mul Odi  Sel  Wis Sav    m1
+## CHIR   1   0 1707   22   5  660     0  833  97  778    7  15  4125
+## HDT    0   0   33    0   1    0     0    2   0    0   13   0    49
+## HO     0   0    5    0   1    0     0    3   0    0    9   0    18
+## MED    1   0 3895    5   1 1279   294 1408  29 2587   15  96  9610
+## OBST   0   0   19    0   1   27     0    0   1   11    0   0    59
+## PSA    0   1    0    5   0    0     0    0   0    0    0   0     6
+## REA    0   0  220    1   0   95     0  149   1   55    3   1   525
+## REO    4   4    0    7   0    0     0    0   1    0    0   0    16
+## SC     0   0  255    0   1   43     0  440   0    1   21   0   761
+## SI     0   0  367    0   1  163     0  174   5    6   11   0   727
+## UHCD   0   0 2837    3   1 2448 11850  392   0  228   27   0 17786
+## <NA> 187 633  273 1599  54 1219     0 1116 563    0 1614   5  7263
+## m2   193 638 9611 1642  66 5934 12144 4517 697 3666 1720 117 40945
 ```
 
 ```r
@@ -633,7 +774,7 @@ summary(a$MODE_SORTIE)
 
 ```
 ##        NA  Mutation Transfert  Domicile     Décès 
-##         0         0         0    103757         0
+##         0         0         0    123148         0
 ```
 
 ```r
@@ -642,7 +783,7 @@ summary(b$MODE_SORTIE)
 
 ```
 ##        NA  Mutation Transfert  Domicile     Décès 
-##         0     32774      2345         0         0
+##         0     38183      2762         0         0
 ```
 
 - nb total de lignes = 105979
@@ -656,7 +797,7 @@ summary(b$DESTINATION)
 
 ```
 ##    NA   MCO   SSR   SLD   PSY   HAD   HMS  NA's 
-##     0 34318    27     8   590     0     0   176
+##     0 39994    33     8   697     0     0   213
 ```
 
 ```r
@@ -665,7 +806,7 @@ summary(b$ORIENTATION)
 
 ```
 ##    Length     Class      Mode 
-##     35119 character character
+##     40945 character character
 ```
 
 ```r
@@ -674,7 +815,7 @@ summary(a$DESTINATION)
 
 ```
 ##     NA    MCO    SSR    SLD    PSY    HAD    HMS   NA's 
-##      0    121      0      0      0      1     16 103619
+##      0    121      0      0      0      1     18 123008
 ```
 
 ```r
@@ -683,7 +824,7 @@ summary(a$ORIENTATION)
 
 ```
 ##    Length     Class      Mode 
-##    103757 character character
+##    123148 character character
 ```
 
 
@@ -699,7 +840,7 @@ summary(d1$MODE_SORTIE)
 
 ```
 ##        NA  Mutation Transfert  Domicile     Décès      NA's 
-##         0     32774      2345    103757         2     25037
+##         0     38183      2762    123148         2     29007
 ```
 
 ```r
@@ -708,7 +849,7 @@ prop.table(summary(d1$MODE_SORTIE)) * 100
 
 ```
 ##        NA  Mutation Transfert  Domicile     Décès      NA's 
-##   0.00000  19.99451   1.43062  63.29927   0.00122  15.27438
+##  0.000000 19.773488  1.430332 63.773550  0.001036 15.021595
 ```
 
 #### Destinations
@@ -719,7 +860,7 @@ summary(hosp$DESTINATION)
 
 ```
 ##    NA   MCO   SSR   SLD   PSY   HAD   HMS  NA's 
-##     0 34318    27     8   590     0     0 25213
+##     0 39994    33     8   697     0     0 29220
 ```
 
 ```r
@@ -728,9 +869,9 @@ prop.table(summary(hosp$DESTINATION))
 
 ```
 ##        NA       MCO       SSR       SLD       PSY       HAD       HMS 
-## 0.0000000 0.5704834 0.0004488 0.0001330 0.0098078 0.0000000 0.0000000 
+## 0.0000000 0.5717349 0.0004718 0.0001144 0.0099640 0.0000000 0.0000000 
 ##      NA's 
-## 0.4191269
+## 0.4177150
 ```
 
 ```r
@@ -741,7 +882,7 @@ table(hosp$DESTINATION)
 ```
 ## 
 ##    NA   MCO   SSR   SLD   PSY   HAD   HMS 
-##     0 34318    27     8   590     0     0
+##     0 39994    33     8   697     0     0
 ```
 
 ```r
@@ -751,7 +892,7 @@ prop.table(table(hosp$DESTINATION)) * 100
 ```
 ## 
 ##       NA      MCO      SSR      SLD      PSY      HAD      HMS 
-##  0.00000 98.21137  0.07727  0.02289  1.68846  0.00000  0.00000
+##  0.00000 98.18816  0.08102  0.01964  1.71119  0.00000  0.00000
 ```
 
 
@@ -765,7 +906,7 @@ a
 
 ```
 ##  CHIR   HDT    HO   MED  OBST   PSA   REA   REO    SC    SI  UHCD  NA's 
-##  3404     5     8  8120    51     5   440    13   636   631 15412 30806
+##  4038     7     8  9453    59     6   519    16   755   727 17764 35862
 ```
 
 ```r
@@ -774,7 +915,7 @@ round(prop.table(a) * 100, 2)
 
 ```
 ##  CHIR   HDT    HO   MED  OBST   PSA   REA   REO    SC    SI  UHCD  NA's 
-##  5.72  0.01  0.01 13.64  0.09  0.01  0.74  0.02  1.07  1.06 25.89 51.75
+##  5.83  0.01  0.01 13.66  0.09  0.01  0.75  0.02  1.09  1.05 25.67 51.81
 ```
 
 ```r
@@ -786,7 +927,7 @@ a
 ```
 ## 
 ##  CHIR   HDT    HO   MED  OBST   PSA   REA   REO    SC    SI  UHCD 
-##  3404     5     8  8120    51     5   440    13   636   631 15412
+##  4038     7     8  9453    59     6   519    16   755   727 17764
 ```
 
 ```r
@@ -797,9 +938,9 @@ a
 ```
 ## 
 ##     CHIR      HDT       HO      MED     OBST      PSA      REA      REO 
-## 11.85030  0.01741  0.02785 28.26806  0.17755  0.01741  1.53177  0.04526 
+## 12.10722  0.02099  0.02399 28.34313  0.17690  0.01799  1.55613  0.04797 
 ##       SC       SI     UHCD 
-##  2.21410  2.19669 53.65361
+##  2.26373  2.17978 53.26217
 ```
 
 ```r
@@ -808,7 +949,7 @@ print(paste("Services chauds: ", round(sce_chauds, 2), " %"))
 ```
 
 ```
-## [1] "Services chauds:  5.94  %"
+## [1] "Services chauds:  6  %"
 ```
 
 ```r
@@ -817,7 +958,7 @@ print(paste("MCO: ", round(mco, 2), " %"))
 ```
 
 ```
-## [1] "MCO:  40.3  %"
+## [1] "MCO:  40.63  %"
 ```
 
 ```r
@@ -825,7 +966,7 @@ print(paste("UHTCD: ", round(a["UHCD"], 2), " %"))
 ```
 
 ```
-## [1] "UHTCD:  53.65  %"
+## [1] "UHTCD:  53.26  %"
 ```
 
 ```r
@@ -842,7 +983,7 @@ print(paste("HDT-HO: ", round(a["HDT"] + a["HO"], 2), " %"))
 ```
 
 ```
-## [1] "HDT-HO:  0.05  %"
+## [1] "HDT-HO:  0.04  %"
 ```
 
 Quelques erreurs de codage:
@@ -857,7 +998,7 @@ a
 
 ```
 ##    Length     Class      Mode 
-##     25803 character character
+##     29917 character character
 ```
 
 ```r
@@ -868,7 +1009,7 @@ a
 ```
 ## 
 ## CHIR  HDT   HO  MED  REA   SC UHCD 
-##   75   35    7  130    5    5    9
+##   87   42   10  152    5    6   10
 ```
 
 ```r
@@ -881,7 +1022,7 @@ summary(a$ORIENTATION)
 
 ```
 ##    Length     Class      Mode 
-##       596 character character
+##       703 character character
 ```
 
 ```r
@@ -902,9 +1043,9 @@ a
 
 ```
 ##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
-##   3616    114     63     16   8409     52   1532    490    661    660 
+##   4285    147     76     19   9790     60   1825    573    793    785 
 ##   SCAM     SI   UHCD   NA's 
-##    232    683  16706 130681
+##    280    788  19300 154381
 ```
 
 ```r
@@ -915,7 +1056,7 @@ print(paste("Services chauds: ", round(sce_chauds, 2), " %"))
 ```
 
 ```
-## [1] "Services chauds:  1.12  %"
+## [1] "Services chauds:  1.11  %"
 ```
 
 ```r
@@ -924,7 +1065,7 @@ print(paste("MCO: ", round(mco, 2), " %"))
 ```
 
 ```
-## [1] "MCO:  7.37  %"
+## [1] "MCO:  7.32  %"
 ```
 
 ```r
@@ -933,7 +1074,7 @@ print(paste("UHTCD: ", round(uhcd, 2), " %"))
 ```
 
 ```
-## [1] "UHTCD:  10.19  %"
+## [1] "UHTCD:  9.99  %"
 ```
 
 ```r
@@ -942,7 +1083,7 @@ print(paste("Atypiques: ", round(atypique, 2), " %"))
 ```
 
 ```
-## [1] "Atypiques:  1.55  %"
+## [1] "Atypiques:  1.58  %"
 ```
 
 ```r
@@ -966,7 +1107,7 @@ barplot(r, las = 2, beside = T, legend = T, ylab = "% des RPU", xlab = "", sub =
     cex.sub = 0.6)
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
 
 en fonction de l'établissement (NOTE: utilisation de useNA="ifany"):
 
@@ -979,19 +1120,34 @@ t
 ```
 ##        
 ##           3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis
-##   CHIR      3     0  1490    40     1   545     0   744   129   657     7
-##   FUGUE     0     2    53     5     0    18     0     0    20     1    15
-##   HDT       0     0    29     0     1     0     0    24     0     0     9
-##   HO        0     0     5     0     0     0     0     3     0     0     8
-##   MED       0     0  3370     7     2  1093   271  1379    41  2230    16
-##   OBST      0     0    18     0     0    23     0     0     2     9     0
-##   PSA       1    63   521   533     0   256     0    91    19     3    45
-##   REA       0     0   186     2     0    82     0   167     1    49     3
-##   REO      24     9   561    63     0     0     0     0     2     0     2
-##   SC        0     0   219     0     0    41     0   380     0     1    19
-##   SCAM      2     6    92     6     1    78     0     8    21     0    18
-##   SI        0     0   321     2     0   147     0   179     6    18    10
-##   UHCD      0     0  2453     6     0  2154 10834  1034     0   200    25
+##   CHIR      4     0  1711    45     8   660     0   907   148   779     8
+##   FUGUE     4     4    68     7     0    21     0     0    23     2    18
+##   HDT       0     0    34     0     1     0     0    27     0     0    14
+##   HO        0     0     5     0     1     0     0     3     0     0    10
+##   MED       1     0  3906    10     4  1279   294  1538    46  2599    17
+##   OBST      0     0    19     0     1    27     0     0     2    11     0
+##   PSA       9    89   600   613     7   319     0    98    22     6    62
+##   REA       0     0   220     3     1    95     0   193     2    55     3
+##   REO      27    11   668    82     0     0     0     0     2     0     2
+##   SC        0     0   255     0     1    43     0   458     0     1    27
+##   SCAM      2     9   109    12     2    91     0     8    21     3    20
+##   SI        1     0   367     2     2   163     0   211     6    24    12
+##   UHCD      1     0  2839     7     1  2448 12522  1216     0   228    38
+##        
+##           Sav
+##   CHIR     15
+##   FUGUE     0
+##   HDT       0
+##   HO        0
+##   MED      96
+##   OBST      0
+##   PSA       0
+##   REA       1
+##   REO       1
+##   SC        0
+##   SCAM      3
+##   SI        0
+##   UHCD      0
 ```
 
 ```r
@@ -1003,20 +1159,36 @@ t
 ```
 ##        
 ##           3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis
-##   CHIR      3     0  1490    40     1   545     0   744   129   657     7
-##   FUGUE     0     2    53     5     0    18     0     0    20     1    15
-##   HDT       0     0    29     0     1     0     0    24     0     0     9
-##   HO        0     0     5     0     0     0     0     3     0     0     8
-##   MED       0     0  3370     7     2  1093   271  1379    41  2230    16
-##   OBST      0     0    18     0     0    23     0     0     2     9     0
-##   PSA       1    63   521   533     0   256     0    91    19     3    45
-##   REA       0     0   186     2     0    82     0   167     1    49     3
-##   REO      24     9   561    63     0     0     0     0     2     0     2
-##   SC        0     0   219     0     0    41     0   380     0     1    19
-##   SCAM      2     6    92     6     1    78     0     8    21     0    18
-##   SI        0     0   321     2     0   147     0   179     6    18    10
-##   UHCD      0     0  2453     6     0  2154 10834  1034     0   200    25
-##   <NA>   7968  2679 23835 14031  7364 13096  8245 22902 12716 11752  6093
+##   CHIR      4     0  1711    45     8   660     0   907   148   779     8
+##   FUGUE     4     4    68     7     0    21     0     0    23     2    18
+##   HDT       0     0    34     0     1     0     0    27     0     0    14
+##   HO        0     0     5     0     1     0     0     3     0     0    10
+##   MED       1     0  3906    10     4  1279   294  1538    46  2599    17
+##   OBST      0     0    19     0     1    27     0     0     2    11     0
+##   PSA       9    89   600   613     7   319     0    98    22     6    62
+##   REA       0     0   220     3     1    95     0   193     2    55     3
+##   REO      27    11   668    82     0     0     0     0     2     0     2
+##   SC        0     0   255     0     1    43     0   458     0     1    27
+##   SCAM      2     9   109    12     2    91     0     8    21     3    20
+##   SI        1     0   367     2     2   163     0   211     6    24    12
+##   UHCD      1     0  2839     7     1  2448 12522  1216     0   228    38
+##   <NA>   9333  3671 27921 16369  8823 15385  9622 26874 14921 13788  7200
+##        
+##           Sav
+##   CHIR     15
+##   FUGUE     0
+##   HDT       0
+##   HO        0
+##   MED      96
+##   OBST      0
+##   PSA       0
+##   REA       1
+##   REO       1
+##   SC        0
+##   SCAM      3
+##   SI        0
+##   UHCD      0
+##   <NA>    474
 ```
 
 ```r
@@ -1030,36 +1202,36 @@ t
 ```
 ##        
 ##           3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis
-##   CHIR      0     0  1486    18     0   545     0   685    83   656     6
+##   CHIR      1     0  1707    22     5   660     0   833    97   778     7
 ##   FUGUE     0     0     0     0     0     0     0     0     0     0     0
-##   HDT       0     0    28     0     1     0     0     2     0     0     9
-##   HO        0     0     5     0     0     0     0     3     0     0     7
-##   MED       0     0  3359     4     0  1093   271  1267    26  2221    14
-##   OBST      0     0    18     0     0    23     0     0     1     9     0
-##   PSA       0     1     0     4     0     0     0     0     0     0     0
-##   REA       0     0   186     1     0    82     0   125     0    49     3
-##   REO       3     4     0     5     0     0     0     0     1     0     0
-##   SC        0     0   219     0     0    41     0   366     0     1    14
+##   HDT       0     0    33     0     1     0     0     2     0     0    13
+##   HO        0     0     5     0     1     0     0     3     0     0     9
+##   MED       1     0  3895     5     1  1279   294  1408    29  2587    15
+##   OBST      0     0    19     0     1    27     0     0     1    11     0
+##   PSA       0     1     0     5     0     0     0     0     0     0     0
+##   REA       0     0   220     1     0    95     0   149     1    55     3
+##   REO       4     4     0     7     0     0     0     0     1     0     0
+##   SC        0     0   255     0     1    43     0   440     0     1    21
 ##   SCAM      0     0     0     0     0     0     0     0     0     0     0
-##   SI        0     0   321     0     0   147     0   145     5     4     9
-##   UHCD      0     0  2451     3     0  2154 10268   338     0   200    17
-##   <NA>    173   450   231  1347     6  1035     0   968   510     0  1392
+##   SI        0     0   367     0     1   163     0   174     5     6    11
+##   UHCD      0     0  2837     3     1  2448 11850   392     0   228    27
+##   <NA>    187   633   273  1599    54  1219     0  1116   563     0  1614
 ##        
-##          <NA>
-##   CHIR      0
-##   FUGUE     0
-##   HDT       0
-##   HO        0
-##   MED       0
-##   OBST      0
-##   PSA       0
-##   REA       0
-##   REO       0
-##   SC        0
-##   SCAM      0
-##   SI        0
-##   UHCD      0
-##   <NA>  25037
+##           Sav  <NA>
+##   CHIR     15     0
+##   FUGUE     0     0
+##   HDT       0     0
+##   HO        0     0
+##   MED      96     0
+##   OBST      0     0
+##   PSA       0     0
+##   REA       1     0
+##   REO       0     0
+##   SC        0     0
+##   SCAM      0     0
+##   SI        0     0
+##   UHCD      0     0
+##   <NA>      5 29007
 ```
 
 ```r
@@ -1078,7 +1250,7 @@ a <- d1[AGE > 17, c("AGE", "FINESS")]
 boxplot(a$AGE ~ a$FINESS, main = "Patients de 18 ans et plus", col = "slategray1")
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9.png) 
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
 
 
 Mineurs
@@ -1092,7 +1264,7 @@ summary(a)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-##    0.00    2.00    7.00    7.92   13.00   18.00       6
+##     0.0     2.0     7.0     7.9    13.0    18.0       6
 ```
 
 ```r
@@ -1114,8 +1286,8 @@ table(FINESS)
 
 ```
 ## FINESS
-##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis 
-##  7998  2759 33153 14695  7369 17533 19350 26911 12957 14920  6270
+##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis   Sav 
+##  9382  3784 38722 17150  8852 20531 22438 31533 15193 17496  7431   590
 ```
 
 Durée d'attente
@@ -1133,7 +1305,7 @@ summary(as.numeric(q))
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-##       1      86     138     162     216     937     434
+##       1      86     138     162     216     974     570
 ```
 
 Attente cumulée par jour (pour chaque jour, on cumule les durées d'attente) en mn:
@@ -1145,7 +1317,7 @@ summary(q)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##       0   10800   13100   13100   15200   23000
+##       0   10900   13100   13100   15300   23000
 ```
 
 ```r
@@ -1197,9 +1369,9 @@ tapply(d1$passage, d1$FINESS, mean, na.rm = TRUE)
 
 ```
 ##    3Fr    Alk    Col    Dia    Geb    Hag    Hus    Mul    Odi    Sel 
-## 135.98 150.30 169.05 166.31  79.51 369.17  73.25 181.14  99.54 162.50 
-##    Wis 
-## 139.84
+## 136.84 151.50 167.81 163.47  77.18 368.03  74.74 180.03  98.00 162.36 
+##    Wis    Sav 
+## 139.04 128.79
 ```
 
 ```r
@@ -1207,8 +1379,8 @@ tapply(d1$passage, d1$FINESS, sd, na.rm = TRUE)
 ```
 
 ```
-##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis 
-## 143.3 183.2 168.6 143.7 132.0 339.2 270.6 136.9 109.7 103.9 175.9
+##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis   Sav 
+## 148.0 179.7 173.8 142.3 127.6 335.5 276.3 137.2 111.8 103.9 170.9 109.2
 ```
 
 ```r
@@ -1216,8 +1388,8 @@ tapply(d1$passage, d1$FINESS, median, na.rm = TRUE)
 ```
 
 ```
-## 3Fr Alk Col Dia Geb Hag Hus Mul Odi Sel Wis 
-## 111 105 119 139  51 255   1 146  80 138  92
+## 3Fr Alk Col Dia Geb Hag Hus Mul Odi Sel Wis Sav 
+## 110 107 118 136  50 254   1 145  78 138  94 101
 ```
 
 ```r
@@ -1234,7 +1406,7 @@ boxplot(as.numeric(h24$passage) ~ h24$FINESS, col = "pink", main = "Durée moyen
     ylab = "Temps en minutes", xlab = "SAU - 2013")
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-101.png) 
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-91.png) 
 
 ```r
 boxplot(as.numeric(h24$passage) ~ h24$FINESS, col = "yellow", range = 0, notch = TRUE, 
@@ -1242,7 +1414,7 @@ boxplot(as.numeric(h24$passage) ~ h24$FINESS, col = "yellow", range = 0, notch =
     xlab = "SAU - 2013")
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-102.png) 
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-92.png) 
 
 Maladies infectieuses
 =====================
@@ -1308,7 +1480,7 @@ hist(bronchio$date, breaks = 18, freq = TRUE, col = "slategray1", main = "2013 -
     xlab = "")
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12.png) 
+![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
 
 Grippe
 ------
@@ -1351,13 +1523,13 @@ malaise$date <- as.Date(malaise$ENTREE)
 hist(malaise$date, breaks = 18, freq = TRUE, col = "slategray1", main = "Malaises (INVS)")
 ```
 
-![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-131.png) 
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-121.png) 
 
 ```r
 plot(as.factor(malaise$date), col = "slategray1", las = 1, main = "Malaises (INVS)")
 ```
 
-![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-132.png) 
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-122.png) 
 
 AVC
 ----
@@ -1372,7 +1544,7 @@ nrow(avc)
 ```
 
 ```
-## [1] 993
+## [1] 1167
 ```
 
 ```r
@@ -1380,8 +1552,8 @@ summary(avc$FINESS)
 ```
 
 ```
-## 3Fr Alk Col Dia Geb Hag Hus Mul Odi Sel Wis 
-##  22   6 222   0   7 231 133 241   1 101  29
+## 3Fr Alk Col Dia Geb Hag Hus Mul Odi Sel Wis Sav 
+##  24   7 260   0  10 272 166 280   1 108  39   0
 ```
 
 ```r
@@ -1399,7 +1571,7 @@ summary(avc$SEXE)
 
 ```
 ##   F   I   M 
-## 516   0 477
+## 611   0 556
 ```
 
 Le SAU des HUS reçoit peu d' AVC alors que c'est la meilleure filière. Les résultats sont faussés par l'UNV.
@@ -1416,7 +1588,7 @@ nrow(idm)
 ```
 
 ```
-## [1] 485
+## [1] 546
 ```
 
 ```r
@@ -1424,8 +1596,8 @@ summary(idm$FINESS)
 ```
 
 ```
-## 3Fr Alk Col Dia Geb Hag Hus Mul Odi Sel Wis 
-##  36   3  66   0  18  72 151  67   1  41  30
+## 3Fr Alk Col Dia Geb Hag Hus Mul Odi Sel Wis Sav 
+##  43   5  71   0  21  78 173  76   1  42  36   0
 ```
 
 ```r
@@ -1434,7 +1606,7 @@ summary(idm$AGE)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##       2      54      65      65      79      98
+##     2.0    53.2    65.0    65.0    79.0    98.0
 ```
 
 ```r
@@ -1443,7 +1615,7 @@ summary(idm$SEXE)
 
 ```
 ##   F   I   M 
-## 186   0 299
+## 211   0 335
 ```
 
 Lésions traumatiques
@@ -1458,7 +1630,7 @@ nrow(trauma)
 ```
 
 ```
-## [1] 42780
+## [1] 50565
 ```
 
 ```r
@@ -1466,8 +1638,8 @@ summary(trauma$FINESS)
 ```
 
 ```
-##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis 
-##  2787  1090 11944     0  3666  5743   790  5542  2396  6759  2063
+##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis   Sav 
+##  3259  1518 14078     0  4427  6812   952  6529  2587  7942  2461     0
 ```
 
 ```r
@@ -1476,7 +1648,7 @@ summary(trauma$AGE)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##     0.0    13.0    27.0    33.3    50.0   106.0
+##     0.0    13.0    28.0    33.5    50.0   112.0
 ```
 
 ```r
@@ -1485,7 +1657,7 @@ summary(trauma$SEXE)
 
 ```
 ##     F     I     M 
-## 18703     1 24076
+## 21915     2 28648
 ```
 
 Etude HUS
@@ -1503,7 +1675,7 @@ summary(geb$MODE_SORTIE)
 
 ```
 ##        NA  Mutation Transfert  Domicile     Décès      NA's 
-##         0         1         6      2281         0      5081
+##         0        45        21      3103         0      5683
 ```
 
 ```r
@@ -1512,9 +1684,9 @@ summary(geb$ORIENTATION)
 
 ```
 ##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    SC  SCAM    SI 
-##     1     0     1     0     2     0     0     0     0     0     1     0 
+##     8     0     1     1     4     1     7     1     0     1     2     2 
 ##  UHCD  NA's 
-##     0  7364
+##     1  8823
 ```
 
 Mode d'arrivée aux urgences:
@@ -1525,7 +1697,7 @@ summary(as.factor(geb$TRANSPORT))
 
 ```
 ##  AMBU PERSO  SMUR  VSAB  NA's 
-##   698  6139     1   462    69
+##   815  7416     1   538    82
 ```
 
 Heure d'arrivée aux urgences
@@ -1634,7 +1806,7 @@ round(prop.table(bp) * 100, 2)
 
 ```
 ##    NP    JO    SR  NA's 
-## 11.28 78.15  8.97  1.60
+## 11.42 77.60  9.50  1.48
 ```
 
 ```r
@@ -1652,12 +1824,13 @@ t
 ```
 ##    b
 ##       NP   JO   SR
-##   1   30  225   36
-##   2  787 5475  620
-##   3   10   31    2
-##   4    1    6    1
+##   1   46  325   48
+##   2  950 6480  786
+##   3   11   34    2
+##   4    1    7    2
+##   5    0    0    1
 ##   D    0    1    0
-##   P    3    9    2
+##   P    3   10    2
 ```
 
 ```r
@@ -1677,9 +1850,9 @@ t
 ##            b
 ##               NP   JO   SR
 ##   NA           0    0    0
-##   Mutation     0    1    0
-##   Transfert    0    6    0
-##   Domicile   188 2005   78
+##   Mutation    14   28    2
+##   Transfert    6   13    1
+##   Domicile   288 2657  143
 ##   Décès        0    0    0
 ```
 
@@ -1782,7 +1955,7 @@ clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - CHU Strasbour
 legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.8)
 ```
 
-![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17.png) 
+![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
 
 #### Test de la fonction*passages*
 
@@ -1820,17 +1993,6 @@ passages("Tan", "CH Thann", sens = 3)
 passages("3Fr", "Trois frontières", sens = 3)
 passages("Alk", "CH Alkirch", sens = 3)
 passages("Sav", "CH Saverne", sens = 3)
-```
-
-```
-## Warning: All formats failed to parse. No formats found.
-```
-
-```
-## Warning: All formats failed to parse. No formats found.
-```
-
-```r
 par(mfrow = c(1, 1))
 ```
 
@@ -1846,7 +2008,7 @@ nrow(Hus)
 ```
 
 ```
-## [1] 19350
+## [1] 22438
 ```
 
 ```r
@@ -1862,7 +2024,7 @@ max(Hus$ENTREE)
 ```
 
 ```
-## [1] "2013-06-30 23:42:00"
+## [1] "2013-07-30 23:55:00"
 ```
 
 comparaison entre RPU attendu et RPU transmis. Nécessite le fichier *sau2013*. Les données sont dans le dataframe *d*. Les données hus sont isolées dans *dhus*
@@ -1933,7 +2095,7 @@ a[1] * 100/a[2]
 
 ```
 ## RPU déclarés 
-##         87.3
+##        101.2
 ```
 
 Les urgences pédiatriques sont divisées en 2, médicales et chirurgicales. Il y a donc 2 données par jour
@@ -2000,7 +2162,7 @@ summary(Hus$MODE_SORTIE)
 
 ```
 ##        NA  Mutation Transfert  Domicile     Décès      NA's 
-##         0     10539         0       531         0      8280
+##         0     12144         0       623         0      9671
 ```
 
 ```r
@@ -2008,7 +2170,7 @@ mean(is.na(Hus$MODE_SORTIE))
 ```
 
 ```
-## [1] 0.4279
+## [1] 0.431
 ```
 
 ```r
@@ -2017,9 +2179,9 @@ summary(Hus$ORIENTATION)
 
 ```
 ##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    SC  SCAM    SI 
-##     0     0     0     0   271     0     0     0     0     0     0     0 
+##     0     0     0     0   294     0     0     0     0     0     0     0 
 ##  UHCD  NA's 
-## 10834  8245
+## 12522  9622
 ```
 
 ```r
@@ -2027,7 +2189,7 @@ mean(is.na(Hus$ORIENTATION))
 ```
 
 ```
-## [1] 0.4261
+## [1] 0.4288
 ```
 
 ```r
@@ -2044,7 +2206,7 @@ mean(is.na(Hus$DESTINATION))
 ```
 
 ```
-## [1] 0.4491
+## [1] 0.4534
 ```
 
 ```r
@@ -2060,7 +2222,7 @@ mean(is.na(Hus$PROVENANCE))
 ```
 
 ```
-## [1] 0.959
+## [1] 0.9586
 ```
 
 ```r
@@ -2068,7 +2230,7 @@ mean(is.na(Hus$TRANSPORT))
 ```
 
 ```
-## [1] 0.7682
+## [1] 0.7997
 ```
 
 ```r
@@ -2092,7 +2254,7 @@ mean(is.na(Hus$GRAVITE))
 ```
 
 ```
-## [1] 0.5694
+## [1] 0.5684
 ```
 
 ```r
@@ -2100,7 +2262,7 @@ mean(is.na(Hus$DP))
 ```
 
 ```
-## [1] 0.6626
+## [1] 0.657
 ```
 
 Mode d'arrivée aux urgences:
@@ -2111,7 +2273,7 @@ summary(as.factor(Hus$TRANSPORT))
 
 ```
 ##  AMBU    FO PERSO  SMUR  VSAB  NA's 
-##  2368     9   795   294  1020 14864
+##  2370     9   801   294  1020 17944
 ```
 
 ```r
@@ -2119,7 +2281,7 @@ mean(is.na(Hus$TRANSPORT))
 ```
 
 ```
-## [1] 0.7682
+## [1] 0.7997
 ```
 
 Heure d'arrivée aux urgences
@@ -2181,7 +2343,7 @@ mean(is.na(s))
 ```
 
 ```
-## [1] 0.3485
+## [1] 0.3522
 ```
 
 ```r
@@ -2237,7 +2399,7 @@ round(prop.table(bp) * 100, 2)
 
 ```
 ##    NP    JO    SR  NA's 
-## 11.94 69.15 16.99  1.91
+## 11.97 68.70 17.38  1.95
 ```
 
 ```r
@@ -2255,11 +2417,11 @@ t
 ```
 ##    b
 ##       NP   JO   SR
-##   1  164  778  108
-##   2 1004 3083  361
-##   3  491 1547  166
-##   4   66  205   23
-##   5   13   36    6
+##   1  183  855  131
+##   2 1170 3597  422
+##   3  570 1830  190
+##   4   73  240   26
+##   5   18   41    7
 ```
 
 ```r
@@ -2280,9 +2442,9 @@ t
 ##            b
 ##               NP   JO   SR
 ##   NA           0    0    0
-##   Mutation  2105 7298  784
+##   Mutation  2443 8381  906
 ##   Transfert    0    0    0
-##   Domicile    73  398   55
+##   Domicile    88  463   61
 ##   Décès        0    0    0
 ```
 

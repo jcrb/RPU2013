@@ -17,6 +17,15 @@ Nomenclature
   - rpu2013_05.txt (rpu+année_mois.txt)
   - rpu2013d06.Rda (rpu+année+d+mois.Rda)
 
+#### Liste des fichiers
+- le dossier **Fichiers source** contient les fichiers archivés de 2013
+  - dossier *Text* contient la table *rpu__* du mois en format text
+  - dossier *Dump* contient des dump originaux de la base de donnée (source e-santé)
+  - les fichiers *.Rda* contiennent les tables *rpu__* du mois en format binaire
+    - le fichier *rpu2013d1.rda* recense les mois 01 à 04 de 2013
+    - les fichiers *rpu2013dmm.rda* recensent les mois *mm* de 2013 (de 05 à 12)
+  - le **fichier courant** est *rpu2013d01mm.Rda* ou *mm* est le mois courant.
+  
 Origine des données
 -------------------
 Les données sont constituées par les RPU produits par les servives d'urgence. Les RPU sont transmis quotidiennement selon le schéma défini par l' INVS (version 2006) au serveur régional Sagec. Ces données sont gérées par Alsace e-santé (AeS) qui transmets les informations à l'INVS et à Résural. Pour Resural, AeS adresse tous les 5 du mois courant un dump de la table RPU__ du mois précédant, sous la forme d'un fichier .sql.  
@@ -30,7 +39,7 @@ Le fichier récupéré est ensuite importé dans une base de données MySql. La 
 - juin: rpu_2013_06_dump.sql (23.7 Mo)
 Pour les transférer, on utilise la procédure standard en ligne de commande, commençant par le mois de mai:
 ```{}
-jcb@mint1:~$ mysql -u root -pmarion rpu < Resural_mai_juin_2013/rpu_2013_05_dump.sql
+jcb@mint1:~$ mysql -u root -pmarion rpu < Resural_07_dump.sql
 ```
 Création d'un fichier .my.cfg
 -----------------------------
@@ -67,10 +76,10 @@ dbListFields(con,"RPU__")
 ```
 Lecture des enregistrements de la table compris entre le 1er mai et le 31 mai 2013 (cette étape peu être longue):
 ```{r}
-rs<-dbSendQuery(con,"SELECT * FROM RPU__ WHERE ENTREE BETWEEN '2013-05-01' AND '2013-05-31' ")
-d05<-fetch(rs,n=-1,encoding = "UTF-8")
-max(d1$ENTREE)
-min(d1$ENTREE)
+rs<-dbSendQuery(con,"SELECT * FROM RPU__ WHERE ENTREE BETWEEN '2013-07-01' AND '2013-07-31' ")
+d07<-fetch(rs,n=-1,encoding = "UTF-8")
+max(d07$ENTREE)
+min(d07$ENTREE)
 ```
 Pour la mois de juin on répète les mêmes étapes:
 - jcb@mint1:~$ mysql -u root -pmarion rpu < Resural_mai_juin_2013/rpu_2013_06_dump.sql
@@ -89,13 +98,13 @@ etape 2: nettoyage des données
 ------------------------------
 Suppression de la colonne 16, intitulée RAW. Cette colonne a été rajoutée par mr Nold pour stocker le RPU tel que fournit par le SAU:
 ```{r}
-d05<-d05[,-16]
+d07<-d07[,-16]
 ```
 On ramène le nombre de variable à 19.
 
 création de FINESS unique pour un établissement par transformation du finess juridique en finess geographique
 ```{r}
-a<-d05$FINESS
+a<-d07$FINESS
 a[a=="670000397"]<-"Sel"
 a[a=="680000684"]<-"Col"
 a[a=="670016237"]<-"Odi"
@@ -107,58 +116,58 @@ a[a=="680000627"]<-"Mul"
 a[a=="670000157"]<-"Hag"
 a[a=="680000320"]<-"Dia"
 a[a=="680000395"]<-"Alk"
+a[a=="670000165"]<-"Sav"
 unique(a)
-d05$FINESS<-as.factor(a)
+d07$FINESS<-as.factor(a)
 rm(a)
 ```
 Transformation en facteur:
 ```{r}
-d05$CODE_POSTAL<-as.factor(d05$CODE_POSTAL)
-d05$COMMUNE<-as.factor(d05$COMMUNE)
-d05$SEXE<-as.factor(d05$SEXE)
-d05$TRANSPORT<-as.factor(d05$TRANSPORT)
-d05$TRANSPORT_PEC<-as.factor(d05$TRANSPORT_PEC)
-d05$GRAVITE<-as.factor(d05$GRAVITE)
-d05$ORIENTATION<-as.factor(d05$ORIENTATION)
-
-d05$MODE_ENTREE<-factor(d05$MODE_ENTREE,levels=c(0,6,7,8),labels=c('NA','Mutation','Transfert','Domicile'))
-d05$PROVENANCE<-factor(d05$PROVENANCE,levels=c(0,1,2,3,4,5,8),labels=c('NA','MCO','SSR','SLD','PSY','PEA','PEO'))
-d05$MODE_SORTIE<-factor(d05$MODE_SORTIE,levels=c(0,6,7,8,4),labels=c('NA','Mutation','Transfert','Domicile','Décès'))
-d05$DESTINATION<-factor(d05$DESTINATION,levels=c(0,1,2,3,4,6,7),labels=c('NA','MCO','SSR','SLD','PSY','HAD','HMS'))
+d07$CODE_POSTAL<-as.factor(d07$CODE_POSTAL)
+d07$COMMUNE<-as.factor(d07$COMMUNE)
+d07$SEXE<-as.factor(d07$SEXE)
+d07$TRANSPORT<-as.factor(d07$TRANSPORT)
+d07$TRANSPORT_PEC<-as.factor(d07$TRANSPORT_PEC)
+d07$GRAVITE<-as.factor(d07$GRAVITE)
+d07$ORIENTATION<-as.factor(d07$ORIENTATION)
+d07$MODE_ENTREE<-factor(d07$MODE_ENTREE,levels=c(0,6,7,8),labels=c('NA','Mutation','Transfert','Domicile'))
+d07$PROVENANCE<-factor(d07$PROVENANCE,levels=c(0,1,2,3,4,5,8),labels=c('NA','MCO','SSR','SLD','PSY','PEA','PEO'))
+d07$MODE_SORTIE<-factor(d07$MODE_SORTIE,levels=c(0,6,7,8,4),labels=c('NA','Mutation','Transfert','Domicile','Décès'))
+d07$DESTINATION<-factor(d07$DESTINATION,levels=c(0,1,2,3,4,6,7),labels=c('NA','MCO','SSR','SLD','PSY','HAD','HMS'))
 ```
 Création d'une variable AGE:
 ```{r-age1}
-d05$AGE<-floor(as.numeric(as.Date(d05$ENTREE)-as.Date(d05$NAISSANCE))/365)
+d07$AGE<-floor(as.numeric(as.Date(d07$ENTREE)-as.Date(d07$NAISSANCE))/365)
 ```
 Correction des ages supérieurs à 120 ans (3 cas) ou inférieur à 0 (2 cas)
 ```{r age}
-d1$AGE[d1$AGE > 120]<-NA
-d1$AGE[d1$AGE < 0]<-NA
+d07$AGE[d07$AGE > 120]<-NA
+d07$AGE[d07$AGE < 0]<-NA
 ```
 etape 3: sauvegarde des données nettoyées
 -----------------------------------------
 ```{r-sauvegarde}
-# write.table(d05,"rpu2013_05.txt",sep=',',quote=TRUE,na="NA")
-save(d05,file="rpu2013d05.Rda")
-# load("rpu2013d05.Rda")
+# write.table(d07,"rpu2013_07.txt",sep=',',quote=TRUE,na="NA")
+save(d07,file="rpu2013d07.Rda")
+# load("rpu2013d07.Rda")
 ```
 etape 4: chargement des données sauvegardées
 --------------------------------------------
 ```{r}
-# load("rpu2013d05.Rda")
+# load("rpu2013d07.Rda")
 ```
 Résumé des tidy datas
 ---------------------
 ```{r}
-str(d05)
-summary(d05)
+str(d07)
+summary(d07)
 ```
 Fusion avec la base annuelle
 -----------------------------
-*d1* est la base annuelle provisoire
+*d0106* est la base annuelle provisoire
 ```{r}
-d0105<-rbind(d1,d05)
-save(d0105,file="rpu2013d0105.Rda")
+d0107<-rbind(d0106,d07)
+save(d0107,file="rpu2013d0107.Rda")
 ```
 
 
@@ -171,7 +180,7 @@ Nombre de passages
 ------------------
 Tableau croisé des Finess et du nombre de passages quotidiens:
 ```{r}
-d<-table(as.Date(d0506$ENTREE),d0506$FINESS)
+d<-table(as.Date(d07$ENTREE),d07$FINESS)
 head(d)
 plot(t(d))
 ```

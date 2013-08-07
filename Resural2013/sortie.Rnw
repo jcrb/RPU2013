@@ -4,11 +4,20 @@ Le RPU connaît trois mode de sortie des urgences:
 \begin{enumerate}
   \item le décès
   \item le retour à domicile (ou ce qui en tient lieu)
-  \item l'hospitalisation
+  \item l'hospitalisation (mutation ou transfert)
 \end{enumerate}
-Cependant la réalité est plus complexe
 
-La destination de concerne que les patients qui ont été hospitalisés.
+<<sortie,results='asis'>>=
+s<-summary(d1$MODE_SORTIE)
+na<-s[6]
+t<-table(d1$MODE_SORTIE)
+r<-round(prop.table(t)*100,2)
+c<-cbind(t,r)
+colnames(c)<-c("n","%")
+xtable(c,caption = "Mode de sortie des urgences", label = "tab.sortie",align="|l|r|r|",digits = c(0,0,2), table.placement = "ht",caption.placement = "top")
+@
+
+Le mode de sortie est affiné par la rubrique DESTINATION avec la ventilation suivante:
 
 \begin{itemize}
   \item NA:    Pas d'informations
@@ -20,10 +29,12 @@ La destination de concerne que les patients qui ont été hospitalisés.
   \item HMS:		Hébergement médico-social
 \end{itemize}
 
-<<echo=FALSE>>=
-d1$destination<-factor(d1$destination,levels=c(0,1,2,3,4,6,7),labels=c('NA','MCO','SSR','SLD','PSY','HAD','HMS'))
+On notera que le retour à domicile proprement dit ne figure pas parmi les items et cette modalité est implicite. On peut supposer que les NA's correspondent à cette modalité. Cependant une ambiguité demeure car les non réponses sont aussi représentées par ce symbole.
 
-table(d1$destination)
+<<echo=TRUE>>=
+summary(d1$DESTINATION)
 
-table(d1$destination,d1$gravite)
+table(d1$DESTINATION)
+
+table(d1$DESTINATION,d1$GRAVITE)
 @
