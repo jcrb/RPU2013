@@ -2,23 +2,25 @@
 \select@language {french}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Population d'Alsace (janvier 2010)}}{8}{table.2.1}
-\contentsline {table}{\numberline {2.2}{\ignorespaces Service d'accueil des urgences d'Alsace}}{9}{table.2.2}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Population d'Alsace (janvier 2010)}}{9}{table.2.1}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Service d'accueil des urgences d'Alsace}}{10}{table.2.2}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Structures hospitali\IeC {\`e}res participantes en 2013}}{10}{table.3.1}
-\contentsline {table}{\numberline {3.2}{\ignorespaces Donn\IeC {\'e}es manquantes en 2013}}{11}{table.3.2}
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {7.1}{\ignorespaces titre court}}{19}{table.7.1}
-\contentsline {table}{\numberline {7.2}{\ignorespaces Horaires de passage}}{19}{table.7.2}
-\contentsline {table}{\numberline {7.3}{\ignorespaces String}}{20}{table.7.3}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Structures hospitali\IeC {\`e}res participantes en 2013}}{11}{table.3.1}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Donn\IeC {\'e}es manquantes en 2013}}{12}{table.3.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {11.1}{\ignorespaces Mode de sortie des urgences}}{27}{table.11.1}
+\contentsline {table}{\numberline {7.1}{\ignorespaces titre court}}{20}{table.7.1}
+\contentsline {table}{\numberline {7.2}{\ignorespaces Horaires de passage}}{20}{table.7.2}
+\contentsline {table}{\numberline {7.3}{\ignorespaces String}}{21}{table.7.3}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {11.1}{\ignorespaces Mode de sortie des urgences. <NA> est le nombre de non r\IeC {\'e}ponses \IeC {\`a} cet item}}{28}{table.11.1}
+\contentsline {table}{\numberline {11.2}{\ignorespaces Destination des patients non rentr\IeC {\'e}s \IeC {\`a} domicile apr\IeC {\`e}s leur passage aux urgences}}{30}{table.11.2}
+\contentsline {table}{\numberline {11.3}{\ignorespaces Devenir des patients \IeC {\`a} la sortie des urgences. DOM repr\IeC {\'e}sentent ceux qui sont repartis vers leur domicile ou ce qui en tient lieu (sous l'hypoth\IeC {\`e}se que toutes les non r\IeC {\'e}ponses correspondent \IeC {\`a} un retour \IeC {\`a} domicile).}}{30}{table.11.3}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -1,4 +1,4 @@
-\documentclass[12pt,english,french]{report}
+\documentclass[12pt,english,french,twoside]{report}
 \usepackage[francais]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}

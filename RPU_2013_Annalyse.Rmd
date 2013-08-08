@@ -188,11 +188,11 @@ round(prop.table(table(as.factor(a$ORIENTATION)))*100,2)
 
 tab1(as.factor(a$ORIENTATION),sort.group="decreasing",horiz=TRUE,cex.names = 0.8,xlab="",main="Orientation des patients hospitalisés")
 
-a<-d1[MODE_SORTIE=="Domicile" ,]
+a<-d1[d1$MODE_SORTIE=="Domicile" ,]
 summary(as.factor(a$ORIENTATION))
 t<-table(as.factor(a$ORIENTATION))
 round(prop.table(t)*100,2)
-tab1(as.factor(a$ORIENTATION),sort.group="decreasing",horiz=TRUE,cex.names = 0.8,xlab="",main="Orientation des patients non hospitalisés")
+tab1(as.factor(a$ORIENTATION),sort.group="decreasing",horiz=TRUE,cex.names = 0.8,xlab="",main="Orientation des patients non hospitalisés",missing=F)
 ```
 La table ci-dessus liste le devenir des patients non hospitalisés. On note des incohérences: REA, HDT, SI, Med, CHIR, UHCD. La ligne *Missing* correspond aux patients rentrés sur avis médical.
 

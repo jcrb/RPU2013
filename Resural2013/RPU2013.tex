@@ -1,4 +1,4 @@
-\documentclass[12pt,english,french]{report}\usepackage{graphicx, color}
+\documentclass[12pt,english,french,twoside]{report}\usepackage{graphicx, color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -254,7 +254,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Aug  7 19:57:11 2013
+% Fri Aug  9 00:16:57 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -288,7 +288,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Aug  7 19:57:14 2013
+% Fri Aug  9 00:16:59 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -576,6 +576,9 @@ Ce phénomène cyclique se répète tous les jours selon un profil immuable. La 
 
 % sortie.Rnw
 
+\subsection{Mode de sortie}
+\index{mode de sortie}
+
 Le RPU connaît trois mode de sortie des urgences:
 \begin{enumerate}
   \item le décès
@@ -583,39 +586,38 @@ Le RPU connaît trois mode de sortie des urgences:
   \item l'hospitalisation (mutation ou transfert)
 \end{enumerate}
 
-\begin{kframe}
-\begin{alltt}
-s <- \hlfunctioncall{summary}(d1$MODE_SORTIE)
-na <- s[6]
-t <- \hlfunctioncall{table}(d1$MODE_SORTIE)
-r <- \hlfunctioncall{round}(\hlfunctioncall{prop.table}(t) * 100, 2)
-c <- \hlfunctioncall{cbind}(t, r)
-\hlfunctioncall{colnames}(c) <- \hlfunctioncall{c}(\hlstring{"n"}, \hlstring{"%"})
-\hlfunctioncall{xtable}(c, caption = \hlstring{"Mode de sortie des urgences"}, label = \hlstring{"tab.sortie"}, align = \hlstring{"|l|r|r|"}, 
-    digits = \hlfunctioncall{c}(0, 0, 2), table.placement = \hlstring{"ht"}, caption.placement = \hlstring{"top"})
-\end{alltt}
-\end{kframe}% latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Aug  7 19:57:24 2013
+% Mode de SORTIE.png: 669x437 pixel, 72dpi, 23.60x15.42 cm, bb=0 0 669 437
+ \begin{figure}[h]
+ \centering
+ \includegraphics[width=9cm,height=7cm,bb=0 0 669 437]{figure/Mode de SORTIE.png}
+ \caption{Modes de sortie}
+\end{figure}
+
+% latex table generated in R 2.15.1 by xtable 1.7-1 package
+% Fri Aug  9 00:17:09 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
   \hline
  & n & \% \\ 
   \hline
-NA & 0 & 0.00 \\ 
-  Mutation & 38183 & 23.27 \\ 
-  Transfert & 2762 & 1.68 \\ 
-  Domicile & 123148 & 75.05 \\ 
-  Décès & 2 & 0.00 \\ 
+Décès & 2 & 0.00 \\ 
+  Domicile & 123148 & 63.77 \\ 
+  Mutation & 38183 & 19.77 \\ 
+  $<$NA$>$ & 29007 & 15.02 \\ 
+  Transfert & 2762 & 1.43 \\ 
    \hline
 \end{tabular}
-\caption{Mode de sortie des urgences} 
+\caption{Mode de sortie des urgences. <NA> est le nombre de non réponses à cet item} 
 \label{tab.sortie}
 \end{table}
 
 
 
-Le mode de sortie est affiné par la rubrique DESTINATION avec la ventilation suivante:
+\subsection{Orientation}
+\index{orientation}
+
+Le mode de sortie est affiné par la rubrique ORIENTATION avec la ventilation suivante:
 
 \begin{itemize}
   \item NA:    Pas d'informations
@@ -632,20 +634,26 @@ On notera que le retour à domicile proprement dit ne figure pas parmi les items
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlfunctioncall{summary}(d1$DESTINATION)
+\hlcomment{# drop.levels permet d'éliminer le level 0 qui est nul}
+a <- \hlfunctioncall{drop.levels}(d1$ORIENTATION)
+\hlfunctioncall{summary}(a)
 \end{alltt}
 \begin{verbatim}
-##     NA    MCO    SSR    SLD    PSY    HAD    HMS   NA's 
-##      0  40127     33      8    703      1     18 152212
+##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
+##   4285    147     76     19   9790     60   1825    573    793    785 
+##   SCAM     SI   UHCD   NA's 
+##    280    788  19300 154381
 \end{verbatim}
 \begin{alltt}
 
-\hlfunctioncall{table}(d1$DESTINATION)
+\hlfunctioncall{table}(a, useNA = \hlstring{"always"})
 \end{alltt}
 \begin{verbatim}
-## 
-##    NA   MCO   SSR   SLD   PSY   HAD   HMS 
-##     0 40127    33     8   703     1    18
+## a
+##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
+##   4285    147     76     19   9790     60   1825    573    793    785 
+##   SCAM     SI   UHCD   <NA> 
+##    280    788  19300 154381
 \end{verbatim}
 \begin{alltt}
 
@@ -664,6 +672,115 @@ On notera que le retour à domicile proprement dit ne figure pas parmi les items
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
+
+
+\subsection{Destination}
+\index{destination}
+% latex table generated in R 2.15.1 by xtable 1.7-1 package
+% Fri Aug  9 00:17:10 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & \% \\ 
+  \hline
+HAD & 0.00 \\ 
+  HMS & 0.04 \\ 
+  MCO & 98.13 \\ 
+  PSY & 1.72 \\ 
+  SLD & 0.02 \\ 
+  SSR & 0.08 \\ 
+   \hline
+\end{tabular}
+\caption{Destination des patients non rentrés à domicile après leur passage aux urgences} 
+\label{tab.dest.hosp}
+\end{table}
+% latex table generated in R 2.15.1 by xtable 1.7-1 package
+% Fri Aug  9 00:17:10 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & \% \\ 
+  \hline
+DOM & 78.83 \\ 
+  HAD & 0.00 \\ 
+  HMS & 0.01 \\ 
+  MCO & 20.78 \\ 
+  PSY & 0.36 \\ 
+  SLD & 0.00 \\ 
+  SSR & 0.02 \\ 
+   \hline
+\end{tabular}
+\caption{Devenir des patients à la sortie des urgences. DOM représentent ceux qui sont repartis vers leur domicile ou ce qui en tient lieu (sous l'hypothèse que toutes les non réponses correspondent à un retour à domicile).} 
+\label{tab.dest}
+\end{table}
+
+
+
+\subsection{Incohérences}
+\ref{sortie:erreurs}
+On isole le groupe "mode de sortie = domicile) et on relève les résultats de l'item "orientation":
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+a <- d1[d1$MODE_SORTIE == \hlstring{"Domicile"}, ]
+\hlfunctioncall{summary}(\hlfunctioncall{as.factor}(a$ORIENTATION))
+\end{alltt}
+\begin{verbatim}
+##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
+##     73    146      9      1     48      1   1791      6    774      2 
+##   SCAM     SI   UHCD   NA's 
+##    280     21    141 148862
+\end{verbatim}
+\begin{alltt}
+t <- \hlfunctioncall{table}(\hlfunctioncall{as.factor}(a$ORIENTATION))
+\hlfunctioncall{round}(\hlfunctioncall{prop.table}(t) * 100, 2)
+\end{alltt}
+\begin{verbatim}
+## 
+##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    SC  SCAM    SI 
+##  2.22  4.43  0.27  0.03  1.46  0.03 54.39  0.18 23.50  0.06  8.50  0.64 
+##  UHCD 
+##  4.28
+\end{verbatim}
+\begin{alltt}
+\hlfunctioncall{tab1}(\hlfunctioncall{as.factor}(a$ORIENTATION), sort.group = \hlstring{"decreasing"}, horiz = TRUE, cex.names = 0.8, 
+    xlab = \hlstring{""}, main = \hlstring{"Orientation des patients non hospitalisés"}, missing = F)
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/fausses_sorties} 
+\begin{kframe}\begin{verbatim}
+## as.factor(a$ORIENTATION) :  
+##         Frequency   %(NA+)   %(NA-)
+## NA's       148862     97.8      0.0
+## PSA          1791      1.2     54.4
+## REO           774      0.5     23.5
+## SCAM          280      0.2      8.5
+## FUGUE         146      0.1      4.4
+## UHCD          141      0.1      4.3
+## CHIR           73      0.0      2.2
+## MED            48      0.0      1.5
+## SI             21      0.0      0.6
+## HDT             9      0.0      0.3
+## REA             6      0.0      0.2
+## SC              2      0.0      0.1
+## HO              1      0.0      0.0
+## OBST            1      0.0      0.0
+##   Total    152155    100.0    100.0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+Certaines orientations sont incompatibles avec une non hospitalisation:
+\begin{itemize}
+  \item HO
+  \item Obstétrique
+  \item Soins continus, soins intensifs et réanimation
+  \item UHCD, médecine et chirurgie
+  
+\end{itemize}
+
 
 
 

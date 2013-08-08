@@ -47,9 +47,14 @@ ref: http://www.omegahat.org/RCurl/FAQ.html
 
 Création d'un tableau avec *cbind* et une matrice (et xtable pour pdf): voir exhaustivité des données
 
+### Tables
 #### Transformer une *table* en *dataframe*:
 
 as.data.frame.matrix(ma_table)
+
+#### Modifier l'entête de colonne d'un tableau
+Losqu'un tableau n'a qu'une seule colonne, R l'intitule *c* (count) par défaut. Pour changer l'intitulé ajouter *dnn = "%"*:  
+tcna<-round(prop.table(table(c,dnn="%"))*100,3)
 
 #### sélectionner des variables avec TRUE et FALSE
 - v<-c("ajax","troie","voiture")
@@ -92,6 +97,9 @@ Attention pour results mettre *asis* (et non pas *tex* qui correspond à sweawe)
 xtable(c, caption = "Structures hospitalières participantes en 2013", label = "tab1",align="|l|r|r|l|r|",digits = c(0,0,2,0,0), table.placement = "ht",caption.placement = "top")  
 
 table \ref{tab1}, page \pageref{tab1}.
+
+*xtable* génère une erreur si l'intitulé d'une colonne est *<na>*. Dans ce cas il faut transfoermer les <na> en "NA" et refaire le tableau (voir sortie.rnw par exemple).
+
 
 #### Pour présenter en latex un tableau type *summary*:
 stargazer(as.data.frame(a2[1:length(a)]),summary=TRUE,digit.separator=" ",digits=2,median=TRUE,iqr=TRUE)
