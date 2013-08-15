@@ -1,4 +1,4 @@
-\documentclass[12pt,english,french,twoside]{report}\usepackage{graphicx, color}
+\documentclass[12pt,english,french,twoside]{report}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -11,21 +11,16 @@
 }
 \makeatother
 
-\definecolor{fgcolor}{rgb}{0.2, 0.2, 0.2}
-\newcommand{\hlnumber}[1]{\textcolor[rgb]{0,0,0}{#1}}%
-\newcommand{\hlfunctioncall}[1]{\textcolor[rgb]{0.501960784313725,0,0.329411764705882}{\textbf{#1}}}%
-\newcommand{\hlstring}[1]{\textcolor[rgb]{0.6,0.6,1}{#1}}%
-\newcommand{\hlkeyword}[1]{\textcolor[rgb]{0,0,0}{\textbf{#1}}}%
-\newcommand{\hlargument}[1]{\textcolor[rgb]{0.690196078431373,0.250980392156863,0.0196078431372549}{#1}}%
-\newcommand{\hlcomment}[1]{\textcolor[rgb]{0.180392156862745,0.6,0.341176470588235}{#1}}%
-\newcommand{\hlroxygencomment}[1]{\textcolor[rgb]{0.43921568627451,0.47843137254902,0.701960784313725}{#1}}%
-\newcommand{\hlformalargs}[1]{\textcolor[rgb]{0.690196078431373,0.250980392156863,0.0196078431372549}{#1}}%
-\newcommand{\hleqformalargs}[1]{\textcolor[rgb]{0.690196078431373,0.250980392156863,0.0196078431372549}{#1}}%
-\newcommand{\hlassignement}[1]{\textcolor[rgb]{0,0,0}{\textbf{#1}}}%
-\newcommand{\hlpackage}[1]{\textcolor[rgb]{0.588235294117647,0.709803921568627,0.145098039215686}{#1}}%
-\newcommand{\hlslot}[1]{\textit{#1}}%
-\newcommand{\hlsymbol}[1]{\textcolor[rgb]{0,0,0}{#1}}%
-\newcommand{\hlprompt}[1]{\textcolor[rgb]{0.2,0.2,0.2}{#1}}%
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
 
 \usepackage{framed}
 \makeatletter
@@ -254,7 +249,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Aug  9 00:16:57 2013
+% Thu Aug 15 23:09:40 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -281,14 +276,14 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 
 
 
-\section{Exhaustivité des qualitative}
+\section{Exhaustivité qualitative}
 
 Les informations de nature administrative (code postal, commune d'origine, sexe, date de naissance,\dots ) sont correctement renseignées avec une exhaustivité de $100\%$.
 
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Aug  9 00:16:59 2013
+% Thu Aug 15 23:09:42 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -388,9 +383,12 @@ Le logiciel R est interfacé avec le traitement de texte Latex par l'intermédia
 \section*{Nombre total de passages}
 
 % activite_regionale.Rnw
+\subsubsection*{TODO}
+\begin{itemize}
+  \item TRU par territoire de santé
+\end{itemize}
 
-
-%on fabrique un objet **a** qui fait la somme pae date des passages aux urgences:
+%on fabrique un objet **a** qui fait la somme par date des passages aux urgences:
 
 
 
@@ -398,15 +396,15 @@ Le logiciel R est interfacé avec le traitement de texte Latex par l'intermédia
 %   a[1:10]
 % 2013-01-01 2013-01-02 2013-01-03 2013-01-04 2013-01-05 2013-01-06 2013-01-07 2013-01-08 2013-01-09 2013-01-10 
 %        884        801        686        704        722        691        876        694        683        673 
-% On supprime l'enregistrement 121 correspondant au 1er mai et qui ne contient qu'un élément:
-%a[121]  2013-05-01 1 
+% On supprime l'enregistrement 211 correspondant au 31 juillet et qui ne contient que 2 éléments:
+%a[211]  2013-07-31 2 
 
 
 % Min. 1 st Qu.  Median    Mean 3rd Qu.    Max. 
 %   642.0   848.0   895.5   883.2   957.0  1050.0 
 
-L'ensemble des SU ont déclaré \np{193102} passages en 2013, 
-soit une moyenne de \np{916} passages par jour (extrèmes 2 et \np{1160})
+L'ensemble des SU ont déclaré \np{193102} passages au 31 juillet 2013, 
+soit une moyenne de \np{920} passages par jour (extrèmes 642 et \np{1160})
 
 %affichage du graphique
 \begin{knitrout}
@@ -419,7 +417,51 @@ soit une moyenne de \np{916} passages par jour (extrèmes 2 et \np{1160})
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
 \includegraphics[width=\maxwidth]{figure/activite_plot2} 
-\begin{kframe}\begin{verbatim}
+
+\end{knitrout}
+
+
+\subsection*{En valeur absolue}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+t <- \hlkwd{tapply}(\hlkwd{as.Date}(d1$ENTREE), d1$FINESS, length)
+t
+\end{alltt}
+\begin{verbatim}
+##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis   Sav 
+##  9382  3784 38722 17150  8852 20531 22438 31533 15193 17496  7431   590
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+\subsection*{En pourcentage}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{round}(\hlkwd{prop.table}(t) * 100, 2)
+\end{alltt}
+\begin{verbatim}
+##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis   Sav 
+##  4.86  1.96 20.05  8.88  4.58 10.63 11.62 16.33  7.87  9.06  3.85  0.31
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+\subsection*{Taux de recours aux urgences}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+tru2011_lorraine <- 0.2345
+tru_estime <- pop.als.2010.totale * tru2011_lorraine
+\hlcom{# tru2013_alsace<-round(length(e)*100/pop.als.2010.totale,2)}
+tru2013_alsace <- \hlkwd{round}(\hlkwd{nrow}(d1) * 100/pop.als.2010.totale, 2)
+
+\hlkwd{print}(tru_estime)
+\end{alltt}
+\begin{verbatim}
 ## [1] 441062
 \end{verbatim}
 \end{kframe}
@@ -429,21 +471,141 @@ Le taux de recours aux urgences \index{taux de recours aux urgences} (TRU) \inde
 
 Le TRU 2013 estimé en Alsace à partir des RPU transmis est de 10.27\%.
 
-\subsubsection*{TODO}
-\begin{itemize}
-  \item TRU par territoire de santé
-\end{itemize}
+\subsection*{Activité par mois}
+%------------------------------
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
+\hlkwd{table}(m)
+\end{alltt}
+\begin{verbatim}
+## m
+##   Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov   Dec 
+## 25609 25004 26937 28428 27899 30038 29187     0     0     0     0     0
+\end{verbatim}
+\begin{alltt}
+\hlkwd{barplot}(\hlkwd{table}(m), ylab = \hlstr{"nombre"}, xlab = \hlstr{"mois"}, main = \hlstr{"2013 - Nombre de RPU par mois"}, 
+    names.arg = \hlkwd{c}(\hlstr{"Jan"}, \hlstr{"Fev"}, \hlstr{"Mar"}, \hlstr{"Avr"}, \hlstr{"Mai"}, \hlstr{"Jui"}, \hlstr{"Jul"}, \hlstr{"Aou"}, \hlstr{"Sep"}, 
+        \hlstr{"Oct"}, \hlstr{"Nov"}, \hlstr{"Dec"}), las = 2)
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/parmois} 
+
+\end{knitrout}
+
+
+\subsection*{Activité par semaine}
+
+% latex table generated in R 2.15.1 by xtable 1.7-1 package
+% Thu Aug 15 23:09:53 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & m \\ 
+  \hline
+1 & 4488 \\ 
+  2 & 4909 \\ 
+  3 & 5975 \\ 
+  4 & 6593 \\ 
+  5 & 6509 \\ 
+  6 & 6354 \\ 
+  7 & 6262 \\ 
+  8 & 6193 \\ 
+  9 & 6028 \\ 
+  10 & 6426 \\ 
+  11 & 6152 \\ 
+  12 & 5735 \\ 
+  13 & 5926 \\ 
+  14 & 6698 \\ 
+  15 & 6632 \\ 
+  16 & 6667 \\ 
+  17 & 6538 \\ 
+  18 & 6462 \\ 
+  19 & 6628 \\ 
+  20 & 6720 \\ 
+  21 & 6314 \\ 
+  22 & 5615 \\ 
+  23 & 7116 \\ 
+  24 & 7213 \\ 
+  25 & 7193 \\ 
+  26 & 6569 \\ 
+  27 & 6566 \\ 
+  28 & 7083 \\ 
+  29 & 6391 \\ 
+  30 & 7069 \\ 
+  31 & 2078 \\ 
+   \hline
+\end{tabular}
+\caption[Activité par semaine]{Activité des SU par semaine en 2013} 
+\label{act_sem}
+\end{table}
+% latex table generated in R 2.15.1 by xtable 1.7-1 package
+% Thu Aug 15 23:09:53 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
+  \hline
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21 & 22 & 23 & 24 & 25 & 26 & 27 & 28 & 29 & 30 & 31 \\ 
+  \hline
+1 & 4488 & 4909 & 5975 & 6593 & 6509 & 6354 & 6262 & 6193 & 6028 & 6426 & 6152 & 5735 & 5926 & 6698 & 6632 & 6667 & 6538 & 6462 & 6628 & 6720 & 6314 & 5615 & 7116 & 7213 & 7193 & 6569 & 6566 & 7083 & 6391 & 7069 & 2078 \\ 
+   \hline
+\end{tabular}
+\caption[Activité par semaine]{Activité des SU par semaine en 2013} 
+\label{act_sem2}
+\end{table}
+
+\includegraphics[width=\maxwidth]{figure/act_sem} 
+
+
+
+\subsection*{Activité par jour de la semaine}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+m <- \hlkwd{wday}(d1$ENTREE, label = T)
+\hlkwd{table}(m)
+\end{alltt}
+\begin{verbatim}
+## m
+##   Sun   Mon  Tues   Wed Thurs   Fri   Sat 
+## 28591 29737 27681 25799 27050 26150 28094
+\end{verbatim}
+\begin{alltt}
+\hlkwd{barplot}(\hlkwd{table}(m), names.arg = \hlkwd{c}(\hlstr{"Dim"}, \hlstr{"Lun"}, \hlstr{"Mar"}, \hlstr{"Mer"}, \hlstr{"Jeu"}, \hlstr{"Ven"}, \hlstr{"Sam"}))
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-16} 
+
+\end{knitrout}
+
+
+\subsection*{Activité horaire}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+h <- \hlkwd{hour}(d1$ENTREE)
+t <- \hlkwd{table}(h)
+\hlkwd{barplot}(\hlkwd{table}(h), xlab = \hlstr{"Heures de la journée"}, ylab = \hlstr{"nombre"}, main = \hlstr{"Répartition des RPU sur le nycthémère"})
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-17} 
+
+\end{knitrout}
 
 
   
 
-\section*{Nombre total de passages par SU}
-\subsection*{En valeur absolue}
-\subsection*{En pourcentage}
-\subsection*{Taux de recours aux urgences}
-\subsection*{Activité par mois}
-\subsection*{Activité par jour de la semaine}
-\subsection*{Activité horaire}
+
+% \section*{Nombre total de passages par SU}
+% \subsection*{En valeur absolue}
+% \subsection*{En pourcentage}
+% \subsection*{Taux de recours aux urgences}
+% \subsection*{Activité par mois}
+% \subsection*{Activité par jour de la semaine}
+% \subsection*{Activité horaire}
+
 
 % test2.Rnw
 
@@ -594,7 +756,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Aug  9 00:17:09 2013
+% Thu Aug 15 23:10:01 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -634,9 +796,9 @@ On notera que le retour à domicile proprement dit ne figure pas parmi les items
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlcomment{# drop.levels permet d'éliminer le level 0 qui est nul}
-a <- \hlfunctioncall{drop.levels}(d1$ORIENTATION)
-\hlfunctioncall{summary}(a)
+\hlcom{# drop.levels permet d'éliminer le level 0 qui est nul}
+a <- \hlkwd{drop.levels}(d1$ORIENTATION)
+\hlkwd{summary}(a)
 \end{alltt}
 \begin{verbatim}
 ##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
@@ -646,7 +808,7 @@ a <- \hlfunctioncall{drop.levels}(d1$ORIENTATION)
 \end{verbatim}
 \begin{alltt}
 
-\hlfunctioncall{table}(a, useNA = \hlstring{"always"})
+\hlkwd{table}(a, useNA = \hlstr{"always"})
 \end{alltt}
 \begin{verbatim}
 ## a
@@ -657,7 +819,7 @@ a <- \hlfunctioncall{drop.levels}(d1$ORIENTATION)
 \end{verbatim}
 \begin{alltt}
 
-\hlfunctioncall{table}(d1$DESTINATION, d1$GRAVITE)
+\hlkwd{table}(d1$DESTINATION, d1$GRAVITE)
 \end{alltt}
 \begin{verbatim}
 ##      
@@ -677,7 +839,7 @@ a <- \hlfunctioncall{drop.levels}(d1$ORIENTATION)
 \subsection{Destination}
 \index{destination}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Aug  9 00:17:10 2013
+% Thu Aug 15 23:10:01 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -696,7 +858,7 @@ HAD & 0.00 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Aug  9 00:17:10 2013
+% Thu Aug 15 23:10:01 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -724,8 +886,8 @@ On isole le groupe "mode de sortie = domicile) et on relève les résultats de l
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-a <- d1[d1$MODE_SORTIE == \hlstring{"Domicile"}, ]
-\hlfunctioncall{summary}(\hlfunctioncall{as.factor}(a$ORIENTATION))
+a <- d1[d1$MODE_SORTIE == \hlstr{"Domicile"}, ]
+\hlkwd{summary}(\hlkwd{as.factor}(a$ORIENTATION))
 \end{alltt}
 \begin{verbatim}
 ##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
@@ -734,8 +896,8 @@ a <- d1[d1$MODE_SORTIE == \hlstring{"Domicile"}, ]
 ##    280     21    141 148862
 \end{verbatim}
 \begin{alltt}
-t <- \hlfunctioncall{table}(\hlfunctioncall{as.factor}(a$ORIENTATION))
-\hlfunctioncall{round}(\hlfunctioncall{prop.table}(t) * 100, 2)
+t <- \hlkwd{table}(\hlkwd{as.factor}(a$ORIENTATION))
+\hlkwd{round}(\hlkwd{prop.table}(t) * 100, 2)
 \end{alltt}
 \begin{verbatim}
 ## 
@@ -745,8 +907,8 @@ t <- \hlfunctioncall{table}(\hlfunctioncall{as.factor}(a$ORIENTATION))
 ##  4.28
 \end{verbatim}
 \begin{alltt}
-\hlfunctioncall{tab1}(\hlfunctioncall{as.factor}(a$ORIENTATION), sort.group = \hlstring{"decreasing"}, horiz = TRUE, cex.names = 0.8, 
-    xlab = \hlstring{""}, main = \hlstring{"Orientation des patients non hospitalisés"}, missing = F)
+\hlkwd{tab1}(\hlkwd{as.factor}(a$ORIENTATION), sort.group = \hlstr{"decreasing"}, horiz = TRUE, cex.names = 0.8, 
+    xlab = \hlstr{""}, main = \hlstr{"Orientation des patients non hospitalisés"}, missing = F)
 \end{alltt}
 \end{kframe}
 \includegraphics[width=\maxwidth]{figure/fausses_sorties} 
@@ -838,14 +1000,14 @@ Entre le 2013-01-01 00:11:00 et le 2013-07-30 23:55:00, \np{22438} RPU ont été
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-n <- \hlfunctioncall{dim}(d1)
-\hlfunctioncall{print}(n)
+n <- \hlkwd{dim}(d1)
+\hlkwd{print}(n)
 \end{alltt}
 \begin{verbatim}
 ## [1] 193102     20
 \end{verbatim}
 \begin{alltt}
-\hlfunctioncall{names}(d1)
+\hlkwd{names}(d1)
 \end{alltt}
 \begin{verbatim}
 ##  [1] "id"            "CODE_POSTAL"   "COMMUNE"       "DESTINATION"  
@@ -864,7 +1026,7 @@ n <- \hlfunctioncall{dim}(d1)
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 
-\hlfunctioncall{str}(d1)
+\hlkwd{str}(d1)
 \end{alltt}
 \begin{verbatim}
 ## 'data.frame':	193102 obs. of  20 variables:
@@ -890,7 +1052,7 @@ n <- \hlfunctioncall{dim}(d1)
 ##  $ AGE          : num  52 26 41 85 39 9 79 50 46 18 ...
 \end{verbatim}
 \begin{alltt}
-\hlfunctioncall{summary}(d1)
+\hlkwd{summary}(d1)
 \end{alltt}
 \begin{verbatim}
 ##       id             CODE_POSTAL           COMMUNE        DESTINATION    

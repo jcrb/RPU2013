@@ -124,6 +124,11 @@ mean(vector[select])
 The argument col will set the colours, you could use this in conjunction with an ifelse statement  col<-
 plot(x,y,xlab="PC1",ylab="PC2", col = ifelse(x < 0,'red','green'), pch = 19 )
 
+#### Dates
+Transformer une date *R* en date *française*:  
+date<-"2013-02-05"
+\Sexpr{format(date,format="%d %B %Y")}
+
 #### notes sur les spatialPolygons
 > str(poly)
 Formal class 'SpatialPolygons' [package "sp"] with 4 slots

@@ -1,7 +1,10 @@
 % activite_regionale.Rnw
+\subsubsection*{TODO}
+\begin{itemize}
+  \item TRU par territoire de santé
+\end{itemize}
 
-
-%on fabrique un objet **a** qui fait la somme pae date des passages aux urgences:
+%on fabrique un objet **a** qui fait la somme par date des passages aux urgences:
 <<activite,echo=FALSE>>=
 e<-ymd_hms(d1$ENTREE)
 a<-tapply(e,as.Date(d1$ENTREE),length)
@@ -11,16 +14,16 @@ a<-tapply(e,as.Date(d1$ENTREE),length)
 %   a[1:10]
 % 2013-01-01 2013-01-02 2013-01-03 2013-01-04 2013-01-05 2013-01-06 2013-01-07 2013-01-08 2013-01-09 2013-01-10 
 %        884        801        686        704        722        691        876        694        683        673 
-% On supprime l'enregistrement 121 correspondant au 1er mai et qui ne contient qu'un élément:
-%a[121]  2013-05-01 1 
+% On supprime l'enregistrement 211 correspondant au 31 juillet et qui ne contient que 2 éléments:
+%a[211]  2013-07-31 2 
 <<activite2,echo=FALSE>>=
-a<-a[-121]
+a<-a[-211]
   a1<-summary(a)
 @
 % Min. 1 st Qu.  Median    Mean 3rd Qu.    Max. 
 %   642.0   848.0   895.5   883.2   957.0  1050.0 
 
-L'ensemble des SU ont déclaré \np{\Sexpr{length(e)}} passages en 2013, 
+L'ensemble des SU ont déclaré \np{\Sexpr{length(e)}} passages au \Sexpr{format(max(e),format="%d %B %Y")}, 
 soit une moyenne de \np{\Sexpr{a1[4]}} passages par jour (extrèmes \Sexpr{a1[1]} et \np{\Sexpr{a1[6]}})
 
 %affichage du graphique
@@ -41,7 +44,21 @@ lines(rollmean(xts(z),7),col="red")
 # moyenne générale
 abline(h=mean(a),col="blue")
  mtext("© RESURAL 2013",cex=0.6,side=4,line=-1,adj=0.1)
+@
 
+\subsection*{En valeur absolue}
+<<>>=
+t<-tapply(as.Date(d1$ENTREE),d1$FINESS,length)
+t
+@
+
+\subsection*{En pourcentage}
+<<>>=
+round(prop.table(t)*100,2)
+@
+
+\subsection*{Taux de recours aux urgences}
+<<>>=
 tru2011_lorraine<-0.2345
 tru_estime<-pop.als.2010.totale*tru2011_lorraine
 # tru2013_alsace<-round(length(e)*100/pop.als.2010.totale,2)
@@ -53,10 +70,38 @@ Le taux de recours aux urgences \index{taux de recours aux urgences} (TRU) \inde
 
 Le TRU 2013 estimé en Alsace à partir des RPU transmis est de \Sexpr{tru2013_alsace}\%.
 
-\subsubsection*{TODO}
-\begin{itemize}
-  \item TRU par territoire de santé
-\end{itemize}
+\subsection*{Activité par mois}
+%------------------------------
+<<parmois>>=
+m<-month(d1$ENTREE,label=TRUE)
+table(m)
+barplot(table(m),ylab="nombre",xlab="mois",main="2013 - Nombre de RPU par mois",names.arg=c("Jan","Fev","Mar","Avr","Mai","Jui","Jul","Aou","Sep","Oct","Nov","Dec"),las=2)
+@
 
+\subsection*{Activité par semaine}
+
+<<label=act_sem,echo=FALSE,results='asis'>>=
+m<-week(d1$ENTREE)
+
+xtable(table(m),caption=c("Activité des SU par semaine en 2013","Activité par semaine"),label="act_sem")
+
+xtable(t(table(m)),caption=c("Activité des SU par semaine en 2013","Activité par semaine"),label="act_sem2",table.placement = "ht",caption.placement = "top")
+
+barplot(table(m))
+@
+
+\subsection*{Activité par jour de la semaine}
+<<>>=
+m<-wday(d1$ENTREE,label=T)
+table(m)
+barplot(table(m),names.arg=c("Dim","Lun","Mar","Mer","Jeu","Ven","Sam"))
+@
+
+\subsection*{Activité horaire}
+<<>>=
+h<-hour(d1$ENTREE)
+t<-table(h)
+barplot(table(h),xlab="Heures de la journée",ylab="nombre",main="Répartition des RPU sur le nycthémère")
+@
 
   

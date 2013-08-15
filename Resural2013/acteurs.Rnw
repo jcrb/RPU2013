@@ -28,7 +28,7 @@ colnames(c)<-c("n","%","Hôpitaux","Date d'inclusion")
 xtable(c, caption = "Structures hospitalières participantes en 2013", label = "tab1",align="|l|r|r|l|r|",digits = c(0,0,2,0,0), table.placement = "ht",caption.placement = "top")
 @
 
-\section{Exhaustivité des qualitative}
+\section{Exhaustivité qualitative}
 
 Les informations de nature administrative (code postal, commune d'origine, sexe, date de naissance,\dots ) sont correctement renseignées avec une exhaustivité de $100\%$.
 

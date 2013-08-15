@@ -128,13 +128,15 @@ Un grand nombre 300000 et avec séparation des milliers \np{300000}
 \section*{Nombre total de passages}
 <<child='activite_regionale.Rnw'>>=
 @
-\section*{Nombre total de passages par SU}
-\subsection*{En valeur absolue}
-\subsection*{En pourcentage}
-\subsection*{Taux de recours aux urgences}
-\subsection*{Activité par mois}
-\subsection*{Activité par jour de la semaine}
-\subsection*{Activité horaire}
+
+% \section*{Nombre total de passages par SU}
+% \subsection*{En valeur absolue}
+% \subsection*{En pourcentage}
+% \subsection*{Taux de recours aux urgences}
+% \subsection*{Activité par mois}
+% \subsection*{Activité par jour de la semaine}
+% \subsection*{Activité horaire}
+
 <<child='test2.Rnw'>>=
 @
 \subsection*{Passages par tranches d'âge}
