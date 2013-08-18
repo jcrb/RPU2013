@@ -129,6 +129,15 @@ Transformer une date *R* en date *française*:
 date<-"2013-02-05"
 \Sexpr{format(date,format="%d %B %Y")}
 
+#### tab1
+Nécessite le package **epicalc**
+- a<-tab1(factor(d1$MODE_ENTREE),main="Origine des patients (en %)",ylab="Pourcentage",bar.values = "percent")
+- est un objet composé d'un graphique et d'un tableau
+- l'intitulé est accessible par a$first.line<-"Origine des patients"
+- le tableau est accessible via a$output.table. Permet d'utiliser xtable(a$output.table).
+- valeurs individuelles: a$output.table[1,1]
+- noms des lignes: row.names(a$output.table)
+
 #### notes sur les spatialPolygons
 > str(poly)
 Formal class 'SpatialPolygons' [package "sp"] with 4 slots

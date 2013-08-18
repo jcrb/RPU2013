@@ -142,9 +142,8 @@ Un grand nombre 300000 et avec séparation des milliers \np{300000}
 \subsection*{Passages par tranches d'âge}
 
 \chapter{Modalité d'admission}
-\section*{Origine des patients}
-\section*{Mode de transport}
-\section*{Origine géographique}
+<<child='modalites.Rnw'>>=
+@
 
 \chapter{Durée de passage}
 \section*{Selon l'heure}
