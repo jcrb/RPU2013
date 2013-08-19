@@ -146,13 +146,8 @@ Un grand nombre 300000 et avec séparation des milliers \np{300000}
 @
 
 \chapter{Durée de passage}
-\section*{Selon l'heure}
-\section*{Selon l'âge}
-\section*{Selon le jour de la semaine}
-\section*{Selon la structure}
-\subsection*{Pourcentage de passages en moins de 4 heures par établissement}
-\section*{Selon l'orientation}
-\section*{Selon la gravité}
+<<child='duree_passage.Rnw'>>=
+@
 
 \chapter{Codage diagnostic}
 

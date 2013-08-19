@@ -1,0 +1,11 @@
+% duree_passage.Rnw
+
+% RPU_2013_analyse à partir de la ligne 382
+
+\section*{Selon l'heure}
+\section*{Selon l'âge}
+\section*{Selon le jour de la semaine}
+\section*{Selon la structure}
+\subsection*{Pourcentage de passages en moins de 4 heures par établissement}
+\section*{Selon l'orientation}
+\section*{Selon la gravité}
