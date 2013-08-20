@@ -12,6 +12,16 @@ références utiles
   - carto_alsace.rda
 - http://help.nceas.ucsb.edu/r:spatial comment utiliser les ressources de R
 
+Les données cartographiques proviennent la base BD Carto de l'IGN dans sa version open data
+.
+Zone | Système géodésique | Ellipsoïde associé | Projection | Unité | Résolution | Système altimétrique
+---|---|---|---|---|---|---
+France continentale | RGF93 | IAG GRS 1980 | Lambert-93 | m | cm | IGN 1969 
+
+doc technique: http://pro.ign.fr/sites/default/files/DC_GEOFLA_1-1.pdf
+Les données en Lambert93 peuvent être converties en WGS84 et réciproquement par le logiciel Circée.
+
+teléchargements: http://www.ign.fr/institut/actualites/open-data-donnees-lign-disponibles-licence-etalab
 
 Notes sur les populations
 =========================
