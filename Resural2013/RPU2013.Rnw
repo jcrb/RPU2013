@@ -26,6 +26,8 @@
 \usepackage{tikz} 
 \usepackage{fancyvrb}
 
+\usepackage{longtable}
+
 \usepackage{makeidx}
 \makeindex
 
@@ -149,7 +151,9 @@ Un grand nombre 300000 et avec séparation des milliers \np{300000}
 <<child='duree_passage.Rnw'>>=
 @
 
-\chapter{Codage diagnostic}
+\chapter{Codage diagnostique}
+<<child='cim10.Rnw'>>=
+@
 
 \chapter{Modalités de sortie}
 <<child='sortie.Rnw'>>=
