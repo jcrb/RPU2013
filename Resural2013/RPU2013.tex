@@ -251,7 +251,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Aug 21 23:08:55 2013
+% Thu Aug 22 23:41:28 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -285,7 +285,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Aug 21 23:08:58 2013
+% Thu Aug 22 23:41:31 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -500,7 +500,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \subsection*{Activité par semaine}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Aug 21 23:09:08 2013
+% Thu Aug 22 23:41:41 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -544,7 +544,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \label{act_sem}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Aug 21 23:09:09 2013
+% Thu Aug 22 23:41:42 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -735,7 +735,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Aug 21 23:09:16 2013
+% Thu Aug 22 23:41:49 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -765,7 +765,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Aug 21 23:09:17 2013
+% Thu Aug 22 23:41:50 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -935,9 +935,14 @@ Le temps de passage augmente avec l'age.
 
 \chapter{Codage diagnostique}
 
-\subsection{Cim10}
+\section{Cim10}
 
-Ventilation des diagnostics principaux en fonction des 22 chapitres de la CIM10. Le tableau qui suit indique pour chaque chapitre, le nombre total de cas rapportés, le pourcentage par rapport à l'ensemble, et le pourcentage de cas déduction faite de la traumatologie. En effet celle-ci représente environ la moitié des cas et il parait intéressant de séparer les pathologies traumatiques des non traumatiques.
+Ventilation des diagnostics principaux en fonction des 22 chapitres de la CIM10. Le tableau qui suit indique pour chaque chapitre, le nombre total de cas rapportés, le pourcentage par rapport à l'ensemble, et le pourcentage de cas déduction faite de la traumatologie. En effet celleci représente environ la moitié des cas et il parait intéressant de séparer les pathologies traumatiques des non traumatiques.
+
+
+
+
+
 
 
 
@@ -947,52 +952,229 @@ Ventilation des diagnostics principaux en fonction des 22 chapitres de la CIM10.
 
 \begin{longtable}{|c|c|m{4cm}|c|c|c|}
  \hline
- Chapitre&Bloc&Titre&N&\% total&\% non trauma\\
+ Chapitre & Bloc & Titre & N & \% total  & \% non trauma \\
  \hline
- I&A00–B99&Certaines maladies infectieuses et parasitaires&64401&33.35&78.2\\
- II&C00–D48&Tumeurs&60587&31.38&73.57\\
  
-III&D50–D89&Maladies du sang et des organes hématopoïétiques et certains troubles du système immunitaire&60359&31.26&73.29\\
+I & A00–B99 & Certaines maladies infectieuses et parasitaires & 6185 & 4.65 & 10.26 \\
+ II&C00–D48&Tumeurs&595&0.45&0.99\\
+ 
+III&D50–D89&Maladies du sang et des organes hématopoïétiques et certains troubles du système immunitaire&262&0.2&0.43\\
 
-IV&E00–E90&Maladies endocriniennes, nutritionnelles et métaboliques&61154&31.67&74.25\\
+IV&E00–E90&Maladies endocriniennes, nutritionnelles et métaboliques&1456&1.1&2.41\\
 
-V&F00–F99&Troubles mentaux et du comportement&64819&33.57&78.7\\
+V&F00–F99&Troubles mentaux et du comportement&6619&4.98&10.98\\
 
-VI&G00–G99&Maladies du système nerveux&62779&32.51&76.23\\
+VI&G00–G99&Maladies du système nerveux&3827&2.88&6.35\\
 
-VII & H00–H59 & Maladies de l'oeil et de ses annexes & 62939 & 32.59&76.42\\
+VII & H00–H59 & Maladies de l'oeil et de ses annexes & 4017 & 3.02&6.66\\
 
-VIII&H60–H95&Maladies de l'oreille et de l'apophyse mastoïde&62124&32.17&75.43\\
+VIII&H60–H95&Maladies de l'oreille et de l'apophyse mastoïde&2851&2.14&4.73\\
 
-IX&I00–I99&Maladies de l'appareil circulatoire&65459&33.9&79.48\\
+IX&I00–I99&Maladies de l'appareil circulatoire&7842&5.9&13\\
 
-X&J00–J99&Maladies de l'appareil respiratoire&69626&36.06&84.54\\
+X&J00–J99&Maladies de l'appareil respiratoire&14634&11.01&24.27\\
 
-XI&K00–K93&Maladies de l'appareil digestif&67160&34.78&81.55\\
+XI&K00–K93&Maladies de l'appareil digestif&10234&7.7&16.97\\
 
-XII&L00–L99&Maladies de la peau et du tissu cellulaire sous-cutané&62862&32.55&76.33\\
+XII&L00–L99&Maladies de la peau et du tissu cellulaire souscutané&3828&2.88&6.35\\
 
-XIII&M00–M99&Maladies du système ostéo-articulaire, des muscles et du tissu conjonctif&68202&35.32&82.81\\
+XIII&M00–M99&Maladies du système ostéoarticulaire, des muscles et du tissu conjonctif&11589&8.72&19.22\\
 
-XIV&N00–N99&Maladies de l'appareil génito-urinaire&64740&33.53&78.61\\
+XIV&N00–N99&Maladies de l'appareil génitourinaire&6538&4.92&10.84\\
 
-XV&O00–O99&Grossesse, accouchement et puerpéralité&60336&31.25&73.26\\
+XV&O00–O99&Grossesse, accouchement et puerpéralité&229&0.17&0.38\\
 
-XVI&P00–P96&Certaines affections dont l'origine se situe dans la période périnatale&60337&31.25&73.26\\
+XVI&P00–P96&Certaines affections dont l'origine se situe dans la période périnatale&243&0.18&0.4\\
 
 % XVII&Q00–Q99&Malformations congénitales et anomalies chromosomiques&cong&round(cong*100/total,digits=2)&round(cong*100/(total-traumato),digits=2)\\
 
-XVIII&R00–R99&Symptômes, signes et résultats anormaux d'examens cliniques et de laboratoire, non classés ailleurs&80583&41.73&97.84\\
+XVIII&R00–R99&Symptômes, signes et résultats anormaux d'examens cliniques et de laboratoire, non classés ailleurs&29772&22.4&49.37\\
 
-XIX&S00–T98&Lésions traumatiques, empoisonnements et certaines autres conséquences de causes externes&110744&57.35& --\\
+XIX&S00–T98&Lésions traumatiques, empoisonnements et certaines autres conséquences de causes externes&72614&54.63& \\
 
-XX&V01–Y98&Causes externes de morbidité et de mortalité& 62610&32.42&76.02\\
+XX&V01–Y98&Causes externes de morbidité et de mortalité& 3194&2.4&5.3\\
 
-XXI&Z00–Z99&Facteurs influant sur l'état de santé et motifs de recours aux services de santé&64028&33.16&33.16\\
+XXI&Z00–Z99&Facteurs influant sur l'état de santé et motifs de recours aux services de santé&5603&4.22&4.22\\
 
-XXII&U00–U99&Codes d'utilisation particulière & 60179&31.16&31.16\\
+XXII&U00–U99&Codes d'utilisation particulière & 0&0&0\\
+
   \hline
 \end{longtable}
+
+
+Nombre de diagnostics principaux différents: \np{132923}
+
+Exhaustivité des CIM10: 68.84\% \index{exhaustivité!CIM10}
+
+Nombre de diagnostic uniques: 3993
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/class_cim10} 
+\begin{kframe}\begin{verbatim}
+## a :  
+##         Frequency Percent Cum. percent
+## S           45176    34.0         34.0
+## R           20405    15.4         49.3
+## J            9447     7.1         56.4
+## M            8023     6.0         62.5
+## K            6981     5.3         67.7
+## T            5389     4.1         71.8
+## I            5280     4.0         75.8
+## H            4706     3.5         79.3
+## F            4640     3.5         82.8
+## N            4560     3.4         86.2
+## Z            3849     2.9         89.1
+## A            2784     2.1         91.2
+## L            2683     2.0         93.2
+## G            2600     2.0         95.2
+## B            1438     1.1         96.3
+## W            1215     0.9         97.2
+## E             975     0.7         97.9
+## D             789     0.6         98.5
+## Y             521     0.4         98.9
+## X             360     0.3         99.2
+## V             335     0.3         99.4
+## C             306     0.2         99.7
+## P             158     0.1         99.8
+## O             157     0.1         99.9
+## r              79     0.1         99.9
+## Q              55     0.0        100.0
+## k              12     0.0        100.0
+##   Total    132923   100.0        100.0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+\section{Etude des AVC}
+
+\index(AVC)
+Les AVC sont définis par la nomenclature I60 à I64, G45 Accidents ischémiques cérébraux transitoires (sauf G45.4 amnésie transitoire) et syndromes apparentés et G46 Syndromes vasculaires cérébraux au cours de maladies cérébrovasculaires
+
+La prévention et la prise en charge des accidents vasculaires cérébraux  Annexes 
+juin 2009
+
+Annexe : Liste exhaustive des codes CIM10 d’AVC
+
+\begin{longtable}{|l|l|}
+ \hline
+ Code & libellé\\
+ \hline
+ G450 & Syndrome vertébrobasilaire \\
+ G451 & Syndrome carotidien (hémisphérique) \\
+ G452 & Accident ischémique transitoire de territoires artériels précérébraux multiples et bilatéraux \\
+ G453 & Amaurose fugace \\
+ G454 & Amnésie globale transitoire : NON RETENU \\
+ G458 & Autres accidents ischémiques cérébraux transitoires et syndromes apparentés \\
+ G459 & Accident ischémique cérébral transitoire, sans précision \\
+ I600 & Hémorragie sousarachnoïdienne de labifurcation et du siphon carotidien \\
+ I601 & Hémorragie sousarachnoïdienne de l'artère cérébrale moyenne \\
+ I602 & Hémorragie sousarachnoïdienne de l'artère communicante antérieure \\
+ I603 & Hémorragie sousarachnoïdienne del'artère communicante postérieure \\
+ I604 & Hémorragie sousarachnoïdienne de l'artère basilaire \\
+ I605 & Hémorragie sousarachnoïdienne de l'artère vertébrale \\
+ I606 & Hémorragie sousarachnoïdienne d'autres artères intracrâniennes \\
+ I607 & Hémorragie sousarachnoïdienne d'une artère intracrânienne, sans précision \\
+ I608 & Autres hémorragies sousarachnoïdiennes \\
+ I609 & Hémorragie sousarachnoïdienne, sans précision \\
+ I610 & Hémorragie intracérébrale hémisphérique, souscorticale \\
+ I611 & Hémorragie intracérébrale hémisphérique, corticale \\
+ I612 & Hémorragie intracérébrale hémisphérique, non précisée \\
+ I613 & Hémorragie intracérébrale du tronc cérébral \\
+ I614 & Hémorragie intracérébrale cérébelleuse \\
+ I615 & Hémorragie intracérébrale intraventriculaire \\
+ I616 & Hémorragie intracérébrale,localisations multiples \\
+ I618 & Autres hémorragies intracérébrales \\
+ I619 & Hémorragie intracérébrale, sans précision \\
+ I620 & Hémorragie sousdurale (aiguë) (non traumatique) \\
+ I621 & Hémorragie extradurale non traumatique \\
+ I629 & Hémorragie intracrânienne (non traumatique), sans précision \\
+ I630 & Infarctus cérébral dû à une thrombose des artères précérébrales \\
+ I631 & Infarctus cérébral dû à une embolie des artères précérébrales \\
+ I632 & Infarctus cérébral dû à une occlusion ou sténose des artères précérébrales,de mécanisme non précisé \\
+ I633 & Infarctus cérébral dû à une thrombose des artères cérébrales \\
+ I634 & Infarctus cérébral dû à une embolie des artères cérébrales \\
+ I635 & Infarctus cérébral dû à une occlusion ou sténose des artères cérébrales, demécanisme non précisé \\
+ I636 & Infarctus cérébral dû à une thrombose veineuse cérébrale, non pyogène \\
+ I638 & Autres infarctus cérébraux \\
+ I639 & Infarctus cérébral, sans précision \\
+ I64 & Accident vasculaire cérébral, non précisé comme étant hémorragique ou par infarctus \\
+ G460 & Syndrome de l'artère cérébrale moyenne (I66.0) (1) \\
+ G461 & Syndrome de l'artère cérébrale antérieure (I66.1) (1) \\
+ G462 & Syndrome de l'artère cérébrale postérieure (I66.2) (1) \\
+ G463 & Syndromes vasculaires du tronc cérébral (I60I67) (1) \\
+ G464 & Syndrome cérébelleux vasculaire (I60I67) (1) \\
+ G465 & Syndrome lacunaire moteur pur (I60I67) (1) \\
+ G466 & Syndrome lacunaire sensitif pur (I60I67) (1) \\
+ G467 & Autres syndromes lacunaires (I60I67) (1) \\
+ G468 & Autres syndromes vasculaires cérébraux au cours de maladies cérébrovasculaires (I60I67) (1) \\
+  \hline
+\end{longtable}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# Création d'un dataframe DP}
+dpr <- d1[!\hlkwd{is.na}(d1$DP), \hlkwd{c}(\hlstr{"DP"}, \hlstr{"CODE_POSTAL"}, \hlstr{"ENTREE"}, \hlstr{"FINESS"}, \hlstr{"GRAVITE"}, 
+    \hlstr{"ORIENTATION"}, \hlstr{"MODE_SORTIE"}, \hlstr{"AGE"}, \hlstr{"SEXE"}, \hlstr{"TRANSPORT"})]
+\hlcom{# un peu de ménage:}
+dpr$DP <- \hlkwd{gsub}(\hlstr{"."}, \hlstr{""}, \hlkwd{as.character}(dpr$DP), fixed = TRUE)
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: input string 37807 is invalid in this locale}}\begin{alltt}
+dpr$DP <- \hlkwd{gsub}(\hlstr{"+"}, \hlstr{""}, \hlkwd{as.character}(dpr$DP), fixed = TRUE)
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: input string 37807 is invalid in this locale}}\begin{alltt}
+\hlcom{# extraction d'un DF avc:}
+AVC <- dpr[\hlkwd{substr}(dpr$DP, 1, 3) >= \hlstr{"I60"} & \hlkwd{substr}(dpr$DP, 1, 3) < \hlstr{"I65"} | \hlkwd{substr}(dpr$DP, 
+    1, 3) == \hlstr{"G46"} | \hlkwd{substr}(dpr$DP, 1, 3) == \hlstr{"G45"}, ]
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+
+\subsection*{Horaire des AVC}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/heure_avc1} 
+
+\includegraphics[width=\maxwidth]{figure/heure_avc2} 
+\begin{kframe}\begin{verbatim}
+## h :  
+##         Frequency Percent Cum. percent
+## 0              34     2.0          2.0
+## 1              20     1.2          3.2
+## 2              26     1.6          4.8
+## 3              22     1.3          6.1
+## 4               8     0.5          6.6
+## 5              13     0.8          7.4
+## 6              17     1.0          8.4
+## 7              27     1.6         10.0
+## 8              61     3.7         13.7
+## 9             105     6.3         20.0
+## 10            139     8.4         28.4
+## 11            144     8.7         37.0
+## 12            101     6.1         43.1
+## 13            113     6.8         49.9
+## 14            116     7.0         56.9
+## 15            101     6.1         63.0
+## 16             98     5.9         68.9
+## 17            121     7.3         76.1
+## 18            104     6.3         82.4
+## 19             71     4.3         86.7
+## 20             95     5.7         92.4
+## 21             49     2.9         95.3
+## 22             42     2.5         97.8
+## 23             36     2.2        100.0
+##   Total      1663   100.0        100.0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
 
 
 \chapter{Modalités de sortie}
@@ -1017,7 +1199,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Aug 21 23:09:19 2013
+% Thu Aug 22 23:41:53 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -1100,7 +1282,7 @@ a <- \hlkwd{drop.levels}(d1$ORIENTATION)
 \subsection{Destination}
 \index{destination}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Aug 21 23:09:19 2013
+% Thu Aug 22 23:41:53 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1119,7 +1301,7 @@ HAD & 0.00 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Aug 21 23:09:20 2013
+% Thu Aug 22 23:41:53 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
