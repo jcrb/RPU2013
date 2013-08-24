@@ -1,3 +1,49 @@
+
+#'@title copyrigth
+#'@author JcB
+#'@description Place un copyright Resural sur un graphique. 
+#'Par défaut la phrase est inscrite verticalement sur le bord droit de l'image
+#'@param an (str) année du copyright (par défaut 2013)
+#'@param side coté de l'écriture (défaut = 4)
+#'@param line distance par rapport au bord. Défaut=-1, immédiatement à l'intérieur du cadre
+#'@param cex taille du texte (défaut 0.8)
+#'@return "© 2012 Resural"
+#'
+copyright<-function(an ="2013",side=4,line=-1,cex=0.8){
+  titre<-paste("©",an,"Resural",sep=" ")
+  mtext(titre,side=side,line=line,cex=cex)
+}
+
+#'@title epigraphe
+#'@author JcB
+#'@description dessine une courbe épidémiologique du nombre de cas d'une maladie
+#'par semaine. Nécessite le package epitools. dessine un histogramme du nombre de cas 
+#'par semaine
+#'@references dérive de epicurve.weeks
+#'@param x variable à afficher en nombre de cas par semaine
+#'@param strata vecteur catégoriel (character ou factor) permettant de stratifier x. 
+#'Par exemple strata=c("H","F")
+#'@param format format de date. Par défaut format = "%Y-%m-%d"
+#'@param min.date date de début de la série. Doit correspondre à format.
+#'@param max.date date de fin de la série. Doit correspondre à format. Si on ne la précise
+#'pas elle est calculée automatiquement.
+#'@param col couleur (seq3.r[3:1])
+#'
+#'
+epigraphe<-function(x,format = "%Y-%m-%d", strata = NULL,
+                    min.date, max.date,col,main=NULL,xlab=NULL,ylab=NULL,annee="2013"){
+  if(!require("epitools")) {stop("Il manque le package 'epitools'")}
+  
+  xv<-epicurve.weeks(x,strata=strata,min.date=min.date,max.date=max.date,axisname=FALSE,col=col)
+  legend("topright",bty="n",legend=names(summary(strata)),pch=15,col=col,cex=0.8)
+  axis(1,at=xv$xvals,labels=xv$cweek,tick=FALSE,line=-0.5,cex.axis=0.8)
+  axis(1,at=xv$xvals,labels=xv$cmonth,tick=FALSE,line=0.5,cex.axis=0.8)
+  axis(1,at=median(xv$xvals),labels=xlab,tick=FALSE,line=1.5)
+  title(main=main,ylab=ylab)
+  copyright(an=annee)
+  return(xv)
+}
+
 # fonction summaries()
 
 summaries<-function()

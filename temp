@@ -1,0 +1,51 @@
+<<pneumo,echo=FALSE,message=FALSE>>=
+
+# copyright<-"© 2013 Résural"
+# seq3.r<-colorbrewer.palette(3,"seq","r")
+
+# xv<-epicurve.weeks(pneumo$ENTREE,min.date="2013-01-01",max.date="2013-12-31",axisname=FALSE,legend.text=TRUE,col=seq3.r[1])
+# axis(1,at=xv$xvals,labels=xv$cweek,tick=FALSE,line=-0.5,cex.axis=0.8)
+# axis(1,at=xv$xvals,labels=xv$cmonth,tick=FALSE,line=0.5,cex.axis=0.8)
+# axis(1,at=median(xv$xvals),labels="Calendrier hebdomadaire & mensuel des pneumopathies (2013)",tick=FALSE,line=1.5)
+# title(main="Pneumonies diagnostiquées aus SAU en 2013",ylab="nombre de cas")
+# mtext(copyright,side=4,line=-1,cex=0.8)
+
+a<-epigraphe(pneumo$ENTREE,min.date="2013-01-01", strata = pneumo$SEXE,col=seq3.r[3:1],main="Infections respiratoires",xlab="",ylab="Nombre de RPU")
+@
+
+\section*{Pneumonies}
+\index{pneumonies}
+
+<<pneumo_intro,echo=FALSE>>=
+
+# library("epitools")
+# source("../mes_fonctions.R")
+
+pneumo<-dpr[substr(dpr$DP,1,4)=="J159" ,]
+p<-summary(pneumo$AGE)
+p
+@
+
+Les pneumopaties bactériennes sans précision sont cotées J15.9 Dans la CIM10.
+\Sexpr{length(pneumo)} diagnostics de ce type ont été portés au SAU en \Sexpr{annee}.
+
+Les pneumonies bactériennes concernent les adultes agés des deux sexes. L'age moyen est de \Sexpr{p[4]} ans et la moitié de ces patients ont \Sexpr{p[3]} ans et plus.
+
+
+
+En fonction de la gravité (CCMU):
+<<echo=FALSE>>=
+summary(pneumo$CCMU)
+@
+
+En fonction de la destination:
+<<echo=FALSE>>=
+summary(pneumo$DESTINATION)
+@
+
+En fonction de l'orientation:
+<<echo=FALSE>>=
+summary(pneumo$ORIENTATION)
+@
+
+Deux patients porteurs de problèmes respiratoires sont orienté en chirurgie : erreur ou manque de place en médecine ?

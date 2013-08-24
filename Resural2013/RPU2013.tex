@@ -251,7 +251,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Thu Aug 22 23:41:28 2013
+% Sat Aug 24 19:28:39 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -285,7 +285,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Thu Aug 22 23:41:31 2013
+% Sat Aug 24 19:28:42 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -500,7 +500,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \subsection*{Activité par semaine}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Thu Aug 22 23:41:41 2013
+% Sat Aug 24 19:28:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -544,7 +544,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \label{act_sem}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Thu Aug 22 23:41:42 2013
+% Sat Aug 24 19:28:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -735,7 +735,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Thu Aug 22 23:41:49 2013
+% Sat Aug 24 19:29:00 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -765,7 +765,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Thu Aug 22 23:41:50 2013
+% Sat Aug 24 19:29:01 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -935,14 +935,23 @@ Le temps de passage augmente avec l'age.
 
 \chapter{Codage diagnostique}
 
+%
+
+
+
+
+Les motifs de recours aux urgences sont exprimés en fonction de la classification CIM10.
+\index{motis de recours}
+\footnote{Classification Internationale des Maladies, 10ème révision (La CIM10 comporte environ 36000 maladies).}.
+\url{http://apps.who.int/classifications/icd10/browse/2008/fr}
+Le fichier comporte \np{132923} diagnostics principaux différents.
+répartis en 3993 classes de diagnostics.
+La comparaison entre le nombre de RPU reçus et le nombre de diagnostics renseignés permet d'établir l'exhaustivité des CIM10 à 68.84\% \index{exhaustivité!CIM10}
+
+
 \section{Cim10}
 
 Ventilation des diagnostics principaux en fonction des 22 chapitres de la CIM10. Le tableau qui suit indique pour chaque chapitre, le nombre total de cas rapportés, le pourcentage par rapport à l'ensemble, et le pourcentage de cas déduction faite de la traumatologie. En effet celleci représente environ la moitié des cas et il parait intéressant de séparer les pathologies traumatiques des non traumatiques.
-
-
-
-
-
 
 
 
@@ -1002,11 +1011,6 @@ XXII&U00–U99&Codes d'utilisation particulière & 0&0&0\\
 \end{longtable}
 
 
-Nombre de diagnostics principaux différents: \np{132923}
-
-Exhaustivité des CIM10: 68.84\% \index{exhaustivité!CIM10}
-
-Nombre de diagnostic uniques: 3993
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
@@ -1049,7 +1053,7 @@ Nombre de diagnostic uniques: 3993
 
 \section{Etude des AVC}
 
-\index(AVC)
+\index{AVC}
 Les AVC sont définis par la nomenclature I60 à I64, G45 Accidents ischémiques cérébraux transitoires (sauf G45.4 amnésie transitoire) et syndromes apparentés et G46 Syndromes vasculaires cérébraux au cours de maladies cérébrovasculaires
 
 La prévention et la prise en charge des accidents vasculaires cérébraux  Annexes 
@@ -1118,17 +1122,14 @@ Annexe : Liste exhaustive des codes CIM10 d’AVC
 \hlcom{# Création d'un dataframe DP}
 dpr <- d1[!\hlkwd{is.na}(d1$DP), \hlkwd{c}(\hlstr{"DP"}, \hlstr{"CODE_POSTAL"}, \hlstr{"ENTREE"}, \hlstr{"FINESS"}, \hlstr{"GRAVITE"}, 
     \hlstr{"ORIENTATION"}, \hlstr{"MODE_SORTIE"}, \hlstr{"AGE"}, \hlstr{"SEXE"}, \hlstr{"TRANSPORT"})]
+\hlcom{# correction d'erreurs:}
+dpr$DP[37807] <- \hlstr{"N10"}
+dpr$DP[47689] <- \hlstr{"R06.0"}
+dpr$DP[68023] <- \hlstr{"C61"}
+dpr$DP[73924] <- \hlstr{"N10"}
 \hlcom{# un peu de ménage:}
 dpr$DP <- \hlkwd{gsub}(\hlstr{"."}, \hlstr{""}, \hlkwd{as.character}(dpr$DP), fixed = TRUE)
-\end{alltt}
-
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: input string 37807 is invalid in this locale}}\begin{alltt}
 dpr$DP <- \hlkwd{gsub}(\hlstr{"+"}, \hlstr{""}, \hlkwd{as.character}(dpr$DP), fixed = TRUE)
-\end{alltt}
-
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: input string 37807 is invalid in this locale}}\begin{alltt}
 \hlcom{# extraction d'un DF avc:}
 AVC <- dpr[\hlkwd{substr}(dpr$DP, 1, 3) >= \hlstr{"I60"} & \hlkwd{substr}(dpr$DP, 1, 3) < \hlstr{"I65"} | \hlkwd{substr}(dpr$DP, 
     1, 3) == \hlstr{"G46"} | \hlkwd{substr}(dpr$DP, 1, 3) == \hlstr{"G45"}, ]
@@ -1138,6 +1139,14 @@ AVC <- dpr[\hlkwd{substr}(dpr$DP, 1, 3) >= \hlstr{"I60"} & \hlkwd{substr}(dpr$DP
 
 
 \subsection*{Horaire des AVC}
+\index{AVC!heure}
+
+Horaire des AVC, à comparer avec:
+\begin{itemize}
+  \item les crises d'épilepsie
+  \item la pression athmosphérique
+\end{itemize}
+
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
 \includegraphics[width=\maxwidth]{figure/heure_avc1} 
@@ -1176,6 +1185,160 @@ AVC <- dpr[\hlkwd{substr}(dpr$DP, 1, 3) >= \hlstr{"I60"} & \hlkwd{substr}(dpr$DP
 \end{knitrout}
 
 
+\subsection*{Selon le jour de la semaine}
+\index{AVC!age}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## w
+## Dim Lun Mar Mer Jeu Ven Sam 
+## 202 262 273 246 250 219 211
+## w
+##   Dim   Lun   Mar   Mer   Jeu   Ven   Sam 
+## 12.15 15.75 16.42 14.79 15.03 13.17 12.69
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/avc_jour_semaine} 
+
+\end{knitrout}
+
+Proportion théorique = 14.28\% par jour de la semaine.
+
+\subsection*{AVC et age}
+\index{AVC!age}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     1.0    60.0    74.0    70.7    83.0   102.0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+Le rapport de 2009 donne age moyen = 70.5 et age médian = 75 ans.
+
+\subsection*{AVC et sexe}
+\index{AVC!sexe}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##   F   I   M 
+## 874   0 789
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/avc_sexe1} 
+
+\includegraphics[width=\maxwidth]{figure/avc_sexe2} 
+
+\includegraphics[width=\maxwidth]{figure/avc_sexe3} 
+
+\includegraphics[width=\maxwidth]{figure/avc_sexe4} 
+
+\end{knitrout}
+
+
+\section*{Accidents ischiémiques transitoires (AIT)}
+\index{AIT}
+
+Recommandations pour la sélection des données PMSI MCO concernant l’AVC (Juin 2009)
+
+\begin{longtable}{|l|l|}
+ \hline
+ Code & libellé\\
+ \hline
+G450 & Syndrome vertébro-basilaire \\
+G451 & Syndrome carotidien (hémisphérique) \\
+G452 & Accident ischémique transitoire de territoires artériels précérébraux multiples et bilatéraux \\
+G453  & Amaurose fugace \\
+G458  & Autres accidents ischémiques cérébraux transitoires et syndromes apparentés \\
+G459  & Accident ischémique cérébral transitoire, sans précision \\  
+  \hline
+\end{longtable}
+
+Le thésaurus SFMU (2013) \cite{9} recommande d'utiliser G45.9 (ou G459) pour tout diagnostic d'AIT.
+\index{AIT!thésaurus}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/ait} 
+\begin{kframe}\begin{verbatim}
+## ait :  
+##         Frequency Percent Cum. percent
+## G450            4     0.9          0.9
+## G451            5     1.1          2.0
+## G452           10     2.3          4.3
+## G453            3     0.7          5.0
+## G458           32     7.2         12.2
+## G459          390    87.8        100.0
+##   Total       444   100.0        100.0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+\section*{Pneumonies}
+\index{pneumonies}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] "Pneumonies et AGE"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     0.0    62.0    77.0    70.6    85.0    98.0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+Les pneumopaties bactériennes sans précision sont cotées J15.9 Dans la CIM10.
+550 diagnostics de ce type ont été portés au SAU en 2013.
+
+Les pneumonies bactériennes concernent les adultes agés des deux sexes. L'age moyen est de 70.6 ans et la moitié de ces patients ont 77 ans et plus.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/pneumo} 
+
+\end{knitrout}
+
+
+En fonction de la gravité (CCMU):
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##    1    2    3    4    5    D    P NA's 
+##   15  236  250   41    3    0    0    5
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+En fonction de la destination:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## integer(0)
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+En fonction de l'orientation:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    SC  SCAM    SI 
+##    10     0     0     0   177     0     0     3     0     4     0     2 
+##  UHCD  NA's 
+##   168   186
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+Deux patients porteurs de problèmes respiratoires sont orienté en chirurgie : erreur ou manque de place en médecine ?
+
 
 \chapter{Modalités de sortie}
 
@@ -1199,7 +1362,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Thu Aug 22 23:41:53 2013
+% Sat Aug 24 19:29:05 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -1282,7 +1445,7 @@ a <- \hlkwd{drop.levels}(d1$ORIENTATION)
 \subsection{Destination}
 \index{destination}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Thu Aug 22 23:41:53 2013
+% Sat Aug 24 19:29:05 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1301,7 +1464,7 @@ HAD & 0.00 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Thu Aug 22 23:41:53 2013
+% Sat Aug 24 19:29:05 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1356,7 +1519,7 @@ t <- \hlkwd{table}(\hlkwd{as.factor}(a$ORIENTATION))
 \end{kframe}
 \includegraphics[width=\maxwidth]{figure/fausses_sorties} 
 \begin{kframe}\begin{verbatim}
-## as.factor(a$ORIENTATION) :  
+## as.factor(a$ORIENTATION) : 
 ##         Frequency   %(NA+)   %(NA-)
 ## NA's       148862     97.8      0.0
 ## PSA          1791      1.2     54.4
