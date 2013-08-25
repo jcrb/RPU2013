@@ -12,6 +12,16 @@ références utiles
   - carto_alsace.rda
 - http://help.nceas.ucsb.edu/r:spatial comment utiliser les ressources de R
 
+Les données cartographiques proviennent la base BD Carto de l'IGN dans sa version open data
+.
+Zone | Système géodésique | Ellipsoïde associé | Projection | Unité | Résolution | Système altimétrique
+---|---|---|---|---|---|---
+France continentale | RGF93 | IAG GRS 1980 | Lambert-93 | m | cm | IGN 1969 
+
+doc technique: http://pro.ign.fr/sites/default/files/DC_GEOFLA_1-1.pdf
+Les données en Lambert93 peuvent être converties en WGS84 et réciproquement par le logiciel Circée.
+
+teléchargements: http://www.ign.fr/institut/actualites/open-data-donnees-lign-disponibles-licence-etalab
 
 Notes sur les populations
 =========================
@@ -389,47 +399,7 @@ library("maptools")
 ```
 
 ```
-## Loading required package: foreign
-```
-
-```
-## Loading required package: sp
-```
-
-```
-## Loading required package: grid
-```
-
-```
-## Loading required package: lattice
-```
-
-```
-## Warning: A specification for class "im" in package 'maptools' seems
-## equivalent to one from package 'sp' and is not turning on duplicate class
-## definitions for this class
-```
-
-```
-## Warning: A specification for class "owin" in package 'maptools' seems
-## equivalent to one from package 'sp' and is not turning on duplicate class
-## definitions for this class
-```
-
-```
-## Warning: A specification for class "ppp" in package 'maptools' seems
-## equivalent to one from package 'sp' and is not turning on duplicate class
-## definitions for this class
-```
-
-```
-## Warning: A specification for class "psp" in package 'maptools' seems
-## equivalent to one from package 'sp' and is not turning on duplicate class
-## definitions for this class
-```
-
-```
-## Checking rgeos availability: TRUE
+## Loading required package: sp Checking rgeos availability: TRUE
 ```
 
 ```r
@@ -467,12 +437,8 @@ contour3 <- unionSpatialPolygons(als, IDs = als@data$CODE_DEPT)
 ```
 
 ```
-## Loading required package: rgeos
-```
-
-```
-## rgeos version: 0.2-19, (SVN revision 394) GEOS runtime version:
-## 3.3.3-CAPI-1.7.4 Polygon checking: TRUE
+## Loading required package: rgeos rgeos version: 0.2-19, (SVN revision 394)
+## GEOS runtime version: 3.3.3-CAPI-1.7.4 Polygon checking: TRUE
 ```
 
 ```r
@@ -578,19 +544,61 @@ d <- merge(a, b, by.x = "id", by.y = "id", all.x = TRUE)
 ```
 
 #### Les options de plot.SpatialPolygon
+
+```r
 plot(contour[1])
-plot(contour[1],border="blue")
-plot(contour[1],border="blue",col="yellow")
-plot(contour[1],border="blue",col="yellow",density=5)
-plot(contour[1],border="blue",col="yellow",density=5,angle=90)
-plot(contour[1],border="blue",col="yellow",density=5,angle=90,axes=TRUE)
-plot(contour[1],border="blue",col="yellow",density=5,angle=90,axes=TRUE, lty=3)
-text(coordinates(contour), labels=row.names(contour))
-plot(contour[1],border="blue",col="yellow",density=5,angle=90,axes=TRUE, lty=3)
-text(coordinates(contour[1]), labels="Haguenau")
+```
+
+![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-181.png) 
+
+```r
+plot(contour[1], border = "blue")
+```
+
+![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-182.png) 
+
+```r
+plot(contour[1], border = "blue", col = "yellow")
+```
+
+![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-183.png) 
+
+```r
+plot(contour[1], border = "blue", col = "yellow", density = 5)
+```
+
+![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-184.png) 
+
+```r
+plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90)
+```
+
+![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-185.png) 
+
+```r
+plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90, axes = TRUE)
+```
+
+![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-186.png) 
+
+```r
+plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90, axes = TRUE, 
+    lty = 3)
+text(coordinates(contour), labels = row.names(contour))
+```
+
+![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-187.png) 
+
+```r
+plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90, axes = TRUE, 
+    lty = 3)
+text(coordinates(contour[1]), labels = "Haguenau")
+```
+
+![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-188.png) 
 
 #### la méthode *coordinates* de SpatialPolygon
-Retourne les coordonnées du barycentre du polygone:
+Retourne les coordonnées du barycentre du polygone. Pour l'illuster on forme le vecteur des chef-lieu des arrondissement d'Alsace dans l'ordre définit par R.
 
 ```r
 a <- coordinates(contour)
@@ -645,7 +653,7 @@ text(coordinates(contour), labels = arrondissements, cex = 0.6)
 legend("topleft", legend = "Les arrondissements d'Alsace", bty = "n", adj = -0.5)
 ```
 
-![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-18.png) 
+![plot of chunk unnamed-chunk-19](figure/unnamed-chunk-19.png) 
 
 
 a<-coordinates(contour)
@@ -697,7 +705,7 @@ contour <- unionSpatialPolygons(zp1, IDs = zp1@data$CODE_ARR)
 plot(contour, axes = T)
 ```
 
-![plot of chunk unnamed-chunk-20](figure/unnamed-chunk-20.png) 
+![plot of chunk unnamed-chunk-21](figure/unnamed-chunk-21.png) 
 
 *contour* est un *SpatialPolygons*.
 
@@ -708,7 +716,7 @@ plot(contour, axes = T, xlab = "axe x", col = "red")
 plot(zp1, add = T)
 ```
 
-![plot of chunk unnamed-chunk-21](figure/unnamed-chunk-21.png) 
+![plot of chunk unnamed-chunk-22](figure/unnamed-chunk-22.png) 
 
 modifier l'aspect:
 - lty = 1 (normal), 2, 3, 4, 5... (pointillés)
@@ -725,7 +733,7 @@ plot(zp1, , axes = T)
 plot(contour, axes = T, lty = 1, lwd = 2, fg = "blue", border = "red", add = T)
 ```
 
-![plot of chunk unnamed-chunk-22](figure/unnamed-chunk-22.png) 
+![plot of chunk unnamed-chunk-23](figure/unnamed-chunk-23.png) 
 
 Certains caractères accentués posent des pb comme dans *préfecture*:
 
@@ -811,7 +819,7 @@ points(x, y, pch = 19, col = 3)
 text(x, y, labels = nom, cex = 0.8, pos = 3)
 ```
 
-![plot of chunk unnamed-chunk-25](figure/unnamed-chunk-25.png) 
+![plot of chunk unnamed-chunk-26](figure/unnamed-chunk-26.png) 
 
 Les zones de proximités officielles sont dans le fichier zp.csv
 
@@ -912,6 +920,7 @@ plot(zp2)
 
 contour2 <- unionSpatialPolygons(zp2, IDs = zp2@data$CODE_DEPT)
 plot(contour2)
+save(contour2, file = "ZPHag.Rda")
 
 zp2$STATUT <- gsub("\xe9", "e", zp2$STATUT, fixed = F)
 a <- zp2@data
@@ -921,9 +930,84 @@ y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 3)
 text(x, y, labels = nom, cex = 0.8, pos = 3)
+
+# positionnement du CH Haguenau
+x <- 1050806.723
+y <- 6865868.72
+nom <- "CH Haguenau"
+points(x, y, pch = 19, col = "red")
+text(x, y, labels = nom, cex = 0.8, pos = 3)
 ```
 
 ![plot of chunk zp2_haguenau](figure/zp2_haguenau2.png) 
+
+```r
+
+library("pixmap")
+img <- "Fichiers source/hop11.pnm"
+hop <- read.pnm(img)
+plot(contour2)
+x <- 2.5
+y <- 2.5
+addlogo(hop, px = c(x, x + 0.5), py = c(y, y + 0.5), asp = 1)
+```
+
+![plot of chunk zp2_haguenau](figure/zp2_haguenau3.png) 
+
+```r
+# plot(hop, add = TRUE)
+
+str(hop)
+```
+
+```
+## Formal class 'pixmapRGB' [package "pixmap"] with 8 slots
+##   ..@ red     : num [1:32, 1:32] 1 1 1 1 1 1 1 1 1 1 ...
+##   ..@ green   : num [1:32, 1:32] 1 1 1 1 1 1 1 1 1 1 ...
+##   ..@ blue    : num [1:32, 1:32] 1 1 1 1 1 1 1 1 1 1 ...
+##   ..@ channels: chr [1:3] "red" "green" "blue"
+##   ..@ size    : int [1:2] 32 32
+##   ..@ cellres : num [1:2] 1 1
+##   ..@ bbox    : num [1:4] 0 0 32 32
+##   ..@ bbcent  : logi FALSE
+```
+
+```r
+pin <- par("pin")
+pin
+```
+
+```
+## [1] 5.76 5.16
+```
+
+```r
+usr <- par("usr")
+usr
+```
+
+```
+## [1] 1026818 1077327 6849387 6894634
+```
+
+```r
+
+x.asp <- (hop@size[2] * (usr[2] - usr[1])/pin[1])
+y.asp <- (hop@size[1] * (usr[4] - usr[3])/pin[2])
+x.asp
+```
+
+```
+## [1] 280602
+```
+
+```r
+y.asp
+```
+
+```
+## [1] 280602
+```
 
 Zone de proximité 3 (Saverne)
 --------------------
@@ -1327,7 +1411,7 @@ zp <- zpals[zpals$CODE.ZONES.DE.PROXIMITE == 1, ]
 plot(zp)
 ```
 
-![plot of chunk unnamed-chunk-28](figure/unnamed-chunk-28.png) 
+![plot of chunk unnamed-chunk-29](figure/unnamed-chunk-29.png) 
 
 Ca marche!!! auteur: http://stackoverflow.com/users/235349/ramnath (Ramnath Vaidyanathan is an Assistant Professor of Operations Management at the Desautels Faculty of Management, McGill University. He got his PhD from the Wharton School and worked at McKinsey & Co prior to that. )
 
@@ -1341,7 +1425,7 @@ plot(czp)
 title(main = "Zone de proximité de Wissembourg")
 ```
 
-![plot of chunk unnamed-chunk-29](figure/unnamed-chunk-29.png) 
+![plot of chunk unnamed-chunk-30](figure/unnamed-chunk-30.png) 
 
 ```
 #### Dessin du contour de l'ensemble des zones de proximité (czps)
@@ -1351,14 +1435,14 @@ czps <- unionSpatialPolygons(zpals, IDs = zpals$CODE.ZONES.DE.PROXIMITE)
 plot(czps)
 ```
 
-![plot of chunk unnamed-chunk-30](figure/unnamed-chunk-301.png) 
+![plot of chunk unnamed-chunk-31](figure/unnamed-chunk-311.png) 
 
 ```r
 plot(czps, col = c("red", "yellow", "blue", "green", "orange"))
 title(main = "Zone de proximité en Alsace")
 ```
 
-![plot of chunk unnamed-chunk-30](figure/unnamed-chunk-302.png) 
+![plot of chunk unnamed-chunk-31](figure/unnamed-chunk-312.png) 
 
 #### Dessin du contour des territoires de santé (ctss)
 
@@ -1368,7 +1452,11 @@ plot(ctss)
 title(main = "Territoires de santé en Alsace")
 ```
 
-![plot of chunk unnamed-chunk-31](figure/unnamed-chunk-31.png) 
+![plot of chunk unnamed-chunk-32](figure/unnamed-chunk-32.png) 
+
+```r
+save(ctss, file = "als_ts.Rda")
+```
 
 #### Dessin territoires de santé (ctss) et des zones de proximité (czps)
 
@@ -1380,7 +1468,7 @@ plot(ctss, col = c("yellow", "blue", "green", "orange"), border = "red", add = T
 plot(czps, add = TRUE)
 ```
 
-![plot of chunk unnamed-chunk-32](figure/unnamed-chunk-32.png) 
+![plot of chunk unnamed-chunk-33](figure/unnamed-chunk-33.png) 
 
 essais avec les couleurs:
 - plot(ctss,col=heat.colors(4))
@@ -1398,7 +1486,7 @@ plot(czps, col = wp)
 title(main = "Zone de proximité en Alsace")
 ```
 
-![plot of chunk unnamed-chunk-33](figure/unnamed-chunk-33.png) 
+![plot of chunk unnamed-chunk-34](figure/unnamed-chunk-34.png) 
 
 couleurs prop. au % de 75 ans:  
 Le % des 75 ans par zone de proximité est donné par *pbc* (voir carto&pop)  
@@ -1437,7 +1525,7 @@ legend("topleft", col = gray(5:0/5), legend = c("0-5%", "5-10%", "10-15%", "15-2
 mtext("© RESURAL 2013", cex = 0.6, side = 4, line = -1, adj = 0.1)
 ```
 
-![plot of chunk unnamed-chunk-34](figure/unnamed-chunk-34.png) 
+![plot of chunk unnamed-chunk-35](figure/unnamed-chunk-35.png) 
 
 NB: pour déterminer l'ordre de traçage, on utilise la méthode suivante:
 col<-c(1,2,2,2,2,2,2,2,2,2,2,2,2)
@@ -1466,3 +1554,22 @@ col<-c(2,2,2,2,2,2,2,2,2,2,2,1,2)
 plot(czps,col=col)
 col<-c(2,2,2,2,2,2,2,2,2,2,2,2,1)
 plot(czps,col=col)
+
+Utilisation des cartes pré-enregistrées
+---------------------------------------
+
+```r
+# fond de carte des territoires de santé
+load("als_ts.Rda")
+plot(ctss)
+# surimpression des SAU
+hopitaux <- "Fichiers source/Hopitaux2lambert/hopitaux_alsace.csv"
+h <- read.csv(hopitaux, header = TRUE, sep = ",")
+for (i in 1:nrow(h)) {
+    points(h$lam_lon[i], h$lam_lat[i], pch = 19, col = "red")
+    text(h$lam_lon[i], h$lam_lat[i], labels = h$hopital[i], cex = 0.8, pos = h$pos[i])
+}
+```
+
+![plot of chunk carto generale](figure/carto_generale.png) 
+

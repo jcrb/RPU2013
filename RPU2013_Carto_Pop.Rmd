@@ -414,6 +414,7 @@ plot(zp2)
 
 contour2<-unionSpatialPolygons(zp2,IDs=zp2@data$CODE_DEPT)
 plot(contour2)
+save(contour2,file="ZPHag.Rda")
 
 zp2$STATUT<-gsub("\xe9","e",zp2$STATUT,fixed=F)
 a<-zp2@data
@@ -423,6 +424,33 @@ y<-sp$Y_CHF_LIEU * 100
 nom<-sp$NOM_COMM
 points(x,y,pch=19,col=3)
 text(x,y,labels=nom,cex=0.8,pos=3)
+
+# positionnement du CH Haguenau
+x<-1050806.723
+y<-6865868.720
+nom<-"CH Haguenau"
+points(x,y,pch=19,col="red")
+text(x,y,labels=nom,cex=0.8,pos=3)
+
+library("pixmap")
+img<-"Fichiers source/hop11.pnm"
+hop<-read.pnm(img)
+plot(contour2)
+x<-2.5
+y<-2.5
+addlogo(hop, px=c(x, x+0.5), py=c(y,y+0.5), asp=1)
+#plot(hop, add = TRUE)
+
+str(hop)
+pin <- par("pin")
+pin
+usr<-par("usr")
+usr
+
+x.asp <- (hop@size[2] * (usr[2] - usr[1]) / pin[1])
+y.asp <- (hop@size[1] * (usr[4] - usr[3]) / pin[2])
+x.asp
+y.asp
 ```
 Zone de proximité 3 (Saverne)
 --------------------
@@ -745,6 +773,7 @@ title(main="Zone de proximité en Alsace")
 ctss<-unionSpatialPolygons(zpals, IDs=zpals$LIBELLE.DES.TERRITOIRES.DE.SANTE)
 plot(ctss)
 title(main="Territoires de santé en Alsace")
+save(ctss,file="als_ts.Rda")
 ```
 #### Dessin territoires de santé (ctss) et des zones de proximité (czps)
 ```{r}
@@ -829,3 +858,15 @@ col<-c(2,2,2,2,2,2,2,2,2,2,2,1,2)
 plot(czps,col=col)
 col<-c(2,2,2,2,2,2,2,2,2,2,2,2,1)
 plot(czps,col=col)
+
+Utilisation des cartes pré-enregistrées
+---------------------------------------
+```{r carto generale}
+# fond de carte des territoires de santé
+load("als_ts.Rda")
+plot(ctss)
+# surimpression des SAU
+hopitaux<-"Fichiers source/Hopitaux2lambert/hopitaux_alsace.csv"
+h<-read.csv(hopitaux,header=TRUE,sep=",")
+for(i in 1:nrow(h)){points(h$lam_lon[i],h$lam_lat[i],pch=19,col="red");text(h$lam_lon[i],h$lam_lat[i],labels=h$hopital[i],cex=0.8,pos=h$pos[i])}
+```

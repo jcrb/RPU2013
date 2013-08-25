@@ -28,7 +28,7 @@ ex<-round(ndpr * 100/ndp,2)
 annee<-2013
 @
 
-Les motifs de recours aux urgences sont exprimés en fonction de la classification CIM10.
+Les motifs de recours aux urgences sont exprimés en fonction de la classification CIM10 \cite{10}.
 \index{motis de recours}
 \footnote{Classification Internationale des Maladies, 10ème révision (La CIM10 comporte environ 36000 maladies).}.
 \url{http://apps.who.int/classifications/icd10/browse/2008/fr}

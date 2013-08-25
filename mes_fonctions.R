@@ -51,10 +51,14 @@ summaries<-function()
 
 }
 
-# passages(hop,hop_mame="CH",main="",col="")
-
-# hop (character) = Finess de l'établissement
-# sens 1 = entrées, 2 = sorties, 3 = entrées et sorties
+#'@title passages
+#'@author JcB
+#'@description dessine la fréquentationd'un service d'urgence sous la forme 
+#'d'un graphique de type 'radar' de 24 heures.
+#'@usage passages(hop,hop_mame="CH",main="",col="")
+#'@param hop (character) = Finess de l'établissement
+#'@param sens 1 = entrées, 2 = sorties, 3 = entrées et sorties
+#'
 passages<-function(hop,hop_name="CH",col="blue",sens=1,main="")
 {
   require("lubridate")
@@ -88,6 +92,15 @@ passages<-function(hop,hop_name="CH",col="blue",sens=1,main="")
   legend(0.09,-0.09,legende,col=col,lty=1,cex=0.8)
 }
 
+#'@title mysql2resural
+#'@author
+#'@description lit dans la base de données mySql les enregistrements correspondants à
+#'un mois donné et produit le dataframe correspondant puis l'enregistre comme un fichier
+#'.Rdata
+#'@param an
+#'@param mois
+#'@TODO manque Saverne dans les Finess
+#'
 mysql2resural<-function(an,mois)
 {
   first<-paste(an,mois,"01",sep="-")

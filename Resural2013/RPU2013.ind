@@ -1,57 +1,69 @@
 \begin{theindex}
 
-  \item Accident Vasculaire C\IeC {\'e}r\IeC {\'e}bral, \hyperpage{73}
-  \item AIT, \hyperpage{53}, \hyperpage{73}
-    \subitem th\IeC {\'e}saurus, \hyperpage{53}
-  \item ANTARES, \hyperpage{73}
-  \item AR, \hyperpage{73}
-  \item ARS, \hyperpage{73}
-  \item AVC, \hyperpage{44}
-    \subitem age, \hyperpage{48, 49}
-    \subitem heure, \hyperpage{45}
-    \subitem sexe, \hyperpage{49}
+  \item Accident Vasculaire C\IeC {\'e}r\IeC {\'e}bral, \hyperpage{75}
+  \item AIT, \hyperpage{55}, \hyperpage{75}
+    \subitem th\IeC {\'e}saurus, \hyperpage{55}
+  \item Alsace
+    \subitem d\IeC {\'e}mographie, \hyperpage{10}
+    \subitem secteurs sanitaires, \hyperpage{8}
+    \subitem services d'urgence, \hyperpage{10}
+    \subitem territoires de proximit\IeC {\'e}, \hyperpage{9}
+  \item ANTARES, \hyperpage{75}
+  \item AR, \hyperpage{75}
+  \item ARS, \hyperpage{75}
+  \item AVC, \hyperpage{46}
+    \subitem age, \hyperpage{50, 51}
+    \subitem heure, \hyperpage{47}
+    \subitem sexe, \hyperpage{51}
 
   \indexspace
 
-  \item destination, \hyperpage{59}
+  \item destination, \hyperpage{61}
 
   \indexspace
 
   \item Eclipse
-    \subitem solaire, \hyperpage{69}
+    \subitem solaire, \hyperpage{71}
   \item exhaustivit\IeC {\'e}
-    \subitem CIM10, \hyperpage{41}
+    \subitem CIM10, \hyperpage{43}
 
   \indexspace
 
-  \item Mode d'entr\IeC {\'e}e, \hyperpage{31}
-  \item mode de sortie, \hyperpage{57}
-  \item Mode de transport, \hyperpage{32}
-  \item motis de recours, \hyperpage{41}
+  \item Mode d'entr\IeC {\'e}e, \hyperpage{33}
+  \item mode de sortie, \hyperpage{59}
+  \item Mode de transport, \hyperpage{34}
+  \item motis de recours, \hyperpage{43}
 
   \indexspace
 
   \item Orbite
-    \subitem p\IeC {\'e}rig\IeC {\'e}e, \hyperpage{69}
-  \item orientation, \hyperpage{58}
+    \subitem p\IeC {\'e}rig\IeC {\'e}e, \hyperpage{71}
+  \item orientation, \hyperpage{60}
 
   \indexspace
 
-  \item pneumonies, \hyperpage{54}
-  \item Population, \hyperpage{73}
+  \item pneumonies, \hyperpage{56}
+  \item Population, \hyperpage{75}
   \item Population
-    \subitem compt\IeC {\'e}e \IeC {\`a} part, \hyperpage{73}
-    \subitem municipale, \hyperpage{9}, \hyperpage{74}
-    \subitem totale, \hyperpage{74}
+    \subitem compt\IeC {\'e}e \IeC {\`a} part, \hyperpage{75}
+    \subitem municipale, \hyperpage{10}, \hyperpage{76}
+    \subitem totale, \hyperpage{76}
 
   \indexspace
 
-  \item taux de recours aux urgences, \hyperpage{21}
-  \item test, \hyperpage{69}
-  \item TRU, \hyperpage{21}
+  \item Secteurs sanitaires, \hyperpage{8}
+  \item Services d'urgence
+    \subitem en Alsace, \hyperpage{10}
 
   \indexspace
 
-  \item Unit\IeC {\'e} urbaine, \hyperpage{74}
+  \item taux de recours aux urgences, \hyperpage{23}
+  \item Territoires de proximit\IeC {\'e}, \hyperpage{9}
+  \item test, \hyperpage{71}
+  \item TRU, \hyperpage{23}
+
+  \indexspace
+
+  \item Unit\IeC {\'e} urbaine, \hyperpage{76}
 
 \end{theindex}

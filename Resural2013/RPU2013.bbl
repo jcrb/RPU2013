@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{8}
 INSEE.
@@ -27,6 +27,13 @@ INSEE.
 \newblock 2013.
 \newblock
   \url{http://www.insee.fr/fr/methodes/default.asp?page=definitions/unite-urbaine.htm}.
+
+\bibitem{10}
+OMS.
+\newblock Classification internationale des maladies. dixième révision
+  (cim10).
+\newblock 2008.
+\newblock \url{http://apps.who.int/classifications/icd10/browse/2008/fr}.
 
 \bibitem{2}
 ORULOR.

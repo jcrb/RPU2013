@@ -91,6 +91,7 @@ library("zoo")
 library("xts")
 library("plotrix")
 library("openintro")
+library("sp")
 
 #  load("../rpu2013.Rda")
 load("../rpu2013d0107.Rda")

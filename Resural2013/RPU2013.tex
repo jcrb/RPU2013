@@ -140,6 +140,8 @@ Un grand nombre 300000 et avec séparation des milliers \np{300000}
 L'Alsace est la plus petite région de France (n°42) avec la Corse. Elle est formée de deux départements, le bas-Rhin (67) et le haut-Rhin (68), sont les chef-lieu sont respectivement Strasbourg et Colmar.
 
 \section{Les secteurs sanitaires}
+\index{Alsace!secteurs sanitaires}
+\index{Secteurs sanitaires}
 
 L'alsace est divisée en quatre secteurs sanitaires
 \begin{enumerate}
@@ -149,7 +151,17 @@ L'alsace est divisée en quatre secteurs sanitaires
   \item secteur 4: Mulhouse
 \end{enumerate}
 
-\section{Les zones de proximité}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/carte_secteurs_sanitaires} 
+
+\end{knitrout}
+
+
+
+\section{Les territoires de proximité}
+\index{Alsace!territoires de proximité}
+\index{Territoires de proximité}
 
 Il existe neuf territoires de proximité:
 \begin{enumerate}
@@ -169,6 +181,8 @@ Il existe neuf territoires de proximité:
 
 \section{Démographie}
 \subsection{Généralités}
+\index{Alsace!démographie}
+
 En France, les populations légales sont calculées par l'INSEE sur la base de définitions réglementaires à partir de recensement de la population. Ce document utilise la \emph{Population municipale} \ref{Population_municipale} \index{Population@Population!municipale}  qui est la nouvelle dénomination de la population sans double comptes. Le chiffre est donc inférieur de celui de la \emph{Population totale} qui est égale à la somme de la population municipale et de la population comptée à part d'une commune.
 
 \subsection{Classes d'age}
@@ -201,6 +215,18 @@ Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'en
 \end{table}
 
 \section{Les services d'accueil des urgences (SAU)}
+\index{Services d'urgence!en Alsace}
+\index{Alsace!services d'urgence}
+
+L'Alsace compte actuellement 14 services d'urgence (SU) officiellement labellisés. On prend également en compte la clinique Saint-Luc de Schirmeck qui fait fonctionner une policlinique recevant plus de \np{8000} passages par an.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/carte_sau} 
+
+\end{knitrout}
+
+
 
 \begin{table}
 \begin{center}
@@ -251,7 +277,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 24 19:28:39 2013
+% Sun Aug 25 19:58:38 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -285,7 +311,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 24 19:28:42 2013
+% Sun Aug 25 19:58:41 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -500,7 +526,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \subsection*{Activité par semaine}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 24 19:28:52 2013
+% Sun Aug 25 19:58:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -544,7 +570,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \label{act_sem}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 24 19:28:52 2013
+% Sun Aug 25 19:58:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -735,7 +761,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 24 19:29:00 2013
+% Sun Aug 25 19:59:00 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -765,7 +791,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 24 19:29:01 2013
+% Sun Aug 25 19:59:00 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -940,7 +966,7 @@ Le temps de passage augmente avec l'age.
 
 
 
-Les motifs de recours aux urgences sont exprimés en fonction de la classification CIM10.
+Les motifs de recours aux urgences sont exprimés en fonction de la classification CIM10 \cite{10}.
 \index{motis de recours}
 \footnote{Classification Internationale des Maladies, 10ème révision (La CIM10 comporte environ 36000 maladies).}.
 \url{http://apps.who.int/classifications/icd10/browse/2008/fr}
@@ -1362,7 +1388,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 24 19:29:05 2013
+% Sun Aug 25 19:59:04 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -1445,7 +1471,7 @@ a <- \hlkwd{drop.levels}(d1$ORIENTATION)
 \subsection{Destination}
 \index{destination}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 24 19:29:05 2013
+% Sun Aug 25 19:59:04 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1464,7 +1490,7 @@ HAD & 0.00 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 24 19:29:05 2013
+% Sun Aug 25 19:59:05 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}

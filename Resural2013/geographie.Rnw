@@ -3,6 +3,8 @@
 L'Alsace est la plus petite région de France (n°42) avec la Corse. Elle est formée de deux départements, le bas-Rhin (67) et le haut-Rhin (68), sont les chef-lieu sont respectivement Strasbourg et Colmar.
 
 \section{Les secteurs sanitaires}
+\index{Alsace!secteurs sanitaires}
+\index{Secteurs sanitaires}
 
 L'alsace est divisée en quatre secteurs sanitaires
 \begin{enumerate}
@@ -12,7 +14,20 @@ L'alsace est divisée en quatre secteurs sanitaires
   \item secteur 4: Mulhouse
 \end{enumerate}
 
-\section{Les zones de proximité}
+<<carte_secteurs_sanitaires,echo=FALSE,message=FALSE,error=FALSE>>=
+# fond de carte des territoires de santé
+ load("../als_ts.Rda")
+
+
+ plot(ctss)
+
+ title(main="Secteur sanitaires d'Alsace")
+@
+
+
+\section{Les territoires de proximité}
+\index{Alsace!territoires de proximité}
+\index{Territoires de proximité}
 
 Il existe neuf territoires de proximité:
 \begin{enumerate}
@@ -32,6 +47,8 @@ Il existe neuf territoires de proximité:
 
 \section{Démographie}
 \subsection{Généralités}
+\index{Alsace!démographie}
+
 En France, les populations légales sont calculées par l'INSEE sur la base de définitions réglementaires à partir de recensement de la population. Ce document utilise la \emph{Population municipale} \ref{Population_municipale} \index{Population@Population!municipale}  qui est la nouvelle dénomination de la population sans double comptes. Le chiffre est donc inférieur de celui de la \emph{Population totale} qui est égale à la somme de la population municipale et de la population comptée à part d'une commune.
 
 \subsection{Classes d'age}
@@ -64,6 +81,22 @@ Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'en
 \end{table}
 
 \section{Les services d'accueil des urgences (SAU)}
+\index{Services d'urgence!en Alsace}
+\index{Alsace!services d'urgence}
+
+L'Alsace compte actuellement 14 services d'urgence (SU) officiellement labellisés. On prend également en compte la clinique Saint-Luc de Schirmeck qui fait fonctionner une policlinique recevant plus de \np{8000} passages par an.
+
+<<carte_sau,echo=FALSE,message=FALSE>>=
+# fond de carte des territoires de santé
+load("../als_ts.Rda")
+plot(ctss)
+title(main="Service d'urgences d'Alsace")
+# surimpression des SAU
+hopitaux<-"../Fichiers source/Hopitaux2lambert/hopitaux_alsace.csv"
+h<-read.csv(hopitaux,header=TRUE,sep=",")
+for(i in 1:nrow(h)){points(h$lam_lon[i],h$lam_lat[i],pch=19,col="red");text(h$lam_lon[i],h$lam_lat[i],labels=h$hopital[i],cex=0.8,pos=h$pos[i])}
+@
+
 
 \begin{table}
 \begin{center}

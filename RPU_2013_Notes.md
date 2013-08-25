@@ -164,6 +164,23 @@ mean(vector[select])
 The argument col will set the colours, you could use this in conjunction with an ifelse statement  col<-
 plot(x,y,xlab="PC1",ylab="PC2", col = ifelse(x < 0,'red','green'), pch = 19 )
 
+#### Réordonner les facteurs
+Par défaut R fait commencer la semaine le dimanche. L'objectif est de la faire commencer le lundi: 
+```{}
+library:  
+library("gdata")  
+
+On trie par jour de la semaine avec wday (lubridate)  
+w<-wday(AVC$ENTREE,label=TRUE) 
+
+on françise les labels
+levels(w)<-c("Dim","Lun","Mar","Mer","Jeu","Ven","Sam")
+
+on réordonne pour que la semaine commence le lundi
+w2<-reorder(w,new.order=c("Lun","Mar","Mer","Jeu","Ven","Sam","Dim"))
+
+```
+
 #### notes sur les spatialPolygons
 > str(poly)
 Formal class 'SpatialPolygons' [package "sp"] with 4 slots
