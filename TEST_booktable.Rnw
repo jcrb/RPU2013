@@ -1,0 +1,30 @@
+
+\documentclass{article}
+\usepackage{booktabs}
+
+\begin{document}
+
+    \begin{table}[!h]
+        \centering
+        \caption{Check out my table.}
+        \label{tab:mytable}
+<<mytable,echo=F,results=tex>>=
+            library(xtable)
+            mat <- as.data.frame(matrix(rnorm(25),nrow=5))
+            colnames(mat) <- c("$\\alpha$","$\\beta$",
+                               "$\\gamma$","$\\delta$",
+                               "$\\frac{\\epsilon}{2}$")
+            rownames(mat) <- c(‘A’,'B’,'C’,'D’,'E’)
+            mat <- xtable(mat,digits=rep(5,ncol(mat)+1))
+            print(mat,
+                  sanitize.text.function = function(x){x},
+                  floating=FALSE,
+                  hline.after=NULL,
+                  add.to.row=list(pos=list(-1,0, nrow(mat)),
+                  command=c(‘\\toprule ‘,
+                            ‘\\midrule ‘,
+                            ‘\\bottomrule ‘)))
+@
+    \end{table}
+
+\end{document}
