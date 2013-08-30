@@ -70,7 +70,21 @@ name <- "3"
 text(x, y, name, cex = 0.8)
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1.png) 
+![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-11.png) 
+
+```r
+
+plot(ctss)
+for (i in 1:4) {
+    # name<-ctss@polygons[[i]]@ID
+    name <- as.character(i)
+    x <- ctss@polygons[[i]]@labpt[1]
+    y <- ctss@polygons[[i]]@labpt[2]
+    text(x, y, name, cex = 0.6)
+}
+```
+
+![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-12.png) 
 
 
 

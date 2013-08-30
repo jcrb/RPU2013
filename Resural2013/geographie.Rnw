@@ -21,6 +21,13 @@ L'alsace est divisée en quatre secteurs sanitaires
  load("../als_ts.Rda")
 
  plot(ctss)
+ for(i in 1:4){
+#   name<-ctss@polygons[[i]]@ID
+  name<-as.character(i)
+  x<-ctss@polygons[[i]]@labpt[1]
+  y<-ctss@polygons[[i]]@labpt[2]
+  text(x,y,name,cex=0.6)
+}
 
  title(main="Secteur sanitaires d'Alsace")
 @

@@ -28,6 +28,15 @@ y<-ctss@polygons[[3]]@labpt[2]
 x<-ctss@polygons[[3]]@labpt[1]
 name<-"3"
 text(x,y,name,cex=0.8)
+
+plot(ctss)
+for(i in 1:4){
+#   name<-ctss@polygons[[i]]@ID
+  name<-as.character(i)
+  x<-ctss@polygons[[i]]@labpt[1]
+  y<-ctss@polygons[[i]]@labpt[2]
+  text(x,y,name,cex=0.6)
+}
 ```
 
 
