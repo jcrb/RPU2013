@@ -122,16 +122,24 @@ Bartier \& Madame Christine Hecker}}
 \listoftables
 \listoffigures
 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: there is no package called 'gdata'}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: there is no package called 'rattle'}}\end{kframe}
+\end{knitrout}
 
 %======================================================== PARTIE 1
 \part{Le Réseau des urgences en Alsace}
-\chapter{Historique}
-utilisation de la directive \\nombre{}, par exemple: 
-Un grand nombre 300000 et avec séparation des milliers \nombre{300000}
 
-La même chose avec \\np{}: 
-Un grand nombre 300000 et avec séparation des milliers \np{300000}
+\chapter{Historique}
+
+% historique.Rnw
+
+Le Réseau des Urgences en Alsace a été créé en août 2008 sous forme d'une association de droit local dans la foulée de la circulaire de 2007.
+
 
 \chapter{Organisation géographique}
 
@@ -223,7 +231,13 @@ L'Alsace compte actuellement 14 services d'urgence (SU) officiellement labellis�
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
 \includegraphics[width=\maxwidth]{figure/carte_sau} 
+\begin{kframe}
 
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: impossible d'ouvrir le fichier '../Fichiers source/Hopitaux2lambert/hopitaux\_alsace.csv' : Aucun fichier ou dossier de ce type}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: impossible d'ouvrir la connexion}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: objet 'h' introuvable}}\end{kframe}
 \end{knitrout}
 
 
@@ -276,8 +290,8 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 
 \fbox{Voir SAU2013}
 
-% latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sun Aug 25 19:58:38 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Fri Aug 30 15:45:22 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -310,8 +324,8 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
-% latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sun Aug 25 19:58:41 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Fri Aug 30 15:45:25 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -453,8 +467,8 @@ soit une moyenne de \np{920} passages par jour (extrèmes 642 et \np{1160})
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-t <- \hlkwd{tapply}(\hlkwd{as.Date}(d1$ENTREE), d1$FINESS, length)
-t
+\hlstd{t} \hlkwb{<-} \hlkwd{tapply}\hlstd{(}\hlkwd{as.Date}\hlstd{(d1}\hlopt{$}\hlstd{ENTREE), d1}\hlopt{$}\hlstd{FINESS, length)}
+\hlstd{t}
 \end{alltt}
 \begin{verbatim}
 ##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis   Sav 
@@ -468,7 +482,7 @@ t
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{round}(\hlkwd{prop.table}(t) * 100, 2)
+\hlkwd{round}\hlstd{(}\hlkwd{prop.table}\hlstd{(t)} \hlopt{*} \hlnum{100}\hlstd{,} \hlnum{2}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis   Sav 
@@ -482,12 +496,11 @@ t
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-tru2011_lorraine <- 0.2345
-tru_estime <- pop.als.2010.totale * tru2011_lorraine
+\hlstd{tru2011_lorraine} \hlkwb{<-} \hlnum{0.2345}
+\hlstd{tru_estime} \hlkwb{<-} \hlstd{pop.als.2010.totale} \hlopt{*} \hlstd{tru2011_lorraine}
 \hlcom{# tru2013_alsace<-round(length(e)*100/pop.als.2010.totale,2)}
-tru2013_alsace <- \hlkwd{round}(\hlkwd{nrow}(d1) * 100/pop.als.2010.totale, 2)
-
-\hlkwd{print}(tru_estime)
+\hlstd{tru2013_alsace} \hlkwb{<-} \hlkwd{round}\hlstd{(}\hlkwd{nrow}\hlstd{(d1)} \hlopt{*} \hlnum{100}\hlopt{/}\hlstd{pop.als.2010.totale,} \hlnum{2}\hlstd{)}
+\hlkwd{print}\hlstd{(tru_estime)}
 \end{alltt}
 \begin{verbatim}
 ## [1] 441062
@@ -504,8 +517,8 @@ Le TRU 2013 estimé en Alsace à partir des RPU transmis est de 10.27\%.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
-\hlkwd{table}(m)
+\hlstd{m} \hlkwb{<-} \hlkwd{month}\hlstd{(d1}\hlopt{$}\hlstd{ENTREE,} \hlkwc{label} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{table}\hlstd{(m)}
 \end{alltt}
 \begin{verbatim}
 ## m
@@ -513,9 +526,9 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 ## 25609 25004 26937 28428 27899 30038 29187     0     0     0     0     0
 \end{verbatim}
 \begin{alltt}
-\hlkwd{barplot}(\hlkwd{table}(m), ylab = \hlstr{"nombre"}, xlab = \hlstr{"mois"}, main = \hlstr{"2013 - Nombre de RPU par mois"}, 
-    names.arg = \hlkwd{c}(\hlstr{"Jan"}, \hlstr{"Fev"}, \hlstr{"Mar"}, \hlstr{"Avr"}, \hlstr{"Mai"}, \hlstr{"Jui"}, \hlstr{"Jul"}, \hlstr{"Aou"}, \hlstr{"Sep"}, 
-        \hlstr{"Oct"}, \hlstr{"Nov"}, \hlstr{"Dec"}), las = 2)
+\hlkwd{barplot}\hlstd{(}\hlkwd{table}\hlstd{(m),} \hlkwc{ylab} \hlstd{=} \hlstr{"nombre"}\hlstd{,} \hlkwc{xlab} \hlstd{=} \hlstr{"mois"}\hlstd{,} \hlkwc{main} \hlstd{=} \hlstr{"2013 - Nombre de RPU par mois"}\hlstd{,}
+    \hlkwc{names.arg} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Jan"}\hlstd{,} \hlstr{"Fev"}\hlstd{,} \hlstr{"Mar"}\hlstd{,} \hlstr{"Avr"}\hlstd{,} \hlstr{"Mai"}\hlstd{,} \hlstr{"Jui"}\hlstd{,} \hlstr{"Jul"}\hlstd{,} \hlstr{"Aou"}\hlstd{,} \hlstr{"Sep"}\hlstd{,}
+        \hlstr{"Oct"}\hlstd{,} \hlstr{"Nov"}\hlstd{,} \hlstr{"Dec"}\hlstd{),} \hlkwc{las} \hlstd{=} \hlnum{2}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \includegraphics[width=\maxwidth]{figure/parmois} 
@@ -525,8 +538,8 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 
 \subsection*{Activité par semaine}
 
-% latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sun Aug 25 19:58:52 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Fri Aug 30 15:45:41 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -569,8 +582,8 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \caption[Activité par semaine]{Activité des SU par semaine en 2013} 
 \label{act_sem}
 \end{table}
-% latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sun Aug 25 19:58:52 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Fri Aug 30 15:45:41 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -592,8 +605,8 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-m <- \hlkwd{wday}(d1$ENTREE, label = T)
-\hlkwd{table}(m)
+\hlstd{m} \hlkwb{<-} \hlkwd{wday}\hlstd{(d1}\hlopt{$}\hlstd{ENTREE,} \hlkwc{label} \hlstd{= T)}
+\hlkwd{table}\hlstd{(m)}
 \end{alltt}
 \begin{verbatim}
 ## m
@@ -601,10 +614,10 @@ m <- \hlkwd{wday}(d1$ENTREE, label = T)
 ## 28591 29737 27681 25799 27050 26150 28094
 \end{verbatim}
 \begin{alltt}
-\hlkwd{barplot}(\hlkwd{table}(m), names.arg = \hlkwd{c}(\hlstr{"Dim"}, \hlstr{"Lun"}, \hlstr{"Mar"}, \hlstr{"Mer"}, \hlstr{"Jeu"}, \hlstr{"Ven"}, \hlstr{"Sam"}))
+\hlkwd{barplot}\hlstd{(}\hlkwd{table}\hlstd{(m),} \hlkwc{names.arg} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Dim"}\hlstd{,} \hlstr{"Lun"}\hlstd{,} \hlstr{"Mar"}\hlstd{,} \hlstr{"Mer"}\hlstd{,} \hlstr{"Jeu"}\hlstd{,} \hlstr{"Ven"}\hlstd{,} \hlstr{"Sam"}\hlstd{))}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-19} 
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-20} 
 
 \end{knitrout}
 
@@ -613,12 +626,12 @@ m <- \hlkwd{wday}(d1$ENTREE, label = T)
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-h <- \hlkwd{hour}(d1$ENTREE)
-t <- \hlkwd{table}(h)
-\hlkwd{barplot}(\hlkwd{table}(h), xlab = \hlstr{"Heures de la journée"}, ylab = \hlstr{"nombre"}, main = \hlstr{"Répartition des RPU sur le nycthémère"})
+\hlstd{h} \hlkwb{<-} \hlkwd{hour}\hlstd{(d1}\hlopt{$}\hlstd{ENTREE)}
+\hlstd{t} \hlkwb{<-} \hlkwd{table}\hlstd{(h)}
+\hlkwd{barplot}\hlstd{(}\hlkwd{table}\hlstd{(h),} \hlkwc{xlab} \hlstd{=} \hlstr{"Heures de la journée"}\hlstd{,} \hlkwc{ylab} \hlstd{=} \hlstr{"nombre"}\hlstd{,} \hlkwc{main} \hlstd{=} \hlstr{"Répartition des RPU sur le nycthémère"}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-20} 
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-21} 
 
 \end{knitrout}
 
@@ -760,8 +773,8 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
-% latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sun Aug 25 19:59:00 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Fri Aug 30 15:45:53 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -790,8 +803,8 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
-% latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sun Aug 25 19:59:00 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Fri Aug 30 15:45:54 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1146,19 +1159,19 @@ Annexe : Liste exhaustive des codes CIM10 d’AVC
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# Création d'un dataframe DP}
-dpr <- d1[!\hlkwd{is.na}(d1$DP), \hlkwd{c}(\hlstr{"DP"}, \hlstr{"CODE_POSTAL"}, \hlstr{"ENTREE"}, \hlstr{"FINESS"}, \hlstr{"GRAVITE"}, 
-    \hlstr{"ORIENTATION"}, \hlstr{"MODE_SORTIE"}, \hlstr{"AGE"}, \hlstr{"SEXE"}, \hlstr{"TRANSPORT"})]
+\hlstd{dpr} \hlkwb{<-} \hlstd{d1[}\hlopt{!}\hlkwd{is.na}\hlstd{(d1}\hlopt{$}\hlstd{DP),} \hlkwd{c}\hlstd{(}\hlstr{"DP"}\hlstd{,} \hlstr{"CODE_POSTAL"}\hlstd{,} \hlstr{"ENTREE"}\hlstd{,} \hlstr{"FINESS"}\hlstd{,} \hlstr{"GRAVITE"}\hlstd{,}
+    \hlstr{"ORIENTATION"}\hlstd{,} \hlstr{"MODE_SORTIE"}\hlstd{,} \hlstr{"AGE"}\hlstd{,} \hlstr{"SEXE"}\hlstd{,} \hlstr{"TRANSPORT"}\hlstd{)]}
 \hlcom{# correction d'erreurs:}
-dpr$DP[37807] <- \hlstr{"N10"}
-dpr$DP[47689] <- \hlstr{"R06.0"}
-dpr$DP[68023] <- \hlstr{"C61"}
-dpr$DP[73924] <- \hlstr{"N10"}
+\hlstd{dpr}\hlopt{$}\hlstd{DP[}\hlnum{37807}\hlstd{]} \hlkwb{<-} \hlstr{"N10"}
+\hlstd{dpr}\hlopt{$}\hlstd{DP[}\hlnum{47689}\hlstd{]} \hlkwb{<-} \hlstr{"R06.0"}
+\hlstd{dpr}\hlopt{$}\hlstd{DP[}\hlnum{68023}\hlstd{]} \hlkwb{<-} \hlstr{"C61"}
+\hlstd{dpr}\hlopt{$}\hlstd{DP[}\hlnum{73924}\hlstd{]} \hlkwb{<-} \hlstr{"N10"}
 \hlcom{# un peu de ménage:}
-dpr$DP <- \hlkwd{gsub}(\hlstr{"."}, \hlstr{""}, \hlkwd{as.character}(dpr$DP), fixed = TRUE)
-dpr$DP <- \hlkwd{gsub}(\hlstr{"+"}, \hlstr{""}, \hlkwd{as.character}(dpr$DP), fixed = TRUE)
+\hlstd{dpr}\hlopt{$}\hlstd{DP} \hlkwb{<-} \hlkwd{gsub}\hlstd{(}\hlstr{"."}\hlstd{,} \hlstr{""}\hlstd{,} \hlkwd{as.character}\hlstd{(dpr}\hlopt{$}\hlstd{DP),} \hlkwc{fixed} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlstd{dpr}\hlopt{$}\hlstd{DP} \hlkwb{<-} \hlkwd{gsub}\hlstd{(}\hlstr{"+"}\hlstd{,} \hlstr{""}\hlstd{,} \hlkwd{as.character}\hlstd{(dpr}\hlopt{$}\hlstd{DP),} \hlkwc{fixed} \hlstd{=} \hlnum{TRUE}\hlstd{)}
 \hlcom{# extraction d'un DF avc:}
-AVC <- dpr[\hlkwd{substr}(dpr$DP, 1, 3) >= \hlstr{"I60"} & \hlkwd{substr}(dpr$DP, 1, 3) < \hlstr{"I65"} | \hlkwd{substr}(dpr$DP, 
-    1, 3) == \hlstr{"G46"} | \hlkwd{substr}(dpr$DP, 1, 3) == \hlstr{"G45"}, ]
+\hlstd{AVC} \hlkwb{<-} \hlstd{dpr[}\hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,} \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{>=} \hlstr{"I60"} \hlopt{&} \hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,} \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{<} \hlstr{"I65"} \hlopt{|} \hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,}
+    \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{==} \hlstr{"G46"} \hlopt{|} \hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,} \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{==} \hlstr{"G45"}\hlstd{, ]}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1216,7 +1229,9 @@ Horaire des AVC, à comparer avec:
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{verbatim}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: there is no package called 'gdata'}}\begin{verbatim}
 ## w
 ## Dim Lun Mar Mer Jeu Ven Sam 
 ## 202 262 273 246 250 219 211
@@ -1224,9 +1239,13 @@ Horaire des AVC, à comparer avec:
 ##   Dim   Lun   Mar   Mer   Jeu   Ven   Sam 
 ## 12.15 15.75 16.42 14.79 15.03 13.17 12.69
 \end{verbatim}
-\end{kframe}
-\includegraphics[width=\maxwidth]{figure/avc_jour_semaine} 
 
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: l'argument "{}X"{} est manquant, avec aucune valeur par défaut}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'w2' introuvable}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: plot.new has not been called yet}}\end{kframe}
 \end{knitrout}
 
 Proportion théorique = 14.28\% par jour de la semaine.
@@ -1308,7 +1327,9 @@ Le thésaurus SFMU (2013) \cite{9} recommande d'utiliser G45.9 (ou G459) pour to
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{verbatim}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: there is no package called 'epitools'}}\begin{verbatim}
 ## [1] "Pneumonies et AGE"
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##     0.0    62.0    77.0    70.6    85.0    98.0
@@ -1323,9 +1344,14 @@ Les pneumopaties bactériennes sans précision sont cotées J15.9 Dans la CIM10.
 Les pneumonies bactériennes concernent les adultes agés des deux sexes. L'age moyen est de 70.6 ans et la moitié de ces patients ont 77 ans et plus.
 
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-\includegraphics[width=\maxwidth]{figure/pneumo} 
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: impossible de trouver la fonction "{}colorbrewer.palette"{}}}
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: there is no package called 'epitools'}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: Il manque le package 'epitools'}}\end{kframe}
 \end{knitrout}
 
 
@@ -1387,25 +1413,18 @@ Le RPU connaît trois mode de sortie des urgences:
  \caption{Modes de sortie}
 \end{figure}
 
-% latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sun Aug 25 19:59:04 2013
-\begin{table}[ht]
-\centering
-\begin{tabular}{|l|r|r|}
-  \hline
- & n & \% \\ 
-  \hline
-Décès & 2 & 0.00 \\ 
-  Domicile & 123148 & 63.77 \\ 
-  Mutation & 38183 & 19.77 \\ 
-  $<$NA$>$ & 29007 & 15.02 \\ 
-  Transfert & 2762 & 1.43 \\ 
-   \hline
-\end{tabular}
-\caption{Mode de sortie des urgences. <NA> est le nombre de non réponses à cet item} 
-\label{tab.sortie}
-\end{table}
+\begin{kframe}
 
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: impossible de trouver la fonction "{}drop.levels"{}}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: objet de type 'closure' non indiçable}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: unique() s'applique seulement aux vecteurs}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: la longueur de 'dimnames' [2] n'est pas égale à l'étendue du tableau}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: "{}align"{} must have length equal to 177 ( ncol(x) + 1 )}}\end{kframe}
 
 
 \subsection{Orientation}
@@ -1429,29 +1448,31 @@ On notera que le retour à domicile proprement dit ne figure pas parmi les items
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# drop.levels permet d'éliminer le level 0 qui est nul}
-a <- \hlkwd{drop.levels}(d1$ORIENTATION)
-\hlkwd{summary}(a)
+\hlstd{a} \hlkwb{<-} \hlkwd{drop.levels}\hlstd{(d1}\hlopt{$}\hlstd{ORIENTATION)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: impossible de trouver la fonction "{}drop.levels"{}}}\begin{alltt}
+\hlkwd{summary}\hlstd{(a)}
 \end{alltt}
 \begin{verbatim}
-##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
-##   4285    147     76     19   9790     60   1825    573    793    785 
-##   SCAM     SI   UHCD   NA's 
-##    280    788  19300 154381
+##    Length     Class      Mode 
+##    132923 character character
 \end{verbatim}
 \begin{alltt}
-
-\hlkwd{table}(a, useNA = \hlstr{"always"})
+\hlkwd{table}\hlstd{(a,} \hlkwc{useNA} \hlstd{=} \hlstr{"always"}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## a
-##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
-##   4285    147     76     19   9790     60   1825    573    793    785 
-##   SCAM     SI   UHCD   <NA> 
-##    280    788  19300 154381
+##     A     B     C     D     E     F     G     H     I     J     k     K 
+##  2784  1438   306   789   975  4640  2600  4706  5280  9447    12  6981 
+##     L     M     N     O     P     Q     r     R     S     T     V     W 
+##  2683  8023  4560   157   158    55    79 20405 45176  5389   335  1215 
+##     X     Y     Z  <NA> 
+##   360   521  3849     0
 \end{verbatim}
 \begin{alltt}
-
-\hlkwd{table}(d1$DESTINATION, d1$GRAVITE)
+\hlkwd{table}\hlstd{(d1}\hlopt{$}\hlstd{DESTINATION, d1}\hlopt{$}\hlstd{GRAVITE)}
 \end{alltt}
 \begin{verbatim}
 ##      
@@ -1470,40 +1491,164 @@ a <- \hlkwd{drop.levels}(d1$ORIENTATION)
 
 \subsection{Destination}
 \index{destination}
-% latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sun Aug 25 19:59:04 2013
+\begin{kframe}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: impossible de trouver la fonction "{}drop.levels"{}}}\end{kframe}% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Fri Aug 30 15:46:00 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
   \hline
  & \% \\ 
   \hline
-HAD & 0.00 \\ 
-  HMS & 0.04 \\ 
-  MCO & 98.13 \\ 
-  PSY & 1.72 \\ 
-  SLD & 0.02 \\ 
-  SSR & 0.08 \\ 
+0 & 39.39 \\ 
+  0.06 & 5.11 \\ 
+  0.12 & 3.22 \\ 
+  0.18 & 1.70 \\ 
+  0.24 & 1.89 \\ 
+  0.3 & 1.33 \\ 
+  0.36 & 1.14 \\ 
+  0.42 & 0.95 \\ 
+  0.48 & 0.57 \\ 
+  0.54 & 0.57 \\ 
+  0.6 & 0.76 \\ 
+  0.66 & 0.76 \\ 
+  0.72 & 0.76 \\ 
+  0.78 & 0.95 \\ 
+  0.84 & 1.14 \\ 
+  0.9 & 1.33 \\ 
+  0.96 & 0.38 \\ 
+  1 & 5.11 \\ 
+  1.02 & 0.95 \\ 
+  1.08 & 0.95 \\ 
+  1.14 & 1.52 \\ 
+  1.2 & 0.19 \\ 
+  1.26 & 0.57 \\ 
+  1.32 & 0.38 \\ 
+  1.38 & 0.19 \\ 
+  1.44 & 0.38 \\ 
+  1.56 & 0.57 \\ 
+  1.62 & 0.19 \\ 
+  1.68 & 0.38 \\ 
+  1.74 & 0.19 \\ 
+  1.86 & 0.38 \\ 
+  1.92 & 0.19 \\ 
+  2 & 3.22 \\ 
+  2.1 & 0.38 \\ 
+  2.41 & 0.19 \\ 
+  2.47 & 0.19 \\ 
+  3 & 1.70 \\ 
+  4 & 1.89 \\ 
+  5 & 1.33 \\ 
+  6 & 1.14 \\ 
+  7 & 0.95 \\ 
+  8 & 0.57 \\ 
+  9 & 0.57 \\ 
+  10 & 0.76 \\ 
+  11 & 0.76 \\ 
+  12 & 0.76 \\ 
+  13 & 0.95 \\ 
+  14 & 1.14 \\ 
+  15 & 1.33 \\ 
+  16 & 0.38 \\ 
+  17 & 0.95 \\ 
+  18 & 0.95 \\ 
+  19 & 1.52 \\ 
+  20 & 0.19 \\ 
+  21 & 0.57 \\ 
+  22 & 0.38 \\ 
+  23 & 0.19 \\ 
+  24 & 0.38 \\ 
+  26 & 0.57 \\ 
+  27 & 0.19 \\ 
+  28 & 0.38 \\ 
+  29 & 0.19 \\ 
+  31 & 0.38 \\ 
+  32 & 0.19 \\ 
+  35 & 0.38 \\ 
+  40 & 0.19 \\ 
+  41 & 0.19 \\ 
    \hline
 \end{tabular}
 \caption{Destination des patients non rentrés à domicile après leur passage aux urgences} 
 \label{tab.dest.hosp}
 \end{table}
-% latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sun Aug 25 19:59:05 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Fri Aug 30 15:46:00 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
   \hline
  & \% \\ 
   \hline
-DOM & 78.83 \\ 
-  HAD & 0.00 \\ 
-  HMS & 0.01 \\ 
-  MCO & 20.78 \\ 
-  PSY & 0.36 \\ 
-  SLD & 0.00 \\ 
-  SSR & 0.02 \\ 
+0 & 39.39 \\ 
+  0.06 & 5.11 \\ 
+  0.12 & 3.22 \\ 
+  0.18 & 1.71 \\ 
+  0.24 & 1.89 \\ 
+  0.3 & 1.33 \\ 
+  0.36 & 1.14 \\ 
+  0.42 & 0.95 \\ 
+  0.48 & 0.57 \\ 
+  0.54 & 0.57 \\ 
+  0.6 & 0.76 \\ 
+  0.66 & 0.76 \\ 
+  0.72 & 0.76 \\ 
+  0.78 & 0.95 \\ 
+  0.84 & 1.14 \\ 
+  0.9 & 1.33 \\ 
+  0.96 & 0.38 \\ 
+  1 & 5.11 \\ 
+  10 & 0.76 \\ 
+  1.02 & 0.95 \\ 
+  1.08 & 0.95 \\ 
+  11 & 0.76 \\ 
+  1.14 & 1.51 \\ 
+  12 & 0.76 \\ 
+  1.2 & 0.19 \\ 
+  1.26 & 0.57 \\ 
+  13 & 0.95 \\ 
+  1.32 & 0.38 \\ 
+  1.38 & 0.19 \\ 
+  14 & 1.14 \\ 
+  1.44 & 0.38 \\ 
+  15 & 1.33 \\ 
+  1.56 & 0.57 \\ 
+  16 & 0.38 \\ 
+  1.62 & 0.19 \\ 
+  1.68 & 0.38 \\ 
+  17 & 0.95 \\ 
+  1.74 & 0.19 \\ 
+  18 & 0.95 \\ 
+  1.86 & 0.38 \\ 
+  19 & 1.51 \\ 
+  1.92 & 0.19 \\ 
+  2 & 3.22 \\ 
+  20 & 0.19 \\ 
+  21 & 0.57 \\ 
+  2.1 & 0.38 \\ 
+  22 & 0.38 \\ 
+  23 & 0.19 \\ 
+  24 & 0.38 \\ 
+  2.41 & 0.19 \\ 
+  2.47 & 0.19 \\ 
+  26 & 0.57 \\ 
+  27 & 0.19 \\ 
+  28 & 0.38 \\ 
+  29 & 0.19 \\ 
+  3 & 1.71 \\ 
+  31 & 0.38 \\ 
+  32 & 0.19 \\ 
+  35 & 0.38 \\ 
+  4 & 1.89 \\ 
+  40 & 0.19 \\ 
+  41 & 0.19 \\ 
+  5 & 1.33 \\ 
+  6 & 1.14 \\ 
+  7 & 0.95 \\ 
+  8 & 0.57 \\ 
+  9 & 0.57 \\ 
    \hline
 \end{tabular}
 \caption{Devenir des patients à la sortie des urgences. DOM représentent ceux qui sont repartis vers leur domicile ou ce qui en tient lieu (sous l'hypothèse que toutes les non réponses correspondent à un retour à domicile).} 
@@ -1518,8 +1663,8 @@ On isole le groupe "mode de sortie = domicile) et on relève les résultats de l
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-a <- d1[d1$MODE_SORTIE == \hlstr{"Domicile"}, ]
-\hlkwd{summary}(\hlkwd{as.factor}(a$ORIENTATION))
+\hlstd{a} \hlkwb{<-} \hlstd{d1[d1}\hlopt{$}\hlstd{MODE_SORTIE} \hlopt{==} \hlstr{"Domicile"}\hlstd{, ]}
+\hlkwd{summary}\hlstd{(}\hlkwd{as.factor}\hlstd{(a}\hlopt{$}\hlstd{ORIENTATION))}
 \end{alltt}
 \begin{verbatim}
 ##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
@@ -1528,8 +1673,8 @@ a <- d1[d1$MODE_SORTIE == \hlstr{"Domicile"}, ]
 ##    280     21    141 148862
 \end{verbatim}
 \begin{alltt}
-t <- \hlkwd{table}(\hlkwd{as.factor}(a$ORIENTATION))
-\hlkwd{round}(\hlkwd{prop.table}(t) * 100, 2)
+\hlstd{t} \hlkwb{<-} \hlkwd{table}\hlstd{(}\hlkwd{as.factor}\hlstd{(a}\hlopt{$}\hlstd{ORIENTATION))}
+\hlkwd{round}\hlstd{(}\hlkwd{prop.table}\hlstd{(t)} \hlopt{*} \hlnum{100}\hlstd{,} \hlnum{2}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ## 
@@ -1539,13 +1684,13 @@ t <- \hlkwd{table}(\hlkwd{as.factor}(a$ORIENTATION))
 ##  4.28
 \end{verbatim}
 \begin{alltt}
-\hlkwd{tab1}(\hlkwd{as.factor}(a$ORIENTATION), sort.group = \hlstr{"decreasing"}, horiz = TRUE, cex.names = 0.8, 
-    xlab = \hlstr{""}, main = \hlstr{"Orientation des patients non hospitalisés"}, missing = F)
+\hlkwd{tab1}\hlstd{(}\hlkwd{as.factor}\hlstd{(a}\hlopt{$}\hlstd{ORIENTATION),} \hlkwc{sort.group} \hlstd{=} \hlstr{"decreasing"}\hlstd{,} \hlkwc{horiz} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{cex.names} \hlstd{=} \hlnum{0.8}\hlstd{,}
+    \hlkwc{xlab} \hlstd{=} \hlstr{""}\hlstd{,} \hlkwc{main} \hlstd{=} \hlstr{"Orientation des patients non hospitalisés"}\hlstd{,} \hlkwc{missing} \hlstd{= F)}
 \end{alltt}
 \end{kframe}
 \includegraphics[width=\maxwidth]{figure/fausses_sorties} 
 \begin{kframe}\begin{verbatim}
-## as.factor(a$ORIENTATION) : 
+## as.factor(a$ORIENTATION) :  
 ##         Frequency   %(NA+)   %(NA-)
 ## NA's       148862     97.8      0.0
 ## PSA          1791      1.2     54.4
@@ -1632,14 +1777,14 @@ Entre le 2013-01-01 00:11:00 et le 2013-07-30 23:55:00, \np{22438} RPU ont été
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-n <- \hlkwd{dim}(d1)
-\hlkwd{print}(n)
+\hlstd{n} \hlkwb{<-} \hlkwd{dim}\hlstd{(d1)}
+\hlkwd{print}\hlstd{(n)}
 \end{alltt}
 \begin{verbatim}
 ## [1] 193102     20
 \end{verbatim}
 \begin{alltt}
-\hlkwd{names}(d1)
+\hlkwd{names}\hlstd{(d1)}
 \end{alltt}
 \begin{verbatim}
 ##  [1] "id"            "CODE_POSTAL"   "COMMUNE"       "DESTINATION"  
@@ -1657,8 +1802,7 @@ n <- \hlkwd{dim}(d1)
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-
-\hlkwd{str}(d1)
+\hlkwd{str}\hlstd{(d1)}
 \end{alltt}
 \begin{verbatim}
 ## 'data.frame':	193102 obs. of  20 variables:
@@ -1684,7 +1828,7 @@ n <- \hlkwd{dim}(d1)
 ##  $ AGE          : num  52 26 41 85 39 9 79 50 46 18 ...
 \end{verbatim}
 \begin{alltt}
-\hlkwd{summary}(d1)
+\hlkwd{summary}\hlstd{(d1)}
 \end{alltt}
 \begin{verbatim}
 ##       id             CODE_POSTAL           COMMUNE        DESTINATION    

@@ -101,12 +101,10 @@ attach(d1)
 @
 %======================================================== PARTIE 1
 \part{Le Réseau des urgences en Alsace}
-\chapter{Historique}
-utilisation de la directive \\nombre{}, par exemple: 
-Un grand nombre 300000 et avec séparation des milliers \nombre{300000}
 
-La même chose avec \\np{}: 
-Un grand nombre 300000 et avec séparation des milliers \np{300000}
+\chapter{Historique}
+<<child='historique.Rnw'>>=
+@
 
 \chapter{Organisation géographique}
 <<child='geographie.Rnw'>>=

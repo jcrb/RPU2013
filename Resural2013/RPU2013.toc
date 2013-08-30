@@ -23,11 +23,11 @@
 \contentsline {chapter}{\numberline {10}Codage diagnostique}{43}{chapter.10}
 \contentsline {section}{\numberline {10.1}Cim10}{43}{section.10.1}
 \contentsline {section}{\numberline {10.2}Etude des AVC}{46}{section.10.2}
-\contentsline {chapter}{\numberline {11}Modalit\IeC {\'e}s de sortie}{59}{chapter.11}
-\contentsline {subsection}{\numberline {11.0.1}Mode de sortie}{59}{subsection.11.0.1}
-\contentsline {subsection}{\numberline {11.0.2}Orientation}{60}{subsection.11.0.2}
-\contentsline {subsection}{\numberline {11.0.3}Destination}{61}{subsection.11.0.3}
-\contentsline {subsection}{\numberline {11.0.4}Incoh\IeC {\'e}rences}{61}{subsection.11.0.4}
+\contentsline {chapter}{\numberline {11}Modalit\IeC {\'e}s de sortie}{57}{chapter.11}
+\contentsline {subsection}{\numberline {11.0.1}Mode de sortie}{57}{subsection.11.0.1}
+\contentsline {subsection}{\numberline {11.0.2}Orientation}{58}{subsection.11.0.2}
+\contentsline {subsection}{\numberline {11.0.3}Destination}{59}{subsection.11.0.3}
+\contentsline {subsection}{\numberline {11.0.4}Incoh\IeC {\'e}rences}{59}{subsection.11.0.4}
 \contentsline {chapter}{\numberline {12}Modalit\IeC {\'e}s d'orientation}{64}{chapter.12}
 \contentsline {chapter}{\numberline {13}Courbes d'activit\IeC {\'e} r\IeC {\'e}gionale}{65}{chapter.13}
 \contentsline {part}{III\hspace {1em}Activit\IeC {\'e} par service d'urgence}{66}{part.3}

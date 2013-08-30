@@ -1,6 +1,8 @@
 % geographie.Rnw
 
-L'Alsace est la plus petite région de France (n°42) avec la Corse. Elle est formée de deux départements, le bas-Rhin (67) et le haut-Rhin (68), sont les chef-lieu sont respectivement Strasbourg et Colmar.
+L'Alsace est la plus petite région de France (n°42) avec la Corse. Elle est formée de deux départements, le bas-Rhin (67) et le haut-Rhin (68), dont les chef-lieu sont respectivement Strasbourg et Colmar.La préfecture régionale siège à Strasbourg comme l'agence régionale de l'hospitalisation \index{ARS} (ARS).
+
+La région est divisée en quatre secteurs sanitaires er douze tritoires de proximité.
 
 \section{Les secteurs sanitaires}
 \index{Alsace!secteurs sanitaires}
@@ -10,14 +12,13 @@ L'alsace est divisée en quatre secteurs sanitaires
 \begin{enumerate}
   \item secteur 1: Haguenau, Wissembourg et Saverne
   \item secteur 2: Strasbourg
-  \item secteur 3: Sélestat et Colmar
+  \item secteur 3: Sélestat et Colmar. C'est un territoire qui est à cheval sur les deux départements d'Alsace.
   \item secteur 4: Mulhouse
 \end{enumerate}
 
 <<carte_secteurs_sanitaires,echo=FALSE,message=FALSE,error=FALSE>>=
 # fond de carte des territoires de santé
  load("../als_ts.Rda")
-
 
  plot(ctss)
 
@@ -29,7 +30,7 @@ L'alsace est divisée en quatre secteurs sanitaires
 \index{Alsace!territoires de proximité}
 \index{Territoires de proximité}
 
-Il existe neuf territoires de proximité:
+Il existe douze territoires de proximité:
 \begin{enumerate}
   \item territoire 1: Wissembourg
   \item territoire 2: Haguenau
