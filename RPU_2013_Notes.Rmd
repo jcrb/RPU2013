@@ -23,6 +23,7 @@ ref: http://www.omegahat.org/RCurl/FAQ.html
 #### Chunks
 - pour supprimer les messages inutiles *{r message=FALSE}*
 - pour supprimer les warnings: *{r warning=FALSE}*
+- pour obtenir l'équivalent de Sepr: in the source code I have calculated 2 + 2 = `r 2 + 2`. Ref: Getting Started with R Markdown, knitr, and Rstudio, http://jeromyanglim.blogspot.com.au/2012/05/getting-started-with-r-markdown-knitr.html
 
 
 #### A NE FAIRE QU'UNE FOIS AU DEBUT DE LA SESSION:
