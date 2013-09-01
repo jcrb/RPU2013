@@ -53,17 +53,17 @@ Fichier ville de la base *pma*
 ------------------------------
 Fichier exporté de la base *pma* sous le nom de *ville.csv* (5/6/2013). Il contient toutes les villes connues de Sagec.
 
-```{r}
+```{r villes_read}
 file<-"ville.csv"
 v<-read.csv(file, header=TRUE, sep=",")
 names(v)
 ```
 On ne retient que les villes d'Alsace, c'est à dire celles appartenant à la région 42. On sauvegarde le dataframe dans la variable **va** (924 lignes et 21 colonnes)
-```{r}
+```{r villes_als}
 va<-v[v$region_ID=="42",]
 ```
 #### villes où la ZP est manquante:
-```{r}
+```{r ville_zp_manquante}
 a<-va[va$zone_proximite==0,c(1:3)]
 a
 ```
@@ -71,13 +71,13 @@ a
 - on élimine les communes sans territoire de proximité (anciennes communes)
 - *zone_proximite* est transformé en facteur
 - *territoire_sante* est transformé en facteur
-```{r}
+```{r va_create}
 va<-va[va$zone_proximite > 0,]
 va$zone_proximite<-as.factor(va$zone_proximite)
 va$territoire_sante<-as.factor(va$territoire_sante)
 ```
 #### Sauvegarde: ("/home/jcb/Documents/Resural/Stat Resural/RPU2013/villes.RData")
-```{r}
+```{r save_va}
 save(va,file="villes.RData")
 ```
 load("villes.RData")
@@ -93,7 +93,7 @@ notes:
 
 
 Résultats:
-```{r}
+```{r summary_zp}
 summary(va$zone_proximite)
 ```
 Combinaisons des fichiers
@@ -106,7 +106,7 @@ de façon a avoir dans une même base les zones de proximité (va) et les popula
 - base1: merging de *va* et de *pop67*
 - base2: merging de *va* et de *pop68*
 base1 et base2 sont fusionné en un seul fichier *base*, puis supprrimés.
-```{r}
+```{r base_create}
 load("~/Documents/Resural/Stat Resural/carto&pop/pop68.rda")
 load("~/Documents/Resural/Stat Resural/carto&pop/pop67.rda")
 base1<-merge(va,pop67,by.x="ville_insee",by.y="insee")
@@ -118,12 +118,12 @@ rm(base1,base2)
 Note: le résultat pourrait être simplifié car des colonnes sont redondantes;
 
 Communes où la zone de proximité est manquante:
-```{r}
+```{r base_zp_manquante}
 a<-base[base$zone_proximite==0,c(1,3)]
 a
 ```
 corrections:
-```{r}
+```{r base_corrections}
 base$zone_proximite[53]<-3
 base$territoire_sante[53]<-1
 
@@ -133,9 +133,10 @@ base$territoire_sante[572]<-4
 base$zone_proximite[57]<-3
 ```
 #### Sauvegarde de *base*:
-```{r}
+```{r save_base}
 save(base,file="base.Rda")
 ```
+load("base.Rda")
 
 #### Définitions INSEE
 
@@ -173,19 +174,22 @@ La population comptée à part comprend certaines personnes dont la résidence h
 source: http://www.insee.fr/fr/methodes/default.asp?page=definitions/popul-comptee-a-part-rrp.htm
 
 #### population de la région:
-```{r}
+```{r pop_region}
 n<-sum(base$Population.totale)
 n
 pop.tot<-sum(base$Population.totale)
 pop.municipale<-sum(base$Population.municipale)
+pop.municipale
 pop.a.part<- sum(base$Population.comptée.à.part)
+pop.a.part
 ```
 Pour les raisons expliquées plus haut, les calculs statistiques font référence à la population **municipale**.
 
 #### Population par territoire de proximité:
 ATTENTION: les territoires de proximité sont dans l'ordre de SAGEC qui n'est pas celui de l'ARS
-```{r}
+```{r pop_t_proximite}
 territoire.prox<-c("Altkirch","Colmar","Guebwiller","Haguenau","Molsheim-Schirmeck","Mulhouse","Sélestat-Obernai","Saint-Louis","Saverne","Strasbourg","Thann","Wissembourg")
+
 effectif<-tapply(base$Population.municipale,as.factor(base$zone_proximite),sum,na.rm=TRUE)
 # on élimine la colonne 0 qui ne contient que NA
 # effectif<-effectif[-1]
@@ -209,12 +213,12 @@ Commentaires:
 Créer une zone de proximité
 ---------------------------
 On fait la liste de tous les codes INSEE de la zone de proximité1:
-```{r}
+```{r code_insee}
 zip1<-base$ville_insee[base$zone_proximite==1]
 head(zip1)
 ```
 Puis on fait la liste des villes correspondant à ces codes:
-```
+```{r liste_villes}
 b<-paste(zip1,sep=",")
 a<-base$ville_nom[base$ville_insee %in% b]
 a[1:5]
@@ -229,11 +233,11 @@ load("/home/jcb/Documents/Resural/Stat Resural/carto&pop/carto_alsace.rda")
 L'objet *als* se compose de deux parties principales:
 - un slot cartographique constitué de polygones élémentaires correspondant au contour des communes.
 - un slot de data présentées sous forme d'un dataframe et accessible via *als@data* et qui se compose des éléments suivants:
-```{r}
+```{r als2}
 names(als)
 ```
 Les colonnes *CODE_ARR* et *CODE_CANT* sont numérotés de la même façon pour les deux départements ce qui induit des erreurs lors du tracé des arrondissements et des canton. Il est donc nécessaire de les renuméroter:
-```{r}
+```{r recodage_cantons}
 a<-paste(als@data$CODE_DEPT,als@data$CODE_ARR,sep="")
 als@data$CODE_ARR<-as.factor(a)
 als@data$CODE_CANT<-as.factor(paste(als@data$CODE_DEPT,als@data$CODE_CANT,sep=""))
@@ -267,12 +271,12 @@ On obtient un *SpatialPolygons* appelé *contour* formé de 4 slots: *polygons*,
 
 #### Coloriage spécifique d'une zone
 On veut rprésenter la carte des arrondissements (objet *contour*) avec 2 couleurs pour chaque département. On utilise le *Spatial polygon* contour (cf carto_alsace ci-dessus) qui contient 13 polygones. On crée un vecteur contenant 13 couleurs: "springgreen3" si l'arrondissement appartient au 67 et "steelblue3" sinon. Puis on dessinne la carte en couleur: 
-```{r}
+```{r alsace}
 cols<-ifelse(substr(names(contour),1,2)=="67","springgreen3","steelblue3")
 plot(contour,col=cols)
 ```
 Petit test pour comprendre la fonction **merge**:
-```{r}
+```{r merge}
 a<-data.frame(id=c(1:10),name=c("annie","bruno","charles","denis","émilie","francine","gaelle","henri","isabelle","joseph"))
 b<-data.frame(id=c(1:4),notes=c(10,15,14,13))
 a
@@ -281,7 +285,7 @@ merge(a,b,by.x="id",by.y="id")
 d<-merge(a,b,by.x="id",by.y="id",all.x=TRUE)
 ```
 #### Les options de plot.SpatialPolygon
-```{r}
+```{r density}
 plot(contour[1])
 plot(contour[1],border="blue")
 plot(contour[1],border="blue",col="yellow")
@@ -295,7 +299,7 @@ text(coordinates(contour[1]), labels="Haguenau")
 ```
 #### la méthode *coordinates* de SpatialPolygon
 Retourne les coordonnées du barycentre du polygone. Pour l'illuster on forme le vecteur des chef-lieu des arrondissement d'Alsace dans l'ordre définit par R.
-```{r}
+```{r contour1}
 a<-coordinates(contour)
 a
 arrondissements<-c("Haguenau","Molsheim","Saverne","Sélestat","Strasbourg-campagne","Wissembourg","Strasbourg","Altkirch","Colmar","Guegwiller","Mulhouse","Ribeauvillé","Thann")
@@ -320,7 +324,7 @@ plot(contour)
 ```
 Contour de la zone de proximié n°1 (seule)
 
-```{r zp1}
+```{r zp1_exemple}
 
 b<-paste(zip1,sep=",")
 a<-base$ville_nom[base$ville_insee %in% b]
@@ -328,18 +332,18 @@ zp1<-als[als@data$INSEE_COM %in% b,]
 plot(zp1)
 ```
 *zp1* est également un *SpatialPolygonsDataFrame* qui contient les mêmes éléments que l'élément racine:
-```{r}
+```{r noms}
 names(zp1)
 ```
 On peut donc lui appliquer les mêmes fonctions. Par exemple on peut tracer une figure qui représente les contours de la zone de proximité:
-```{r}
+```{r contour2}
 contour<-unionSpatialPolygons(zp1,IDs=zp1@data$CODE_ARR)
 plot(contour,axes=T)
 ```
 *contour* est un *SpatialPolygons*.
 
 Il est possible de superposer les 2 graphiques en ajoutant add=TRUE:
-```{r}
+```{r superposer}
 plot(contour,axes=T,xlab="axe x",col="red")
 plot(zp1, add=T)
 ```
@@ -352,21 +356,21 @@ modifier l'aspect:
 - border = "red" couleur de la bordure
 
 exemple:
-```{r}
-plot(zp1,,axes=T)
+```{r bordure}
+plot(zp1,axes=T)
 plot(contour,axes=T,lty=1,lwd=2,fg="blue",border="red",add=T)
 ```
 Certains caractères accentués posent des pb comme dans *préfecture*:
-```{r}
+```{r statut_ville}
 summary(zp1$STATUT)
 ```
 Avec la fonction *gsub*, on remplace les caractères anormaux par *e*:
-```{r}
+```{r gsub}
 zp1$STATUT<-gsub("\xe9","e",zp1$STATUT,fixed=F)
 summary(as.factor(zp1$STATUT))
 ```
 Il est alorspossible de récupérer les coordonées de la sous-préfecture. Il faut d'abord récupérer le dataframe associé à zp1. NB il faut multiplier les coordonnées x et y par 100 pour être cohérent avec la carte. pch = 19 désigne le symbole rond plein.
-```{r}
+```{r zp1_test}
 a<-zp1@data
 head(a)
 
@@ -382,7 +386,7 @@ points(x,y,pch=19,col=3)
 text(x,y,labels=nom,cex=0.8,pos=3)
 ```
 Les zones de proximités officielles sont dans le fichier zp.csv
-```{r}
+```{r zpo}
 zpo<-read.csv("zp.csv",header=TRUE, sep=",")
 names(zpo)
 print("Nb de communes par territoire de santé")
@@ -728,7 +732,7 @@ s<-0;for(i in 1:12){szp<-als[base_als$zone_proximite==i,"SUPERFICIE"];s[i]<-sum(
 - als est le fichier shapefile des données alsace. Sa partie donnée est accessible via *als@data* par exemple  names(als@data). Les communes sont repérées par *INSEE_COM*
 - *zpo* est le fichier des zones de proximité. Les communes sont repérées par *CODE.COMMUNE*
 - on fait un merging des 2 fichiers sur ces colonnes:
-```{r}
+```{r czps_merge}
 zpals<-merge(zpo,als,by.x="CODE.COMMUNE",by.y="INSEE_COM")
 ```
 en fait on obtient un simple dataframe et pas un spatialPolygon. Pour que celà fonctionne il faut merger uniquement les data:
@@ -744,7 +748,7 @@ Let df = data frame, sp = spatial polygon object and by = name or column number 
 sp@data = data.frame(sp@data, df[match(sp@data[,by], df[,by]),])
 
 Here is how the code works. The match function inside aligns the columns so that order is preserved. So when we merge it with sp@data, order is correctly preserved. A quick check to see if the code has worked is to inspect the two columns corresponding to the common column and see if they are identical (the common columns get duplicated and it is easy to remove the copy, but i keep it as it is a good check):
-```{r}
+```{r zpals}
 zpals<-als
 zpals@data<-data.frame(zpals@data,zpo[match(zpals@data[,"INSEE_COM"] ,zpo[,"CODE.COMMUNE"]),])
 zp<-zpals[zpals$CODE.ZONES.DE.PROXIMITE==1,]
@@ -754,7 +758,7 @@ Ca marche!!! auteur: http://stackoverflow.com/users/235349/ramnath (Ramnath Vaid
 
 Dessin  du contour: nécessite la package *maptools*  
 czp = contour de la zone de proximité:
-```{r}
+```{r czps_wis}
 library("maptools")
 czp<-unionSpatialPolygons(zp, IDs=zp@data$CODE_DEPT)
 plot(czp)
@@ -762,21 +766,21 @@ title(main="Zone de proximité de Wissembourg")
 ```
 ```
 #### Dessin du contour de l'ensemble des zones de proximité (czps)
-```{r}
+```{r czps_1}
 czps<-unionSpatialPolygons(zpals, IDs=zpals$CODE.ZONES.DE.PROXIMITE)
 plot(czps)
 plot(czps,col=c("red","yellow","blue","green","orange"))
 title(main="Zone de proximité en Alsace")
 ```
 #### Dessin du contour des territoires de santé (ctss)
-```{r}
+```{r ctss_1}
 ctss<-unionSpatialPolygons(zpals, IDs=zpals$LIBELLE.DES.TERRITOIRES.DE.SANTE)
 plot(ctss)
 title(main="Territoires de santé en Alsace")
 save(ctss,file="als_ts.Rda")
 ```
 #### Dessin territoires de santé (ctss) et des zones de proximité (czps)
-```{r}
+```{r czps}
 plot(czps)
 plot(ctss, border = "red",add=T)
 
@@ -791,7 +795,7 @@ essais avec les couleurs:
 - plot(czps,col=cm.colors(12))
 
 essai avec "RColorBrewer"
-```{r}
+```{r zone_proximite}
 library("RColorBrewer")  
 wp<-brewer.pal(12,"Set3")
 plot(czps,col=wp)
@@ -823,7 +827,7 @@ names(czps)
 - wis, mul, alt, stl, hag, sav, str, mols, obe, col, gue, tha
 - en chiffre: 12,6,1,8,4,9,10,5,7,2,3,11
 ce qui donne le vecteur de couleur:  
-```{r}
+```{r 75ans}
 c<-c(1,3,1,1,3,2,5,1,2,3,1,1)
 palette(gray(5:0/5))
 plot(czps,col=c)

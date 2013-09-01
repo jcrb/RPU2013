@@ -184,6 +184,15 @@ Il existe douze territoires de proximité:
   \item territoire 12: Saint-Louis
 \end{enumerate}
 
+% carte des territoires de santé
+\begin{figure}[ht]
+ \centering
+ \includegraphics[height=15cm,keepaspectratio=true]{../figure/zone_proximite.png}
+ % image.: 0x0 pixel, 0dpi, nanxnan cm, bb=
+ \caption{L'Alsace compte 12 territoires de proximité}
+ \label{fig:zp}
+\end{figure}
+
 \section{Démographie}
 \subsection{Généralités}
 \index{Alsace!démographie}
@@ -219,17 +228,32 @@ Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'en
 \end{center}
 \end{table}
 
+% carte des plus de 75 ans
+\begin{figure}[ht]
+ \centering
+ \includegraphics[height=15cm,keepaspectratio=true]{../figure/75ans.png}
+ % image.: 0x0 pixel, 0dpi, nanxnan cm, bb=
+ \caption{Les personnes de 75 ans et plus en Alsace en fonction du territoire de proximté}
+ \label{fig:75ans}
+\end{figure}
+
 \section{Les services d'accueil des urgences (SAU)}
 \index{Services d'urgence!en Alsace}
 \index{Alsace!services d'urgence}
 
 L'Alsace compte actuellement 14 services d'urgence (SU) officiellement labellisés. On prend également en compte la clinique Saint-Luc de Schirmeck qui fait fonctionner une policlinique recevant plus de \np{8000} passages par an.
 
+\begin{figure}[ht]
+ \centering
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-\includegraphics[width=\maxwidth]{figure/carte_sau} 
+\includegraphics[width=\maxwidth]{figure/carte_sau_2} 
 
 \end{knitrout}
+
+ \caption{L'Alsace compte 15 services d'urgence labellisés.}
+ \label{fig:75ans}
+\end{figure}
 
 
 
@@ -282,7 +306,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 31 18:51:44 2013
+% Sun Sep  1 11:32:35 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -316,7 +340,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 31 18:51:47 2013
+% Sun Sep  1 11:32:37 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -531,7 +555,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \subsection*{Activité par semaine}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 31 18:51:58 2013
+% Sun Sep  1 11:32:48 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -575,7 +599,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \label{act_sem}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 31 18:51:59 2013
+% Sun Sep  1 11:32:49 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -766,7 +790,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 31 18:52:07 2013
+% Sun Sep  1 11:32:57 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -796,7 +820,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 31 18:52:07 2013
+% Sun Sep  1 11:32:57 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1393,7 +1417,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 31 18:52:11 2013
+% Sun Sep  1 11:33:01 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -1476,7 +1500,7 @@ a <- \hlkwd{drop.levels}(d1$ORIENTATION)
 \subsection{Destination}
 \index{destination}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 31 18:52:12 2013
+% Sun Sep  1 11:33:02 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1495,7 +1519,7 @@ HAD & 0.00 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Aug 31 18:52:12 2013
+% Sun Sep  1 11:33:02 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}

@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Thu Aug 29 15:08:28 2013"
+## [1] "Sun Sep  1 09:24:40 2013"
 ```
 
 source: RPU2013
@@ -17,75 +17,15 @@ Librairies nécessaires:
 
 ```r
 library("gdata")
-```
-
-```
-## Error: there is no package called 'gdata'
-```
-
-```r
 library("rgrs")
-```
-
-```
-## Error: there is no package called 'rgrs'
-```
-
-```r
 library("lubridate")
 library("rattle")
-```
-
-```
-## Error: there is no package called 'rattle'
-```
-
-```r
 library("epicalc")
-```
-
-```
-## Error: there is no package called 'epicalc'
-```
-
-```r
 library("zoo")
-```
-
-```
-## Error: there is no package called 'zoo'
-```
-
-```r
 library("xts")
-```
-
-```
-## Error: there is no package called 'xts'
-```
-
-```r
 library("xtable")
-```
-
-```
-## Error: there is no package called 'xtable'
-```
-
-```r
 library("plotrix")
-```
-
-```
-## Error: there is no package called 'plotrix'
-```
-
-```r
 library("openintro")
-```
-
-```
-## Error: there is no package called 'openintro'
 ```
 
 Chargement des routines perso
@@ -93,15 +33,6 @@ Chargement des routines perso
 
 ```r
 source("../mes_fonctions.R")
-```
-
-```
-## Warning: impossible d'ouvrir le fichier '../mes_fonctions.R' : Aucun
-## fichier ou dossier de ce type
-```
-
-```
-## Error: impossible d'ouvrir la connexion
 ```
 
 Variables globales:
@@ -317,7 +248,29 @@ xtable(t(t3))
 ```
 
 ```
-## Error: impossible de trouver la fonction "xtable"
+## % latex table generated in R 2.15.1 by xtable 1.7-1 package
+## % Sun Sep  1 09:24:51 2013
+## \begin{table}[ht]
+## \centering
+## \begin{tabular}{rrr}
+##   \hline
+##  & Réalisé & Projection 2013 \\ 
+##   \hline
+## 3Fr & 9382.00 & 16083.43 \\ 
+##   Alk & 3784.00 & 6486.86 \\ 
+##   Col & 38722.00 & 66380.57 \\ 
+##   Dia & 17150.00 & 29400.00 \\ 
+##   Geb & 8852.00 & 15174.86 \\ 
+##   Hag & 20531.00 & 35196.00 \\ 
+##   Hus & 22438.00 & 38465.14 \\ 
+##   Mul & 31533.00 & 54056.57 \\ 
+##   Odi & 15193.00 & 26045.14 \\ 
+##   Sel & 17496.00 & 29993.14 \\ 
+##   Wis & 7431.00 & 12738.86 \\ 
+##   Sav & 590.00 & 1011.43 \\ 
+##    \hline
+## \end{tabular}
+## \end{table}
 ```
 
 ### Origine temporelle des données:
@@ -371,8 +324,8 @@ head(a)
 a$date <- seq(as.Date("2013-01-01"), as.Date("2013-07-30"), 1)
 # On initialise une liste de 12 éléments,12 parce que 12 SU
 b <- list(1:12)
-# pour chacun des SU, les jours où le nombre de RPU < 20, on stocke la date
-# (col.13) et le n° du SU
+# pour chacun des SU, les jours où le nombre de RPU < 20, on stocke la
+# date (col.13) et le n° du SU
 for (i in 1:12) {
     b[[i]] <- a[a[, i] < 20, c(13, i)]
 }
@@ -622,8 +575,21 @@ tab1(as.factor(a$ORIENTATION), sort.group = "decreasing", horiz = TRUE, cex.name
     xlab = "", main = "Orientation des patients hospitalisés")
 ```
 
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-61.png) 
+
 ```
-## Error: impossible de trouver la fonction "tab1"
+## as.factor(a$ORIENTATION) :  
+##         Frequency Percent Cum. percent
+## MED          6989    47.1         47.1
+## UHCD         3141    21.2         68.3
+## CHIR         3120    21.0         89.3
+## SC            564     3.8         93.1
+## SI            542     3.7         96.7
+## REA           405     2.7         99.5
+## HDT            36     0.2         99.7
+## OBST           30     0.2         99.9
+## HO             13     0.1        100.0
+##   Total     14840   100.0        100.0
 ```
 
 ```r
@@ -657,8 +623,26 @@ tab1(as.factor(a$ORIENTATION), sort.group = "decreasing", horiz = TRUE, cex.name
     xlab = "", main = "Orientation des patients non hospitalisés", missing = F)
 ```
 
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-62.png) 
+
 ```
-## Error: impossible de trouver la fonction "tab1"
+## as.factor(a$ORIENTATION) :  
+##         Frequency   %(NA+)   %(NA-)
+## NA's       148862     97.8      0.0
+## PSA          1791      1.2     54.4
+## REO           774      0.5     23.5
+## SCAM          280      0.2      8.5
+## FUGUE         146      0.1      4.4
+## UHCD          141      0.1      4.3
+## CHIR           73      0.0      2.2
+## MED            48      0.0      1.5
+## SI             21      0.0      0.6
+## HDT             9      0.0      0.3
+## REA             6      0.0      0.2
+## SC              2      0.0      0.1
+## HO              1      0.0      0.0
+## OBST            1      0.0      0.0
+##   Total    152155    100.0    100.0
 ```
 
 La table ci-dessus liste le devenir des patients non hospitalisés. On note des incohérences: REA, HDT, SI, Med, CHIR, UHCD. La ligne *Missing* correspond aux patients rentrés sur avis médical.
@@ -1212,8 +1196,8 @@ t
 ```
 
 ```r
-# cette analyse ne permet pas de séparer les vraies non réponses des retours
-# à domicile
+# cette analyse ne permet pas de séparer les vraies non réponses des
+# retours à domicile
 hosp <- d1[d1$MODE_SORTIE == "Mutation" | d1$MODE_SORTIE == "Transfert", ]
 t <- table(hosp$ORIENTATION, hosp$FINESS, useNA = "ifany")
 t
@@ -1345,49 +1329,34 @@ hist(q, main = "Attente cumulée par 24h", xlab = "Durée de passage (en mn)",
     ylab = "Fréquence", col = "orange")
 ```
 
-![plot of chunk attente](figure/attente.png) 
+![plot of chunk attente](figure/attente1.png) 
 
 ```r
 
 z <- zoo(q, unique(as.Date(sel$ENTREE)))
-```
-
-```
-## Error: impossible de trouver la fonction "zoo"
-```
-
-```r
 plot(z, main = "Attente cumulée par 24h", xlab = "Sélestat 2013")
 ```
 
-```
-## Error: objet 'z' introuvable
-```
+![plot of chunk attente](figure/attente2.png) 
 
 ```r
 plot(xts(z))
 ```
 
-```
-## Error: impossible de trouver la fonction "xts"
-```
+![plot of chunk attente](figure/attente3.png) 
 
 ```r
 plot(rollmean(z, 7), main = "Attente cumulée par 24h (moyenne lissée)")
 ```
 
-```
-## Error: impossible de trouver la fonction "rollmean"
-```
+![plot of chunk attente](figure/attente4.png) 
 
 ```r
 plot(rollmean(xts(z), 7), main = "Attente cumulée (lissée) par 24h", xlab = "Durée de passage (en mn)", 
     ylab = "Fréquence")
 ```
 
-```
-## Error: impossible de trouver la fonction "rollmean"
-```
+![plot of chunk attente](figure/attente5.png) 
 
 Ensemble des SAU
 ----------------
@@ -1752,7 +1721,7 @@ summary(h)
 hist(h, breaks = 23, xlab = "Heures", main = "CH HUS - Horaire de fréquentation du SU")
 ```
 
-![plot of chunk geb_arrive](figure/geb_arrive.png) 
+![plot of chunk geb_arrive](figure/geb_arrive1.png) 
 
 ```r
 t <- table(h)
@@ -1760,18 +1729,14 @@ t2 <- as.integer(t)
 c <- clock24.plot(t2, clock.pos = 1:24, lwd = 3)
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk geb_arrive](figure/geb_arrive2.png) 
 
 ```r
 c <- clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F)
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk geb_arrive](figure/geb_arrive3.png) 
 
 ```r
 # nécessite la librairie openintro
@@ -1779,9 +1744,7 @@ clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
     show.grid.labels = F, poly.col = fadeColor("blue", fade = "10"))
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk geb_arrive](figure/geb_arrive4.png) 
 
 ```r
 clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
@@ -1789,9 +1752,7 @@ clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
         fade = "10"))
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk geb_arrive](figure/geb_arrive5.png) 
 
 Idem pour les sorties
 
@@ -1802,9 +1763,7 @@ clock24.plot(t3, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
     show.grid.labels = F)
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk geb_sorties](figure/geb_sorties.png) 
 
 Combinaison entrée-sortie
 
@@ -1814,44 +1773,24 @@ clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
     show.grid.labels = F)
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk geb_es](figure/geb_es1.png) 
 
 ```r
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F, line.col = c("red", "blue"))
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk geb_es](figure/geb_es2.png) 
 
 ```r
 fadeBlue <- fadeColor("blue", fade = "15")
-```
-
-```
-## Error: impossible de trouver la fonction "fadeColor"
-```
-
-```r
 fadeRed <- fadeColor("red", fade = "15")
-```
-
-```
-## Error: impossible de trouver la fonction "fadeColor"
-```
-
-```r
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F, line.col = c(fadeRed, fadeBlue), poly.col = c(fadeRed, 
         fadeBlue))
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk geb_es](figure/geb_es3.png) 
 
 Entrées selon la période du jour: nuit profonde NP (0h-8h = 1), journée JO (8h-20h = 2), soir SR (20h-24h = 3). La date/heure d'entrée est transformée en heure entière par la fonction *hour*. hest à son tour segmenté en 3 périodes.
 
@@ -1944,7 +1883,7 @@ summary(h)
 hist(h, breaks = 23, xlab = "Heures", main = "Alsace - Horaire de fréquentation du SU")
 ```
 
-![plot of chunk total arrivee](figure/total_arrivee.png) 
+![plot of chunk total arrivee](figure/total_arrivee1.png) 
 
 ```r
 t <- table(h)
@@ -1952,18 +1891,14 @@ als_entree <- as.integer(t)
 c <- clock24.plot(als_entree, clock.pos = 1:24, lwd = 3, show.grid.labels = F)
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk total arrivee](figure/total_arrivee2.png) 
 
 ```r
 c <- clock24.plot(als_entree, clock.pos = 1:24, rp.type = "p", main = "Alsace", 
     xlab = "Heures d'arrivée aux urgences", show.grid.labels = F)
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk total arrivee](figure/total_arrivee3.png) 
 
 #### Comparaison Alsace - HUS
 Les calculs sont exprimés en %
@@ -1977,19 +1912,10 @@ t4 <- rbind(prop.table(t2), prop.table(als_entree))
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - HUS (rouge)", 
     xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, line.col = c("red", 
         "blue"), radial.lim = c(0, 0.1))
-```
-
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
-
-```r
 legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.8)
 ```
 
-```
-## Error: plot.new has not been called yet
-```
+![plot of chunk als-geb](figure/als-geb1.png) 
 
 ```r
 
@@ -1999,9 +1925,7 @@ clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - HUS (rouge)",
         fadeBlue), poly.col = c(NA, fadeBlue), radial.lim = c(0, 0.1))
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk als-geb](figure/als-geb2.png) 
 
 #### Comparaison Alsace - Wissembourg
 
@@ -2015,19 +1939,10 @@ t4 <- rbind(prop.table(t2), prop.table(als_entree))
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - CH de Wissembourg", 
     xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, line.col = c("red", 
         "blue"), radial.lim = c(0, 0.1))
-```
-
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
-
-```r
 legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.8)
 ```
 
-```
-## Error: plot.new has not been called yet
-```
+![plot of chunk als-wis](figure/als-wis.png) 
 
 #### comparaison Alsace - HUS
 
@@ -2041,129 +1956,48 @@ t4 <- rbind(prop.table(t2), prop.table(als_entree))
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - CHU Strasbourg", 
     xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, line.col = c("red", 
         "blue"), radial.lim = c(0, 0.1))
-```
-
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
-
-```r
 legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.8)
 ```
 
-```
-## Error: plot.new has not been called yet
-```
+![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
 
 #### Test de la fonction*passages*
 
 ```r
 par(mfrow = c(2, 2))
 source("../mes_fonctions.R")
-```
-
-```
-## Warning: impossible d'ouvrir le fichier '../mes_fonctions.R' : Aucun
-## fichier ou dossier de ce type
-```
-
-```
-## Error: impossible d'ouvrir la connexion
-```
-
-```r
 passages("Hus", "HUS", sens = 3)
-```
-
-```
-## Error: impossible de trouver la fonction "passages"
-```
-
-```r
 passages("Mul", "CH Mulhouse", sens = 3)
-```
-
-```
-## Error: impossible de trouver la fonction "passages"
-```
-
-```r
 passages("Col", "CH Colmar", sens = 3)
-```
-
-```
-## Error: impossible de trouver la fonction "passages"
-```
-
-```r
 passages("Hag", "CH Haguenau", sens = 3)
 ```
 
-```
-## Error: impossible de trouver la fonction "passages"
-```
+![plot of chunk passages](figure/passages1.png) 
 
 ```r
 
 passages("Sel", "CH Selestat", sens = 3)
-```
-
-```
-## Error: impossible de trouver la fonction "passages"
-```
-
-```r
 passages("Odi", "Clinique Ste Odile", sens = 3)
-```
-
-```
-## Error: impossible de trouver la fonction "passages"
-```
-
-```r
 passages("Dia", "Diaconnat - Fonderie", sens = 3)
-```
-
-```
-## Error: impossible de trouver la fonction "passages"
-```
-
-```r
 passages("Tan", "CH Thann", sens = 3)
 ```
 
 ```
-## Error: impossible de trouver la fonction "passages"
+## Warning: All formats failed to parse. No formats found. Warning: All
+## formats failed to parse. No formats found.
 ```
+
+![plot of chunk passages](figure/passages2.png) 
 
 ```r
 
 passages("3Fr", "Trois frontières", sens = 3)
-```
-
-```
-## Error: impossible de trouver la fonction "passages"
-```
-
-```r
 passages("Alk", "CH Alkirch", sens = 3)
-```
-
-```
-## Error: impossible de trouver la fonction "passages"
-```
-
-```r
 passages("Sav", "CH Saverne", sens = 3)
-```
-
-```
-## Error: impossible de trouver la fonction "passages"
-```
-
-```r
 par(mfrow = c(1, 1))
 ```
+
+![plot of chunk passages](figure/passages3.png) 
 
 
 Etude HUS
@@ -2198,51 +2032,25 @@ comparaison entre RPU attendu et RPU transmis. Nécessite le fichier *sau2013*. 
 
 ```r
 load("../SAU2013/sau2013.Rda")
-```
-
-```
-## Warning: impossible d'ouvrir le fichier compressé
-## '../SAU2013/sau2013.Rda', cause probable : 'Aucun fichier ou dossier de ce
-## type'
-```
-
-```
-## Error: impossible d'ouvrir la connexion
-```
-
-```r
 dhus <- d[d$hop == "HUS", ]
-```
-
-```
-## Error: objet 'd' introuvable
-```
-
-```r
 sum(dhus$TOTAL.passages, na.rm = T)
 ```
 
 ```
-## Error: objet 'dhus' introuvable
+## [1] 70001
 ```
 
 ```r
 
-# hus.serv: DU des Hus. HTP adultes, HTP gynéco, HTP pédiatrie, NHC et CCOM
-# (Sos mains)
+# hus.serv: DU des Hus. HTP adultes, HTP gynéco, HTP pédiatrie, NHC et
+# CCOM (Sos mains)
 hus.serv <- as.factor(dhus$ser2)
-```
-
-```
-## Error: objet 'dhus' introuvable
-```
-
-```r
 summary(hus.serv)
 ```
 
 ```
-## Error: objet 'hus.serv' introuvable
+## aHTP CCOM gHTP  NHC pHTP NA's 
+##  209  202  201  201  403  413
 ```
 
 ```r
@@ -2250,27 +2058,14 @@ tapply(dhus$TOTAL.passages, hus.serv, sum)
 ```
 
 ```
-## Error: objet 'hus.serv' introuvable
+##  aHTP  CCOM  gHTP   NHC  pHTP 
+## 20549  4937  5471 17394 21650
 ```
 
 ```r
 # RPU uniquement du au SU HTP et NHC
 hus.rpu <- subset(dhus, ser2 == "aHTP" | ser2 == "NHC")
-```
-
-```
-## Error: objet 'dhus' introuvable
-```
-
-```r
 n <- sum(hus.rpu$TOTAL.passages)
-```
-
-```
-## Error: objet 'hus.rpu' introuvable
-```
-
-```r
 print("Prévision2013:")
 ```
 
@@ -2283,7 +2078,7 @@ n * 3
 ```
 
 ```
-## [1] 609
+## [1] 113829
 ```
 
 ```r
@@ -2301,28 +2096,14 @@ a[1] * 100/a[2]
 
 ```
 ## RPU déclarés 
-##        11053
+##        59.14
 ```
 
 Les urgences pédiatriques sont divisées en 2, médicales et chirurgicales. Il y a donc 2 données par jour
 
 ```r
 hus.ped <- subset(dhus, ser2 == "pHTP")
-```
-
-```
-## Error: objet 'dhus' introuvable
-```
-
-```r
 nped <- sum(hus.ped$TOTAL.passages)
-```
-
-```
-## Error: objet 'hus.ped' introuvable
-```
-
-```r
 print("Prévision2013:")
 ```
 
@@ -2335,7 +2116,7 @@ nped * 3
 ```
 
 ```
-## Error: objet 'nped' introuvable
+## [1] 64950
 ```
 
 ```r
@@ -2349,18 +2130,11 @@ print("Total adulte + pédiatrie:")
 
 ```r
 ntot <- n + nped
-```
-
-```
-## Error: objet 'nped' introuvable
-```
-
-```r
 ntot
 ```
 
 ```
-## Error: objet 'ntot' introuvable
+## [1] 59593
 ```
 
 ```r
@@ -2376,7 +2150,7 @@ ntot * 3
 ```
 
 ```
-## Error: objet 'ntot' introuvable
+## [1] 178779
 ```
 
 
@@ -2529,7 +2303,7 @@ hist(h, breaks = 23, xlab = "Heures", main = "CH HUS - Horaire de fréquentation
     col = c(rep(1, 8), rep(2, 12), rep(3, 4)))
 ```
 
-![plot of chunk Hus_arrive](figure/Hus_arrive.png) 
+![plot of chunk Hus_arrive](figure/Hus_arrive1.png) 
 
 ```r
 t <- table(h)
@@ -2537,18 +2311,14 @@ t2 <- as.integer(t)
 c <- clock24.plot(t2, clock.pos = 1:24, lwd = 3)
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk Hus_arrive](figure/Hus_arrive2.png) 
 
 ```r
 c <- clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F)
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk Hus_arrive](figure/Hus_arrive3.png) 
 
 ```r
 # nécessite la librairie openintro
@@ -2556,9 +2326,7 @@ clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
     show.grid.labels = F, poly.col = fadeColor("blue", fade = "10"))
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk Hus_arrive](figure/Hus_arrive4.png) 
 
 ```r
 clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
@@ -2566,9 +2334,7 @@ clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
         fade = "10"))
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk Hus_arrive](figure/Hus_arrive5.png) 
 
 Idem pour les sorties
 
@@ -2587,9 +2353,7 @@ clock24.plot(t3, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
     show.grid.labels = F)
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk Hus_sorties](figure/Hus_sorties.png) 
 
 Combinaison entrée-sortie
 
@@ -2599,44 +2363,24 @@ clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
     show.grid.labels = F)
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk Hus_es](figure/Hus_es1.png) 
 
 ```r
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F, line.col = c("red", "blue"))
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk Hus_es](figure/Hus_es2.png) 
 
 ```r
 fadeBlue <- fadeColor("blue", fade = "15")
-```
-
-```
-## Error: impossible de trouver la fonction "fadeColor"
-```
-
-```r
 fadeRed <- fadeColor("red", fade = "15")
-```
-
-```
-## Error: impossible de trouver la fonction "fadeColor"
-```
-
-```r
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F, line.col = c(fadeRed, fadeBlue), poly.col = c(fadeRed, 
         fadeBlue))
 ```
 
-```
-## Error: impossible de trouver la fonction "clock24.plot"
-```
+![plot of chunk Hus_es](figure/Hus_es3.png) 
 
 Entrées selon la période du jour: nuit profonde NP (0h-8h = 1), journée JO (8h-20h = 2), soir SR (20h-24h = 3). La date/heure d'entrée est transformée en heure entière par la fonction *hour*. hest à son tour segmenté en 3 périodes.
 

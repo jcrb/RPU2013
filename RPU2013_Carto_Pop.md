@@ -222,6 +222,7 @@ base$zone_proximite[57] <- 3
 save(base, file = "base.Rda")
 ```
 
+load("base.Rda")
 
 #### Définitions INSEE
 
@@ -272,7 +273,20 @@ n
 ```r
 pop.tot <- sum(base$Population.totale)
 pop.municipale <- sum(base$Population.municipale)
+pop.municipale
+```
+
+```
+## [1] 1865289
+```
+
+```r
 pop.a.part <- sum(base$Population.comptée.à.part)
+pop.a.part
+```
+
+```
+## [1] 35521
 ```
 
 Pour les raisons expliquées plus haut, les calculs statistiques font référence à la population **municipale**.
@@ -284,6 +298,7 @@ ATTENTION: les territoires de proximité sont dans l'ordre de SAGEC qui n'est pa
 territoire.prox <- c("Altkirch", "Colmar", "Guebwiller", "Haguenau", "Molsheim-Schirmeck", 
     "Mulhouse", "Sélestat-Obernai", "Saint-Louis", "Saverne", "Strasbourg", 
     "Thann", "Wissembourg")
+
 effectif <- tapply(base$Population.municipale, as.factor(base$zone_proximite), 
     sum, na.rm = TRUE)
 # on élimine la colonne 0 qui ne contient que NA effectif<-effectif[-1]
@@ -355,7 +370,7 @@ barplot(sort(effectif), cex.names = 0.8, xlab = "", las = 2, ylab = "Effectifs",
     main = "Répartition de la population par territoire de proximité")
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-121.png) 
+![plot of chunk pop_t_proximite](figure/pop_t_proximite1.png) 
 
 ```r
 
@@ -363,7 +378,7 @@ barplot(sort(pourcentage), cex.names = 0.8, las = 2, xlab = "", ylab = "% de la 
     main = "Répartition de la population par territoire de proximité")
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-122.png) 
+![plot of chunk pop_t_proximite](figure/pop_t_proximite2.png) 
 
 Commentaires:
 - le territoire  de proximité de Strasbourg est le plus important et regroupe plus du quart de la population alsacienne
@@ -385,11 +400,18 @@ head(zip1)
 ```
 
 Puis on fait la liste des villes correspondant à ces codes:
-```
-b<-paste(zip1,sep=",")
-a<-base$ville_nom[base$ville_insee %in% b]
+
+```r
+b <- paste(zip1, sep = ",")
+a <- base$ville_nom[base$ville_insee %in% b]
 a[1:5]
 ```
+
+```
+## [1] ALTENACH     ALTKIRCH     AMMERZWILLER ASPACH       BALLERSDORF 
+## 1246 Levels:  Aachen Aargau Aberdeen ACHENHEIM Achern ADAMSWILLER ... Zurich (Suisse)
+```
+
 essai de carto associée:
 ------------------------
 La méthode dessine tous les polygones présents qui répondent à un critère de sélection. On utilise le fichier *carto_alsace.rda* qui produit un objet *SpatialPolygonsDataFrame* appelé *als*.
@@ -490,7 +512,7 @@ cols <- ifelse(substr(names(contour), 1, 2) == "67", "springgreen3", "steelblue3
 plot(contour, col = cols)
 ```
 
-![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
+![plot of chunk alsace](figure/alsace.png) 
 
 Petit test pour comprendre la fonction **merge**:
 
@@ -549,37 +571,37 @@ d <- merge(a, b, by.x = "id", by.y = "id", all.x = TRUE)
 plot(contour[1])
 ```
 
-![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-181.png) 
+![plot of chunk density](figure/density1.png) 
 
 ```r
 plot(contour[1], border = "blue")
 ```
 
-![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-182.png) 
+![plot of chunk density](figure/density2.png) 
 
 ```r
 plot(contour[1], border = "blue", col = "yellow")
 ```
 
-![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-183.png) 
+![plot of chunk density](figure/density3.png) 
 
 ```r
 plot(contour[1], border = "blue", col = "yellow", density = 5)
 ```
 
-![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-184.png) 
+![plot of chunk density](figure/density4.png) 
 
 ```r
 plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90)
 ```
 
-![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-185.png) 
+![plot of chunk density](figure/density5.png) 
 
 ```r
 plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90, axes = TRUE)
 ```
 
-![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-186.png) 
+![plot of chunk density](figure/density6.png) 
 
 ```r
 plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90, axes = TRUE, 
@@ -587,7 +609,7 @@ plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90, axes 
 text(coordinates(contour), labels = row.names(contour))
 ```
 
-![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-187.png) 
+![plot of chunk density](figure/density7.png) 
 
 ```r
 plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90, axes = TRUE, 
@@ -595,7 +617,7 @@ plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90, axes 
 text(coordinates(contour[1]), labels = "Haguenau")
 ```
 
-![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-188.png) 
+![plot of chunk density](figure/density8.png) 
 
 #### la méthode *coordinates* de SpatialPolygon
 Retourne les coordonnées du barycentre du polygone. Pour l'illuster on forme le vecteur des chef-lieu des arrondissement d'Alsace dans l'ordre définit par R.
@@ -653,7 +675,7 @@ text(coordinates(contour), labels = arrondissements, cex = 0.6)
 legend("topleft", legend = "Les arrondissements d'Alsace", bty = "n", adj = -0.5)
 ```
 
-![plot of chunk unnamed-chunk-19](figure/unnamed-chunk-19.png) 
+![plot of chunk contour1](figure/contour1.png) 
 
 
 a<-coordinates(contour)
@@ -683,7 +705,7 @@ zp1 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp1)
 ```
 
-![plot of chunk zp1](figure/zp1.png) 
+![plot of chunk zp1_exemple](figure/zp1_exemple.png) 
 
 *zp1* est également un *SpatialPolygonsDataFrame* qui contient les mêmes éléments que l'élément racine:
 
@@ -705,7 +727,7 @@ contour <- unionSpatialPolygons(zp1, IDs = zp1@data$CODE_ARR)
 plot(contour, axes = T)
 ```
 
-![plot of chunk unnamed-chunk-21](figure/unnamed-chunk-21.png) 
+![plot of chunk contour2](figure/contour2.png) 
 
 *contour* est un *SpatialPolygons*.
 
@@ -716,7 +738,7 @@ plot(contour, axes = T, xlab = "axe x", col = "red")
 plot(zp1, add = T)
 ```
 
-![plot of chunk unnamed-chunk-22](figure/unnamed-chunk-22.png) 
+![plot of chunk superposer](figure/superposer.png) 
 
 modifier l'aspect:
 - lty = 1 (normal), 2, 3, 4, 5... (pointillés)
@@ -729,11 +751,11 @@ modifier l'aspect:
 exemple:
 
 ```r
-plot(zp1, , axes = T)
+plot(zp1, axes = T)
 plot(contour, axes = T, lty = 1, lwd = 2, fg = "blue", border = "red", add = T)
 ```
 
-![plot of chunk unnamed-chunk-23](figure/unnamed-chunk-23.png) 
+![plot of chunk bordure](figure/bordure.png) 
 
 Certains caractères accentués posent des pb comme dans *préfecture*:
 
@@ -819,7 +841,7 @@ points(x, y, pch = 19, col = 3)
 text(x, y, labels = nom, cex = 0.8, pos = 3)
 ```
 
-![plot of chunk unnamed-chunk-26](figure/unnamed-chunk-26.png) 
+![plot of chunk zp1_test](figure/zp1_test.png) 
 
 Les zones de proximités officielles sont dans le fichier zp.csv
 
@@ -1411,7 +1433,7 @@ zp <- zpals[zpals$CODE.ZONES.DE.PROXIMITE == 1, ]
 plot(zp)
 ```
 
-![plot of chunk unnamed-chunk-29](figure/unnamed-chunk-29.png) 
+![plot of chunk zpals](figure/zpals.png) 
 
 Ca marche!!! auteur: http://stackoverflow.com/users/235349/ramnath (Ramnath Vaidyanathan is an Assistant Professor of Operations Management at the Desautels Faculty of Management, McGill University. He got his PhD from the Wharton School and worked at McKinsey & Co prior to that. )
 
@@ -1425,7 +1447,7 @@ plot(czp)
 title(main = "Zone de proximité de Wissembourg")
 ```
 
-![plot of chunk unnamed-chunk-30](figure/unnamed-chunk-30.png) 
+![plot of chunk czps_wis](figure/czps_wis.png) 
 
 ```
 #### Dessin du contour de l'ensemble des zones de proximité (czps)
@@ -1435,14 +1457,14 @@ czps <- unionSpatialPolygons(zpals, IDs = zpals$CODE.ZONES.DE.PROXIMITE)
 plot(czps)
 ```
 
-![plot of chunk unnamed-chunk-31](figure/unnamed-chunk-311.png) 
+![plot of chunk czps_1](figure/czps_11.png) 
 
 ```r
 plot(czps, col = c("red", "yellow", "blue", "green", "orange"))
 title(main = "Zone de proximité en Alsace")
 ```
 
-![plot of chunk unnamed-chunk-31](figure/unnamed-chunk-312.png) 
+![plot of chunk czps_1](figure/czps_12.png) 
 
 #### Dessin du contour des territoires de santé (ctss)
 
@@ -1452,7 +1474,7 @@ plot(ctss)
 title(main = "Territoires de santé en Alsace")
 ```
 
-![plot of chunk unnamed-chunk-32](figure/unnamed-chunk-32.png) 
+![plot of chunk ctss_1](figure/ctss_1.png) 
 
 ```r
 save(ctss, file = "als_ts.Rda")
@@ -1468,7 +1490,7 @@ plot(ctss, col = c("yellow", "blue", "green", "orange"), border = "red", add = T
 plot(czps, add = TRUE)
 ```
 
-![plot of chunk unnamed-chunk-33](figure/unnamed-chunk-33.png) 
+![plot of chunk czps](figure/czps.png) 
 
 essais avec les couleurs:
 - plot(ctss,col=heat.colors(4))
@@ -1486,7 +1508,7 @@ plot(czps, col = wp)
 title(main = "Zone de proximité en Alsace")
 ```
 
-![plot of chunk unnamed-chunk-34](figure/unnamed-chunk-34.png) 
+![plot of chunk zone_proximite](figure/zone_proximite.png) 
 
 couleurs prop. au % de 75 ans:  
 Le % des 75 ans par zone de proximité est donné par *pbc* (voir carto&pop)  
@@ -1525,7 +1547,7 @@ legend("topleft", col = gray(5:0/5), legend = c("0-5%", "5-10%", "10-15%", "15-2
 mtext("© RESURAL 2013", cex = 0.6, side = 4, line = -1, adj = 0.1)
 ```
 
-![plot of chunk unnamed-chunk-35](figure/unnamed-chunk-35.png) 
+![plot of chunk 75ans](figure/75ans.png) 
 
 NB: pour déterminer l'ordre de traçage, on utilise la méthode suivante:
 col<-c(1,2,2,2,2,2,2,2,2,2,2,2,2)
