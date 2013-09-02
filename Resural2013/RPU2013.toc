@@ -23,6 +23,8 @@
 \contentsline {chapter}{\numberline {10}Codage diagnostique}{44}{chapter.10}
 \contentsline {section}{\numberline {10.1}Cim10}{44}{section.10.1}
 \contentsline {section}{\numberline {10.2}Etude des AVC}{47}{section.10.2}
+\contentsline {section}{\numberline {10.3}Accidents ischi\IeC {\'e}miques transitoires (AIT)}{56}{section.10.3}
+\contentsline {section}{\numberline {10.4}Pneumonies}{57}{section.10.4}
 \contentsline {chapter}{\numberline {11}Modalit\IeC {\'e}s de sortie}{60}{chapter.11}
 \contentsline {subsection}{\numberline {11.0.1}Mode de sortie}{60}{subsection.11.0.1}
 \contentsline {subsection}{\numberline {11.0.2}Orientation}{61}{subsection.11.0.2}

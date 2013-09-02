@@ -262,7 +262,7 @@ barplot(t,col=c("red","white","darkblue"),main="Répartion des AVC selon l'age e
 barplot(t,col=c("yellow","white","red"),main="Répartion des AVC selon l'age et le sexe",legend=TRUE,beside=TRUE)
 @
 
-\section*{Accidents ischiémiques transitoires (AIT)}
+\section{Accidents ischiémiques transitoires (AIT)}
 \index{AIT}
 
 Recommandations pour la sélection des données PMSI MCO concernant l’AVC (Juin 2009)
@@ -288,7 +288,7 @@ ait<-dpr$DP[substr(dpr$DP,1,3)=="G45" & substr(dpr$DP,1,4)!="G454"]
 tab1(ait,missing=FALSE)
 @
 
-\section*{Pneumonies}
+\section{Pneumonies}
 \index{pneumonies}
 
 <<pneumo_intro,echo=FALSE,message=FALSE>>=

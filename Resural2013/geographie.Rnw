@@ -80,7 +80,7 @@ Les RPU divisent l'age des patients en trois catégories:
   \item les plus de 75 ans
 \end{enumerate}
 
-Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'ensemble de la population par commune et par tranches de un an. La version utilisée est celle du 1er janvier 2010 (tab.\ref{pop}).
+Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'ensemble de la population par commune et par tranches de un an. La version utilisée est celle du 1er janvier 2010 (tab.\ref{pop}). Le secteur de proximité de Strasbourg qui est aussi le plus peuplé, compte le plus grand nombre de personnes de 75 ans et plus (figure \ref{fig:75ans} page \pageref{fig:75ans})
 
 \begin{table}
 \begin{center}
@@ -106,7 +106,7 @@ Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'en
  \centering
  \includegraphics[height=15cm,keepaspectratio=true]{../figure/75ans.png}
  % image.: 0x0 pixel, 0dpi, nanxnan cm, bb=
- \caption{Les personnes de 75 ans et plus en Alsace en fonction du territoire de proximté}
+ \caption[Répartition des 75 ans et plus]{Les personnes de 75 ans et plus en Alsace en fonction du territoire de proximté (en pourcentage du nombre total de 75 ans et plus).}
  \label{fig:75ans}
 \end{figure}
 
@@ -128,8 +128,8 @@ hopitaux<-"../Fichiers source/Hopitaux2lambert/hopitaux_alsace.csv"
 h<-read.csv(hopitaux,header=TRUE,sep=",")
 for(i in 1:nrow(h)){points(h$lam_lon[i],h$lam_lat[i],pch=19,col="red");text(h$lam_lon[i],h$lam_lat[i],labels=h$hopital[i],cex=0.8,pos=h$pos[i])}
 @
- \caption{L'Alsace compte 15 services d'urgence labellisés.}
- \label{fig:75ans}
+ \caption[Services d'urgenced'Alsace]{L'Alsace compte 14 services d'urgence labellisés sur 15 sites.}
+ \label{fig:su_alsace}
 \end{figure}
 
 
