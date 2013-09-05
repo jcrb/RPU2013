@@ -306,7 +306,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  2 19:43:59 2013
+% Wed Sep  4 12:59:13 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -340,7 +340,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  2 19:44:02 2013
+% Wed Sep  4 12:59:15 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -379,12 +379,52 @@ id & 0.00 \\
 Les informations sont résumées dans la table \ref{tab2}, page \pageref{tab2}.
 
 \chapter{RESURAL}
+
+% resural.Rnw
+\index{RESURAL}
+
+Le réseau des urgences en Alsace (RESURAL) est une association à but non lucratif, de droit local Alsace-Moselle, dont les statuts sont déposés au tribunal de Strasbourg. Le réseau a été fondé en août 2008. En son membre de droit les services d'urgence intra et extra-hospitaliers, adultes et pédiatriques, possédant une autorisation d'exercer cette spécialité, délivrée par l'agence régionale de santé (ARS). \index{ARS}
+
+Elle est domiciliée aux Hôpitaux Universitaires de Strasbourg.
+
+Elle est dirigée par un conseil d'administration et représentée par son preésident, le Docteur Bruno Goulesque.
+
+Son fonctionnement est assuré par une équipe de coordination, composée d'un médecin coordinateur à mi-temps et d'une assistante à mi-temps. Cette équipe est opérationnelle depuis le 1er février 2013.
+
 \chapter{L'observatoire des urgences en Alsace (ORUDAL)}
-  \section*{Les partenaires}
+
+% orudal.Rnw
+
+L'observatoire des urgences en Alsace (ORUDAL) est une structure informelle animée par le réseau des urgences en Alsace.
+\index{ORUDAL}
+\index{Observatoire des urgences en Alsace}
+
+Il est composé des organismes suivants:
+\begin{enumerate}
+  \item RESURAL \index{RESURAL}
+  \item ARS Alsace
+  \item CIRE-InVS
+  \item Alsace e-santé
+  \item CMUNE
+\end{enumerate}
+
+
+\section*{Les partenaires}
+
   \subsection*{Agence Régionale de Santé}
+    \index{ARS}
+    
   \subsection*{Alsace e-santé}
+    \index{Alsace e-santé}
+    
   \subsection*{CIRE-INVS}
+    \index{CIRE-INVS}
+    
   \subsection*{Collège de médecine d'urgence (CMUNE)}
+    \index{CMUNE}
+    
+
+  
 \chapter{Le Résumé du passage aux urgences}
 
 % rpu.Rnw
@@ -555,7 +595,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \subsection*{Activité par semaine}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  2 19:44:13 2013
+% Wed Sep  4 12:59:26 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -599,7 +639,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \label{act_sem}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  2 19:44:13 2013
+% Wed Sep  4 12:59:27 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -633,7 +673,7 @@ m <- \hlkwd{wday}(d1$ENTREE, label = T)
 \hlkwd{barplot}(\hlkwd{table}(m), names.arg = \hlkwd{c}(\hlstr{"Dim"}, \hlstr{"Lun"}, \hlstr{"Mar"}, \hlstr{"Mer"}, \hlstr{"Jeu"}, \hlstr{"Ven"}, \hlstr{"Sam"}))
 \end{alltt}
 \end{kframe}
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-20} 
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-23} 
 
 \end{knitrout}
 
@@ -647,7 +687,7 @@ t <- \hlkwd{table}(h)
 \hlkwd{barplot}(\hlkwd{table}(h), xlab = \hlstr{"Heures de la journée"}, ylab = \hlstr{"nombre"}, main = \hlstr{"Répartition des RPU sur le nycthémère"})
 \end{alltt}
 \end{kframe}
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-21} 
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-24} 
 
 \end{knitrout}
 
@@ -790,7 +830,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  2 19:44:21 2013
+% Wed Sep  4 12:59:35 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -820,7 +860,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  2 19:44:21 2013
+% Wed Sep  4 12:59:35 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1399,14 +1439,18 @@ Deux patients porteurs de problèmes respiratoires sont orienté en chirurgie : 
 
 % sortie.Rnw
 
-\subsection{Mode de sortie}
+\section{Mode de sortie}
 \index{mode de sortie}
 
 Le RPU connaît trois mode de sortie des urgences:
 \begin{enumerate}
-  \item le décès
-  \item le retour à domicile (ou ce qui en tient lieu)
+  \item le décès: le patient est déclaré décédé aux urgences.
+  \item le retour à domicile ou ce qui en tient lieu (y compris la voie publique)
   \item l'hospitalisation (mutation ou transfert)
+  \begin{itemize}
+  \item mutation: le patient est hospitalisé dans une autre unité médicale de la même entité juridique sauf pour les établissements privés visés aux alinéas d et e de l'article L162-22-6 du code de la sécurité sociale.
+  \item transfert: le patient est hospitalisé dans une autre  entité juridique sauf pour les établissements privés visés aux alinéas d et e de l'article L162-22-6 du code de la sécurité sociale.
+\end{itemize}
 \end{enumerate}
 
 % Mode de SORTIE.png: 669x437 pixel, 72dpi, 23.60x15.42 cm, bb=0 0 669 437
@@ -1417,7 +1461,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  2 19:44:26 2013
+% Wed Sep  4 12:59:39 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -1431,13 +1475,46 @@ Décès & 2 & 0.00 \\
   Transfert & 2762 & 1.43 \\ 
    \hline
 \end{tabular}
-\caption{Mode de sortie des urgences. <NA> est le nombre de non réponses à cet item} 
+\caption[Mode de sortie des urgences]{Mode de sortie des urgences. <NA> est le nombre de non réponses à cet item} 
 \label{tab.sortie}
 \end{table}
 
 
 
-\subsection{Orientation}
+\section{Mode de sortie selon la structure}
+
+Les données par établissement sont résumées dans le tableau \ref{tab.sortie_etab} page \pageref{tab.sortie_etab}
+
+% latex table generated in R 2.15.1 by xtable 1.7-1 package
+% Wed Sep  4 12:59:39 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|r|r|r|r|r|r|}
+  \hline
+ & Décès & Domicile & Mutation & $<$NA$>$ & Transfert & Sum \\ 
+  \hline
+3Fr & 0.00 & 90.25 & 1.91 & 7.70 & 0.15 & 100.01 \\ 
+  Alk & 0.00 & 81.87 & 14.03 & 1.27 & 2.83 & 100.00 \\ 
+  Col & 0.00 & 73.09 & 22.93 & 2.09 & 1.89 & 100.00 \\ 
+  Dia & 0.00 & 82.97 & 9.11 & 7.45 & 0.46 & 99.99 \\ 
+  Geb & 0.00 & 35.05 & 0.51 & 64.20 & 0.24 & 100.00 \\ 
+  Hag & 0.00 & 57.02 & 24.33 & 14.08 & 4.57 & 100.00 \\ 
+  Hus & 0.00 & 2.78 & 54.12 & 43.10 & 0.00 & 100.00 \\ 
+  Mul & 0.00 & 62.02 & 14.08 & 23.65 & 0.25 & 100.00 \\ 
+  Odi & 0.00 & 93.10 & 0.00 & 2.32 & 4.59 & 100.01 \\ 
+  Sel & 0.01 & 79.02 & 20.95 & 0.01 & 0.00 & 99.99 \\ 
+  Wis & 0.00 & 76.06 & 21.94 & 0.79 & 1.21 & 100.00 \\ 
+  Sav & 0.00 & 74.41 & 18.98 & 5.76 & 0.85 & 100.00 \\ 
+   \hline
+\end{tabular}
+\caption[Mode de sortie selon l'établissement]{Mode de sortie des urgences selon l'établissement (en pourcentage). <NA> est le nombre de non réponses à cet item} 
+\label{tab.sortie_etab}
+\end{table}
+
+
+
+
+\section{Orientation}
 \index{orientation}
 
 Le mode de sortie est affiné par la rubrique ORIENTATION avec la ventilation suivante:
@@ -1497,10 +1574,10 @@ a <- \hlkwd{drop.levels}(d1$ORIENTATION)
 \end{knitrout}
 
 
-\subsection{Destination}
+\section{Destination}
 \index{destination}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  2 19:44:26 2013
+% Wed Sep  4 12:59:40 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1519,7 +1596,7 @@ HAD & 0.00 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  2 19:44:26 2013
+% Wed Sep  4 12:59:40 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1541,7 +1618,7 @@ DOM & 78.83 \\
 
 
 
-\subsection{Incohérences}
+\section{Incohérences}
 \ref{sortie:erreurs}
 On isole le groupe "mode de sortie = domicile) et on relève les résultats de l'item "orientation":
 \begin{knitrout}
@@ -1608,6 +1685,13 @@ Certaines orientations sont incompatibles avec une non hospitalisation:
 
 
 \chapter{Modalités d'orientation}
+
+% orientation.Rnw
+
+\index{orientation}
+
+Le mode d'orientation au sens du RPU est une rubrique un peu fourre-tout regrouppant des hospitalisations comme des sorties "anormales" de la filère de soins (fugues, sotie contre avis, etc.).
+
 
 \chapter{Courbes d'activité régionale}
 \section*{Variation du nombre total de passages journaliers}

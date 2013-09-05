@@ -1,0 +1,30 @@
+% orudal.Rnw
+
+L'observatoire des urgences en Alsace (ORUDAL) est une structure informelle animée par le réseau des urgences en Alsace.
+\index{ORUDAL}
+\index{Observatoire des urgences en Alsace}
+
+Il est composé des organismes suivants:
+\begin{enumerate}
+  \item RESURAL \index{RESURAL}
+  \item ARS Alsace
+  \item CIRE-InVS
+  \item Alsace e-santé
+  \item CMUNE
+\end{enumerate}
+
+
+\section*{Les partenaires}
+
+  \subsection*{Agence Régionale de Santé}
+    \index{ARS}
+    
+  \subsection*{Alsace e-santé}
+    \index{Alsace e-santé}
+    
+  \subsection*{CIRE-INVS}
+    \index{CIRE-INVS}
+    
+  \subsection*{Collège de médecine d'urgence (CMUNE)}
+    \index{CMUNE}
+    

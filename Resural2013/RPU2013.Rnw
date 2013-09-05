@@ -113,12 +113,12 @@ attach(d1)
 <<child='acteurs.Rnw'>>=
 @
 \chapter{RESURAL}
+<<child='resural.Rnw'>>=
+@
 \chapter{L'observatoire des urgences en Alsace (ORUDAL)}
-  \section*{Les partenaires}
-  \subsection*{Agence Régionale de Santé}
-  \subsection*{Alsace e-santé}
-  \subsection*{CIRE-INVS}
-  \subsection*{Collège de médecine d'urgence (CMUNE)}
+<<child='orudal.Rnw'>>=
+@
+  
 \chapter{Le Résumé du passage aux urgences}
 <<child='rpu.Rnw'>>=
 @
@@ -159,6 +159,8 @@ attach(d1)
 @
 
 \chapter{Modalités d'orientation}
+<<child='orientation.Rnw'>>=
+@
 
 \chapter{Courbes d'activité régionale}
 \section*{Variation du nombre total de passages journaliers}

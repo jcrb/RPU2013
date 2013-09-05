@@ -1,13 +1,17 @@
 % sortie.Rnw
 
-\subsection{Mode de sortie}
+\section{Mode de sortie}
 \index{mode de sortie}
 
 Le RPU connaît trois mode de sortie des urgences:
 \begin{enumerate}
-  \item le décès
-  \item le retour à domicile (ou ce qui en tient lieu)
+  \item le décès: le patient est déclaré décédé aux urgences.
+  \item le retour à domicile ou ce qui en tient lieu (y compris la voie publique)
   \item l'hospitalisation (mutation ou transfert)
+  \begin{itemize}
+  \item mutation: le patient est hospitalisé dans une autre unité médicale de la même entité juridique sauf pour les établissements privés visés aux alinéas d et e de l'article L162-22-6 du code de la sécurité sociale.
+  \item transfert: le patient est hospitalisé dans une autre  entité juridique sauf pour les établissements privés visés aux alinéas d et e de l'article L162-22-6 du code de la sécurité sociale.
+\end{itemize}
 \end{enumerate}
 
 % Mode de SORTIE.png: 669x437 pixel, 72dpi, 23.60x15.42 cm, bb=0 0 669 437
@@ -25,10 +29,23 @@ t<-table(ms)
 r<-round(prop.table(t)*100,2)
 c<-cbind(t,r)
 colnames(c)<-c("n","%")
-xtable(c,caption = "Mode de sortie des urgences. <NA> est le nombre de non réponses à cet item", label = "tab.sortie",align="|l|r|r|",digits = c(0,0,2), table.placement = "ht",caption.placement = "top")
+xtable(c,caption = c("Mode de sortie des urgences. <NA> est le nombre de non réponses à cet item","Mode de sortie des urgences"), label = "tab.sortie",align="|l|r|r|",digits = c(0,0,2), table.placement = "ht",caption.placement = "top")
 @
 
-\subsection{Orientation}
+\section{Mode de sortie selon la structure}
+
+Les données par établissement sont résumées dans le tableau \ref{tab.sortie_etab} page \pageref{tab.sortie_etab}
+
+<<sortie_structure,echo=FALSE,results='asis'>>=
+t<-round(prop.table(table(d1$FINESS,ms),margin=1)*100,2)
+
+t2<-addmargins(t,margin=2)
+
+xtable(t2,caption = c("Mode de sortie des urgences selon l'établissement (en pourcentage). <NA> est le nombre de non réponses à cet item","Mode de sortie selon l'établissement"), label = "tab.sortie_etab",align="|l|r|r|r|r|r|r|",digits = c(0,2,2,2,2,2,2), table.placement = "ht",caption.placement = "top")
+@
+
+
+\section{Orientation}
 \index{orientation}
 
 Le mode de sortie est affiné par la rubrique ORIENTATION avec la ventilation suivante:
@@ -55,7 +72,7 @@ table(a,useNA="always")
 table(d1$DESTINATION,d1$GRAVITE)
 @
 
-\subsection{Destination}
+\section{Destination}
 \index{destination}
 <<destination,warning=FALSE,results='asis',echo=FALSE>>=
 c<-drop.levels(d1$DESTINATION)
@@ -69,7 +86,7 @@ tcna<-round(prop.table(table(c,dnn="%"))*100,3)
 xtable(tcna,caption = "Devenir des patients à la sortie des urgences. DOM représentent ceux qui sont repartis vers leur domicile ou ce qui en tient lieu (sous l'hypothèse que toutes les non réponses correspondent à un retour à domicile).", label = "tab.dest")
 @
 
-\subsection{Incohérences}
+\section{Incohérences}
 \ref{sortie:erreurs}
 On isole le groupe "mode de sortie = domicile) et on relève les résultats de l'item "orientation":
 <<fausses_sorties>>=
