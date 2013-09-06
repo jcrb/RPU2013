@@ -331,3 +331,33 @@ summary(pneumo$ORIENTATION)
 @
 
 Deux patients porteurs de problèmes respiratoires sont orienté en chirurgie : erreur ou manque de place en médecine ?
+
+\section{Syndrome grippal}
+\index{syndrome grippal}
+
+<<grippe,echo=FALSE>>=
+grippe<-d1[substr(d1$DP,1,3)=="J11"|substr(d1$DP,1,3)=="J10"|substr(d1$DP,1,3)=="J09", c("DP","ENTREE")]
+grippe<-grippe[complete.cases(grippe),]
+grippe$date<-as.Date(grippe$ENTREE)
+hist(grippe$date,breaks=18,freq=TRUE,col="slategray1",main="2013 - Syndromes grippaux",xlab="")
+@
+
+\section{Malaises}
+\index{malaise}
+
+<<malaises,echo=FALSE>>=
+malaise<-d1[substr(d1$DP,1,3)=="R55", c("DP","ENTREE")]
+malaise<-malaise[complete.cases(malaise),]
+malaise$date<-as.Date(malaise$ENTREE)
+hist(malaise$date,breaks=18,freq=TRUE,col="slategray1")
+@
+
+malaise selon INVS (canicule):
+<<malaises_invs,echo=FALSE>>=
+malaise<-d1[substr(d1$DP,1,3)=="R55"|substr(d1$DP,1,3)=="R53"|substr(d1$DP,1,3)=="R42", c("DP","ENTREE")]
+malaise<-malaise[complete.cases(malaise),]
+malaise$date<-as.Date(malaise$ENTREE)
+hist(malaise$date,breaks=18,freq=TRUE,col="slategray1",main="Malaises (INVS)")
+ plot(as.factor(malaise$date),col="slategray1",las = 1,main="Malaises (INVS)")
+@
+

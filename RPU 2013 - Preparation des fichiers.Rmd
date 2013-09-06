@@ -38,6 +38,9 @@ Le fichier récupéré est ensuite importé dans une base de données MySql. La 
 - mai: rpu_2013_05_dump.sql (22.7 Mo)
 - juin: rpu_2013_06_dump.sql (23.7 Mo)
 Pour les transférer, on utilise la procédure standard en ligne de commande, commençant par le mois de mai:
+
+cd ~/Documents/Resural/'Stat Resural'/'Fichiers source'/Dump/RPU2013_08/
+
 ```{}
 jcb@mint1:~$ mysql -u root -pmarion rpu < Resural_07_dump.sql
 ```
@@ -76,7 +79,7 @@ dbListFields(con,"RPU__")
 ```
 Lecture des enregistrements de la table compris entre le 1er mai et le 31 mai 2013 (cette étape peu être longue):
 ```{r}
-rs<-dbSendQuery(con,"SELECT * FROM RPU__ WHERE ENTREE BETWEEN '2013-07-01' AND '2013-07-31' ")
+rs<-dbSendQuery(con,"SELECT * FROM RPU__ WHERE ENTREE BETWEEN '2013-07-01' AND '2013-08-01' ")
 d07<-fetch(rs,n=-1,encoding = "UTF-8")
 max(d07$ENTREE)
 min(d07$ENTREE)

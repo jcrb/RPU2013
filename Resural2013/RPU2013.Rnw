@@ -94,9 +94,9 @@ library("openintro")
 library("sp")
 
 #  load("../rpu2013.Rda")
-load("../rpu2013d0107.Rda")
-d1<-d0107
-rm(d0107)
+load("../rpu2013d0108.Rda")
+d1<-d0108
+rm(d0108)
 attach(d1)
 @
 %======================================================== PARTIE 1

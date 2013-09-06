@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.23)  4 SEP 2013 12:59
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.12.23)  6 SEP 2013 23:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1249,7 +1249,7 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 Package xcolor Warning: Incompatible color definition on input line 160.
 
-<figure/carte_secteurs_sanitaires.pdf, id=321, 505.89pt x 505.89pt>
+<figure/carte_secteurs_sanitaires.pdf, id=331, 505.89pt x 505.89pt>
 File: figure/carte_secteurs_sanitaires.pdf Graphic file (type pdf)
 
 <use figure/carte_secteurs_sanitaires.pdf>
@@ -1267,7 +1267,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [8
 
 ]
-<../figure/zone_proximite.png, id=331, 505.89pt x 505.89pt>
+<../figure/zone_proximite.png, id=342, 505.89pt x 505.89pt>
 File: ../figure/zone_proximite.png Graphic file (type png)
 
 <use ../figure/zone_proximite.png>
@@ -1284,7 +1284,7 @@ LaTeX Warning: Reference `Population_municipale' on page 10 undefined on input
 line 200.
 
 [10 <../figure/zone_proximite.png>]
-<../figure/75ans.png, id=366, 505.89pt x 505.89pt>
+<../figure/75ans.png, id=376, 505.89pt x 505.89pt>
 File: ../figure/75ans.png Graphic file (type png)
  <use ../figure/75ans.png>
 Package pdftex.def Info: ../figure/75ans.png used on input line 234.
@@ -1297,7 +1297,7 @@ Overfull \hbox (11.67159pt too wide) in paragraph at lines 234--236
 
 Package xcolor Warning: Incompatible color definition on input line 249.
 
-<figure/carte_sau_2.pdf, id=367, 505.89pt x 505.89pt>
+<figure/carte_sau_2.pdf, id=377, 505.89pt x 505.89pt>
 File: figure/carte_sau_2.pdf Graphic file (type pdf)
 
 <use figure/carte_sau_2.pdf>
@@ -1360,7 +1360,7 @@ Chapitre 7.
 
 Package xcolor Warning: Incompatible color definition on input line 508.
 
-<figure/activite_plot.pdf, id=460, 505.89pt x 505.89pt>
+<figure/activite_plot.pdf, id=470, 505.89pt x 505.89pt>
 File: figure/activite_plot.pdf Graphic file (type pdf)
 
 <use figure/activite_plot.pdf>
@@ -1374,7 +1374,7 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 509--510
 
 Package xcolor Warning: Incompatible color definition on input line 515.
 
-<figure/activite_plot2.pdf, id=461, 505.89pt x 505.89pt>
+<figure/activite_plot2.pdf, id=471, 505.89pt x 505.89pt>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [21
@@ -1404,9 +1404,9 @@ l   Wis   Sav[]
  []
 
 
-Overfull \hbox (41.78949pt too wide) in paragraph at lines 531--531
-[]\T1/lmtt/m/n/12 ##  9382  3784 38722 17150  8852 20531 22438 31533 15193 1749
-6  7431   590[] 
+Overfull \hbox (41.78249pt too wide) in paragraph at lines 531--531
+[]\T1/lmtt/m/n/12 ## 10708  4521 44095 19611 10153 23457 25412 36456 17250 1842
+8  8483  2861[] 
  []
 
 
@@ -1419,9 +1419,9 @@ l   Wis   Sav[]
  []
 
 
-Overfull \hbox (41.76848pt too wide) in paragraph at lines 545--545
-[]\T1/lmtt/m/n/12 ##  4.86  1.96 20.05  8.88  4.58 10.63 11.62 16.33  7.87  9.0
-6  3.85  0.31[] 
+Overfull \hbox (41.76147pt too wide) in paragraph at lines 545--545
+[]\T1/lmtt/m/n/12 ##  4.84  2.04 19.91  8.86  4.59 10.59 11.48 16.46  7.79  8.3
+2  3.83  1.29[] 
  []
 
 
@@ -1439,7 +1439,7 @@ t   Nov   Dec[]
 
 
 Overfull \hbox (41.77548pt too wide) in paragraph at lines 583--583
-[]\T1/lmtt/m/n/12 ## 25609 25004 26937 28428 27899 30038 29187     0     0     
+[]\T1/lmtt/m/n/12 ## 25609 25004 26937 28428 27899 30038 29187 28332     1     
 0     0     0[] 
  []
 
@@ -1457,7 +1457,7 @@ Overfull \hbox (78.99951pt too wide) in paragraph at lines 586--586
 , []"Sep"[],[] 
  []
 
-<figure/parmois.pdf, id=493, 505.89pt x 505.89pt>
+<figure/parmois.pdf, id=503, 505.89pt x 505.89pt>
 File: figure/parmois.pdf Graphic file (type pdf)
  <use figure/parmois.pdf>
 Package pdftex.def Info: figure/parmois.pdf used on input line 590.
@@ -1471,17 +1471,17 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 590--591
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [24]
-Overfull \hbox (703.24786pt too wide) in paragraph at lines 645--652
+Overfull \hbox (845.24768pt too wide) in paragraph at lines 649--656
  [][] 
  []
 
-<figure/act_sem.pdf, id=506, 505.89pt x 505.89pt>
+<figure/act_sem.pdf, id=516, 505.89pt x 505.89pt>
 File: figure/act_sem.pdf Graphic file (type pdf)
  <use figure/act_sem.pdf>
-Package pdftex.def Info: figure/act_sem.pdf used on input line 656.
+Package pdftex.def Info: figure/act_sem.pdf used on input line 660.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 656--657
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 660--661
 [][] 
  []
 
@@ -1490,23 +1490,23 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [25 <./figure/parmois.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 662.
+Package xcolor Warning: Incompatible color definition on input line 666.
 
 
-Overfull \hbox (86.67433pt too wide) in paragraph at lines 673--673
+Overfull \hbox (86.67433pt too wide) in paragraph at lines 677--677
 [][]\T1/lmtt/b/n/12 barplot[]\T1/lmtt/m/n/12 ([]\T1/lmtt/b/n/12 table[]\T1/lmtt
 /m/n/12 (m), names.arg = []\T1/lmtt/b/n/12 c[]\T1/lmtt/m/n/12 ([]"Dim"[], []"Lu
 n"[], []"Mar"[], []"Mer"[], []"Jeu"[], []"Ven"[], []"Sam"[]))[] 
  []
 
-<figure/unnamed-chunk-23.pdf, id=518, 505.89pt x 505.89pt>
+<figure/unnamed-chunk-23.pdf, id=528, 505.89pt x 505.89pt>
 File: figure/unnamed-chunk-23.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-23.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-23.pdf used on input line 676.
+Package pdftex.def Info: figure/unnamed-chunk-23.pdf used on input line 680.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 676--677
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 680--681
 [][] 
  []
 
@@ -1515,23 +1515,23 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [26 <./figure/act_sem.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 683.
+Package xcolor Warning: Incompatible color definition on input line 687.
 
 
-Overfull \hbox (284.14944pt too wide) in paragraph at lines 687--687
+Overfull \hbox (284.14944pt too wide) in paragraph at lines 691--691
 [][]\T1/lmtt/b/n/12 barplot[]\T1/lmtt/m/n/12 ([]\T1/lmtt/b/n/12 table[]\T1/lmtt
 /m/n/12 (h), xlab = []"Heures de la journée"[], ylab = []"nombre"[], main = []"
 Répartition des RPU sur le nycthémère"[])[] 
  []
 
-<figure/unnamed-chunk-24.pdf, id=530, 505.89pt x 505.89pt>
+<figure/unnamed-chunk-24.pdf, id=540, 505.89pt x 505.89pt>
 File: figure/unnamed-chunk-24.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-24.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-24.pdf used on input line 690.
+Package pdftex.def Info: figure/unnamed-chunk-24.pdf used on input line 694.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 690--691
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 694--695
 [][] 
  []
 
@@ -1540,59 +1540,59 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [27 <./figure/unnamed-chunk-23.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 715.
+Package xcolor Warning: Incompatible color definition on input line 719.
 
 [28 <./figure/unnamed-chunk-24.pdf>] (../blah.gen
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 6.
 )
 
-Package xcolor Warning: Incompatible color definition on input line 762.
+Package xcolor Warning: Incompatible color definition on input line 766.
 
-<figure/test23.pdf, id=555, 505.89pt x 361.35pt>
+<figure/test23.pdf, id=565, 505.89pt x 361.35pt>
 File: figure/test23.pdf Graphic file (type pdf)
  <use figure/test23.pdf>
-Package pdftex.def Info: figure/test23.pdf used on input line 763.
+Package pdftex.def Info: figure/test23.pdf used on input line 767.
 (pdftex.def)             Requested size: 415.12572pt x 296.52396pt.
 
 
-Package xcolor Warning: Incompatible color definition on input line 776.
+Package xcolor Warning: Incompatible color definition on input line 780.
 
-<figure/test25.pdf, id=556, 505.89pt x 722.7pt>
+<figure/test25.pdf, id=566, 505.89pt x 722.7pt>
 File: figure/test25.pdf Graphic file (type pdf)
  <use figure/test25.pdf>
-Package pdftex.def Info: figure/test25.pdf used on input line 777.
+Package pdftex.def Info: figure/test25.pdf used on input line 781.
 (pdftex.def)             Requested size: 415.12572pt x 593.0479pt.
 
 
-Package xcolor Warning: Incompatible color definition on input line 790.
+Package xcolor Warning: Incompatible color definition on input line 794.
 
-<figure/test2.pdf, id=557, 505.89pt x 361.35pt>
+<figure/test2.pdf, id=567, 505.89pt x 361.35pt>
 File: figure/test2.pdf Graphic file (type pdf)
  <use figure/test2.pdf>
-Package pdftex.def Info: figure/test2.pdf used on input line 791.
+Package pdftex.def Info: figure/test2.pdf used on input line 795.
 (pdftex.def)             Requested size: 415.12572pt x 296.52396pt.
 
 
-Package xcolor Warning: Incompatible color definition on input line 804.
+Package xcolor Warning: Incompatible color definition on input line 808.
 
-<figure/test22.pdf, id=558, 505.89pt x 361.35pt>
+<figure/test22.pdf, id=568, 505.89pt x 361.35pt>
 File: figure/test22.pdf Graphic file (type pdf)
  <use figure/test22.pdf>
-Package pdftex.def Info: figure/test22.pdf used on input line 805.
+Package pdftex.def Info: figure/test22.pdf used on input line 809.
 (pdftex.def)             Requested size: 415.12572pt x 296.52396pt.
 
 [29 <./figure/test23.pdf>] [30 <./figure/test25.pdf>] [31 <./figure/test2.pdf>]
 [32] [33 <./figure/test22.pdf>]
 Chapitre 8.
-<figure/mode_entree.pdf, id=606, 505.89pt x 505.89pt>
+<figure/mode_entree.pdf, id=616, 505.89pt x 505.89pt>
 File: figure/mode_entree.pdf Graphic file (type pdf)
 
 <use figure/mode_entree.pdf>
-Package pdftex.def Info: figure/mode_entree.pdf used on input line 831.
+Package pdftex.def Info: figure/mode_entree.pdf used on input line 835.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 831--850
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 835--854
 [][]
  []
 
@@ -1603,36 +1603,36 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 [35 <./figure/mode_entree.pdf>]
-<figure/transport.pdf, id=623, 505.89pt x 505.89pt>
+<figure/transport.pdf, id=633, 505.89pt x 505.89pt>
 File: figure/transport.pdf Graphic file (type pdf)
  <use figure/transport.pdf>
-Package pdftex.def Info: figure/transport.pdf used on input line 861.
+Package pdftex.def Info: figure/transport.pdf used on input line 865.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 861--883
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 865--887
 [][]
  []
 
 [36 <./figure/transport.pdf>] [37]
 Chapitre 9.
 
-Package xcolor Warning: Incompatible color definition on input line 908.
+Package xcolor Warning: Incompatible color definition on input line 912.
 
 
-Package xcolor Warning: Incompatible color definition on input line 911.
+Package xcolor Warning: Incompatible color definition on input line 915.
 
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 914
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 918
 .
 (/usr/share/texmf/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-<figure/passage.pdf, id=640, 505.89pt x 505.89pt>
+<figure/passage.pdf, id=650, 505.89pt x 505.89pt>
 File: figure/passage.pdf Graphic file (type pdf)
  <use figure/passage.pdf>
-Package pdftex.def Info: figure/passage.pdf used on input line 916.
+Package pdftex.def Info: figure/passage.pdf used on input line 920.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 916--917
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 920--921
 [][] 
  []
 
@@ -1643,31 +1643,31 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 
-Package xcolor Warning: Incompatible color definition on input line 934.
+Package xcolor Warning: Incompatible color definition on input line 938.
 
-<figure/duree_heure1.pdf, id=646, 505.89pt x 505.89pt>
+<figure/duree_heure1.pdf, id=656, 505.89pt x 505.89pt>
 File: figure/duree_heure1.pdf Graphic file (type pdf)
 
 <use figure/duree_heure1.pdf>
-Package pdftex.def Info: figure/duree_heure1.pdf used on input line 940.
+Package pdftex.def Info: figure/duree_heure1.pdf used on input line 944.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 940--941
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 944--945
 [][] 
  []
 
 
 Underfull \vbox (badness 8151) has occurred while \output is active []
 
- [39 <./figure/passage.pdf>] <figure/duree_heure2.pdf, id=661, 505.89pt x 505.8
+ [39 <./figure/passage.pdf>] <figure/duree_heure2.pdf, id=671, 505.89pt x 505.8
 9pt>
 File: figure/duree_heure2.pdf Graphic file (type pdf)
 
 <use figure/duree_heure2.pdf>
-Package pdftex.def Info: figure/duree_heure2.pdf used on input line 946.
+Package pdftex.def Info: figure/duree_heure2.pdf used on input line 950.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 946--947
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 950--951
 [][] 
  []
 
@@ -1676,15 +1676,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [40 <./figure/duree_heure1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 956.
+Package xcolor Warning: Incompatible color definition on input line 960.
 
-<figure/duree_age.pdf, id=672, 505.89pt x 505.89pt>
+<figure/duree_age.pdf, id=682, 505.89pt x 505.89pt>
 File: figure/duree_age.pdf Graphic file (type pdf)
  <use figure/duree_age.pdf>
-Package pdftex.def Info: figure/duree_age.pdf used on input line 964.
+Package pdftex.def Info: figure/duree_age.pdf used on input line 968.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 964--965
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 968--969
 [][] 
  []
 
@@ -1693,152 +1693,152 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [41 <./figure/duree_heure2.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 971.
+Package xcolor Warning: Incompatible color definition on input line 975.
 
 
-Package xcolor Warning: Incompatible color definition on input line 993.
+Package xcolor Warning: Incompatible color definition on input line 997.
 
 [42 <./figure/duree_age.pdf>]
-Overfull \hbox (41.82451pt too wide) in paragraph at lines 1001--1001
+Overfull \hbox (41.82451pt too wide) in paragraph at lines 1005--1005
 []\T1/lmtt/m/n/12 ##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    S
 C  SCAM    SI[] 
  []
 
 
-Overfull \hbox (41.78949pt too wide) in paragraph at lines 1001--1001
-[]\T1/lmtt/m/n/12 ## 187.9 114.5    NA    NA 226.7 164.1 177.3 195.3    NA 280.
-0 158.3 190.5[] 
+Overfull \hbox (41.78249pt too wide) in paragraph at lines 1005--1005
+[]\T1/lmtt/m/n/12 ## 187.1 114.5    NA    NA 226.5 164.1 177.3 196.9    NA 280.
+0 158.3 193.2[] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 1009.
+Package xcolor Warning: Incompatible color definition on input line 1013.
 
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1019.
+(hyperref)                than one, level fixed on input line 1023.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1021.
+Package xcolor Warning: Incompatible color definition on input line 1025.
 
 [43]
 Chapitre 10.
 
-Overfull \hbox (1.66063pt too wide) in paragraph at lines 1049--1050
+Overfull \hbox (1.66063pt too wide) in paragraph at lines 1053--1054
 []\T1/lmr/m/n/12 Ventilation des di-ag-nos-tics prin-ci-paux en fonc-tion des 2
 2 chapitres de la CIM10.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1062--1062
+Underfull \hbox (badness 10000) in paragraph at lines 1066--1066
 []|\T1/lmr/m/n/12 Certaines mal-adies
  []
 
 
-Underfull \hbox (badness 2538) in paragraph at lines 1062--1062
+Underfull \hbox (badness 2538) in paragraph at lines 1066--1066
 \T1/lmr/m/n/12 in-fec-tieuses et par-a-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1065--1065
+Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
 []|\T1/lmr/m/n/12 Maladies du sang
  []
 
 
-Underfull \hbox (badness 4981) in paragraph at lines 1065--1065
+Underfull \hbox (badness 4981) in paragraph at lines 1069--1069
 \T1/lmr/m/n/12 et des or-ganes hé-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1065--1065
+Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
 \T1/lmr/m/n/12 matopoïé-tiques et
  []
 
 
-Underfull \hbox (badness 2762) in paragraph at lines 1065--1065
+Underfull \hbox (badness 2762) in paragraph at lines 1069--1069
 \T1/lmr/m/n/12 cer-tains trou-bles du
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1067--1067
+Underfull \hbox (badness 10000) in paragraph at lines 1071--1071
 []|\T1/lmr/m/n/12 Maladies en-docrini-
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 1067--1067
+Underfull \hbox (badness 1648) in paragraph at lines 1071--1071
 \T1/lmr/m/n/12 ennes, nu-tri-tion-nelles
  []
 
 
-Underfull \hbox (badness 2582) in paragraph at lines 1075--1075
+Underfull \hbox (badness 2582) in paragraph at lines 1079--1079
 []|\T1/lmr/m/n/12 Maladies de l'or-eille
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
+Underfull \hbox (badness 10000) in paragraph at lines 1089--1089
 \T1/lmr/m/n/12 os-téoar-tic-u-laire, des
  []
 
 
-Underfull \hbox (badness 2253) in paragraph at lines 1085--1085
+Underfull \hbox (badness 2253) in paragraph at lines 1089--1089
 \T1/lmr/m/n/12 mus-cles et du tissu
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1089--1089
+Underfull \hbox (badness 10000) in paragraph at lines 1093--1093
 []|\T1/lmr/m/n/12 Grossesse, ac-couche-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1091--1091
+Underfull \hbox (badness 10000) in paragraph at lines 1095--1095
 []|\T1/lmr/m/n/12 Certaines af-fec-tions
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1091--1091
+Underfull \hbox (badness 10000) in paragraph at lines 1095--1095
 \T1/lmr/m/n/12 dont l'o-rig-ine se
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1095--1095
+Underfull \hbox (badness 10000) in paragraph at lines 1099--1099
 \T1/lmr/m/n/12 ré-sul-tats anor-maux
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1095--1095
+Underfull \hbox (badness 10000) in paragraph at lines 1099--1099
 \T1/lmr/m/n/12 d'ex-a-m-ens clin-iques
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1097--1097
+Underfull \hbox (badness 10000) in paragraph at lines 1101--1101
 \T1/lmr/m/n/12 em-poi-son-nements et
  []
 
 
-Underfull \hbox (badness 3396) in paragraph at lines 1097--1097
+Underfull \hbox (badness 3396) in paragraph at lines 1101--1101
 \T1/lmr/m/n/12 séquences de causes
  []
 
 
-Underfull \hbox (badness 7704) in paragraph at lines 1099--1099
+Underfull \hbox (badness 7704) in paragraph at lines 1103--1103
 []|\T1/lmr/m/n/12 Causes ex-ternes de
  []
 
 
-Overfull \hbox (10.43675pt too wide) in alignment at lines 1057--1100
+Overfull \hbox (10.43675pt too wide) in alignment at lines 1061--1104
  [] [] [] [] [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1100
+Underfull \vbox (badness 10000) detected at line 1104
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1103--1103
+Underfull \hbox (badness 10000) in paragraph at lines 1107--1107
 []|\T1/lmr/m/n/12 Codes d'u-til-i-sa-tion
  []
 
 
-Overfull \hbox (10.43675pt too wide) in alignment at lines 1100--1106
+Overfull \hbox (10.43675pt too wide) in alignment at lines 1104--1110
  [] [] [] [] [] [] 
  []
 
@@ -1846,16 +1846,16 @@ Overfull \hbox (10.43675pt too wide) in alignment at lines 1100--1106
 
 ]
 
-Package xcolor Warning: Incompatible color definition on input line 1111.
+Package xcolor Warning: Incompatible color definition on input line 1115.
 
-<figure/class_cim10.pdf, id=715, 505.89pt x 505.89pt>
+<figure/class_cim10.pdf, id=725, 505.89pt x 505.89pt>
 File: figure/class_cim10.pdf Graphic file (type pdf)
 
 <use figure/class_cim10.pdf>
-Package pdftex.def Info: figure/class_cim10.pdf used on input line 1112.
+Package pdftex.def Info: figure/class_cim10.pdf used on input line 1116.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1112--1113
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1116--1117
 [][] 
  []
 
@@ -1864,37 +1864,37 @@ Underfull \vbox (badness 6708) has occurred while \output is active []
 
  [45]
 [46 <./figure/class_cim10.pdf>]
-Overfull \hbox (148.95003pt too wide) in alignment at lines 1159--1182
+Overfull \hbox (148.95003pt too wide) in alignment at lines 1163--1186
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1182
+Underfull \vbox (badness 10000) detected at line 1186
  []
 
 
-Overfull \hbox (148.95003pt too wide) in alignment at lines 1182--1202
+Overfull \hbox (148.95003pt too wide) in alignment at lines 1186--1206
  [] [] 
  []
 
 
-Overfull \hbox (148.95003pt too wide) in alignment at lines 1202--1212
+Overfull \hbox (148.95003pt too wide) in alignment at lines 1206--1216
  [] [] 
  []
 
 [47]
 
-Package xcolor Warning: Incompatible color definition on input line 1215.
+Package xcolor Warning: Incompatible color definition on input line 1219.
 
 
-Overfull \hbox (67.27443pt too wide) in paragraph at lines 1218--1218
+Overfull \hbox (67.27443pt too wide) in paragraph at lines 1222--1222
 []\T1/lmtt/m/n/12 dpr <- d1[![]\T1/lmtt/b/n/12 is.na[]\T1/lmtt/m/n/12 (d1$DP), 
 []\T1/lmtt/b/n/12 c[]\T1/lmtt/m/n/12 ([]"DP"[], []"CODE_POSTAL"[], []"ENTREE"[]
 , []"FINESS"[], []"GRAVITE"[],[] 
  []
 
 
-Overfull \hbox (130.51027pt too wide) in paragraph at lines 1229--1229
+Overfull \hbox (130.51027pt too wide) in paragraph at lines 1233--1233
 []\T1/lmtt/m/n/12 AVC <- dpr[[]\T1/lmtt/b/n/12 substr[]\T1/lmtt/m/n/12 (dpr$DP,
  1, 3) >= []"I60"[] & []\T1/lmtt/b/n/12 substr[]\T1/lmtt/m/n/12 (dpr$DP, 1, 3) 
 < []"I65"[] | []\T1/lmtt/b/n/12 substr[]\T1/lmtt/m/n/12 (dpr$DP,[] 
@@ -1902,27 +1902,27 @@ Overfull \hbox (130.51027pt too wide) in paragraph at lines 1229--1229
 
 [48]
 
-Package xcolor Warning: Incompatible color definition on input line 1246.
+Package xcolor Warning: Incompatible color definition on input line 1250.
 
-<figure/heure_avc1.pdf, id=741, 505.89pt x 505.89pt>
+<figure/heure_avc1.pdf, id=751, 505.89pt x 505.89pt>
 File: figure/heure_avc1.pdf Graphic file (type pdf)
 
 <use figure/heure_avc1.pdf>
-Package pdftex.def Info: figure/heure_avc1.pdf used on input line 1247.
+Package pdftex.def Info: figure/heure_avc1.pdf used on input line 1251.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1247--1248
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1251--1252
 [][] 
  []
 
-<figure/heure_avc2.pdf, id=742, 505.89pt x 505.89pt>
+<figure/heure_avc2.pdf, id=752, 505.89pt x 505.89pt>
 File: figure/heure_avc2.pdf Graphic file (type pdf)
 
 <use figure/heure_avc2.pdf>
-Package pdftex.def Info: figure/heure_avc2.pdf used on input line 1249.
+Package pdftex.def Info: figure/heure_avc2.pdf used on input line 1253.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1249--1250
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1253--1254
 [][] 
  []
 
@@ -1931,16 +1931,16 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [49 <./figure/heure_avc1.pdf>] [50 <./figure/heure_avc2.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 1287.
+Package xcolor Warning: Incompatible color definition on input line 1291.
 
-<figure/avc_jour_semaine.pdf, id=764, 505.89pt x 505.89pt>
+<figure/avc_jour_semaine.pdf, id=774, 505.89pt x 505.89pt>
 File: figure/avc_jour_semaine.pdf Graphic file (type pdf)
 
 <use figure/avc_jour_semaine.pdf>
-Package pdftex.def Info: figure/avc_jour_semaine.pdf used on input line 1297.
+Package pdftex.def Info: figure/avc_jour_semaine.pdf used on input line 1301.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1297--1298
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1301--1302
 [][] 
  []
 
@@ -1949,55 +1949,55 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [51]
 
-Package xcolor Warning: Incompatible color definition on input line 1306.
+Package xcolor Warning: Incompatible color definition on input line 1310.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1319.
+Package xcolor Warning: Incompatible color definition on input line 1323.
 
-<figure/avc_sexe1.pdf, id=770, 505.89pt x 505.89pt>
+<figure/avc_sexe1.pdf, id=780, 505.89pt x 505.89pt>
 File: figure/avc_sexe1.pdf Graphic file (type pdf)
  <use figure/avc_sexe1.pdf>
-Package pdftex.def Info: figure/avc_sexe1.pdf used on input line 1325.
-(pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1325--1326
-[][] 
- []
-
-<figure/avc_sexe2.pdf, id=771, 505.89pt x 505.89pt> [52 <./figure/avc_jour_sema
-ine.pdf>]
-File: figure/avc_sexe2.pdf Graphic file (type pdf)
- <use figure/avc_sexe2.pdf>
-Package pdftex.def Info: figure/avc_sexe2.pdf used on input line 1327.
-(pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1327--1328
-[][] 
- []
-
-<figure/avc_sexe3.pdf, id=784, 505.89pt x 505.89pt>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [53 <./figure/avc_sexe1.pdf>]
-File: figure/avc_sexe3.pdf Graphic file (type pdf)
- <use figure/avc_sexe3.pdf>
-Package pdftex.def Info: figure/avc_sexe3.pdf used on input line 1329.
+Package pdftex.def Info: figure/avc_sexe1.pdf used on input line 1329.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
 Overfull \hbox (17.62482pt too wide) in paragraph at lines 1329--1330
 [][] 
  []
 
-<figure/avc_sexe4.pdf, id=795, 505.89pt x 505.89pt>
+<figure/avc_sexe2.pdf, id=781, 505.89pt x 505.89pt> [52 <./figure/avc_jour_sema
+ine.pdf>]
+File: figure/avc_sexe2.pdf Graphic file (type pdf)
+ <use figure/avc_sexe2.pdf>
+Package pdftex.def Info: figure/avc_sexe2.pdf used on input line 1331.
+(pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1331--1332
+[][] 
+ []
+
+<figure/avc_sexe3.pdf, id=794, 505.89pt x 505.89pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [53 <./figure/avc_sexe1.pdf>]
+File: figure/avc_sexe3.pdf Graphic file (type pdf)
+ <use figure/avc_sexe3.pdf>
+Package pdftex.def Info: figure/avc_sexe3.pdf used on input line 1333.
+(pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1333--1334
+[][] 
+ []
+
+<figure/avc_sexe4.pdf, id=805, 505.89pt x 505.89pt>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [54 <./figure/avc_sexe2.pdf>]
 File: figure/avc_sexe4.pdf Graphic file (type pdf)
  <use figure/avc_sexe4.pdf>
-Package pdftex.def Info: figure/avc_sexe4.pdf used on input line 1331.
+Package pdftex.def Info: figure/avc_sexe4.pdf used on input line 1335.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1331--1332
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1335--1336
 [][] 
  []
 
@@ -2005,24 +2005,24 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 1331--1332
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [55 <./figure/avc_sexe3.pdf>]
-Overfull \hbox (103.32106pt too wide) in alignment at lines 1341--1352
+Overfull \hbox (103.32106pt too wide) in alignment at lines 1345--1356
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1352
+Underfull \vbox (badness 10000) detected at line 1356
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 1358.
+Package xcolor Warning: Incompatible color definition on input line 1362.
 
-<figure/ait.pdf, id=818, 505.89pt x 505.89pt>
+<figure/ait.pdf, id=828, 505.89pt x 505.89pt>
 File: figure/ait.pdf Graphic file (type pdf)
  <use figure/ait.pdf>
-Package pdftex.def Info: figure/ait.pdf used on input line 1359.
+Package pdftex.def Info: figure/ait.pdf used on input line 1363.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1359--1360
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1363--1364
 [][] 
  []
 
@@ -2031,470 +2031,531 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [56 <./figure/avc_sexe4.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 1379.
+Package xcolor Warning: Incompatible color definition on input line 1383.
 
 [57 <./figure/ait.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 1395.
+Package xcolor Warning: Incompatible color definition on input line 1399.
 
-<figure/pneumo.pdf, id=842, 505.89pt x 505.89pt>
+<figure/pneumo.pdf, id=852, 505.89pt x 505.89pt>
 File: figure/pneumo.pdf Graphic file (type pdf)
  <use figure/pneumo.pdf>
-Package pdftex.def Info: figure/pneumo.pdf used on input line 1396.
+Package pdftex.def Info: figure/pneumo.pdf used on input line 1400.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1396--1397
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1400--1401
 [][] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 1403.
+Package xcolor Warning: Incompatible color definition on input line 1407.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1414.
+Package xcolor Warning: Incompatible color definition on input line 1418.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1424.
+Package xcolor Warning: Incompatible color definition on input line 1428.
 
 
-Overfull \hbox (41.82451pt too wide) in paragraph at lines 1430--1430
+Overfull \hbox (41.82451pt too wide) in paragraph at lines 1434--1434
 []\T1/lmtt/m/n/12 ##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    S
 C  SCAM    SI[] 
  []
 
 
-Overfull \hbox (41.82451pt too wide) in paragraph at lines 1430--1430
-[]\T1/lmtt/m/n/12 ##    10     0     0     0   177     0     0     3     0     
+Overfull \hbox (41.8175pt too wide) in paragraph at lines 1434--1434
+[]\T1/lmtt/m/n/12 ##    10     0     0     0   189     0     0     4     0     
 4     0     2[] 
  []
 
-[58 <./figure/pneumo.pdf>] [59]
-Chapitre 11.
+[58 <./figure/pneumo.pdf>]
 
-Package pdftex.def Warning: Option `bb' does not make sense,
-(pdftex.def)                using `viewport' instead on input line 1459.
+Package xcolor Warning: Incompatible color definition on input line 1445.
 
-
-LaTeX Warning: File `figure/Mode de SORTIE.png' not found on input line 1459.
-
-<figure/Mode de SORTIE.png, id=857, 671.50874pt x 438.63875pt>
-File: figure/Mode de SORTIE.png Graphic file (type png)
-
-<use figure/Mode de SORTIE.png>
-Package pdftex.def Info: figure/Mode de SORTIE.png used on input line 1459.
-(pdftex.def)             Requested size: 256.06804pt x 199.17314pt.
- [60
-
- <./figure/Mode de SORTIE.png (PNG copy)>]
-
-Package xcolor Warning: Incompatible color definition on input line 1535.
-
-
-Overfull \hbox (29.4745pt too wide) in paragraph at lines 1546--1546
-[]\T1/lmtt/m/n/12 ##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA   
- REO     SC[] 
- []
-
-
-Overfull \hbox (29.43248pt too wide) in paragraph at lines 1546--1546
-[]\T1/lmtt/m/n/12 ##   4285    147     76     19   9790     60   1825    573   
- 793    785[] 
- []
-
-
-Overfull \hbox (29.4745pt too wide) in paragraph at lines 1557--1557
-[]\T1/lmtt/m/n/12 ##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA   
- REO     SC[] 
- []
-
-
-Overfull \hbox (29.43248pt too wide) in paragraph at lines 1557--1557
-[]\T1/lmtt/m/n/12 ##   4285    147     76     19   9790     60   1825    573   
- 793    785[] 
- []
-
-[61]
-
-LaTeX Warning: Reference `sortie:erreurs' on page 62 undefined on input line 16
-22.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1625.
-
-[62]
-Overfull \hbox (29.4745pt too wide) in paragraph at lines 1635--1635
-[]\T1/lmtt/m/n/12 ##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA   
- REO     SC[] 
- []
-
-
-Overfull \hbox (29.44649pt too wide) in paragraph at lines 1635--1635
-[]\T1/lmtt/m/n/12 ##     73    146      9      1     48      1   1791      6   
- 774      2[] 
- []
-
-
-Overfull \hbox (41.82451pt too wide) in paragraph at lines 1646--1646
-[]\T1/lmtt/m/n/12 ##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    S
-C  SCAM    SI[] 
- []
-
-
-Overfull \hbox (41.7965pt too wide) in paragraph at lines 1646--1646
-[]\T1/lmtt/m/n/12 ##  2.22  4.43  0.27  0.03  1.46  0.03 54.39  0.18 23.50  0.0
-6  8.50  0.64[] 
- []
-
-
-Overfull \hbox (129.89935pt too wide) in paragraph at lines 1648--1648
-[][]\T1/lmtt/b/n/12 tab1[]\T1/lmtt/m/n/12 ([]\T1/lmtt/b/n/12 as.factor[]\T1/lmt
-t/m/n/12 (a$ORIENTATION), sort.group = []"decreasing"[], horiz = TRUE, cex.name
-s = 0.8,[] 
- []
-
-
-Overfull \hbox (72.69952pt too wide) in paragraph at lines 1649--1649
-[]    \T1/lmtt/m/n/12 xlab = []""[], main = []"Orientation des patients non hos
-pitalisés"[], missing = F)[] 
- []
-
-<figure/fausses_sorties.pdf, id=876, 505.89pt x 505.89pt>
-File: figure/fausses_sorties.pdf Graphic file (type pdf)
-
-<use figure/fausses_sorties.pdf>
-Package pdftex.def Info: figure/fausses_sorties.pdf used on input line 1652.
+<figure/grippe.pdf, id=863, 505.89pt x 505.89pt>
+File: figure/grippe.pdf Graphic file (type pdf)
+ <use figure/grippe.pdf>
+Package pdftex.def Info: figure/grippe.pdf used on input line 1446.
 (pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1652--1653
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1446--1447
+[][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 1455.
+
+<figure/malaises.pdf, id=864, 505.89pt x 505.89pt>
+File: figure/malaises.pdf Graphic file (type pdf)
+ <use figure/malaises.pdf>
+Package pdftex.def Info: figure/malaises.pdf used on input line 1456.
+(pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1456--1457
 [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [63]
-[64 <./figure/fausses_sorties.pdf>] [65]
+ [59 <./figure/grippe.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1463.
+
+<figure/malaises_invs1.pdf, id=875, 505.89pt x 505.89pt>
+File: figure/malaises_invs1.pdf Graphic file (type pdf)
+
+<use figure/malaises_invs1.pdf>
+Package pdftex.def Info: figure/malaises_invs1.pdf used on input line 1464.
+(pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
+
+Overfull \hbox (178.65851pt too wide) in paragraph at lines 1461--1465
+[]\T1/lmr/m/n/12 malaise selon INVS (canicule) :  [][] 
+ []
+
+<figure/malaises_invs2.pdf, id=876, 505.89pt x 505.89pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [60 <./figure/malaises.pdf>]
+File: figure/malaises_invs2.pdf Graphic file (type pdf)
+ <use figure/malaises_invs2.pdf>
+Package pdftex.def Info: figure/malaises_invs2.pdf used on input line 1466.
+(pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1466--1467
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [61 <./figure/malaises_invs1.pdf>] [62 <./figure/malaises_invs2.pdf>]
+Chapitre 11.
+
+Package pdftex.def Warning: Option `bb' does not make sense,
+(pdftex.def)                using `viewport' instead on input line 1494.
+
+
+LaTeX Warning: File `figure/Mode de SORTIE.png' not found on input line 1494.
+
+<figure/Mode de SORTIE.png, id=908, 671.50874pt x 438.63875pt>
+File: figure/Mode de SORTIE.png Graphic file (type png)
+
+<use figure/Mode de SORTIE.png>
+Package pdftex.def Info: figure/Mode de SORTIE.png used on input line 1494.
+(pdftex.def)             Requested size: 256.06804pt x 199.17314pt.
+ [63
+
+ <./figure/Mode de SORTIE.png (PNG copy)>]
+
+Package xcolor Warning: Incompatible color definition on input line 1570.
+
+
+Overfull \hbox (29.4745pt too wide) in paragraph at lines 1581--1581
+[]\T1/lmtt/m/n/12 ##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA   
+ REO     SC[] 
+ []
+
+
+Overfull \hbox (29.37645pt too wide) in paragraph at lines 1581--1581
+[]\T1/lmtt/m/n/12 ##   4964    169     89     21  11192     64   2049    660   
+ 963    896[] 
+ []
+
+
+Overfull \hbox (29.4745pt too wide) in paragraph at lines 1592--1592
+[]\T1/lmtt/m/n/12 ##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA   
+ REO     SC[] 
+ []
+
+
+Overfull \hbox (29.37645pt too wide) in paragraph at lines 1592--1592
+[]\T1/lmtt/m/n/12 ##   4964    169     89     21  11192     64   2049    660   
+ 963    896[] 
+ []
+
+[64]
+
+LaTeX Warning: Reference `sortie:erreurs' on page 65 undefined on input line 16
+57.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1660.
+
+[65]
+Overfull \hbox (29.4745pt too wide) in paragraph at lines 1670--1670
+[]\T1/lmtt/m/n/12 ##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA   
+ REO     SC[] 
+ []
+
+
+Overfull \hbox (29.44649pt too wide) in paragraph at lines 1670--1670
+[]\T1/lmtt/m/n/12 ##     83    168     10      2     49      1   2008      9   
+ 941      3[] 
+ []
+
+
+Overfull \hbox (41.82451pt too wide) in paragraph at lines 1681--1681
+[]\T1/lmtt/m/n/12 ##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    S
+C  SCAM    SI[] 
+ []
+
+
+Overfull \hbox (41.78949pt too wide) in paragraph at lines 1681--1681
+[]\T1/lmtt/m/n/12 ##  2.19  4.43  0.26  0.05  1.29  0.03 52.95  0.24 24.82  0.0
+8  8.68  0.55[] 
+ []
+
+
+Overfull \hbox (129.89935pt too wide) in paragraph at lines 1683--1683
+[][]\T1/lmtt/b/n/12 tab1[]\T1/lmtt/m/n/12 ([]\T1/lmtt/b/n/12 as.factor[]\T1/lmt
+t/m/n/12 (a$ORIENTATION), sort.group = []"decreasing"[], horiz = TRUE, cex.name
+s = 0.8,[] 
+ []
+
+
+Overfull \hbox (72.69952pt too wide) in paragraph at lines 1684--1684
+[]    \T1/lmtt/m/n/12 xlab = []""[], main = []"Orientation des patients non hos
+pitalisés"[], missing = F)[] 
+ []
+
+<figure/fausses_sorties.pdf, id=926, 505.89pt x 505.89pt>
+File: figure/fausses_sorties.pdf Graphic file (type pdf)
+
+<use figure/fausses_sorties.pdf>
+Package pdftex.def Info: figure/fausses_sorties.pdf used on input line 1687.
+(pdftex.def)             Requested size: 415.12572pt x 415.13351pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1687--1688
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [66]
+[67 <./figure/fausses_sorties.pdf>] [68]
 Chapitre 12.
-[66
+[69
 
 ]
 Chapitre 13.
-[67
+[70
 
-] [68
+] [71
 
 ]
 Chapitre 14.
-[69
+[72
 
-] [70
+] [73
 
 ]
 Chapitre 15.
 
-Package xcolor Warning: Incompatible color definition on input line 1746.
+Package xcolor Warning: Incompatible color definition on input line 1781.
 
 
-Overfull \hbox (10.9495pt too wide) in paragraph at lines 1763--1763
+Overfull \hbox (10.9495pt too wide) in paragraph at lines 1798--1798
 []\T1/lmtt/m/n/12 ##  [1] "id"            "CODE_POSTAL"   "COMMUNE"       "DEST
 INATION"[] 
  []
 
-[71
+[74
 
 ]
 Chapitre 16.
 
-Package xcolor Warning: Incompatible color definition on input line 1771.
+Package xcolor Warning: Incompatible color definition on input line 1806.
 
 
-Overfull \hbox (628.35875pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (628.35875pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ id           : chr  "2c9d83843bf5e01d013bf5e985d20225" 
 "2c9d83843bf5e01d013bf5e986950226" "2c9d83843bf5e01d013bf5e987620227" "2c9d8384
 3bf5e01d013bf5e988060228" ...[] 
  []
 
 
-Overfull \hbox (239.35457pt too wide) in paragraph at lines 1798--1798
-[]\T1/lmtt/m/n/12 ##  $ CODE_POSTAL  : Factor w/ 2116 levels "00000","00159",..
+Overfull \hbox (239.35457pt too wide) in paragraph at lines 1833--1833
+[]\T1/lmtt/m/n/12 ##  $ CODE_POSTAL  : Factor w/ 2426 levels "00000","00159",..
 : 706 706 706 706 706 701 818 706 706 706 ...[] 
  []
 
 
-Overfull \hbox (387.62468pt too wide) in paragraph at lines 1798--1798
-[]\T1/lmtt/m/n/12 ##  $ COMMUNE      : Factor w/ 4344 levels "00","01257 DRESDE
+Overfull \hbox (387.61067pt too wide) in paragraph at lines 1833--1833
+[]\T1/lmtt/m/n/12 ##  $ COMMUNE      : Factor w/ 4992 levels "00","01257 DRESDE
 N ALLEMAGNE",..: 2184 2184 2184 2184 741 2048 2033 2184 2184 2184 ...[] 
  []
 
 
-Overfull \hbox (152.97456pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (152.97456pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ DESTINATION  : Factor w/ 7 levels "NA","MCO","SSR",..: 
 NA NA NA NA NA NA 2 NA 2 NA ...[] 
  []
 
 
-Overfull \hbox (307.33563pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (307.33563pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ ENTREE       : chr  "2013-01-01 00:04:00" "2013-01-01 0
 0:16:00" "2013-01-01 00:26:00" "2013-01-01 00:32:00" ...[] 
  []
 
 
-Overfull \hbox (307.34964pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (307.34964pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ EXTRACT      : chr  "2013-01-01 05:37:00" "2013-01-01 0
 5:37:00" "2013-01-01 05:37:00" "2013-01-01 05:37:00" ...[] 
  []
 
 
-Overfull \hbox (177.67458pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (177.67458pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ FINESS       : Factor w/ 12 levels "3Fr","Alk","Col",..
 : 10 10 10 10 10 10 10 10 10 10 ...[] 
  []
 
 
-Overfull \hbox (97.39954pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (97.39954pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ GRAVITE      : Factor w/ 7 levels "1","2","3","4",..: 2
  2 3 2 2 1 3 2 2 2 ...[] 
  []
 
 
-Overfull \hbox (97.39954pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (97.39954pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ MODE_ENTREE  : Factor w/ 5 levels "NA","Mutation",..: 4
  4 4 4 4 4 4 4 4 4 ...[] 
  []
 
 
-Overfull \hbox (97.39954pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (97.39954pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ MODE_SORTIE  : Factor w/ 5 levels "NA","Mutation",..: 4
  4 4 4 4 4 2 4 2 4 ...[] 
  []
 
 
-Overfull \hbox (60.34952pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (60.34952pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ MOTIF        : chr  "GASTRO04" "DIVERS23" "TRAUMATO10" 
 "TRAUMATO02" ...[] 
  []
 
 
-Overfull \hbox (307.30762pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (307.30762pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ NAISSANCE    : chr  "1960-04-08 00:00:00" "1986-03-05 0
 0:00:00" "1971-12-22 00:00:00" "1927-04-27 00:00:00" ...[] 
  []
 
 
-Overfull \hbox (146.79956pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (146.79956pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ ORIENTATION  : Factor w/ 13 levels "CHIR","FUGUE",..: N
 A NA NA NA NA NA 5 NA 5 NA ...[] 
  []
 
 
-Overfull \hbox (103.5045pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (103.5045pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ PROVENANCE   : Factor w/ 7 levels "NA","MCO","SSR",..: 
 6 6 6 6 6 6 6 6 6 6 ...[] 
  []
 
 
-Overfull \hbox (54.17451pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (54.17451pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ SEXE         : Factor w/ 3 levels "F","I","M": 3 3 3 1 
 3 3 1 1 1 1 ...[] 
  []
 
 
-Overfull \hbox (307.34964pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (307.34964pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ SORTIE       : chr  "2013-01-01 02:38:00" "2013-01-01 0
 0:38:00" "2013-01-01 02:07:00" "2013-01-01 01:52:00" ...[] 
  []
 
 
-Overfull \hbox (115.90353pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (115.90353pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ TRANSPORT    : Factor w/ 6 levels "AMBU","FO","HELI",..
 : 4 4 4 1 4 4 6 6 4 4 ...[] 
  []
 
 
-Overfull \hbox (85.04953pt too wide) in paragraph at lines 1798--1798
+Overfull \hbox (85.04953pt too wide) in paragraph at lines 1833--1833
 []\T1/lmtt/m/n/12 ##  $ TRANSPORT_PEC: Factor w/ 3 levels "AUCUN","MED",..: 1 1
  1 3 1 1 2 2 1 1 ...[] 
  []
 
 
-Overfull \hbox (29.4745pt too wide) in paragraph at lines 1851--1851
+Overfull \hbox (29.4745pt too wide) in paragraph at lines 1886--1886
 []\T1/lmtt/m/n/12 ##       id             CODE_POSTAL           COMMUNE        
 DESTINATION[] 
  []
 
 
-Overfull \hbox (41.8035pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##  Length:193102      68000  : 13531   MULHOUSE  : 22610   M
-CO    : 40127[] 
+Overfull \hbox (41.7965pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##  Length:221435      68000  : 15285   MULHOUSE  : 25986   M
+CO    : 45839[] 
  []
 
 
-Overfull \hbox (41.8105pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##  Class :character   68200  : 11867   STRASBOURG: 20105   P
-SY    :   703[] 
+Overfull \hbox (41.8035pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##  Class :character   68200  : 13693   STRASBOURG: 22710   P
+SY    :   805[] 
  []
 
 
-Overfull \hbox (41.8105pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##  Mode  :character   68100  : 10798   COLMAR    : 13527   S
-SR    :    33[] 
+Overfull \hbox (41.8105pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##  Mode  :character   68100  : 12359   COLMAR    : 15282   S
+SR    :    54[] 
  []
 
 
-Overfull \hbox (41.7965pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##                     67100  :  9169   HAGUENAU  :  4028   H
+Overfull \hbox (41.78949pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##                     67100  : 10326   HAGUENAU  :  4666   H
 MS    :    18[] 
  []
 
 
-Overfull \hbox (41.8035pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##                     67000  :  6454   SELESTAT  :  3654   S
-LD    :     8[] 
+Overfull \hbox (41.8175pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##                     67000  :  7317   SELESTAT  :  3832   S
+LD    :    10[] 
  []
 
 
-Overfull \hbox (41.8035pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##                     67600  :  5430   (Other)   :129174   (
+Overfull \hbox (41.8105pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##                     68500  :  5780   (Other)   :148955   (
 Other):     1[] 
  []
 
 
-Overfull \hbox (41.82451pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##                     (Other):135853   NA\TS1/lmtt/m/n/12 '\
-T1/lmtt/m/n/12 s      :     4   NA\TS1/lmtt/m/n/12 '\T1/lmtt/m/n/12 s   :152212
+Overfull \hbox (41.8105pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##                     (Other):156675   NA\TS1/lmtt/m/n/12 '\
+T1/lmtt/m/n/12 s      :     4   NA\TS1/lmtt/m/n/12 '\T1/lmtt/m/n/12 s   :174708
 [] 
  []
 
 
-Overfull \hbox (23.2995pt too wide) in paragraph at lines 1851--1851
+Overfull \hbox (23.2995pt too wide) in paragraph at lines 1886--1886
 []\T1/lmtt/m/n/12 ##       DP               ENTREE            EXTRACT          
     FINESS[] 
  []
 
 
-Overfull \hbox (41.8035pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##  Length:193102      Length:193102      Length:193102      
-Col    :38722[] 
+Overfull \hbox (41.8175pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##  Length:221435      Length:221435      Length:221435      
+Col    :44095[] 
  []
 
 
-Overfull \hbox (41.82451pt too wide) in paragraph at lines 1851--1851
+Overfull \hbox (41.8105pt too wide) in paragraph at lines 1886--1886
 []\T1/lmtt/m/n/12 ##  Class :character   Class :character   Class :character   
-Mul    :31533[] 
+Mul    :36456[] 
  []
 
 
-Overfull \hbox (41.82451pt too wide) in paragraph at lines 1851--1851
+Overfull \hbox (41.82451pt too wide) in paragraph at lines 1886--1886
 []\T1/lmtt/m/n/12 ##  Mode  :character   Mode  :character   Mode  :character   
-Hus    :22438[] 
+Hus    :25412[] 
  []
 
 
-Overfull \hbox (41.82451pt too wide) in paragraph at lines 1851--1851
+Overfull \hbox (41.82451pt too wide) in paragraph at lines 1886--1886
 []\T1/lmtt/m/n/12 ##                                                           
-Hag    :20531[] 
+Hag    :23457[] 
  []
 
 
-Overfull \hbox (41.8105pt too wide) in paragraph at lines 1851--1851
+Overfull \hbox (41.8105pt too wide) in paragraph at lines 1886--1886
 []\T1/lmtt/m/n/12 ##                                                           
-Sel    :17496[] 
+Dia    :19611[] 
  []
 
 
-Overfull \hbox (41.82451pt too wide) in paragraph at lines 1851--1851
+Overfull \hbox (41.82451pt too wide) in paragraph at lines 1886--1886
 []\T1/lmtt/m/n/12 ##                                                           
-Dia    :17150[] 
+Sel    :18428[] 
  []
 
 
-Overfull \hbox (41.82451pt too wide) in paragraph at lines 1851--1851
+Overfull \hbox (41.8105pt too wide) in paragraph at lines 1886--1886
 []\T1/lmtt/m/n/12 ##                                                           
-(Other):45232[] 
+(Other):53976[] 
  []
 
 
-Overfull \hbox (23.2995pt too wide) in paragraph at lines 1851--1851
+Overfull \hbox (23.2995pt too wide) in paragraph at lines 1886--1886
 []\T1/lmtt/m/n/12 ##     MOTIF            NAISSANCE          ORIENTATION       
 PROVENANCE[] 
  []
 
 
-Overfull \hbox (35.6285pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##  Length:193102      Length:193102      UHCD   : 19300   PE
-A    :107747[] 
+Overfull \hbox (35.6355pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##  Length:221435      Length:221435      UHCD   : 21961   PE
+A    :121522[] 
  []
 
 
-Overfull \hbox (35.62149pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##  Class :character   Class :character   MED    :  9790   PE
-O    : 16859[] 
+Overfull \hbox (35.6355pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##  Class :character   Class :character   MED    : 11192   PE
+O    : 19353[] 
  []
 
 
-Overfull \hbox (35.6495pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##  Mode  :character   Mode  :character   CHIR   :  4285   MC
-O    :  4427[] 
+Overfull \hbox (35.6355pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##  Mode  :character   Mode  :character   CHIR   :  4964   MC
+O    :  5032[] 
  []
 
 
-Overfull \hbox (35.6495pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##                                        PSA    :  1825   PS
-Y    :    22[] 
+Overfull \hbox (35.6425pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##                                        PSA    :  2049   PS
+Y    :    30[] 
  []
 
 
-Overfull \hbox (35.6425pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##                                        REO    :   793   SS
-R    :    20[] 
+Overfull \hbox (35.6355pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##                                        REO    :   963   SS
+R    :    28[] 
  []
 
 
-Overfull \hbox (35.6495pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/12 ##                                        (Other):  2728   (O
-ther):    13[] 
+Overfull \hbox (35.6495pt too wide) in paragraph at lines 1886--1886
+[]\T1/lmtt/m/n/12 ##                                        (Other):  3145   (O
+ther):    14[] 
  []
 
 
-Overfull \hbox (35.6425pt too wide) in paragraph at lines 1851--1851
+Overfull \hbox (35.6355pt too wide) in paragraph at lines 1886--1886
 []\T1/lmtt/m/n/12 ##                                        NA\TS1/lmtt/m/n/12 
-'\T1/lmtt/m/n/12 s   :154381   NA\TS1/lmtt/m/n/12 '\T1/lmtt/m/n/12 s   : 64014[
+'\T1/lmtt/m/n/12 s   :177161   NA\TS1/lmtt/m/n/12 '\T1/lmtt/m/n/12 s   : 75456[
 ] 
- []
-
-[72
-
-] [73] [74
-
-]
-Annexe A.
-
-Overfull \hbox (141.03844pt too wide) detected at line 1881
-[]
- []
-
-
-Overfull \hbox (101.02733pt too wide) detected at line 1886
-[]
  []
 
 [75
 
-] [76]
-Annexe B.
-[77
+] [76] [77
 
-] [78] [79]
-Annexe C.
+]
+Annexe A.
+
+Overfull \hbox (141.03844pt too wide) detected at line 1916
+[]
+ []
+
+
+Overfull \hbox (101.02733pt too wide) detected at line 1921
+[]
+ []
+
+[78
+
+] [79]
+Annexe B.
 [80
+
+] [81] [82]
+Annexe C.
+[83
 
 ]
 Annexe D.
-[81
+[84
 
 ]
 Annexe E.
-(./RPU2013.bbl [82
+(./RPU2013.bbl [85
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--9
@@ -2532,34 +2593,34 @@ Underfull \hbox (badness 1132) in paragraph at lines 65--70
 'ur-gence
  []
 
-) [83
+) [86
 
 ]
 Annexe F.
-(./RPU2013.ind [84
+(./RPU2013.ind [87
 
-] [85
+] [88
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2000.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2000.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2035.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2035.
  (./RPU2013.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2000.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2000.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2035.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2035.
 
 Package rerunfilecheck Info: File `RPU2013.out' has not changed.
-(rerunfilecheck)             Checksum: 9099E22CCC481ECA4B8E3088322AD1C4;3016.
+(rerunfilecheck)             Checksum: C846CB73C2134C52580A08F877D2C52D;3138.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2000.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2035.
  ) 
 Here is how much of TeX's memory you used:
- 17774 strings out of 495059
- 299831 string characters out of 3182029
+ 17801 strings out of 495059
+ 300382 string characters out of 3182029
  395794 words of memory out of 3000000
- 20237 multiletter control sequences out of 15000+200000
+ 20255 multiletter control sequences out of 15000+200000
  81005 words of font info for 73 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  56i,11n,55p,749b,536s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2574,10 +2635,10 @@ sr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb>
-Output written on RPU2013.pdf (85 pages, 602599 bytes).
+Output written on RPU2013.pdf (88 pages, 622585 bytes).
 PDF statistics:
- 1206 PDF objects out of 1440 (max. 8388607)
- 1033 compressed objects within 11 object streams
- 284 named destinations out of 1000 (max. 500000)
- 541 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1260 PDF objects out of 1440 (max. 8388607)
+ 1076 compressed objects within 11 object streams
+ 289 named destinations out of 1000 (max. 500000)
+ 577 words of extra memory for PDF output out of 10000 (max. 10000000)
 
