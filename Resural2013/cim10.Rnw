@@ -361,3 +361,25 @@ hist(malaise$date,breaks=18,freq=TRUE,col="slategray1",main="Malaises (INVS)")
  plot(as.factor(malaise$date),col="slategray1",las = 1,main="Malaises (INVS)")
 @
 
+\section{Marqueurs de canicule}
+\index{Canicule@marqueurs}
+
+Données hospitalières : nombre quotidien de passages dans des services d'urgence hospitaliers pour un diagnostic de malaise (codes Cim10 R42, R53 et R55), d'hyperthermie et autres effets directs de la chaleur (codes Cim10 T67 et X30), de déshydratation (code Cim10 E86) et d'hyponatrémie (code Cim10 E871)
+
+- X30  Exposition à une chaleur naturelle excessive
+- E86  Déplétion du volume du plasma ou du liquide extracellulaire, Déshydratation sauf choc hypovolémique
+
+<<canicule,echo=FALSE>>=
+canicule<-dpr[substr(dpr$DP,1,3)=="T67", c("DP","ENTREE")]
+canicule<-canicule[complete.cases(canicule),]
+canicule$date<-as.Date(canicule$ENTREE)
+hist(canicule$date,breaks=18,freq=TRUE,col="slategray1",main="Pathologies liées à la chaleur",ylab="Nombre",xlab="",sub="Code CIM10 T67.0 à T67.9")
+canicule$DP<-gsub(".","",canicule$DP,fixed=TRUE)
+tab1(canicule$DP,xlab="Fréquence",main="Pathologies liées à la chaleur")
+
+
+canicule<-dpr[substr(dpr$DP,1,3)=="T67"|substr(dpr$DP,1,3)=="X30"|substr(dpr$DP,1,3)=="E86"|substr(dpr$DP,1,3)=="E871", c("DP","ENTREE")]
+canicule<-canicule[complete.cases(canicule),]
+canicule$date<-as.Date(canicule$ENTREE)
+hist(canicule$date,breaks=18,freq=TRUE,col="slategray1",main="Pathologies liées à la chaleur",ylab="Nombre",xlab="",sub="")
+@

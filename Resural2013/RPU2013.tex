@@ -306,7 +306,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Sep  6 23:21:48 2013
+% Sat Sep  7 14:55:12 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -340,7 +340,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Sep  6 23:21:52 2013
+% Sat Sep  7 14:55:15 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -595,7 +595,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \subsection*{Activité par semaine}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Sep  6 23:22:04 2013
+% Sat Sep  7 14:55:27 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -643,7 +643,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \label{act_sem}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Sep  6 23:22:04 2013
+% Sat Sep  7 14:55:28 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -834,7 +834,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Sep  6 23:22:14 2013
+% Sat Sep  7 14:55:37 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -864,7 +864,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Sep  6 23:22:14 2013
+% Sat Sep  7 14:55:37 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1468,6 +1468,36 @@ malaise selon INVS (canicule):
 \end{knitrout}
 
 
+\section{Marqueurs de canicule}
+\index{Canicule@marqueurs}
+
+Données hospitalières : nombre quotidien de passages dans des services d'urgence hospitaliers pour un diagnostic de malaise (codes Cim10 R42, R53 et R55), d'hyperthermie et autres effets directs de la chaleur (codes Cim10 T67 et X30), de déshydratation (code Cim10 E86) et d'hyponatrémie (code Cim10 E871)
+
+- X30  Exposition à une chaleur naturelle excessive
+- E86  Déplétion du volume du plasma ou du liquide extracellulaire, Déshydratation sauf choc hypovolémique
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/canicule1} 
+
+\includegraphics[width=\maxwidth]{figure/canicule2} 
+\begin{kframe}\begin{verbatim}
+## canicule$DP : 
+##         Frequency Percent Cum. percent
+## T670           56    72.7         72.7
+## T671            8    10.4         83.1
+## T672            3     3.9         87.0
+## T676            2     2.6         89.6
+## T677            6     7.8         97.4
+## T678            1     1.3         98.7
+## T679            1     1.3        100.0
+##   Total        77   100.0        100.0
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/canicule3} 
+
+\end{knitrout}
+
 
 
 \chapter{Modalités de sortie}
@@ -1496,7 +1526,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Sep  6 23:22:20 2013
+% Sat Sep  7 14:55:43 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -1521,7 +1551,7 @@ Décès & 2 & 0.00 \\
 Les données par établissement sont résumées dans le tableau \ref{tab.sortie_etab} page \pageref{tab.sortie_etab}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Sep  6 23:22:20 2013
+% Sat Sep  7 14:55:43 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|r|r|r|r|}
@@ -1612,7 +1642,7 @@ a <- \hlkwd{drop.levels}(d1$ORIENTATION)
 \section{Destination}
 \index{destination}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Sep  6 23:22:20 2013
+% Sat Sep  7 14:55:44 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1631,7 +1661,7 @@ HAD & 0.00 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Fri Sep  6 23:22:20 2013
+% Sat Sep  7 14:55:44 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
