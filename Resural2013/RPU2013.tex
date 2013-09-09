@@ -118,6 +118,19 @@ Bartier \& Madame Christine Hecker}}
 %\SweaveOpts{concordance=TRUE}
 %\SweaveOpts{fig.path='./figure/rpu2013-', comment=NA, prompt=FALSE}
 
+\newpage
+\begin{itemize}\raggedright
+  \item R version 2.15.1 (2012-06-22), \verb|x86_64-pc-linux-gnu|
+  \item Locale: \verb|LC_CTYPE=fr_FR.UTF-8|, \verb|LC_NUMERIC=C|, \verb|LC_TIME=fr_FR.UTF-8|, \verb|LC_COLLATE=fr_FR.UTF-8|, \verb|LC_MONETARY=fr_FR.UTF-8|, \verb|LC_MESSAGES=fr_FR.UTF-8|, \verb|LC_PAPER=C|, \verb|LC_NAME=C|, \verb|LC_ADDRESS=C|, \verb|LC_TELEPHONE=C|, \verb|LC_MEASUREMENT=fr_FR.UTF-8|, \verb|LC_IDENTIFICATION=C|
+  \item Base packages: base, datasets, graphics, grDevices,
+    methods, stats, utils
+  \item Other packages: knitr~1.4.1
+  \item Loaded via a namespace (and not attached): digest~0.6.3,
+    evaluate~0.4.7, formatR~0.9, stringr~0.6.2, tools~2.15.1
+\end{itemize}
+
+
+
 \tableofcontents
 \listoftables
 \listoffigures
@@ -306,7 +319,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep  7 14:55:12 2013
+% Mon Sep  9 19:56:01 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -340,7 +353,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep  7 14:55:15 2013
+% Mon Sep  9 19:56:04 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -595,7 +608,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \subsection*{Activité par semaine}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep  7 14:55:27 2013
+% Mon Sep  9 19:56:16 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -643,7 +656,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \label{act_sem}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep  7 14:55:28 2013
+% Mon Sep  9 19:56:17 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -834,7 +847,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep  7 14:55:37 2013
+% Mon Sep  9 19:56:26 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -864,7 +877,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep  7 14:55:37 2013
+% Mon Sep  9 19:56:26 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1526,7 +1539,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep  7 14:55:43 2013
+% Mon Sep  9 19:56:32 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -1551,7 +1564,7 @@ Décès & 2 & 0.00 \\
 Les données par établissement sont résumées dans le tableau \ref{tab.sortie_etab} page \pageref{tab.sortie_etab}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep  7 14:55:43 2013
+% Mon Sep  9 19:56:32 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|r|r|r|r|}
@@ -1642,7 +1655,7 @@ a <- \hlkwd{drop.levels}(d1$ORIENTATION)
 \section{Destination}
 \index{destination}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep  7 14:55:44 2013
+% Mon Sep  9 19:56:32 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1661,7 +1674,7 @@ HAD & 0.00 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep  7 14:55:44 2013
+% Mon Sep  9 19:56:32 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}

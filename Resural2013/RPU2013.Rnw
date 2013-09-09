@@ -70,6 +70,11 @@ Bartier \& Madame Christine Hecker}}
 %\SweaveOpts{concordance=TRUE}
 %\SweaveOpts{fig.path='./figure/rpu2013-', comment=NA, prompt=FALSE}
 
+\newpage
+<<session,echo=FALSE,results='asis'>>=
+toLatex(sessionInfo())
+@
+
 \tableofcontents
 \listoftables
 \listoffigures
