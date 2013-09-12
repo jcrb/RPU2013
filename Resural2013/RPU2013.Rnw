@@ -71,6 +71,7 @@ Bartier \& Madame Christine Hecker}}
 %\SweaveOpts{fig.path='./figure/rpu2013-', comment=NA, prompt=FALSE}
 
 \newpage
+
 <<session,echo=FALSE,results='asis'>>=
 toLatex(sessionInfo())
 @
@@ -168,8 +169,8 @@ attach(d1)
 @
 
 \chapter{Courbes d'activité régionale}
-\section*{Variation du nombre total de passages journaliers}
-\section*{Variation du pourcentage journalier de retour à domicile}
+<<child='activite_su.Rnw'>>=
+@
 
 %===================================================================== PARTIE 3
 \part{Activité par service d'urgence}

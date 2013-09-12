@@ -36,16 +36,18 @@
 \contentsline {section}{\numberline {11.5}Incoh\IeC {\'e}rences}{69}{section.11.5}
 \contentsline {chapter}{\numberline {12}Modalit\IeC {\'e}s d'orientation}{73}{chapter.12}
 \contentsline {chapter}{\numberline {13}Courbes d'activit\IeC {\'e} r\IeC {\'e}gionale}{74}{chapter.13}
-\contentsline {part}{III\hspace {1em}Activit\IeC {\'e} par service d'urgence}{75}{part.3}
-\contentsline {chapter}{\numberline {14}SAU des H\IeC {\^o}pitaux universitaires}{76}{chapter.14}
-\contentsline {section}{\numberline {14.1}Activit\IeC {\'e} globale}{76}{section.14.1}
-\contentsline {part}{IV\hspace {1em}Activit\IeC {\'e} des SAMU d'Alsace}{77}{part.4}
-\contentsline {chapter}{\numberline {15}Test un}{78}{chapter.15}
-\contentsline {chapter}{\numberline {16}test deux}{79}{chapter.16}
-\contentsline {part}{V\hspace {1em}Annexes}{81}{part.5}
-\contentsline {chapter}{\numberline {A}M\IeC {\'e}thodologie}{82}{appendix.A}
-\contentsline {chapter}{\numberline {B}Glossaire}{84}{appendix.B}
-\contentsline {chapter}{\numberline {C}RPU}{87}{appendix.C}
-\contentsline {chapter}{\numberline {D}A propos de ce document}{88}{appendix.D}
-\contentsline {chapter}{\numberline {E}Bibliographie}{89}{appendix.E}
-\contentsline {chapter}{\numberline {F}Index}{91}{appendix.F}
+\contentsline {section}{\numberline {13.1}Variation du nombre total de passages journaliers}{74}{section.13.1}
+\contentsline {section}{\numberline {13.2}Variation du pourcentage journalier de retour \IeC {\`a} domicile}{76}{section.13.2}
+\contentsline {part}{III\hspace {1em}Activit\IeC {\'e} par service d'urgence}{80}{part.3}
+\contentsline {chapter}{\numberline {14}SAU des H\IeC {\^o}pitaux universitaires}{81}{chapter.14}
+\contentsline {section}{\numberline {14.1}Activit\IeC {\'e} globale}{81}{section.14.1}
+\contentsline {part}{IV\hspace {1em}Activit\IeC {\'e} des SAMU d'Alsace}{82}{part.4}
+\contentsline {chapter}{\numberline {15}Test un}{83}{chapter.15}
+\contentsline {chapter}{\numberline {16}test deux}{84}{chapter.16}
+\contentsline {part}{V\hspace {1em}Annexes}{86}{part.5}
+\contentsline {chapter}{\numberline {A}M\IeC {\'e}thodologie}{87}{appendix.A}
+\contentsline {chapter}{\numberline {B}Glossaire}{89}{appendix.B}
+\contentsline {chapter}{\numberline {C}RPU}{92}{appendix.C}
+\contentsline {chapter}{\numberline {D}A propos de ce document}{93}{appendix.D}
+\contentsline {chapter}{\numberline {E}Bibliographie}{94}{appendix.E}
+\contentsline {chapter}{\numberline {F}Index}{96}{appendix.F}

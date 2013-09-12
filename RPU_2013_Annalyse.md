@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Fri Sep  6 22:39:34 2013"
+## [1] "Thu Sep 12 15:18:47 2013"
 ```
 
 source: RPU2013
@@ -249,7 +249,7 @@ xtable(t(t3))
 
 ```
 ## % latex table generated in R 2.15.1 by xtable 1.7-1 package
-## % Fri Sep  6 22:39:46 2013
+## % Thu Sep 12 15:18:59 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rrr}
@@ -1488,13 +1488,13 @@ malaise$date <- as.Date(malaise$ENTREE)
 hist(malaise$date, breaks = 18, freq = TRUE, col = "slategray1", main = "Malaises (INVS)")
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-121.png) 
+![plot of chunk malaise_invs](figure/malaise_invs1.png) 
 
 ```r
 plot(as.factor(malaise$date), col = "slategray1", las = 1, main = "Malaises (INVS)")
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-122.png) 
+![plot of chunk malaise_invs](figure/malaise_invs2.png) 
 
 AVC
 ----
@@ -1920,7 +1920,7 @@ clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - CHU Strasbour
 legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.8)
 ```
 
-![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
+![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15.png) 
 
 #### Test de la fonction*passages*
 

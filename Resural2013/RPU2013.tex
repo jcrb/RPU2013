@@ -119,6 +119,7 @@ Bartier \& Madame Christine Hecker}}
 %\SweaveOpts{fig.path='./figure/rpu2013-', comment=NA, prompt=FALSE}
 
 \newpage
+
 \begin{itemize}\raggedright
   \item R version 2.15.1 (2012-06-22), \verb|x86_64-pc-linux-gnu|
   \item Locale: \verb|LC_CTYPE=fr_FR.UTF-8|, \verb|LC_NUMERIC=C|, \verb|LC_TIME=fr_FR.UTF-8|, \verb|LC_COLLATE=fr_FR.UTF-8|, \verb|LC_MONETARY=fr_FR.UTF-8|, \verb|LC_MESSAGES=fr_FR.UTF-8|, \verb|LC_PAPER=C|, \verb|LC_NAME=C|, \verb|LC_ADDRESS=C|, \verb|LC_TELEPHONE=C|, \verb|LC_MEASUREMENT=fr_FR.UTF-8|, \verb|LC_IDENTIFICATION=C|
@@ -319,7 +320,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  9 19:56:01 2013
+% Thu Sep 12 20:40:09 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -353,7 +354,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  9 19:56:04 2013
+% Thu Sep 12 20:40:12 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -608,7 +609,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \subsection*{Activité par semaine}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  9 19:56:16 2013
+% Thu Sep 12 20:40:24 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -656,7 +657,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \label{act_sem}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  9 19:56:17 2013
+% Thu Sep 12 20:40:24 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -690,7 +691,7 @@ m <- \hlkwd{wday}(d1$ENTREE, label = T)
 \hlkwd{barplot}(\hlkwd{table}(m), names.arg = \hlkwd{c}(\hlstr{"Dim"}, \hlstr{"Lun"}, \hlstr{"Mar"}, \hlstr{"Mer"}, \hlstr{"Jeu"}, \hlstr{"Ven"}, \hlstr{"Sam"}))
 \end{alltt}
 \end{kframe}
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-23} 
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-24} 
 
 \end{knitrout}
 
@@ -704,7 +705,7 @@ t <- \hlkwd{table}(h)
 \hlkwd{barplot}(\hlkwd{table}(h), xlab = \hlstr{"Heures de la journée"}, ylab = \hlstr{"nombre"}, main = \hlstr{"Répartition des RPU sur le nycthémère"})
 \end{alltt}
 \end{kframe}
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-24} 
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-25} 
 
 \end{knitrout}
 
@@ -847,7 +848,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  9 19:56:26 2013
+% Thu Sep 12 20:40:34 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -877,7 +878,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  9 19:56:26 2013
+% Thu Sep 12 20:40:34 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1539,7 +1540,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  9 19:56:32 2013
+% Thu Sep 12 20:40:39 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -1564,7 +1565,7 @@ Décès & 2 & 0.00 \\
 Les données par établissement sont résumées dans le tableau \ref{tab.sortie_etab} page \pageref{tab.sortie_etab}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  9 19:56:32 2013
+% Thu Sep 12 20:40:39 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|r|r|r|r|}
@@ -1655,7 +1656,7 @@ a <- \hlkwd{drop.levels}(d1$ORIENTATION)
 \section{Destination}
 \index{destination}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  9 19:56:32 2013
+% Thu Sep 12 20:40:40 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1674,7 +1675,7 @@ HAD & 0.00 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Mon Sep  9 19:56:32 2013
+% Thu Sep 12 20:40:40 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1772,8 +1773,88 @@ Le mode d'orientation au sens du RPU est une rubrique un peu fourre-tout regroup
 
 
 \chapter{Courbes d'activité régionale}
-\section*{Variation du nombre total de passages journaliers}
-\section*{Variation du pourcentage journalier de retour à domicile}
+
+% activite_su.Rnw
+% Courbe d'activité régionale
+\index{Activité régionale}
+
+\section{Variation du nombre total de passages journaliers}
+
+
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/passages_totaux1} 
+\begin{kframe}\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##       1     862     921     911     977    1160
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/passages_totaux2} 
+
+\includegraphics[width=\maxwidth]{figure/passages_totaux3} 
+
+\end{knitrout}
+
+
+
+\section{Variation du pourcentage journalier de retour à domicile}
+
+Le nombre de retours à domicile est obtenu à partir de la rubrique MODE\_SORTIE. Il s'agit en fait des patients qui n'ont pas été hospitalisés. Sont également comptabilisé dans cette rubrique les sorties atypiques.
+
+Les variation du retour journalier à domicile sont calculés de la manière suivante:
+\begin{description}
+  \item[numérateur] somme quotidienne où MODE\_SORTIE == Domicile
+  \item[dénominateur] somme quotidienne des ENTREE (correspond à q)
+\end{description}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##   1   2   3   4   5   6 
+## 560 503 419 424 457 466
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.568   0.617   0.637   0.643   0.659   1.000
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/retour_dom} 
+
+\end{knitrout}
+
+
+On refait le calcul de q en tenant compte des non réponses:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##   1   2   3   4   5   6 
+## 772 703 597 610 615 604
+##      1      2      3      4      5      6 
+## 0.7254 0.7155 0.7018 0.6951 0.7431 0.7715
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.674   0.727   0.749   0.753   0.773   1.000
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/retour_dom2} 
+
+\end{knitrout}
+
+
+Le taux de réponse pour cet item est de;
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##      1      2      3      4      5      6 
+## 0.8733 0.8777 0.8703 0.8665 0.8518 0.8741
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.783   0.830   0.850   0.854   0.872   1.000
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/retour_dom3} 
+
+\end{knitrout}
+
+
+
 
 %===================================================================== PARTIE 3
 \part{Activité par service d'urgence}

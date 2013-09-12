@@ -10,9 +10,7 @@ library("zoo")
 
 ```
 ## Attaching package: 'zoo'
-```
-
-```
+## 
 ## The following object(s) are masked from 'package:base':
 ## 
 ## as.Date, as.Date.numeric
