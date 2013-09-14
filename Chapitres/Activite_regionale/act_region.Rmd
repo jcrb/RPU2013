@@ -38,9 +38,12 @@ Lecture du fichier des données
 On lit le fichier de travail créé:
 ```{r Lecture fichier}
 
+if(!exists("d1")) {
 load(paste(path,"rpu2013d0108.Rda",sep=""))
 d1<-d0108
 rm(d0108)
+}
+d1<-d1[d1$ENTREE<"2013-09-01",]
 
 e<-as.Date(d1$ENTREE)
 q<-tapply(e,yday(e),length)
@@ -51,6 +54,15 @@ plot(z)
 plot(xts(z))
 lines(rollmean(xts(z), 7),col="red")
 ```
+Variables:
+- *e* vecteur contenant les dates d'entrées depuis le début de l'année
+- *q* vecteur contenant le nombre d'entrées par jour depuis le début de l'année
+- *q2* vecteur contenant le nombre de retours à domiciles par jour
+- *q3* vecteur contenant la proportion de retours à domicile par rapport au nombre d'entrées, par jour (taux)
+- *q4* vecteur contenant le nombre de retours à domiciles par jour en excluant les non réponses (NA)
+- *q5* vecteur contenant la proportion de retours à domicile par rapport au nombre d'entrées, par jour (taux), en excluant les non réponses (NA)
+- *q6* taux de non réponses
+- *q7* vecteur contenant le taux d'hospitalisation par jour (miroir de q5)
 
 Retour à domicile
 -----------------
@@ -71,12 +83,45 @@ head(q4)
 q5<-q2/q4
 head(q5)
 summary(q5)
-plot(q3,type="l",main="Taux de retour à domicile\n(non réponses exclues)",ylab="Fréquence",xlab="Jours")
+plot(q5,type="l",main="Taux de retour à domicile\n(non réponses exclues)",ylab="Fréquence",xlab="Jours")
+
+z <- zoo(q5, unique(as.Date(d1$ENTREE)))
+plot(z,main="Taux de retour à domicile\n(non réponses exclues)",ylab="Fréquence",xlab="Période (moyenne lissée sur 7 jours")
+plot(xts(z))
+lines(rollmean(xts(z), 7), col = "red",lwd=2)
 ```
+Taux d'hospitalisation
+----------------------
+c'est le complément (miroir) du précédent:
+```{r}
+q7<-1-q2/q4
+head(q7)
+summary(q7)
+z <- zoo(q7, unique(as.Date(d1$ENTREE)))
+plot(xts(z),main="Taux d'hospitalisation\n(non réponses exclues)",ylab="Fréquence",xlab="Période (moyenne lissée sur 7 jours")
+lines(rollmean(xts(z), 7), col = "blue",lwd=2)
+```
+
 Taux de non réponses:
 ```{r non_rep}
 q6<-q4/q
 head(q6)
 summary(q6)
 ```
+Clinique Saint-Luc Schirmeck
+============================
 
+- FINESS géographique: N° FINESS :  67 079 863 6
+- FINESS juridique:    67 001 460 4
+- adresse: 10 RUE DES FORGES 67130 SCHIRMECK
+- Tél : 03 88 97 05 70 
+
+resume<-function (x)
+{
+  name=c("moyenne","écart-type","médiane","min","max","n")
+	m<-mean(x,na.remove=TRUE)
+	e<-sd(x)
+	r<-matrix(c(m,e,median(x),min(x),max(x),length(x)),1,6)
+	colnames(r)<-name
+	return(r)
+}

@@ -1,47 +1,16 @@
 % test2.Rnw
 
-L'activité horaire des services d'urgence en Alsace est totalement superposable à celui de l'ensamble des SU (figure \ref{passage:als} page \pageref{passage:als}). L'activité diminue fortement en nuit profonde à partir de une heure du matin pour redémarrer vers 9 heures et s'intensifier progressivement en matinée. Après un premier pic en fin de matinée, la croissance reprend pour culminer vers 19 heures, puis décroître lentement jusqu'en fin de soirée.
+L'activité horaire des services d'urgence en Alsace est totalement superposable à celui de l'ensemble des SU (figure \ref{passage:als} page \pageref{passage:als}). L'activité diminue fortement en nuit profonde à partir de une heure du matin pour redémarrer vers 9 heures et s'intensifier progressivement en matinée. Après un premier pic en fin de matinée, la croissance reprend pour culminer vers 19 heures, puis décroître lentement jusqu'en fin de soirée.
 
 Ce phénomène cyclique se répète tous les jours selon un profil immuable. La projection de ces données sur un graphique en radar représentant les 24 tranches horaires (figure \ref{radar:als} page \pageref{radar:als}) montre qu'il existe trois pics d'égale amplitude à 11, 15 et 19 heures. Ce point mérite d'être analysé car s'il se confirme, cela pourrait indiquer que le pointage de 11 heures permet d'avoir une prévision sur l'intensité de la fréquentation avant la garde du soir. On peut en rapprocher le fait que la médiane des passages se situe vers 14h, c'est à dire qu'au ointage de 15 heures on peut évaluer la quantité totale de patients qui vont se présenter dans les heures qui viennent.
 
 %----------------------------------------------------------------------------- Summary
-<<fig24,echo=FALSE,comment="">>=
+Résumé des horaires de passage aux ugences: les données figurent dans le tableau \ref{tab:24} page \pageref{tab:24}.
+<<fig24,echo=FALSE,comment="",results='asis'>>=
 e<-ymd_hms(d1$ENTREE)
 h<-hour(e)
-print("Résumé des horaires de passage:")
-summary(h)
+a<-xsummary(h,xtable=T,tl="Résumé des horaires de passage aux urgences",tc="horaires de passage",lab="tab:24")
 @
-
-% latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Thu Jul 4 19:27:36 2013
-\begin{table}[ht]
-\centering
-\begin{tabular}{rrrrrrr}
-\hline
-& Min. & Q1 & Médiane & Moyenne & Q3 & Max. \\
-\hline
-1 & 0.00 & 10.00 & 14.00 & 13.80 & 18.00 & 23.00 \\
-\hline
-\end{tabular}
-\caption[titre court]{titre long}
-\label{lab}
-\end{table}
-
-
-% latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Thu Jul 4 19:27:36 2013
-\begin{table}[ht]
-\centering
-\begin{tabular}{rrrrrrr}
-\hline
-& moyenne & écart-type & médiane & min & max & n \\
-\hline
-1 & 13.82 & 5.54 & 14.00 & 0.00 & 23.00 & 105979.00 \\
-\hline
-\end{tabular}
-\caption[Horaires de passage]{Horaires de passages au service des urgences en Alsace}
-\label{hor:pass}
-\end{table}
 
 \input{../blah.gen}
 %---------------------------------------------------------------------- HISTOGRAMME

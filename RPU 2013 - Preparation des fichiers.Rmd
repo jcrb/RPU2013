@@ -39,10 +39,10 @@ Le fichier récupéré est ensuite importé dans une base de données MySql. La 
 - juin: rpu_2013_06_dump.sql (23.7 Mo)
 Pour les transférer, on utilise la procédure standard en ligne de commande, commençant par le mois de mai:
 
-cd ~/Documents/Resural/'Stat Resural'/'Fichiers source'/Dump/RPU2013_08/
+cd ~/Documents/Resural/'Stat Resural'/'Fichiers source'/Dump/
 
 ```{}
-jcb@mint1:~$ mysql -u root -pmarion rpu < Resural_07_dump.sql
+jcb@mint1:~$ mysql -u root -pmarion rpu < rpu_2013-07_dump.sql
 ```
 Création d'un fichier .my.cfg
 -----------------------------

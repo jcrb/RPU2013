@@ -47,18 +47,18 @@ abline(h=mean(a),col="blue")
 @
 
 \subsection*{En valeur absolue}
-<<>>=
+<<val_abs,echo=FALSE>>=
 t<-tapply(as.Date(d1$ENTREE),d1$FINESS,length)
 t
 @
 
 \subsection*{En pourcentage}
-<<>>=
+<<en_pourcentage,echo=FALSE>>=
 round(prop.table(t)*100,2)
 @
 
 \subsection*{Taux de recours aux urgences}
-<<>>=
+<<tru,echo=FALSE>>=
 tru2011_lorraine<-0.2345
 tru_estime<-pop.als.2010.totale*tru2011_lorraine
 # tru2013_alsace<-round(length(e)*100/pop.als.2010.totale,2)
@@ -91,14 +91,14 @@ barplot(table(m))
 @
 
 \subsection*{Activité par jour de la semaine}
-<<>>=
+<<activite_semaine>>=
 m<-wday(d1$ENTREE,label=T)
 table(m)
 barplot(table(m),names.arg=c("Dim","Lun","Mar","Mer","Jeu","Ven","Sam"))
 @
 
 \subsection*{Activité horaire}
-<<>>=
+<<activite_heure,echo=FALSE>>=
 h<-hour(d1$ENTREE)
 t<-table(h)
 barplot(table(h),xlab="Heures de la journée",ylab="nombre",main="Répartition des RPU sur le nycthémère")

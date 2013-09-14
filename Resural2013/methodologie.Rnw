@@ -13,7 +13,7 @@ Le Nombre de passages d' Alsace est la somme des passages dans les SU alsacien E
 
 \section*{Taux d'intervention régional}
 \begin{displaymath}
-    \frac{\text{Nombre de patients pris en charge par les SMUR d'Alsace quelque soit le code postal du lieu d'intervention}}{\text{Population globale d'Alsace}}
+    \frac{\text{Nombre de patients pris en charge par les SMUR d'Alsace}\linebreak[4] \text{ quelque soit le code postal du lieu d'intervention}}{\text{Population globale d'Alsace}}
   \end{displaymath}
 
 \section*{Taux de recours régional}

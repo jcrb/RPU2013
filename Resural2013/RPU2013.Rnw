@@ -24,6 +24,25 @@
 \usepackage{xcolor} 
 \usepackage{hyperref} 
 \usepackage{tikz} 
+% Mise en page
+% LE zone gauche page paire
+% CE zone médiane page paire
+% RE zone droite page paire
+% LO zone gauche page impaire
+% CO zone médiane page impaire
+% RO zone droite page impaire
+% fancyhead gère le haut de page
+% fancyfoot gère le bas de page
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LE,CE,RE,LO,CO,RO]{}
+\fancyhead[LE,RO]{\scshape\thepage}
+\fancyhead[CE]{\scshape\leftmark}
+\fancyhead[CO]{\scshape\rightmark}
+
+\fancyfoot[CE]{Document de travail - non validé}
+\fancyfoot[CO]{Document de travail - non validé}
+
 \usepackage{fancyvrb}
 
 \usepackage{longtable}
@@ -89,7 +108,7 @@ library("lubridate")
 library("xtable")
 library("stargazer")
 library("knitr")
-source("../mes_fonctions.R")
+source("../../mes_fonctions.R")
 
 library("rattle")
 library("epicalc")
@@ -99,10 +118,17 @@ library("plotrix")
 library("openintro")
 library("sp")
 
-#  load("../rpu2013.Rda")
-load("../rpu2013d0108.Rda")
+path<-"../"
+if(!exists("d1")) {
+load(paste(path,"rpu2013d0108.Rda",sep=""))
 d1<-d0108
 rm(d0108)
+}
+d1<-d1[d1$ENTREE<"2013-09-01",]
+
+# load("../rpu2013d0108.Rda")
+# d1<-d0108
+# rm(d0108)
 attach(d1)
 @
 %======================================================== PARTIE 1
@@ -132,21 +158,14 @@ attach(d1)
 %========================================================== PARTIE 2
 \part{Activité des services d'urgence d'Alsace}
 \chapter{Activité régionale totale}
-\section*{Nombre total de passages}
+\section{Nombre total de passages}
 <<child='activite_regionale.Rnw'>>=
 @
-
-% \section*{Nombre total de passages par SU}
-% \subsection*{En valeur absolue}
-% \subsection*{En pourcentage}
-% \subsection*{Taux de recours aux urgences}
-% \subsection*{Activité par mois}
-% \subsection*{Activité par jour de la semaine}
-% \subsection*{Activité horaire}
-
+\section{TEST 2}
 <<child='test2.Rnw'>>=
 @
-\subsection*{Passages par tranches d'âge}
+
+\subsection{Passages par tranches d'âge}
 
 \chapter{Modalité d'admission}
 <<child='modalites.Rnw'>>=

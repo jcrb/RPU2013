@@ -4,13 +4,11 @@
 
 \section{Variation du nombre total de passages journaliers}
 
-
-
-<<passages_totaux,echo=FALSE>>=
+<<passages_totaux,echo=FALSE,results='asis'>>=
 e<-as.Date(d1$ENTREE)
 q<-tapply(e,yday(e),length)
 plot(q,type="l")
-summary(q)
+xsummary(q,xtable=TRUE)
 
 z<-zoo(q,unique(as.Date(d1$ENTREE)))
 plot(z)
@@ -47,11 +45,21 @@ summary(q5)
 plot(q3,type="l",main="Taux de retour à domicile\n(non réponses exclues)",ylab="Fréquence",xlab="Jours")
 @
 
-Le taux de réponse pour cet item est de;
+Si on considère que tout ce qui n'est pas un retour à domicile constitue une hospitalisation, on peut tracer un graphique, miroir du précédent. La ligne bleue représente la moyenne lissée sur sept jours. On notera le taux d'hospitalisation élévé du début de l'année, correspondant à une période de forte tension. Les fluctuations de ce paramètre (comme le retour à domicile) est une piste intéressante dans le cadre de la recherche d'indicateurs d'hôpital en tension, cependant les seuils d'alerte (triggers) restent à déterminer.
+<<hospit,echo=FALSE>>=
+q7<-1-q2/q4
+head(q7)
+summary(q7)
+z <- zoo(q7, unique(as.Date(d1$ENTREE)))
+plot(xts(z),main="Taux d'hospitalisation\n(non réponses exclues)",ylab="Fréquence",xlab="Période (moyenne lissée sur 7 jours")
+lines(rollmean(xts(z), 7), col = "blue",lwd=2)
+@
+
+
+Le taux de réponse pour cet item est de
 <<retour_dom3,echo=FALSE>>=
 q6<-q4/q
-head(q6)
 summary(q6)
-plot(q6,type="l")
+plot(q6,type="l",main="Taux réponse à l'item 'MODE SORTIE'",col="light green")
 @
 

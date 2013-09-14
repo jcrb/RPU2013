@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Thu Sep 12 20:12:37 2013"
+## [1] "Sat Sep 14 11:39:36 2013"
 ```
 
 source: RPU2013
@@ -51,9 +51,12 @@ On lit le fichier de travail créé:
 
 ```r
 
-load(paste(path, "rpu2013d0108.Rda", sep = ""))
-d1 <- d0108
-rm(d0108)
+if (!exists("d1")) {
+    load(paste(path, "rpu2013d0108.Rda", sep = ""))
+    d1 <- d0108
+    rm(d0108)
+}
+d1 <- d1[d1$ENTREE < "2013-09-01", ]
 
 e <- as.Date(d1$ENTREE)
 q <- tapply(e, yday(e), length)
@@ -102,7 +105,7 @@ summary(q3)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.568   0.617   0.637   0.643   0.659   1.000
+##   0.568   0.616   0.637   0.640   0.659   0.772
 ```
 
 ```r
@@ -140,15 +143,64 @@ summary(q5)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.674   0.727   0.749   0.753   0.773   1.000
+##   0.674   0.727   0.749   0.751   0.772   0.827
 ```
 
 ```r
-plot(q3, type = "l", main = "Taux de retour à domicile\n(non réponses exclues)", 
+plot(q5, type = "l", main = "Taux de retour à domicile\n(non réponses exclues)", 
     ylab = "Fréquence", xlab = "Jours")
 ```
 
-![plot of chunk sauf_na](figure/sauf_na.png) 
+![plot of chunk sauf_na](figure/sauf_na1.png) 
+
+```r
+
+z <- zoo(q5, unique(as.Date(d1$ENTREE)))
+plot(z, main = "Taux de retour à domicile\n(non réponses exclues)", ylab = "Fréquence", 
+    xlab = "Période (moyenne lissée sur 7 jours")
+```
+
+![plot of chunk sauf_na](figure/sauf_na2.png) 
+
+```r
+plot(xts(z))
+lines(rollmean(xts(z), 7), col = "red", lwd = 2)
+```
+
+![plot of chunk sauf_na](figure/sauf_na3.png) 
+
+Taux d'hospitalisation
+----------------------
+c'est le complément (miroir) du précédent:
+
+```r
+q7 <- 1 - q2/q4
+head(q7)
+```
+
+```
+##      1      2      3      4      5      6 
+## 0.2746 0.2845 0.2982 0.3049 0.2569 0.2285
+```
+
+```r
+summary(q7)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.173   0.228   0.251   0.249   0.273   0.326
+```
+
+```r
+z <- zoo(q7, unique(as.Date(d1$ENTREE)))
+plot(xts(z), main = "Taux d'hospitalisation\n(non réponses exclues)", ylab = "Fréquence", 
+    xlab = "Période (moyenne lissée sur 7 jours")
+lines(rollmean(xts(z), 7), col = "blue", lwd = 2)
+```
+
+![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1.png) 
+
 
 Taux de non réponses:
 
@@ -168,7 +220,13 @@ summary(q6)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.783   0.830   0.850   0.854   0.872   1.000
+##   0.783   0.830   0.850   0.852   0.872   0.949
 ```
 
+Clinique Saint-Luc Schirmeck
+============================
 
+- FINESS géographique: N° FINESS :  67 079 863 6
+- FINESS juridique:    67 001 460 4
+- adresse: 10 RUE DES FORGES 67130 SCHIRMECK
+- Tél : 03 88 97 05 70 
