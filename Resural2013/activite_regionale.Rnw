@@ -1,5 +1,6 @@
 % activite_regionale.Rnw
-\subsubsection*{TODO}
+\subsubsection*{TODO} 
+%\footnote{activite_regionale.Rnw}
 \begin{itemize}
   \item TRU par territoire de santé
 \end{itemize}

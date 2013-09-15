@@ -339,7 +339,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep 14 20:56:10 2013
+% Sun Sep 15 17:22:36 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -373,7 +373,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep 14 20:56:13 2013
+% Sun Sep 15 17:22:39 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -455,7 +455,11 @@ Il est composé des organismes suivants:
     
   \subsection*{Collège de médecine d'urgence (CMUNE)}
     \index{CMUNE}
-    
+
+\section*{FEDORU}
+  \index{FEDORU}
+  
+La fédération des observatoires des urgences et structures apparentés a été crée en octobre 2013 à l'initiative de quelques organisme régionaux dont Résural sur une proposition de l'ORUPACA \index{ORUPACA}
 
   
 \chapter{Le Résumé du passage aux urgences}
@@ -513,7 +517,8 @@ Le logiciel R est interfacé avec le traitement de texte Latex par l'intermédia
 \section{Nombre total de passages}
 
 % activite_regionale.Rnw
-\subsubsection*{TODO}
+\subsubsection*{TODO} 
+%\footnote{activite_regionale.Rnw}
 \begin{itemize}
   \item TRU par territoire de santé
 \end{itemize}
@@ -613,7 +618,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \subsection*{Activité par semaine}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep 14 20:56:25 2013
+% Sun Sep 15 17:22:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -661,7 +666,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \label{act_sem}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep 14 20:56:25 2013
+% Sun Sep 15 17:22:53 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -721,7 +726,7 @@ Ce phénomène cyclique se répète tous les jours selon un profil immuable. La 
 %----------------------------------------------------------------------------- Summary
 Résumé des horaires de passage aux ugences: les données figurent dans le tableau \ref{tab:24} page \pageref{tab:24}.
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep 14 20:56:31 2013
+% Sun Sep 15 17:22:58 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -815,7 +820,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep 14 20:56:34 2013
+% Sun Sep 15 17:23:02 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -845,7 +850,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep 14 20:56:35 2013
+% Sun Sep 15 17:23:02 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1507,7 +1512,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep 14 20:56:40 2013
+% Sun Sep 15 17:23:08 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -1532,7 +1537,7 @@ Décès & 2 & 0.00 \\
 Les données par établissement sont résumées dans le tableau \ref{tab.sortie_etab} page \pageref{tab.sortie_etab}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep 14 20:56:40 2013
+% Sun Sep 15 17:23:08 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|r|r|r|r|}
@@ -1623,7 +1628,7 @@ a <- \hlkwd{drop.levels}(d1$ORIENTATION)
 \section{Destination}
 \index{destination}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep 14 20:56:41 2013
+% Sun Sep 15 17:23:09 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1642,7 +1647,7 @@ HAD & 0.00 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep 14 20:56:41 2013
+% Sun Sep 15 17:23:09 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1744,13 +1749,16 @@ Le mode d'orientation au sens du RPU est une rubrique un peu fourre-tout regroup
 % activite_su.Rnw
 % Courbe d'activité régionale
 \index{Activité régionale}
+ 
+%note\footnote{activite_su_Rnw}
 
 \section{Variation du nombre total de passages journaliers}
+\index{Passages@journaliers}
 
 
 \includegraphics[width=\maxwidth]{figure/passages_totaux1} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Sat Sep 14 20:56:44 2013
+% Sun Sep 15 17:23:11 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -1760,11 +1768,9 @@ Le mode d'orientation au sens du RPU est une rubrique un peu fourre-tout regroup
  & 242.00 & 642.00 & 863.50 & 918.80 & 96.80 & 922.00 & 977.00 & 1162.00 \\ 
    \hline
 \end{tabular}
-\caption[titre court]{titre long} 
-\label{label}
+\caption[Passages totaux]{Passages totaux} 
+\label{tab:pt}
 \end{table}
-   n Min   Q25 Moyenne E-type Médiane Q75  Max
- 242 642 863.5   918.8   96.8     922 977 1162
 
 \includegraphics[width=\maxwidth]{figure/passages_totaux2} 
 
@@ -1774,6 +1780,7 @@ Le mode d'orientation au sens du RPU est une rubrique un peu fourre-tout regroup
 
 
 \section{Variation du pourcentage journalier de retour à domicile}
+\index{Retour à domicile}
 
 Le nombre de retours à domicile est obtenu à partir de la rubrique MODE\_SORTIE. Il s'agit en fait des patients qui n'ont pas été hospitalisés. Sont également comptabilisé dans cette rubrique les sorties atypiques.
 
@@ -1783,66 +1790,61 @@ Les variation du retour journalier à domicile sont calculés de la manière sui
   \item[dénominateur] somme quotidienne des ENTREE (correspond à q)
 \end{description}
 
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{verbatim}
-##   1   2   3   4   5   6 
-## 560 503 419 424 457 466
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.568   0.616   0.637   0.640   0.659   0.772
-\end{verbatim}
-\end{kframe}
+% latex table generated in R 2.15.1 by xtable 1.7-1 package
+% Sun Sep 15 17:23:14 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrr}
+  \hline
+ & n & Min & Q25 & Moyenne & E-type & Médiane & Q75 & Max \\ 
+  \hline
+ & 242.00 & 0.60 & 0.60 & 0.60 & 0.00 & 0.60 & 0.70 & 0.80 \\ 
+   \hline
+\end{tabular}
+\caption[Retour à domicile]{Retours à domicile - patients n'ayant été ni hospitalisés, ni transférés dans un autre établissement. Ce taux est plus faible en début d'année, lorsque les épisodes de tension sont plus fréquents.} 
+\label{tab:rd}
+\end{table}
+
 \includegraphics[width=\maxwidth]{figure/retour_dom} 
 
-\end{knitrout}
 
 
 On refait le calcul de q en tenant compte des non réponses:
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{verbatim}
-##   1   2   3   4   5   6 
-## 772 703 597 610 615 604
-##      1      2      3      4      5      6 
-## 0.7254 0.7155 0.7018 0.6951 0.7431 0.7715
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.674   0.727   0.749   0.751   0.772   0.827
-\end{verbatim}
-\end{kframe}
+
 \includegraphics[width=\maxwidth]{figure/retour_dom2} 
 
-\end{knitrout}
 
 
 Si on considère que tout ce qui n'est pas un retour à domicile constitue une hospitalisation, on peut tracer un graphique, miroir du précédent. La ligne bleue représente la moyenne lissée sur sept jours. On notera le taux d'hospitalisation élévé du début de l'année, correspondant à une période de forte tension. Les fluctuations de ce paramètre (comme le retour à domicile) est une piste intéressante dans le cadre de la recherche d'indicateurs d'hôpital en tension, cependant les seuils d'alerte (triggers) restent à déterminer.
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{verbatim}
-##      1      2      3      4      5      6 
-## 0.2746 0.2845 0.2982 0.3049 0.2569 0.2285
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.173   0.228   0.251   0.249   0.273   0.326
-\end{verbatim}
-\end{kframe}
+
+% latex table generated in R 2.15.1 by xtable 1.7-1 package
+% Sun Sep 15 17:23:16 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrr}
+  \hline
+ & n & Min & Q25 & Moyenne & E-type & Médiane & Q75 & Max \\ 
+  \hline
+ & 242.00 & 0.20 & 0.20 & 0.20 & 0.00 & 0.30 & 0.30 & 0.30 \\ 
+   \hline
+\end{tabular}
+\caption[Hospitalisations]{Hospitalisations (ou transferts) sans les non réponses} 
+\label{tab:hosp}
+\end{table}
+   n Min Q25 Moyenne E-type Médiane Q75 Max
+ 242 0.2 0.2     0.2      0     0.3 0.3 0.3
+
 \includegraphics[width=\maxwidth]{figure/hospit} 
 
-\end{knitrout}
 
 
 
 Le taux de réponse pour cet item est de
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{verbatim}
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.783   0.830   0.850   0.852   0.872   0.949
-\end{verbatim}
-\end{kframe}
+
 \includegraphics[width=\maxwidth]{figure/retour_dom3} 
 
-\end{knitrout}
 
-
+\index{exhaustivité@mode de sortie}
 
 
 %===================================================================== PARTIE 3
