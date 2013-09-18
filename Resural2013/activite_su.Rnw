@@ -17,6 +17,7 @@ z<-zoo(q,unique(as.Date(d1$ENTREE)))
 plot(z,main="Passages totaux")
 plot(xts(z),main="Passages totaux")
 lines(rollmean(xts(z), 7),col="red",lwd=2)
+copyright()
 @
 
 

@@ -6,33 +6,28 @@ date()
 ```
 
 ```
-## [1] "Sat Sep 14 11:39:36 2013"
+## [1] "Wed Sep 18 11:51:30 2013"
 ```
 
 source: RPU2013
 Ce document exploite le fichier RData préparé à partir de la table *RPU__* de Sagec. Voir le document *RPU_2013_Preparation.Rmd* du dossier Resural.
 
-Librairies nécessaires:
------------------------
-
-```r
-library("gdata")
-library("rgrs")
-library("lubridate")
-library("rattle")
-library("epicalc")
-library("zoo")
-library("xts")
-library("xtable")
-library("plotrix")
-library("openintro")
-```
 
 Activité régionale
 -----------------------------
 
 ```r
 source("../../mes_fonctions.R")
+```
+
+Librairies nécessaires:
+-----------------------
+
+```r
+# library('gdata') library('rgrs') library('lubridate') library('rattle')
+# library('epicalc') library('zoo') library('xts') library('xtable')
+# library('plotrix') library('openintro')
+load_libraries()
 ```
 
 Variables globales:
@@ -74,12 +69,34 @@ plot(z)
 ![plot of chunk Lecture fichier](figure/Lecture_fichier2.png) 
 
 ```r
-plot(xts(z))
-lines(rollmean(xts(z), 7), col = "red")
+
+plot(xts(z), main = "Activité quotidienne des Services d'urgence\nen Alsace", 
+    ylab = "nombre de passages", minor.ticks = FALSE)
+lines(rollmean(xts(z), 7), col = "red", lwd = 2)
+copyright()
 ```
 
 ![plot of chunk Lecture fichier](figure/Lecture_fichier3.png) 
 
+```r
+
+plot(z, col = "gray45", main = "Activité quotidienne des Services d'urgence\nen Alsace", 
+    ylab = "nombre de passages", xlab = "Année 2013")
+lines(rollmean(z, 7), col = "red", lwd = 2)
+copyright()
+```
+
+![plot of chunk Lecture fichier](figure/Lecture_fichier4.png) 
+
+Variables:
+- *e* vecteur contenant les dates d'entrées depuis le début de l'année
+- *q* vecteur contenant le nombre d'entrées par jour depuis le début de l'année
+- *q2* vecteur contenant le nombre de retours à domiciles par jour
+- *q3* vecteur contenant la proportion de retours à domicile par rapport au nombre d'entrées, par jour (taux)
+- *q4* vecteur contenant le nombre de retours à domiciles par jour en excluant les non réponses (NA)
+- *q5* vecteur contenant la proportion de retours à domicile par rapport au nombre d'entrées, par jour (taux), en excluant les non réponses (NA)
+- *q6* taux de non réponses
+- *q7* vecteur contenant le taux d'hospitalisation par jour (miroir de q5)
 
 Retour à domicile
 -----------------
@@ -110,6 +127,7 @@ summary(q3)
 
 ```r
 plot(q3, type = "l")
+copyright()
 ```
 
 ![plot of chunk retour_dom](figure/retour_dom.png) 
@@ -149,6 +167,7 @@ summary(q5)
 ```r
 plot(q5, type = "l", main = "Taux de retour à domicile\n(non réponses exclues)", 
     ylab = "Fréquence", xlab = "Jours")
+copyright()
 ```
 
 ![plot of chunk sauf_na](figure/sauf_na1.png) 
@@ -165,6 +184,7 @@ plot(z, main = "Taux de retour à domicile\n(non réponses exclues)", ylab = "Fr
 ```r
 plot(xts(z))
 lines(rollmean(xts(z), 7), col = "red", lwd = 2)
+copyright()
 ```
 
 ![plot of chunk sauf_na](figure/sauf_na3.png) 
@@ -194,12 +214,13 @@ summary(q7)
 
 ```r
 z <- zoo(q7, unique(as.Date(d1$ENTREE)))
-plot(xts(z), main = "Taux d'hospitalisation\n(non réponses exclues)", ylab = "Fréquence", 
-    xlab = "Période (moyenne lissée sur 7 jours")
+plot(xts(z), main = "Taux d'hospitalisation en Alsace à partir des SU\n(non réponses exclues)", 
+    ylab = "Fréquence", xlab = "Période (moyenne lissée sur 7 jours")
 lines(rollmean(xts(z), 7), col = "blue", lwd = 2)
+copyright()
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1.png) 
+![plot of chunk taux_hospitalisation](figure/taux_hospitalisation.png) 
 
 
 Taux de non réponses:
@@ -230,3 +251,13 @@ Clinique Saint-Luc Schirmeck
 - FINESS juridique:    67 001 460 4
 - adresse: 10 RUE DES FORGES 67130 SCHIRMECK
 - Tél : 03 88 97 05 70 
+
+resume<-function (x)
+{
+  name=c("moyenne","écart-type","médiane","min","max","n")
+	m<-mean(x,na.remove=TRUE)
+	e<-sd(x)
+	r<-matrix(c(m,e,median(x),min(x),max(x),length(x)),1,6)
+	colnames(r)<-name
+	return(r)
+}

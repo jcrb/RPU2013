@@ -1,3 +1,34 @@
+#'@title load_libraries
+#'@description cherge les librairies nécessaires
+#'
+load_libraries<-function(){
+  library("gdata")
+  library("rgrs")
+  library("lubridate")
+  library("rattle")
+  library("epicalc")
+  library("zoo")
+  library("xts")
+  library("xtable")
+  library("plotrix")
+  library("openintro")
+}
+
+#'@title resume
+#'@description affiche un résummée de données continues
+#'@param x vecteur de données
+#'@return une matrice contenant moyenne, médiane, écart_type, min, max,n
+#'
+resume<-function (x)
+{
+  name=c("moyenne","écart-type","médiane","min","max","n")
+  m<-mean(x,na.remove=TRUE)
+  e<-sd(x)
+  r<-matrix(c(m,e,median(x),min(x),max(x),length(x)),1,6)
+  colnames(r)<-name
+  rownames<-""
+  return(r)
+}
 
 #'@title copyrigth
 #'@author JcB
@@ -8,6 +39,7 @@
 #'@param line distance par rapport au bord. Défaut=-1, immédiatement à l'intérieur du cadre
 #'@param cex taille du texte (défaut 0.8)
 #'@return "© 2012 Resural"
+#'@usage copyright()
 #'
 copyright<-function(an ="2013",side=4,line=-1,cex=0.8){
   titre<-paste("©",an,"Resural",sep=" ")

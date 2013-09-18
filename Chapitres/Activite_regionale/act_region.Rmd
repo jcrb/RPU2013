@@ -6,31 +6,23 @@ date()
 source: RPU2013
 Ce document exploite le fichier RData préparé à partir de la table *RPU__* de Sagec. Voir le document *RPU_2013_Preparation.Rmd* du dossier Resural.
 
-Librairies nécessaires:
------------------------
-```{r library , message=FALSE}
-library("gdata")
-library("rgrs")
-library("lubridate")
-library("rattle")
-library("epicalc")
-library("zoo")
-library("xts")
-library("xtable")
-library("plotrix")
-library("openintro")
-```
-Activité régionale
------------------------------
-```{r routines}
-source("../../mes_fonctions.R")
-```
 Variables globales:
 -------------------
 ```{r var_globales}
 mois_courant<-8
 annee_couranre<-2013
 path<-"../../"
+```
+
+Activité régionale
+-----------------------------
+```{r routines}
+source(paste(path,"mes_fonctions.R",sep="")
+```
+Librairies nécessaires:
+-----------------------
+```{r library , message=FALSE}
+load_libraries()
 ```
 
 Lecture du fichier des données
@@ -43,6 +35,10 @@ load(paste(path,"rpu2013d0108.Rda",sep=""))
 d1<-d0108
 rm(d0108)
 }
+```
+Analyse des données
+-------------------
+```{r analyse}
 d1<-d1[d1$ENTREE<"2013-09-01",]
 
 e<-as.Date(d1$ENTREE)
@@ -51,8 +47,14 @@ plot(q,type="l")
 
 z<-zoo(q,unique(as.Date(d1$ENTREE)))
 plot(z)
-plot(xts(z))
-lines(rollmean(xts(z), 7),col="red")
+
+plot(xts(z), main="Activité quotidienne des Services d'urgence\nen Alsace",ylab="nombre de passages",minor.ticks=FALSE)
+lines(rollmean(xts(z), 7),col="red",lwd=2)
+copyright()
+
+plot(z, col="gray45", main="Activité quotidienne des Services d'urgence\nen Alsace",ylab="nombre de passages",xlab="Année 2013")
+lines(rollmean(z, 7),col="red",lwd=2)
+copyright()
 ```
 Variables:
 - *e* vecteur contenant les dates d'entrées depuis le début de l'année
@@ -75,6 +77,7 @@ head(q2)
 q3<-q2/q
 summary(q3)
 plot(q3,type="l")
+copyright()
 ```
 On refait le calcul de q en tenant compte des non réponses:
 ```{r sauf_na}
@@ -84,22 +87,25 @@ q5<-q2/q4
 head(q5)
 summary(q5)
 plot(q5,type="l",main="Taux de retour à domicile\n(non réponses exclues)",ylab="Fréquence",xlab="Jours")
+copyright()
 
 z <- zoo(q5, unique(as.Date(d1$ENTREE)))
 plot(z,main="Taux de retour à domicile\n(non réponses exclues)",ylab="Fréquence",xlab="Période (moyenne lissée sur 7 jours")
 plot(xts(z))
 lines(rollmean(xts(z), 7), col = "red",lwd=2)
+copyright()
 ```
 Taux d'hospitalisation
 ----------------------
 c'est le complément (miroir) du précédent:
-```{r}
+```{r taux_hospitalisation}
 q7<-1-q2/q4
 head(q7)
 summary(q7)
 z <- zoo(q7, unique(as.Date(d1$ENTREE)))
-plot(xts(z),main="Taux d'hospitalisation\n(non réponses exclues)",ylab="Fréquence",xlab="Période (moyenne lissée sur 7 jours")
+plot(xts(z),main="Taux d'hospitalisation en Alsace à partir des SU\n(non réponses exclues)",ylab="Fréquence",xlab="Période (moyenne lissée sur 7 jours")
 lines(rollmean(xts(z), 7), col = "blue",lwd=2)
+copyright()
 ```
 
 Taux de non réponses:
@@ -108,20 +114,5 @@ q6<-q4/q
 head(q6)
 summary(q6)
 ```
-Clinique Saint-Luc Schirmeck
-============================
 
-- FINESS géographique: N° FINESS :  67 079 863 6
-- FINESS juridique:    67 001 460 4
-- adresse: 10 RUE DES FORGES 67130 SCHIRMECK
-- Tél : 03 88 97 05 70 
 
-resume<-function (x)
-{
-  name=c("moyenne","écart-type","médiane","min","max","n")
-	m<-mean(x,na.remove=TRUE)
-	e<-sd(x)
-	r<-matrix(c(m,e,median(x),min(x),max(x),length(x)),1,6)
-	colnames(r)<-name
-	return(r)
-}

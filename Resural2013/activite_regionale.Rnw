@@ -32,7 +32,7 @@ soit une moyenne de \np{\Sexpr{a1[4]}} passages par jour (extrèmes \Sexpr{a1[1]
 z<-zoo(a,unique(as.Date(d1$ENTREE)))
   plot(z,ylab="Nb. de passages aux Urgences",main="Passages en SU en 2013",xlab="Période")
   legend("topleft",legend="moyenne lissée",col="red",lty=1,cex=0.8,bty="n")
-  lines(rollmean(z[,2],7),col="red")
+  lines(rollmean(z[,2],7),col="red",lwd=2)
   # copyright
   mtext("© RESURAL 2013",cex=0.6,side=4,line=-1,adj=0.1)
 @
@@ -41,7 +41,7 @@ z<-zoo(a,unique(as.Date(d1$ENTREE)))
  x<-as.xts(z)
  plot(x,ylab="Nb. de passages aux Urgences",main="Passages en SU en 2013",xlab="Période")
 legend("topleft",legend="moyenne lissée",col="red",lty=1,cex=0.8,bty="n")
-lines(rollmean(xts(z),7),col="red")
+lines(rollmean(xts(z),7),col="red",lwd=2)
 # moyenne générale
 abline(h=mean(a),col="blue")
  mtext("© RESURAL 2013",cex=0.6,side=4,line=-1,adj=0.1)
