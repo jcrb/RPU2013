@@ -55,7 +55,7 @@ Fichier exporté de la base *pma* sous le nom de *ville.csv* (5/6/2013). Il cont
 
 
 ```r
-file <- "ville.csv"
+file <- "../data/ville.csv"
 v <- read.csv(file, header = TRUE, sep = ",")
 names(v)
 ```
@@ -156,7 +156,7 @@ On forme un fichier commun avec
 de façon a avoir dans une même base les zones de proximité (va) et les populations correspondantes:
 - base1: merging de *va* et de *pop67*
 - base2: merging de *va* et de *pop68*
-base1 et base2 sont fusionné en un seul fichier *base*, puis supprrimés.
+base1 et base2 sont fusionné en un seul fichier *base*, puis supprimés.
 
 ```r
 load("~/Documents/Resural/Stat Resural/carto&pop/pop68.rda")
@@ -459,7 +459,7 @@ contour3 <- unionSpatialPolygons(als, IDs = als@data$CODE_DEPT)
 ```
 
 ```
-## Loading required package: rgeos rgeos version: 0.2-19, (SVN revision 394)
+## Loading required package: rgeos rgeos version: 0.3-1, (SVN revision 413M)
 ## GEOS runtime version: 3.3.3-CAPI-1.7.4 Polygon checking: TRUE
 ```
 
@@ -846,7 +846,9 @@ text(x, y, labels = nom, cex = 0.8, pos = 3)
 Les zones de proximités officielles sont dans le fichier zp.csv
 
 ```r
-zpo <- read.csv("zp.csv", header = TRUE, sep = ",")
+# zpo<-read.csv('zp.csv',header=TRUE, sep=',')
+zpo <- read.csv("~/Documents/Resural/Stat Resural/RPU2013/cartograhie/data/zp.csv", 
+    header = TRUE, sep = ",")
 names(zpo)
 ```
 
@@ -908,7 +910,8 @@ Crée un objet *zone de proximité 2*, en dessine le contour ainsi que le chef l
 
 
 ```r
-zpo <- read.csv("zp.csv", header = TRUE, sep = ",")
+zpo <- read.csv("~/Documents/Resural/Stat Resural/RPU2013/cartograhie/data/zp.csv", 
+    header = TRUE, sep = ",")
 base1 <- merge(zpo, pop67, by.x = "CODE.COMMUNE", by.y = "insee")
 base2 <- merge(zpo, pop68, by.x = "CODE.COMMUNE", by.y = "insee")
 base <- rbind(base1, base2)
@@ -966,7 +969,7 @@ text(x, y, labels = nom, cex = 0.8, pos = 3)
 ```r
 
 library("pixmap")
-img <- "Fichiers source/hop11.pnm"
+img <- "../../Fichiers source/logos/hop11.pnm"
 hop <- read.pnm(img)
 plot(contour2)
 x <- 2.5
@@ -1585,7 +1588,7 @@ Utilisation des cartes pré-enregistrées
 load("als_ts.Rda")
 plot(ctss)
 # surimpression des SAU
-hopitaux <- "Fichiers source/Hopitaux2lambert/hopitaux_alsace.csv"
+hopitaux <- "../../Fichiers source/Hopitaux2lambert/hopitaux_alsace.csv"
 h <- read.csv(hopitaux, header = TRUE, sep = ",")
 for (i in 1:nrow(h)) {
     points(h$lam_lon[i], h$lam_lat[i], pch = 19, col = "red")
