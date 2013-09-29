@@ -120,9 +120,9 @@ library("sp")
 
 path<-"../"
 if(!exists("d1")) {
-load(paste(path,"rpu2013d0108.Rda",sep=""))
-d1<-d0108
-rm(d0108)
+  load(paste(path,"rpu2013d0108.Rda",sep=""))
+  d1<-d0108
+  rm(d0108)
 }
 d1<-d1[d1$ENTREE<"2013-09-01",]
 
@@ -166,6 +166,10 @@ attach(d1)
 @
 
 \subsection{Passages par tranches d'âge}
+
+\chapter{Motif de consultation}
+<<child='motif.Rnw'>>=
+@
 
 \chapter{Modalité d'admission}
 <<child='modalites.Rnw'>>=

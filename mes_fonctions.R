@@ -1,5 +1,5 @@
 #'@title load_libraries
-#'@description cherge les librairies nécessaires
+#'@description charge les librairies nécessaires
 #'
 load_libraries<-function(){
   library("gdata")
@@ -12,6 +12,7 @@ load_libraries<-function(){
   library("xtable")
   library("plotrix")
   library("openintro")
+  library("maptools")
 }
 
 #'@title resume

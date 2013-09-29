@@ -1,0 +1,20 @@
+\documentclass{article}
+
+\begin{document}
+
+<<test1,cache=TRUE>>=
+library("xtable", lib.loc="/home/jcb/R/x86_64-pc-linux-gnu-library/2.15")
+path<-"../"
+if(!exists("d1")) {
+  load(paste(path,"rpu2013d0108.Rda",sep=""))
+  d1<-d0108
+  rm(d0108)
+}
+d1<-d1[d1$ENTREE<"2013-09-01",]
+
+xtable(head(d1[,]))
+@
+
+
+
+\end{document}

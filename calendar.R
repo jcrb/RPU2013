@@ -1,3 +1,4 @@
+#' Routines développées pour antoine
 
 #'@title mjd modified julian date
 #'@description calcule la date julienne d'un jour donné
@@ -6,6 +7,7 @@
 #'@param year
 #'@param hour
 #'@return nombre de jours julien
+#'@references Astronomy on the personal computer pp 12
 #'
 mdj<-function(day,month,year,hour=0.0){
   a<-10000.0*year+100.0*month+day
@@ -29,6 +31,7 @@ mdj<-function(day,month,year,hour=0.0){
 #'@param year
 #'@param hour
 #'@return
+#'@references Astronomy on the personal computer pp 13
 #'
 caldat<-function(mjd){
   jd<-mjd+2400000.5
@@ -50,21 +53,9 @@ caldat<-function(mjd){
   return(rep)
 }
 
-age<-function(mjd){
 
-  a<-mjd/365.2425
-  year<-trunc(a)
-  b<-a-year
-  m<-365.2425*b/30.6001
-  month<-trunc(m)
-  d<-m-month
-  day<-ceiling(d*30.6)
-  
-  rep<-c(day,month,year)
-  return(rep)
-}
-
-#'@title caldate
+#'@title is_bisex
+#'@author JcB
 #'@description répond TRUE si une année est bisextile
 #' une année est bisextile si elle est divisible par 400 ou 4 mais pas par 100
 #' x%%1==0 retourne TRUE si x est entier et FALSE si x est fractionnaire
@@ -77,6 +68,16 @@ is_bisex<-function(year){
   return(FALSE)
 }
 
+#'@title
+#'@author JcB
+#'@description à partir de la date de naissance et de la date du jour calcule le temps écoulé
+#'en années, mois et jour
+#'@param year1,month1,day1 date de naissance
+#'@param year2,month2,day2 date de point
+#'@return temps écoulé
+#'@todo inclure les années bisextiles et vérifier si le calcul est juste pour les personnes nées au mois
+#'de décembre
+#'
 age2<-function(year1,month1,day1,year2,month2,day2){
   mois<-c(31,28,31,30,31,30,31,31,30,31,30,31)
   year<-year2-1-year1

@@ -1,5 +1,7 @@
 % rpu.Rnw
 
+La création du résumé des passages aux urgences remonte à 2002 \cite{11}
+
 \section*{RPU}
 
 Les Résumés de Passage aux Urgences (RPU) ont été transmis par le Centre Hospitalier de Sélestat à partir de 2008. 

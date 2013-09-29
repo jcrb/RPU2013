@@ -339,7 +339,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:03:24 2013
+% Sun Sep 29 22:42:07 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -373,7 +373,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:03:27 2013
+% Sun Sep 29 22:42:10 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -465,6 +465,8 @@ La fédération des observatoires des urgences et structures apparentés a été
 \chapter{Le Résumé du passage aux urgences}
 
 % rpu.Rnw
+
+La création du résumé des passages aux urgences remonte à 2002 \cite{11}
 
 \section*{RPU}
 
@@ -618,7 +620,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \subsection*{Activité par semaine}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:03:40 2013
+% Sun Sep 29 22:42:23 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -666,7 +668,7 @@ m <- \hlkwd{month}(d1$ENTREE, label = TRUE)
 \label{act_sem}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:03:40 2013
+% Sun Sep 29 22:42:24 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -726,7 +728,7 @@ Ce phénomène cyclique se répète tous les jours selon un profil immuable. La 
 %----------------------------------------------------------------------------- Summary
 Résumé des horaires de passage aux ugences: les données figurent dans le tableau \ref{tab:24} page \pageref{tab:24}.
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:03:46 2013
+% Sun Sep 29 22:42:31 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -805,6 +807,64 @@ Résumé des horaires de passage aux ugences: les données figurent dans le tabl
 
 \subsection{Passages par tranches d'âge}
 
+\chapter{Motif de consultation}
+
+% motif.Rnw
+
+\index{motif de consultation}
+
+Le motif de consultation est l'un des items les plus mal renseigné. Cela est du en partie à l'absence de règles formelles concernant la saisie de cet élément. Une recommandation du ministère de la santé (juin 2013 \cite{12,13}) demande que le thésaurus 2013 de la SFMU \cite{9} soit utilisé.
+
+Le thésaurus est présenté sous la formed'un fichier Excel. L'onglet \emph{recours} liste environ \emph{150} motifs de recours aux urgences avec leur correspondance CIM10, répartis en 17 groupes. Aucune méthode n'est parfaite mais cette page constitue une bonne base d'harmonisation des données.
+
+
+% latex table generated in R 2.15.1 by xtable 1.7-1 package
+% Sun Sep 29 22:42:34 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrrrrrr}
+  \hline
+ & X3Fr & Alk & Col & Dia & Geb & Hag & Hus & Mul & Odi & Sel & Wis & Sav \\ 
+  \hline
+1 & 9.06 & 11.86 & 100.00 & 95.25 & 0.04 & 14.85 & 0.00 & 83.24 & 94.38 & 98.05 & 99.67 & 42.12 \\ 
+   \hline
+\end{tabular}
+\caption[motif de consultation]{Taux de réponse à l'item motif de consultation selon le services d'urgence} 
+\label{lab:motif}
+\end{table}
+
+\includegraphics[width=\maxwidth]{figure/motifss1} 
+
+\includegraphics[width=\maxwidth]{figure/motifss2} 
+
+
+
+\index{exhaustivité@motif}
+Le motif de consultation nest pas renseigné dans 54.04 \% des cas (table \ref{lab:motif}).
+
+Seuls six établissements ont un taux d'exhaustivité supérieur à 80\% pour cette rubrique.
+
+Cependant seuls quelques établissements saisissent cette information sous forme normalisée qui permet de l'exploiter. Dans les autres cas il s'agit de codes propre à l'établissement ou de texte libre inexploitable.
+
+Données non renseignées:
+\begin{itemize}
+  \item Guebwiller
+  \item HUS
+\end{itemize}
+
+Données renseignées mais inexploitables:
+\begin{itemize}
+  \item Colmar
+\end{itemize}
+
+Données renseignées, exploitables mais à mettre en conformité avec le thésaurus:
+\begin{itemize}
+  \item Mulhouse
+  \item Wissembourg
+  \item Altkirch (exhaustivité)
+\end{itemize}
+
+
 \chapter{Modalité d'admission}
 
 % modalites.Rnw
@@ -820,7 +880,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:03:50 2013
+% Sun Sep 29 22:42:35 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -850,7 +910,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:03:50 2013
+% Sun Sep 29 22:42:35 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1512,7 +1572,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:03:56 2013
+% Sun Sep 29 22:42:44 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -1537,7 +1597,7 @@ Décès & 2 & 0.00 \\
 Les données par établissement sont résumées dans le tableau \ref{tab.sortie_etab} page \pageref{tab.sortie_etab}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:03:56 2013
+% Sun Sep 29 22:42:44 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|r|r|r|r|}
@@ -1628,7 +1688,7 @@ a <- \hlkwd{drop.levels}(d1$ORIENTATION)
 \section{Destination}
 \index{destination}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:03:57 2013
+% Sun Sep 29 22:42:45 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1647,7 +1707,7 @@ HAD & 0.00 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:03:57 2013
+% Sun Sep 29 22:42:45 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1758,7 +1818,7 @@ Le mode d'orientation au sens du RPU est une rubrique un peu fourre-tout regroup
 
 \includegraphics[width=\maxwidth]{figure/passages_totaux1} 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:03:59 2013
+% Sun Sep 29 22:42:47 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -1791,7 +1851,7 @@ Les variation du retour journalier à domicile sont calculés de la manière sui
 \end{description}
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:04:02 2013
+% Sun Sep 29 22:42:50 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -1818,7 +1878,7 @@ On refait le calcul de q en tenant compte des non réponses:
 Si on considère que tout ce qui n'est pas un retour à domicile constitue une hospitalisation, on peut tracer un graphique, miroir du précédent. La ligne bleue représente la moyenne lissée sur sept jours. On notera le taux d'hospitalisation élévé du début de l'année, correspondant à une période de forte tension. Les fluctuations de ce paramètre (comme le retour à domicile) est une piste intéressante dans le cadre de la recherche d'indicateurs d'hôpital en tension, cependant les seuils d'alerte (triggers) restent à déterminer.
 
 % latex table generated in R 2.15.1 by xtable 1.7-1 package
-% Wed Sep 18 09:04:04 2013
+% Sun Sep 29 22:42:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
