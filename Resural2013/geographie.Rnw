@@ -114,7 +114,67 @@ Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'en
 \index{Services d'urgence!en Alsace}
 \index{Alsace!services d'urgence}
 
-L'Alsace compte actuellement 14 services d'urgence (SU) officiellement labellisés. On prend également en compte la clinique Saint-Luc de Schirmeck qui fait fonctionner une policlinique recevant plus de \np{8000} passages par an.
+L'Alsace compte actuellement 15 établissements autorisés pour l'activité de soins de médecine d'urgence (article R6123-1 du CSP). Celle-ci se pratique au sein de ce qu'il est communément appelé services d'urgence (SU). Le SROS 2 avait introduit une distinction entre les services accueillant les urgences en fonction de leurs capacités et plateau technique. On distinguait alors les UPATOU, les POSU et les SAU. Cette nomenclature qui reposait sur une réalité avait été bien assimilée par les professionnels de santé et beaucoup continuent de l'utiliser,même si elle n'a plus cours officiellement. 
+
+La clinique du Diaconat de Strasbourg,bien que disposant de cette autorisation, ne prend en charge que les urgences mains pour lequelles elle dispose d'une labellisation FESUM \footnote{Federation Européenne des Services d'Urgence de la Main}
+
+On prend également en compte la clinique Saint-Luc de Schirmeck qui fait fonctionner une policlinique recevant plus de \np{8000} passages par an. Officiellement, cet établissement de santé ne dispose pas de cette autorisation bien qu'elle en effectue la mission et est le seul établissement de proximité de la zone Molsheim-Schirmeck.
+
+Les HUS sont le seul établissement d'Alsace a posséder un SU pédiatrique labellisé. Les HUS ont également un service labellisé urgences main (FESUM) situé au CCOM d'Illkirch mais ce dernier n'est pas inclu dans les implantations de services d'urgence.
+
+Sont officiellement labellisés 18 sites (en y incluant SOS main Diaconnat mais pas la clinique St Luc)
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline 
+Territoire & ZProximité & Etablissement & FINESS J & Site & FINESS G & SU & SU Ped & SMUR & SAMU\tabularnewline
+\hline 
+\hline 
+% \multirow{3}{*}{1} & Wissembourg & CH Wissembourg &  & id &  & oui &  & oui & \tabularnewline
+% \cline{2-10} 
+%  & Haguenau & CH Haguenau &  & id &  & oui &  & oui & \tabularnewline
+% \cline{2-10} 
+%  & Saverne & CH Saverne &  & id &  & oui &  & oui & \tabularnewline
+% \hline 
+% \multirow{7}{*}{2} & \multirow{6}{*}{Strasbourg} & \multirow{3}{*}{HUS} &  & NHC &  & oui &  &  & \tabularnewline
+% \cline{4-10} 
+%  &  &  &  & HTP &  & oui & oui & oui%
+% \footnote{SMUR Néonatal%
+% } & \tabularnewline
+% \cline{4-10} 
+%  &  &  &  & PL &  &  &  & oui & oui\tabularnewline
+% \cline{3-10} 
+%  &  & Ste Anne &  & id &  & oui &  &  & \tabularnewline
+% \cline{3-10} 
+%  &  & Ste Odile &  & id &  & oui &  &  & \tabularnewline
+% \cline{3-10} 
+%  &  & Diaconnat &  & id &  & oui%
+% \footnote{SOS Mains%
+% } &  &  & \tabularnewline
+% \cline{2-10} 
+%  & Schirmeck & St Luc &  & id &  &  &  &  & \tabularnewline
+% \hline 
+% \multirow{4}{*}{3} & Sélestat & CH Sélestat &  & id &  & oui &  & oui & \tabularnewline
+% \cline{2-10} 
+%  & \multirow{2}{*}{Colmar} & \multirow{2}{*}{CH Colmar} &  & HC &  & oui &  & oui & \tabularnewline
+% \cline{4-10} 
+%  &  &  &  & Parc &  &  & oui &  & \tabularnewline
+% \cline{2-10} 
+%  & Guebwiller & CH Guebwiller &  & id &  & oui &  &  & \tabularnewline
+% \hline 
+% \multirow{5}{*}{4} & \multirow{3}{*}{Mulhouse} & \multirow{2}{*}{CH Mulhouse} &  & EM &  & oui & oui & oui & oui\tabularnewline
+% \cline{4-10} 
+%  &  &  &  & St Louis &  & oui &  & oui%
+% \footnote{antenne SMUR%
+% } & \tabularnewline
+% \cline{3-10} 
+%  &  & Diaconnat-F &  & id &  & oui &  &  & \tabularnewline
+% \cline{2-10} 
+%  & Thann & CH Thann &  & id &  & oui &  &  & \tabularnewline
+% \cline{2-10} 
+%  & Altkirch & CH Altkirch &  & id &  & oui &  &  & \tabularnewline
+\hline 
+\end{tabular}
+
 
 \begin{figure}[ht]
  \centering

@@ -205,21 +205,22 @@ attach(d1)
 %===================================================================== PARTIE 4
 \part{Activité des SAMU d'Alsace}
 
-\chapter{Test un}
-<<child='test.Rnw'>>=
-@
+% A décommenter pour la partie technique uniquement
 
-\chapter{test deux}
-<<>>=
+% \chapter{Test un}
+% <<child='test.Rnw'>>=
+% @
 
-str(d1)
-summary(d1)
-@
+% \chapter{test deux}
+% <<>>=
+% str(d1)
+% summary(d1)
+% @
 
-\index{test}
-\index{Eclipse@Eclipse!solaire}
-\index{Orbite!périgée@périgée}
-test biblio \cite{1}
+%\index{test}
+%\index{Eclipse@Eclipse!solaire}
+%\index{Orbite!périgée@périgée}
+
 %===================================================================== PARTIE 5
 \part{Annexes}
 \appendix

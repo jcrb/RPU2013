@@ -1,7 +1,7 @@
 % sortie.Rnw
 
 \section{Mode de sortie}
-\index{mode de sortie}
+\index{Mode de sortie}
 
 Le RPU connaît trois mode de sortie des urgences:
 \begin{enumerate}
