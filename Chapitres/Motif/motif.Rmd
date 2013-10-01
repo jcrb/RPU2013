@@ -73,3 +73,14 @@ c<-b*100/length(a)
 print(c)
 ```
 L'item nest pas renseigné dans `r c` % des cas.
+
+Thann
+--------
+```{r Mul}
+head(d1$MOTIF[d1$FINESS=="Thn"])
+a<-is.na(d1$MOTIF[d1$FINESS=="Thn"])
+b<-length(a[a==TRUE])
+c<-b*100/length(a)
+print(c)
+```
+L'item nest pas renseigné dans `r c` % des cas.

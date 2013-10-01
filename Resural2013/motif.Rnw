@@ -28,11 +28,15 @@ Données non renseignées:
 \begin{itemize}
   \item Guebwiller
   \item HUS
+  \item Ste Anne
+  \item Tann
 \end{itemize}
 
 Données renseignées mais inexploitables:
 \begin{itemize}
   \item Colmar
+  \item Sélestat
+  \item Haguenau
 \end{itemize}
 
 Données renseignées, exploitables mais à mettre en conformité avec le thésaurus:
@@ -40,4 +44,8 @@ Données renseignées, exploitables mais à mettre en conformité avec le thésa
   \item Mulhouse
   \item Wissembourg
   \item Altkirch (exhaustivité)
+  \item Saverne
+  \item Ste Odile
+  \item Diaconnat Fonderie
+  \item Trois Frontières
 \end{itemize}
