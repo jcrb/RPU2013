@@ -1,9 +1,4 @@
 % activite_regionale.Rnw
-\subsubsection*{TODO} 
-%\footnote{activite_regionale.Rnw}
-\begin{itemize}
-  \item TRU par territoire de santé
-\end{itemize}
 
 %on fabrique un objet **a** qui fait la somme par date des passages aux urgences:
 <<activite,echo=FALSE>>=
@@ -27,6 +22,27 @@ a<-a[-211]
 L'ensemble des SU ont déclaré \np{\Sexpr{length(e)}} passages au \Sexpr{format(max(e),format="%d %B %Y")}, 
 soit une moyenne de \np{\Sexpr{a1[4]}} passages par jour (extrèmes \Sexpr{a1[1]} et \np{\Sexpr{a1[6]}})
 
+Passages par secteur sanitaire:
+<<passages_secteur,echo=FALSE>>=
+t<-tapply(d1$ENTREE,d1$secteur,length)
+@
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr}
+  \hline
+ Territoire & RPU déclarés \\ 
+  \hline
+  1 & \np{\Sexpr{t[1]}} \\ 
+  2 & \np{\Sexpr{t[2]}} \\ 
+  3 & \np{\Sexpr{t[3]}} \\ 
+  4 & \np{\Sexpr{t[4]}} \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+Les données du secteur 2 sont très sous-estimées car il manque celles de la Clinique Sainte-Anne, des urgences pédiatriques de Hautepierre ainsi q'une part importante des RPU des urgences adulte des HUS.
+
+
 %affichage du graphique
 <<activite plot,echo=FALSE>>=
 z<-zoo(a,unique(as.Date(d1$ENTREE)))
@@ -48,14 +64,22 @@ abline(h=mean(a),col="blue")
 @
 
 \subsection*{En valeur absolue}
-<<val_abs,echo=FALSE>>=
+<<val_abs,echo=FALSE,results='asis'>>=
 t<-tapply(as.Date(d1$ENTREE),d1$FINESS,length)
-t
+t2<-as.matrix(t)
+t2<-cbind(row.names(t),t)
+colnames(t2)<-c("Hôpital","RPU")
+rownames(t2)<-NULL
+
+xtable(t2,caption=c("Passages par service d'urgence","Nombre de passages par service d'urgence"),label="fig:passage_su",align=c("l","l","r"))
+
+barplot(sort(t),horiz=T,las=2,main="SU 2013: nombre de passages")
 @
 
 \subsection*{En pourcentage}
 <<en_pourcentage,echo=FALSE>>=
-round(prop.table(t)*100,2)
+p<-sort(round(prop.table(t)*100,2))
+barplot(p,horiz=T,las=2,xlim=c(0,20),xlab="pourcentage du total",main="SU 2013: nombre de passages (en %)")
 @
 
 \subsection*{Taux de recours aux urgences}

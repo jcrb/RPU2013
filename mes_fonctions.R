@@ -1,3 +1,18 @@
+#'@title Constantes
+#'
+pop.als.2010.totale<-1115226 + 765634
+pop_als_2010_municipale<-1095905 + 749782
+pop.67.2010.municipale<-1095905
+pop.68.2010.municipale<-749782
+
+pop0<-21655
+pop1_75<-1677958
+pop75<-146074
+pop1_15<-309641
+pop15_75<-1368317
+pop75_85<-108426
+pop85<-37647
+
 #'@title load_libraries
 #'@description charge les librairies nécessaires
 #'

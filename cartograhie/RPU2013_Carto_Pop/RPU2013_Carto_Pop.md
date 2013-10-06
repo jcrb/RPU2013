@@ -37,6 +37,107 @@ Notes sur les populations
   - http://www.insee.fr/fr/ppp/bases-de-donnees/recensement/populations-legales/departement.asp?dep=68&annee=2010
   - Liste des cantons, communes, arrondissements, pays: http://www.insee.fr/fr/methodes/nomenclatures/cog/telechargement.asp
   
+  - Le fichier **BTT_TD_POP1B_2010.txt** dans le dossier *OpenData* contient les données du dernier recensement de la population (2010) par tranche d'age de 1 an, sexe et commune.Le source INSEE se trouve à la page *Accueil>Thèmes>Population>Évolution e...>Population et lieu de résidence antérieure - 2010 (Bases tableaux détaillés)* du site de l'Insee à l'adresse http://www.insee.fr/fr/themes/detail.asp?reg_id=99&ref_id=td-population-10
+
+Le fichier *BTT_TD_POP1B_2010.txt* est une matrice de plus de 5 millions de lignes et 7 colonne. On en extrait les données propres à l'Alsace sous la forme de 3 fichiers:
+- newPop67 pour le bas-Rhin
+- newPop68 pour le haut-Rhin
+- newPopAlsace pour la région
+
+
+```r
+file <- "~/Documents/Open Data/Population 2008/BTT_TD_POP1B_2010.txt"
+doc <- read.table(file, header = TRUE, sep = ";")
+head(doc)
+```
+
+  NIVEAU CODGEO REG DEP C_AGED10 C_SEXE         NB
+1    ARM  13201  93  13        0      1 306,366992
+2    ARM  13201  93  13        0      2 254,458782
+3    ARM  13201  93  13        1      1 312,109492
+4    ARM  13201  93  13        1      2 269,472118
+5    ARM  13201  93  13        2      1 246,121158
+6    ARM  13201  93  13        2      2 262,231821
+
+```r
+str(doc)
+```
+
+'data.frame':	5255519 obs. of  7 variables:
+ $ NIVEAU  : Factor w/ 2 levels "ARM","COM": 1 1 1 1 1 1 1 1 1 1 ...
+ $ CODGEO  : Factor w/ 36722 levels "01001","01002",..: 4524 4524 4524 4524 4524 4524 4524 4524 4524 4524 ...
+ $ REG     : int  93 93 93 93 93 93 93 93 93 93 ...
+ $ DEP     : Factor w/ 100 levels "01","02","03",..: 13 13 13 13 13 13 13 13 13 13 ...
+ $ C_AGED10: int  0 0 1 1 2 2 3 3 4 4 ...
+ $ C_SEXE  : int  1 2 1 2 1 2 1 2 1 2 ...
+ $ NB      : Factor w/ 788519 levels "0,302373","0,332376",..: 422726 353257 430875 369773 343175 361967 389945 381695 375561 377398 ...
+
+```r
+# population du bas-Rhin
+newPop67 <- doc[as.character(doc$CODGEO) > "66999" & as.character(doc$CODGEO) < 
+    "68000", ]
+# remplacement de la virgule par le point décimal
+newPop67$NB <- as.numeric(gsub(",", ".", newPop67$NB, fixed = TRUE))
+sum(newPop68$NB)
+```
+
+```
+## Error: objet 'newPop68' introuvable
+```
+
+```r
+# idem pour les autres
+newPop68 <- doc[as.character(doc$CODGEO) > "67999" & as.character(doc$CODGEO) < 
+    "69000", ]
+newPop68$NB <- as.numeric(gsub(",", ".", newPop68$NB, fixed = TRUE))
+sum(newPop68$NB)
+```
+
+[1] 749782
+
+```r
+newPopAlsace <- rbind(newPop67, newPop68)
+sum(newpopAlsace)
+```
+
+```
+## Error: objet 'newpopAlsace' introuvable
+```
+
+```r
+# ménage
+rm(doc)
+# Sauvegarde
+
+# Création des classes d'age
+newPopAlsace$age <- cut(newPopAlsace$C_AGED10, breaks = c(-1, 1, 15, 75, 85, 
+    110), labels = c("Moins de 1 an", "De 1 à 15 ans", "De 15 à 75 ans", "de 75 à 85 ans", 
+    "Plus de 85 ans"))
+a <- tapply(as.numeric(newPopAlsace$NB), newPopAlsace$age, sum)
+sum(a)
+```
+
+[1] 1845687
+
+```r
+pop0 <- a[1]
+pop1_75 <- a[2] + a[3]
+pop75 <- a[4] + a[5]
+a <- data.frame(c("Moins de 1 an", "De 1 à 75 ans", "Plus de 75 ans", "Total"), 
+    c("pop0", "pop1_75", "pop75", "pop_tot"), c(pop0, pop1_75, pop75, 0))
+names(a) <- c("Tranche d'age", "Abréviation", "Effectif")
+a$Pourcentage <- round(a$Effectif * 100/sum(a$Effectif), 2)
+a[4, 3] <- sum(a$Effectif)
+
+xtable(a)
+```
+
+```
+## Error: impossible de trouver la fonction "xtable"
+```
+
+
+  
 - population légale 2010: 
   - Alsace   1 845 687
 
@@ -299,6 +400,9 @@ territoire.prox <- c("Altkirch", "Colmar", "Guebwiller", "Haguenau", "Molsheim-S
     "Mulhouse", "Sélestat-Obernai", "Saint-Louis", "Saverne", "Strasbourg", 
     "Thann", "Wissembourg")
 
+# no des territoires de proximité
+no_tp <- c(11, 7, 8, 2, 5, 10, 6, 12, 3, 4, 9, 1)
+
 effectif <- tapply(base$Population.municipale, as.factor(base$zone_proximite), 
     sum, na.rm = TRUE)
 # on élimine la colonne 0 qui ne contient que NA effectif<-effectif[-1]
@@ -345,27 +449,29 @@ pourcentage
 ```
 
 ```r
-c <- cbind(effectif, pourcentage)
+c <- cbind(no_tp, effectif, pourcentage)
 c
 ```
 
 ```
-##                    effectif pourcentage
-## Altkirch              68591        3.68
-## Colmar               196848       10.55
-## Guebwiller            79628        4.27
-## Haguenau             194649       10.44
-## Molsheim-Schirmeck    88811        4.76
-## Mulhouse             257351       13.80
-## Sélestat-Obernai     161331        8.65
-## Saint-Louis           94315        5.06
-## Saverne              113804        6.10
-## Strasbourg           485884       26.05
-## Thann                 67191        3.60
-## Wissembourg           56886        3.05
+##                    no_tp effectif pourcentage
+## Altkirch              11    68591        3.68
+## Colmar                 7   196848       10.55
+## Guebwiller             8    79628        4.27
+## Haguenau               2   194649       10.44
+## Molsheim-Schirmeck     5    88811        4.76
+## Mulhouse              10   257351       13.80
+## Sélestat-Obernai       6   161331        8.65
+## Saint-Louis           12    94315        5.06
+## Saverne                3   113804        6.10
+## Strasbourg             4   485884       26.05
+## Thann                  9    67191        3.60
+## Wissembourg            1    56886        3.05
 ```
 
 ```r
+save(c, file = "data_tp.R")
+
 barplot(sort(effectif), cex.names = 0.8, xlab = "", las = 2, ylab = "Effectifs", 
     main = "Répartition de la population par territoire de proximité")
 ```
@@ -421,7 +527,11 @@ library("maptools")
 ```
 
 ```
-## Loading required package: sp Checking rgeos availability: TRUE
+## Loading required package: sp
+## Checking rgeos availability: FALSE
+##  	Note: when rgeos is not available, polygon geometry 	computations in maptools depend on gpclib,
+##  	which has a restricted licence. It is disabled by default;
+##  	to enable gpclib, type gpclibPermit()
 ```
 
 ```r
@@ -459,35 +569,82 @@ contour3 <- unionSpatialPolygons(als, IDs = als@data$CODE_DEPT)
 ```
 
 ```
-## Loading required package: rgeos rgeos version: 0.3-1, (SVN revision 413M)
-## GEOS runtime version: 3.3.3-CAPI-1.7.4 Polygon checking: TRUE
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
 ```
 
 ```r
 plot(contour3, col = c("springgreen3", "steelblue3"))
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour3' introuvable
+```
+
+```r
 title(main = "2 Départements en Alsace")
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 legend("bottomleft", legend = "Haut-Rhin", bty = "n")
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 legend("topleft", legend = "Bas-Rhin", bty = "n")
 ```
 
-![plot of chunk carto_alsace](figure/carto_alsace1.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 
 contour <- unionSpatialPolygons(als, IDs = als@data$CODE_ARR)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour)
+```
+
+```
+## Error: argument 'length.out' must be of length 1
+```
+
+```r
 title(main = "13 Arrondissements d'Alsace")
 ```
 
-![plot of chunk carto_alsace](figure/carto_alsace2.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 
 contour2 <- unionSpatialPolygons(als, IDs = als@data$CODE_CANT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour2, main = "75 Cantons d'Alsace")
 ```
 
-![plot of chunk carto_alsace](figure/carto_alsace3.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour2' introuvable
+```
 
 ```r
 main = "75 Cantons d'Alsace"
@@ -512,7 +669,9 @@ cols <- ifelse(substr(names(contour), 1, 2) == "67", "springgreen3", "steelblue3
 plot(contour, col = cols)
 ```
 
-![plot of chunk alsace](figure/alsace.png) 
+```
+## Error: argument 'length.out' must be of length 1
+```
 
 Petit test pour comprendre la fonction **merge**:
 
@@ -571,77 +730,113 @@ d <- merge(a, b, by.x = "id", by.y = "id", all.x = TRUE)
 plot(contour[1])
 ```
 
-![plot of chunk density](figure/density1.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur dans contour[1] : objet de type 'closure' non indiçable
+```
 
 ```r
 plot(contour[1], border = "blue")
 ```
 
-![plot of chunk density](figure/density2.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur dans contour[1] : objet de type 'closure' non indiçable
+```
 
 ```r
 plot(contour[1], border = "blue", col = "yellow")
 ```
 
-![plot of chunk density](figure/density3.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur dans contour[1] : objet de type 'closure' non indiçable
+```
 
 ```r
 plot(contour[1], border = "blue", col = "yellow", density = 5)
 ```
 
-![plot of chunk density](figure/density4.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur dans contour[1] : objet de type 'closure' non indiçable
+```
 
 ```r
 plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90)
 ```
 
-![plot of chunk density](figure/density5.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur dans contour[1] : objet de type 'closure' non indiçable
+```
 
 ```r
 plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90, axes = TRUE)
 ```
 
-![plot of chunk density](figure/density6.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur dans contour[1] : objet de type 'closure' non indiçable
+```
 
 ```r
 plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90, axes = TRUE, 
     lty = 3)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur dans contour[1] : objet de type 'closure' non indiçable
+```
+
+```r
 text(coordinates(contour), labels = row.names(contour))
 ```
 
-![plot of chunk density](figure/density7.png) 
+```
+## Error: unable to find an inherited method for function 'coordinates' for
+## signature '"function"'
+```
 
 ```r
 plot(contour[1], border = "blue", col = "yellow", density = 5, angle = 90, axes = TRUE, 
     lty = 3)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur dans contour[1] : objet de type 'closure' non indiçable
+```
+
+```r
 text(coordinates(contour[1]), labels = "Haguenau")
 ```
 
-![plot of chunk density](figure/density8.png) 
+```
+## Error: erreur d'évaluation de l'argument 'obj' lors de la sélection d'une méthode pour la fonction 'coordinates' : Erreur dans contour[1] : objet de type 'closure' non indiçable
+```
 
 #### la méthode *coordinates* de SpatialPolygon
 Retourne les coordonnées du barycentre du polygone. Pour l'illuster on forme le vecteur des chef-lieu des arrondissement d'Alsace dans l'ordre définit par R.
 
 ```r
 a <- coordinates(contour)
+```
+
+```
+## Error: unable to find an inherited method for function 'coordinates' for
+## signature '"function"'
+```
+
+```r
 a
 ```
 
 ```
-##        [,1]    [,2]
-## 672 1050975 6871700
-## 673 1019361 6832252
-## 674 1014963 6870087
-## 675 1033729 6812904
-## 676 1043604 6849760
-## 677 1060235 6884000
-## 678 1051520 6840746
-## 681 1018306 6727741
-## 682 1023113 6780338
-## 683 1021813 6766207
-## 684 1031124 6741958
-## 685 1015384 6795775
-## 686 1003070 6755097
+##    id     name
+## 1   1    annie
+## 2   2    bruno
+## 3   3  charles
+## 4   4    denis
+## 5   5   émilie
+## 6   6 francine
+## 7   7   gaelle
+## 8   8    henri
+## 9   9 isabelle
+## 10 10   joseph
 ```
 
 ```r
@@ -649,33 +844,54 @@ arrondissements <- c("Haguenau", "Molsheim", "Saverne", "Sélestat", "Strasbourg
     "Wissembourg", "Strasbourg", "Altkirch", "Colmar", "Guegwiller", "Mulhouse", 
     "Ribeauvillé", "Thann")
 a <- cbind(a, arrondissements)
+```
+
+```
+## Error: arguments imply differing number of rows: 10, 13
+```
+
+```r
 a
 ```
 
 ```
-##                                           arrondissements      
-## 672 "1050975.4309472"  "6871700.3360218"  "Haguenau"           
-## 673 "1019360.73950767" "6832251.55510637" "Molsheim"           
-## 674 "1014963.16143098" "6870087.20151333" "Saverne"            
-## 675 "1033728.72601807" "6812903.63987946" "Sélestat"           
-## 676 "1043603.83971875" "6849759.73675379" "Strasbourg-campagne"
-## 677 "1060234.88678665" "6883999.58193481" "Wissembourg"        
-## 678 "1051520.23211962" "6840746.21392256" "Strasbourg"         
-## 681 "1018306.01265032" "6727741.07733086" "Altkirch"           
-## 682 "1023112.76923881" "6780337.87448414" "Colmar"             
-## 683 "1021813.06994819" "6766207.36919532" "Guegwiller"         
-## 684 "1031124.05311655" "6741958.40566044" "Mulhouse"           
-## 685 "1015384.05066267" "6795774.93651746" "Ribeauvillé"        
-## 686 "1003070.32985611" "6755097.10713109" "Thann"
+##    id     name
+## 1   1    annie
+## 2   2    bruno
+## 3   3  charles
+## 4   4    denis
+## 5   5   émilie
+## 6   6 francine
+## 7   7   gaelle
+## 8   8    henri
+## 9   9 isabelle
+## 10 10   joseph
 ```
 
 ```r
 plot(contour, border = "blue", col = "wheat", axes = TRUE, lty = 1)
+```
+
+```
+## Error: argument 'length.out' must be of length 1
+```
+
+```r
 text(coordinates(contour), labels = arrondissements, cex = 0.6)
+```
+
+```
+## Error: unable to find an inherited method for function 'coordinates' for
+## signature '"function"'
+```
+
+```r
 legend("topleft", legend = "Les arrondissements d'Alsace", bty = "n", adj = -0.5)
 ```
 
-![plot of chunk contour1](figure/contour1.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 
 a<-coordinates(contour)
@@ -689,10 +905,19 @@ library("maptools")
 b <- paste(zip1, sep = ",")
 a <- base$ville_nom[base$ville_insee %in% b]
 contour <- unionSpatialPolygons(als, IDs = als@data$INSEE_COM %in% b)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour)
 ```
 
-![plot of chunk contour](figure/contour.png) 
+```
+## Error: argument 'length.out' must be of length 1
+```
 
 Contour de la zone de proximié n°1 (seule)
 
@@ -724,10 +949,19 @@ On peut donc lui appliquer les mêmes fonctions. Par exemple on peut tracer une 
 
 ```r
 contour <- unionSpatialPolygons(zp1, IDs = zp1@data$CODE_ARR)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour, axes = T)
 ```
 
-![plot of chunk contour2](figure/contour2.png) 
+```
+## Error: argument 'length.out' must be of length 1
+```
 
 *contour* est un *SpatialPolygons*.
 
@@ -735,10 +969,19 @@ Il est possible de superposer les 2 graphiques en ajoutant add=TRUE:
 
 ```r
 plot(contour, axes = T, xlab = "axe x", col = "red")
+```
+
+```
+## Error: argument 'length.out' must be of length 1
+```
+
+```r
 plot(zp1, add = T)
 ```
 
-![plot of chunk superposer](figure/superposer.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 modifier l'aspect:
 - lty = 1 (normal), 2, 3, 4, 5... (pointillés)
@@ -752,10 +995,17 @@ exemple:
 
 ```r
 plot(zp1, axes = T)
-plot(contour, axes = T, lty = 1, lwd = 2, fg = "blue", border = "red", add = T)
 ```
 
 ![plot of chunk bordure](figure/bordure.png) 
+
+```r
+plot(contour, axes = T, lty = 1, lwd = 2, fg = "blue", border = "red", add = T)
+```
+
+```
+## Error: argument 'length.out' must be of length 1
+```
 
 Certains caractères accentués posent des pb comme dans *préfecture*:
 
@@ -837,11 +1087,27 @@ y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 
 plot(contour)
+```
+
+```
+## Error: argument 'length.out' must be of length 1
+```
+
+```r
 points(x, y, pch = 19, col = 3)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 3)
 ```
 
-![plot of chunk zp1_test](figure/zp1_test.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 Les zones de proximités officielles sont dans le fichier zp.csv
 
@@ -937,15 +1203,31 @@ zip2 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 2]
 b <- paste(zip2, sep = ",")
 zp2 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp2)
-```
-
-![plot of chunk zp2_haguenau](figure/zp2_haguenau1.png) 
-
-```r
 
 contour2 <- unionSpatialPolygons(zp2, IDs = zp2@data$CODE_DEPT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour2)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour2' introuvable
+```
+
+```r
 save(contour2, file = "ZPHag.Rda")
+```
+
+```
+## Error: objet 'contour2' introuvable
+```
+
+```r
 
 zp2$STATUT <- gsub("\xe9", "e", zp2$STATUT, fixed = F)
 a <- zp2@data
@@ -962,22 +1244,31 @@ y <- 6865868.72
 nom <- "CH Haguenau"
 points(x, y, pch = 19, col = "red")
 text(x, y, labels = nom, cex = 0.8, pos = 3)
-```
-
-![plot of chunk zp2_haguenau](figure/zp2_haguenau2.png) 
-
-```r
 
 library("pixmap")
 img <- "../../Fichiers source/logos/hop11.pnm"
 hop <- read.pnm(img)
+```
+
+```
+## Warning: 'x' is NULL so the result will be NULL
+```
+
+```r
 plot(contour2)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour2' introuvable
+```
+
+```r
 x <- 2.5
 y <- 2.5
 addlogo(hop, px = c(x, x + 0.5), py = c(y, y + 0.5), asp = 1)
 ```
 
-![plot of chunk zp2_haguenau](figure/zp2_haguenau3.png) 
+![plot of chunk zp2_haguenau](figure/zp2_haguenau.png) 
 
 ```r
 # plot(hop, add = TRUE)
@@ -1043,14 +1334,23 @@ zip3 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 3]
 b <- paste(zip3, sep = ",")
 zp3 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp3)
-```
-
-![plot of chunk zp3_saverne](figure/zp3_saverne1.png) 
-
-```r
 
 contour3 <- unionSpatialPolygons(zp3, IDs = zp3@data$CODE_DEPT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour3)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour3' introuvable
+```
+
+```r
 
 zp3$STATUT <- gsub("\xe9", "e", zp3$STATUT, fixed = F)
 a <- zp3@data
@@ -1060,10 +1360,17 @@ y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 3)
 text(x, y, labels = nom, cex = 0.8, pos = 3)
+```
+
+![plot of chunk zp3_saverne](figure/zp3_saverne.png) 
+
+```r
 plot(contour2, add = T)
 ```
 
-![plot of chunk zp3_saverne](figure/zp3_saverne2.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour2' introuvable
+```
 
 Zone de proximité 4
 --------------------
@@ -1074,14 +1381,23 @@ zip4 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 4]
 b <- paste(zip4, sep = ",")
 zp4 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp4)
-```
-
-![plot of chunk zp4_strasbourg](figure/zp4_strasbourg1.png) 
-
-```r
 
 contour4 <- unionSpatialPolygons(zp4, IDs = zp4@data$CODE_DEPT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour4)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour4' introuvable
+```
+
+```r
 
 zp4$STATUT <- gsub("\xe9", "e", zp4$STATUT, fixed = F)
 a <- zp4@data
@@ -1091,10 +1407,17 @@ y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 3)
 text(x, y, labels = nom, cex = 0.8, pos = 3)
+```
+
+![plot of chunk zp4_strasbourg](figure/zp4_strasbourg.png) 
+
+```r
 plot(contour4, add = T)
 ```
 
-![plot of chunk zp4_strasbourg](figure/zp4_strasbourg2.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour4' introuvable
+```
 
 
 Zone de proximité 1 (Wissembourg)
@@ -1106,14 +1429,23 @@ zip1 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 1]
 b <- paste(zip1, sep = ",")
 zp1 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp1)
-```
-
-![plot of chunk zp1_wissembourg](figure/zp1_wissembourg1.png) 
-
-```r
 
 contour1 <- unionSpatialPolygons(zp1, IDs = zp1@data$CODE_DEPT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour1)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour1' introuvable
+```
+
+```r
 
 zp1$STATUT <- gsub("\xe9", "e", zp1$STATUT, fixed = F)
 a <- zp1@data
@@ -1123,10 +1455,17 @@ y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
 text(x, y, labels = nom, cex = 0.8, pos = 1)
+```
+
+![plot of chunk zp1_wissembourg](figure/zp1_wissembourg.png) 
+
+```r
 plot(contour1, add = T)
 ```
 
-![plot of chunk zp1_wissembourg](figure/zp1_wissembourg2.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour1' introuvable
+```
 
 Zone de proximité 5 (Molsheim)
 --------------------
@@ -1137,14 +1476,23 @@ zip5 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 5]
 b <- paste(zip5, sep = ",")
 zp5 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp5)
-```
-
-![plot of chunk zp5_molsheim](figure/zp5_molsheim1.png) 
-
-```r
 
 contour5 <- unionSpatialPolygons(zp5, IDs = zp5@data$CODE_DEPT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour5)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour5' introuvable
+```
+
+```r
 
 zp5$STATUT <- gsub("\xe9", "e", zp5$STATUT, fixed = F)
 a <- zp5@data
@@ -1154,10 +1502,17 @@ y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
 text(x, y, labels = nom, cex = 0.8, pos = 1)
+```
+
+![plot of chunk zp5_molsheim](figure/zp5_molsheim.png) 
+
+```r
 plot(contour5, add = T)
 ```
 
-![plot of chunk zp5_molsheim](figure/zp5_molsheim2.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour5' introuvable
+```
 
 Zone de proximité 6 (Selestat)
 --------------------
@@ -1168,14 +1523,23 @@ zip6 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 6]
 b <- paste(zip6, sep = ",")
 zp6 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp6)
-```
-
-![plot of chunk zp6_selestat](figure/zp6_selestat1.png) 
-
-```r
 
 contour6 <- unionSpatialPolygons(zp6, IDs = zp6@data$CODE_DEPT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour6)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour6' introuvable
+```
+
+```r
 
 zp6$STATUT <- gsub("\xe9", "e", zp6$STATUT, fixed = F)
 a <- zp6@data
@@ -1185,10 +1549,17 @@ y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
 text(x, y, labels = nom, cex = 0.8, pos = 1)
+```
+
+![plot of chunk zp6_selestat](figure/zp6_selestat.png) 
+
+```r
 plot(contour6, add = T)
 ```
 
-![plot of chunk zp6_selestat](figure/zp6_selestat2.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour6' introuvable
+```
 
 Zone de proximité 7 (Colmar)
 --------------------
@@ -1199,14 +1570,23 @@ zip7 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 7]
 b <- paste(zip7, sep = ",")
 zp7 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp7)
-```
-
-![plot of chunk zp7_colmar](figure/zp7_colmar1.png) 
-
-```r
 
 contour7 <- unionSpatialPolygons(zp7, IDs = zp7@data$CODE_DEPT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour7)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour7' introuvable
+```
+
+```r
 
 zp7$STATUT <- gsub("\xe9", "e", zp7$STATUT, fixed = F)
 a <- zp7@data
@@ -1216,10 +1596,17 @@ y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
 text(x, y, labels = nom, cex = 0.8, pos = 1)
+```
+
+![plot of chunk zp7_colmar](figure/zp7_colmar.png) 
+
+```r
 plot(contour7, add = T)
 ```
 
-![plot of chunk zp7_colmar](figure/zp7_colmar2.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour7' introuvable
+```
 
 Zone de proximité 8 (Guebwiller)
 --------------------
@@ -1230,14 +1617,23 @@ zip8 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 8]
 b <- paste(zip8, sep = ",")
 zp8 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp8)
-```
-
-![plot of chunk zp8_guebwiller](figure/zp8_guebwiller1.png) 
-
-```r
 
 contour8 <- unionSpatialPolygons(zp8, IDs = zp8@data$CODE_DEPT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour8)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour8' introuvable
+```
+
+```r
 
 zp8$STATUT <- gsub("\xe9", "e", zp8$STATUT, fixed = F)
 a <- zp8@data
@@ -1247,10 +1643,17 @@ y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
 text(x, y, labels = nom, cex = 0.8, pos = 1)
+```
+
+![plot of chunk zp8_guebwiller](figure/zp8_guebwiller.png) 
+
+```r
 plot(contour8, add = T)
 ```
 
-![plot of chunk zp8_guebwiller](figure/zp8_guebwiller2.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour8' introuvable
+```
 
 Zone de proximité 9 (Thann)
 --------------------
@@ -1261,14 +1664,23 @@ zip9 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 9]
 b <- paste(zip9, sep = ",")
 zp9 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp9)
-```
-
-![plot of chunk zp9_thann](figure/zp9_thann1.png) 
-
-```r
 
 contour9 <- unionSpatialPolygons(zp9, IDs = zp9@data$CODE_DEPT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour9)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour9' introuvable
+```
+
+```r
 
 zp9$STATUT <- gsub("\xe9", "e", zp9$STATUT, fixed = F)
 a <- zp9@data
@@ -1278,10 +1690,17 @@ y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
 text(x, y, labels = nom, cex = 0.8, pos = 1)
+```
+
+![plot of chunk zp9_thann](figure/zp9_thann.png) 
+
+```r
 plot(contour9, add = T)
 ```
 
-![plot of chunk zp9_thann](figure/zp9_thann2.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour9' introuvable
+```
 
 Zone de proximité 10 (Mulhouse)
 --------------------
@@ -1292,14 +1711,23 @@ zip10 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 10]
 b <- paste(zip10, sep = ",")
 zp10 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp10)
-```
-
-![plot of chunk zp10_mulhouse](figure/zp10_mulhouse1.png) 
-
-```r
 
 contour10 <- unionSpatialPolygons(zp10, IDs = zp10@data$CODE_DEPT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour10)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour10' introuvable
+```
+
+```r
 
 zp10$STATUT <- gsub("\xe9", "e", zp10$STATUT, fixed = F)
 a <- zp10@data
@@ -1309,10 +1737,17 @@ y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
 text(x, y, labels = nom, cex = 0.8, pos = 1)
+```
+
+![plot of chunk zp10_mulhouse](figure/zp10_mulhouse.png) 
+
+```r
 plot(contour10, add = T)
 ```
 
-![plot of chunk zp10_mulhouse](figure/zp10_mulhouse2.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour10' introuvable
+```
 
 Zone de proximité 11 (Altkirch)
 --------------------
@@ -1323,14 +1758,23 @@ zip11 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 11]
 b <- paste(zip11, sep = ",")
 zp11 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp11)
-```
-
-![plot of chunk zp11_altkirch](figure/zp11_altkirch1.png) 
-
-```r
 
 contour11 <- unionSpatialPolygons(zp11, IDs = zp11@data$CODE_DEPT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour11)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour11' introuvable
+```
+
+```r
 
 zp11$STATUT <- gsub("\xe9", "e", zp11$STATUT, fixed = F)
 a <- zp11@data
@@ -1340,10 +1784,17 @@ y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
 text(x, y, labels = nom, cex = 0.8, pos = 1)
+```
+
+![plot of chunk zp11_altkirch](figure/zp11_altkirch.png) 
+
+```r
 plot(contour11, add = T)
 ```
 
-![plot of chunk zp11_altkirch](figure/zp11_altkirch2.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour11' introuvable
+```
 
 Zone de proximité 12
 --------------------
@@ -1354,14 +1805,23 @@ zip12 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 12]
 b <- paste(zip12, sep = ",")
 zp12 <- als[als@data$INSEE_COM %in% b, ]
 plot(zp12)
-```
-
-![plot of chunk zp12_stLouis](figure/zp12_stLouis1.png) 
-
-```r
 
 contour12 <- unionSpatialPolygons(zp12, IDs = zp12@data$CODE_DEPT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(contour12)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour12' introuvable
+```
+
+```r
 
 zp12$STATUT <- gsub("\xe9", "e", zp12$STATUT, fixed = F)
 a <- zp12@data
@@ -1371,10 +1831,17 @@ y <- b$Y_CHF_LIEU * 100
 nom <- b$NOM_COMM
 points(x, y, pch = 19, col = 1)
 text(x, y, labels = nom, cex = 0.8, pos = 2)
+```
+
+![plot of chunk zp12_stLouis](figure/zp12_stLouis.png) 
+
+```r
 plot(contour12, add = T)
 ```
 
-![plot of chunk zp12_stLouis](figure/zp12_stLouis2.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'contour12' introuvable
+```
 
 Analyse de la superficie
 ========================
@@ -1446,54 +1913,131 @@ czp = contour de la zone de proximité:
 ```r
 library("maptools")
 czp <- unionSpatialPolygons(zp, IDs = zp@data$CODE_DEPT)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(czp)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'czp' introuvable
+```
+
+```r
 title(main = "Zone de proximité de Wissembourg")
 ```
 
-![plot of chunk czps_wis](figure/czps_wis.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```
 #### Dessin du contour de l'ensemble des zones de proximité (czps)
 
 ```r
 czps <- unionSpatialPolygons(zpals, IDs = zpals$CODE.ZONES.DE.PROXIMITE)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(czps)
 ```
 
-![plot of chunk czps_1](figure/czps_11.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'czps' introuvable
+```
 
 ```r
 plot(czps, col = c("red", "yellow", "blue", "green", "orange"))
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'czps' introuvable
+```
+
+```r
 title(main = "Zone de proximité en Alsace")
 ```
 
-![plot of chunk czps_1](figure/czps_12.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 #### Dessin du contour des territoires de santé (ctss)
 
 ```r
 ctss <- unionSpatialPolygons(zpals, IDs = zpals$LIBELLE.DES.TERRITOIRES.DE.SANTE)
+```
+
+```
+## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+```
+
+```r
 plot(ctss)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'ctss' introuvable
+```
+
+```r
 title(main = "Territoires de santé en Alsace")
 ```
 
-![plot of chunk ctss_1](figure/ctss_1.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 save(ctss, file = "als_ts.Rda")
+```
+
+```
+## Error: objet 'ctss' introuvable
 ```
 
 #### Dessin territoires de santé (ctss) et des zones de proximité (czps)
 
 ```r
 plot(czps)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'czps' introuvable
+```
+
+```r
 plot(ctss, border = "red", add = T)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'ctss' introuvable
+```
+
+```r
 
 plot(ctss, col = c("yellow", "blue", "green", "orange"), border = "red", add = T)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'ctss' introuvable
+```
+
+```r
 plot(czps, add = TRUE)
 ```
 
-![plot of chunk czps](figure/czps.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'czps' introuvable
+```
 
 essais avec les couleurs:
 - plot(ctss,col=heat.colors(4))
@@ -1506,12 +2050,35 @@ essai avec "RColorBrewer"
 
 ```r
 library("RColorBrewer")
+```
+
+```
+## Error: there is no package called 'RColorBrewer'
+```
+
+```r
 wp <- brewer.pal(12, "Set3")
+```
+
+```
+## Error: impossible de trouver la fonction "brewer.pal"
+```
+
+```r
 plot(czps, col = wp)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'czps' introuvable
+```
+
+```r
 title(main = "Zone de proximité en Alsace")
 ```
 
-![plot of chunk zone_proximite](figure/zone_proximite.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 couleurs prop. au % de 75 ans:  
 Le % des 75 ans par zone de proximité est donné par *pbc* (voir carto&pop)  
@@ -1544,13 +2111,36 @@ ce qui donne le vecteur de couleur:
 c <- c(1, 3, 1, 1, 3, 2, 5, 1, 2, 3, 1, 1)
 palette(gray(5:0/5))
 plot(czps, col = c)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'czps' introuvable
+```
+
+```r
 title(main = "Répartition des 75 ans et plus", xlab = "Chiffres INSEE 2010")
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 legend("topleft", col = gray(5:0/5), legend = c("0-5%", "5-10%", "10-15%", "15-20%", 
     "20-25%"), pch = 15, cex = 0.8, bty = "n")
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 mtext("© RESURAL 2013", cex = 0.6, side = 4, line = -1, adj = 0.1)
 ```
 
-![plot of chunk 75ans](figure/75ans.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 NB: pour déterminer l'ordre de traçage, on utilise la méthode suivante:
 col<-c(1,2,2,2,2,2,2,2,2,2,2,2,2)

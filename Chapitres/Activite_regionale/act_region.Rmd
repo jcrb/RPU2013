@@ -17,7 +17,9 @@ path<-"../../"
 Activité régionale
 -----------------------------
 ```{r routines}
-source(paste(path,"mes_fonctions.R",sep="")
+wd<-getwd()
+# setwd("~/Documents/Resural/Stat Resural/RPU2013/Chapitres/Activite_regionale")
+source(paste(path,"mes_fonctions.R",sep=""))
 ```
 Librairies nécessaires:
 -----------------------
@@ -28,7 +30,7 @@ load_libraries()
 Lecture du fichier des données
 ---------------------------------------
 On lit le fichier de travail créé:
-```{r Lecture fichier}
+```{r Lecture fichier,cache=TRUE}
 
 if(!exists("d1")) {
 load(paste(path,"rpu2013d0108.Rda",sep=""))
@@ -37,7 +39,27 @@ rm(d0108)
 }
 ```
 Analyse des données
--------------------
+===================
+
+entrées par secteur sanitaire
+-----------------------------
+On creé une colonne supplémentaire *secteur* qui indique à quel secteur sanitaire correspond le RPU:
+```{r secteur_rpu,echo=FALSE}
+d1$secteur[d1$FINESS %in% c("Wis","Hag","Sav")]<-1
+d1$secteur[d1$FINESS %in% c("Hus","Odi")]<-2
+d1$secteur[d1$FINESS %in% c("Sel","Col","Geb")]<-3
+d1$secteur[d1$FINESS %in% c("Mul","Alk","3Fr","Dia")]<-4
+```
+Nombre de RPU par secteur de santé
+```{r rpu_par_secteur}
+tapply(d1$ENTREE,d1$secteur,length)
+```
+Remarques:
+- secteur 2, manque St Anne, pediatrie HTP, une partie des RPU HUS adulte
+
+
+entrées totales
+---------------
 ```{r analyse}
 d1<-d1[d1$ENTREE<"2013-09-01",]
 

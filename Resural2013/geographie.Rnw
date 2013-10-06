@@ -70,17 +70,68 @@ Il existe douze territoires de proximité:
 \subsection{Généralités}
 \index{Alsace!démographie}
 
-En France, les populations légales sont calculées par l'INSEE sur la base de définitions réglementaires à partir de recensement de la population. Ce document utilise la \emph{Population municipale} \ref{Population_municipale} \index{Population@Population!municipale}  qui est la nouvelle dénomination de la population sans double comptes. Le chiffre est donc inférieur de celui de la \emph{Population totale} qui est égale à la somme de la population municipale et de la population comptée à part d'une commune.
+En France, les populations légales sont calculées par l'INSEE sur la base de définitions réglementaires à partir de recensement de la population. 
+Les populations légales millésimées 2010 entrent en vigueur le 1er janvier 2013.  
+
+\subsubsection{Le concept de population municipale}
+
+Ce document utilise la \emph{Population municipale} \ref{Population_municipale} \index{Population@Population!municipale}  qui est la nouvelle dénomination de la population sans double comptes et qui correspond à la notion de \emph{population} utilisée usuellement en statistique.
+Le chiffre est donc inférieur de celui de la \emph{Population totale} qui est égale à la somme de la population municipale et de la population comptée à part d'une commune.
+Les chiffres de l'INSEE sont les suivants \footnote{http://www.insee.fr/fr/ppp/bases-de-donnees/recensement/populations-legales/france-regions.asp?annee=2010}:
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline 
+Région & Population\tabularnewline
+\hline 
+\hline 
+France métropolitaine et DOM & 64 612 939\tabularnewline
+\hline 
+Dont France métropolitaine & 62 765 235\tabularnewline
+\hline 
+Alsace & 1 845 687\tabularnewline
+\hline 
+Bas-Rhin & 1 095 905\tabularnewline
+\hline 
+Haut-Rhin & 749 782\tabularnewline
+\hline 
+\end{tabular}
+\caption[Populations légales 2010]{Populations légales 2010 des régions de France métropolitaine, Population
+municipale (Source : Recensement de la population 2010 - Limites territoriales
+au 1er janvier 2012) }
+\label{pop2010}
+\end{center}
+\end{table}
 
 \subsection{Classes d'age}
-Les RPU divisent l'age des patients en trois catégories:
+Depuis la mise en place des serveurs régionaux, on a pris l'habitude de diviser la population en trois catégories selon l'age:
 \begin{enumerate}
   \item Les moins de un an
   \item de 1 an à 75 ans
   \item les plus de 75 ans
 \end{enumerate}
 
-Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'ensemble de la population par commune et par tranches de un an. La version utilisée est celle du 1er janvier 2010 (tab.\ref{pop}). Le secteur de proximité de Strasbourg qui est aussi le plus peuplé, compte le plus grand nombre de personnes de 75 ans et plus (figure \ref{fig:75ans} page \pageref{fig:75ans})
+Les calculs sont effectués à partir du fichier \texttt{BTT\_TD\_POP1B\_2010} de l'INSEE qui recense l'ensemble de la population par commune et par tranches de un an. La version utilisée est celle du 1er janvier 2010 (tab.\ref{pop}). Le secteur de proximité de Strasbourg qui est aussi le plus peuplé, compte le plus grand nombre de personnes de 75 ans et plus (figure \ref{fig:75ans} page \pageref{fig:75ans})
+
+<<test,echo=FALSE>>=
+pop0<-21655
+pop1_75<-1677958
+pop75<-146074
+pop1_15<-309641
+pop15_75<-1368317
+pop75_85<-108426
+pop85<-37647
+
+pop.als.2010.totale<-1115226 + 765634
+pop_als_2010_municipale<-1095905 + 749782
+pop.67.2010.municipale<-1095905
+pop.68.2010.municipale<-749782
+
+ppop0<-as.numeric(round(pop0*100/pop_als_2010_municipale,2))
+ppop1_75<-as.numeric(round(pop1_75*100/pop_als_2010_municipale,2))
+ppop75<-as.numeric(round(pop75*100/pop_als_2010_municipale,2))
+@
 
 \begin{table}
 \begin{center}
@@ -89,14 +140,14 @@ Les calculs sont effectués à partir du fichier xxx de l'INSEE qui recense l'en
   Tranche d'age & Abréviation & Effectif & Pourcentage \\
   \hline
   \hline
-  Moins de 1 an & pop0 & \np{21903.14} & 1.19 \\
-  De 1 à 75 ans & pop1\_75 & \np{1690073.00} & 92.00 \\
-  Plus de 75 ans& pop75 & \np{125110.90} & 6.81 \\
-  \hline
-  Total & pop\_tot & \np{1837087.00} & 100.00 \\
+   Moins de 1 an & pop0 & \np{\Sexpr{as.character(pop0)}} & \Sexpr{as.character(ppop0)} \\
+   De 1 à 75 ans & pop1\_75 & \np{\Sexpr{as.character(pop1_75)}} & \Sexpr{as.character(ppop1_75)} \\
+   Plus de 75 ans& pop75 & \np{\Sexpr{as.character(pop75)}} & \Sexpr{as.character(ppop75)} \\
+   \hline
+   Total & pop\_tot & \np{\Sexpr{as.character(pop_als_2010_municipale)}} & 100.00 \\
   \hline
 \end{tabular}
-\caption{Population d'Alsace (janvier 2010)}
+\caption{Classe d'age en Alsace (janvier 2010)}
 \label{pop}
 \end{center}
 \end{table}
@@ -122,59 +173,67 @@ On prend également en compte la clinique Saint-Luc de Schirmeck qui fait foncti
 
 Les HUS sont le seul établissement d'Alsace a posséder un SU pédiatrique labellisé. Les HUS ont également un service labellisé urgences main (FESUM) situé au CCOM d'Illkirch mais ce dernier n'est pas inclu dans les implantations de services d'urgence.
 
-Sont officiellement labellisés 18 sites (en y incluant SOS main Diaconnat mais pas la clinique St Luc)
+Sont officiellement labellisés 18 sites (en y incluant SOS main Diaconnat mais pas la clinique St Luc). Ces données sont résumées dans le tableau \ref{tab:sualsace} page \pageref{tab:sualsace}
 
+\begin{landscape}
+\begin{table}
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
 \hline 
 Territoire & ZProximité & Etablissement & FINESS J & Site & FINESS G & SU & SU Ped & SMUR & SAMU\tabularnewline
 \hline 
 \hline 
-% \multirow{3}{*}{1} & Wissembourg & CH Wissembourg &  & id &  & oui &  & oui & \tabularnewline
-% \cline{2-10} 
-%  & Haguenau & CH Haguenau &  & id &  & oui &  & oui & \tabularnewline
-% \cline{2-10} 
-%  & Saverne & CH Saverne &  & id &  & oui &  & oui & \tabularnewline
-% \hline 
-% \multirow{7}{*}{2} & \multirow{6}{*}{Strasbourg} & \multirow{3}{*}{HUS} &  & NHC &  & oui &  &  & \tabularnewline
-% \cline{4-10} 
-%  &  &  &  & HTP &  & oui & oui & oui%
-% \footnote{SMUR Néonatal%
-% } & \tabularnewline
-% \cline{4-10} 
-%  &  &  &  & PL &  &  &  & oui & oui\tabularnewline
-% \cline{3-10} 
-%  &  & Ste Anne &  & id &  & oui &  &  & \tabularnewline
-% \cline{3-10} 
-%  &  & Ste Odile &  & id &  & oui &  &  & \tabularnewline
-% \cline{3-10} 
-%  &  & Diaconnat &  & id &  & oui%
-% \footnote{SOS Mains%
-% } &  &  & \tabularnewline
-% \cline{2-10} 
-%  & Schirmeck & St Luc &  & id &  &  &  &  & \tabularnewline
-% \hline 
-% \multirow{4}{*}{3} & Sélestat & CH Sélestat &  & id &  & oui &  & oui & \tabularnewline
-% \cline{2-10} 
-%  & \multirow{2}{*}{Colmar} & \multirow{2}{*}{CH Colmar} &  & HC &  & oui &  & oui & \tabularnewline
-% \cline{4-10} 
-%  &  &  &  & Parc &  &  & oui &  & \tabularnewline
-% \cline{2-10} 
-%  & Guebwiller & CH Guebwiller &  & id &  & oui &  &  & \tabularnewline
-% \hline 
-% \multirow{5}{*}{4} & \multirow{3}{*}{Mulhouse} & \multirow{2}{*}{CH Mulhouse} &  & EM &  & oui & oui & oui & oui\tabularnewline
-% \cline{4-10} 
-%  &  &  &  & St Louis &  & oui &  & oui%
-% \footnote{antenne SMUR%
-% } & \tabularnewline
-% \cline{3-10} 
-%  &  & Diaconnat-F &  & id &  & oui &  &  & \tabularnewline
-% \cline{2-10} 
-%  & Thann & CH Thann &  & id &  & oui &  &  & \tabularnewline
-% \cline{2-10} 
-%  & Altkirch & CH Altkirch &  & id &  & oui &  &  & \tabularnewline
+ \multirow{3}{*}{1} & Wissembourg & CH Wissembourg &  & id &  & oui &  & oui & \tabularnewline
+\cline{2-10} 
+ & Haguenau & CH Haguenau &  & id &  & oui &  & oui & \tabularnewline
+\cline{2-10} 
+ & Saverne & CH Saverne &  & id &  & oui &  & oui & \tabularnewline
 \hline 
+\multirow{7}{*}{2} & \multirow{6}{*}{Strasbourg} & \multirow{3}{*}{HUS} &  & NHC &  & oui &  &  & \tabularnewline
+\cline{4-10} 
+ &  &  &  & HTP &  & oui & oui & oui%
+\footnote{SMUR Néonatal%
+} & \tabularnewline
+\cline{4-10} 
+ &  &  &  & PL &  &  &  & oui & oui\tabularnewline
+\cline{3-10} 
+ &  & Ste Anne &  & id &  & oui &  &  & \tabularnewline
+\cline{3-10} 
+ &  & Ste Odile &  & id &  & oui &  &  & \tabularnewline
+\cline{3-10} 
+ &  & Diaconnat &  & id &  & oui%
+\footnote{SOS Mains%
+} &  &  & \tabularnewline
+\cline{2-10} 
+ & Schirmeck & St Luc &  & id &  &  &  &  & \tabularnewline
+\hline 
+\multirow{4}{*}{3} & Sélestat & CH Sélestat &  & id &  & oui &  & oui & \tabularnewline
+\cline{2-10} 
+ & \multirow{2}{*}{Colmar} & \multirow{2}{*}{CH Colmar} &  & HC &  & oui &  & oui & \tabularnewline
+\cline{4-10} 
+ &  &  &  & Parc &  &  & oui &  & \tabularnewline
+\cline{2-10} 
+ & Guebwiller & CH Guebwiller &  & id &  & oui &  &  & \tabularnewline
+\hline 
+\multirow{5}{*}{4} & \multirow{3}{*}{Mulhouse} & \multirow{2}{*}{CH Mulhouse} &  & EM &  & oui & oui & oui & oui\tabularnewline
+\cline{4-10} 
+ &  &  &  & St Louis &  & oui &  & oui%
+\footnote{antenne SMUR%
+} & \tabularnewline
+\cline{3-10} 
+ &  & Diaconnat-F &  & id &  & oui &  &  & \tabularnewline
+\cline{2-10} 
+ & Thann & CH Thann &  & id &  & oui &  &  & \tabularnewline
+\cline{2-10} 
+ & Altkirch & CH Altkirch &  & id &  & oui &  &  & \tabularnewline
+\hline
 \end{tabular}
+ \caption[Structures d'urgence]{Services d'urgence d'Alsace}
 
+\label{tab:sualsace}
+\end{center}
+\end{table}
+\end{landscape}
 
 \begin{figure}[ht]
  \centering

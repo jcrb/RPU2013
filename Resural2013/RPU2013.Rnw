@@ -44,8 +44,11 @@
 \fancyfoot[CO]{Document de travail - non validé}
 
 \usepackage{fancyvrb}
-
 \usepackage{longtable}
+\usepackage{lscape}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabularx}
 
 \usepackage{makeidx}
 \makeindex
@@ -77,6 +80,8 @@ pop.als.2010.totale<-1115226 + 765634
 pop.als.2010.municipale<-1095905 + 749782
 @
 
+% Commandes
+\providecommand{\tabularnewline}{\\} % compatibilité avec Lyx
 
 \begin{document}
 
@@ -130,6 +135,13 @@ d1<-d1[d1$ENTREE<"2013-09-01",]
 # d1<-d0108
 # rm(d0108)
 attach(d1)
+
+# On creé une colonne supplémentaire *secteur* qui indique à quel secteur sanitaire correspond le RPU:
+
+d1$secteur[d1$FINESS %in% c("Wis","Hag","Sav")]<-1
+d1$secteur[d1$FINESS %in% c("Hus","Odi")]<-2
+d1$secteur[d1$FINESS %in% c("Sel","Col","Geb")]<-3
+d1$secteur[d1$FINESS %in% c("Mul","Alk","3Fr","Dia")]<-4
 @
 %======================================================== PARTIE 1
 \part{Le Réseau des urgences en Alsace}
@@ -166,6 +178,8 @@ attach(d1)
 @
 
 \subsection{Passages par tranches d'âge}
+<<child='tranche_age.Rnw'>>=
+@
 
 \chapter{Motif de consultation}
 <<child='motif.Rnw'>>=

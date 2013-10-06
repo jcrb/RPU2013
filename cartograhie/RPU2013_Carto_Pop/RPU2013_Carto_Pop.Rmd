@@ -23,31 +23,7 @@ Les données en Lambert93 peuvent être converties en WGS84 et réciproquement p
 
 teléchargements: http://www.ign.fr/institut/actualites/open-data-donnees-lign-disponibles-licence-etalab
 
-Notes sur les populations
-=========================
-- utilisation du recensement 2010
-- dossier stat Resural/carto&pop.rmd
-  - pop67.rda
-  - pop68.rda
-- source INSEE
-  - http://www.insee.fr/fr/ppp/bases-de-donnees/recensement/populations-legales/france-regions.asp?annee=2010
-   - http://www.insee.fr/fr/ppp/bases-de-donnees/recensement/populations-legales/france
--departements.asp?annee=2010 (fichier excel)
-  - http://www.insee.fr/fr/ppp/bases-de-donnees/recensement/populations-legales/departement.asp?dep=67&annee=2010
-  - http://www.insee.fr/fr/ppp/bases-de-donnees/recensement/populations-legales/departement.asp?dep=68&annee=2010
-  - Liste des cantons, communes, arrondissements, pays: http://www.insee.fr/fr/methodes/nomenclatures/cog/telechargement.asp
-  
-- population légale 2010: 
-  - Alsace   1 845 687
 
-N°  |  Département  |  nb.communes  |  Pop.municipale  |  Pop.totale
-----|---------------|---------------|------------------|-------------
-67 |  Bas-Rhin |  527 |  1 095 905 | 1 115 226 
-68 |	Haut-Rhin | 377  | 749 782 | 765 634 
-pop.als.2010.totale<-1115226 + 765634
-pop.als.2010.municipale<-1095905 + 749782
-pop.67.2010.municipale<-1095905
-pop.68.2010.municipale<-749782
 
 Fichier ville de la base *pma*
 ------------------------------
@@ -190,6 +166,9 @@ ATTENTION: les territoires de proximité sont dans l'ordre de SAGEC qui n'est pa
 ```{r pop_t_proximite}
 territoire.prox<-c("Altkirch","Colmar","Guebwiller","Haguenau","Molsheim-Schirmeck","Mulhouse","Sélestat-Obernai","Saint-Louis","Saverne","Strasbourg","Thann","Wissembourg")
 
+# no des territoires de proximité
+no_tp<-c(11,7,8,2,5,10,6,12,3,4,9,1)
+
 effectif<-tapply(base$Population.municipale,as.factor(base$zone_proximite),sum,na.rm=TRUE)
 # on élimine la colonne 0 qui ne contient que NA
 # effectif<-effectif[-1]
@@ -198,8 +177,10 @@ names(effectif)<-territoire.prox
 effectif
 pourcentage<-round(prop.table(effectif)*100,2)
 pourcentage
-c<-cbind(effectif,pourcentage)
+c<-cbind(no_tp,effectif,pourcentage)
 c
+save(c,file="data_tp.R")
+
 barplot(sort(effectif),cex.names=0.8,xlab="",las=2,ylab="Effectifs",main="Répartition de la population par territoire de proximité")
 
 barplot(sort(pourcentage),cex.names=0.8,las=2,xlab="",ylab="% de la population totale",main="Répartition de la population par territoire de proximité")
