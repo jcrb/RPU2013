@@ -39,10 +39,10 @@ Le fichier récupéré est ensuite importé dans une base de données MySql. La 
 - juin: rpu_2013_06_dump.sql (23.7 Mo)
 Pour les transférer, on utilise la procédure standard en ligne de commande, commençant par le mois de mai:
 
-cd ~/Documents/Resural/'Stat Resural'/'Fichiers source'/Dump/
+cd ~/Documents/Resural/'Stat Resural'/'Fichiers source'/Dump/RPU2013_09
 
 ```{}
-jcb@mint1:~$ mysql -u root -pmarion rpu < rpu_2013-07_dump.sql
+jcb@mint1:~$ mysql -u root -pmarion rpu < rpu_2013-09_dump.sql
 ```
 Création d'un fichier .my.cfg
 -----------------------------
@@ -79,10 +79,10 @@ dbListFields(con,"RPU__")
 ```
 Lecture des enregistrements de la table compris entre le 1er mai et le 31 mai 2013 (cette étape peu être longue):
 ```{r}
-rs<-dbSendQuery(con,"SELECT * FROM RPU__ WHERE ENTREE BETWEEN '2013-07-01' AND '2013-08-01' ")
+rs<-dbSendQuery(con,"SELECT * FROM RPU__ WHERE ENTREE BETWEEN '2013-09-01' AND '2013-10-01' ")
 d07<-fetch(rs,n=-1,encoding = "UTF-8")
-max(d07$ENTREE)
-min(d07$ENTREE)
+max(d09$ENTREE)
+min(d09$ENTREE)
 ```
 Pour la mois de juin on répète les mêmes étapes:
 - jcb@mint1:~$ mysql -u root -pmarion rpu < Resural_mai_juin_2013/rpu_2013_06_dump.sql
@@ -101,13 +101,13 @@ etape 2: nettoyage des données
 ------------------------------
 Suppression de la colonne 16, intitulée RAW. Cette colonne a été rajoutée par mr Nold pour stocker le RPU tel que fournit par le SAU:
 ```{r}
-d07<-d07[,-16]
+d09<-d09[,-16]
 ```
 On ramène le nombre de variable à 19.
 
 création de FINESS unique pour un établissement par transformation du finess juridique en finess geographique
 ```{r}
-a<-d07$FINESS
+a<-d09$FINESS
 a[a=="670000397"]<-"Sel"
 a[a=="680000684"]<-"Col"
 a[a=="670016237"]<-"Odi"
@@ -121,38 +121,38 @@ a[a=="680000320"]<-"Dia"
 a[a=="680000395"]<-"Alk"
 a[a=="670000165"]<-"Sav"
 unique(a)
-d07$FINESS<-as.factor(a)
+d09$FINESS<-as.factor(a)
 rm(a)
 ```
 Transformation en facteur:
 ```{r}
-d07$CODE_POSTAL<-as.factor(d07$CODE_POSTAL)
-d07$COMMUNE<-as.factor(d07$COMMUNE)
-d07$SEXE<-as.factor(d07$SEXE)
-d07$TRANSPORT<-as.factor(d07$TRANSPORT)
-d07$TRANSPORT_PEC<-as.factor(d07$TRANSPORT_PEC)
-d07$GRAVITE<-as.factor(d07$GRAVITE)
-d07$ORIENTATION<-as.factor(d07$ORIENTATION)
-d07$MODE_ENTREE<-factor(d07$MODE_ENTREE,levels=c(0,6,7,8),labels=c('NA','Mutation','Transfert','Domicile'))
-d07$PROVENANCE<-factor(d07$PROVENANCE,levels=c(0,1,2,3,4,5,8),labels=c('NA','MCO','SSR','SLD','PSY','PEA','PEO'))
-d07$MODE_SORTIE<-factor(d07$MODE_SORTIE,levels=c(0,6,7,8,4),labels=c('NA','Mutation','Transfert','Domicile','Décès'))
-d07$DESTINATION<-factor(d07$DESTINATION,levels=c(0,1,2,3,4,6,7),labels=c('NA','MCO','SSR','SLD','PSY','HAD','HMS'))
+d09$CODE_POSTAL<-as.factor(d09$CODE_POSTAL)
+d09$COMMUNE<-as.factor(d09$COMMUNE)
+d09$SEXE<-as.factor(d09$SEXE)
+d09$TRANSPORT<-as.factor(d09$TRANSPORT)
+d09$TRANSPORT_PEC<-as.factor(d09$TRANSPORT_PEC)
+d09$GRAVITE<-as.factor(d09$GRAVITE)
+d09$ORIENTATION<-as.factor(d09$ORIENTATION)
+d09$MODE_ENTREE<-factor(d09$MODE_ENTREE,levels=c(0,6,7,8),labels=c('NA','Mutation','Transfert','Domicile'))
+d09$PROVENANCE<-factor(d09$PROVENANCE,levels=c(0,1,2,3,4,5,8),labels=c('NA','MCO','SSR','SLD','PSY','PEA','PEO'))
+d09$MODE_SORTIE<-factor(d09$MODE_SORTIE,levels=c(0,6,7,8,4),labels=c('NA','Mutation','Transfert','Domicile','Décès'))
+d09$DESTINATION<-factor(d09$DESTINATION,levels=c(0,1,2,3,4,6,7),labels=c('NA','MCO','SSR','SLD','PSY','HAD','HMS'))
 ```
 Création d'une variable AGE:
 ```{r-age1}
-d07$AGE<-floor(as.numeric(as.Date(d07$ENTREE)-as.Date(d07$NAISSANCE))/365)
+d09$AGE<-floor(as.numeric(as.Date(d09$ENTREE)-as.Date(d09$NAISSANCE))/365)
 ```
 Correction des ages supérieurs à 120 ans (3 cas) ou inférieur à 0 (2 cas)
 ```{r age}
-d07$AGE[d07$AGE > 120]<-NA
-d07$AGE[d07$AGE < 0]<-NA
+d09$AGE[d09$AGE > 120]<-NA
+d09$AGE[d09$AGE < 0]<-NA
 ```
 etape 3: sauvegarde des données nettoyées
 -----------------------------------------
 ```{r-sauvegarde}
 # write.table(d07,"rpu2013_07.txt",sep=',',quote=TRUE,na="NA")
-save(d07,file="rpu2013d07.Rda")
-# load("rpu2013d07.Rda")
+save(d09,file="rpu2013d09.Rda")
+# load("rpu2013d09.Rda")
 ```
 etape 4: chargement des données sauvegardées
 --------------------------------------------
@@ -162,15 +162,16 @@ etape 4: chargement des données sauvegardées
 Résumé des tidy datas
 ---------------------
 ```{r}
-str(d07)
-summary(d07)
+str(d09)
+summary(d09)
 ```
 Fusion avec la base annuelle
 -----------------------------
-*d0106* est la base annuelle provisoire
+*d0108* est la base annuelle provisoire
 ```{r}
-d0107<-rbind(d0106,d07)
-save(d0107,file="rpu2013d0107.Rda")
+load("rpu2013d0108.Rda")
+d0109<-rbind(d0108,d09)
+save(d0109,file="rpu2013d0109.Rda")
 ```
 
 

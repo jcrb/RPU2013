@@ -28,7 +28,7 @@ source("../mes_fonctions.R")
 Variables globales:
 -------------------
 ```{r var_globales}
-mois_courant<-8
+mois_courant<-9
 ```
 
 Lecture du fichier des données
@@ -37,9 +37,9 @@ On lit le fichier de travail créé:
 ```{r Lecture fichier}
 
 # load("rpu2013.Rda")
-load("rpu2013d0108.Rda")
-d1<-d0108
-rm(d0108)
+load("rpu2013d0109.Rda")
+d1<-d0109
+rm(d0109)
 
 attach(d1)
 ```
