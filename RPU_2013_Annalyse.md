@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Wed Oct  9 17:00:13 2013"
+## [1] "Fri Oct 11 18:02:05 2013"
 ```
 
 source: RPU2013
@@ -249,7 +249,7 @@ xtable(t(t3))
 
 ```
 ## % latex table generated in R 3.0.2 by xtable 1.7-1 package
-## % Wed Oct  9 17:00:28 2013
+## % Fri Oct 11 18:02:20 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rrr}

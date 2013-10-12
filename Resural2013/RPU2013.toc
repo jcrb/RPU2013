@@ -13,44 +13,52 @@
 \contentsline {chapter}{\numberline {3}Les acteurs}{18}{chapter.3}
 \contentsline {section}{\numberline {3.1}Exhaustivit\IeC {\'e} quantitative}{18}{section.3.1}
 \contentsline {section}{\numberline {3.2}Exhaustivit\IeC {\'e} qualitative}{19}{section.3.2}
-\contentsline {chapter}{\numberline {4}RESURAL}{20}{chapter.4}
-\contentsline {chapter}{\numberline {5}L'observatoire des urgences en Alsace (ORUDAL)}{21}{chapter.5}
-\contentsline {chapter}{\numberline {6}Le R\IeC {\'e}sum\IeC {\'e} du passage aux urgences}{22}{chapter.6}
-\contentsline {part}{II\hspace {1em}Activit\IeC {\'e} des services d'urgence d'Alsace}{24}{part.2}
-\contentsline {chapter}{\numberline {7}Activit\IeC {\'e} r\IeC {\'e}gionale totale}{25}{chapter.7}
-\contentsline {section}{\numberline {7.1}Nombre total de passages}{25}{section.7.1}
-\contentsline {section}{\numberline {7.2}TEST 2}{33}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Passages par tranches d'\IeC {\^a}ge}{38}{subsection.7.2.1}
-\contentsline {chapter}{\numberline {8}Motif de consultation}{41}{chapter.8}
-\contentsline {chapter}{\numberline {9}Modalit\IeC {\'e} d'admission}{45}{chapter.9}
-\contentsline {chapter}{\numberline {10}Dur\IeC {\'e}e de passage}{49}{chapter.10}
-\contentsline {subsection}{\numberline {10.0.2}CH S\IeC {\'e}lestat}{54}{subsection.10.0.2}
-\contentsline {chapter}{\numberline {11}Codage diagnostique}{55}{chapter.11}
-\contentsline {section}{\numberline {11.1}Cim10}{55}{section.11.1}
-\contentsline {section}{\numberline {11.2}Etude des AVC}{58}{section.11.2}
-\contentsline {section}{\numberline {11.3}Accidents ischi\IeC {\'e}miques transitoires (AIT)}{67}{section.11.3}
-\contentsline {section}{\numberline {11.4}Pneumonies}{68}{section.11.4}
-\contentsline {section}{\numberline {11.5}Syndrome grippal}{70}{section.11.5}
-\contentsline {section}{\numberline {11.6}Malaises}{70}{section.11.6}
-\contentsline {section}{\numberline {11.7}Marqueurs de canicule}{73}{section.11.7}
-\contentsline {chapter}{\numberline {12}Modalit\IeC {\'e}s de sortie}{77}{chapter.12}
-\contentsline {section}{\numberline {12.1}Mode de sortie}{77}{section.12.1}
-\contentsline {section}{\numberline {12.2}Mode de sortie selon la structure}{77}{section.12.2}
-\contentsline {section}{\numberline {12.3}Orientation}{78}{section.12.3}
-\contentsline {section}{\numberline {12.4}Destination}{79}{section.12.4}
-\contentsline {section}{\numberline {12.5}Incoh\IeC {\'e}rences}{79}{section.12.5}
-\contentsline {chapter}{\numberline {13}Modalit\IeC {\'e}s d'orientation}{83}{chapter.13}
-\contentsline {chapter}{\numberline {14}Courbes d'activit\IeC {\'e} r\IeC {\'e}gionale}{84}{chapter.14}
-\contentsline {section}{\numberline {14.1}Variation du nombre total de passages journaliers}{84}{section.14.1}
-\contentsline {section}{\numberline {14.2}Variation du pourcentage journalier de retour \IeC {\`a} domicile}{86}{section.14.2}
-\contentsline {part}{III\hspace {1em}Activit\IeC {\'e} par service d'urgence}{91}{part.3}
-\contentsline {chapter}{\numberline {15}SAU des H\IeC {\^o}pitaux universitaires}{92}{chapter.15}
-\contentsline {section}{\numberline {15.1}Activit\IeC {\'e} globale}{92}{section.15.1}
-\contentsline {part}{IV\hspace {1em}Activit\IeC {\'e} des SAMU d'Alsace}{93}{part.4}
-\contentsline {part}{V\hspace {1em}Annexes}{94}{part.5}
-\contentsline {chapter}{\numberline {A}M\IeC {\'e}thodologie}{95}{appendix.A}
-\contentsline {chapter}{\numberline {B}Glossaire}{97}{appendix.B}
-\contentsline {chapter}{\numberline {C}RPU}{100}{appendix.C}
-\contentsline {chapter}{\numberline {D}A propos de ce document}{101}{appendix.D}
-\contentsline {chapter}{\numberline {E}Bibliographie}{102}{appendix.E}
-\contentsline {chapter}{\numberline {F}Index}{104}{appendix.F}
+\contentsline {section}{\numberline {3.3}Diagramme de compl\IeC {\'e}tude}{19}{section.3.3}
+\contentsline {chapter}{\numberline {4}RESURAL}{21}{chapter.4}
+\contentsline {chapter}{\numberline {5}L'observatoire des urgences en Alsace (ORUDAL)}{22}{chapter.5}
+\contentsline {chapter}{\numberline {6}Le R\IeC {\'e}sum\IeC {\'e} du passage aux urgences}{23}{chapter.6}
+\contentsline {subsubsection}{L'identifiant (ID)}{24}{section*.12}
+\contentsline {subsubsection}{L'\IeC {\'e}tablissement de sant\IeC {\'e}}{24}{section*.13}
+\contentsline {subsubsection}{Le code postal de r\IeC {\'e}sidence}{24}{section*.14}
+\contentsline {subsubsection}{le motif de recours aux urgences}{24}{section*.15}
+\contentsline {subsubsection}{Le mode de sortie}{24}{section*.16}
+\contentsline {subsubsection}{Destination}{25}{section*.17}
+\contentsline {subsubsection}{Orientation}{25}{section*.18}
+\contentsline {part}{II\hspace {1em}Activit\IeC {\'e} des services d'urgence d'Alsace}{26}{part.2}
+\contentsline {chapter}{\numberline {7}Activit\IeC {\'e} r\IeC {\'e}gionale totale}{27}{chapter.7}
+\contentsline {section}{\numberline {7.1}Nombre total de passages}{27}{section.7.1}
+\contentsline {section}{\numberline {7.2}TEST 2}{35}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Passages par tranches d'\IeC {\^a}ge}{40}{subsection.7.2.1}
+\contentsline {chapter}{\numberline {8}Motif de consultation}{43}{chapter.8}
+\contentsline {chapter}{\numberline {9}Modalit\IeC {\'e} d'admission}{47}{chapter.9}
+\contentsline {chapter}{\numberline {10}Dur\IeC {\'e}e de passage}{51}{chapter.10}
+\contentsline {subsection}{\numberline {10.0.2}CH S\IeC {\'e}lestat}{56}{subsection.10.0.2}
+\contentsline {chapter}{\numberline {11}Codage diagnostique}{57}{chapter.11}
+\contentsline {section}{\numberline {11.1}Cim10}{57}{section.11.1}
+\contentsline {section}{\numberline {11.2}Etude des AVC}{60}{section.11.2}
+\contentsline {section}{\numberline {11.3}Accidents ischi\IeC {\'e}miques transitoires (AIT)}{69}{section.11.3}
+\contentsline {section}{\numberline {11.4}Pneumonies}{70}{section.11.4}
+\contentsline {section}{\numberline {11.5}Syndrome grippal}{72}{section.11.5}
+\contentsline {section}{\numberline {11.6}Malaises}{72}{section.11.6}
+\contentsline {section}{\numberline {11.7}Marqueurs de canicule}{75}{section.11.7}
+\contentsline {chapter}{\numberline {12}Modalit\IeC {\'e}s de sortie}{79}{chapter.12}
+\contentsline {section}{\numberline {12.1}Mode de sortie}{79}{section.12.1}
+\contentsline {section}{\numberline {12.2}Mode de sortie selon la structure}{79}{section.12.2}
+\contentsline {section}{\numberline {12.3}Orientation}{80}{section.12.3}
+\contentsline {section}{\numberline {12.4}Destination}{81}{section.12.4}
+\contentsline {section}{\numberline {12.5}Incoh\IeC {\'e}rences}{81}{section.12.5}
+\contentsline {chapter}{\numberline {13}Modalit\IeC {\'e}s d'orientation}{85}{chapter.13}
+\contentsline {chapter}{\numberline {14}Courbes d'activit\IeC {\'e} r\IeC {\'e}gionale}{86}{chapter.14}
+\contentsline {section}{\numberline {14.1}Variation du nombre total de passages journaliers}{86}{section.14.1}
+\contentsline {section}{\numberline {14.2}Variation du pourcentage journalier de retour \IeC {\`a} domicile}{88}{section.14.2}
+\contentsline {part}{III\hspace {1em}Activit\IeC {\'e} par service d'urgence}{93}{part.3}
+\contentsline {chapter}{\numberline {15}SAU des H\IeC {\^o}pitaux universitaires}{94}{chapter.15}
+\contentsline {section}{\numberline {15.1}Activit\IeC {\'e} globale}{94}{section.15.1}
+\contentsline {part}{IV\hspace {1em}Activit\IeC {\'e} des SAMU d'Alsace}{95}{part.4}
+\contentsline {part}{V\hspace {1em}Annexes}{96}{part.5}
+\contentsline {chapter}{\numberline {A}M\IeC {\'e}thodologie}{97}{appendix.A}
+\contentsline {chapter}{\numberline {B}Glossaire}{99}{appendix.B}
+\contentsline {chapter}{\numberline {C}RPU}{102}{appendix.C}
+\contentsline {chapter}{\numberline {D}A propos de ce document}{103}{appendix.D}
+\contentsline {chapter}{\numberline {E}Bibliographie}{104}{appendix.E}
+\contentsline {chapter}{\numberline {F}Index}{106}{appendix.F}

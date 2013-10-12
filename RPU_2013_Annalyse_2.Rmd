@@ -18,9 +18,9 @@ b4<-summary(as.factor(b3))
 b4
 ```
 ```{r}
-load("rpu2013d0107.Rda")
-d1<-d0107
-rm(d0107)
+load("rpu2013d0109.Rda")
+d1<-d0109
+rm(d0109)
 
 # nombre de RPU par type de jour de la semaine:
 e<-ymd_hms(d1$ENTREE)

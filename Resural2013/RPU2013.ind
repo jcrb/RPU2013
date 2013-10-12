@@ -1,91 +1,108 @@
 \begin{theindex}
 
-  \item Accident Vasculaire C\IeC {\'e}r\IeC {\'e}bral, \hyperpage{97}
-  \item Activit\IeC {\'e} r\IeC {\'e}gionale, \hyperpage{84}
-  \item AIT, \hyperpage{67}, \hyperpage{97}
-    \subitem th\IeC {\'e}saurus, \hyperpage{67}
+  \item Accident Vasculaire C\IeC {\'e}r\IeC {\'e}bral, \hyperpage{99}
+  \item Activit\IeC {\'e} r\IeC {\'e}gionale, \hyperpage{86}
+  \item AIT, \hyperpage{69}, \hyperpage{99}
+    \subitem th\IeC {\'e}saurus, \hyperpage{69}
   \item Alsace
     \subitem d\IeC {\'e}mographie, \hyperpage{11}
     \subitem secteurs sanitaires, \hyperpage{9}
     \subitem services d'urgence, \hyperpage{12}
     \subitem territoires de proximit\IeC {\'e}, \hyperpage{10}
-  \item Alsace e-sant\IeC {\'e}, \hyperpage{21}
-  \item ANTARES, \hyperpage{97}
-  \item AR, \hyperpage{97}
-  \item ARS, \hyperpage{9}, \hyperpage{20, 21}, \hyperpage{97}
-  \item AVC, \hyperpage{58}
-    \subitem age, \hyperpage{62, 63}
-    \subitem heure, \hyperpage{59}
-    \subitem sexe, \hyperpage{63}
+  \item Alsace e-sant\IeC {\'e}, \hyperpage{22}
+  \item ANTARES, \hyperpage{99}
+  \item AR, \hyperpage{99}
+  \item ARS, \hyperpage{9}, \hyperpage{21, 22}, \hyperpage{99}
+  \item AVC, \hyperpage{60}
+    \subitem age, \hyperpage{64, 65}
+    \subitem heure, \hyperpage{61}
+    \subitem sexe, \hyperpage{65}
 
   \indexspace
 
-  \item marqueurs, \hyperpage{73}
-  \item CIRE-INVS, \hyperpage{21}
-  \item CMUNE, \hyperpage{21}
+  \item marqueurs, \hyperpage{75}
+  \item CIRE-INVS, \hyperpage{22}
+  \item CMUNE, \hyperpage{22}
+  \item code postal, \hyperpage{24}
 
   \indexspace
 
-  \item destination, \hyperpage{79}
+  \item d\IeC {\'e}c\IeC {\`e}s, \hyperpage{24}
+  \item destination, \hyperpage{81}
 
   \indexspace
 
   \item exhaustivit\IeC {\'e}
-    \subitem CIM10, \hyperpage{55}
-  \item mode de sortie, \hyperpage{90}
-  \item motif, \hyperpage{43}
+    \subitem CIM10, \hyperpage{57}
+  \item mode de sortie, \hyperpage{92}
+  \item motif, \hyperpage{45}
 
   \indexspace
 
-  \item FEDORU, \hyperpage{21}
+  \item FEDORU, \hyperpage{22}
+  \item FINESS, \hyperpage{24}
 
   \indexspace
 
-  \item malaise, \hyperpage{70}
-  \item Mode d'entr\IeC {\'e}e, \hyperpage{45}
-  \item Mode de sortie, \hyperpage{77}
-  \item Mode de transport, \hyperpage{46}
-  \item motif de consultation, \hyperpage{41}
-  \item motif de recours, \hyperpage{55}
+  \item HAD, \hyperpage{25}
+  \item HMS, \hyperpage{25}
 
   \indexspace
 
-  \item Observatoire des urgences en Alsace, \hyperpage{21}
-  \item orientation, \hyperpage{78}, \hyperpage{83}
-  \item ORUDAL, \hyperpage{21}
-  \item ORUPACA, \hyperpage{21}
+  \item malaise, \hyperpage{72}
+  \item MCO, \hyperpage{25}
+  \item Mode d'entr\IeC {\'e}e, \hyperpage{47}
+  \item Mode de sortie, \hyperpage{79}
+  \item mode de sortie, \hyperpage{24}
+  \item Mode de transport, \hyperpage{48}
+  \item motif de consultation, \hyperpage{43}
+  \item motif de recours, \hyperpage{24}, \hyperpage{57}
+  \item mutation, \hyperpage{24}
 
   \indexspace
 
-  \item journaliers, \hyperpage{84}
-  \item pneumonies, \hyperpage{68}
-  \item Population, \hyperpage{97}
+  \item Observatoire des urgences en Alsace, \hyperpage{22}
+  \item orientation, \hyperpage{25}, \hyperpage{80}, \hyperpage{85}
+  \item ORUDAL, \hyperpage{22}
+  \item ORUPACA, \hyperpage{22}
+
+  \indexspace
+
+  \item journaliers, \hyperpage{86}
+  \item pneumonies, \hyperpage{70}
+  \item Population, \hyperpage{99}
   \item Population
-    \subitem compt\IeC {\'e}e \IeC {\`a} part, \hyperpage{97}
-    \subitem municipale, \hyperpage{11}, \hyperpage{98}
-    \subitem totale, \hyperpage{98}
+    \subitem compt\IeC {\'e}e \IeC {\`a} part, \hyperpage{99}
+    \subitem municipale, \hyperpage{11}, \hyperpage{100}
+    \subitem totale, \hyperpage{100}
+  \item PSY, \hyperpage{25}
 
   \indexspace
 
-  \item RESURAL, \hyperpage{20, 21}
+  \item R (CRAN R), \hyperpage{103}
+  \item RESURAL, \hyperpage{21, 22}
     \subitem historique, \hyperpage{8}
-  \item Retour \IeC {\`a} domicile, \hyperpage{86}
+  \item Retour \IeC {\`a} domicile, \hyperpage{88}
+  \item retour \IeC {\`a} domicile, \hyperpage{24}
 
   \indexspace
 
   \item Secteurs sanitaires, \hyperpage{9}
   \item Services d'urgence
     \subitem en Alsace, \hyperpage{12}
-  \item syndrome grippal, \hyperpage{70}
+  \item SLD, \hyperpage{25}
+  \item SSR, \hyperpage{25}
+  \item syndrome grippal, \hyperpage{72}
 
   \indexspace
 
-  \item taux de recours aux urgences, \hyperpage{29}
+  \item taux de recours aux urgences, \hyperpage{31}
   \item Territoires de proximit\IeC {\'e}, \hyperpage{10}
-  \item TRU, \hyperpage{29}
+  \item transfert, \hyperpage{24}
+  \item TRU, \hyperpage{31}
 
   \indexspace
 
-  \item Unit\IeC {\'e} urbaine, \hyperpage{98}
+  \item Unit\IeC {\'e} urbaine, \hyperpage{100}
 
 \end{theindex}

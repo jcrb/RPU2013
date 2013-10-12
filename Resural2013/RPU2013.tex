@@ -436,6 +436,7 @@ Territoire & ZProximité & Etablissement & FINESS J & Site & FINESS G & SU & SU 
 
 
 
+On dédinit l'exhaustivité quantitative comme le nombre de RPU transmis par rapport au nombre de passages réels.
 Les données proviennent des RPU produits par les hôpitaux d'Alsace ayant l'autorisation de faire fonctionner un service d'urgence (SU). La liste des structures hospitalières ayant fournit des informations alimentant le présent rapport est fournie par la table \ref{tab1}, page \pageref{tab1}.
 
 Tous ces hôpitaux fournissent des données depuis le premier janvier 2013 sauf le CH Saverne qui a commencé en Juillet 2013.
@@ -447,7 +448,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:40:32 2013
+% Sat Oct 12 10:30:31 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -476,12 +477,14 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 
 \section{Exhaustivité qualitative}
 
+L'exhaustivité qualitative correspond à la fois à la complétude des items et à la cohérence de réponses.
+
 Les informations de nature administrative (code postal, commune d'origine, sexe, date de naissance,\dots ) sont correctement renseignées avec une exhaustivité de $100\%$.
 
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:40:33 2013
+% Sat Oct 12 10:30:32 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -517,8 +520,33 @@ id & 0.00 \\
 
 
 
-
 Les informations sont résumées dans la table \ref{tab2}, page \pageref{tab2}.
+
+\section{Diagramme de complétude}
+
+On peut représenter sous forme d'un diagramme en radar (ou toile d'araignée) l'exhaustivité qualitative des données. Chaque item du RPU est représenté par le rayon d'une roue, gradué de 0 à 100\%. Sur chaque rayon, les points obtenus sont reliés entre eux pour dessiner un polygone qui figue la physionomie de l'ensemble des données.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##            id   CODE_POSTAL       COMMUNE   DESTINATION            DP 
+##          0.00          0.00          0.00         78.93         32.77 
+##        ENTREE       EXTRACT        FINESS       GRAVITE   MODE_ENTREE 
+##          0.00          0.00          0.00         14.01         10.48 
+##   MODE_SORTIE         MOTIF     NAISSANCE   ORIENTATION    PROVENANCE 
+##         14.74         36.33          0.00         80.08         34.85 
+##          SEXE        SORTIE     TRANSPORT TRANSPORT_PEC           AGE 
+##          0.00          9.37         22.09         25.43          0.00 
+##       secteur 
+##          0.00
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/radar} 
+
+\end{knitrout}
+
+
+Le renseignement des items varie entre $20\%$ et $100\%$. Cependant ces données sont à interpréter avec prudence. Ainsi l'item 4 qui correspond au mode de sortie ne distingue pas les non réponses des vrais retours à domicile (se reporter à la discussion page \pageref{ref:sortie})
 
 \chapter{RESURAL}
 
@@ -575,21 +603,13 @@ La fédération des observatoires des urgences et structures apparentés a été
 
 % rpu.Rnw
 
-La création du résumé des passages aux urgences remonte à 2002 \cite{11}
+La création du résumé des passages aux urgences (RPU) remonte à 2002 \cite{11}. Sur la base d'un projet pilote mené par l'ORUMIP, la DHOS, à l'initiative de son directeur Edouard Couty, lance sur la base du volontariat, la collecte des RPU.
 
 \section*{RPU}
 
-Les Résumés de Passage aux Urgences (RPU) ont été transmis par le Centre Hospitalier de Sélestat à partir de 2008. 
-La table \emph{rpu} du serveur de test comporte 
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\\Error in nrow(d2) : objet 'd2' introuvable}} lignes et 
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\\Error in ncol(d2) : objet 'd2' introuvable}} colonnes. La période érudiée couvre toute l'année 2009 s'étend (du 
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\\Error in eval(expr, envir, enclos) : objet 'd2' introuvable}} au 
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\\Error in eval(expr, envir, enclos) : objet 'd2' introuvable}}), ce qui correspond à toutes les entrées de cette année. Les RPU sont saisis selon la version 5 du cahier des charges transmis par l'INVS (version du 31 janvier 2007).
-\\
+% Les Résumés de Passage aux Urgences (RPU) ont été transmis par le Centre Hospitalier de Sélestat à partir de 2008. 
+% La table \emph{rpu} du serveur de test comporte nrow(d2) lignes et ncol(d2) colonnes. La période érudiée couvre toute l'année 2009 s'étend (du d2$date_entree[1] au d2$date_entree[nrow(d2)]), ce qui correspond à toutes les entrées de cette année. Les RPU sont saisis selon la version 5 du cahier des charges transmis par l'INVS (version du 31 janvier 2007).
+% \\
 Chaque passage aux urgences donne lieu à la création d'un RPU qui collecte les informations suivantes:
 \begin{enumerate}
   \item l'établissement de santé, siège du SAU (FINESS géographique)
@@ -612,14 +632,108 @@ Chaque passage aux urgences donne lieu à la création d'un RPU qui collecte les
   \item date et heure de sortie
 \end{enumerate}
 
+%%%%%%%%%%%%%%
+\subsubsection{L'identifiant (ID)}
+%%%%%%%%%%%%%%
 
-\subsubsection*{Le logiciel R \footnote{http://www.r-project.org/}}
+Ils'agit d'un code unique caractérisant le RPU. Il ne fait pas partie de la définition de l'INVS.Il a été rajouté par SAGEC à l'origine du serveur régional pour retrouver l'enregistrement en cas de problème et faciliter laliaison avec d'autres rubriques comme les diagnostiques associés.
 
-R est un langage de programmation et un environnement mathématique utilisés pour le traitement de données et l'analyse statistique. C'est un projet GNU fondé sur le langage S et sur l'environnement développé dans les laboratoires Bell par John Chambers et ses collègues. 
-\
-R est un logiciel libre distribué selon les termes de la licence GNU GPL et est disponible sous GNU/Linux, FreeBSD, NetBSD, OpenBSD, Mac OS X et Windows. R s'interface directement avec la pluspart des bases de données courantes: BO (Oracle), MySQL, PostgreeSql, etc. Il s'interface aussi avec un certain nombre de système d'information géographique (SIG) et sait lire nativement le format Shapefile utilisé par l'IGN.
-\
-Le logiciel R est interfacé avec le traitement de texte Latex par l'intermédiaire de la bibliothèque Sweave. Cette association permet de mélanger du texte et des formules mathématiques produisant les résultats et graphiques de ce document. En cas de modification des données, il suffit de recompiler le fichier source pour mettre à jour le document final.
+%%%%%%%%%%%%%%
+\subsubsection{L'établissement de santé}
+%%%%%%%%%%%%%%
+
+\index{FINESS}
+Il est identifié par son numéro FINESS. Le schéma de l'INVS ne précise pas quel FINESS utiliser et on trouve des FINESS juridiques et géographiques. Nous recommandons d'utiliser le FINESS géographique qi permet d'identifier la structure d'origine quand il s'agit d'établissements multisites.
+
+%%%%%%%%%%%%%%
+\subsubsection{Le code postal de résidence}
+%%%%%%%%%%%%%%
+
+\index{code postal}
+Lorsque le lieu de résidence se situe hors des limites du territoire national, il faut indiquer par convention $99999$.
+Si le code postal précis est inconnu : le numéro du département suivi de 999
+Pour les malades résidant hors de France : 99 suivi du code INSEE du pays \footnote{http://www.insee.fr/fr/methodes/nomenclatures/cog/pays.asp}
+Si le département ou le pays de résidence est inconnu : 99999
+
+%%%%%%%%%%%%%%
+\subsubsection{le motif de recours aux urgences}
+%%%%%%%%%%%%%%
+
+\index{motif de recours}
+Il faut utiliser l'un des motifs de recours préconisé par le ministère de la santé \cite{13} et codifiés par la SFMU. La dernière version est la version de juin 2013 du thésaurus de la SFMU accessible sur le site internet de cette dernière. Il comporte une liste d'environ $150$ recours avec leur équivalence CIM10.
+
+%%%%%%%%%%%%%%
+\subsubsection{Le mode de sortie}
+%%%%%%%%%%%%%%
+
+\index{mode de sortie}
+\index{retour à domicile}
+\label{ref:sortie}
+Les patients quittent les urgences soit parcequ'ils ne nécessitent pas d'hospitalisation (c'est un \emph{retour à domicile}), soit parcequ'ils sont hospitalisé dans la structure hospitalière (c'est une \emph{mutation}\index{mutation}) ou dans un autre établissement (on parle alors de \emph{transfert}\index{transfert}). Enfin il peut s'agir d'un \emph{décès}\index{décès} dans le service d'urgence.
+
+\begin{itemize}
+  \item « 6 » Mutation : le malade est hospitalisé vers une autre unité médicale de la même
+entité juridique \footnote{Dans les établissements privés visés aux alinéas d et e de l'article L162-22-6 du code de la sécurité sociale (CSS), si le patient provient d’un autre établissement de la même entité juridique, le mode desortie à utiliser est le 7}
+  \item « 7 » Transfert : le malade est hospitalisé dans une autre entité juridique
+  \item « 8 » Domicile : le malade retourne au domicile ou son substitut, tel une
+structure d'hébergement médico-social.
+  \item « 9 » Décès : le malade décède aux urgences
+\end{itemize}
+
+Cette rubrique est détaillée par les items \emph{destination} et \emph{orientation}
+
+%%%%%%%%%%%%%%
+\subsubsection{Destination}
+%%%%%%%%%%%%%%
+
+En cas de sortie par mutation ou transfert, il peut s'agir:
+\begin{itemize}
+  \item « 1 » Hospitalisation dans une unité de soins de courte durée (MCO)\index{MCO}
+  \item « 2 » Hospitalisation dans une unité de soins de suite ou de réadaptation (SSR)\index{SSR}
+  \item « 3 » Hospitalisation dans une unité de soins de longue durée (SLD)\index{SLD}
+  \item « 4 » Hospitalisation dans une unité de psychiatrie (PSY)\index{PSY}
+\end{itemize}
+
+En cas de sortie au domicile
+\begin{itemize}
+  \item « 6 » Retour au domicile dans le cadre d’une hospitalisation à domicile (HAD)\index{HAD}
+  \item « 7 » Retour vers une structure d'hébergement médico-social (HMS)\index{HMS}
+\end{itemize}
+
+On notera que dans cette formulation, le retour à domicile "normal" est implicite et celà génère une ambiguité car si la rubrique est laissée libre, on ne saitpas s'il s'agit d'une non réponse ou d'un retour simple à domicile.
+
+%%%%%%%%%%%%%%
+\subsubsection{Orientation}
+%%%%%%%%%%%%%%
+
+\index{orientation}
+L'orientation précise le devenir ou les circonstances associées. Cette rubrique est complémentaire du \emph{mode de sortie}. Malheureusement, elle souffre de la mêmelimitation:le retour à domicile simple est implicite.
+
+\begin{enumerate}
+  \item En cas de sortie par mutation ou transfert
+    \begin{itemize}
+      \item « HDT » hospitalisation sur la demande d’un tiers
+      \item « HO » hospitalisation d’office
+      \item « SC » hospitalisation dans une unité de Surveillance Continue
+      \item « SI » hospitalisation dans une unité de Soins Intensifs
+      \item « REA » hospitalisation dans une unité de Réanimation
+      \item « UHCD » hospitalisation dans une unité d’hospitalisation de courte durée
+      \item « MED » hospitalisation dans une unité de Médecine hors SC, SI, REA
+      \item « CHIR» hospitalisation dans une unité de Chirurgie hors SC, SI, REA
+      \item « OBST» hospitalisation dans une unité d’Obstétrique hors SC, SI, REA
+    \end{itemize}
+
+  \item En cas de sortie au domicile
+    \begin{itemize}
+      \item « FUGUE » sortie du service à l’insu du personnel soignant
+      \item « SCAM » sortie contre avis médical
+      \item « PSA » partie sans attendre prise en charge
+      \item « REO » réorientation directe sans soins (ex vers consultation spécialisée ou   lorsque le service d’accueil administratif est fermée)
+    \end{itemize}
+
+\end{enumerate}
+
+
 
 
 %========================================================== PARTIE 2
@@ -684,7 +798,7 @@ Les données du secteur 2 sont très sous-estimées car il manque celles de la C
 
 \subsection*{En valeur absolue}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:40:43 2013
+% Sat Oct 12 10:30:45 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{llr}
@@ -761,7 +875,7 @@ Le TRU 2013 estimé en Alsace à partir des RPU transmis est de 13.24\%.
 \subsection*{Activité par semaine}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:40:48 2013
+% Sat Oct 12 10:30:49 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -814,7 +928,7 @@ Le TRU 2013 estimé en Alsace à partir des RPU transmis est de 13.24\%.
 \label{act_sem}
 \end{table}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:40:48 2013
+% Sat Oct 12 10:30:50 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -874,7 +988,7 @@ Ce phénomène cyclique se répète tous les jours selon un profil immuable. La 
 %----------------------------------------------------------------------------- Summary
 Résumé des horaires de passage aux ugences: les données figurent dans le tableau \ref{tab:24} page \pageref{tab:24}.
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:40:55 2013
+% Sat Oct 12 10:30:56 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -956,7 +1070,7 @@ Résumé des horaires de passage aux ugences: les données figurent dans le tabl
 % tranche-age.Rnw
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:40:59 2013
+% Sat Oct 12 10:31:00 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -991,7 +1105,7 @@ Le thésaurus est présenté sous la formed'un fichier Excel. L'onglet \emph{rec
 
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:40:59 2013
+% Sat Oct 12 10:31:00 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -1060,7 +1174,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:41:00 2013
+% Sat Oct 12 10:31:01 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1090,7 +1204,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:41:00 2013
+% Sat Oct 12 10:31:02 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1752,7 +1866,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:41:08 2013
+% Sat Oct 12 10:31:10 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -1777,7 +1891,7 @@ Décès & 2 & 0.00 \\
 Les données par établissement sont résumées dans le tableau \ref{tab.sortie_etab} page \pageref{tab.sortie_etab}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:41:08 2013
+% Sat Oct 12 10:31:10 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|r|r|r|r|}
@@ -1866,7 +1980,7 @@ On notera que le retour à domicile proprement dit ne figure pas parmi les items
 \section{Destination}
 \index{destination}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:41:08 2013
+% Sat Oct 12 10:31:11 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1885,7 +1999,7 @@ HAD & 0.01 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:41:08 2013
+% Sat Oct 12 10:31:12 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1996,7 +2110,7 @@ Le mode d'orientation au sens du RPU est une rubrique un peu fourre-tout regroup
 
 \includegraphics[width=\maxwidth]{figure/passages_totaux1} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:41:12 2013
+% Sat Oct 12 10:31:15 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -2029,7 +2143,7 @@ Les variation du retour journalier à domicile sont calculés de la manière sui
 \end{description}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:41:15 2013
+% Sat Oct 12 10:31:17 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -2056,7 +2170,7 @@ On refait le calcul de q en tenant compte des non réponses:
 Si on considère que tout ce qui n'est pas un retour à domicile constitue une hospitalisation, on peut tracer un graphique, miroir du précédent. La ligne bleue représente la moyenne lissée sur sept jours. On notera le taux d'hospitalisation élévé du début de l'année, correspondant à une période de forte tension. Les fluctuations de ce paramètre (comme le retour à domicile) est une piste intéressante dans le cadre de la recherche d'indicateurs d'hôpital en tension, cependant les seuils d'alerte (triggers) restent à déterminer.
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct  9 16:41:17 2013
+% Sat Oct 12 10:31:20 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -2274,6 +2388,15 @@ Système d’information sanitaire des alertes et crises (SISAC) de la DGS.
 % apropos.Rnw
 
 Ce document a été totalement rédigé à l'aide du logiciel R \cite{5} en respectant les recommandations de la \emph{Reproducible Research}. Le but de la recherche reproductible consiste à lier les données expérimentales et leur analyse par des instructions spécifiques de sorte que les résultats peuvent être reproduits, mieux compris et vérifiés.
+
+\subsubsection*{Le logiciel R \footnote{http://www.r-project.org/}}
+
+\index{R (CRAN R)}
+R est un langage de programmation et un environnement mathématique utilisés pour le traitement de données et l'analyse statistique. C'est un projet GNU fondé sur le langage S et sur l'environnement développé dans les laboratoires Bell par John Chambers et ses collègues. 
+\
+R est un logiciel libre distribué selon les termes de la licence GNU GPL et est disponible sous GNU/Linux, FreeBSD, NetBSD, OpenBSD, Mac OS X et Windows. R s'interface directement avec la pluspart des bases de données courantes: BO (Oracle), MySQL, PostgreeSql, etc. Il s'interface aussi avec un certain nombre de système d'information géographique (SIG) et sait lire nativement le format Shapefile utilisé par l'IGN.
+\
+Le logiciel R est interfacé avec le traitement de texte Latex par l'intermédiaire de la bibliothèque Sweave. Cette association permet de mélanger du texte et des formules mathématiques produisant les résultats et graphiques de ce document. En cas de modification des données, il suffit de recompiler le fichier source pour mettre à jour le document final.
 
 \chapter{Bibliographie}
 \bibliography{../../rpu}

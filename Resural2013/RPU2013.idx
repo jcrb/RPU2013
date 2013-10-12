@@ -8,51 +8,67 @@
 \indexentry{Population@Population!municipale|hyperpage}{11}
 \indexentry{Services d'urgence!en Alsace|hyperpage}{12}
 \indexentry{Alsace!services d'urgence|hyperpage}{12}
-\indexentry{RESURAL|hyperpage}{20}
-\indexentry{ARS|hyperpage}{20}
-\indexentry{ORUDAL|hyperpage}{21}
-\indexentry{Observatoire des urgences en Alsace|hyperpage}{21}
 \indexentry{RESURAL|hyperpage}{21}
 \indexentry{ARS|hyperpage}{21}
-\indexentry{Alsace e-sant\IeC {\'e}|hyperpage}{21}
-\indexentry{CIRE-INVS|hyperpage}{21}
-\indexentry{CMUNE|hyperpage}{21}
-\indexentry{FEDORU|hyperpage}{21}
-\indexentry{ORUPACA|hyperpage}{21}
-\indexentry{taux de recours aux urgences|hyperpage}{29}
-\indexentry{TRU|hyperpage}{29}
-\indexentry{motif de consultation|hyperpage}{41}
-\indexentry{exhaustivit\IeC {\'e}@motif|hyperpage}{43}
-\indexentry{Mode d'entr\IeC {\'e}e|hyperpage}{45}
-\indexentry{Mode de transport|hyperpage}{46}
-\indexentry{motif de recours|hyperpage}{55}
-\indexentry{exhaustivit\IeC {\'e}!CIM10|hyperpage}{55}
-\indexentry{AVC|hyperpage}{58}
-\indexentry{AVC!heure|hyperpage}{59}
-\indexentry{AVC!age|hyperpage}{62}
-\indexentry{AVC!age|hyperpage}{63}
-\indexentry{AVC!sexe|hyperpage}{63}
-\indexentry{AIT|hyperpage}{67}
-\indexentry{AIT!th\IeC {\'e}saurus|hyperpage}{67}
-\indexentry{pneumonies|hyperpage}{68}
-\indexentry{syndrome grippal|hyperpage}{70}
-\indexentry{malaise|hyperpage}{70}
-\indexentry{Canicule@marqueurs|hyperpage}{73}
-\indexentry{Mode de sortie|hyperpage}{77}
-\indexentry{orientation|hyperpage}{78}
-\indexentry{destination|hyperpage}{79}
-\indexentry{orientation|hyperpage}{83}
-\indexentry{Activit\IeC {\'e} r\IeC {\'e}gionale|hyperpage}{84}
-\indexentry{Passages@journaliers|hyperpage}{84}
-\indexentry{Retour \IeC {\`a} domicile|hyperpage}{86}
-\indexentry{exhaustivit\IeC {\'e}@mode de sortie|hyperpage}{90}
-\indexentry{AIT|hyperpage}{97}
-\indexentry{ANTARES|hyperpage}{97}
-\indexentry{AR|hyperpage}{97}
-\indexentry{ARS|hyperpage}{97}
-\indexentry{Accident Vasculaire C\IeC {\'e}r\IeC {\'e}bral|hyperpage}{97}
-\indexentry{Population|hyperpage}{97}
-\indexentry{Population@Population!compt\IeC {\'e}e \IeC {\`a} part|hyperpage}{97}
-\indexentry{Population@Population!totale|hyperpage}{98}
-\indexentry{Population@Population!municipale|hyperpage}{98}
-\indexentry{Unit\IeC {\'e} urbaine|hyperpage}{98}
+\indexentry{ORUDAL|hyperpage}{22}
+\indexentry{Observatoire des urgences en Alsace|hyperpage}{22}
+\indexentry{RESURAL|hyperpage}{22}
+\indexentry{ARS|hyperpage}{22}
+\indexentry{Alsace e-sant\IeC {\'e}|hyperpage}{22}
+\indexentry{CIRE-INVS|hyperpage}{22}
+\indexentry{CMUNE|hyperpage}{22}
+\indexentry{FEDORU|hyperpage}{22}
+\indexentry{ORUPACA|hyperpage}{22}
+\indexentry{FINESS|hyperpage}{24}
+\indexentry{code postal|hyperpage}{24}
+\indexentry{motif de recours|hyperpage}{24}
+\indexentry{mode de sortie|hyperpage}{24}
+\indexentry{retour \IeC {\`a} domicile|hyperpage}{24}
+\indexentry{mutation|hyperpage}{24}
+\indexentry{transfert|hyperpage}{24}
+\indexentry{d\IeC {\'e}c\IeC {\`e}s|hyperpage}{24}
+\indexentry{MCO|hyperpage}{25}
+\indexentry{SSR|hyperpage}{25}
+\indexentry{SLD|hyperpage}{25}
+\indexentry{PSY|hyperpage}{25}
+\indexentry{HAD|hyperpage}{25}
+\indexentry{HMS|hyperpage}{25}
+\indexentry{orientation|hyperpage}{25}
+\indexentry{taux de recours aux urgences|hyperpage}{31}
+\indexentry{TRU|hyperpage}{31}
+\indexentry{motif de consultation|hyperpage}{43}
+\indexentry{exhaustivit\IeC {\'e}@motif|hyperpage}{45}
+\indexentry{Mode d'entr\IeC {\'e}e|hyperpage}{47}
+\indexentry{Mode de transport|hyperpage}{48}
+\indexentry{motif de recours|hyperpage}{57}
+\indexentry{exhaustivit\IeC {\'e}!CIM10|hyperpage}{57}
+\indexentry{AVC|hyperpage}{60}
+\indexentry{AVC!heure|hyperpage}{61}
+\indexentry{AVC!age|hyperpage}{64}
+\indexentry{AVC!age|hyperpage}{65}
+\indexentry{AVC!sexe|hyperpage}{65}
+\indexentry{AIT|hyperpage}{69}
+\indexentry{AIT!th\IeC {\'e}saurus|hyperpage}{69}
+\indexentry{pneumonies|hyperpage}{70}
+\indexentry{syndrome grippal|hyperpage}{72}
+\indexentry{malaise|hyperpage}{72}
+\indexentry{Canicule@marqueurs|hyperpage}{75}
+\indexentry{Mode de sortie|hyperpage}{79}
+\indexentry{orientation|hyperpage}{80}
+\indexentry{destination|hyperpage}{81}
+\indexentry{orientation|hyperpage}{85}
+\indexentry{Activit\IeC {\'e} r\IeC {\'e}gionale|hyperpage}{86}
+\indexentry{Passages@journaliers|hyperpage}{86}
+\indexentry{Retour \IeC {\`a} domicile|hyperpage}{88}
+\indexentry{exhaustivit\IeC {\'e}@mode de sortie|hyperpage}{92}
+\indexentry{AIT|hyperpage}{99}
+\indexentry{ANTARES|hyperpage}{99}
+\indexentry{AR|hyperpage}{99}
+\indexentry{ARS|hyperpage}{99}
+\indexentry{Accident Vasculaire C\IeC {\'e}r\IeC {\'e}bral|hyperpage}{99}
+\indexentry{Population|hyperpage}{99}
+\indexentry{Population@Population!compt\IeC {\'e}e \IeC {\`a} part|hyperpage}{99}
+\indexentry{Population@Population!totale|hyperpage}{100}
+\indexentry{Population@Population!municipale|hyperpage}{100}
+\indexentry{Unit\IeC {\'e} urbaine|hyperpage}{100}
+\indexentry{R (CRAN R)|hyperpage}{103}
