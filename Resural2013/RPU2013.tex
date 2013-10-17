@@ -142,8 +142,11 @@ Bartier \& Madame Christine Hecker}}
 %\SweaveOpts{concordance=TRUE}
 %\SweaveOpts{fig.path='./figure/rpu2013-', comment=NA, prompt=FALSE}
 
+% page de garde n°2
+%------------------
 \newpage
-
+\chapter*{}
+\vfill
 \begin{itemize}\raggedright
   \item R version 3.0.2 (2013-09-25), \verb|x86_64-pc-linux-gnu|
   \item Locale: \verb|LC_CTYPE=fr_FR.UTF-8|, \verb|LC_NUMERIC=C|, \verb|LC_TIME=fr_FR.UTF-8|, \verb|LC_COLLATE=fr_FR.UTF-8|, \verb|LC_MONETARY=fr_FR.UTF-8|, \verb|LC_MESSAGES=fr_FR.UTF-8|, \verb|LC_PAPER=fr_FR.UTF-8|, \verb|LC_NAME=C|, \verb|LC_ADDRESS=C|, \verb|LC_TELEPHONE=C|, \verb|LC_MEASUREMENT=fr_FR.UTF-8|, \verb|LC_IDENTIFICATION=C|
@@ -155,6 +158,12 @@ Bartier \& Madame Christine Hecker}}
 \end{itemize}
 
 
+% Making a derivative work?
+% You are encouraged to leave this page entirely intact.
+\noindent $\copyright$ 2013. This content is available under a Creative Commons Attribution-ShareAlike 3.0 Unported United States license. License details are available at the Creative Commons website: \url{http://www.creativecommons.org} \\
+
+\noindent For license and attribution guidance, see \url{http://www.openintro.org/perm/stat2nd_v2.txt}
+
 
 \tableofcontents
 \listoftables
@@ -164,6 +173,7 @@ Bartier \& Madame Christine Hecker}}
 
 %======================================================== PARTIE 1
 \part{Le Réseau des urgences en Alsace}
+\newpage
 
 \chapter{Historique}
 
@@ -174,6 +184,7 @@ Le Réseau des Urgences en Alsace a été créé en août 2008 sous forme d'une 
 \index{RESURAL!historique}
 
 
+\newpage
 \chapter{Organisation géographique}
 
 % geographie.Rnw
@@ -426,6 +437,8 @@ Territoire & ZProximité & Etablissement & FINESS J & Site & FINESS G & SU & SU 
 \end{center}
 \end{table}
 
+
+\newpage
 \chapter{Les acteurs}
 
 % acteurs.Rnw
@@ -448,7 +461,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:30:31 2013
+% Wed Oct 16 18:06:57 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -484,7 +497,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:30:32 2013
+% Wed Oct 16 18:06:58 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -548,6 +561,8 @@ On peut représenter sous forme d'un diagramme en radar (ou toile d'araignée) l
 
 Le renseignement des items varie entre $20\%$ et $100\%$. Cependant ces données sont à interpréter avec prudence. Ainsi l'item 4 qui correspond au mode de sortie ne distingue pas les non réponses des vrais retours à domicile (se reporter à la discussion page \pageref{ref:sortie})
 
+
+\newpage
 \chapter{RESURAL}
 
 % resural.Rnw
@@ -561,6 +576,8 @@ Elle est dirigée par un conseil d'administration et représentée par son preé
 
 Son fonctionnement est assuré par une équipe de coordination, composée d'un médecin coordinateur à mi-temps et d'une assistante à mi-temps. Cette équipe est opérationnelle depuis le 1er février 2013.
 
+
+\newpage
 \chapter{L'observatoire des urgences en Alsace (ORUDAL)}
 
 % orudal.Rnw
@@ -598,7 +615,8 @@ Il est composé des organismes suivants:
   
 La fédération des observatoires des urgences et structures apparentés a été crée en octobre 2013 à l'initiative de quelques organisme régionaux dont Résural sur une proposition de l'ORUPACA \index{ORUPACA}
 
-  
+
+\newpage
 \chapter{Le Résumé du passage aux urgences}
 
 % rpu.Rnw
@@ -738,6 +756,8 @@ L'orientation précise le devenir ou les circonstances associées. Cette rubriqu
 
 %========================================================== PARTIE 2
 \part{Activité des services d'urgence d'Alsace}
+
+\newpage
 \chapter{Activité régionale totale}
 \section{Nombre total de passages}
 
@@ -798,7 +818,7 @@ Les données du secteur 2 sont très sous-estimées car il manque celles de la C
 
 \subsection*{En valeur absolue}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:30:45 2013
+% Wed Oct 16 18:07:10 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{llr}
@@ -875,7 +895,7 @@ Le TRU 2013 estimé en Alsace à partir des RPU transmis est de 13.24\%.
 \subsection*{Activité par semaine}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:30:49 2013
+% Wed Oct 16 18:07:14 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -928,7 +948,7 @@ Le TRU 2013 estimé en Alsace à partir des RPU transmis est de 13.24\%.
 \label{act_sem}
 \end{table}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:30:50 2013
+% Wed Oct 16 18:07:14 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -988,7 +1008,7 @@ Ce phénomène cyclique se répète tous les jours selon un profil immuable. La 
 %----------------------------------------------------------------------------- Summary
 Résumé des horaires de passage aux ugences: les données figurent dans le tableau \ref{tab:24} page \pageref{tab:24}.
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:30:56 2013
+% Wed Oct 16 18:07:21 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -1070,7 +1090,7 @@ Résumé des horaires de passage aux ugences: les données figurent dans le tabl
 % tranche-age.Rnw
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:31:00 2013
+% Wed Oct 16 18:07:25 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1093,6 +1113,7 @@ Moins de 1 an & 6274 \\
 
 
 
+\newpage
 \chapter{Motif de consultation}
 
 % motif.Rnw
@@ -1105,7 +1126,7 @@ Le thésaurus est présenté sous la formed'un fichier Excel. L'onglet \emph{rec
 
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:31:00 2013
+% Wed Oct 16 18:07:25 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -1159,6 +1180,7 @@ Données renseignées, exploitables mais à mettre en conformité avec le thésa
 \end{itemize}
 
 
+\newpage
 \chapter{Modalité d'admission}
 
 % modalites.Rnw
@@ -1174,7 +1196,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:31:01 2013
+% Wed Oct 16 18:07:26 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1204,7 +1226,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:31:02 2013
+% Wed Oct 16 18:07:26 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1242,6 +1264,7 @@ Les patients consultant aux urgences sont majoritairement issus de la région Al
 
 
 
+\newpage
 \chapter{Durée de passage}
 
 % duree_passage.Rnw
@@ -1372,6 +1395,7 @@ Le temps de passage augmente avec l'age.
 
 
 
+\newpage
 \chapter{Codage diagnostique}
 
 %
@@ -1840,6 +1864,7 @@ Données hospitalières : nombre quotidien de passages dans des services d'urgen
 
 
 
+\newpage
 \chapter{Modalités de sortie}
 
 % sortie.Rnw
@@ -1866,7 +1891,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:31:10 2013
+% Wed Oct 16 18:07:33 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -1891,7 +1916,7 @@ Décès & 2 & 0.00 \\
 Les données par établissement sont résumées dans le tableau \ref{tab.sortie_etab} page \pageref{tab.sortie_etab}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:31:10 2013
+% Wed Oct 16 18:07:34 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|r|r|r|r|}
@@ -1980,7 +2005,7 @@ On notera que le retour à domicile proprement dit ne figure pas parmi les items
 \section{Destination}
 \index{destination}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:31:11 2013
+% Wed Oct 16 18:07:35 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1999,7 +2024,7 @@ HAD & 0.01 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:31:12 2013
+% Wed Oct 16 18:07:35 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -2087,6 +2112,7 @@ Certaines orientations sont incompatibles avec une non hospitalisation:
 
 
 
+\newpage
 \chapter{Modalités d'orientation}
 
 % orientation.Rnw
@@ -2096,6 +2122,7 @@ Certaines orientations sont incompatibles avec une non hospitalisation:
 Le mode d'orientation au sens du RPU est une rubrique un peu fourre-tout regrouppant des hospitalisations comme des sorties "anormales" de la filère de soins (fugues, sotie contre avis, etc.).
 
 
+\newpage
 \chapter{Courbes d'activité régionale}
 
 % activite_su.Rnw
@@ -2110,7 +2137,7 @@ Le mode d'orientation au sens du RPU est une rubrique un peu fourre-tout regroup
 
 \includegraphics[width=\maxwidth]{figure/passages_totaux1} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:31:15 2013
+% Wed Oct 16 18:07:38 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -2143,7 +2170,7 @@ Les variation du retour journalier à domicile sont calculés de la manière sui
 \end{description}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:31:17 2013
+% Wed Oct 16 18:07:41 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -2170,7 +2197,7 @@ On refait le calcul de q en tenant compte des non réponses:
 Si on considère que tout ce qui n'est pas un retour à domicile constitue une hospitalisation, on peut tracer un graphique, miroir du précédent. La ligne bleue représente la moyenne lissée sur sept jours. On notera le taux d'hospitalisation élévé du début de l'année, correspondant à une période de forte tension. Les fluctuations de ce paramètre (comme le retour à domicile) est une piste intéressante dans le cadre de la recherche d'indicateurs d'hôpital en tension, cependant les seuils d'alerte (triggers) restent à déterminer.
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Sat Oct 12 10:31:20 2013
+% Wed Oct 16 18:07:43 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -2202,6 +2229,7 @@ Le taux de réponse pour cet item est de
 %===================================================================== PARTIE 3
 \part{Activité par service d'urgence}
 
+\newpage
 \chapter{SAU des Hôpitaux universitaires}
 
 % SuHus.Rnw
@@ -2255,6 +2283,8 @@ Entre le 2013-01-01 00:11:00 et le 2013-09-30 23:28:00, \np{28293} RPU ont été
 
 %===================================================================== PARTIE 5
 \part{Annexes}
+
+\newpage
 \appendix
 \chapter{Méthodologie}
 
@@ -2305,6 +2335,8 @@ Les moyennes mobiles sont généralement présentées sous forme "glissante", c'
 \section*{Pondération annuelle et mensuelle}
 Le nombre de jour dans un mois est variable d'un mois à l'autre. Il en va de même pour le nombre de jours d'une année, où du nombre de répétitions d'un jour donné de la semaine.
 
+
+\newpage
 \chapter{Glossaire}
 
 % glossaire.Rnw
@@ -2382,7 +2414,11 @@ Système d’information sanitaire des alertes et crises (SISAC) de la DGS.
 
 
 
+
+\newpage
 \chapter{RPU}
+
+\newpage
 \chapter{A propos de ce document}
 
 % apropos.Rnw
@@ -2398,8 +2434,13 @@ R est un logiciel libre distribué selon les termes de la licence GNU GPL et est
 \
 Le logiciel R est interfacé avec le traitement de texte Latex par l'intermédiaire de la bibliothèque Sweave. Cette association permet de mélanger du texte et des formules mathématiques produisant les résultats et graphiques de ce document. En cas de modification des données, il suffit de recompiler le fichier source pour mettre à jour le document final.
 
+
+\newpage
 \chapter{Bibliographie}
 \bibliography{../../rpu}
+
+\newpage
 \chapter{Index}
 \printindex
+
 \end{document}

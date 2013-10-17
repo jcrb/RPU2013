@@ -7,7 +7,7 @@
 \contentsline {section}{\numberline {2.2}Les territoires de proximit\IeC {\'e}}{10}{section.2.2}
 \contentsline {section}{\numberline {2.3}D\IeC {\'e}mographie}{11}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}G\IeC {\'e}n\IeC {\'e}ralit\IeC {\'e}s}{11}{subsection.2.3.1}
-\contentsline {subsubsection}{Le concept de population municipale}{11}{section*.4}
+\contentsline {subsubsection}{Le concept de population municipale}{11}{section*.5}
 \contentsline {subsection}{\numberline {2.3.2}Classes d'age}{12}{subsection.2.3.2}
 \contentsline {section}{\numberline {2.4}Les services d'accueil des urgences (SAU)}{12}{section.2.4}
 \contentsline {chapter}{\numberline {3}Les acteurs}{18}{chapter.3}
@@ -17,13 +17,13 @@
 \contentsline {chapter}{\numberline {4}RESURAL}{21}{chapter.4}
 \contentsline {chapter}{\numberline {5}L'observatoire des urgences en Alsace (ORUDAL)}{22}{chapter.5}
 \contentsline {chapter}{\numberline {6}Le R\IeC {\'e}sum\IeC {\'e} du passage aux urgences}{23}{chapter.6}
-\contentsline {subsubsection}{L'identifiant (ID)}{24}{section*.12}
-\contentsline {subsubsection}{L'\IeC {\'e}tablissement de sant\IeC {\'e}}{24}{section*.13}
-\contentsline {subsubsection}{Le code postal de r\IeC {\'e}sidence}{24}{section*.14}
-\contentsline {subsubsection}{le motif de recours aux urgences}{24}{section*.15}
-\contentsline {subsubsection}{Le mode de sortie}{24}{section*.16}
-\contentsline {subsubsection}{Destination}{25}{section*.17}
-\contentsline {subsubsection}{Orientation}{25}{section*.18}
+\contentsline {subsubsection}{L'identifiant (ID)}{24}{section*.13}
+\contentsline {subsubsection}{L'\IeC {\'e}tablissement de sant\IeC {\'e}}{24}{section*.14}
+\contentsline {subsubsection}{Le code postal de r\IeC {\'e}sidence}{24}{section*.15}
+\contentsline {subsubsection}{le motif de recours aux urgences}{24}{section*.16}
+\contentsline {subsubsection}{Le mode de sortie}{24}{section*.17}
+\contentsline {subsubsection}{Destination}{25}{section*.18}
+\contentsline {subsubsection}{Orientation}{25}{section*.19}
 \contentsline {part}{II\hspace {1em}Activit\IeC {\'e} des services d'urgence d'Alsace}{26}{part.2}
 \contentsline {chapter}{\numberline {7}Activit\IeC {\'e} r\IeC {\'e}gionale totale}{27}{chapter.7}
 \contentsline {section}{\numberline {7.1}Nombre total de passages}{27}{section.7.1}
