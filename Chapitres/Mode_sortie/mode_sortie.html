@@ -221,7 +221,9 @@ print(annee_courante)
 
 <p>On dispose d&#39;une population de n = 249039 RPU.</p>
 
-<p>On forme un sous-groupe constitué des RPU dont l&#39;item <em>DESTINATION</em> est renseigné (non nul):</p>
+<p>On forme un sous-groupe <strong>ms</strong> constitué des RPU dont l&#39;item <em>DESTINATION</em> est renseigné</p>
+
+<h2>(non nul):</h2>
 
 <pre><code class="r">ms &lt;- d1[!is.na(d1$MODE_SORTIE), ]
 non_renseigne &lt;- nrow(d1) - nrow(ms)
@@ -236,9 +238,136 @@ prop_non_renseigne &lt;- round(non_renseigne * 100/nrow(d1), 2)
 ##         0     48898      3665    159755         2
 </code></pre>
 
-<p>TODO: on s&#39;intéresse aux MODE_SORTIE non renseignés: 
-ms2&lt;-d1[is.na(d1$MODE_SORTIE),]
-Que passe t&#39;il si on fait summary(ms2$DESTINATION) ?</p>
+<h2>On forme le groupe <strong>hosp</strong> de tous les RPU de <em>ms</em> dont lespatients ont été hospitalisés</h2>
+
+<p>(hosp = mutation + transfert):</p>
+
+<pre><code>##    NA   MCO   SSR   SLD   PSY   HAD   HMS  NA&#39;s 
+##     0 51315    74    12   894     2     0   266
+</code></pre>
+
+<p>Les patients dont le MODE_SORTIE est l&#39;hospitalisation (Mutation ou transfert), ont les DESTINATION suivantes:</p>
+
+<ul>
+<li>MCO: 51315</li>
+<li>SSR: 74</li>
+<li>SLD: 12</li>
+<li>PSY: 894</li>
+<li>NA: 266<br/>
+On relève 2 HAD qui devraient se trouver dans le groupe MODE_SORTIE = domicile.<br/></li>
+</ul>
+
+<p>Si on analyse les ORIENTATION de ce groupe, on obtient:</p>
+
+<pre><code>##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    SC  SCAM    SI 
+##  5340     0    66    19 12341    71    10   689    22   983     0   947 
+##  UHCD  NA&#39;s 
+## 22492  9583
+</code></pre>
+
+<ul>
+<li>CHIR: 5340</li>
+<li>MED: 12341</li>
+<li>UHCD: 22492</li>
+<li>OBST: 71</li>
+<li>REA: 689</li>
+<li>SC: 983</li>
+<li>SI: 947</li>
+<li>Non Renseigné: 9583</li>
+</ul>
+
+<p>Pour les autres items de cette rubrique, on devrait trouver 0 car ils ne sont pas considérés comme une hospitalisation:</p>
+
+<ul>
+<li>FUGUE: 0</li>
+<li>PSA: 10</li>
+<li>REO: 22</li>
+<li>SCAM: 0</li>
+</ul>
+
+<h2>On forme le groupe <strong>dom</strong> de tous les RPU de <em>ms</em> dont les patients n&#39;ont pas  été hospitalisés</h2>
+
+<p>(dom = Domicile):</p>
+
+<pre><code>##     NA    MCO    SSR    SLD    PSY    HAD    HMS   NA&#39;s 
+##      0    127      0      0      0      1     21 159606
+</code></pre>
+
+<p>On trouve normalement:</p>
+
+<ul>
+<li>HAD: 1</li>
+<li>HMS: 21</li>
+<li>NA: 159606 retours à domicile vrais.</li>
+</ul>
+
+<p>Les champs suivants devrait être égaux  0 (sinon il y a erreur de codage):</p>
+
+<ul>
+<li>MCO: 127</li>
+<li>SSR: 0</li>
+<li>SLD: 0</li>
+<li>PSY: 0</li>
+<li>HAD: 1</li>
+</ul>
+
+<p>En ce qui concerne l&#39;ORIENTATION du groupe <em>dom</em>:</p>
+
+<pre><code>##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
+##     92    198     13      2     53      1   2284      9   1047      4 
+##   SCAM     SI   UHCD   NA&#39;s 
+##    386     22    196 155448
+</code></pre>
+
+<p>On trouve normalement:</p>
+
+<ul>
+<li>FUGUE: 198</li>
+<li>PSA: 2284</li>
+<li>REO: 1047</li>
+<li>SCAM: 386</li>
+<li>NA: 155448</li>
+</ul>
+
+<p>Les champs suivants devrait être égaux  0 (sinon il y a erreur de codage):</p>
+
+<ul>
+<li>CHIR: 92</li>
+<li>HDT: 13</li>
+<li>HO: 2</li>
+<li>MED: 53</li>
+<li>OBST: 1</li>
+<li>REA: 9</li>
+<li>SC: 4</li>
+<li>SI:22</li>
+<li>UHCD: 196</li>
+</ul>
+
+<h2>On forme un sous-groupe <em>ms2</em> constitué des RPU dont l&#39;item <em>DESTINATION</em> est NA (non renseigné)</h2>
+
+<p>On s&#39;intéresse aux MODE_SORTIE non renseignés: </p>
+
+<pre><code>##    NA   MCO   SSR   SLD   PSY   HAD   HMS  NA&#39;s 
+##     0    16     0     0     6     0     0 36697
+</code></pre>
+
+<pre><code>##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    SC  SCAM    SI 
+##   109     1    21     2   180     0    33    55     5    26     0    56 
+##  UHCD  NA&#39;s 
+##  1825 34406
+</code></pre>
+
+<p>La somme <em>ms + ms2</em> = 249039 doit être égale à <em>d1</em> (249039)</p>
+
+<p>Si le codage est exact toutes les rubriques doivent être à 0 car on ne paeut pas avoir une rubrique MODE_SORTIE non renseignée et des rubriques DESTINATION et ORIENTATION non vides.</p>
+
+<p>La somme <em>hosp + dom + ms2</em> = 249037 doit être égale à <em>d1</em> (249039):</p>
+
+<ul>
+<li>hosp: hospitalisés</li>
+<li>dom: retour à domicile</li>
+<li>ms2: les NA (mode_sortie)</li>
+</ul>
 
 <h2>La destination</h2>
 
@@ -266,12 +395,100 @@ On suppose implicitement que les non réponses correspondent au retour à domici
 ##    386     22    206 155557
 </code></pre>
 
-<p>Dans ce sous-groupe, l&#39;analyse de l&#39;item ORIENTATION ne devrait retouner que des NA (retour à domicile) ou une ORIENTATION appartenant au sous ensemble {FUGUE, SCAM, PSA, REO}</p>
+<p>Dans ce sous-groupe, l&#39;analyse de l&#39;item ORIENTATION ne devrait retouner que des NA (retour à domicile) ou une ORIENTATION appartenant au sous ensemble {FUGUE, SCAM, PSA, REO}.<br/>
+En conclusion </p>
 
 <pre><code>##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    SC  SCAM    SI 
 ##  5340     0    66    19 12341    71    10   689    22   983     0   947 
 ##  UHCD  NA&#39;s 
 ## 22482  9476
+</code></pre>
+
+<h1>Motif de passage selon la structure</h1>
+
+<pre><code>## $`3Fr`
+## [1] NA NA NA NA NA NA
+## 
+## $Alk
+## [1] NA     NA     NA     NA     &quot;R600&quot; NA    
+## 
+## $Col
+## [1] &quot;une crise d&#39;asthme&quot;                         
+## [2] &quot;un malaise avec PC&quot;                         
+## [3] &quot;Autre&quot;                                      
+## [4] &quot;un traumatisme oculaire: explosion d&#39;un&quot;    
+## [5] &quot;plaie pied gauche par p\xe9tard ; une plaie&quot;
+## [6] &quot;une br\xfblre&quot;                              
+## 
+## $Dia
+## [1] &quot;R060&quot; &quot;L039&quot; &quot;R060&quot; &quot;J029&quot; NA     &quot;Z480&quot;
+## 
+## $Geb
+## [1] NA NA NA NA NA NA
+## 
+## $Hag
+## [1] NA                                                   
+## [2] &quot;Douleurs abdominales, autres et non pr\xe9cis\xe9es&quot;
+## [3] &quot;Plaie ouverte d&#39;autres parties de la jambe&quot;         
+## [4] &quot;\xc9pilepsie, sans pr\xe9cision&quot;                    
+## [5] NA                                                   
+## [6] NA                                                   
+## 
+## $Hus
+## [1] NA NA NA NA NA NA
+## 
+## $Mul
+## [1] &quot;S37.0&quot; &quot;R05&quot;   &quot;R10.4&quot; &quot;R41.0&quot; &quot;R10.4&quot; &quot;J45.9&quot;
+## 
+## $Odi
+## [1] &quot;T009&quot; &quot;Z609&quot; &quot;R21&quot;  &quot;L988&quot; &quot;T119&quot; &quot;R103&quot;
+## 
+## $Sel
+## [1] &quot;GASTRO04&quot;   &quot;DIVERS23&quot;   &quot;TRAUMATO10&quot; &quot;TRAUMATO02&quot; &quot;OPHTALMO04&quot;
+## [6] &quot;TRAUMATO09&quot;
+## 
+## $Wis
+## [1] &quot;T009&quot; &quot;T119&quot; &quot;T009&quot; &quot;S008&quot; &quot;R11&quot;  &quot;R11&quot; 
+## 
+## $Sav
+## [1] NA NA NA NA NA NA
+</code></pre>
+
+<pre><code>## $`3Fr`
+## [1] &quot;S018&quot; &quot;T140&quot; &quot;S010&quot; &quot;S610&quot; &quot;F410&quot; &quot;F100&quot;
+## 
+## $Alk
+## [1] &quot;S200&quot; &quot;K088&quot; NA     &quot;M796&quot; NA     &quot;S300&quot;
+## 
+## $Col
+## [1] &quot;J21.9&quot;  &quot;R53.+1&quot; &quot;T17.9&quot;  &quot;S05.6&quot;  &quot;S91.3&quot;  &quot;T23.2&quot; 
+## 
+## $Dia
+## [1] NA NA NA NA NA NA
+## 
+## $Geb
+## [1] &quot;Z028&quot; &quot;Z028&quot; &quot;T230&quot; &quot;T510&quot; &quot;K409&quot; &quot;S019&quot;
+## 
+## $Hag
+## [1] &quot;S018&quot; &quot;R229&quot; &quot;S819&quot; &quot;G409&quot; &quot;G459&quot; &quot;J111&quot;
+## 
+## $Hus
+## [1] NA NA NA NA NA NA
+## 
+## $Mul
+## [1] &quot;S37.0&quot; &quot;R06.0&quot; &quot;N23&quot;   &quot;E51.2&quot; &quot;N23&quot;   &quot;J45.9&quot;
+## 
+## $Odi
+## [1] NA      &quot;S008&quot;  &quot;L500&quot;  &quot;M2551&quot; &quot;S602&quot;  NA     
+## 
+## $Sel
+## [1] &quot;R104&quot; &quot;J038&quot; &quot;S617&quot; &quot;M485&quot; &quot;T261&quot; &quot;S018&quot;
+## 
+## $Wis
+## [1] &quot;S009&quot;  &quot;S610&quot;  &quot;S012&quot;  &quot;S0220&quot; &quot;A090&quot;  &quot;A099&quot; 
+## 
+## $Sav
+## [1] NA NA NA NA NA NA
 </code></pre>
 
 </body>

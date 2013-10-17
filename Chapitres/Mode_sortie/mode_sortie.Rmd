@@ -22,7 +22,9 @@ C'est l'item le plus simple et le RPU lui décrit 4 niveaux:
 
 On dispose d'une population de n = `r nrow(d1)` RPU.
 
-On forme un sous-groupe constitué des RPU dont l'item *DESTINATION* est renseigné (non nul):
+On forme un sous-groupe **ms** constitué des RPU dont l'item *DESTINATION* est renseigné
+(non nul):
+----------------------------------------------------------------------------------------
 ```{r ms,echo=TRUE}
 ms<-d1[!is.na(d1$MODE_SORTIE),]
 non_renseigne<-nrow(d1)-nrow(ms)
@@ -34,9 +36,105 @@ Les MODE_SORTIE renseignés se répartissent ainsi:
 ```{r repartition_me,echo=FALSE}
 summary(ms$MODE_SORTIE)
 ```
-TODO: on s'intéresse aux MODE_SORTIE non renseignés: 
+On forme le groupe **hosp** de tous les RPU de *ms* dont lespatients ont été hospitalisés
+-----------------------------------------------------------------------------------------
+(hosp = mutation + transfert):
+```{r hosp,echo=FALSE}
+hosp<-ms[ms$MODE_SORTIE=="Mutation" | ms$MODE_SORTIE=="Transfert",]
+summary_hosp_dest<-summary(hosp$DESTINATION)
+summary_hosp_dest
+```
+Les patients dont le MODE_SORTIE est l'hospitalisation (Mutation ou transfert), ont les DESTINATION suivantes:
+- MCO: `r summary_hosp_dest[2]`
+- SSR: `r summary_hosp_dest[3]`
+- SLD: `r summary_hosp_dest[4]`
+- PSY: `r summary_hosp_dest[5]`
+- NA: `r summary_hosp_dest[8]`  
+On relève `r summary_hosp_dest[6]` HAD qui devraient se trouver dans le groupe MODE_SORTIE = domicile.  
+
+Si on analyse les ORIENTATION de ce groupe, on obtient:
+```{r hosp_orient,echo=FALSE}
+summary_hosp_orient<-summary(hosp$ORIENTATION)
+summary_hosp_orient
+```
+- CHIR: `r summary_hosp_orient[1]`
+- MED: `r summary_hosp_orient[5]`
+- UHCD: `r summary_hosp_orient[13]`
+- OBST: `r summary_hosp_orient[6]`
+- REA: `r summary_hosp_orient[8]`
+- SC: `r summary_hosp_orient[10]`
+- SI: `r summary_hosp_orient[12]`
+- Non Renseigné: `r summary_hosp_orient[14]`
+
+Pour les autres items de cette rubrique, on devrait trouver 0 car ils ne sont pas considérés comme une hospitalisation:
+- FUGUE: `r summary_hosp_orient[2]`
+- PSA: `r summary_hosp_orient[7]`
+- REO: `r summary_hosp_orient[9]`
+- SCAM: `r summary_hosp_orient[11]`
+
+On forme le groupe **dom** de tous les RPU de *ms* dont les patients n'ont pas  été hospitalisés
+-----------------------------------------------------------------------------------------
+(dom = Domicile):
+```{r dom,echo=FALSE}
+dom<-ms[ms$MODE_SORTIE=="Domicile",]
+summary_dom_dest<-summary(dom$DESTINATION)
+summary_dom_dest
+```
+On trouve normalement:
+- HAD: `r summary_dom_dest["HAD"]`
+- HMS: `r summary_dom_dest["HMS"]`
+- NA: `r summary_dom_dest["NA's"]` retours à domicile vrais.
+
+Les champs suivants devrait être égaux  0 (sinon il y a erreur de codage):
+- MCO: `r summary_dom_dest["MCO"]`
+- SSR: `r summary_dom_dest["SSR"]`
+- SLD: `r summary_dom_dest["SLD"]`
+- PSY: `r summary_dom_dest["PSY"]`
+- HAD: `r summary_dom_dest["HAD"]`
+
+En ce qui concerne l'ORIENTATION du groupe *dom*:
+```{r  dom_otient,echo=FALSE}
+summary_dom_orient<-summary(dom$ORIENTATION)
+summary_dom_orient
+```
+On trouve normalement:
+- FUGUE: `r summary_dom_orient["FUGUE"]`
+- PSA: `r summary_dom_orient["PSA"]`
+- REO: `r summary_dom_orient["REO"]`
+- SCAM: `r summary_dom_orient["SCAM"]`
+- NA: `r summary_dom_orient["NA's"]`
+
+Les champs suivants devrait être égaux  0 (sinon il y a erreur de codage):
+- CHIR: `r summary_dom_orient["CHIR"]`
+- HDT: `r summary_dom_orient["HDT"]`
+- HO: `r summary_dom_orient["HO"]`
+- MED: `r summary_dom_orient["MED"]`
+- OBST: `r summary_dom_orient["OBST"]`
+- REA: `r summary_dom_orient["REA"]`
+- SC: `r summary_dom_orient["SC"]`
+- SI:`r summary_dom_orient["SI"]`
+- UHCD: `r summary_dom_orient["UHCD"]`
+
+On forme un sous-groupe *ms2* constitué des RPU dont l'item *DESTINATION* est NA (non renseigné)
+----------------------------------------------------------------------------------------
+On s'intéresse aux MODE_SORTIE non renseignés: 
+```{r ms2,echo=FALSE}
 ms2<-d1[is.na(d1$MODE_SORTIE),]
-Que passe t'il si on fait summary(ms2$DESTINATION) ?
+n2<-nrow(ms)+nrow(ms2)
+n3<-nrow(hosp)+nrow(dom)+nrow(ms2)
+summary(ms2$DESTINATION)
+summary(ms2$ORIENTATION)
+```
+La somme *ms + ms2* = `r n2` doit être égale à *d1* (`r nrow(d1)`) - les décès.
+
+Si le codage est exact toutes les rubriques doivent être à 0 car on ne paeut pas avoir une rubrique MODE_SORTIE non renseignée et des rubriques DESTINATION et ORIENTATION non vides.
+
+La somme *hosp + dom + ms2* = `r n3` doit être égale à *d1* (`r nrow(d1)`):
+- hosp: hospitalisés
+- dom: retour à domicile
+- ms2: les NA (mode_sortie)
+
+
 
 La destination
 --------------
