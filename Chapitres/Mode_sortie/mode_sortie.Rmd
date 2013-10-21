@@ -19,6 +19,13 @@ C'est l'item le plus simple et le RPU lui décrit 4 niveaux:
 - transfert (ces 2niveaux définissant l'hospitalisation)
 - le décès
 - le retour à domicile
+```{r dest,echo=FALSE}
+summary(d1$MODE_SORTIE)
+round(prop.table(summary(d1$MODE_SORTIE))*100,2)
+table(d1$MODE_SORTIE)
+round(prop.table(table(d1$MODE_SORTIE))*100,2)
+```
+
 
 On dispose d'une population de n = `r nrow(d1)` RPU.
 
@@ -35,6 +42,7 @@ On obtient un sous-groupe de `r nrow(ms)` RPU. Il y a donc `r non_renseigne` RPU
 Les MODE_SORTIE renseignés se répartissent ainsi:
 ```{r repartition_me,echo=FALSE}
 summary(ms$MODE_SORTIE)
+round(prop.table(summary(ms$MODE_SORTIE))*100,2)
 ```
 On forme le groupe **hosp** de tous les RPU de *ms* dont lespatients ont été hospitalisés
 -----------------------------------------------------------------------------------------
@@ -127,6 +135,7 @@ summary(ms2$ORIENTATION)
 ```
 La somme *ms + ms2* = `r n2` doit être égale à *d1* (`r nrow(d1)`) - les décès.
 
+
 Si le codage est exact toutes les rubriques doivent être à 0 car on ne paeut pas avoir une rubrique MODE_SORTIE non renseignée et des rubriques DESTINATION et ORIENTATION non vides.
 
 La somme *hosp + dom + ms2* = `r n3` doit être égale à *d1* (`r nrow(d1)`):
@@ -164,10 +173,37 @@ En conclusion
 or2<-ms[!is.na(ms$DESTINATION),]
 summary(or2$ORIENTATION)
 ```
+Résumé
+======
+
+On croise MODE_SORTIE et DESTINATION en tenant compte des NA (Rajouter l'option exclude=FALSE sinon table ne tient pas compte des NA):
+
+```{r resume,echo=FALSE}
+table(d1$MODE_SORTIE,d1$DESTINATION,exclude=NULL)
+
+table(d1$MODE_SORTIE,d1$ORIENTATION,exclude=NULL)
+
+table(d1$DESTINATION,d1$ORIENTATION,exclude=NULL)
+```
+Les vrai retours à domicile sont au croisement Domicile/<NA>
+
+Retour à domicile totaux (patients où MODE_SORTIE = Domicile et où Orientation et destination sont nuls):
+```{r dompur,echo=FALSE}
+dompur<-d1[d1$MODE_SORTIE=="Domicile" & is.na(d1$ORIENTATION) & is.na(d1$DESTINATION) ,]
+round(nrow(dompur)/nrow(d1),2)
+```
+
+
 Motif de passage selon la structure
 ===================================
 ```{r motif,echo=FALSE}
 tapply(d1$MOTIF,d1$FINESS,head)
+
+```
+Diagnostic selon la structure
+==============================
+```{r dp,echo=FALSE}
 tapply(d1$DP,d1$FINESS,head)
 ```
+
 

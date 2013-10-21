@@ -40,6 +40,30 @@ C'est l'item le plus simple et le RPU lui décrit 4 niveaux:
 - le décès
 - le retour à domicile
 
+```
+##        NA  Mutation Transfert  Domicile     Décès      NA's 
+##         0     48898      3665    159755         2     36719
+```
+
+```
+##        NA  Mutation Transfert  Domicile     Décès      NA's 
+##      0.00     19.63      1.47     64.15      0.00     14.74
+```
+
+```
+## 
+##        NA  Mutation Transfert  Domicile     Décès 
+##         0     48898      3665    159755         2
+```
+
+```
+## 
+##        NA  Mutation Transfert  Domicile     Décès 
+##      0.00     23.03      1.73     75.24      0.00
+```
+
+
+
 On dispose d'une population de n = 249039 RPU.
 
 On forme un sous-groupe **ms** constitué des RPU dont l'item *DESTINATION* est renseigné
@@ -59,6 +83,11 @@ Les MODE_SORTIE renseignés se répartissent ainsi:
 ```
 ##        NA  Mutation Transfert  Domicile     Décès 
 ##         0     48898      3665    159755         2
+```
+
+```
+##        NA  Mutation Transfert  Domicile     Décès 
+##      0.00     23.03      1.73     75.24      0.00
 ```
 
 On forme le groupe **hosp** de tous les RPU de *ms* dont lespatients ont été hospitalisés
@@ -166,7 +195,8 @@ On s'intéresse aux MODE_SORTIE non renseignés:
 ##  1825 34406
 ```
 
-La somme *ms + ms2* = 249039 doit être égale à *d1* (249039)
+La somme *ms + ms2* = 249039 doit être égale à *d1* (249039) - les décès.
+
 
 Si le codage est exact toutes les rubriques doivent être à 0 car on ne paeut pas avoir une rubrique MODE_SORTIE non renseignée et des rubriques DESTINATION et ORIENTATION non vides.
 
@@ -213,6 +243,67 @@ En conclusion
 ##  UHCD  NA's 
 ## 22482  9476
 ```
+
+Résumé
+======
+
+On croise MODE_SORTIE et DESTINATION en tenant compte des NA (Rajouter l'option exclude=FALSE sinon table ne tient pas compte des NA):
+
+
+```
+##            
+##                 NA    MCO    SSR    SLD    PSY    HAD    HMS   <NA>
+##   NA             0      0      0      0      0      0      0      0
+##   Mutation       0  48411     49      5    289      0      0    144
+##   Transfert      0   2904     25      7    605      2      0    122
+##   Domicile       0    127      0      0      0      1     21 159606
+##   Décès          0      0      0      0      0      0      0      2
+##   <NA>           0     16      0      0      6      0      0  36697
+```
+
+```
+##            
+##               CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO
+##   NA             0      0      0      0      0      0      0      0      0
+##   Mutation    4967      0      3      6  11971     43      9    670     14
+##   Transfert    373      0     63     13    370     28      1     19      8
+##   Domicile      92    198     13      2     53      1   2284      9   1047
+##   Décès          0      0      0      0      0      0      0      0      0
+##   <NA>         109      1     21      2    180      0     33     55      5
+##            
+##                 SC   SCAM     SI   UHCD   <NA>
+##   NA             0      0      0      0      0
+##   Mutation     956      0    875  22394   6990
+##   Transfert     27      0     72     98   2593
+##   Domicile       4    386     22    196 155448
+##   Décès          0      0      0      0      2
+##   <NA>          26      0     56   1825  34406
+```
+
+```
+##       
+##          CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO
+##   NA        0      0      0      0      0      0      0      0      0
+##   MCO    5237      0     10      8  12143     71     10    681     21
+##   SSR       0      0      0      0      7      0      0      2      0
+##   SLD       0      0      0      0      4      0      0      0      0
+##   PSY     108      0     57     11    199      0      0      6      1
+##   HAD       0      0      0      0      0      0      0      0      0
+##   HMS       0      0      0      0      0      0      0      0      0
+##   <NA>    196    199     33      4    221      1   2317     64   1052
+##       
+##            SC   SCAM     SI   UHCD   <NA>
+##   NA        0      0      0      0      0
+##   MCO     973      0    947  22471   8886
+##   SSR       0      0      0      4     61
+##   SLD       0      0      0      0      8
+##   PSY      10      0      0     11    497
+##   HAD       0      0      0      0      3
+##   HMS       0      0      0      0     21
+##   <NA>     30    386     78   2027 189963
+```
+
+Les vrai retours à domicile sont au croisement Domicile/<NA>
 
 Motif de passage selon la structure
 ===================================
@@ -266,6 +357,9 @@ Motif de passage selon la structure
 ## [1] NA NA NA NA NA NA
 ```
 
+Diagnostic selon la structure
+==============================
+
 ```
 ## $`3Fr`
 ## [1] "S018" "T140" "S010" "S610" "F410" "F100"
@@ -303,5 +397,6 @@ Motif de passage selon la structure
 ## $Sav
 ## [1] NA NA NA NA NA NA
 ```
+
 
 
