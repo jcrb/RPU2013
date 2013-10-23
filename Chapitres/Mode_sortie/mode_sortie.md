@@ -305,6 +305,14 @@ On croise MODE_SORTIE et DESTINATION en tenant compte des NA (Rajouter l'option 
 
 Les vrai retours à domicile sont au croisement Domicile/<NA>
 
+Retour à domicile totaux (patients où MODE_SORTIE = Domicile et où Orientation et destination sont nuls):
+
+```
+## [1] 0.76
+```
+
+
+
 Motif de passage selon la structure
 ===================================
 
