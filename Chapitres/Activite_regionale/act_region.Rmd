@@ -6,10 +6,12 @@ date()
 source: RPU2013
 Ce document exploite le fichier RData préparé à partir de la table *RPU__* de Sagec. Voir le document *RPU_2013_Preparation.Rmd* du dossier Resural.
 
+EN FONCTION DU MOIS MODIFIER LES LIGNES 12, 38, 39, 40 ET 66 
+
 Variables globales:
 -------------------
 ```{r var_globales}
-mois_courant<-8
+mois_courant<-9
 annee_couranre<-2013
 path<-"../../"
 ```
@@ -33,9 +35,9 @@ On lit le fichier de travail créé:
 ```{r Lecture fichier,cache=TRUE}
 
 if(!exists("d1")) {
-load(paste(path,"rpu2013d0108.Rda",sep=""))
-d1<-d0108
-rm(d0108)
+load(paste(path,"rpu2013d0109.Rda",sep=""))
+d1<-d0109
+rm(d0109)
 }
 ```
 Analyse des données
@@ -61,7 +63,7 @@ Remarques:
 entrées totales
 ---------------
 ```{r analyse}
-d1<-d1[d1$ENTREE<"2013-09-01",]
+d1<-d1[d1$ENTREE<"2013-10-01",]
 
 e<-as.Date(d1$ENTREE)
 q<-tapply(e,yday(e),length)

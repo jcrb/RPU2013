@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Sun Oct  6 10:01:00 2013"
+## [1] "Thu Oct 24 15:29:30 2013"
 ```
 
 source: RPU2013
@@ -47,17 +47,40 @@ On lit le fichier de travail créé:
 ```r
 
 if (!exists("d1")) {
-    load(paste(path, "rpu2013d0108.Rda", sep = ""))
-    d1 <- d0108
-    rm(d0108)
+    load(paste(path, "rpu2013d0109.Rda", sep = ""))
+    d1 <- d0109
+    rm(d0109)
 }
 ```
 
 Analyse des données
--------------------
+===================
+
+entrées par secteur sanitaire
+-----------------------------
+On creé une colonne supplémentaire *secteur* qui indique à quel secteur sanitaire correspond le RPU:
+
+
+Nombre de RPU par secteur de santé
 
 ```r
-d1 <- d1[d1$ENTREE < "2013-09-01", ]
+tapply(d1$ENTREE, d1$secteur, length)
+```
+
+```
+##     1     2     3     4 
+## 41133 47821 79049 81036
+```
+
+Remarques:
+- secteur 2, manque St Anne, pediatrie HTP, une partie des RPU HUS adulte
+
+
+entrées totales
+---------------
+
+```r
+d1 <- d1[d1$ENTREE < "2013-10-01", ]
 
 e <- as.Date(d1$ENTREE)
 q <- tapply(e, yday(e), length)
@@ -128,7 +151,7 @@ summary(q3)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.568   0.616   0.637   0.640   0.659   0.772
+##   0.568   0.618   0.638   0.641   0.662   0.772
 ```
 
 ```r
@@ -167,7 +190,7 @@ summary(q5)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.674   0.727   0.749   0.751   0.772   0.827
+##   0.674   0.729   0.751   0.751   0.773   0.827
 ```
 
 ```r
@@ -215,7 +238,7 @@ summary(q7)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.173   0.228   0.251   0.249   0.273   0.326
+##   0.173   0.227   0.249   0.249   0.271   0.326
 ```
 
 ```r
@@ -247,7 +270,7 @@ summary(q6)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.783   0.830   0.850   0.852   0.872   0.949
+##   0.783   0.832   0.851   0.853   0.871   0.949
 ```
 
 Vendenheim1
