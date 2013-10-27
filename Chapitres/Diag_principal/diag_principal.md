@@ -767,3 +767,56 @@ lines(x = x, y = table(m), col = "red")
 
 ![plot of chunk ge](figure/ge3.png) 
 
+#### NOTE TECHNIQUE: tracer une ligne joignant les sommets des barres du barplot. On utilise lines avec les valeurs suivantes:
+- x = abcisse des colonnes. Elles sont contenues dans l'objet barplot. On peut les recueillir eplicitement par la fonction *str* (str(x)).
+- y = ordonnées des barres, récupérées avec la fonction *table* qui agglomère les données par mois
+Voir aussi: http://www.ats.ucla.edu/stat/r/faq/barplotplus.htm
+
+#### calculs à la manière de l'INVS
+
+nombre de diagnostics de GE / nb total de diagnostics par semaine:
+
+```r
+mge <- month(ge$ENTREE, label = T)
+mtot <- month(dpr$ENTREE, label = T)
+summary(mtot)
+```
+
+```
+##   Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov   Dec 
+## 17364 17156 18396 20302 19207 20772 20387 17993 15842     0     0     0
+```
+
+```r
+summary(mge)
+```
+
+```
+## Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
+## 294 236 251 282 181 168 173 214 162   0   0   0
+```
+
+```r
+a <- round(summary(mge) * 100/summary(mtot), 2)
+a
+```
+
+```
+##  Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec 
+## 1.69 1.38 1.36 1.39 0.94 0.81 0.85 1.19 1.02  NaN  NaN  NaN
+```
+
+```r
+barplot(a)
+```
+
+![plot of chunk invs](figure/invs.png) 
+
+dpt: tous les cas de traumato (S00 à T98)  
+dpnp:tous lescas de médecine  
+
+dpt<-dpr[substr(dpr$DP,1,3)>="S00" & substr(dpr$DP,1,3)<"T99", ]  
+dpnt<-dpr[substr(dpr$DP,1,3) < "S00" | substr(dpr$DP,1,3)>"T98", ]  
+mnt<-month(dpnt$ENTREE,label=T)  
+a<-round(summary(mge)*100/summary(mnt),2)  
+a  
