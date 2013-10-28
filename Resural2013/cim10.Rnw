@@ -342,6 +342,40 @@ grippe$date<-as.Date(grippe$ENTREE)
 hist(grippe$date,breaks=18,freq=TRUE,col="slategray1",main="2013 - Syndromes grippaux",xlab="")
 @
 
+\section{Asthme}
+\index{Asthme}
+
+Classification selon la CIM10:
+\begin{itemize}
+  \item J45.0 Asthme à prédominance allergique
+  \item J45.1 Asthme non allergique
+  \item J45.8 Asthme associé 
+  \item J45.9 Asthme, sans précision
+  \item J46   Etat de mal asthmatique
+\end{itemize}
+
+<<asthme,echo=FALSE,results='asis'>>=
+asthme<-dpr[substr(dpr$DP,1,3)=="J45" | substr(dpr$DP,1,3)=="J46",]
+xtable(table(as.factor(asthme$DP)))
+@
+
+<<asthme2,echo=FALSE>>=
+tab1(asthme$DP,sort.group="increasing",main="Distribution des diagnostics d'asthme")
+s<-week(asthme$ENTREE)
+barplot(table(s),main="Crises d'asthme - 2013",xlab="Semaines")
+tab1(table(s))
+@
+
+<<asthme3,echo=FALSE,results='asis'>>=
+xtable(table(summary(asthme)))
+@
+
+\section{Intoxication au CO}
+\index{Intoxication au CO}
+
+\section{Bronchiolite}
+\index{Bronchiolite}
+
 \section{Malaises}
 \index{malaise}
 

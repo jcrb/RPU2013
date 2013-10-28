@@ -1,6 +1,17 @@
 Diagnostic principal
 ========================================================
-On récupère la colonne diagnostic principal
+On récupère la colonne diagnostic principal DP. Contient le code CIM10 des DP. Certaines adaptations sont nécessaires:
+- suppression du point décimal (K36.2 devient K362)
+- suppression du symbole '+'
+- correction de codes apparaissant en clair pyélonéphrite N11
+
+
+
+Analyse spécifique de certains items:
+- AVC
+- AIT
+- Asthme
+- gastro-entérites
 
 
 ```r
@@ -820,3 +831,114 @@ dpnt<-dpr[substr(dpr$DP,1,3) < "S00" | substr(dpr$DP,1,3)>"T98", ]
 mnt<-month(dpnt$ENTREE,label=T)  
 a<-round(summary(mge)*100/summary(mnt),2)  
 a  
+
+Qualité des données DP
+======================
+Certains logiciels ne contôlent pas la cohérence du code CIM 10. Si on prend les DP de janvier à septembre 2013 inclus, on relève les éléments suivants:
+- nombre total de RPU: 249 039
+- nombre de RPU où le DP est renseigné: 167 419
+- taux de complétude: 67.22 %
+On s'intéresse aux codes CIM10 renseignés. Pour celà on trace l'histogramme des DP en fonction de la longueur du code utilisé:
+
+```r
+a <- nchar(dpr$DP)
+summary(a)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1.00    4.00    4.00    4.01    4.00   19.00
+```
+
+```r
+b <- summary(as.factor(a))
+b
+```
+
+```
+##      1      3      4      5      6      7     11     12     14     15 
+##      9  15585 134219  17376    216      5      1      1      1      2 
+##     16     18     19 
+##      1      1      2
+```
+
+```r
+barplot(b)
+```
+
+![plot of chunk length_DP](figure/length_DP1.png) 
+
+```r
+barplot(log(b))
+```
+
+![plot of chunk length_DP](figure/length_DP2.png) 
+
+```r
+dpr[nchar(dpr$DP) > 6, c("FINESS", "DP")]
+```
+
+```
+##        FINESS                  DP
+## 22395     Mul         JJ449) BPCO
+## 32891     Mul        PW199) Chute
+## 49760     Mul             S2250B6
+## 55395     Mul NN10) Pyelonéphrite
+## 69971     Mul      HR060) Dyspnée
+## 97650     Mul  NC61) Néo prostate
+## 107027    Mul NN10) Pyelonéphrite
+## 109184    Mul             S2250B6
+## 178125    Mul             S2250B6
+## 188273    Mul     HH819) Vertiges
+## 196313    Mul             S2250B6
+## 198071    Mul             S2250B6
+## 205698    Mul     KK297) Gastrite
+## 207226    Mul    SY099) Agression
+```
+
+La Dixième Révision (CIM10) utilise un code alphanumérique avec une lettre en
+première position et des chiffres en seconde, troisième et quatrième position.
+Le quatrième caractère est précédé par un point. Les possibilités de codage
+vont de ce fait de A00.0 à Z99.9. La lettre U n'est pas utilisée. Il en résulte qu'après suppression du point décimal, le code DP ne peut être constitué que de 2, 3 ou 4 caractères.
+
+Wissembourg
+
+
+```r
+cw <- dpr[dpr$FINESS == "Wis", "DP"]
+head(cw)
+```
+
+```
+## [1] "S009"  "S610"  "S012"  "S0220" "A090"  "A099"
+```
+
+```r
+a <- nchar(cw)
+summary(a)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    3.00    4.00    4.00    4.04    4.00    6.00
+```
+
+```r
+summary(as.factor(a))
+```
+
+```
+##    3    4    5    6 
+##  615 7016  964    8
+```
+
+```r
+cw[nchar(cw) > 5]
+```
+
+```
+## [1] "M62890" "I21900" "F10241" "M62800" "I21100" "M62890" "M62890" "M62890"
+```
+
+Le code M62890 (PMSI ?) correspond à la rhabdomyolyse, en CIM10 M62.8 (présent 5 fois sous ceete forme et 7 fois au total: "M62890" "M62800" "M6286"  "M62890" "M62890" "M62890" "M6285")
+

@@ -39,26 +39,29 @@
 \contentsline {section}{\numberline {11.3}Accidents ischi\IeC {\'e}miques transitoires (AIT)}{69}{section.11.3}
 \contentsline {section}{\numberline {11.4}Pneumonies}{70}{section.11.4}
 \contentsline {section}{\numberline {11.5}Syndrome grippal}{72}{section.11.5}
-\contentsline {section}{\numberline {11.6}Malaises}{72}{section.11.6}
-\contentsline {section}{\numberline {11.7}Marqueurs de canicule}{75}{section.11.7}
-\contentsline {chapter}{\numberline {12}Modalit\IeC {\'e}s de sortie}{79}{chapter.12}
-\contentsline {section}{\numberline {12.1}Mode de sortie}{79}{section.12.1}
-\contentsline {section}{\numberline {12.2}Mode de sortie selon la structure}{79}{section.12.2}
-\contentsline {section}{\numberline {12.3}Orientation}{80}{section.12.3}
-\contentsline {section}{\numberline {12.4}Destination}{81}{section.12.4}
-\contentsline {section}{\numberline {12.5}Incoh\IeC {\'e}rences}{81}{section.12.5}
-\contentsline {chapter}{\numberline {13}Modalit\IeC {\'e}s d'orientation}{85}{chapter.13}
-\contentsline {chapter}{\numberline {14}Courbes d'activit\IeC {\'e} r\IeC {\'e}gionale}{86}{chapter.14}
-\contentsline {section}{\numberline {14.1}Variation du nombre total de passages journaliers}{86}{section.14.1}
-\contentsline {section}{\numberline {14.2}Variation du pourcentage journalier de retour \IeC {\`a} domicile}{88}{section.14.2}
-\contentsline {part}{III\hspace {1em}Activit\IeC {\'e} par service d'urgence}{93}{part.3}
-\contentsline {chapter}{\numberline {15}SAU des H\IeC {\^o}pitaux universitaires}{94}{chapter.15}
-\contentsline {section}{\numberline {15.1}Activit\IeC {\'e} globale}{94}{section.15.1}
-\contentsline {part}{IV\hspace {1em}Activit\IeC {\'e} des SAMU d'Alsace}{95}{part.4}
-\contentsline {part}{V\hspace {1em}Annexes}{96}{part.5}
-\contentsline {chapter}{\numberline {A}M\IeC {\'e}thodologie}{97}{appendix.A}
-\contentsline {chapter}{\numberline {B}Glossaire}{99}{appendix.B}
-\contentsline {chapter}{\numberline {C}RPU}{102}{appendix.C}
-\contentsline {chapter}{\numberline {D}A propos de ce document}{103}{appendix.D}
-\contentsline {chapter}{\numberline {E}Bibliographie}{104}{appendix.E}
-\contentsline {chapter}{\numberline {F}Index}{107}{appendix.F}
+\contentsline {section}{\numberline {11.6}Asthme}{72}{section.11.6}
+\contentsline {section}{\numberline {11.7}Intoxication au CO}{76}{section.11.7}
+\contentsline {section}{\numberline {11.8}Bronchiolite}{76}{section.11.8}
+\contentsline {section}{\numberline {11.9}Malaises}{76}{section.11.9}
+\contentsline {section}{\numberline {11.10}Marqueurs de canicule}{79}{section.11.10}
+\contentsline {chapter}{\numberline {12}Modalit\IeC {\'e}s de sortie}{84}{chapter.12}
+\contentsline {section}{\numberline {12.1}Mode de sortie}{84}{section.12.1}
+\contentsline {section}{\numberline {12.2}Mode de sortie selon la structure}{84}{section.12.2}
+\contentsline {section}{\numberline {12.3}Orientation}{85}{section.12.3}
+\contentsline {section}{\numberline {12.4}Destination}{86}{section.12.4}
+\contentsline {section}{\numberline {12.5}Incoh\IeC {\'e}rences}{86}{section.12.5}
+\contentsline {chapter}{\numberline {13}Modalit\IeC {\'e}s d'orientation}{90}{chapter.13}
+\contentsline {chapter}{\numberline {14}Courbes d'activit\IeC {\'e} r\IeC {\'e}gionale}{91}{chapter.14}
+\contentsline {section}{\numberline {14.1}Variation du nombre total de passages journaliers}{91}{section.14.1}
+\contentsline {section}{\numberline {14.2}Variation du pourcentage journalier de retour \IeC {\`a} domicile}{93}{section.14.2}
+\contentsline {part}{III\hspace {1em}Activit\IeC {\'e} par service d'urgence}{98}{part.3}
+\contentsline {chapter}{\numberline {15}SAU des H\IeC {\^o}pitaux universitaires}{99}{chapter.15}
+\contentsline {section}{\numberline {15.1}Activit\IeC {\'e} globale}{99}{section.15.1}
+\contentsline {part}{IV\hspace {1em}Activit\IeC {\'e} des SAMU d'Alsace}{100}{part.4}
+\contentsline {part}{V\hspace {1em}Annexes}{101}{part.5}
+\contentsline {chapter}{\numberline {A}M\IeC {\'e}thodologie}{102}{appendix.A}
+\contentsline {chapter}{\numberline {B}Glossaire}{104}{appendix.B}
+\contentsline {chapter}{\numberline {C}RPU}{107}{appendix.C}
+\contentsline {chapter}{\numberline {D}A propos de ce document}{108}{appendix.D}
+\contentsline {chapter}{\numberline {E}Bibliographie}{109}{appendix.E}
+\contentsline {chapter}{\numberline {F}Index}{112}{appendix.F}

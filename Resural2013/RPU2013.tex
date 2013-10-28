@@ -488,7 +488,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:05:43 2013
+% Mon Oct 28 23:09:07 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -524,7 +524,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:05:44 2013
+% Mon Oct 28 23:09:08 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -845,7 +845,7 @@ Les données du secteur 2 sont très sous-estimées car il manque celles de la C
 
 \subsection*{En valeur absolue}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:05:56 2013
+% Mon Oct 28 23:09:19 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{llr}
@@ -922,7 +922,7 @@ Le TRU 2013 estimé en Alsace à partir des RPU transmis est de 13.24\%.
 \subsection*{Activité par semaine}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:00 2013
+% Mon Oct 28 23:09:23 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -975,7 +975,7 @@ Le TRU 2013 estimé en Alsace à partir des RPU transmis est de 13.24\%.
 \label{act_sem}
 \end{table}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:01 2013
+% Mon Oct 28 23:09:24 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -1035,7 +1035,7 @@ Ce phénomène cyclique se répète tous les jours selon un profil immuable. La 
 %----------------------------------------------------------------------------- Summary
 Résumé des horaires de passage aux ugences: les données figurent dans le tableau \ref{tab:24} page \pageref{tab:24}.
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:07 2013
+% Mon Oct 28 23:09:30 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -1117,7 +1117,7 @@ Résumé des horaires de passage aux ugences: les données figurent dans le tabl
 % tranche-age.Rnw
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:11 2013
+% Mon Oct 28 23:09:34 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1153,7 +1153,7 @@ Le thésaurus est présenté sous la formed'un fichier Excel. L'onglet \emph{rec
 
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:11 2013
+% Mon Oct 28 23:09:34 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -1223,7 +1223,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:12 2013
+% Mon Oct 28 23:09:35 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1253,7 +1253,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:12 2013
+% Mon Oct 28 23:09:35 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1839,6 +1839,160 @@ Deux patients porteurs de problèmes respiratoires sont orienté en chirurgie : 
 \end{knitrout}
 
 
+\section{Asthme}
+\index{Asthme}
+
+Classification selon la CIM10:
+\begin{itemize}
+  \item J45.0 Asthme à prédominance allergique
+  \item J45.1 Asthme non allergique
+  \item J45.8 Asthme associé 
+  \item J45.9 Asthme, sans précision
+  \item J46   Etat de mal asthmatique
+\end{itemize}
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Mon Oct 28 23:09:42 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & V1 \\ 
+  \hline
+J450 &  96 \\ 
+  J451 & 136 \\ 
+  J458 &   5 \\ 
+  J459 & 723 \\ 
+  J46 &  41 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/asthme21} 
+\begin{kframe}\begin{verbatim}
+## asthme$DP : 
+##         Frequency Percent Cum. percent
+## J458            5     0.5          0.5
+## J46            41     4.1          4.6
+## J450           96     9.6         14.2
+## J451          136    13.6         27.8
+## J459          723    72.2        100.0
+##   Total      1001   100.0        100.0
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/asthme22} 
+
+\includegraphics[width=\maxwidth]{figure/asthme23} 
+\begin{kframe}\begin{verbatim}
+## table(s) : 
+##         Frequency Percent Cum. percent
+## 3               1     2.5          2.5
+## 8               1     2.5          5.0
+## 11              1     2.5          7.5
+## 13              2     5.0         12.5
+## 14              2     5.0         17.5
+## 15              1     2.5         20.0
+## 17              2     5.0         25.0
+## 19              2     5.0         30.0
+## 20              2     5.0         35.0
+## 21              2     5.0         40.0
+## 22              2     5.0         45.0
+## 23              1     2.5         47.5
+## 24              1     2.5         50.0
+## 25              1     2.5         52.5
+## 26              2     5.0         57.5
+## 27              4    10.0         67.5
+## 29              2     5.0         72.5
+## 31              2     5.0         77.5
+## 32              1     2.5         80.0
+## 34              1     2.5         82.5
+## 37              1     2.5         85.0
+## 40              1     2.5         87.5
+## 41              3     7.5         95.0
+## 47              2     5.0        100.0
+##   Total        40   100.0        100.0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Mon Oct 28 23:09:42 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & V1 \\ 
+  \hline
+1      :103   &   1 \\ 
+  1st Qu.: 3.0   &   1 \\ 
+  2      :646   &   1 \\ 
+  3      :224   &   1 \\ 
+  3Fr    : 49   &   1 \\ 
+  3rd Qu.:40.0   &   1 \\ 
+  4      : 17   &   1 \\ 
+  5      :  3   &   1 \\ 
+  67100  : 32   &   1 \\ 
+  67600  : 33   &   1 \\ 
+  68000  :116   &   1 \\ 
+  68100  : 70   &   1 \\ 
+  68200  : 72   &   1 \\ 
+  68500  : 31   &   1 \\ 
+  AMBU : 96   &   1 \\ 
+  CHIR   :  4   &   1 \\ 
+  Class :character   &   2 \\ 
+  Col    :282   &   1 \\ 
+  Décès    :  0   &   1 \\ 
+  Domicile :571   &   1 \\ 
+  F:504   &   1 \\ 
+  FO   :  1   &   1 \\ 
+  Hag    : 66   &   1 \\ 
+  HELI :  1   &   1 \\ 
+  Hus    : 54   &   1 \\ 
+  I:  0   &   1 \\ 
+  Length:1001        &   2 \\ 
+  M:497   &   1 \\ 
+  Max.   :97.0   &   1 \\ 
+  Mean   :23.7   &   1 \\ 
+  MED    :173   &   1 \\ 
+  Median :14.0   &   1 \\ 
+  Min.   : 0.0   &   1 \\ 
+  Mode  :character   &   2 \\ 
+  Mul    :335   &   1 \\ 
+  Mutation :323   &   1 \\ 
+  NA       :  0   &   1 \\ 
+  NA's :124   &   1 \\ 
+  NA's   :674   &   1 \\ 
+  NA's   :  8   &   1 \\ 
+  NA's     : 94   &   1 \\ 
+  (Other):  0   &   1 \\ 
+  (Other):118   &   1 \\ 
+  (Other):  3   &   1 \\ 
+  (Other):647   &   1 \\ 
+  PERSO:678   &   1 \\ 
+  REA    :  7   &   1 \\ 
+  SC     : 45   &   1 \\ 
+  Sel    : 97   &   1 \\ 
+  SMUR : 27   &   1 \\ 
+  Transfert: 13   &   1 \\ 
+  UHCD   : 95   &   1 \\ 
+  VSAB : 74   &   1 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+
+\section{Intoxication au CO}
+\index{Intoxication au CO}
+
+\section{Bronchiolite}
+\index{Bronchiolite}
+
 \section{Malaises}
 \index{malaise}
 
@@ -1918,7 +2072,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:20 2013
+% Mon Oct 28 23:09:43 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -1943,7 +2097,7 @@ Décès & 2 & 0.00 \\
 Les données par établissement sont résumées dans le tableau \ref{tab.sortie_etab} page \pageref{tab.sortie_etab}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:20 2013
+% Mon Oct 28 23:09:43 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|r|r|r|r|}
@@ -2032,7 +2186,7 @@ On notera que le retour à domicile proprement dit ne figure pas parmi les items
 \section{Destination}
 \index{destination}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:21 2013
+% Mon Oct 28 23:09:44 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -2051,7 +2205,7 @@ HAD & 0.01 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:21 2013
+% Mon Oct 28 23:09:44 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -2164,7 +2318,7 @@ Le mode d'orientation au sens du RPU est une rubrique un peu fourre-tout regroup
 
 \includegraphics[width=\maxwidth]{figure/passages_totaux1} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:24 2013
+% Mon Oct 28 23:09:47 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -2197,7 +2351,7 @@ Les variation du retour journalier à domicile sont calculés de la manière sui
 \end{description}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:27 2013
+% Mon Oct 28 23:09:50 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -2224,7 +2378,7 @@ On refait le calcul de q en tenant compte des non réponses:
 Si on considère que tout ce qui n'est pas un retour à domicile constitue une hospitalisation, on peut tracer un graphique, miroir du précédent. La ligne bleue représente la moyenne lissée sur sept jours. On notera le taux d'hospitalisation élévé du début de l'année, correspondant à une période de forte tension. Les fluctuations de ce paramètre (comme le retour à domicile) est une piste intéressante dans le cadre de la recherche d'indicateurs d'hôpital en tension, cependant les seuils d'alerte (triggers) restent à déterminer.
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Wed Oct 23 23:06:29 2013
+% Mon Oct 28 23:09:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
