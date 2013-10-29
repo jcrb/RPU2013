@@ -2,40 +2,58 @@
 \select@language {french}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Populations l\IeC {\'e}gales 2010}}{12}{table.2.1}
-\contentsline {table}{\numberline {2.2}{\ignorespaces Classe d'age en Alsace (janvier 2010)}}{12}{table.2.2}
-\contentsline {table}{\numberline {2.3}{\ignorespaces Structures d'urgence}}{15}{table.2.3}
-\contentsline {table}{\numberline {2.4}{\ignorespaces Service d'accueil des urgences d'Alsace}}{17}{table.2.4}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Populations l\IeC {\'e}gales 2010}}{13}{table.2.1}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Classe d'age en Alsace (janvier 2010)}}{13}{table.2.2}
+\contentsline {table}{\numberline {2.3}{\ignorespaces Structures d'urgence}}{16}{table.2.3}
+\contentsline {table}{\numberline {2.4}{\ignorespaces Service d'accueil des urgences d'Alsace}}{18}{table.2.4}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Structures hospitali\IeC {\`e}res participantes en 2013}}{18}{table.3.1}
-\contentsline {table}{\numberline {3.2}{\ignorespaces Donn\IeC {\'e}es manquantes en 2013}}{19}{table.3.2}
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {7.1}{\ignorespaces Nombre de passages par service d'urgence}}{30}{table.7.1}
-\contentsline {table}{\numberline {7.2}{\ignorespaces Activit\IeC {\'e} par semaine}}{41}{table.7.2}
-\contentsline {table}{\numberline {7.3}{\ignorespaces Activit\IeC {\'e} par semaine}}{41}{table.7.3}
-\contentsline {table}{\numberline {7.4}{\ignorespaces horaires de passage}}{42}{table.7.4}
-\contentsline {table}{\numberline {7.5}{\ignorespaces String}}{42}{table.7.5}
-\contentsline {table}{\numberline {7.6}{\ignorespaces R\IeC {\'e}partition des RPU par tranches d'age}}{42}{table.7.6}
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {8.1}{\ignorespaces motif de consultation}}{43}{table.8.1}
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {9.1}{\ignorespaces Origine des patients}}{48}{table.9.1}
-\contentsline {table}{\numberline {9.2}{\ignorespaces Moyens de transport}}{49}{table.9.2}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Structures hospitali\IeC {\`e}res participantes en 2013}}{19}{table.3.1}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Donn\IeC {\'e}es manquantes en 2013}}{20}{table.3.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {12.1}{\ignorespaces Mode de sortie des urgences}}{85}{table.12.1}
-\contentsline {table}{\numberline {12.2}{\ignorespaces Mode de sortie selon l'\IeC {\'e}tablissement}}{85}{table.12.2}
-\contentsline {table}{\numberline {12.3}{\ignorespaces Destination des patients non rentr\IeC {\'e}s \IeC {\`a} domicile apr\IeC {\`e}s leur passage aux urgences}}{86}{table.12.3}
-\contentsline {table}{\numberline {12.4}{\ignorespaces Devenir des patients \IeC {\`a} la sortie des urgences. DOM repr\IeC {\'e}sentent ceux qui sont repartis vers leur domicile ou ce qui en tient lieu (sous l'hypoth\IeC {\`e}se que toutes les non r\IeC {\'e}ponses correspondent \IeC {\`a} un retour \IeC {\`a} domicile).}}{87}{table.12.4}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {7.1}{\ignorespaces Nombre de passages par service d'urgence}}{31}{table.7.1}
+\contentsline {table}{\numberline {7.2}{\ignorespaces Activit\IeC {\'e} par semaine}}{42}{table.7.2}
+\contentsline {table}{\numberline {7.3}{\ignorespaces Activit\IeC {\'e} par semaine}}{42}{table.7.3}
+\contentsline {table}{\numberline {7.4}{\ignorespaces horaires de passage}}{43}{table.7.4}
+\contentsline {table}{\numberline {7.5}{\ignorespaces String}}{43}{table.7.5}
+\contentsline {table}{\numberline {7.6}{\ignorespaces R\IeC {\'e}partition des RPU par tranches d'age}}{43}{table.7.6}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {8.1}{\ignorespaces motif de consultation}}{44}{table.8.1}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {9.1}{\ignorespaces Origine des patients}}{49}{table.9.1}
+\contentsline {table}{\numberline {9.2}{\ignorespaces Moyens de transport}}{50}{table.9.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {14.1}{\ignorespaces Passages totaux}}{92}{table.14.1}
-\contentsline {table}{\numberline {14.2}{\ignorespaces Retour \IeC {\`a} domicile}}{94}{table.14.2}
-\contentsline {table}{\numberline {14.3}{\ignorespaces Hospitalisations}}{95}{table.14.3}
+\contentsline {table}{\numberline {11.4}{\ignorespaces R\IeC {\'e}partition des diagnostics d'asthme}}{75}{table.11.4}
+\contentsline {table}{\numberline {11.5}{\ignorespaces Fr\IeC {\'e}quence des crises d'asthme}}{92}{table.11.5}
+\contentsline {table}{\numberline {11.6}{\ignorespaces Asthme et age}}{93}{table.11.6}
+\contentsline {table}{\numberline {11.7}{\ignorespaces Asthme et CCMU}}{93}{table.11.7}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {12.1}{\ignorespaces Mode de sortie des urgences}}{95}{table.12.1}
+\contentsline {table}{\numberline {12.2}{\ignorespaces Mode de sortie selon l'\IeC {\'e}tablissement}}{95}{table.12.2}
+\contentsline {table}{\numberline {12.3}{\ignorespaces Destination des patients non rentr\IeC {\'e}s \IeC {\`a} domicile apr\IeC {\`e}s leur passage aux urgences}}{96}{table.12.3}
+\contentsline {table}{\numberline {12.4}{\ignorespaces Devenir des patients \IeC {\`a} la sortie des urgences. DOM repr\IeC {\'e}sentent ceux qui sont repartis vers leur domicile ou ce qui en tient lieu (sous l'hypoth\IeC {\`e}se que toutes les non r\IeC {\'e}ponses correspondent \IeC {\`a} un retour \IeC {\`a} domicile).}}{97}{table.12.4}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {14.1}{\ignorespaces Passages totaux}}{102}{table.14.1}
+\contentsline {table}{\numberline {14.2}{\ignorespaces Retour \IeC {\`a} domicile}}{104}{table.14.2}
+\contentsline {table}{\numberline {14.3}{\ignorespaces Hospitalisations}}{105}{table.14.3}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

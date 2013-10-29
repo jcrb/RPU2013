@@ -138,6 +138,8 @@ Nécessite le package **epicalc**
 - le tableau est accessible via a$output.table. Permet d'utiliser xtable(a$output.table).
 - valeurs individuelles: a$output.table[1,1]
 - noms des lignes: row.names(a$output.table)
+- nom des colonnes: colnames(a$output.table)
+- franciser le nom des colonnes: colnames(a$output.table)<-c("Fréquence","Pourcentage","Pourcentage cumul.")
 
 #### notes sur les spatialPolygons
 > str(poly)

@@ -128,9 +128,11 @@ a<-substr(dpr,1,1)
 tab1(a,horiz=T,sort.group="decreasing",main="Classes dignostiques de la CIM10")
 @
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Etude des AVC}
-
 \index{AVC}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 Les AVC sont définis par la nomenclature I60 à I64, G45 Accidents ischémiques cérébraux transitoires (sauf G45.4 amnésie transitoire) et syndromes apparentés et G46 Syndromes vasculaires cérébraux au cours de maladies cérébrovasculaires
 
 La prévention et la prise en charge des accidents vasculaires cérébraux  Annexes 
@@ -262,8 +264,10 @@ barplot(t,col=c("red","white","darkblue"),main="Répartion des AVC selon l'age e
 barplot(t,col=c("yellow","white","red"),main="Répartion des AVC selon l'age et le sexe",legend=TRUE,beside=TRUE)
 @
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Accidents ischiémiques transitoires (AIT)}
 \index{AIT}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Recommandations pour la sélection des données PMSI MCO concernant l’AVC (Juin 2009)
 
@@ -288,8 +292,10 @@ ait<-dpr$DP[substr(dpr$DP,1,3)=="G45" & substr(dpr$DP,1,4)!="G454"]
 tab1(ait,missing=FALSE)
 @
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Pneumonies}
 \index{pneumonies}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <<pneumo_intro,echo=FALSE,message=FALSE>>=
 
@@ -332,8 +338,10 @@ summary(pneumo$ORIENTATION)
 
 Deux patients porteurs de problèmes respiratoires sont orienté en chirurgie : erreur ou manque de place en médecine ?
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Syndrome grippal}
 \index{syndrome grippal}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <<grippe,echo=FALSE>>=
 grippe<-d1[substr(d1$DP,1,3)=="J11"|substr(d1$DP,1,3)=="J10"|substr(d1$DP,1,3)=="J09", c("DP","ENTREE")]
@@ -342,8 +350,10 @@ grippe$date<-as.Date(grippe$ENTREE)
 hist(grippe$date,breaks=18,freq=TRUE,col="slategray1",main="2013 - Syndromes grippaux",xlab="")
 @
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Asthme}
 \index{Asthme}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Classification selon la CIM10:
 \begin{itemize}
@@ -356,28 +366,103 @@ Classification selon la CIM10:
 
 <<asthme,echo=FALSE,results='asis'>>=
 asthme<-dpr[substr(dpr$DP,1,3)=="J45" | substr(dpr$DP,1,3)=="J46",]
+n<-nrow(asthme)
 xtable(table(as.factor(asthme$DP)))
+
+# Francisation de tab1 et utilisation avec xtable. La première ligne dessine le graphe sans afficher la tableau. Ce dernier est francisé puis affiché via xtable
+
+x<-tab1(asthme$DP,sort.group="increasing",main="Distribution des diagnostics d'asthme")
+dimnames(x$output.table)[[2]]<-c("Fréquence","Pourcentage","Pourcentage Cumul.")
+xtable(x$output.table,caption=c("Répartition des diagnostics d'asthme chez les patients ayant consulté un  SU, en région Alsace en 2013","Répartition des diagnostics d'asthme"),label="tab:asthme")
 @
 
-<<asthme2,echo=FALSE>>=
-tab1(asthme$DP,sort.group="increasing",main="Distribution des diagnostics d'asthme")
+On note \np{\Sexpr{n}} cas d'asthme en 2013.
+
+<<asthme2,echo=FALSE,results='asis'>>=
+
 s<-week(asthme$ENTREE)
 barplot(table(s),main="Crises d'asthme - 2013",xlab="Semaines")
-tab1(table(s))
+x<-tab1(s,main="Fréquence des crises d'asthme")
+colnames(x$output.table)<-c("Fréquence","Pourcentage","Pourcentage cumul.")
+xtable(x$output.table,caption=c("Fréquence des crises d'asthme par semaine en 2013","Fréquence des crises d'asthme"),label="tab:freq_asthme")
 @
+
+
+La population des patients consultant pour une crise d'astme est jeune (voir table \ref{tab:age_asthme} page \pageref{tab:age_asthme}).
 
 <<asthme3,echo=FALSE,results='asis'>>=
-xtable(table(summary(asthme)))
+xtable(resume(asthme$AGE),caption=c("Age de la population consultant pour crise d'asthme","Asthme et age"),label="tab:age_asthme")
+
+x<-t(resume(asthme$GRAVITE))
+rownames(x)<-""
+xtable(x,caption=c("Gravité de la crise d'asthme en fonction de la CCMU","Asthme et CCMU"),label="tab:ccmu_asthme")
+
+ms<-summary(asthme$MODE_SORTIE)
+hospit<-ms[2] + ms[3]
+dom<-ms[4]
+tx_hospit<-round(hospit/(hospit+dom)*100,2)
+
+orient<-summary(asthme$ORIENTATION)
+svce_chauds<-orient["REA"]+orient["SI"]+orient["SC"]
+svce_conv<-orient["MED"]+orient["CHIR"]+orient["OBST"]
+svce_porte<-orient["UHCD"]
+svce_psy<-orient["HO"]+orient["HDT"]
+atypique<-orient["FUGUE"]+orient["PSA"]+orient["SCAM"]+orient["REO"]
 @
 
-\section{Intoxication au CO}
-\index{Intoxication au CO}
+Les crises sont de gravité moyenne avec une prédominance de CCMU 2 et 3 (voir table \ref{tab:ccmu_asthme} page \pageref{tab:ccmu_asthme}).
+Cependant le taux d'hospitalisation est important: \Sexpr{tx_hospit} \%.
+\np{\Sexpr{svce_chauds}} patients ont été orientés vers un service "chaud" (Réanimation, sins intensifs ou continus) soit \Sexpr{round(svce_chauds*100/(svce_chauds+svce_conv+svce_porte),2)} \% des patients hospitalisés pour asthme.
 
+Le bulletin épidémiologique (Le point épidémiologique du 24 octobre 2013 - Surveillance épidémiologique de la Cire Lorraine-Alsace) clôt la surveillance de l’asthme. Pour l’association SOS Médecins de Strasbourg, l’activité liée à l’asthme a été particulièrement marqué de mi-avril (semaine 16) à fin mai(semaine 22) puis en semaine 40. Concernant l’association de Mulhouse, seule une forte augmentation en semaine 39 a été observée depuis début avril.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bronchiolite}
 \index{Bronchiolite}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+CIM10: Bronchiolite aiguë
+
+Inclus:
+    avec bronchospasme
+\begin{itemize}
+  \item J21.0 Bronchiolite aiguë due au virus respiratoire syncytial [VRS]
+  \item J21.8 Bronchiolite aiguë due à d'autres micro-organismes précisés
+  \item J21.9 Bronchiolite aiguë, sans précision
+\end{itemize}
+
+<<bron>>=
+bron<-dpr[substr(dpr$DP,1,3)=="J21" ,]
+m<-month(bron$ENTREE,label=T)
+barplot(table(m),main="Bronchiolites - 2013",xlab="Mois")
+s<-week(bron$ENTREE)
+barplot(table(s),main="Bronchiolites - 2013",xlab="Semaines")
+summary(bron)
+@
+
+Surreprésentation de Mul  
+taux hospitalisation: 50\%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Intoxication au CO}
+\index{Intoxication au CO}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CIM10 = T58
+
+<<co>>=
+co<-dpr[substr(dpr$DP,1,3)=="T58" ,]
+m<-month(co$ENTREE,label=T)
+table(m)
+barplot(table(m),main="Intoxication au CO - 2013",xlab="Mois")
+@
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Malaises}
 \index{malaise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <<malaises,echo=FALSE>>=
 malaise<-d1[substr(d1$DP,1,3)=="R55", c("DP","ENTREE")]
@@ -387,6 +472,7 @@ hist(malaise$date,breaks=18,freq=TRUE,col="slategray1")
 @
 
 malaise selon INVS (canicule):
+
 <<malaises_invs,echo=FALSE>>=
 malaise<-d1[substr(d1$DP,1,3)=="R55"|substr(d1$DP,1,3)=="R53"|substr(d1$DP,1,3)=="R42", c("DP","ENTREE")]
 malaise<-malaise[complete.cases(malaise),]
@@ -395,8 +481,10 @@ hist(malaise$date,breaks=18,freq=TRUE,col="slategray1",main="Malaises (INVS)")
  plot(as.factor(malaise$date),col="slategray1",las = 1,main="Malaises (INVS)")
 @
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Marqueurs de canicule}
 \index{Canicule@marqueurs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Données hospitalières : nombre quotidien de passages dans des services d'urgence hospitaliers pour un diagnostic de malaise (codes Cim10 R42, R53 et R55), d'hyperthermie et autres effets directs de la chaleur (codes Cim10 T67 et X30), de déshydratation (code Cim10 E86) et d'hyponatrémie (code Cim10 E871)
 
@@ -417,3 +505,58 @@ canicule<-canicule[complete.cases(canicule),]
 canicule$date<-as.Date(canicule$ENTREE)
 hist(canicule$date,breaks=18,freq=TRUE,col="slategray1",main="Pathologies liées à la chaleur",ylab="Nombre",xlab="",sub="")
 @
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Gastro-entérites}
+\index{Gastroentérites}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CIM10 A09 : Diarrhée et gastro-entérite d'origine présumée infectieuse
+
+Inclus: Catarrhe intestinale (Colite,Entérite, Gastro-entérite,SAI hémorragique,septique), Diarrhée (SAI,dysentérique,épidémique), Maladie diarrhéique infectieuse SAI.
+Sont exclues: diarrhée non infectieuse (K52.9), néonatale (P78.3), maladies dues à des bactéries, des protozoaires, des virus et d'autres agents infectieux précisés (A00-A08)  
+
+<<ge>>=
+ge<-dpr[substr(dpr$DP,1,3)=="A09" ,]
+summary(ge)
+table(ge$FINESS,ge$DP)
+hist(ge$AGE,main="Gasto-entérites - 2013",xlab="Age (années)", ylab="nombre",col="gray90")
+boxplot(ge$AGE,col="yellow",main="Gastro-entérite",ylab="age (années)")
+m<-month(ge$ENTREE,label=T)
+x<-barplot(table(m),main="Gestro-entérites - 2013",xlab="Mois")
+lines(x=x,y=table(m),col="red")
+@
+
+
+NOTE TECHNIQUE: tracer une ligne joignant les sommets des barres du barplot. On utilise lines avec les valeurs suivantes:
+- x = abcisse des colonnes. Elles sont contenues dans l'objet barplot. On peut les recueillir eplicitement par la fonction *str* (str(x)).
+- y = ordonnées des barres, récupérées avec la fonction *table* qui agglomère les données par mois
+Voir aussi: http://www.ats.ucla.edu/stat/r/faq/barplotplus.htm
+
+calculs à la manière de l'INVS
+
+nombre de diagnostics de GE / nb total de diagnostics par semaine:
+<<invs>>=
+mge<-month(ge$ENTREE,label=T)
+mtot<-month(dpr$ENTREE,label=T)
+summary(mtot)
+summary(mge)
+a<-round(summary(mge)*100/summary(mtot),2)
+a
+barplot(a)
+@
+
+
+dpt: tous les cas de traumato (S00 à T98)
+
+dpnp:tous les cas de médecine  
+
+<<trauma>>=
+dpt<-dpr[substr(dpr$DP,1,3)>="S00" & substr(dpr$DP,1,3)<"T99", ]  
+dpnt<-dpr[substr(dpr$DP,1,3) < "S00" | substr(dpr$DP,1,3)>"T98", ]  
+mnt<-month(dpnt$ENTREE,label=T)  
+a<-round(summary(mge)*100/summary(mnt),2)  
+a 
+@
+
+ 

@@ -37,12 +37,20 @@ load_libraries<-function(){
 #'
 resume<-function (x)
 {
-  name=c("moyenne","écart-type","médiane","min","max","n")
-  m<-mean(x,na.remove=TRUE)
-  e<-sd(x)
-  r<-matrix(c(m,e,median(x),min(x),max(x),length(x)),1,6)
-  colnames(r)<-name
-  rownames<-""
+  r<-NULL
+  classe<-class(x)
+  if(classe=="numeric"){
+    name=c("moyenne","écart-type","médiane","min","max","n")
+    m<-mean(x,na.remove=TRUE)
+    e<-sd(x)
+    r<-matrix(c(m,e,median(x),min(x),max(x),length(x)),1,6)
+    colnames(r)<-name
+    rownames(r)<-""
+  }
+  else if(classe=="factor"){
+    r<-as.matrix(summary(x))
+    #rownames(r)<-""
+  }
   return(r)
 }
 

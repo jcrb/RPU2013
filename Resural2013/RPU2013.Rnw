@@ -240,9 +240,24 @@ d1$secteur[d1$FINESS %in% c("Mul","Alk","3Fr","Dia")]<-4
 \part{Activité par service d'urgence}
 
 \newpage
+
+\chapter{SAU Wissembourg}
+\chapter{SAU Haguenau}
+\chapter{SAU Saverne}
+\chapter{SAU Sainte Odile}
 \chapter{SAU des Hôpitaux universitaires}
 <<child='SuHus.Rnw'>>=
 @
+\chapter{SAU Sainte Anne}
+\chapter{Polyclinique Saint-Luc}
+\chapter{SAU Sélestat}
+\chapter{SAU Colmar}
+\chapter{SAU Guebwiller}
+\chapter{SAU Thann}
+\chapter{SAU Altkirch}
+\chapter{SAU Emile Muller}
+\chapter{SAU Diaconnat-Fonderie}
+\chapter{SAU Saint Louis}
 
 %===================================================================== PARTIE 4
 \part{Activité des SAMU d'Alsace}
