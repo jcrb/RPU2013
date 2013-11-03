@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Fri Oct 11 18:02:05 2013"
+## [1] "Sun Nov  3 17:31:39 2013"
 ```
 
 source: RPU2013
@@ -33,6 +33,15 @@ Chargement des routines perso
 
 ```r
 source("../mes_fonctions.R")
+```
+
+```
+## Warning: impossible d'ouvrir le fichier '../mes_fonctions.R' : Aucun
+## fichier ou dossier de ce type
+```
+
+```
+## Error: impossible d'ouvrir la connexion
 ```
 
 Variables globales:
@@ -249,7 +258,7 @@ xtable(t(t3))
 
 ```
 ## % latex table generated in R 3.0.2 by xtable 1.7-1 package
-## % Fri Oct 11 18:02:20 2013
+## % Sun Nov  3 17:31:48 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rrr}
@@ -274,6 +283,7 @@ xtable(t(t3))
 ```
 
 ### Origine temporelle des données:
+Pour chaque hopital on determine la datela plus basse a partir de laquelle des donn2es sont transmises. Les dates sont donnees en secondes unix => il faut les transformer en dates calendaires
 
 ```r
 b <- tapply(as.Date(d1$ENTREE), d1$FINESS, min)
@@ -301,6 +311,10 @@ Exhaustivité des données
 ------------------------
 
 #### Jours manquants:a<-as.data.frame(a)
+NB: il manque le 31/05dans d1
+
+On forme une matrice (table) de 365 lignes et 12 colonnes (hopitaux) contenant le nombre de RPU un jour donne pour un hopital. Pour conserver une trace du jour, on ajoute une colonne date. On signale les jours pour lesquels le nombre de RPU est inferieur a 20:
+
 
 ```r
 a <- table(as.Date(d1$ENTREE), d1$FINESS)
@@ -321,15 +335,7 @@ head(a)
 ```r
 # liste par FINESS des jours où le nb de RPU est inférieur à 20: il faut
 # ajouter une colonne date pour que cela fonctionne.
-a$date <- seq(as.Date("2013-01-01"), as.Date("2013-07-30"), 1)
-```
-
-```
-## Error: le tableau de remplacement a 211 lignes, le tableau remplacé en a
-## 272
-```
-
-```r
+a$date <- seq(as.Date("2013-01-01"), as.Date("2013-09-29"), 1)
 # On initialise une liste de 12 éléments,12 parce que 12 SU
 b <- list(1:12)
 # pour chacun des SU, les jours où le nombre de RPU < 20, on stocke la date
@@ -337,19 +343,47 @@ b <- list(1:12)
 for (i in 1:12) {
     b[[i]] <- a[a[, i] < 20, c(13, i)]
 }
-```
-
-```
-## Error: undefined columns selected
-```
-
-```r
 str(b)
 ```
 
 ```
-## List of 1
-##  $ : int [1:12] 1 2 3 4 5 6 7 8 9 10 ...
+## List of 12
+##  $ :'data.frame':	0 obs. of  2 variables:
+##   ..$ date:Class 'Date'  num(0) 
+##   ..$ 3Fr : int(0) 
+##  $ :'data.frame':	135 obs. of  2 variables:
+##   ..$ date: Date[1:135], format: "2013-01-01" ...
+##   ..$ Alk : int [1:135] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ :'data.frame':	2 obs. of  2 variables:
+##   ..$ date: Date[1:2], format: "2013-09-28" ...
+##   ..$ Col : int [1:2] 0 0
+##  $ :'data.frame':	0 obs. of  2 variables:
+##   ..$ date:Class 'Date'  num(0) 
+##   ..$ Dia : int(0) 
+##  $ :'data.frame':	5 obs. of  2 variables:
+##   ..$ date: Date[1:5], format: "2013-05-08" ...
+##   ..$ Geb : int [1:5] 0 0 0 0 0
+##  $ :'data.frame':	0 obs. of  2 variables:
+##   ..$ date:Class 'Date'  num(0) 
+##   ..$ Hag : int(0) 
+##  $ :'data.frame':	0 obs. of  2 variables:
+##   ..$ date:Class 'Date'  num(0) 
+##   ..$ Hus : int(0) 
+##  $ :'data.frame':	19 obs. of  2 variables:
+##   ..$ date: Date[1:19], format: "2013-01-01" ...
+##   ..$ Mul : int [1:19] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ :'data.frame':	0 obs. of  2 variables:
+##   ..$ date:Class 'Date'  num(0) 
+##   ..$ Odi : int(0) 
+##  $ :'data.frame':	53 obs. of  2 variables:
+##   ..$ date: Date[1:53], format: "2013-04-11" ...
+##   ..$ Sel : int [1:53] 6 1 10 2 0 3 0 0 0 0 ...
+##  $ :'data.frame':	2 obs. of  2 variables:
+##   ..$ date: Date[1:2], format: "2013-01-30" ...
+##   ..$ Wis : int [1:2] 16 18
+##  $ :'data.frame':	203 obs. of  2 variables:
+##   ..$ date: Date[1:203], format: "2013-01-01" ...
+##   ..$ Sav : int [1:203] 0 0 0 0 0 0 0 0 0 0 ...
 ```
 
 ```r
@@ -358,7 +392,12 @@ b[[5]]
 ```
 
 ```
-## Error: indice hors limites
+##                  date Geb
+## 2013-05-08 2013-05-08   0
+## 2013-05-09 2013-05-09   0
+## 2013-05-10 2013-05-10   0
+## 2013-05-11 2013-05-11   0
+## 2013-05-12 2013-05-12   0
 ```
 
 ```r
@@ -366,7 +405,7 @@ names(b[[5]])
 ```
 
 ```
-## Error: indice hors limites
+## [1] "date" "Geb"
 ```
 
 ```r
@@ -374,7 +413,7 @@ b[[5]]$date
 ```
 
 ```
-## Error: indice hors limites
+## [1] "2013-05-08" "2013-05-09" "2013-05-10" "2013-05-11" "2013-05-12"
 ```
 
 ```r
@@ -388,7 +427,13 @@ for (i in 1:12) {
 ```
 
 ```
-## Error: $ operator is invalid for atomic vectors
+## [1] "2 Alk 135"
+## [1] "3 Col 2"
+## [1] "5 Geb 5"
+## [1] "8 Mul 19"
+## [1] "10 Sel 53"
+## [1] "11 Wis 2"
+## [1] "12 Sav 203"
 ```
 
 #### Exhaustivité des items
@@ -1927,7 +1972,7 @@ legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.
 
 ```r
 par(mfrow = c(2, 2))
-source("../mes_fonctions.R")
+source("./mes_fonctions.R")
 passages("Hus", "HUS", sens = 3)
 passages("Mul", "CH Mulhouse", sens = 3)
 passages("Col", "CH Colmar", sens = 3)
