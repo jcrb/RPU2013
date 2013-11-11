@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Sun Nov  3 17:31:39 2013"
+## [1] "Mon Nov 11 14:27:11 2013"
 ```
 
 source: RPU2013
@@ -33,15 +33,6 @@ Chargement des routines perso
 
 ```r
 source("../mes_fonctions.R")
-```
-
-```
-## Warning: impossible d'ouvrir le fichier '../mes_fonctions.R' : Aucun
-## fichier ou dossier de ce type
-```
-
-```
-## Error: impossible d'ouvrir la connexion
 ```
 
 Variables globales:
@@ -229,14 +220,14 @@ Content Cell  | Content Cell
 Projection sur l'année:
 
 ```r
-mois_courant <- 7
+mois_courant <- 9
 p <- 12/mois_courant
 summary(d1$FINESS) * p
 ```
 
 ```
 ##   3Fr   Alk   Col   Dia   Geb   Hag   Hus   Mul   Odi   Sel   Wis   Sav 
-## 20594  9130 84165 37959 19630 45098 48502 71235 33477 31718 16416  9000
+## 16017  7101 65461 29524 15268 35076 37724 55405 26037 24669 12768  7000
 ```
 
 ```r
@@ -244,7 +235,7 @@ sum(summary(d1$FINESS) * p)
 ```
 
 ```
-## [1] 426924
+## [1] 332052
 ```
 
 ```r
@@ -258,25 +249,25 @@ xtable(t(t3))
 
 ```
 ## % latex table generated in R 3.0.2 by xtable 1.7-1 package
-## % Sun Nov  3 17:31:48 2013
+## % Mon Nov 11 14:27:26 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rrr}
 ##   \hline
 ##  & Réalisé & Projection 2013 \\ 
 ##   \hline
-## 3Fr & 12013.00 & 20593.71 \\ 
-##   Alk & 5326.00 & 9130.29 \\ 
-##   Col & 49096.00 & 84164.57 \\ 
-##   Dia & 22143.00 & 37959.43 \\ 
-##   Geb & 11451.00 & 19630.29 \\ 
-##   Hag & 26307.00 & 45097.71 \\ 
-##   Hus & 28293.00 & 48502.29 \\ 
-##   Mul & 41554.00 & 71235.43 \\ 
-##   Odi & 19528.00 & 33476.57 \\ 
-##   Sel & 18502.00 & 31717.71 \\ 
-##   Wis & 9576.00 & 16416.00 \\ 
-##   Sav & 5250.00 & 9000.00 \\ 
+## 3Fr & 12013.00 & 16017.33 \\ 
+##   Alk & 5326.00 & 7101.33 \\ 
+##   Col & 49096.00 & 65461.33 \\ 
+##   Dia & 22143.00 & 29524.00 \\ 
+##   Geb & 11451.00 & 15268.00 \\ 
+##   Hag & 26307.00 & 35076.00 \\ 
+##   Hus & 28293.00 & 37724.00 \\ 
+##   Mul & 41554.00 & 55405.33 \\ 
+##   Odi & 19528.00 & 26037.33 \\ 
+##   Sel & 18502.00 & 24669.33 \\ 
+##   Wis & 9576.00 & 12768.00 \\ 
+##   Sav & 5250.00 & 7000.00 \\ 
 ##    \hline
 ## \end{tabular}
 ## \end{table}

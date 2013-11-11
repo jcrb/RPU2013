@@ -91,7 +91,7 @@ Content Cell  | Content Cell
 
 Projection sur l'année:
 ```{r projection}
-mois_courant<-7
+mois_courant<-9
 p<- 12/mois_courant
 summary(d1$FINESS)*p
 sum(summary(d1$FINESS)*p)
