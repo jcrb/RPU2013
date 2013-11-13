@@ -6,19 +6,77 @@ date()
 ```
 
 ```
-## [1] "Thu Oct 24 15:29:30 2013"
+## [1] "Wed Nov 13 10:22:31 2013"
 ```
 
 source: RPU2013
 Ce document exploite le fichier RData préparé à partir de la table *RPU__* de Sagec. Voir le document *RPU_2013_Preparation.Rmd* du dossier Resural.
 
+EN FONCTION DU MOIS MODIFIER LES LIGNES 12, 38, 39, 40 ET 66 
+
 Variables globales:
 -------------------
 
 ```r
-mois_courant <- 8
-annee_couranre <- 2013
-path <- "../../"
+source("../prologue.R")
+```
+
+```
+## gdata: read.xls support for 'XLS' (Excel 97-2004) files ENABLED.
+## 
+## gdata: read.xls support for 'XLSX' (Excel 2007+) files ENABLED.
+## 
+## Attaching package: 'gdata'
+## 
+## L'objet suivant est masqué from 'package:stats':
+## 
+##     nobs
+## 
+## L'objet suivant est masqué from 'package:utils':
+## 
+##     object.size
+## 
+## Loading required package: questionr
+## Loading required namespace: car
+## 
+## Attaching package: 'rgrs'
+## 
+## Les objets suivants sont masqués from 'package:questionr':
+## 
+##     copie, copie.default, copie.proptab, cprop, cramer.v,
+##     format.proptab, freq, lprop, print.proptab, prop, quant.cut,
+##     renomme.variable, residus, wtd.mean, wtd.table, wtd.var
+## 
+## Rattle : une interface graphique gratuite pour l'exploration de données avec R.
+## Version 2.6.26 r77 Copyright (c) 2006-2013 Togaware Pty Ltd.
+## Entrez 'rattle()' pour secouer, faire vibrer, et faire défiler vos données.
+## Loading required package: foreign
+## Loading required package: survival
+## Loading required package: splines
+## Loading required package: MASS
+## Loading required package: nnet
+## 
+## Attaching package: 'zoo'
+## 
+## Les objets suivants sont masqués from 'package:base':
+## 
+##     as.Date, as.Date.numeric
+## 
+## Please visit openintro.org for free statistics materials
+## 
+## Attaching package: 'openintro'
+## 
+## L'objet suivant est masqué from 'package:MASS':
+## 
+##     mammals
+## 
+## L'objet suivant est masqué from 'package:datasets':
+## 
+##     cars
+```
+
+```
+## [1] "Fichier courant: rpu2013d0110.Rda"
 ```
 
 
@@ -29,7 +87,7 @@ Activité régionale
 wd <- getwd()
 # setwd('~/Documents/Resural/Stat
 # Resural/RPU2013/Chapitres/Activite_regionale')
-source(paste(path, "mes_fonctions.R", sep = ""))
+# source(paste(path,'mes_fonctions.R',sep=''))
 ```
 
 Librairies nécessaires:
@@ -45,12 +103,10 @@ Lecture du fichier des données
 On lit le fichier de travail créé:
 
 ```r
+d1 <- foo(path)
 
-if (!exists("d1")) {
-    load(paste(path, "rpu2013d0109.Rda", sep = ""))
-    d1 <- d0109
-    rm(d0109)
-}
+# if(!exists('d1')) { load(paste(path,'rpu2013d0109.Rda',sep='')) d1<-d0109
+# rm(d0109) }
 ```
 
 Analyse des données
@@ -69,7 +125,7 @@ tapply(d1$ENTREE, d1$secteur, length)
 
 ```
 ##     1     2     3     4 
-## 41133 47821 79049 81036
+## 47482 52785 85762 90423
 ```
 
 Remarques:
@@ -80,7 +136,7 @@ entrées totales
 ---------------
 
 ```r
-d1 <- d1[d1$ENTREE < "2013-10-01", ]
+# d1<-d1[d1$ENTREE<'2013-10-01',]
 
 e <- as.Date(d1$ENTREE)
 q <- tapply(e, yday(e), length)
@@ -151,7 +207,7 @@ summary(q3)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.568   0.618   0.638   0.641   0.662   0.772
+##   0.568   0.618   0.638   0.642   0.662   0.772
 ```
 
 ```r
@@ -190,7 +246,7 @@ summary(q5)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.674   0.729   0.751   0.751   0.773   0.827
+##   0.674   0.729   0.749   0.751   0.773   0.827
 ```
 
 ```r
@@ -238,7 +294,7 @@ summary(q7)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.173   0.227   0.249   0.249   0.271   0.326
+##   0.173   0.227   0.251   0.249   0.271   0.326
 ```
 
 ```r
@@ -270,7 +326,7 @@ summary(q6)
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.783   0.832   0.851   0.853   0.871   0.949
+##   0.783   0.834   0.854   0.855   0.872   0.949
 ```
 
 Vendenheim1

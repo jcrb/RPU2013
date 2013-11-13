@@ -7,7 +7,7 @@ d1<-foo(path)
 print(annee_courante)
 print(mois_courant)
 ```
-Trois items interviennent dans cetteanalyse:
+Trois items interviennent dans cette analyse:
 - le mode de sortie
 - la destination
 - l'orientation

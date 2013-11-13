@@ -123,11 +123,11 @@ tère intracrânienne, sans précision
 #'@param avc liste des AVC
 #'@param navc liste des codes Cim10 utilisés
 
-avc<-dpr[substr(dpr$DP,1,3)>="I60" & substr(dpr$DP,1,3)<"I65" | substr(dpr$DP,1,3)=="G46"]
+avc<-dpr[substr(dpr$DP,1,3)>="I60" & substr(dpr$DP,1,3)<"I65" | substr(dpr$DP,1,3)=="G46",]
 navc<-unique(avc)
-summary(as.factor(avc))
+summary(as.factor(avc$DP))
 
-tab1(avc,horiz=TRUE,sort.group="decreasing",main="AVC aux urgences (hors filière UNV",missing=FALSE)
+tab1(avc$DP,horiz=TRUE,sort.group="decreasing",main="AVC aux urgences (hors filière UNV",missing=FALSE)
 ```
 # Etude des AVC+AIT
 

@@ -72,6 +72,10 @@ source("prologue.R")
 ##     cars
 ```
 
+```
+## [1] "Fichier courant: rpu2013d0110.Rda"
+```
+
 ```r
 d1 <- foo("../")
 
@@ -81,13 +85,13 @@ round(a * 100, 2)
 
 ```
 ##            id   CODE_POSTAL       COMMUNE   DESTINATION            DP 
-##          0.00          0.00          0.00         78.93         32.77 
+##          0.00          0.00          0.00         78.86         33.60 
 ##        ENTREE       EXTRACT        FINESS       GRAVITE   MODE_ENTREE 
-##          0.00          0.00          0.00         14.01         10.48 
+##          0.00          0.00          0.00         14.30         10.15 
 ##   MODE_SORTIE         MOTIF     NAISSANCE   ORIENTATION    PROVENANCE 
-##         14.74         36.33          0.00         80.08         34.85 
+##         14.60         36.52          0.00         80.07         35.36 
 ##          SEXE        SORTIE     TRANSPORT TRANSPORT_PEC           AGE 
-##          0.00          9.37         22.09         25.43          0.00
+##          0.00          9.24         22.78         25.75          0.00
 ```
 
 ```r
@@ -106,14 +110,40 @@ On compare les résultats de lannée à ceux du mois de septembre:
 ```r
 radial.plot(1 - a, rp.type = "p", radial.pos = NULL, labels = c(1:20), line.col = "red", 
     radial.lim = c(0, 1), main = "Taux de complétude des RPU transmis")
+```
+
+![plot of chunk poly2](figure/poly2.png) 
+
+```r
 
 load("../rpu2013d09.Rda")
+```
+
+```
+## Warning: impossible d'ouvrir le fichier compressé '../rpu2013d09.Rda',
+## cause probable : 'Aucun fichier ou dossier de ce type'
+```
+
+```
+## Error: impossible d'ouvrir la connexion
+```
+
+```r
 b <- apply(is.na(d09), 2, mean)
+```
+
+```
+## Error: objet 'd09' introuvable
+```
+
+```r
 radial.plot(1 - b, rp.type = "p", radial.pos = NULL, labels = c(1:20), line.col = "blue", 
     radial.lim = c(0, 1), add = T)
 ```
 
-![plot of chunk poly2](figure/poly2.png) 
+```
+## Error: objet 'b' introuvable
+```
 
 Comparaison par hôpital:
 
