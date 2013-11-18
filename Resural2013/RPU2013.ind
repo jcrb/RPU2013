@@ -1,31 +1,31 @@
 \begin{theindex}
 
-  \item Accident Vasculaire C\IeC {\'e}r\IeC {\'e}bral, \hyperpage{128}
-  \item Activit\IeC {\'e} r\IeC {\'e}gionale, \hyperpage{101}
-  \item AIT, \hyperpage{70}, \hyperpage{128}
-    \subitem th\IeC {\'e}saurus, \hyperpage{70}
+  \item Accident Vasculaire C\IeC {\'e}r\IeC {\'e}bral, \hyperpage{144}
+  \item Activit\IeC {\'e} r\IeC {\'e}gionale, \hyperpage{107}
+  \item AIT, \hyperpage{76}, \hyperpage{144}
+    \subitem th\IeC {\'e}saurus, \hyperpage{76}
   \item Alsace
     \subitem d\IeC {\'e}mographie, \hyperpage{12}
     \subitem secteurs sanitaires, \hyperpage{10}
     \subitem services d'urgence, \hyperpage{13}
     \subitem territoires de proximit\IeC {\'e}, \hyperpage{11}
   \item Alsace e-sant\IeC {\'e}, \hyperpage{23}
-  \item ANTARES, \hyperpage{128}
-  \item AR, \hyperpage{128}
-  \item ARS, \hyperpage{10}, \hyperpage{22, 23}, \hyperpage{128}
-  \item Asthme, \hyperpage{73}
-  \item AVC, \hyperpage{61}
-    \subitem age, \hyperpage{65, 66}
-    \subitem heure, \hyperpage{62}
-    \subitem sexe, \hyperpage{66}
+  \item ANTARES, \hyperpage{144}
+  \item AR, \hyperpage{144}
+  \item ARS, \hyperpage{10}, \hyperpage{22, 23}, \hyperpage{144}
+  \item Asthme, \hyperpage{79}
+  \item AVC, \hyperpage{67}
+    \subitem age, \hyperpage{71, 72}
+    \subitem heure, \hyperpage{68}
+    \subitem sexe, \hyperpage{72}
 
   \indexspace
 
-  \item Bronchiolite, \hyperpage{76}
+  \item Bronchiolite, \hyperpage{82}
 
   \indexspace
 
-  \item marqueurs, \hyperpage{83}
+  \item marqueurs, \hyperpage{89}
   \item CIRE-INVS, \hyperpage{23}
   \item CMUNE, \hyperpage{23}
   \item code postal, \hyperpage{25}
@@ -33,13 +33,13 @@
   \indexspace
 
   \item d\IeC {\'e}c\IeC {\`e}s, \hyperpage{25}
-  \item destination, \hyperpage{96}
+  \item destination, \hyperpage{102}
 
   \indexspace
 
   \item exhaustivit\IeC {\'e}
-    \subitem CIM10, \hyperpage{58}
-  \item mode de sortie, \hyperpage{107}
+    \subitem CIM10, \hyperpage{64}
+  \item mode de sortie, \hyperpage{113}
   \item motif, \hyperpage{46}
 
   \indexspace
@@ -49,7 +49,7 @@
 
   \indexspace
 
-  \item Gastroent\IeC {\'e}rites, \hyperpage{86}
+  \item Gastroent\IeC {\'e}rites, \hyperpage{92}
 
   \indexspace
 
@@ -58,44 +58,44 @@
 
   \indexspace
 
-  \item Intoxication au CO, \hyperpage{79}
+  \item Intoxication au CO, \hyperpage{85}
 
   \indexspace
 
-  \item malaise, \hyperpage{80}
+  \item malaise, \hyperpage{86}
   \item MCO, \hyperpage{26}
   \item Mode d'entr\IeC {\'e}e, \hyperpage{48}
-  \item Mode de sortie, \hyperpage{94}
+  \item Mode de sortie, \hyperpage{100}
   \item mode de sortie, \hyperpage{25}
   \item Mode de transport, \hyperpage{49}
   \item motif de consultation, \hyperpage{44}
-  \item motif de recours, \hyperpage{25}, \hyperpage{58}
+  \item motif de recours, \hyperpage{25}, \hyperpage{64}
   \item mutation, \hyperpage{25}
 
   \indexspace
 
   \item Observatoire des urgences en Alsace, \hyperpage{23}
-  \item orientation, \hyperpage{26}, \hyperpage{95}, \hyperpage{100}
+  \item orientation, \hyperpage{26}, \hyperpage{101}, \hyperpage{106}
   \item ORUDAL, \hyperpage{23}
   \item ORUPACA, \hyperpage{23}
 
   \indexspace
 
-  \item journaliers, \hyperpage{101}
-  \item pneumonies, \hyperpage{71}
-  \item Population, \hyperpage{128}
+  \item journaliers, \hyperpage{107}
+  \item pneumonies, \hyperpage{77}
+  \item Population, \hyperpage{144}
   \item Population
-    \subitem compt\IeC {\'e}e \IeC {\`a} part, \hyperpage{128}
-    \subitem municipale, \hyperpage{12}, \hyperpage{129}
-    \subitem totale, \hyperpage{129}
+    \subitem compt\IeC {\'e}e \IeC {\`a} part, \hyperpage{144}
+    \subitem municipale, \hyperpage{12}, \hyperpage{145}
+    \subitem totale, \hyperpage{145}
   \item PSY, \hyperpage{26}
 
   \indexspace
 
-  \item R (CRAN R), \hyperpage{132}
+  \item R (CRAN R), \hyperpage{148}
   \item RESURAL, \hyperpage{22, 23}
     \subitem historique, \hyperpage{9}
-  \item Retour \IeC {\`a} domicile, \hyperpage{103}
+  \item Retour \IeC {\`a} domicile, \hyperpage{109}
   \item retour \IeC {\`a} domicile, \hyperpage{25}
 
   \indexspace
@@ -105,7 +105,8 @@
     \subitem en Alsace, \hyperpage{13}
   \item SLD, \hyperpage{26}
   \item SSR, \hyperpage{26}
-  \item syndrome grippal, \hyperpage{73}
+  \item SU Sainte Anne, \hyperpage{120}
+  \item syndrome grippal, \hyperpage{79}
 
   \indexspace
 
@@ -116,6 +117,6 @@
 
   \indexspace
 
-  \item Unit\IeC {\'e} urbaine, \hyperpage{129}
+  \item Unit\IeC {\'e} urbaine, \hyperpage{145}
 
 \end{theindex}

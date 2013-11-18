@@ -15,7 +15,7 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {7.1}{\ignorespaces Nombre de passages par service d'urgence}}{31}{table.7.1}
 \contentsline {table}{\numberline {7.2}{\ignorespaces Activit\IeC {\'e} par semaine}}{42}{table.7.2}
-\contentsline {table}{\numberline {7.3}{\ignorespaces Activit\IeC {\'e} par semaine}}{42}{table.7.3}
+\contentsline {table}{\numberline {7.3}{\ignorespaces Activit\IeC {\'e} par semaine}}{43}{table.7.3}
 \contentsline {table}{\numberline {7.4}{\ignorespaces horaires de passage}}{43}{table.7.4}
 \contentsline {table}{\numberline {7.5}{\ignorespaces String}}{43}{table.7.5}
 \contentsline {table}{\numberline {7.6}{\ignorespaces R\IeC {\'e}partition des RPU par tranches d'age}}{43}{table.7.6}
@@ -26,20 +26,20 @@
 \contentsline {table}{\numberline {9.2}{\ignorespaces Moyens de transport}}{50}{table.9.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {11.4}{\ignorespaces R\IeC {\'e}partition des diagnostics d'asthme}}{75}{table.11.4}
-\contentsline {table}{\numberline {11.5}{\ignorespaces Fr\IeC {\'e}quence des crises d'asthme}}{92}{table.11.5}
-\contentsline {table}{\numberline {11.6}{\ignorespaces Asthme et age}}{93}{table.11.6}
-\contentsline {table}{\numberline {11.7}{\ignorespaces Asthme et CCMU}}{93}{table.11.7}
+\contentsline {table}{\numberline {11.4}{\ignorespaces R\IeC {\'e}partition des diagnostics d'asthme}}{81}{table.11.4}
+\contentsline {table}{\numberline {11.5}{\ignorespaces Fr\IeC {\'e}quence des crises d'asthme}}{98}{table.11.5}
+\contentsline {table}{\numberline {11.6}{\ignorespaces Asthme et age}}{99}{table.11.6}
+\contentsline {table}{\numberline {11.7}{\ignorespaces Asthme et CCMU}}{99}{table.11.7}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {12.1}{\ignorespaces Mode de sortie des urgences}}{95}{table.12.1}
-\contentsline {table}{\numberline {12.2}{\ignorespaces Mode de sortie selon l'\IeC {\'e}tablissement}}{95}{table.12.2}
-\contentsline {table}{\numberline {12.3}{\ignorespaces Destination des patients non rentr\IeC {\'e}s \IeC {\`a} domicile apr\IeC {\`e}s leur passage aux urgences}}{96}{table.12.3}
-\contentsline {table}{\numberline {12.4}{\ignorespaces Devenir des patients \IeC {\`a} la sortie des urgences. DOM repr\IeC {\'e}sentent ceux qui sont repartis vers leur domicile ou ce qui en tient lieu (sous l'hypoth\IeC {\`e}se que toutes les non r\IeC {\'e}ponses correspondent \IeC {\`a} un retour \IeC {\`a} domicile).}}{97}{table.12.4}
+\contentsline {table}{\numberline {12.1}{\ignorespaces Mode de sortie des urgences}}{101}{table.12.1}
+\contentsline {table}{\numberline {12.2}{\ignorespaces Mode de sortie selon l'\IeC {\'e}tablissement}}{101}{table.12.2}
+\contentsline {table}{\numberline {12.3}{\ignorespaces Destination des patients non rentr\IeC {\'e}s \IeC {\`a} domicile apr\IeC {\`e}s leur passage aux urgences}}{102}{table.12.3}
+\contentsline {table}{\numberline {12.4}{\ignorespaces Devenir des patients \IeC {\`a} la sortie des urgences. DOM repr\IeC {\'e}sentent ceux qui sont repartis vers leur domicile ou ce qui en tient lieu (sous l'hypoth\IeC {\`e}se que toutes les non r\IeC {\'e}ponses correspondent \IeC {\`a} un retour \IeC {\`a} domicile).}}{103}{table.12.4}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {14.1}{\ignorespaces Passages totaux}}{102}{table.14.1}
-\contentsline {table}{\numberline {14.2}{\ignorespaces Retour \IeC {\`a} domicile}}{104}{table.14.2}
-\contentsline {table}{\numberline {14.3}{\ignorespaces Hospitalisations}}{105}{table.14.3}
+\contentsline {table}{\numberline {14.1}{\ignorespaces Passages totaux}}{108}{table.14.1}
+\contentsline {table}{\numberline {14.2}{\ignorespaces Retour \IeC {\`a} domicile}}{110}{table.14.2}
+\contentsline {table}{\numberline {14.3}{\ignorespaces Hospitalisations}}{111}{table.14.3}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -82,6 +82,7 @@ pop.als.2010.municipale<-1095905 + 749782
 
 % Commandes
 \providecommand{\tabularnewline}{\\} % compatibilité avec Lyx
+%\newcommand{\cette_annee}{\ensuremath{\mathbb{2013\xspace}}}
 
 \begin{document}
 
@@ -134,11 +135,11 @@ library("sp")
 
 path<-"../"
 if(!exists("d1")) {
-  load(paste(path,"rpu2013d0109.Rda",sep=""))
-  d1<-d0109
-  rm(d0109)
+  load(paste(path,"rpu2013d0110.Rda",sep=""))
+#   d1<-d0109
+#   rm(d0109)
 }
-d1<-d1[d1$ENTREE < "2013-10-01",]
+# d1<-d1[d1$ENTREE < "2013-11-01",]
 
 # load("../rpu2013d0108.Rda")
 # d1<-d0108
@@ -249,6 +250,8 @@ d1$secteur[d1$FINESS %in% c("Mul","Alk","3Fr","Dia")]<-4
 <<child='SuHus.Rnw'>>=
 @
 \chapter{SAU Sainte Anne}
+<<child='steAnne.Rnw'>>=
+@
 \chapter{Polyclinique Saint-Luc}
 \chapter{SAU Sélestat}
 \chapter{SAU Colmar}

@@ -1,0 +1,52 @@
+
+
+
+
+
+
+
+@
+
+A Sélestat, \Sexpr{p}\% des patients quittent les urgences en moins de quatre heures.
+
+Pour l'ensemble des patients d'Alsace, \Sexpr{p2}\% quittent les urgences en moins de quatre heures.
+
+
+\section*{Selon l'orientation}
+<<duree_orientation,echo=FALSE>>=
+tapply(sel$p,sel$ORIENTATION,mean,na.rm=TRUE)
+
+#'@details on transdorme les NA en DOM pour mesurer le temps moyen si retour à domicile. On fait l'hypothèse que NA = dom.
+# sel$DESTINATION<-as.character(sel$DESTINATION)
+# sel$DESTINATION[is.na(sel$DESTINATION)]<-"DOM"
+# tapply(sel$p,sel$DESTINATION,mean,na.rm=TRUE)
+
+#
+# pour tout le groupe
+#
+# durée d'attente moyenne selon l'orientation
+
+# tapply(d1$presence,d1$ORIENTATION,mean,na.rm=TRUE)
+
+#'@details on transdorme les NA en DOM pour mesurer le temps moyen si retour à domicile. On fait l'hypothèse que NA = dom.
+# d1$DESTINATION<-as.character(d1$DESTINATION)
+# d1$DESTINATION[is.na(d1$DESTINATION)]<-"DOM"
+# tapply(d1$presence,d1$DESTINATION,mean,na.rm=TRUE)
+# boxplot(d1$presence ~ d1$DESTINATION,outline=F,main="Durée de passage selon la destination",ylab="Durée de passage (mn)")
+@
+
+
+\section*{Selon la gravité}
+<<duree_gravite,echo=FALSE>>=
+tapply(sel$p,sel$GRAVITE,mean,na.rm=TRUE)
+
+# pour tout le groupe
+# tapply(d1$presence,d1$GRAVITE,mean,na.rm=TRUE)
+# boxplot(d1$presence ~ d1$GRAVITE,,outline=F,main="Durée de présence selon la gravité",ylab="durée de présence",xlab="Gravité en unités CCMU")
+@
+
+\section*{Selon la structure}
+\subsection{CH Sélestat}
+<<duree_structure,echo=FALSE>>=
+summary(sel$p)
+@

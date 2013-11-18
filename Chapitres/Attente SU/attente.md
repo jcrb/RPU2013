@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Wed Nov 13 20:47:06 2013"
+## [1] "Fri Nov 15 18:48:22 2013"
 ```
 
 Variables globales:
