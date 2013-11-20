@@ -1,5 +1,8 @@
 % rpu.Rnw
 
+\index{RPU}
+\index{Résumé du passage aux urgences}
+
 La création du résumé des passages aux urgences (RPU) remonte à 2002 \cite{11}. Sur la base d'un projet pilote mené par l'ORUMIP, la DHOS, à l'initiative de son directeur Edouard Couty, lance sur la base du volontariat, la collecte des RPU.
 
 \section*{RPU}
