@@ -23,132 +23,7 @@ Les données en Lambert93 peuvent être converties en WGS84 et réciproquement p
 
 teléchargements: http://www.ign.fr/institut/actualites/open-data-donnees-lign-disponibles-licence-etalab
 
-Notes sur les populations
-=========================
-- utilisation du recensement 2010
-- dossier stat Resural/carto&pop.rmd
-  - pop67.rda
-  - pop68.rda
-- source INSEE
-  - http://www.insee.fr/fr/ppp/bases-de-donnees/recensement/populations-legales/france-regions.asp?annee=2010
-   - http://www.insee.fr/fr/ppp/bases-de-donnees/recensement/populations-legales/france
--departements.asp?annee=2010 (fichier excel)
-  - http://www.insee.fr/fr/ppp/bases-de-donnees/recensement/populations-legales/departement.asp?dep=67&annee=2010
-  - http://www.insee.fr/fr/ppp/bases-de-donnees/recensement/populations-legales/departement.asp?dep=68&annee=2010
-  - Liste des cantons, communes, arrondissements, pays: http://www.insee.fr/fr/methodes/nomenclatures/cog/telechargement.asp
-  
-  - Le fichier **BTT_TD_POP1B_2010.txt** dans le dossier *OpenData* contient les données du dernier recensement de la population (2010) par tranche d'age de 1 an, sexe et commune.Le source INSEE se trouve à la page *Accueil>Thèmes>Population>Évolution e...>Population et lieu de résidence antérieure - 2010 (Bases tableaux détaillés)* du site de l'Insee à l'adresse http://www.insee.fr/fr/themes/detail.asp?reg_id=99&ref_id=td-population-10
 
-Le fichier *BTT_TD_POP1B_2010.txt* est une matrice de plus de 5 millions de lignes et 7 colonne. On en extrait les données propres à l'Alsace sous la forme de 3 fichiers:
-- newPop67 pour le bas-Rhin
-- newPop68 pour le haut-Rhin
-- newPopAlsace pour la région
-
-
-```r
-file <- "~/Documents/Open Data/Population 2008/BTT_TD_POP1B_2010.txt"
-doc <- read.table(file, header = TRUE, sep = ";")
-head(doc)
-```
-
-  NIVEAU CODGEO REG DEP C_AGED10 C_SEXE         NB
-1    ARM  13201  93  13        0      1 306,366992
-2    ARM  13201  93  13        0      2 254,458782
-3    ARM  13201  93  13        1      1 312,109492
-4    ARM  13201  93  13        1      2 269,472118
-5    ARM  13201  93  13        2      1 246,121158
-6    ARM  13201  93  13        2      2 262,231821
-
-```r
-str(doc)
-```
-
-'data.frame':	5255519 obs. of  7 variables:
- $ NIVEAU  : Factor w/ 2 levels "ARM","COM": 1 1 1 1 1 1 1 1 1 1 ...
- $ CODGEO  : Factor w/ 36722 levels "01001","01002",..: 4524 4524 4524 4524 4524 4524 4524 4524 4524 4524 ...
- $ REG     : int  93 93 93 93 93 93 93 93 93 93 ...
- $ DEP     : Factor w/ 100 levels "01","02","03",..: 13 13 13 13 13 13 13 13 13 13 ...
- $ C_AGED10: int  0 0 1 1 2 2 3 3 4 4 ...
- $ C_SEXE  : int  1 2 1 2 1 2 1 2 1 2 ...
- $ NB      : Factor w/ 788519 levels "0,302373","0,332376",..: 422726 353257 430875 369773 343175 361967 389945 381695 375561 377398 ...
-
-```r
-# population du bas-Rhin
-newPop67 <- doc[as.character(doc$CODGEO) > "66999" & as.character(doc$CODGEO) < 
-    "68000", ]
-# remplacement de la virgule par le point décimal
-newPop67$NB <- as.numeric(gsub(",", ".", newPop67$NB, fixed = TRUE))
-sum(newPop68$NB)
-```
-
-```
-## Error: objet 'newPop68' introuvable
-```
-
-```r
-# idem pour les autres
-newPop68 <- doc[as.character(doc$CODGEO) > "67999" & as.character(doc$CODGEO) < 
-    "69000", ]
-newPop68$NB <- as.numeric(gsub(",", ".", newPop68$NB, fixed = TRUE))
-sum(newPop68$NB)
-```
-
-[1] 749782
-
-```r
-newPopAlsace <- rbind(newPop67, newPop68)
-sum(newpopAlsace)
-```
-
-```
-## Error: objet 'newpopAlsace' introuvable
-```
-
-```r
-# ménage
-rm(doc)
-# Sauvegarde
-
-# Création des classes d'age
-newPopAlsace$age <- cut(newPopAlsace$C_AGED10, breaks = c(-1, 1, 15, 75, 85, 
-    110), labels = c("Moins de 1 an", "De 1 à 15 ans", "De 15 à 75 ans", "de 75 à 85 ans", 
-    "Plus de 85 ans"))
-a <- tapply(as.numeric(newPopAlsace$NB), newPopAlsace$age, sum)
-sum(a)
-```
-
-[1] 1845687
-
-```r
-pop0 <- a[1]
-pop1_75 <- a[2] + a[3]
-pop75 <- a[4] + a[5]
-a <- data.frame(c("Moins de 1 an", "De 1 à 75 ans", "Plus de 75 ans", "Total"), 
-    c("pop0", "pop1_75", "pop75", "pop_tot"), c(pop0, pop1_75, pop75, 0))
-names(a) <- c("Tranche d'age", "Abréviation", "Effectif")
-a$Pourcentage <- round(a$Effectif * 100/sum(a$Effectif), 2)
-a[4, 3] <- sum(a$Effectif)
-
-xtable(a)
-```
-
-```
-## Error: impossible de trouver la fonction "xtable"
-```
-
-
-  
-- population légale 2010: 
-  - Alsace   1 845 687
-
-N°  |  Département  |  nb.communes  |  Pop.municipale  |  Pop.totale
-----|---------------|---------------|------------------|-------------
-67 |  Bas-Rhin |  527 |  1 095 905 | 1 115 226 
-68 |	Haut-Rhin | 377  | 749 782 | 765 634 
-pop.als.2010.totale<-1115226 + 765634
-pop.als.2010.municipale<-1095905 + 749782
-pop.67.2010.municipale<-1095905
-pop.68.2010.municipale<-749782
 
 Fichier ville de la base *pma*
 ------------------------------
@@ -261,34 +136,71 @@ base1 et base2 sont fusionné en un seul fichier *base*, puis supprimés.
 
 ```r
 load("~/Documents/Resural/Stat Resural/carto&pop/pop68.rda")
+```
+
+```
+## Warning: impossible d'ouvrir le fichier compressé
+## '/home/jcb/Documents/Resural/Stat Resural/carto&pop/pop68.rda', cause
+## probable : 'Aucun fichier ou dossier de ce type'
+```
+
+```
+## Error: impossible d'ouvrir la connexion
+```
+
+```r
 load("~/Documents/Resural/Stat Resural/carto&pop/pop67.rda")
+```
+
+```
+## Warning: impossible d'ouvrir le fichier compressé
+## '/home/jcb/Documents/Resural/Stat Resural/carto&pop/pop67.rda', cause
+## probable : 'Aucun fichier ou dossier de ce type'
+```
+
+```
+## Error: impossible d'ouvrir la connexion
+```
+
+```r
 base1 <- merge(va, pop67, by.x = "ville_insee", by.y = "insee")
+```
+
+```
+## Error: objet 'pop67' introuvable
+```
+
+```r
 base2 <- merge(va, pop68, by.x = "ville_insee", by.y = "insee")
+```
+
+```
+## Error: objet 'pop68' introuvable
+```
+
+```r
 base <- rbind(base1, base2)
+```
+
+```
+## Error: objet 'base1' introuvable
+```
+
+```r
 names(base)
 ```
 
 ```
-##  [1] "ville_insee"               "ville_ID"                 
-##  [3] "ville_nom"                 "ville_zip"                
-##  [5] "ville_lambertX"            "ville_lambertY"           
-##  [7] "departement_ID"            "region_ID"                
-##  [9] "zone_ID"                   "pays_ID"                  
-## [11] "ville_longitude"           "ville_latitude"           
-## [13] "canton_ID"                 "arrondissement_ID"        
-## [15] "admin_ID"                  "territoire_sante"         
-## [17] "secteur_apa_ID"            "secteur_Smur_ID"          
-## [19] "secteur_Adps_ID"           "secteur_Vsav_ID"          
-## [21] "zone_proximite"            "Code.région"              
-## [23] "Nom.de.la.région"          "Code.département"         
-## [25] "Code.arrondissement"       "Code.canton"              
-## [27] "Code.commune"              "Nom.de.la.commune"        
-## [29] "Population.municipale"     "Population.comptée.à.part"
-## [31] "Population.totale"
+## Error: objet 'base' introuvable
 ```
 
 ```r
 rm(base1, base2)
+```
+
+```
+## Warning: objet 'base1' introuvable
+## Warning: objet 'base2' introuvable
 ```
 
 Note: le résultat pourrait être simplifié car des colonnes sont redondantes;
@@ -297,30 +209,92 @@ Communes où la zone de proximité est manquante:
 
 ```r
 a <- base[base$zone_proximite == 0, c(1, 3)]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 a
 ```
 
 ```
-## [1] ville_insee ville_nom  
-## <0 rows> (or 0-length row.names)
+##      ville_ID             ville_nom ville_insee
+## 145       161               Rouffac          NA
+## 151       168         Bad Krozingen          NA
+## 154       171              Breisach          NA
+## 1044     1061              AVENHEIM       67015
+## 1045     1062            BEHLENHEIM       67024
+## 1046     1063            BIRLENBACH       67042
+## 1047     1064  BISCHTROFF-SUR-SARRE       67376
+## 1049     1066           BREMMELBACH       67064
+## 1050     1067       EBERBACH-WOERTH       67114
+## 1051     1068              GIMBRETT       67157
+## 1052     1069             GRIESBACH       67170
+## 1053     1070 GRIESBACH-LE-BASTBERG       67171
+## 1054     1071         HERMERSWILLER       67193
+## 1055     1072             HOHWILLER       67211
+## 1056     1073              IMBSHEIM       67219
+## 1057     1074      KLEINFRANKENHEIM       67243
+## 1058     1075            KUHLENDORF       67251
+## 1059     1076         LEITERSWILLER       67262
+## 1060     1077             MATTSTALL       67284
+## 1061     1078            MITSCHDORF       67294
 ```
 
 corrections:
 
 ```r
 base$zone_proximite[53] <- 3
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 base$territoire_sante[53] <- 1
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 
 base$zone_proximite[572] <- 1
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 base$territoire_sante[572] <- 4
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 
 base$zone_proximite[57] <- 3
+```
+
+```
+## Error: objet 'base' introuvable
 ```
 
 #### Sauvegarde de *base*:
 
 ```r
 save(base, file = "base.Rda")
+```
+
+```
+## Error: objet 'base' introuvable
 ```
 
 load("base.Rda")
@@ -364,30 +338,58 @@ source: http://www.insee.fr/fr/methodes/default.asp?page=definitions/popul-compt
 
 ```r
 n <- sum(base$Population.totale)
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 n
 ```
 
 ```
-## [1] 1900810
+## Error: objet 'n' introuvable
 ```
 
 ```r
 pop.tot <- sum(base$Population.totale)
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 pop.municipale <- sum(base$Population.municipale)
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 pop.municipale
 ```
 
 ```
-## [1] 1865289
+## Error: objet 'pop.municipale' introuvable
 ```
 
 ```r
 pop.a.part <- sum(base$Population.comptée.à.part)
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 pop.a.part
 ```
 
 ```
-## [1] 35521
+## Error: objet 'pop.a.part' introuvable
 ```
 
 Pour les raisons expliquées plus haut, les calculs statistiques font référence à la population **municipale**.
@@ -405,68 +407,67 @@ no_tp <- c(11, 7, 8, 2, 5, 10, 6, 12, 3, 4, 9, 1)
 
 effectif <- tapply(base$Population.municipale, as.factor(base$zone_proximite), 
     sum, na.rm = TRUE)
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 # on élimine la colonne 0 qui ne contient que NA effectif<-effectif[-1]
 effectif
 ```
 
 ```
-##      1      2      3      4      5      6      7      8      9     10 
-##  68591 196848  79628 194649  88811 257351 161331  94315 113804 485884 
-##     11     12 
-##  67191  56886
+## Error: objet 'effectif' introuvable
 ```
 
 ```r
 names(effectif) <- territoire.prox
+```
+
+```
+## Error: objet 'effectif' introuvable
+```
+
+```r
 effectif
 ```
 
 ```
-##           Altkirch             Colmar         Guebwiller 
-##              68591             196848              79628 
-##           Haguenau Molsheim-Schirmeck           Mulhouse 
-##             194649              88811             257351 
-##   Sélestat-Obernai        Saint-Louis            Saverne 
-##             161331              94315             113804 
-##         Strasbourg              Thann        Wissembourg 
-##             485884              67191              56886
+## Error: objet 'effectif' introuvable
 ```
 
 ```r
 pourcentage <- round(prop.table(effectif) * 100, 2)
+```
+
+```
+## Error: objet 'effectif' introuvable
+```
+
+```r
 pourcentage
 ```
 
 ```
-##           Altkirch             Colmar         Guebwiller 
-##               3.68              10.55               4.27 
-##           Haguenau Molsheim-Schirmeck           Mulhouse 
-##              10.44               4.76              13.80 
-##   Sélestat-Obernai        Saint-Louis            Saverne 
-##               8.65               5.06               6.10 
-##         Strasbourg              Thann        Wissembourg 
-##              26.05               3.60               3.05
+## Error: objet 'pourcentage' introuvable
 ```
 
 ```r
 c <- cbind(no_tp, effectif, pourcentage)
+```
+
+```
+## Error: objet 'effectif' introuvable
+```
+
+```r
 c
 ```
 
 ```
-##                    no_tp effectif pourcentage
-## Altkirch              11    68591        3.68
-## Colmar                 7   196848       10.55
-## Guebwiller             8    79628        4.27
-## Haguenau               2   194649       10.44
-## Molsheim-Schirmeck     5    88811        4.76
-## Mulhouse              10   257351       13.80
-## Sélestat-Obernai       6   161331        8.65
-## Saint-Louis           12    94315        5.06
-## Saverne                3   113804        6.10
-## Strasbourg             4   485884       26.05
-## Thann                  9    67191        3.60
-## Wissembourg            1    56886        3.05
+## function (..., recursive = FALSE)  .Primitive("c")
 ```
 
 ```r
@@ -476,7 +477,9 @@ barplot(sort(effectif), cex.names = 0.8, xlab = "", las = 2, ylab = "Effectifs",
     main = "Répartition de la population par territoire de proximité")
 ```
 
-![plot of chunk pop_t_proximite](figure/pop_t_proximite1.png) 
+```
+## Error: objet 'effectif' introuvable
+```
 
 ```r
 
@@ -484,7 +487,9 @@ barplot(sort(pourcentage), cex.names = 0.8, las = 2, xlab = "", ylab = "% de la 
     main = "Répartition de la population par territoire de proximité")
 ```
 
-![plot of chunk pop_t_proximite](figure/pop_t_proximite2.png) 
+```
+## Error: objet 'pourcentage' introuvable
+```
 
 Commentaires:
 - le territoire  de proximité de Strasbourg est le plus important et regroupe plus du quart de la population alsacienne
@@ -498,24 +503,44 @@ On fait la liste de tous les codes INSEE de la zone de proximité1:
 
 ```r
 zip1 <- base$ville_insee[base$zone_proximite == 1]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 head(zip1)
 ```
 
 ```
-## [1] 68002 68004 68006 68010 68017 68018
+## Error: objet 'zip1' introuvable
 ```
 
 Puis on fait la liste des villes correspondant à ces codes:
 
 ```r
 b <- paste(zip1, sep = ",")
+```
+
+```
+## Error: objet 'zip1' introuvable
+```
+
+```r
 a <- base$ville_nom[base$ville_insee %in% b]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 a[1:5]
 ```
 
 ```
-## [1] ALTENACH     ALTKIRCH     AMMERZWILLER ASPACH       BALLERSDORF 
-## 1246 Levels:  Aachen Aargau Aberdeen ACHENHEIM Achern ADAMSWILLER ... Zurich (Suisse)
+## Error: undefined columns selected
 ```
 
 essai de carto associée:
@@ -527,7 +552,10 @@ library("maptools")
 ```
 
 ```
+## Loading required package: foreign
 ## Loading required package: sp
+## Loading required package: grid
+## Loading required package: lattice
 ## Checking rgeos availability: FALSE
 ##  	Note: when rgeos is not available, polygon geometry 	computations in maptools depend on gpclib,
 ##  	which has a restricted licence. It is disabled by default;
@@ -536,6 +564,16 @@ library("maptools")
 
 ```r
 load("/home/jcb/Documents/Resural/Stat Resural/carto&pop/carto_alsace.rda")
+```
+
+```
+## Warning: impossible d'ouvrir le fichier compressé
+## '/home/jcb/Documents/Resural/Stat Resural/carto&pop/carto_alsace.rda',
+## cause probable : 'Aucun fichier ou dossier de ce type'
+```
+
+```
+## Error: impossible d'ouvrir la connexion
 ```
 
 L'objet *als* se compose de deux parties principales:
@@ -547,19 +585,35 @@ names(als)
 ```
 
 ```
-##  [1] "ID_GEOFLA"  "CODE_COMM"  "INSEE_COM"  "NOM_COMM"   "STATUT"    
-##  [6] "X_CHF_LIEU" "Y_CHF_LIEU" "X_CENTROID" "Y_CENTROID" "Z_MOYEN"   
-## [11] "SUPERFICIE" "POPULATION" "CODE_CANT"  "CODE_ARR"   "CODE_DEPT" 
-## [16] "NOM_DEPT"   "CODE_REG"   "NOM_REGION"
+## Error: objet 'als' introuvable
 ```
 
 Les colonnes *CODE_ARR* et *CODE_CANT* sont numérotés de la même façon pour les deux départements ce qui induit des erreurs lors du tracé des arrondissements et des canton. Il est donc nécessaire de les renuméroter:
 
 ```r
 a <- paste(als@data$CODE_DEPT, als@data$CODE_ARR, sep = "")
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 als@data$CODE_ARR <- as.factor(a)
+```
+
+```
+## Error: 'x' must be atomic for 'sort.list'
+## Have you called 'sort' on a list?
+```
+
+```r
 als@data$CODE_CANT <- as.factor(paste(als@data$CODE_DEPT, als@data$CODE_CANT, 
     sep = ""))
+```
+
+```
+## Error: objet 'als' introuvable
 ```
 
 Puis de tracer la carte en sélectionnant la zone à afficher dans la variable *IDs*. D'une manière générale on peut ajouter des colonnes supplémentaires dans le dataframe de l'objet spatial (a@data$ma_variable) puis de créer une carte en fonction de cette variable.
@@ -569,7 +623,7 @@ contour3 <- unionSpatialPolygons(als, IDs = als@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'als' introuvable
 ```
 
 ```r
@@ -610,7 +664,7 @@ contour <- unionSpatialPolygons(als, IDs = als@data$CODE_ARR)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'als' introuvable
 ```
 
 ```r
@@ -635,7 +689,7 @@ contour2 <- unionSpatialPolygons(als, IDs = als@data$CODE_CANT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'als' introuvable
 ```
 
 ```r
@@ -903,12 +957,26 @@ Contour de la zone de proximié n°1
 ```r
 library("maptools")
 b <- paste(zip1, sep = ",")
+```
+
+```
+## Error: objet 'zip1' introuvable
+```
+
+```r
 a <- base$ville_nom[base$ville_insee %in% b]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 contour <- unionSpatialPolygons(als, IDs = als@data$INSEE_COM %in% b)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'als' introuvable
 ```
 
 ```r
@@ -925,12 +993,35 @@ Contour de la zone de proximié n°1 (seule)
 ```r
 
 b <- paste(zip1, sep = ",")
+```
+
+```
+## Error: objet 'zip1' introuvable
+```
+
+```r
 a <- base$ville_nom[base$ville_insee %in% b]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 zp1 <- als[als@data$INSEE_COM %in% b, ]
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 plot(zp1)
 ```
 
-![plot of chunk zp1_exemple](figure/zp1_exemple.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp1' introuvable
+```
 
 *zp1* est également un *SpatialPolygonsDataFrame* qui contient les mêmes éléments que l'élément racine:
 
@@ -939,10 +1030,7 @@ names(zp1)
 ```
 
 ```
-##  [1] "ID_GEOFLA"  "CODE_COMM"  "INSEE_COM"  "NOM_COMM"   "STATUT"    
-##  [6] "X_CHF_LIEU" "Y_CHF_LIEU" "X_CENTROID" "Y_CENTROID" "Z_MOYEN"   
-## [11] "SUPERFICIE" "POPULATION" "CODE_CANT"  "CODE_ARR"   "CODE_DEPT" 
-## [16] "NOM_DEPT"   "CODE_REG"   "NOM_REGION"
+## Error: objet 'zp1' introuvable
 ```
 
 On peut donc lui appliquer les mêmes fonctions. Par exemple on peut tracer une figure qui représente les contours de la zone de proximité:
@@ -952,7 +1040,7 @@ contour <- unionSpatialPolygons(zp1, IDs = zp1@data$CODE_ARR)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp1' introuvable
 ```
 
 ```r
@@ -980,7 +1068,7 @@ plot(zp1, add = T)
 ```
 
 ```
-## Error: plot.new has not been called yet
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp1' introuvable
 ```
 
 modifier l'aspect:
@@ -997,7 +1085,9 @@ exemple:
 plot(zp1, axes = T)
 ```
 
-![plot of chunk bordure](figure/bordure.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp1' introuvable
+```
 
 ```r
 plot(contour, axes = T, lty = 1, lwd = 2, fg = "blue", border = "red", add = T)
@@ -1014,55 +1104,50 @@ summary(zp1$STATUT)
 ```
 
 ```
-##         Capitale d'\xe9tat           Chef-lieu canton 
-##                          0                          3 
-##             Commune simple              Pr\xe9fecture 
-##                        107                          0 
-## Pr\xe9fecture de r\xe9gion         Sous-pr\xe9fecture 
-##                          0                          1
+## Error: erreur d'évaluation de l'argument 'object' lors de la sélection d'une méthode pour la fonction 'summary' : Erreur : objet 'zp1' introuvable
 ```
 
 Avec la fonction *gsub*, on remplace les caractères anormaux par *e*:
 
 ```r
 zp1$STATUT <- gsub("\xe9", "e", zp1$STATUT, fixed = F)
+```
+
+```
+## Error: objet 'zp1' introuvable
+```
+
+```r
 summary(as.factor(zp1$STATUT))
 ```
 
 ```
-## Chef-lieu canton   Commune simple  Sous-prefecture 
-##                3              107                1
+## Error: erreur d'évaluation de l'argument 'object' lors de la sélection d'une méthode pour la fonction 'summary' : Erreur dans is.factor(x) : objet 'zp1' introuvable
+## Calls: as.factor -> is.factor
 ```
 
 Il est alorspossible de récupérer les coordonées de la sous-préfecture. Il faut d'abord récupérer le dataframe associé à zp1. NB il faut multiplier les coordonnées x et y par 100 pour être cohérent avec la carte. pch = 19 désigne le symbole rond plein.
 
 ```r
 a <- zp1@data
+```
+
+```
+## Error: objet 'zp1' introuvable
+```
+
+```r
 head(a)
 ```
 
 ```
-##      ID_GEOFLA CODE_COMM INSEE_COM      NOM_COMM         STATUT X_CHF_LIEU
-## 180        181       152     68152      ILLFURTH Commune simple      10198
-## 2375      2376       282     68282       ROMAGNY Commune simple      10053
-## 3175      3176       196     68196         MAGNY Commune simple      10044
-## 4413      4414       176     68176     LARGITZEN Commune simple      10146
-## 4640      4641       080     68080      EMLINGEN Commune simple      10221
-## 6686      6687       081     68081 SAINT-BERNARD Commune simple      10151
-##      Y_CHF_LIEU X_CENTROID Y_CENTROID Z_MOYEN SUPERFICIE POPULATION
-## 180       67388      10199      67392     299        909        2.3
-## 2375      67310      10054      67313     360        289        0.2
-## 3175      67305      10039      67306     361        427        0.3
-## 4413      67263      10151      67262     404        571        0.3
-## 4640      67335      10221      67340     326        243        0.3
-## 6686      67384      10153      67378     281        601        0.5
-##      CODE_CANT CODE_ARR CODE_DEPT  NOM_DEPT CODE_REG NOM_REGION
-## 180       6801      681        68 HAUT-RHIN       42     ALSACE
-## 2375      6805      681        68 HAUT-RHIN       42     ALSACE
-## 3175      6805      681        68 HAUT-RHIN       42     ALSACE
-## 4413      6810      681        68 HAUT-RHIN       42     ALSACE
-## 4640      6801      681        68 HAUT-RHIN       42     ALSACE
-## 6686      6801      681        68 HAUT-RHIN       42     ALSACE
+##   id     name
+## 1  1    annie
+## 2  2    bruno
+## 3  3  charles
+## 4  4    denis
+## 5  5   émilie
+## 6  6 francine
 ```
 
 ```r
@@ -1072,12 +1157,8 @@ sp
 ```
 
 ```
-##       ID_GEOFLA CODE_COMM INSEE_COM NOM_COMM          STATUT X_CHF_LIEU
-## 12326     12327       004     68004 ALTKIRCH Sous-prefecture      10182
-##       Y_CHF_LIEU X_CENTROID Y_CENTROID Z_MOYEN SUPERFICIE POPULATION
-## 12326      67332      10186      67330     332        953        5.7
-##       CODE_CANT CODE_ARR CODE_DEPT  NOM_DEPT CODE_REG NOM_REGION
-## 12326      6801      681        68 HAUT-RHIN       42     ALSACE
+## [1] id   name
+## <0 rows> (or 0-length row.names)
 ```
 
 ```r
@@ -1179,36 +1260,86 @@ Crée un objet *zone de proximité 2*, en dessine le contour ainsi que le chef l
 zpo <- read.csv("~/Documents/Resural/Stat Resural/RPU2013/cartograhie/data/zp.csv", 
     header = TRUE, sep = ",")
 base1 <- merge(zpo, pop67, by.x = "CODE.COMMUNE", by.y = "insee")
+```
+
+```
+## Error: objet 'pop67' introuvable
+```
+
+```r
 base2 <- merge(zpo, pop68, by.x = "CODE.COMMUNE", by.y = "insee")
+```
+
+```
+## Error: objet 'pop68' introuvable
+```
+
+```r
 base <- rbind(base1, base2)
+```
+
+```
+## Error: objet 'base1' introuvable
+```
+
+```r
 rm(base1, base2)
+```
+
+```
+## Warning: objet 'base1' introuvable
+## Warning: objet 'base2' introuvable
+```
+
+```r
 names(base)
 ```
 
 ```
-##  [1] "CODE.COMMUNE"                     "CODE.DEP"                        
-##  [3] "LIBELLE.DES.COMMUNES"             "LIBELLE.DES.TERRITOIRES.DE.SANTE"
-##  [5] "CODE.ZONES.DE.PROXIMITE"          "LIBELLE.DES.ZONES.DE.PROXIMITE"  
-##  [7] "Code.région"                      "Nom.de.la.région"                
-##  [9] "Code.département"                 "Code.arrondissement"             
-## [11] "Code.canton"                      "Code.commune"                    
-## [13] "Nom.de.la.commune"                "Population.municipale"           
-## [15] "Population.comptée.à.part"        "Population.totale"
+## Error: objet 'base' introuvable
 ```
 
 ```r
 
 # spécifique de la zone de proximité 2
 zip2 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 2]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 b <- paste(zip2, sep = ",")
+```
+
+```
+## Error: objet 'zip2' introuvable
+```
+
+```r
 zp2 <- als[als@data$INSEE_COM %in% b, ]
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 plot(zp2)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp2' introuvable
+```
+
+```r
 
 contour2 <- unionSpatialPolygons(zp2, IDs = zp2@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp2' introuvable
 ```
 
 ```r
@@ -1230,28 +1361,84 @@ save(contour2, file = "ZPHag.Rda")
 ```r
 
 zp2$STATUT <- gsub("\xe9", "e", zp2$STATUT, fixed = F)
+```
+
+```
+## Error: objet 'zp2' introuvable
+```
+
+```r
 a <- zp2@data
+```
+
+```
+## Error: objet 'zp2' introuvable
+```
+
+```r
 sp <- a[a$STATUT == "Sous-prefecture", ]
+```
+
+```
+## Error: $ operator is invalid for atomic vectors
+```
+
+```r
 x <- sp$X_CHF_LIEU * 100
 y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 3)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 3)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 
 # positionnement du CH Haguenau
 x <- 1050806.723
 y <- 6865868.72
 nom <- "CH Haguenau"
 points(x, y, pch = 19, col = "red")
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 3)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 
 library("pixmap")
+```
+
+```
+## Error: there is no package called 'pixmap'
+```
+
+```r
 img <- "../../Fichiers source/logos/hop11.pnm"
 hop <- read.pnm(img)
 ```
 
 ```
-## Warning: 'x' is NULL so the result will be NULL
+## Error: impossible de trouver la fonction "read.pnm"
 ```
 
 ```r
@@ -1268,7 +1455,9 @@ y <- 2.5
 addlogo(hop, px = c(x, x + 0.5), py = c(y, y + 0.5), asp = 1)
 ```
 
-![plot of chunk zp2_haguenau](figure/zp2_haguenau.png) 
+```
+## Error: impossible de trouver la fonction "addlogo"
+```
 
 ```r
 # plot(hop, add = TRUE)
@@ -1277,15 +1466,7 @@ str(hop)
 ```
 
 ```
-## Formal class 'pixmapRGB' [package "pixmap"] with 8 slots
-##   ..@ red     : num [1:32, 1:32] 1 1 1 1 1 1 1 1 1 1 ...
-##   ..@ green   : num [1:32, 1:32] 1 1 1 1 1 1 1 1 1 1 ...
-##   ..@ blue    : num [1:32, 1:32] 1 1 1 1 1 1 1 1 1 1 ...
-##   ..@ channels: chr [1:3] "red" "green" "blue"
-##   ..@ size    : int [1:2] 32 32
-##   ..@ cellres : num [1:2] 1 1
-##   ..@ bbox    : num [1:4] 0 0 32 32
-##   ..@ bbcent  : logi FALSE
+## Error: objet 'hop' introuvable
 ```
 
 ```r
@@ -1303,18 +1484,32 @@ usr
 ```
 
 ```
-## [1] 1026818 1077327 6849387 6894634
+## [1] 0 1 0 1
 ```
 
 ```r
 
 x.asp <- (hop@size[2] * (usr[2] - usr[1])/pin[1])
+```
+
+```
+## Error: objet 'hop' introuvable
+```
+
+```r
 y.asp <- (hop@size[1] * (usr[4] - usr[3])/pin[2])
+```
+
+```
+## Error: objet 'hop' introuvable
+```
+
+```r
 x.asp
 ```
 
 ```
-## [1] 280602
+## Error: objet 'x.asp' introuvable
 ```
 
 ```r
@@ -1322,7 +1517,7 @@ y.asp
 ```
 
 ```
-## [1] 280602
+## Error: objet 'y.asp' introuvable
 ```
 
 Zone de proximité 3 (Saverne)
@@ -1331,15 +1526,43 @@ Zone de proximité 3 (Saverne)
 
 ```r
 zip3 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 3]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 b <- paste(zip3, sep = ",")
+```
+
+```
+## Error: objet 'zip3' introuvable
+```
+
+```r
 zp3 <- als[als@data$INSEE_COM %in% b, ]
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 plot(zp3)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp3' introuvable
+```
+
+```r
 
 contour3 <- unionSpatialPolygons(zp3, IDs = zp3@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp3' introuvable
 ```
 
 ```r
@@ -1353,16 +1576,46 @@ plot(contour3)
 ```r
 
 zp3$STATUT <- gsub("\xe9", "e", zp3$STATUT, fixed = F)
+```
+
+```
+## Error: objet 'zp3' introuvable
+```
+
+```r
 a <- zp3@data
+```
+
+```
+## Error: objet 'zp3' introuvable
+```
+
+```r
 sp <- a[a$STATUT == "Sous-prefecture", ]
+```
+
+```
+## Error: $ operator is invalid for atomic vectors
+```
+
+```r
 x <- sp$X_CHF_LIEU * 100
 y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 3)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 3)
 ```
 
-![plot of chunk zp3_saverne](figure/zp3_saverne.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 plot(contour2, add = T)
@@ -1378,15 +1631,43 @@ Zone de proximité 4
 
 ```r
 zip4 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 4]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 b <- paste(zip4, sep = ",")
+```
+
+```
+## Error: objet 'zip4' introuvable
+```
+
+```r
 zp4 <- als[als@data$INSEE_COM %in% b, ]
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 plot(zp4)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp4' introuvable
+```
+
+```r
 
 contour4 <- unionSpatialPolygons(zp4, IDs = zp4@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp4' introuvable
 ```
 
 ```r
@@ -1400,16 +1681,46 @@ plot(contour4)
 ```r
 
 zp4$STATUT <- gsub("\xe9", "e", zp4$STATUT, fixed = F)
+```
+
+```
+## Error: objet 'zp4' introuvable
+```
+
+```r
 a <- zp4@data
+```
+
+```
+## Error: objet 'zp4' introuvable
+```
+
+```r
 sp <- a[a$STATUT == "Prefecture de region", ]
+```
+
+```
+## Error: $ operator is invalid for atomic vectors
+```
+
+```r
 x <- sp$X_CHF_LIEU * 100
 y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 3)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 3)
 ```
 
-![plot of chunk zp4_strasbourg](figure/zp4_strasbourg.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 plot(contour4, add = T)
@@ -1426,15 +1737,43 @@ Zone de proximité 1 (Wissembourg)
 
 ```r
 zip1 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 1]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 b <- paste(zip1, sep = ",")
+```
+
+```
+## Error: objet 'zip1' introuvable
+```
+
+```r
 zp1 <- als[als@data$INSEE_COM %in% b, ]
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 plot(zp1)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp1' introuvable
+```
+
+```r
 
 contour1 <- unionSpatialPolygons(zp1, IDs = zp1@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp1' introuvable
 ```
 
 ```r
@@ -1448,16 +1787,46 @@ plot(contour1)
 ```r
 
 zp1$STATUT <- gsub("\xe9", "e", zp1$STATUT, fixed = F)
+```
+
+```
+## Error: objet 'zp1' introuvable
+```
+
+```r
 a <- zp1@data
+```
+
+```
+## Error: objet 'zp1' introuvable
+```
+
+```r
 sp <- a[a$STATUT == "Sous-prefecture", ]
+```
+
+```
+## Error: $ operator is invalid for atomic vectors
+```
+
+```r
 x <- sp$X_CHF_LIEU * 100
 y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 1)
 ```
 
-![plot of chunk zp1_wissembourg](figure/zp1_wissembourg.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 plot(contour1, add = T)
@@ -1473,15 +1842,43 @@ Zone de proximité 5 (Molsheim)
 
 ```r
 zip5 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 5]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 b <- paste(zip5, sep = ",")
+```
+
+```
+## Error: objet 'zip5' introuvable
+```
+
+```r
 zp5 <- als[als@data$INSEE_COM %in% b, ]
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 plot(zp5)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp5' introuvable
+```
+
+```r
 
 contour5 <- unionSpatialPolygons(zp5, IDs = zp5@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp5' introuvable
 ```
 
 ```r
@@ -1495,16 +1892,46 @@ plot(contour5)
 ```r
 
 zp5$STATUT <- gsub("\xe9", "e", zp5$STATUT, fixed = F)
+```
+
+```
+## Error: objet 'zp5' introuvable
+```
+
+```r
 a <- zp5@data
+```
+
+```
+## Error: objet 'zp5' introuvable
+```
+
+```r
 sp <- a[a$STATUT == "Sous-prefecture", ]
+```
+
+```
+## Error: $ operator is invalid for atomic vectors
+```
+
+```r
 x <- sp$X_CHF_LIEU * 100
 y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 1)
 ```
 
-![plot of chunk zp5_molsheim](figure/zp5_molsheim.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 plot(contour5, add = T)
@@ -1520,15 +1947,43 @@ Zone de proximité 6 (Selestat)
 
 ```r
 zip6 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 6]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 b <- paste(zip6, sep = ",")
+```
+
+```
+## Error: objet 'zip6' introuvable
+```
+
+```r
 zp6 <- als[als@data$INSEE_COM %in% b, ]
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 plot(zp6)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp6' introuvable
+```
+
+```r
 
 contour6 <- unionSpatialPolygons(zp6, IDs = zp6@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp6' introuvable
 ```
 
 ```r
@@ -1542,16 +1997,46 @@ plot(contour6)
 ```r
 
 zp6$STATUT <- gsub("\xe9", "e", zp6$STATUT, fixed = F)
+```
+
+```
+## Error: objet 'zp6' introuvable
+```
+
+```r
 a <- zp6@data
+```
+
+```
+## Error: objet 'zp6' introuvable
+```
+
+```r
 sp <- a[a$STATUT == "Sous-prefecture", ]
+```
+
+```
+## Error: $ operator is invalid for atomic vectors
+```
+
+```r
 x <- sp$X_CHF_LIEU * 100
 y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 1)
 ```
 
-![plot of chunk zp6_selestat](figure/zp6_selestat.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 plot(contour6, add = T)
@@ -1567,15 +2052,43 @@ Zone de proximité 7 (Colmar)
 
 ```r
 zip7 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 7]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 b <- paste(zip7, sep = ",")
+```
+
+```
+## Error: objet 'zip7' introuvable
+```
+
+```r
 zp7 <- als[als@data$INSEE_COM %in% b, ]
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 plot(zp7)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp7' introuvable
+```
+
+```r
 
 contour7 <- unionSpatialPolygons(zp7, IDs = zp7@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp7' introuvable
 ```
 
 ```r
@@ -1589,16 +2102,46 @@ plot(contour7)
 ```r
 
 zp7$STATUT <- gsub("\xe9", "e", zp7$STATUT, fixed = F)
+```
+
+```
+## Error: objet 'zp7' introuvable
+```
+
+```r
 a <- zp7@data
+```
+
+```
+## Error: objet 'zp7' introuvable
+```
+
+```r
 sp <- a[a$STATUT == "Prefecture", ]
+```
+
+```
+## Error: $ operator is invalid for atomic vectors
+```
+
+```r
 x <- sp$X_CHF_LIEU * 100
 y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 1)
 ```
 
-![plot of chunk zp7_colmar](figure/zp7_colmar.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 plot(contour7, add = T)
@@ -1614,15 +2157,43 @@ Zone de proximité 8 (Guebwiller)
 
 ```r
 zip8 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 8]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 b <- paste(zip8, sep = ",")
+```
+
+```
+## Error: objet 'zip8' introuvable
+```
+
+```r
 zp8 <- als[als@data$INSEE_COM %in% b, ]
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 plot(zp8)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp8' introuvable
+```
+
+```r
 
 contour8 <- unionSpatialPolygons(zp8, IDs = zp8@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp8' introuvable
 ```
 
 ```r
@@ -1636,16 +2207,46 @@ plot(contour8)
 ```r
 
 zp8$STATUT <- gsub("\xe9", "e", zp8$STATUT, fixed = F)
+```
+
+```
+## Error: objet 'zp8' introuvable
+```
+
+```r
 a <- zp8@data
+```
+
+```
+## Error: objet 'zp8' introuvable
+```
+
+```r
 sp <- a[a$STATUT == "Sous-prefecture", ]
+```
+
+```
+## Error: $ operator is invalid for atomic vectors
+```
+
+```r
 x <- sp$X_CHF_LIEU * 100
 y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 1)
 ```
 
-![plot of chunk zp8_guebwiller](figure/zp8_guebwiller.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 plot(contour8, add = T)
@@ -1661,15 +2262,43 @@ Zone de proximité 9 (Thann)
 
 ```r
 zip9 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 9]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 b <- paste(zip9, sep = ",")
+```
+
+```
+## Error: objet 'zip9' introuvable
+```
+
+```r
 zp9 <- als[als@data$INSEE_COM %in% b, ]
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 plot(zp9)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp9' introuvable
+```
+
+```r
 
 contour9 <- unionSpatialPolygons(zp9, IDs = zp9@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp9' introuvable
 ```
 
 ```r
@@ -1683,16 +2312,46 @@ plot(contour9)
 ```r
 
 zp9$STATUT <- gsub("\xe9", "e", zp9$STATUT, fixed = F)
+```
+
+```
+## Error: objet 'zp9' introuvable
+```
+
+```r
 a <- zp9@data
+```
+
+```
+## Error: objet 'zp9' introuvable
+```
+
+```r
 sp <- a[a$STATUT == "Sous-prefecture", ]
+```
+
+```
+## Error: $ operator is invalid for atomic vectors
+```
+
+```r
 x <- sp$X_CHF_LIEU * 100
 y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 1)
 ```
 
-![plot of chunk zp9_thann](figure/zp9_thann.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 plot(contour9, add = T)
@@ -1708,15 +2367,43 @@ Zone de proximité 10 (Mulhouse)
 
 ```r
 zip10 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 10]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 b <- paste(zip10, sep = ",")
+```
+
+```
+## Error: objet 'zip10' introuvable
+```
+
+```r
 zp10 <- als[als@data$INSEE_COM %in% b, ]
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 plot(zp10)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp10' introuvable
+```
+
+```r
 
 contour10 <- unionSpatialPolygons(zp10, IDs = zp10@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp10' introuvable
 ```
 
 ```r
@@ -1730,16 +2417,46 @@ plot(contour10)
 ```r
 
 zp10$STATUT <- gsub("\xe9", "e", zp10$STATUT, fixed = F)
+```
+
+```
+## Error: objet 'zp10' introuvable
+```
+
+```r
 a <- zp10@data
+```
+
+```
+## Error: objet 'zp10' introuvable
+```
+
+```r
 sp <- a[a$STATUT == "Sous-prefecture", ]
+```
+
+```
+## Error: $ operator is invalid for atomic vectors
+```
+
+```r
 x <- sp$X_CHF_LIEU * 100
 y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 1)
 ```
 
-![plot of chunk zp10_mulhouse](figure/zp10_mulhouse.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 plot(contour10, add = T)
@@ -1755,15 +2472,43 @@ Zone de proximité 11 (Altkirch)
 
 ```r
 zip11 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 11]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 b <- paste(zip11, sep = ",")
+```
+
+```
+## Error: objet 'zip11' introuvable
+```
+
+```r
 zp11 <- als[als@data$INSEE_COM %in% b, ]
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 plot(zp11)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp11' introuvable
+```
+
+```r
 
 contour11 <- unionSpatialPolygons(zp11, IDs = zp11@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp11' introuvable
 ```
 
 ```r
@@ -1777,16 +2522,46 @@ plot(contour11)
 ```r
 
 zp11$STATUT <- gsub("\xe9", "e", zp11$STATUT, fixed = F)
+```
+
+```
+## Error: objet 'zp11' introuvable
+```
+
+```r
 a <- zp11@data
+```
+
+```
+## Error: objet 'zp11' introuvable
+```
+
+```r
 sp <- a[a$STATUT == "Sous-prefecture", ]
+```
+
+```
+## Error: $ operator is invalid for atomic vectors
+```
+
+```r
 x <- sp$X_CHF_LIEU * 100
 y <- sp$Y_CHF_LIEU * 100
 nom <- sp$NOM_COMM
 points(x, y, pch = 19, col = 1)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 1)
 ```
 
-![plot of chunk zp11_altkirch](figure/zp11_altkirch.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 plot(contour11, add = T)
@@ -1802,15 +2577,43 @@ Zone de proximité 12
 
 ```r
 zip12 <- base$CODE.COMMUNE[base$CODE.ZONES.DE.PROXIMITE == 12]
+```
+
+```
+## Error: objet 'base' introuvable
+```
+
+```r
 b <- paste(zip12, sep = ",")
+```
+
+```
+## Error: objet 'zip12' introuvable
+```
+
+```r
 zp12 <- als[als@data$INSEE_COM %in% b, ]
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 plot(zp12)
+```
+
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp12' introuvable
+```
+
+```r
 
 contour12 <- unionSpatialPolygons(zp12, IDs = zp12@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp12' introuvable
 ```
 
 ```r
@@ -1824,16 +2627,46 @@ plot(contour12)
 ```r
 
 zp12$STATUT <- gsub("\xe9", "e", zp12$STATUT, fixed = F)
+```
+
+```
+## Error: objet 'zp12' introuvable
+```
+
+```r
 a <- zp12@data
+```
+
+```
+## Error: objet 'zp12' introuvable
+```
+
+```r
 b <- a[a$NOM_COMM == "SAINT-LOUIS", ]
+```
+
+```
+## Error: $ operator is invalid for atomic vectors
+```
+
+```r
 x <- b$X_CHF_LIEU * 100
 y <- b$Y_CHF_LIEU * 100
 nom <- b$NOM_COMM
 points(x, y, pch = 19, col = 1)
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```r
 text(x, y, labels = nom, cex = 0.8, pos = 2)
 ```
 
-![plot of chunk zp12_stLouis](figure/zp12_stLouis.png) 
+```
+## Error: plot.new has not been called yet
+```
 
 ```r
 plot(contour12, add = T)
@@ -1881,6 +2714,10 @@ s<-0;for(i in 1:12){szp<-als[base_als$zone_proximite==i,"SUPERFICIE"];s[i]<-sum(
 zpals <- merge(zpo, als, by.x = "CODE.COMMUNE", by.y = "INSEE_COM")
 ```
 
+```
+## Error: objet 'als' introuvable
+```
+
 en fait on obtient un simple dataframe et pas un spatialPolygon. Pour que celà fonctionne il faut merger uniquement les data:
 zpals<-als
 zpals@data<-merge(zpals@data,zpo,by.x="INSEE_COM",by.y="CODE.COMMUNE")
@@ -1897,13 +2734,36 @@ Here is how the code works. The match function inside aligns the columns so that
 
 ```r
 zpals <- als
+```
+
+```
+## Error: objet 'als' introuvable
+```
+
+```r
 zpals@data <- data.frame(zpals@data, zpo[match(zpals@data[, "INSEE_COM"], zpo[, 
     "CODE.COMMUNE"]), ])
+```
+
+```
+## Error: objet 'zpals' introuvable
+```
+
+```r
 zp <- zpals[zpals$CODE.ZONES.DE.PROXIMITE == 1, ]
+```
+
+```
+## Error: objet 'zpals' introuvable
+```
+
+```r
 plot(zp)
 ```
 
-![plot of chunk zpals](figure/zpals.png) 
+```
+## Error: erreur d'évaluation de l'argument 'x' lors de la sélection d'une méthode pour la fonction 'plot' : Erreur : objet 'zp' introuvable
+```
 
 Ca marche!!! auteur: http://stackoverflow.com/users/235349/ramnath (Ramnath Vaidyanathan is an Assistant Professor of Operations Management at the Desautels Faculty of Management, McGill University. He got his PhD from the Wharton School and worked at McKinsey & Co prior to that. )
 
@@ -1916,7 +2776,7 @@ czp <- unionSpatialPolygons(zp, IDs = zp@data$CODE_DEPT)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zp' introuvable
 ```
 
 ```r
@@ -1943,7 +2803,7 @@ czps <- unionSpatialPolygons(zpals, IDs = zpals$CODE.ZONES.DE.PROXIMITE)
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zpals' introuvable
 ```
 
 ```r
@@ -1977,7 +2837,7 @@ ctss <- unionSpatialPolygons(zpals, IDs = zpals$LIBELLE.DES.TERRITOIRES.DE.SANTE
 ```
 
 ```
-## Error: isTRUE(gpclibPermitStatus()) n'est pas TRUE
+## Error: objet 'zpals' introuvable
 ```
 
 ```r
@@ -2050,21 +2910,7 @@ essai avec "RColorBrewer"
 
 ```r
 library("RColorBrewer")
-```
-
-```
-## Error: there is no package called 'RColorBrewer'
-```
-
-```r
 wp <- brewer.pal(12, "Set3")
-```
-
-```
-## Error: impossible de trouver la fonction "brewer.pal"
-```
-
-```r
 plot(czps, col = wp)
 ```
 
@@ -2177,14 +3023,34 @@ Utilisation des cartes pré-enregistrées
 # fond de carte des territoires de santé
 load("als_ts.Rda")
 plot(ctss)
+```
+
+![plot of chunk carto generale](figure/carto_generale.png) 
+
+```r
 # surimpression des SAU
 hopitaux <- "../../Fichiers source/Hopitaux2lambert/hopitaux_alsace.csv"
 h <- read.csv(hopitaux, header = TRUE, sep = ",")
+```
+
+```
+## Warning: impossible d'ouvrir le fichier '../../Fichiers
+## source/Hopitaux2lambert/hopitaux_alsace.csv' : Aucun fichier ou dossier de
+## ce type
+```
+
+```
+## Error: impossible d'ouvrir la connexion
+```
+
+```r
 for (i in 1:nrow(h)) {
     points(h$lam_lon[i], h$lam_lat[i], pch = 19, col = "red")
     text(h$lam_lon[i], h$lam_lat[i], labels = h$hopital[i], cex = 0.8, pos = h$pos[i])
 }
 ```
 
-![plot of chunk carto generale](figure/carto_generale.png) 
+```
+## Error: objet 'h' introuvable
+```
 

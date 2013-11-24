@@ -4,7 +4,7 @@
 \usepackage{lmodern}
 \usepackage[utf8]{inputenc}
 % inclu un fichier de bibliothèques
-\include{rpu-2012.sty}
+\include{rpu_2012.sty}
 
 % la directive suivante permet d'utiliser le séparateur de milliers. 
 %Deux formulation sont utilisables mais exclusives l'une de l'autre. L'instruction "autolanguage" permet d'utiliser \nombre{} ou \np{}
@@ -194,7 +194,7 @@ d1$secteur[d1$FINESS %in% c("Mul","Alk","3Fr","Dia")]<-4
 \section{Nombre total de passages}
 <<child='activite_regionale.Rnw'>>=
 @
-\section{TEST 2}
+\section{Passages aux urgences}
 <<child='test2.Rnw'>>=
 @
 

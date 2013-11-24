@@ -28,7 +28,7 @@ source("../mes_fonctions.R")
 Variables globales:
 -------------------
 ```{r var_globales}
-mois_courant<-9
+mois_courant<-10
 ```
 
 Lecture du fichier des données
@@ -37,9 +37,9 @@ On lit le fichier de travail créé:
 ```{r Lecture fichier}
 
 # load("rpu2013.Rda")
-load("rpu2013d0109.Rda")
-d1<-d0109
-rm(d0109)
+load("rpu2013d0110.Rda")
+# d1<-d0109
+# rm(d0109)
 
 attach(d1)
 ```
@@ -123,7 +123,7 @@ a<-as.data.frame.matrix(a)
 head(a)
 # liste par FINESS des jours où le nb de RPU est inférieur à 20:
 # il faut ajouter une colonne date pour que cela fonctionne.
-a$date<-seq(as.Date("2013-01-01"),as.Date("2013-09-29"),1)
+a$date<-seq(as.Date("2013-01-01"),as.Date("2013-10-30"),1)
 # On initialise une liste de 12 éléments,12 parce que 12 SU
 b<-list(1:12)
 # pour chacun des SU, les jours où le nombre de RPU < 20, on stocke la date (col.13) et le n° du SU
