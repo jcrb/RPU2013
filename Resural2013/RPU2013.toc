@@ -27,64 +27,64 @@
 \contentsline {part}{II\hspace {1em}Activit\IeC {\'e} des services d'urgence d'Alsace}{27}{part.2}
 \contentsline {chapter}{\numberline {7}Activit\IeC {\'e} r\IeC {\'e}gionale totale}{28}{chapter.7}
 \contentsline {section}{\numberline {7.1}Nombre total de passages}{28}{section.7.1}
-\contentsline {section}{\numberline {7.2}TEST 2}{36}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Passages par tranches d'\IeC {\^a}ge}{41}{subsection.7.2.1}
-\contentsline {chapter}{\numberline {8}Motif de consultation}{44}{chapter.8}
-\contentsline {chapter}{\numberline {9}Modalit\IeC {\'e} d'admission}{48}{chapter.9}
-\contentsline {chapter}{\numberline {10}Dur\IeC {\'e}e de passage}{52}{chapter.10}
-\contentsline {subsection}{\numberline {10.0.2}Cas g\IeC {\'e}n\IeC {\'e}ral}{52}{subsection.10.0.2}
-\contentsline {subsection}{\numberline {10.0.3}Moyenne des dur\IeC {\'e}es de passages par jour}{53}{subsection.10.0.3}
-\contentsline {subsection}{\numberline {10.0.4}Cas particulier de Selestat}{53}{subsection.10.0.4}
-\contentsline {subsection}{\numberline {10.0.5}CH S\IeC {\'e}lestat}{63}{subsection.10.0.5}
-\contentsline {chapter}{\numberline {11}Codage diagnostique}{64}{chapter.11}
-\contentsline {section}{\numberline {11.1}Cim10}{64}{section.11.1}
-\contentsline {section}{\numberline {11.2}Etude des AVC}{67}{section.11.2}
-\contentsline {section}{\numberline {11.3}Accidents ischi\IeC {\'e}miques transitoires (AIT)}{76}{section.11.3}
-\contentsline {section}{\numberline {11.4}Pneumonies}{77}{section.11.4}
-\contentsline {section}{\numberline {11.5}Syndrome grippal}{79}{section.11.5}
-\contentsline {section}{\numberline {11.6}Asthme}{79}{section.11.6}
-\contentsline {section}{\numberline {11.7}Bronchiolite}{82}{section.11.7}
-\contentsline {section}{\numberline {11.8}Intoxication au CO}{85}{section.11.8}
-\contentsline {section}{\numberline {11.9}Malaises}{86}{section.11.9}
-\contentsline {section}{\numberline {11.10}Marqueurs de canicule}{89}{section.11.10}
-\contentsline {section}{\numberline {11.11}Gastro-ent\IeC {\'e}rites}{92}{section.11.11}
-\contentsline {chapter}{\numberline {12}Modalit\IeC {\'e}s de sortie}{100}{chapter.12}
-\contentsline {section}{\numberline {12.1}Mode de sortie}{100}{section.12.1}
-\contentsline {section}{\numberline {12.2}Mode de sortie selon la structure}{100}{section.12.2}
-\contentsline {section}{\numberline {12.3}Orientation}{101}{section.12.3}
-\contentsline {section}{\numberline {12.4}Destination}{102}{section.12.4}
-\contentsline {section}{\numberline {12.5}Incoh\IeC {\'e}rences}{102}{section.12.5}
-\contentsline {chapter}{\numberline {13}Modalit\IeC {\'e}s d'orientation}{106}{chapter.13}
-\contentsline {chapter}{\numberline {14}Courbes d'activit\IeC {\'e} r\IeC {\'e}gionale}{107}{chapter.14}
-\contentsline {section}{\numberline {14.1}Variation du nombre total de passages journaliers}{107}{section.14.1}
-\contentsline {section}{\numberline {14.2}Variation du pourcentage journalier de retour \IeC {\`a} domicile}{109}{section.14.2}
-\contentsline {part}{III\hspace {1em}Activit\IeC {\'e} par service d'urgence}{114}{part.3}
-\contentsline {chapter}{\numberline {15}SU Wissembourg}{115}{chapter.15}
-\contentsline {chapter}{\numberline {16}SU Haguenau}{116}{chapter.16}
-\contentsline {chapter}{\numberline {17}SU Saverne}{117}{chapter.17}
-\contentsline {chapter}{\numberline {18}SU Sainte Odile}{118}{chapter.18}
-\contentsline {chapter}{\numberline {19}SU des H\IeC {\^o}pitaux universitaires}{119}{chapter.19}
-\contentsline {section}{\numberline {19.1}Activit\IeC {\'e} globale}{119}{section.19.1}
-\contentsline {chapter}{\numberline {20}SU Sainte Anne}{120}{chapter.20}
-\contentsline {subsection}{\numberline {20.0.1}Taux moyen de passages}{120}{subsection.20.0.1}
-\contentsline {subsection}{\numberline {20.0.2}Taux d'hospitalisation}{123}{subsection.20.0.2}
-\contentsline {subsection}{\numberline {20.0.3}Total des passages}{124}{subsection.20.0.3}
-\contentsline {subsection}{\numberline {20.0.4}Passages de 1 \IeC {\`a} 75 ans}{126}{subsection.20.0.4}
-\contentsline {subsection}{\numberline {20.0.5}Passages des plus de 75 ans}{128}{subsection.20.0.5}
-\contentsline {chapter}{\numberline {21}Polyclinique Saint-Luc}{131}{chapter.21}
-\contentsline {chapter}{\numberline {22}SU S\IeC {\'e}lestat}{132}{chapter.22}
-\contentsline {chapter}{\numberline {23}SU Colmar}{133}{chapter.23}
-\contentsline {chapter}{\numberline {24}SU Guebwiller}{134}{chapter.24}
-\contentsline {chapter}{\numberline {25}SU Thann}{135}{chapter.25}
-\contentsline {chapter}{\numberline {26}SU Altkirch}{136}{chapter.26}
-\contentsline {chapter}{\numberline {27}SU Emile Muller}{137}{chapter.27}
-\contentsline {chapter}{\numberline {28}SU Diaconnat-Fonderie}{138}{chapter.28}
-\contentsline {chapter}{\numberline {29}SU Saint Louis}{139}{chapter.29}
-\contentsline {part}{IV\hspace {1em}Activit\IeC {\'e} des SAMU d'Alsace}{140}{part.4}
-\contentsline {part}{V\hspace {1em}Annexes}{141}{part.5}
-\contentsline {chapter}{\numberline {A}M\IeC {\'e}thodologie}{142}{appendix.A}
-\contentsline {chapter}{\numberline {B}Glossaire}{144}{appendix.B}
-\contentsline {chapter}{\numberline {C}RPU}{147}{appendix.C}
-\contentsline {chapter}{\numberline {D}A propos de ce document}{148}{appendix.D}
-\contentsline {chapter}{\numberline {E}Bibliographie}{149}{appendix.E}
-\contentsline {chapter}{\numberline {F}Index}{152}{appendix.F}
+\contentsline {section}{\numberline {7.2}Passages aux urgences}{36}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Passages par tranches d'\IeC {\^a}ge}{42}{subsection.7.2.1}
+\contentsline {chapter}{\numberline {8}Motif de consultation}{45}{chapter.8}
+\contentsline {chapter}{\numberline {9}Modalit\IeC {\'e} d'admission}{49}{chapter.9}
+\contentsline {chapter}{\numberline {10}Dur\IeC {\'e}e de passage}{53}{chapter.10}
+\contentsline {subsection}{\numberline {10.0.2}Cas g\IeC {\'e}n\IeC {\'e}ral}{53}{subsection.10.0.2}
+\contentsline {subsection}{\numberline {10.0.3}Moyenne des dur\IeC {\'e}es de passages par jour}{54}{subsection.10.0.3}
+\contentsline {subsection}{\numberline {10.0.4}Cas particulier de Selestat}{54}{subsection.10.0.4}
+\contentsline {subsection}{\numberline {10.0.5}CH S\IeC {\'e}lestat}{64}{subsection.10.0.5}
+\contentsline {chapter}{\numberline {11}Codage diagnostique}{65}{chapter.11}
+\contentsline {section}{\numberline {11.1}Cim10}{65}{section.11.1}
+\contentsline {section}{\numberline {11.2}Etude des AVC}{68}{section.11.2}
+\contentsline {section}{\numberline {11.3}Accidents ischi\IeC {\'e}miques transitoires (AIT)}{77}{section.11.3}
+\contentsline {section}{\numberline {11.4}Pneumonies}{78}{section.11.4}
+\contentsline {section}{\numberline {11.5}Syndrome grippal}{80}{section.11.5}
+\contentsline {section}{\numberline {11.6}Asthme}{80}{section.11.6}
+\contentsline {section}{\numberline {11.7}Bronchiolite}{83}{section.11.7}
+\contentsline {section}{\numberline {11.8}Intoxication au CO}{86}{section.11.8}
+\contentsline {section}{\numberline {11.9}Malaises}{87}{section.11.9}
+\contentsline {section}{\numberline {11.10}Marqueurs de canicule}{90}{section.11.10}
+\contentsline {section}{\numberline {11.11}Gastro-ent\IeC {\'e}rites}{93}{section.11.11}
+\contentsline {chapter}{\numberline {12}Modalit\IeC {\'e}s de sortie}{101}{chapter.12}
+\contentsline {section}{\numberline {12.1}Mode de sortie}{101}{section.12.1}
+\contentsline {section}{\numberline {12.2}Mode de sortie selon la structure}{101}{section.12.2}
+\contentsline {section}{\numberline {12.3}Orientation}{102}{section.12.3}
+\contentsline {section}{\numberline {12.4}Destination}{103}{section.12.4}
+\contentsline {section}{\numberline {12.5}Incoh\IeC {\'e}rences}{103}{section.12.5}
+\contentsline {chapter}{\numberline {13}Modalit\IeC {\'e}s d'orientation}{107}{chapter.13}
+\contentsline {chapter}{\numberline {14}Courbes d'activit\IeC {\'e} r\IeC {\'e}gionale}{108}{chapter.14}
+\contentsline {section}{\numberline {14.1}Variation du nombre total de passages journaliers}{108}{section.14.1}
+\contentsline {section}{\numberline {14.2}Variation du pourcentage journalier de retour \IeC {\`a} domicile}{110}{section.14.2}
+\contentsline {part}{III\hspace {1em}Activit\IeC {\'e} par service d'urgence}{115}{part.3}
+\contentsline {chapter}{\numberline {15}SU Wissembourg}{116}{chapter.15}
+\contentsline {chapter}{\numberline {16}SU Haguenau}{117}{chapter.16}
+\contentsline {chapter}{\numberline {17}SU Saverne}{118}{chapter.17}
+\contentsline {chapter}{\numberline {18}SU Sainte Odile}{119}{chapter.18}
+\contentsline {chapter}{\numberline {19}SU des H\IeC {\^o}pitaux universitaires}{120}{chapter.19}
+\contentsline {section}{\numberline {19.1}Activit\IeC {\'e} globale}{120}{section.19.1}
+\contentsline {chapter}{\numberline {20}SU Sainte Anne}{121}{chapter.20}
+\contentsline {subsection}{\numberline {20.0.1}Taux moyen de passages}{121}{subsection.20.0.1}
+\contentsline {subsection}{\numberline {20.0.2}Taux d'hospitalisation}{124}{subsection.20.0.2}
+\contentsline {subsection}{\numberline {20.0.3}Total des passages}{125}{subsection.20.0.3}
+\contentsline {subsection}{\numberline {20.0.4}Passages de 1 \IeC {\`a} 75 ans}{127}{subsection.20.0.4}
+\contentsline {subsection}{\numberline {20.0.5}Passages des plus de 75 ans}{129}{subsection.20.0.5}
+\contentsline {chapter}{\numberline {21}Polyclinique Saint-Luc}{132}{chapter.21}
+\contentsline {chapter}{\numberline {22}SU S\IeC {\'e}lestat}{133}{chapter.22}
+\contentsline {chapter}{\numberline {23}SU Colmar}{134}{chapter.23}
+\contentsline {chapter}{\numberline {24}SU Guebwiller}{135}{chapter.24}
+\contentsline {chapter}{\numberline {25}SU Thann}{136}{chapter.25}
+\contentsline {chapter}{\numberline {26}SU Altkirch}{137}{chapter.26}
+\contentsline {chapter}{\numberline {27}SU Emile Muller}{138}{chapter.27}
+\contentsline {chapter}{\numberline {28}SU Diaconnat-Fonderie}{139}{chapter.28}
+\contentsline {chapter}{\numberline {29}SU Saint Louis}{140}{chapter.29}
+\contentsline {part}{IV\hspace {1em}Activit\IeC {\'e} des SAMU d'Alsace}{141}{part.4}
+\contentsline {part}{V\hspace {1em}Annexes}{142}{part.5}
+\contentsline {chapter}{\numberline {A}M\IeC {\'e}thodologie}{143}{appendix.A}
+\contentsline {chapter}{\numberline {B}Glossaire}{145}{appendix.B}
+\contentsline {chapter}{\numberline {C}RPU}{148}{appendix.C}
+\contentsline {chapter}{\numberline {D}A propos de ce document}{149}{appendix.D}
+\contentsline {chapter}{\numberline {E}Bibliographie}{150}{appendix.E}
+\contentsline {chapter}{\numberline {F}Index}{153}{appendix.F}

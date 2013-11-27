@@ -7,7 +7,14 @@ library("maptools")
 ```
 
 ```
-## Loading required package: sp Checking rgeos availability: TRUE
+## Loading required package: foreign
+## Loading required package: sp
+## Loading required package: grid
+## Loading required package: lattice
+## Checking rgeos availability: FALSE
+##  	Note: when rgeos is not available, polygon geometry 	computations in maptools depend on gpclib,
+##  	which has a restricted licence. It is disabled by default;
+##  	to enable gpclib, type gpclibPermit()
 ```
 
 ```r
@@ -57,10 +64,30 @@ title(main = "Service d'urgences d'Alsace")
 # surimpression des SAU
 hopitaux <- "../Fichiers source/Hopitaux2lambert/hopitaux_alsace.csv"
 h <- read.csv(hopitaux, header = TRUE, sep = ",")
+```
+
+```
+## Warning: impossible d'ouvrir le fichier '../Fichiers
+## source/Hopitaux2lambert/hopitaux_alsace.csv' : Aucun fichier ou dossier de
+## ce type
+```
+
+```
+## Error: impossible d'ouvrir la connexion
+```
+
+```r
 for (i in 1:nrow(h)) {
     points(h$lam_lon[i], h$lam_lat[i], pch = 19, col = "red")
     text(h$lam_lon[i], h$lam_lat[i], labels = h$hopital[i], cex = 0.8, pos = h$pos[i])
 }
+```
+
+```
+## Error: objet 'h' introuvable
+```
+
+```r
 copyright(an = "2013", side = 4, line = -10, cex = 0.8)
 ```
 

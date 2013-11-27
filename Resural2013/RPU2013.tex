@@ -53,7 +53,7 @@
 \usepackage{lmodern}
 \usepackage[utf8]{inputenc}
 % inclu un fichier de bibliothèques
-\include{rpu-2012.sty}
+\include{rpu_2012.sty}
 
 % la directive suivante permet d'utiliser le séparateur de milliers. 
 %Deux formulation sont utilisables mais exclusives l'une de l'autre. L'instruction "autolanguage" permet d'utiliser \nombre{} ou \np{}
@@ -155,7 +155,7 @@ Bartier \& Madame Christine Hecker}}
     methods, stats, utils
   \item Other packages: knitr~1.5
   \item Loaded via a namespace (and not attached): evaluate~0.5.1,
-    formatR~0.9, stringr~0.6.2, tools~3.0.2
+    formatR~0.10, stringr~0.6.2, tools~3.0.2
 \end{itemize}
 
 
@@ -489,7 +489,7 @@ Certaines données peuvent être recoupées avec celles du serveur régional mis
 \fbox{Voir SAU2013}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:44:32 2013
+% Sun Nov 24 19:11:36 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|l|r|}
@@ -525,7 +525,7 @@ Les informations de nature administrative (code postal, commune d'origine, sexe,
 Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:44:33 2013
+% Sun Nov 24 19:11:36 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -581,7 +581,9 @@ On peut représenter sous forme d'un diagramme en radar (ou toile d'araignée) l
 ##       secteur 
 ##          0.00
 \end{verbatim}
-\end{kframe}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: 'x' is NULL so the result will be NULL\\\#\# Warning: 'x' is NULL so the result will be NULL}}\end{kframe}
 \includegraphics[width=\maxwidth]{figure/radar} 
 
 \end{knitrout}
@@ -849,7 +851,7 @@ Les données du secteur 2 sont très sous-estimées car il manque celles de la C
 
 \subsection*{En valeur absolue}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:44:45 2013
+% Sun Nov 24 19:11:41 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{llr}
@@ -926,7 +928,7 @@ Le TRU 2013 estimé en Alsace à partir des RPU transmis est de 14.7\%.
 \subsection*{Activité par semaine}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:44:50 2013
+% Sun Nov 24 19:11:43 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -983,7 +985,7 @@ Le TRU 2013 estimé en Alsace à partir des RPU transmis est de 14.7\%.
 \label{act_sem}
 \end{table}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:44:50 2013
+% Sun Nov 24 19:11:43 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
@@ -1032,7 +1034,7 @@ Le TRU 2013 estimé en Alsace à partir des RPU transmis est de 14.7\%.
 
   
 
-\section{TEST 2}
+\section{Passages aux urgences}
 
 % test2.Rnw
 
@@ -1041,9 +1043,9 @@ L'activité horaire des services d'urgence en Alsace est totalement superposable
 Ce phénomène cyclique se répète tous les jours selon un profil immuable. La projection de ces données sur un graphique en radar représentant les 24 tranches horaires (figure \ref{radar:als} page \pageref{radar:als}) montre qu'il existe trois pics d'égale amplitude à 11, 15 et 19 heures. Ce point mérite d'être analysé car s'il se confirme, cela pourrait indiquer que le pointage de 11 heures permet d'avoir une prévision sur l'intensité de la fréquentation avant la garde du soir. On peut en rapprocher le fait que la médiane des passages se situe vers 14h, c'est à dire qu'au ointage de 15 heures on peut évaluer la quantité totale de patients qui vont se présenter dans les heures qui viennent.
 
 %----------------------------------------------------------------------------- Summary
-Résumé des horaires de passage aux ugences: les données figurent dans le tableau \ref{tab:24} page \pageref{tab:24}.
+Résumé des horaires de passage aux urgences: les données figurent dans le tableau \ref{tab:24} page \pageref{tab:24}.
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:44:58 2013
+% Sun Nov 24 19:11:46 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -1059,7 +1061,7 @@ Résumé des horaires de passage aux ugences: les données figurent dans le tabl
 
 
 
-\input{../blah.gen}
+% \input{../blah.gen}
 %---------------------------------------------------------------------- HISTOGRAMME
 
 \begin{figure}
@@ -1103,20 +1105,32 @@ Résumé des horaires de passage aux ugences: les données figurent dans le tabl
 \label{passage:hus}
 \end{figure}
 
-%----------------------------------------------------------------
+%---------------------------------------------------------Radar Colmar
 \begin{figure}
 \begin{center}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-\includegraphics[width=\maxwidth]{figure/test22} 
+\includegraphics[width=\maxwidth]{figure/test26} 
 
 \end{knitrout}
 
 \end{center}
-\caption{CH Colmar et Mulhouse: répartition des arrivées et départs aux urgences}
+\caption{Secteurs 3 et 4: répartition des arrivées et départs aux urgences}
 \label{passage:col}
 \end{figure}
 
+\begin{figure}
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/test27} 
+
+\end{knitrout}
+
+\end{center}
+\caption{Secteurs 1 et 2: répartition des arrivées et départs aux urgences}
+\label{passage:secteur12}
+\end{figure}
 
 
 
@@ -1125,7 +1139,7 @@ Résumé des horaires de passage aux ugences: les données figurent dans le tabl
 % tranche-age.Rnw
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:02 2013
+% Sun Nov 24 19:11:50 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -1161,7 +1175,7 @@ Le thésaurus est présenté sous la formed'un fichier Excel. L'onglet \emph{rec
 
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:02 2013
+% Sun Nov 24 19:11:50 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -1231,7 +1245,7 @@ L'immense majorité des patients provient du domicile ou son équivalent. Une tr
 
 \includegraphics[width=\maxwidth]{figure/mode_entree} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:03 2013
+% Sun Nov 24 19:11:51 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1261,7 +1275,7 @@ La grande majorité des patients arrivent aux urgences par leurs propres moyens 
 
 \includegraphics[width=\maxwidth]{figure/transport} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:03 2013
+% Sun Nov 24 19:11:51 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -1362,7 +1376,7 @@ Les durées de présences inférieures à 10 minutes proviennent à plus de 90\%
 ## [2,]   0.68   0.58
 \end{verbatim}
 \begin{alltt}
-# Plus de 90% proviennent des HUS
+\hlcom{# Plus de 90% proviennent des HUS}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -2018,7 +2032,7 @@ Classification selon la CIM10:
 \end{itemize}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:31 2013
+% Sun Nov 24 19:12:01 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -2036,7 +2050,7 @@ J450 & 101 \\
 
 \includegraphics[width=\maxwidth]{figure/asthme} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:31 2013
+% Sun Nov 24 19:12:01 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -2064,7 +2078,7 @@ On note \np{1092} cas d'asthme en 2013.
 
 \includegraphics[width=\maxwidth]{figure/asthme22} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:31 2013
+% Sun Nov 24 19:12:01 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrr}
@@ -2128,7 +2142,7 @@ On note \np{1092} cas d'asthme en 2013.
 La population des patients consultant pour une crise d'astme est jeune (voir table \ref{tab:age_asthme} page \pageref{tab:age_asthme}).
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:31 2013
+% Sun Nov 24 19:12:01 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrr}
@@ -2142,7 +2156,7 @@ La population des patients consultant pour une crise d'astme est jeune (voir tab
 \label{tab:age_asthme}
 \end{table}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:31 2013
+% Sun Nov 24 19:12:01 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -2495,7 +2509,7 @@ Le RPU connaît trois mode de sortie des urgences:
 \end{figure}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:37 2013
+% Sun Nov 24 19:12:03 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|}
@@ -2520,7 +2534,7 @@ Décès & 2 & 0.00 \\
 Les données par établissement sont résumées dans le tableau \ref{tab.sortie_etab} page \pageref{tab.sortie_etab}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:37 2013
+% Sun Nov 24 19:12:03 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|r|r|r|r|r|}
@@ -2609,7 +2623,7 @@ On notera que le retour à domicile proprement dit ne figure pas parmi les items
 \section{Destination}
 \index{destination}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:37 2013
+% Sun Nov 24 19:12:03 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -2629,7 +2643,7 @@ DOM & 78.86 \\
 \label{tab.dest.hosp}
 \end{table}
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:37 2013
+% Sun Nov 24 19:12:03 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -2742,7 +2756,7 @@ Le mode d'orientation au sens du RPU est une rubrique un peu fourre-tout regroup
 
 \includegraphics[width=\maxwidth]{figure/passages_totaux1} 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:41 2013
+% Sun Nov 24 19:12:05 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -2775,7 +2789,7 @@ Les variation du retour journalier à domicile sont calculés de la manière sui
 \end{description}
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:45 2013
+% Sun Nov 24 19:12:06 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -2802,7 +2816,7 @@ On refait le calcul de q en tenant compte des non réponses:
 Si on considère que tout ce qui n'est pas un retour à domicile constitue une hospitalisation, on peut tracer un graphique, miroir du précédent. La ligne bleue représente la moyenne lissée sur sept jours. On notera le taux d'hospitalisation élévé du début de l'année, correspondant à une période de forte tension. Les fluctuations de ce paramètre (comme le retour à domicile) est une piste intéressante dans le cadre de la recherche d'indicateurs d'hôpital en tension, cependant les seuils d'alerte (triggers) restent à déterminer.
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:47 2013
+% Sun Nov 24 19:12:07 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -2912,7 +2926,7 @@ Entre le 2013-01-01 00:11:00 et le 2013-10-31 23:33:00, \np{31075} RPU ont été
 Le SU Sainte Anne a reçu en 2013 un total de \np{12139} consultants, soit en moyenne 40 par jour.
 
 % latex table generated in R 3.0.2 by xtable 1.7-1 package
-% Tue Nov 19 23:45:50 2013
+% Sun Nov 24 19:12:08 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrr}
