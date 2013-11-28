@@ -52,7 +52,8 @@ Les eléments du RPU sont des données médico-administratives standards qui doi
 Les éléments du RPU peuvent être divisés en 2 groupes:
 
 - core: éléments de bases qui peuvent toujours être relevés de manière exhausive dès l'admission du patient et transmis au fil de l'eau au concentrateur régional. C'est le minimun qui doit pouvoir être transmis au mpoins une fois par 24 heures.
-- supplémentaires: ce sont les autres éléments du RPU. Leur recueil plus tardif, nécessite une compétence médicale (diagnostic principal) et un délai qui peut dépasser 24 heures (date de sortie). Le service dispose de 6 jours pour compléter cette partie.++
+
+- supplémentaires: ce sont les autres éléments du RPU. Leur recueil plus tardif, nécessite une compétence médicale (diagnostic principal) et un délai qui peut dépasser 24 heures (date de sortie). Le service dispose de 6 jours pour compléter cette partie.
 
 ### Partie Core (12):
 
