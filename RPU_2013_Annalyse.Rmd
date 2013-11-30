@@ -123,7 +123,7 @@ a<-as.data.frame.matrix(a)
 head(a)
 # liste par FINESS des jours où le nb de RPU est inférieur à 20:
 # il faut ajouter une colonne date pour que cela fonctionne.
-a$date<-seq(as.Date("2013-01-01"),as.Date("2013-10-30"),1)
+a$date<-seq(as.Date("2013-01-01"),as.Date("2013-09-29"),1)
 # On initialise une liste de 12 éléments,12 parce que 12 SU
 b<-list(1:12)
 # pour chacun des SU, les jours où le nombre de RPU < 20, on stocke la date (col.13) et le n° du SU
@@ -787,6 +787,52 @@ t<-table(Hus$MODE_SORTIE,b)
 t
 t<-table(Hus$ORIENTATION,b)
 ```
+
+Comparaison Mode de sortie - Gravite
+------------------------------------
+```{r sortie_ccmu}
+a<-table(d1$MODE_SORTIE,d1$GRAVITE)
+a
+```
+
+Comparaison Orientation - Gravite
+------------------------------------
+  
+```{r orientation_ gravite}
+a<-table(d1$ORIENTATION,d1$GRAVITE)
+a
+xtable(a)
+```
+
+Age et gravité
+--------------
+On fabrique une nouvelle colonne appelée **cat** qui partage la coleene *age* en 4 catégories. La première categorie comence a -1 pour prendre en compte les moins de 1 an.
+
+```{r age_cat}
+d1$cat<-cut(d1$AGE,c(-1,15,50,75,120),labels=c("Jeunes","Adultes","Agés","Très agés"))
+table(d1$cat,d1$GRAVITE)
+barplot(table(d1$GRAVITE))
+
+barplot(round(prop.table(table(d1$cat,d1$GRAVITE),margin=1)*100,2),beside=T,xlab="CCMU",ylab="% du groupe",main="CCMU par groupe d'age",col=c(1:4))
+legend("topright",legend=c("< 15 ans","15 à 50 ans","50 à 75","> 75 ans"),cex=0.8,pch=15,col=c(1:4))
+
+barplot(round(prop.table(table(d1$cat,d1$GRAVITE),margin=2)*100,2),beside=T,xlab="CCMU",ylab="% du groupe",main="Répartition des ages par CCMU",col=c(1:4))
+
+```
+Représentation sous forme de barres emplilées avec légende  
+- on restreint l'espace de dessin en augmentant la marge de gauche
+- on dessine les barres en utilisant la marge 2 comme diviseur. Ainsi chaque barre représente un % de 0 à 100 à laquelle contribe chaque catégorie d'age
+- on rétablit la marge de droite
+- on dessine la légende en supprimant l'encadrement de celle-ci.
+
+```{r reparition_age_cat}
+par(mar=c(5,4,4,8))
+barplot(round(prop.table(table(d1$cat,d1$GRAVITE),margin=2)*100,2),beside=FALSE,xlab="CCMU",ylab="% du groupe",main="Répartition des ages par CCMU",col=c(1:4))
+par(mar=c(5,4,4,2))
+legend(x=8.5,y=100,legend=c("< 15 ans","15 à 50 ans","50 à 75","> 75 ans"),cex=0.8,pch=15,col=c(1:4),bty="n")
+```
+
+
 
 
 
