@@ -6,7 +6,7 @@
 #' Derniere mise a jour: 13/11/2013
 #' Auteur: JcB
 #' 
-library("gdata")
+#library("gdata")
 library("rgrs")
 library("lubridate")
 library("rattle")
