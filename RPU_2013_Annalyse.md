@@ -6,7 +6,7 @@ date()
 ```
 
 ```
-## [1] "Sat Nov 23 13:45:26 2013"
+## [1] "Sat Nov 30 19:20:42 2013"
 ```
 
 source: RPU2013
@@ -17,14 +17,14 @@ Librairies nécessaires:
 
 ```r
 library("gdata")
-library("rgrs")
 ```
 
 ```
-## Error: there is no package called 'rgrs'
+## Error: there is no package called 'gdata'
 ```
 
 ```r
+library("rgrs")
 library("lubridate")
 library("rattle")
 library("epicalc")
@@ -40,15 +40,6 @@ Chargement des routines perso
 
 ```r
 source("../mes_fonctions.R")
-```
-
-```
-## Warning: impossible d'ouvrir le fichier '../mes_fonctions.R' : Aucun
-## fichier ou dossier de ce type
-```
-
-```
-## Error: impossible d'ouvrir la connexion
 ```
 
 Variables globales:
@@ -263,8 +254,8 @@ xtable(t(t3))
 ```
 
 ```
-## % latex table generated in R 3.0.2 by xtable 1.7-1 package
-## % Sat Nov 23 13:45:32 2013
+## % latex table generated in R 3.0.1 by xtable 1.7-1 package
+## % Sat Nov 30 19:20:56 2013
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rrr}
@@ -341,55 +332,35 @@ head(a)
 ```r
 # liste par FINESS des jours où le nb de RPU est inférieur à 20: il faut
 # ajouter une colonne date pour que cela fonctionne.
-a$date <- seq(as.Date("2013-01-01"), as.Date("2013-10-30"), 1)
+a$date <- seq(as.Date("2013-01-01"), as.Date("2013-09-29"), 1)
+```
+
+```
+## Error: le tableau de remplacement a 272 lignes, le tableau remplacé en a
+## 303
+```
+
+```r
 # On initialise une liste de 12 éléments,12 parce que 12 SU
 b <- list(1:12)
-# pour chacun des SU, les jours où le nombre de RPU < 20, on stocke la date
-# (col.13) et le n° du SU
+# pour chacun des SU, les jours où le nombre de RPU < 20, on stocke la
+# date (col.13) et le n° du SU
 for (i in 1:12) {
     b[[i]] <- a[a[, i] < 20, c(13, i)]
 }
+```
+
+```
+## Error: undefined columns selected
+```
+
+```r
 str(b)
 ```
 
 ```
-## List of 12
-##  $ :'data.frame':	1 obs. of  2 variables:
-##   ..$ date: Date[1:1], format: "2013-09-30"
-##   ..$ 3Fr : int 13
-##  $ :'data.frame':	149 obs. of  2 variables:
-##   ..$ date: Date[1:149], format: "2013-01-01" ...
-##   ..$ Alk : int [1:149] 0 0 0 0 0 0 0 0 0 0 ...
-##  $ :'data.frame':	2 obs. of  2 variables:
-##   ..$ date: Date[1:2], format: "2013-09-28" ...
-##   ..$ Col : int [1:2] 0 0
-##  $ :'data.frame':	0 obs. of  2 variables:
-##   ..$ date:Class 'Date'  num(0) 
-##   ..$ Dia : int(0) 
-##  $ :'data.frame':	5 obs. of  2 variables:
-##   ..$ date: Date[1:5], format: "2013-05-08" ...
-##   ..$ Geb : int [1:5] 0 0 0 0 0
-##  $ :'data.frame':	0 obs. of  2 variables:
-##   ..$ date:Class 'Date'  num(0) 
-##   ..$ Hag : int(0) 
-##  $ :'data.frame':	0 obs. of  2 variables:
-##   ..$ date:Class 'Date'  num(0) 
-##   ..$ Hus : int(0) 
-##  $ :'data.frame':	19 obs. of  2 variables:
-##   ..$ date: Date[1:19], format: "2013-01-01" ...
-##   ..$ Mul : int [1:19] 0 0 0 0 0 0 0 0 0 0 ...
-##  $ :'data.frame':	0 obs. of  2 variables:
-##   ..$ date:Class 'Date'  num(0) 
-##   ..$ Odi : int(0) 
-##  $ :'data.frame':	84 obs. of  2 variables:
-##   ..$ date: Date[1:84], format: "2013-04-11" ...
-##   ..$ Sel : int [1:84] 6 1 10 2 0 3 0 0 0 0 ...
-##  $ :'data.frame':	2 obs. of  2 variables:
-##   ..$ date: Date[1:2], format: "2013-01-30" ...
-##   ..$ Wis : int [1:2] 16 18
-##  $ :'data.frame':	203 obs. of  2 variables:
-##   ..$ date: Date[1:203], format: "2013-01-01" ...
-##   ..$ Sav : int [1:203] 0 0 0 0 0 0 0 0 0 0 ...
+## List of 1
+##  $ : int [1:12] 1 2 3 4 5 6 7 8 9 10 ...
 ```
 
 ```r
@@ -398,12 +369,7 @@ b[[5]]
 ```
 
 ```
-##                  date Geb
-## 2013-05-08 2013-05-08   0
-## 2013-05-09 2013-05-09   0
-## 2013-05-10 2013-05-10   0
-## 2013-05-11 2013-05-11   0
-## 2013-05-12 2013-05-12   0
+## Error: indice hors limites
 ```
 
 ```r
@@ -411,7 +377,7 @@ names(b[[5]])
 ```
 
 ```
-## [1] "date" "Geb"
+## Error: indice hors limites
 ```
 
 ```r
@@ -419,7 +385,7 @@ b[[5]]$date
 ```
 
 ```
-## [1] "2013-05-08" "2013-05-09" "2013-05-10" "2013-05-11" "2013-05-12"
+## Error: indice hors limites
 ```
 
 ```r
@@ -433,14 +399,7 @@ for (i in 1:12) {
 ```
 
 ```
-## [1] "1 3Fr 1"
-## [1] "2 Alk 149"
-## [1] "3 Col 2"
-## [1] "5 Geb 5"
-## [1] "8 Mul 19"
-## [1] "10 Sel 84"
-## [1] "11 Wis 2"
-## [1] "12 Sav 203"
+## Error: $ operator is invalid for atomic vectors
 ```
 
 #### Exhaustivité des items
@@ -1210,8 +1169,8 @@ t
 ```
 
 ```r
-# cette analyse ne permet pas de séparer les vraies non réponses des retours
-# à domicile
+# cette analyse ne permet pas de séparer les vraies non réponses des
+# retours à domicile
 hosp <- d1[d1$MODE_SORTIE == "Mutation" | d1$MODE_SORTIE == "Transfert", ]
 t <- table(hosp$ORIENTATION, hosp$FINESS, useNA = "ifany")
 t
@@ -1743,23 +1702,11 @@ t2 <- as.integer(t)
 c <- clock24.plot(t2, clock.pos = 1:24, lwd = 3)
 ```
 
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
 ![plot of chunk geb_arrive](figure/geb_arrive2.png) 
 
 ```r
 c <- clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F)
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
 ```
 
 ![plot of chunk geb_arrive](figure/geb_arrive3.png) 
@@ -1770,22 +1717,12 @@ clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
     show.grid.labels = F, poly.col = fadeColor("blue", fade = "10"))
 ```
 
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
 ![plot of chunk geb_arrive](figure/geb_arrive4.png) 
 
 ```r
 clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F, poly.col = fadeColor("blue", fade = "10"), line.col = fadeColor("blue", 
         fade = "10"))
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
 ```
 
 ![plot of chunk geb_arrive](figure/geb_arrive5.png) 
@@ -1799,12 +1736,6 @@ clock24.plot(t3, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
     show.grid.labels = F)
 ```
 
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
 ![plot of chunk geb_sorties](figure/geb_sorties.png) 
 
 Combinaison entrée-sortie
@@ -1815,23 +1746,11 @@ clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
     show.grid.labels = F)
 ```
 
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
 ![plot of chunk geb_es](figure/geb_es1.png) 
 
 ```r
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F, line.col = c("red", "blue"))
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
 ```
 
 ![plot of chunk geb_es](figure/geb_es2.png) 
@@ -1842,11 +1761,6 @@ fadeRed <- fadeColor("red", fade = "15")
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F, line.col = c(fadeRed, fadeBlue), poly.col = c(fadeRed, 
         fadeBlue))
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
 ```
 
 ![plot of chunk geb_es](figure/geb_es3.png) 
@@ -1950,23 +1864,11 @@ als_entree <- as.integer(t)
 c <- clock24.plot(als_entree, clock.pos = 1:24, lwd = 3, show.grid.labels = F)
 ```
 
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
 ![plot of chunk total arrivee](figure/total_arrivee2.png) 
 
 ```r
 c <- clock24.plot(als_entree, clock.pos = 1:24, rp.type = "p", main = "Alsace", 
     xlab = "Heures d'arrivée aux urgences", show.grid.labels = F)
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
 ```
 
 ![plot of chunk total arrivee](figure/total_arrivee3.png) 
@@ -1983,15 +1885,6 @@ t4 <- rbind(prop.table(t2), prop.table(als_entree))
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - HUS (rouge)", 
     xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, line.col = c("red", 
         "blue"), radial.lim = c(0, 0.1))
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
-```r
 legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.8)
 ```
 
@@ -2003,11 +1896,6 @@ legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - HUS (rouge)", 
     xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, line.col = c("red", 
         fadeBlue), poly.col = c(NA, fadeBlue), radial.lim = c(0, 0.1))
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
 ```
 
 ![plot of chunk als-geb](figure/als-geb2.png) 
@@ -2024,15 +1912,6 @@ t4 <- rbind(prop.table(t2), prop.table(als_entree))
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - CH de Wissembourg", 
     xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, line.col = c("red", 
         "blue"), radial.lim = c(0, 0.1))
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
-```r
 legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.8)
 ```
 
@@ -2050,15 +1929,6 @@ t4 <- rbind(prop.table(t2), prop.table(als_entree))
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "Alsace - CHU Strasbourg", 
     xlab = "Heures d'arrivée aux urgences", show.grid.labels = F, line.col = c("red", 
         "blue"), radial.lim = c(0, 0.1))
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
-```r
 legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.8)
 ```
 
@@ -2070,42 +1940,9 @@ legend(0.09, -0.09, c("CH", "Alsace"), col = c("red", "blue"), lty = 1, cex = 0.
 par(mfrow = c(2, 2))
 source("./mes_fonctions.R")
 passages("Hus", "HUS", sens = 3)
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
-```r
 passages("Mul", "CH Mulhouse", sens = 3)
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
-```r
 passages("Col", "CH Colmar", sens = 3)
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
-```r
 passages("Hag", "CH Haguenau", sens = 3)
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
 ```
 
 ![plot of chunk passages](figure/passages1.png) 
@@ -2113,44 +1950,14 @@ passages("Hag", "CH Haguenau", sens = 3)
 ```r
 
 passages("Sel", "CH Selestat", sens = 3)
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
-```r
 passages("Odi", "Clinique Ste Odile", sens = 3)
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
-```r
 passages("Dia", "Diaconnat - Fonderie", sens = 3)
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
-```r
 passages("Tan", "CH Thann", sens = 3)
 ```
 
 ```
-## Warning: All formats failed to parse. No formats found.
-## Warning: All formats failed to parse. No formats found.
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
+## Warning: All formats failed to parse. No formats found. Warning: All
+## formats failed to parse. No formats found.
 ```
 
 ![plot of chunk passages](figure/passages2.png) 
@@ -2158,35 +1965,8 @@ passages("Tan", "CH Thann", sens = 3)
 ```r
 
 passages("3Fr", "Trois frontières", sens = 3)
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
-```r
 passages("Alk", "CH Alkirch", sens = 3)
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
-```r
 passages("Sav", "CH Saverne", sens = 3)
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
-```r
 par(mfrow = c(1, 1))
 ```
 
@@ -2225,51 +2005,25 @@ comparaison entre RPU attendu et RPU transmis. Nécessite le fichier *sau2013*. 
 
 ```r
 load("../SAU2013/sau2013.Rda")
-```
-
-```
-## Warning: impossible d'ouvrir le fichier compressé
-## '../SAU2013/sau2013.Rda', cause probable : 'Aucun fichier ou dossier de ce
-## type'
-```
-
-```
-## Error: impossible d'ouvrir la connexion
-```
-
-```r
 dhus <- d[d$hop == "HUS", ]
-```
-
-```
-## Error: objet 'd' introuvable
-```
-
-```r
 sum(dhus$TOTAL.passages, na.rm = T)
 ```
 
 ```
-## Error: objet 'dhus' introuvable
+## [1] 91652
 ```
 
 ```r
 
-# hus.serv: DU des Hus. HTP adultes, HTP gynéco, HTP pédiatrie, NHC et CCOM
-# (Sos mains)
+# hus.serv: DU des Hus. HTP adultes, HTP gynéco, HTP pédiatrie, NHC et
+# CCOM (Sos mains)
 hus.serv <- as.factor(dhus$ser2)
-```
-
-```
-## Error: objet 'dhus' introuvable
-```
-
-```r
 summary(hus.serv)
 ```
 
 ```
-## Error: objet 'hus.serv' introuvable
+## aHTP gHTP  NHC pHTP NA's 
+##  301  293  293  587  597
 ```
 
 ```r
@@ -2277,27 +2031,14 @@ tapply(dhus$TOTAL.passages, hus.serv, sum)
 ```
 
 ```
-## Error: objet 'hus.serv' introuvable
+##  aHTP  gHTP   NHC  pHTP 
+## 28778  7848 25089 29937
 ```
 
 ```r
 # RPU uniquement du au SU HTP et NHC
 hus.rpu <- subset(dhus, ser2 == "aHTP" | ser2 == "NHC")
-```
-
-```
-## Error: objet 'dhus' introuvable
-```
-
-```r
 n <- sum(hus.rpu$TOTAL.passages)
-```
-
-```
-## Error: objet 'hus.rpu' introuvable
-```
-
-```r
 print("Prévision2013:")
 ```
 
@@ -2310,7 +2051,7 @@ n * 3
 ```
 
 ```
-## [1] 609
+## [1] 161601
 ```
 
 ```r
@@ -2328,28 +2069,14 @@ a[1] * 100/a[2]
 
 ```
 ## RPU déclarés 
-##        15308
+##        57.69
 ```
 
 Les urgences pédiatriques sont divisées en 2, médicales et chirurgicales. Il y a donc 2 données par jour
 
 ```r
 hus.ped <- subset(dhus, ser2 == "pHTP")
-```
-
-```
-## Error: objet 'dhus' introuvable
-```
-
-```r
 nped <- sum(hus.ped$TOTAL.passages)
-```
-
-```
-## Error: objet 'hus.ped' introuvable
-```
-
-```r
 print("Prévision2013:")
 ```
 
@@ -2362,7 +2089,7 @@ nped * 3
 ```
 
 ```
-## Error: objet 'nped' introuvable
+## [1] 89811
 ```
 
 ```r
@@ -2376,18 +2103,11 @@ print("Total adulte + pédiatrie:")
 
 ```r
 ntot <- n + nped
-```
-
-```
-## Error: objet 'nped' introuvable
-```
-
-```r
 ntot
 ```
 
 ```
-## Error: objet 'ntot' introuvable
+## [1] 83804
 ```
 
 ```r
@@ -2403,7 +2123,7 @@ ntot * 3
 ```
 
 ```
-## Error: objet 'ntot' introuvable
+## [1] 251412
 ```
 
 
@@ -2564,23 +2284,11 @@ t2 <- as.integer(t)
 c <- clock24.plot(t2, clock.pos = 1:24, lwd = 3)
 ```
 
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
 ![plot of chunk Hus_arrive](figure/Hus_arrive2.png) 
 
 ```r
 c <- clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F)
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
 ```
 
 ![plot of chunk Hus_arrive](figure/Hus_arrive3.png) 
@@ -2591,22 +2299,12 @@ clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
     show.grid.labels = F, poly.col = fadeColor("blue", fade = "10"))
 ```
 
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
 ![plot of chunk Hus_arrive](figure/Hus_arrive4.png) 
 
 ```r
 clock24.plot(t2, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F, poly.col = fadeColor("blue", fade = "10"), line.col = fadeColor("blue", 
         fade = "10"))
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
 ```
 
 ![plot of chunk Hus_arrive](figure/Hus_arrive5.png) 
@@ -2628,12 +2326,6 @@ clock24.plot(t3, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
     show.grid.labels = F)
 ```
 
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
 ![plot of chunk Hus_sorties](figure/Hus_sorties.png) 
 
 Combinaison entrée-sortie
@@ -2644,23 +2336,11 @@ clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d
     show.grid.labels = F)
 ```
 
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-```
-
 ![plot of chunk Hus_es](figure/Hus_es1.png) 
 
 ```r
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F, line.col = c("red", "blue"))
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
 ```
 
 ![plot of chunk Hus_es](figure/Hus_es2.png) 
@@ -2671,11 +2351,6 @@ fadeRed <- fadeColor("red", fade = "15")
 clock24.plot(t4, clock.pos = 1:24, rp.type = "p", main = "HUS", xlab = "Heures d'arrivée aux urgences", 
     show.grid.labels = F, line.col = c(fadeRed, fadeBlue), poly.col = c(fadeRed, 
         fadeBlue))
-```
-
-```
-## Warning: 'x' is NULL so the result will be NULL
-## Warning: 'x' is NULL so the result will be NULL
 ```
 
 ![plot of chunk Hus_es](figure/Hus_es3.png) 
@@ -2751,6 +2426,151 @@ t
 ```r
 t <- table(Hus$ORIENTATION, b)
 ```
+
+
+Comparaison Mode de sortie - Gravite
+------------------------------------
+
+```r
+a <- table(d1$MODE_SORTIE, d1$GRAVITE)
+a
+```
+
+```
+##            
+##                  1      2      3      4      5      D      P
+##   NA             0      0      0      0      0      0      0
+##   Mutation    1857  20735  21315   2247    576      8    363
+##   Transfert    120   2130   1332     75     35      0    260
+##   Domicile   27743 132552   6828    148     19      4    473
+##   Décès          0      2      0      0      0      0      0
+```
+
+
+Comparaison Orientation - Gravite
+------------------------------------
+  
+
+```r
+a <- table(d1$ORIENTATION, d1$GRAVITE)
+a
+```
+
+```
+##        
+##             1     2     3     4     5     D     P
+##   CHIR    149  2733  2759   279     8     1   115
+##   FUGUE    54   121    20     0     0     0     7
+##   HDT       3    24    20     1     0     0    40
+##   HO        0    11     5     0     0     0     9
+##   MED     585  4884  7072   548    33     0   225
+##   OBST      3    48    27     3     0     0     0
+##   PSA     904   464    28     0     0     0     8
+##   REA       1    83   205   194   338     0     3
+##   REO     797   290    40     0     0     0     1
+##   SC       59   350   605   109    22     0     9
+##   SCAM     60   262    72     3     0     0     1
+##   SI       14   267   612   217    26     0     2
+##   UHCD   1102 10476  7671   976   169     6    37
+```
+
+```r
+xtable(a)
+```
+
+```
+## % latex table generated in R 3.0.1 by xtable 1.7-1 package
+## % Sat Nov 30 19:21:57 2013
+## \begin{table}[ht]
+## \centering
+## \begin{tabular}{rrrrrrrr}
+##   \hline
+##  & 1 & 2 & 3 & 4 & 5 & D & P \\ 
+##   \hline
+## CHIR & 149 & 2733 & 2759 & 279 &   8 &   1 & 115 \\ 
+##   FUGUE &  54 & 121 &  20 &   0 &   0 &   0 &   7 \\ 
+##   HDT &   3 &  24 &  20 &   1 &   0 &   0 &  40 \\ 
+##   HO &   0 &  11 &   5 &   0 &   0 &   0 &   9 \\ 
+##   MED & 585 & 4884 & 7072 & 548 &  33 &   0 & 225 \\ 
+##   OBST &   3 &  48 &  27 &   3 &   0 &   0 &   0 \\ 
+##   PSA & 904 & 464 &  28 &   0 &   0 &   0 &   8 \\ 
+##   REA &   1 &  83 & 205 & 194 & 338 &   0 &   3 \\ 
+##   REO & 797 & 290 &  40 &   0 &   0 &   0 &   1 \\ 
+##   SC &  59 & 350 & 605 & 109 &  22 &   0 &   9 \\ 
+##   SCAM &  60 & 262 &  72 &   3 &   0 &   0 &   1 \\ 
+##   SI &  14 & 267 & 612 & 217 &  26 &   0 &   2 \\ 
+##   UHCD & 1102 & 10476 & 7671 & 976 & 169 &   6 &  37 \\ 
+##    \hline
+## \end{tabular}
+## \end{table}
+```
+
+
+Age et gravité
+--------------
+On fabrique une nouvelle colonne appelée **cat** qui partage la coleene *age* en 4 catégories. La première categorie comence a -1 pour prendre en compte les moins de 1 an.
+
+
+```r
+d1$cat <- cut(d1$AGE, c(-1, 15, 50, 75, 120), labels = c("Jeunes", "Adultes", 
+    "Agés", "Très agés"))
+table(d1$cat, d1$GRAVITE)
+```
+
+```
+##            
+##                 1     2     3     4     5     D     P
+##   Jeunes    13519 38594  2956   120    28     1    26
+##   Adultes   11777 77753  8967   546   150     2   802
+##   Agés       4401 33106  9859  1000   296    10   259
+##   Très agés  1719 19068 10419  1221   260    19    40
+```
+
+```r
+barplot(table(d1$GRAVITE))
+```
+
+![plot of chunk age_cat](figure/age_cat1.png) 
+
+```r
+
+barplot(round(prop.table(table(d1$cat, d1$GRAVITE), margin = 1) * 100, 2), beside = T, 
+    xlab = "CCMU", ylab = "% du groupe", main = "CCMU par groupe d'age", col = c(1:4))
+legend("topright", legend = c("< 15 ans", "15 à 50 ans", "50 à 75", "> 75 ans"), 
+    cex = 0.8, pch = 15, col = c(1:4))
+```
+
+![plot of chunk age_cat](figure/age_cat2.png) 
+
+```r
+
+barplot(round(prop.table(table(d1$cat, d1$GRAVITE), margin = 2) * 100, 2), beside = T, 
+    xlab = "CCMU", ylab = "% du groupe", main = "Répartition des ages par CCMU", 
+    col = c(1:4))
+```
+
+![plot of chunk age_cat](figure/age_cat3.png) 
+
+Représentation sous forme de barres emplilées avec légende  
+- on restreint l'espace de dessin en augmentant la marge de gauche
+- on dessine les barres en utilisant la marge 2 comme diviseur. Ainsi chaque barre représente un % de 0 à 100 à laquelle contribe chaque catégorie d'age
+- on rétablit la marge de droite
+- on dessine la légende en supprimant l'encadrement de celle-ci.
+
+
+```r
+par(mar = c(5, 4, 4, 8))
+barplot(round(prop.table(table(d1$cat, d1$GRAVITE), margin = 2) * 100, 2), beside = FALSE, 
+    xlab = "CCMU", ylab = "% du groupe", main = "Répartition des ages par CCMU", 
+    col = c(1:4))
+par(mar = c(5, 4, 4, 2))
+legend(x = 8.5, y = 100, legend = c("< 15 ans", "15 à 50 ans", "50 à 75", 
+    "> 75 ans"), cex = 0.8, pch = 15, col = c(1:4), bty = "n")
+```
+
+![plot of chunk reparition_age_cat](figure/reparition_age_cat.png) 
+
+
 
 
 
