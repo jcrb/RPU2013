@@ -4,6 +4,94 @@ author: Dr JC Bartier
 date: 3/12/2013
 transition: rotate
 
+Ordre du jour
+================================================================
+type: section
+
+- **Evolution de la règlementation Mme Schieber**
+
+- FEDORU
+
+- Compte rendu de l’AG du 21/11/2013
+
+- Point RPU, présentation des données
+
+- Site Internet 
+
+- Divers
+
+Ordre du jour
+================================================================
+type: section
+
+- Evolution de la règlementation Mme Schieber
+
+- **FEDORU**
+
+- Compte rendu de l’AG du 21/11/2013
+
+- Point RPU, présentation des données
+
+- Site Internet 
+
+- Divers
+
+Ordre du jour
+================================================================
+type: section
+
+- Evolution de la règlementation Mme Schieber
+
+- FEDORU
+
+- **Compte rendu de l’AG du 21/11/2013**
+
+- Point RPU, présentation des données
+
+- Site Internet 
+
+- Divers
+
+Compte rendu de l’AG du 21/11/2013
+==================================
+
+Election du nouveau CA
+
+Election d'un nouveau bureau
+- **Président** Dr Bruno Goulesque
+- **Vice-présidents**
+  - Dr Hervé Delplancq
+  - Dr Yannick Gottwalles
+- **Tésorier** Mr Christian Caoduro (DG)
+- **Secrétaire** Mme Christiane Walter (CSS)
+- **secrétaire-adjoint** Dr Jean-Marie Minoux
+
+Ordre du jour
+================================================================
+type: section
+
+- Evolution de la règlementation Mme Schieber
+
+- FEDORU
+
+- Compte rendu de l’AG du 21/11/2013
+
+- **Point RPU, présentation des données**
+
+- Site Internet 
+
+- Divers
+
+
+Etat des lieux
+========================================================
+
+Au 1er novembre 2013
+- **276 452** RPU enregistrés
+- 12 établissements sur 14 (85%) participent à la remontée des RPU
+
+
+
 RPU (1)
 ========================================================
 
@@ -88,7 +176,10 @@ Le n° FINESS doit comporter **9 chiffres**.
 Date et heure (1)
 ========================================================
  
- **Heure d'entrée** est à priori simple à définir: c'est l'heure  laquellele patient est enregistré. Dans la plupart des cas elle coincide avec l'arrivée physiqe du consultant, mais pas toujours (parsonnes annoncées par le SAMU, transfert du dossier SMUR).
+ **Heure d'entrée** est à priori simple à définir: c'est l'heure  laquellele patient est enregistré. 
+ 
+ - Dans la plupart des cas elle coincide avec l'arrivée physiqe du consultant, mais pas toujours (personnes annoncées par le SAMU, transfert du dossier SMUR).
+
 
 Date et heure (2)
 ========================================================
@@ -108,6 +199,14 @@ Règles de rejet des durées de passage (non consensuelles)
 - nulle ou négatives
 - inférieures à 10 mn
 - supérieures à 72 heures
+
+Durée de présence
+========================================================
+!["image"](ORUDAL2-figure/presence2.png)
+
+Durée de présence
+========================================================
+!["image"](ORUDAL2-figure/presence1.png)
  
 Code postal
 ========================================================
@@ -165,6 +264,11 @@ Motif de recours
 
 - la FEDORU va saisir officiellement la SFMU pour quelle corrige la page **RECOURS**
 
+Motif de recours (2013)
+========================================================
+
+!["image"](ORUDAL2-figure/tous.png)
+
 Diagnostic principal
 ========================================================
 
@@ -179,201 +283,186 @@ Diagnostics associés
 - La porosité entre le SU et l'UHTCD rend cet item très imprécis. 
 - Il est l'objet de discussions animées.
 
+Taux de complétude
+==================
+
+!["image"](ORUDAL2-figure/acteurs.png)
+
+Taux de complétude
+==================
+
+!["image"](ORUDAL2-figure/radar_hopital2.png)
+
 Gestes selon CCAM
 ========================================================
 
 Mode de sortie
 ========================================================
 
+Il existe 3 modes de sortie des urgences:
+
+ - l'hospitalisation (mutation ou transfert)
+ 
+ - le retour à domicile (vrai retour, sorties atypiques, sortie contre avis, part sans attendre, réorientation...)
+ 
+ - le décès
+
+Mode sortie et gravité
+=========================================================================
+
+ <TABLE border=2>
+ <TR> <TH><B>CCMU</B>  </TH> <TH> 1 </TH> <TH> 2 </TH> <TH> 3 </TH> <TH> 4 </TH> <TH> 5 </TH> <TH> D </TH> <TH> P </TH>  </TR>
+   <TR> <TD align="right"> NA </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> </TR>
+   <TR> <TD align="right"> Mutation </TD> <TD align="right"><FONT COLOR="#FF0000"> 1857 </TD> <TD align="right"> 20735 </TD> <TD align="right"> 21315 </TD> <TD align="right"> 2247 </TD> <TD align="right"> 576 </TD> <TD align="right">   8 </TD> <TD align="right"> 363 </TD> </TR>
+   <TR> <TD align="right"> Transfert </TD> <TD align="right"> 120 </TD> <TD align="right"> 2130 </TD> <TD align="right"> 1332 </TD> <TD align="right">  75 </TD> <TD align="right">  35 </TD> <TD align="right">   0 </TD> <TD align="right"> 260 </TD> </TR>
+   <TR> <TD align="right"> Domicile </TD> <TD align="right"> 27743 </TD> <TD align="right"> 132552 </TD> <TD align="right"> 6828 </TD> <TD align="right"> <FONT COLOR="#FF0000"> 148 </TD> <TD align="right"><FONT COLOR="#FF0000">  19 </TD> <TD align="right"><b><FONT COLOR="#FF0000">   4 </TD> <TD align="right"> 473 </TD> </TR>
+   <TR> <TD align="right"> Décès </TD> <TD align="right">   0 </TD> <TD align="right">   2 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> </TR>
+    </TABLE>
+
 L'orientation
 ========================================================
 
+Gravité et orientation
+=======================================================
+ <TABLE border=1>
+ <TR> <TH><b>CCMU</b>  </TH> <TH> 1 </TH> <TH> 2 </TH> <TH> 3 </TH> <TH> 4 </TH> <TH> 5 </TH> <TH> D </TH> <TH> P </TH>  </TR>
+   <TR> <TD align="right"> CHIR </TD> <TD align="right"> 149 </TD> <TD align="right"> 2733 </TD> <TD align="right"> 2759 </TD> <TD align="right"> 279 </TD> <TD align="right">   8 </TD> <TD align="right">   1 </TD> <TD align="right"> 115 </TD> </TR>
+   <TR> <TD align="right"> FUGUE </TD> <TD align="right">  54 </TD> <TD align="right"> 121 </TD> <TD align="right">  20 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   7 </TD> </TR>
+   <TR> <TD align="right"> HDT </TD> <TD align="right">   3 </TD> <TD align="right">  24 </TD> <TD align="right">  20 </TD> <TD align="right">   1 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">  40 </TD> </TR>
+   <TR> <TD align="right"> HO </TD> <TD align="right">   0 </TD> <TD align="right">  11 </TD> <TD align="right">   5 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   9 </TD> </TR>
+   <TR> <TD align="right"> MED </TD> <TD align="right"> 585 </TD> <TD align="right"> 4884 </TD> <TD align="right"> 7072 </TD> <TD align="right"> 548 </TD> <TD align="right">  33 </TD> <TD align="right">   0 </TD> <TD align="right"> 225 </TD> </TR>
+   <TR> <TD align="right"> OBST </TD> <TD align="right">   3 </TD> <TD align="right">  48 </TD> <TD align="right">  27 </TD> <TD align="right">   3 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> </TR>
+   <TR> <TD align="right"> PSA </TD> <TD align="right"> 904 </TD> <TD align="right"> 464 </TD> <TD align="right">  28 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   8 </TD> </TR>
+   <TR> <TD align="right"> REA </TD> <TD align="right"><FONT COLOR="#FF0000">   1 </TD> <TD align="right"><FONT COLOR="#FF0000">  83 </TD> <TD align="right"> 205 </TD> <TD align="right"> 194 </TD> <TD align="right"> 338 </TD> <TD align="right">   0 </TD> <TD align="right">   3 </TD> </TR>
+   <TR> <TD align="right"> REO </TD> <TD align="right"> 797 </TD> <TD align="right"> 290 </TD> <TD align="right">  40 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   1 </TD> </TR>
+   <TR> <TD align="right"> SC </TD> <TD align="right">  59 </TD> <TD align="right"> 350 </TD> <TD align="right"> 605 </TD> <TD align="right"> 109 </TD> <TD align="right">  22 </TD> <TD align="right">   0 </TD> <TD align="right">   9 </TD> </TR>
+   <TR> <TD align="right"> SCAM </TD> <TD align="right">  60 </TD> <TD align="right"> 262 </TD> <TD align="right">  72 </TD> <TD align="right">   3 </TD> <TD align="right">   0 </TD> <TD align="right">   0 </TD> <TD align="right">   1 </TD> </TR>
+   <TR> <TD align="right"> SI </TD> <TD align="right">  14 </TD> <TD align="right"> 267 </TD> <TD align="right"> 612 </TD> <TD align="right"> 217 </TD> <TD align="right">  26 </TD> <TD align="right">   0 </TD> <TD align="right">   2 </TD> </TR>
+   <TR> <TD align="right"> UHCD </TD> <TD align="right"> 1102 </TD> <TD align="right"> 10476 </TD> <TD align="right"> 7671 </TD> <TD align="right"> 976 </TD> <TD align="right"> 169 </TD> <TD align="right">   6 </TD> <TD align="right">  37 </TD> </TR>
+    </TABLE>
+
 Les données
 ===========
+type: section
 
-conformité, l’exhaustivité, la qualité et la cohérence
+Elles doivent présenter 4 caractéristiques:
+- conformité (règles d'acceptation et de rejet)
+  - structurelle (schéma XML)
+  - contenu conforme (ex.code CIM10 conforme)
+- exhaustivité (donnée et passages)
+- qualité (défaut technique  ou problème de codage)
+- cohérence (bornes et définitions)
 
-Nécessité de définir la conformité d’un RPU, les règles d’acceptation d’un RPU
-• En d’autres termes, quels sont les RPU à rejeter? Quel est le contenu minimal
-•
-•
-•
-•
-•
-attendu?
-En premier lieu, il s’agit du contenant à savoir de la conformité structurelle du RPU
-(format XML avec balises ad hoc)
+Quel doit être le devenir des RPU non conformes ?
+- rejet total
+- acceptation partielle
 
-En second lieu, il s’agit du contenu. Par exemple, faut - il rejeter un RPU en cas de
-codes CIM 10 non conformes, (en sachant que les thésaurus sont, à ce jour, non
-homogènes) en cas de champs vides (heure de sortie par exemple), de durées de
-passage négatives ou supérieures à 72h ou encore d’incohérences entre champs ?
 
-Dans l’hypothèse du rejet d’un RPU, quel est son devenir ? Stockage et information
-du producteur ou règles d’auto complétude (utilisation de l’heure médiane pour
-compléter l’absence d’une heure de sortie...) ou plus simplement d’auto correction
-(correction d’un diagnostic CIM...). Concernant ces éventuelles règles de
-correction, elles doivent idéalement être activées en amont de la réception c’est-
-c’est -à -
-dire lors de la saisie initiale
-Toujours dans l’hypothèse d’un rejet de RPU, les RPU en erreur « historisés »
-doivent--ils entrer en compte dans l'analyse des données et si oui, dans quelles
-doivent
-conditions ?
-Enfin, se pose également la définition des critères d’unicité d’un RPU, le couple RPU /
-FINESS géographique ne semblant pas toujours suffisant (exemple classique du
-défaut d’ « étanchéité SU-
-SU -UHTCD »
 
-Les difficultés liées aux données
-==========================================================
-Exhaustivité des données
-------------------------
-L’exhaustivité concerne à la fois les données mais aussi les passages devant générer des RPU
-Par exemple, certains passages pédiatriques médicaux ne sont actuellement
-pas pris en compte (problème des admissions bi sites sur un même
-établissement)
-Autre question, que faire des passages pour urgences gynéco -
-obstétricales ? (si intégration, probablement à définir)
-En ce qui concerne l’exhaustivité des données, nécessité de déterminer des
-champs bloquants communs mais également de définir les seuils autorisant
-l’analyse
-De plus un champ peut être complété mais d’une façon non exhaustive
-(diagnostics associés, actes CCAM...)
-Par ailleurs, intérêt de l’analyse mais aussi du suivi des courbes
-d’exhaustivité. En effet, une analyse régionale permet de discuter la
-pertinence de certains champs du RPU et le suivi par établissement
-participe à la motivation des établissementsLes difficultés liées aux données
+Données des RPU
+===============
+type: section
 
-Les difficultés liées aux données
-Exhaustivité des données
-exemple d’un radar d’exhaustivité Orulor
-
-Les difficultés liées aux données
-=================================
-Qualité des données
--------------------
-• Les défauts de qualité peuvent relever de problèmes techniques ou de
-problèmes de codage
-• Exemples d’origine technique:
-- zone de saisie en texte libre,
-- absence de « détrompage » ou de règle sur la saisie des codes communes
-(code pays étrangers...)
-- durée de passage avec clôture de dossier retardée ou absence
-d’étanchéité SU-
-SU -UHTCD (quelles sont les bornes utilisées par le progiciel?)
-- absence de transcodage (traitement et codification CCAM, orientation et
-caractérisation en MCO, SSR...) ou transcodage non pertinent
-- absence de champs bloquants
-• Exemples de problèmes de codage:
-- CCMU (cotation de la consultation d’urgence en consultation spécialisée
-transformant une CCMU1 en 2, séparation 3/4/5 subjective)
-- codage du diagnostic principal trop imprécis (asthénie
-(asthénie--AEG, malaise
-malaise--
-syncope--lipothymie, autres recours....). Possibilité d’intégrer une fonction de
-syncope
-diagnostic lié
-- absence de cotation ou cotation partielle des diagnostics associés, des
-actes CCAM
-
-Les difficultés liées aux données
-=================================
-Cohérences des données
------------------------
-• Nécessité de définir des règles de cohérence entre les différents champs
-Exemples
-Provenance - mode d’entée
-CCMU et orientation (CCMU 5 et RAD)
-Sexe et /ou âge et diagnostic
-Mode de sortie et mode d’orientation (retour à domicile et
-hospitalisation en UHTCD sur les progiciels non étanches)
-Ce contrôle de cohérence devrait idéalement s’effectuer lors de la
-saisie initiale sur le progiciel dédié car le post traitement est difficile
-et aléatoire
-Attention également aux faux « non renseigné » en particulier pour
-les calculs d’exhaustivité
-
-Les difficultés liées aux bornes et aux définitions
-===================================================
-• Nécessité d’utiliser les mêmes bornes et les mêmes définitions:
-- Pour les âges et les classes d’âge
-- Pour les jours (0h01 à 23h59 ou 08h
-08h-- 08h..), les semaines, les WE ,
-les périodes PDSES et PDSA
-• Comment traiter les groupes 4?
-• Définition du TOP, du taux de recours aux urgences
-• Modalités de prise en compte des « sorties atypiques » (fugue,
-contre avis médical, parti sans attendre) et des réorientations
-• Prise en compte ou non du parcours de soins intra SU du patient
-(temps d’attente de prise en charge, temps de prise en charge
-médicale (avec localisation), temps d’attente de sortie)
-
-Difficultés liées aux axes d’analyse
-=====================================
-• Il s’agit essentiellement de difficultés d’interprétation
-• Exemple de la durée moyenne de passage (DMP): comment
-comparer la DMS (ou la médiane) de deux SU. La
-comparaison brute n’a pas de sens de même que les objectifs
-non pondérés de type : 80% des passages de moins de 4h.
-Cette DMP est impactée par de multiples paramètres souvent
-totalement indépendants de la « pertinence » du SU
-- un SU ne recevant qu’une patientèle adulte ou pire qu’une
-patientèle adulte médicale ne pourra jamais atteindre
-l’objectif de 80% des passages de moins de 4h (en
-Lorraine, la DMP d’un enfant est de 2h versus 5 h pour un
-patient de plus de 75ans)
-- autre facteur à fort impact, les % des différentes CCMU ( la
-réalisation d’un examen complémentaire majore de 1h la
-DMP)
-- enfin, quid des groupes 4 ?
-Pour ce paramètre a priori simple, une comparaison d’activité
-suppose l’utilisation de « coefficients de pondération »
-
-Après la DMP, autre exemple, à savoir l’analyse de l’activité par diagnostic
-Tout d’abord, il s’agit de diagnostics de présomption souvent soit
-exagérément précis ou plus habituellement trop vagues (malaise -
-syncope-- lipothymie, AEG ...)
-syncope
-Par ailleurs, dans un même champ, peut figurer un diagnostic, un
-motif de recours ou une circonstance
-Enfin, il existe une grande dispersion des diagnostics rendant
-l’analyse difficile
-Intérêt d’une CIM 10 « très » réduite (nouvelle version SFMU) mais
-aussi d’une règle unique de regroupement des diagnostics
-(forcément partiale compte tenu de la faible exhaustivité des
-diagnostics associés et de l’absence habituelle de fonction de
-diagnostic lié)
-
-Dernier exemple, celui de l’interprétation des sorties dites
-« atypiques » regroupant les fugues, les sorties contre avis
-médical et les « partis sans attendre »
-Il est tentant de considérer ce paramètre comme un
-indicateur de qualité mais:
-- certains progiciels n’intègrent pas les PSA
-- il peut parfois s’agir d’un biais permettant de clôturer un
-dossier non exhaustif (champ de saisie détourné de son usage
-attendu)
-C’est ainsi qu’un % important de patients partis sans attendre
-peut simplement être lié à une anomalie de saisie, reflétant
-un défaut de rigueur de saisie en non pas un défaut de prise
-en charge de patients
-
-Propositions d’action
+Activité 2013
 ================================================================
 
-Améliorer la production, la qualité et l’exhaustivité des données
-Harmoniser les modalités de collecte
-Définir les règles d’acceptation d’un RPU
-Déterminer un socle minimum commun de données
-Préciser les définitions des termes usités
-Retenir des bornes communes
-Définir un socle minimum commun d’axe d’analyse
-Ces axes doivent permettre la description de l’activité, la comparaison inter SU mais
-aussi interrégionale, la définition d’une activité normale et anormale (en terme de
-volumétrie avec son corollaire HET mais aussi en terme de services attendus)
-Préciser les règles d’interprétation mais surtout les biais potentiels
-Proposer des évolutions ( champs du RPU, RPU SMUR, regroupement de
-pathologies, RPU et HET...)
-Au total, intérêt de mettre en place une « charte qualité inter ORU »
+!["image"](ORUDAL2-figure/analyse3.png)
+
+Activité 2013
+================================================================
+
+!["image"](ORUDAL2-figure/taux_hospitalisation.png)
+
+Durées moyennes de passage
+================================================================
+
+!["image"](ORUDAL2-figure/moyenne_passages.png)
+
+Horaires de passages
+================================================================
+
+!["image"](ORUDAL2-figure/als-geb2.png)
+
+Comparaisons entrées-sorties
+================================================================
+
+!["image"](ORUDAL2-figure/passages1.png)
+
+Comparaisons entrées-sorties
+================================================================
+
+!["image"](ORUDAL2-figure/passages2.png)
+
+Comparaisons entrées-sorties
+================================================================
+
+!["image"](ORUDAL2-figure/passages3.png)
+
+Pathologies
+================================================================
+
+Données CIM10 (asthme)
+================================================================
+
+!["image"](ORUDAL2-figure/asthme2.png)
+
+Données CIM10 (pneumopathies)
+================================================================
+
+!["image"](ORUDAL2-figure/pneumo.png)
+
+Données CIM10 (bronchiolites)
+================================================================
+
+!["image"](ORUDAL2-figure/bron2.png)
+
+Données CIM10 (gastro-enterites)
+================================================================
+
+!["image"](ORUDAL2-figure/ge3.png)
+
+Données CIM10 (intoxication au CO)
+================================================================
+
+!["image"](ORUDAL2-figure/co.png)
+
+Données CIM10 (AVC)
+================================================================
+
+!["image"](ORUDAL2-figure/avc_sexe3.png)
+
+
+
+
+Ordre du jour
+================================================================
+type: section
+
+- Evolution de la règlementation Mme Schieber
+
+- FEDORU
+
+- Compte rendu de l’AG du 21/11/2013
+
+- Point RPU, présentation des données
+
+- **Site Internet** 
+
+- Divers
+
+Ordre du jour
+================================================================
+type: section
+
+- Evolution de la règlementation Mme Schieber
+
+- FEDORU
+
+- Compte rendu de l’AG du 21/11/2013
+
+- Point RPU, présentation des données
+
+- Site Internet 
+
+- **Divers**
 

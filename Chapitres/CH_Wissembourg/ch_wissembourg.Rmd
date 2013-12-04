@@ -1,0 +1,117 @@
+CH Wissembourg
+========================================================
+
+```{r prologue,cache=TRUE}
+source("../prologue.R")
+source("../../mes_fonctions.R")
+
+date()
+pt <-nrow(d1)
+# population totale
+pt
+```
+Récupération des données
+========================
+```{r init}
+library("epicalc")
+source("odds.R")
+wis<-d1[d1$FINESS == "Wis",]
+n <- nrow(wis)
+n
+```
+Mode de sortie
+--------------
+```{r sortie}
+a<-summary(wis$MODE_SORTIE)
+a
+tab1(wis$MODE_SORTIE)
+hosp <- as.numeric(a["Mutation"] + a["Transfert"])
+hosp
+total <- as.numeric(hosp + a["Domicile"])
+total
+ratio_hosp <- round(hosp * 100 / as.numeric(a["Domicile"]))
+ratio_hosp
+tx_hosp <- round(hosp * 100 / total)
+tx_hosp
+```
+
+Destination
+-----------
+```{r destination}
+a<-summary(wis$DESTINATION)
+a
+tab1(wis$DESTINATION)
+
+```
+
+
+Orientation
+-----------
+```{r orientation}
+summary(wis$ORIENTATION)
+
+#on supprime les NA
+a<-wis$ORIENTATION[!is.na(wis$ORIENTATION)]
+tab1(a,horiz=T,main="Orientation des patients",xlab="Nombre")
+```
+
+Age
+----
+
+```{r age}
+a<-wis$AGE
+summary(a)
+region<-d1$AGE
+summary(region)
+
+hist(region,freq=F)
+hist(a, add=T,col="blue",freq=F,main="Histogramme des ages")
+abline(v=median(region,na.rm=T),col="red")
+abline(v=median(a,na.rm=T),col="green")
+legend("topright",legend=c("médiane régionale","médiane locale"),col=c("red","green"),lty=1)
+
+# moins de 1 an / total
+a<-wis$AGE[wis$AGE < 1]
+length(a) * 100 /n
+region<-d1$AGE[d1$AGE < 1]
+length(region) * 100 / pt
+
+# on sasi d'abord la colonne 1, puis 2
+# pour une saisie par ligne mettre byrow=TRUE
+M1 <- matrix(c(length(a),n,length(region),pt), nrow = 2,byrow=FALSE)
+M1
+chisq.test(M1)
+p<-M1[1,1]/M1[2,1]
+q<-M1[1,2]/M1[2,2]
+or<-p*(1-q)/q*(1-p)
+p
+q
+or
+
+calcOddsRatio(M1,referencerow=2)
+calcRelativeRisk(M1)
+
+# 75 ans et plus
+a<-wis$AGE[wis$AGE > 74]
+length(a) * 100 /n
+region<-d1$AGE[d1$AGE > 74]
+length(region) * 100 / pt
+
+M1 <- matrix(c(length(a),n,length(region),pt), nrow = 2,byrow=FALSE)
+M1
+chisq.test(M1)
+p<-M1[1,1]/M1[2,1]
+q<-M1[1,2]/M1[2,2]
+or<-p*(1-q)/q*(1-p)
+p
+q
+or
+
+calcOddsRatio(M1,referencerow=2)
+calcRelativeRisk(M1)
+chisq.test(M1)
+fisher.test(M1)
+
+# sex ratio
+```
+
