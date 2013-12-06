@@ -155,7 +155,7 @@ calcOddsRatio <- function(mymatrix,alpha=0.05,referencerow=2,quiet=FALSE)
         (probControlGivenExposed*probDiseaseGivenUnexposed)
       if (quiet == FALSE)
       {
-        print(paste("category =", rowname, ", odds ratio = ",oddsRatio))
+        print(paste("categorie =", rowname, ", odds ratio = ",oddsRatio))
       }
       
       # calculate a confidence interval
@@ -168,16 +168,26 @@ calcOddsRatio <- function(mymatrix,alpha=0.05,referencerow=2,quiet=FALSE)
       uppervalue <- oddsRatio * exp( z * sigma)
       if (quiet == FALSE)
       {
-        print(paste("category =", rowname, ", ", confidenceLevel,
-                    "% confidence interval = [",lowervalue,",",uppervalue,"]"))
+        print(paste("categorie =", rowname, ", ", confidenceLevel,
+                    "% interval de confiance = [",lowervalue,",",uppervalue,"]"))
       }
     }
   }
   if (quiet == TRUE && numrow == 2) # If there are just two treatments (exposed/nonexposed)
   {
-    return(oddsRatio)
+    return(c(oddsRatio,lowervalue,uppervalue))
   }
 }
+
+# L’odds ratio est toujours supérieur ou égal à zéro.
+
+# Si l'odds ratio est :
+# 
+#     proche de 1, la maladie est indépendante du groupe ;
+#     supérieur à 1, la maladie est plus fréquente dans le groupe A que dans le groupe B ;
+#     bien supérieur à 1, la maladie est beaucoup plus fréquente dans le groupe A que dans le groupe B ;
+#     inférieur à 1, la maladie est moins fréquente dans le groupe A que dans le groupe B ;
+#     proche de zéro, la maladie est beaucoup moins fréquente dans le groupe A que dans le groupe B.
 
 # If the odds ratio is 1 (ie. if the confidence interval includes 1), it means there is no evidence for an association between exposure and disease. Otherwise, if the odds ratio > 1, there is evidence of a positive association between exposure and disease; while if the odds ratio < 1, there is evidence of a negative association. The odds ratio can be estimated for either a cohort study or a case-control study.
 # 
