@@ -1,6 +1,9 @@
 RPU 2013 Préparation
 ========================================================
-Les données du premier quadrimestre 2013 ont été transmises le 15/05/2013 par Mr Nold, sous la forme d'un dump mysql: *rpu_2013_dump.sql*. Le fichier non compressé pèse environ 80 Mo. Il ne peut pas être importé par *phpmyadmin*. Dans un premier temps, le fichier est stocké dans le dosssier *dossier personnel*. En mode console, on lance l'instruction suivante: *mysql -u root -pmarion pma < rpu_2013_dump.sql*. Le contenu de la base *pma* a été préalablement sauvegardé sous le nom de *rpu2012*. La vouvelle base pma comporte 105979 enregistrements, ce qui permet d'estimer le nombre de RPU pour 2013 à *317 937*.
+
+### VERSION OBSOLETE. REMPLACEE PAR RPU2013-PREPARATION DES FICHIERS.RMD
+
+Les données du premier quadrimestre 2013 ont été transmises le 15/05/2013 par Mr Nold, sous la forme d'un dump mysql: *rpu_2013_dump.sql*. Le fichier non compressé pèse environ 80 Mo. Il ne peut pas être importé par *phpmyadmin*. Dans un premier temps, le fichier est stocké dans le dosssier *dossier personnel*. En mode console, on lance l'instruction suivante: *mysql -u root -pmarion rpu < rpu_2013_dump.sql*. Le contenu de la base *pma* a été préalablement sauvegardé sous le nom de *rpu2012*. La vouvelle base pma comporte 105979 enregistrements, ce qui permet d'estimer le nombre de RPU pour 2013 à *317 937*.
 
 Initialisation
 ==============
@@ -14,7 +17,7 @@ date()
 ```
 etape 1
 -------
-Cette étape permet de récupérer les données à partir de la table *rpu* de la base de données *pma*. A l'issue, un fichier de travail *rpu2012_2.txt* esr créé. Si ce fichier a déjà été créé, passer directement à l'étape 4.
+Cette étape permet de récupérer les données à partir de la table *RPU__* de la base de données *rpu*. A l'issue, un fichier de travail *rpu2013d10.txt* esr créé. Si ce fichier a déjà été créé, passer directement à l'étape 4.
 
 Chargement des library nécessaires:
 ```{r}
