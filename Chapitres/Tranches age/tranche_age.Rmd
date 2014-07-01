@@ -6,9 +6,9 @@ date()
 Variables globales:
 -------------------
 ```{r var_globales}
-mois_courant<-8
-annee_couranre<-2013
-path<-"../../"
+source("../prologue.R")
+d1<-foo(path)
+nrow(d1)
 ```
 Activité régionale
 -----------------------------
@@ -23,17 +23,6 @@ Librairies nécessaires:
 load_libraries()
 ```
 
-Lecture du fichier des données
----------------------------------------
-On lit le fichier de travail créé:
-```{r Lecture fichier,cache=TRUE}
-
-if(!exists("d1")) {
-load(paste(path,"rpu2013d0108.Rda",sep=""))
-d1<-d0108
-rm(d0108)
-}
-```
 Le découpage en tranches d'age est le même que celui utilisé pour la population générale (voir demographie2.Rmd)
 
 ```{r tranches}
