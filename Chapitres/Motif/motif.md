@@ -16,6 +16,13 @@ getwd()
 
 ```r
 source("../prologue.R")
+```
+
+```
+## [1] "Fichier courant: rpu2013d0110.Rda"
+```
+
+```r
 
 d1 <- foo(path)
 names(d1)
@@ -27,6 +34,14 @@ names(d1)
 ##  [9] "GRAVITE"       "MODE_ENTREE"   "MODE_SORTIE"   "MOTIF"        
 ## [13] "NAISSANCE"     "ORIENTATION"   "PROVENANCE"    "SEXE"         
 ## [17] "SORTIE"        "TRANSPORT"     "TRANSPORT_PEC" "AGE"
+```
+
+```r
+nrow(d1)
+```
+
+```
+## [1] 276452
 ```
 
 
@@ -43,11 +58,29 @@ print(mois_courant)
 ```
 
 ```
-## [1] 9
+## [1] 10
 ```
 
 ```r
 d1$MOTIF <- as.factor(d1$MOTIF)
+
+motifs_renseignes <- function(d1, finess) {
+    print(head(d1$MOTIF[d1$FINESS == finess]))
+    a <- is.na(d1$MOTIF[d1$FINESS == finess])
+    b <- length(a[a == TRUE])
+    c <- b * 100/length(a)
+    print("")
+    print(paste("% de motifs non renseignés:", round(c, 2)))
+}
+
+motifs_renseignes(d1, "Mul")
+```
+
+```
+## [1] S37.0 R05   R10.4 R41.0 R10.4 J45.9
+## 19684 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## [1] ""
+## [1] "% de motifs non renseignés: 16.78"
 ```
 
 Ensemble des hôpitaux
@@ -61,9 +94,9 @@ round(c * 100, 2)
 
 ```
 ##    3Fr    Alk    Col    Dia    Geb    Hag    Hus    Mul    Odi    Sel 
-##   9.06  11.86 100.00  95.25   0.04  14.85   0.00  83.24  94.38  98.05 
+##   7.74  19.24 100.00  95.49   0.03  14.14   0.00  83.22  94.57  98.05 
 ##    Wis    Sav 
-##  99.67  42.12
+##  99.70  41.10
 ```
 
 ```r
@@ -73,7 +106,7 @@ barplot(sort(round(c * 100, 2)), main = "Taux de renseignement de l'item 'Motif 
 
 ![plot of chunk tous](figure/tous.png) 
 
-Le motif de consultation nest pas renseigné dans 54.04 % des cas.
+Le motif de consultation nest pas renseigné dans 54.44 % des cas.
 
 barplot(sort(round(c*100,2),decreasing=TRUE),main="Taux de renseignement de l'item 'Motif de consultation'",xlab="pourcentage",ylab="Services d'urgence",horiz=TRUE,las=2)
 
@@ -81,57 +114,37 @@ Altkirch
 -----
 
 ```r
-head(d1$MOTIF[d1$FINESS == "Alk"])
+motifs_renseignes(d1, "Alk")
 ```
 
 ```
 ## [1] <NA> <NA> <NA> <NA> R600 <NA>
-## 16734 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## 19684 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## [1] ""
+## [1] "% de motifs non renseignés: 80.76"
 ```
 
-```r
-a <- is.na(d1$MOTIF[d1$FINESS == "Alk"])
-b <- length(a[a == TRUE])
-c <- b * 100/length(a)
-print(c)
-```
-
-```
-## [1] 88.14
-```
-
-L'item nest pas renseigné dans 88.1371 % des cas.
 
 Wissembourg
 -----
 
 ```r
-head(d1$MOTIF[d1$FINESS == "Wis"])
+motifs_renseignes(d1, "Wis")
 ```
 
 ```
 ## [1] T009 T119 T009 S008 R11  R11 
-## 16734 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## 19684 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## [1] ""
+## [1] "% de motifs non renseignés: 0.3"
 ```
 
-```r
-a <- is.na(d1$MOTIF[d1$FINESS == "Wis"])
-b <- length(a[a == TRUE])
-c <- b * 100/length(a)
-print(c)
-```
-
-```
-## [1] 0.3286
-```
-
-L'item nest pas renseigné dans 0.3286 % des cas.
 
 Colmar
 -----
 
 ```r
-head(d1$MOTIF[d1$FINESS == "Col"])
+motifs_renseignes(d1, "Col")
 ```
 
 ```
@@ -141,43 +154,109 @@ head(d1$MOTIF[d1$FINESS == "Col"])
 ## [4] un traumatisme oculaire: explosion d'un    
 ## [5] plaie pied gauche par p\xe9tard ; une plaie
 ## [6] une br\xfblre                              
-## 16734 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## 19684 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## [1] ""
+## [1] "% de motifs non renseignés: 0"
 ```
 
-```r
-a <- is.na(d1$MOTIF[d1$FINESS == "Col"])
-b <- length(a[a == TRUE])
-c <- b * 100/length(a)
-print(c)
-```
-
-```
-## [1] 0
-```
-
-L'item nest pas renseigné dans 0 % des cas.
 
 Mulhouse
 --------
 
 ```r
-head(d1$MOTIF[d1$FINESS == "Mul"])
+motifs_renseignes(d1, "Mul")
 ```
 
 ```
 ## [1] S37.0 R05   R10.4 R41.0 R10.4 J45.9
-## 16734 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## 19684 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## [1] ""
+## [1] "% de motifs non renseignés: 16.78"
 ```
+
+
+Thann
+--------
 
 ```r
-a <- is.na(d1$MOTIF[d1$FINESS == "Mul"])
-b <- length(a[a == TRUE])
-c <- b * 100/length(a)
-print(c)
+motifs_renseignes(d1, "Thn")
 ```
 
 ```
-## [1] 16.76
+## factor(0)
+## 19684 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## [1] ""
+## [1] "% de motifs non renseignés: NaN"
 ```
 
-L'item nest pas renseigné dans 16.7559 % des cas.
+
+Saverne
+--------
+
+```r
+motifs_renseignes(d1, "Sav")
+```
+
+```
+## [1] <NA> <NA> <NA> <NA> <NA> <NA>
+## 19684 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## [1] ""
+## [1] "% de motifs non renseignés: 58.9"
+```
+
+Selestat
+--------
+
+```r
+motifs_renseignes(d1, "Sel")
+```
+
+```
+## [1] GASTRO04   DIVERS23   TRAUMATO10 TRAUMATO02 OPHTALMO04 TRAUMATO09
+## 19684 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## [1] ""
+## [1] "% de motifs non renseignés: 1.95"
+```
+
+Hus
+--------
+
+```r
+motifs_renseignes(d1, "Hus")
+```
+
+```
+## [1] <NA> <NA> <NA> <NA> <NA> <NA>
+## 19684 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## [1] ""
+## [1] "% de motifs non renseignés: 100"
+```
+
+Guebwiller
+--------
+
+```r
+motifs_renseignes(d1, "Geb")
+```
+
+```
+## [1] <NA> <NA> <NA> <NA> <NA> <NA>
+## 19684 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## [1] ""
+## [1] "% de motifs non renseignés: 99.97"
+```
+
+St Louis
+--------
+
+```r
+motifs_renseignes(d1, "3Fr")
+```
+
+```
+## [1] <NA> <NA> <NA> <NA> <NA> <NA>
+## 19684 Levels: ,, ... zona ; une pathologie ophtalmalogique au
+## [1] ""
+## [1] "% de motifs non renseignés: 92.26"
+```
+

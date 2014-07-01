@@ -11,12 +11,24 @@ source("../prologue.R")
 
 d1<-foo(path)
 names(d1)
+nrow(d1)
 
 ```
 ```{r}
 print(annee_courante)
 print(mois_courant)
 d1$MOTIF<-as.factor(d1$MOTIF)
+
+motifs_renseignes<-function(d1,finess){
+  print(head(d1$MOTIF[d1$FINESS == finess]))
+  a<-is.na(d1$MOTIF[d1$FINESS == finess])
+  b<-length(a[a==TRUE])
+  c<-b*100/length(a)
+  print("")
+  print(paste("% de motifs non renseignés:", round(c,2)))
+}
+
+motifs_renseignes(d1,"Mul")
 ```
 Ensemble des hôpitaux
 ---------------------
@@ -33,54 +45,59 @@ barplot(sort(round(c*100,2),decreasing=TRUE),main="Taux de renseignement de l'it
 Altkirch
 -----
 ```{r alk}
-head(d1$MOTIF[d1$FINESS=="Alk"])
-a<-is.na(d1$MOTIF[d1$FINESS=="Alk"])
-b<-length(a[a==TRUE])
-c<-b*100/length(a)
-print(c)
+motifs_renseignes(d1,"Alk")
+
 ```
-L'item nest pas renseigné dans `r c` % des cas.
 
 Wissembourg
 -----
 ```{r Wis}
-head(d1$MOTIF[d1$FINESS=="Wis"])
-a<-is.na(d1$MOTIF[d1$FINESS=="Wis"])
-b<-length(a[a==TRUE])
-c<-b*100/length(a)
-print(c)
+motifs_renseignes(d1,"Wis")
+
 ```
-L'item nest pas renseigné dans `r c` % des cas.
 
 Colmar
 -----
 ```{r Col}
-head(d1$MOTIF[d1$FINESS=="Col"])
-a<-is.na(d1$MOTIF[d1$FINESS=="Col"])
-b<-length(a[a==TRUE])
-c<-b*100/length(a)
-print(c)
+motifs_renseignes(d1,"Col")
+
 ```
-L'item nest pas renseigné dans `r c` % des cas.
 
 Mulhouse
 --------
 ```{r Mul}
-head(d1$MOTIF[d1$FINESS=="Mul"])
-a<-is.na(d1$MOTIF[d1$FINESS=="Mul"])
-b<-length(a[a==TRUE])
-c<-b*100/length(a)
-print(c)
+motifs_renseignes(d1,"Mul")
+
 ```
-L'item nest pas renseigné dans `r c` % des cas.
 
 Thann
 --------
-```{r Mul}
-head(d1$MOTIF[d1$FINESS=="Thn"])
-a<-is.na(d1$MOTIF[d1$FINESS=="Thn"])
-b<-length(a[a==TRUE])
-c<-b*100/length(a)
-print(c)
+```{r Tha}
+motifs_renseignes(d1,"Thn")
 ```
-L'item nest pas renseigné dans `r c` % des cas.
+
+Saverne
+--------
+```{r sav}
+motifs_renseignes(d1,"Sav")
+```
+Selestat
+--------
+```{r sel}
+motifs_renseignes(d1,"Sel")
+```
+Hus
+--------
+```{r hus}
+motifs_renseignes(d1,"Hus")
+```
+Guebwiller
+--------
+```{r geb}
+motifs_renseignes(d1,"Geb")
+```
+St Louis
+--------
+```{r stl}
+motifs_renseignes(d1,"3Fr")
+```

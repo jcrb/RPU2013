@@ -19,6 +19,8 @@
 \indexentry{CMUNE|hyperpage}{23}
 \indexentry{FEDORU|hyperpage}{23}
 \indexentry{ORUPACA|hyperpage}{23}
+\indexentry{RPU|hyperpage}{24}
+\indexentry{R\IeC {\'e}sum\IeC {\'e} du passage aux urgences|hyperpage}{24}
 \indexentry{FINESS|hyperpage}{25}
 \indexentry{code postal|hyperpage}{25}
 \indexentry{motif de recours|hyperpage}{25}
@@ -36,43 +38,56 @@
 \indexentry{orientation|hyperpage}{26}
 \indexentry{taux de recours aux urgences|hyperpage}{32}
 \indexentry{TRU|hyperpage}{32}
-\indexentry{motif de consultation|hyperpage}{44}
-\indexentry{exhaustivit\IeC {\'e}@motif|hyperpage}{46}
-\indexentry{Mode d'entr\IeC {\'e}e|hyperpage}{48}
-\indexentry{Mode de transport|hyperpage}{49}
-\indexentry{motif de recours|hyperpage}{58}
-\indexentry{exhaustivit\IeC {\'e}!CIM10|hyperpage}{58}
-\indexentry{AVC|hyperpage}{61}
-\indexentry{AVC!heure|hyperpage}{62}
-\indexentry{AVC!age|hyperpage}{65}
-\indexentry{AVC!age|hyperpage}{66}
-\indexentry{AVC!sexe|hyperpage}{66}
-\indexentry{AIT|hyperpage}{70}
-\indexentry{AIT!th\IeC {\'e}saurus|hyperpage}{70}
-\indexentry{pneumonies|hyperpage}{71}
-\indexentry{syndrome grippal|hyperpage}{73}
-\indexentry{Asthme|hyperpage}{73}
-\indexentry{Bronchiolite|hyperpage}{76}
-\indexentry{Intoxication au CO|hyperpage}{79}
-\indexentry{malaise|hyperpage}{80}
-\indexentry{Canicule@marqueurs|hyperpage}{83}
-\indexentry{Gastroent\IeC {\'e}rites|hyperpage}{86}
-\indexentry{Mode de sortie|hyperpage}{94}
-\indexentry{orientation|hyperpage}{95}
-\indexentry{destination|hyperpage}{96}
-\indexentry{orientation|hyperpage}{100}
-\indexentry{Activit\IeC {\'e} r\IeC {\'e}gionale|hyperpage}{101}
-\indexentry{Passages@journaliers|hyperpage}{101}
-\indexentry{Retour \IeC {\`a} domicile|hyperpage}{103}
-\indexentry{exhaustivit\IeC {\'e}@mode de sortie|hyperpage}{107}
-\indexentry{AIT|hyperpage}{128}
-\indexentry{ANTARES|hyperpage}{128}
-\indexentry{AR|hyperpage}{128}
-\indexentry{ARS|hyperpage}{128}
-\indexentry{Accident Vasculaire C\IeC {\'e}r\IeC {\'e}bral|hyperpage}{128}
-\indexentry{Population|hyperpage}{128}
-\indexentry{Population@Population!compt\IeC {\'e}e \IeC {\`a} part|hyperpage}{128}
-\indexentry{Population@Population!totale|hyperpage}{129}
-\indexentry{Population@Population!municipale|hyperpage}{129}
-\indexentry{Unit\IeC {\'e} urbaine|hyperpage}{129}
-\indexentry{R (CRAN R)|hyperpage}{132}
+\indexentry{motif de consultation|hyperpage}{45}
+\indexentry{exhaustivit\IeC {\'e}@motif|hyperpage}{47}
+\indexentry{Mode d'entr\IeC {\'e}e|hyperpage}{49}
+\indexentry{Mode de transport|hyperpage}{50}
+\indexentry{motif de recours|hyperpage}{65}
+\indexentry{exhaustivit\IeC {\'e}!CIM10|hyperpage}{65}
+\indexentry{AVC|hyperpage}{68}
+\indexentry{AVC!heure|hyperpage}{69}
+\indexentry{AVC!age|hyperpage}{72}
+\indexentry{AVC!age|hyperpage}{73}
+\indexentry{AVC!sexe|hyperpage}{73}
+\indexentry{AIT|hyperpage}{77}
+\indexentry{AIT!th\IeC {\'e}saurus|hyperpage}{77}
+\indexentry{pneumonies|hyperpage}{78}
+\indexentry{syndrome grippal|hyperpage}{80}
+\indexentry{Asthme|hyperpage}{80}
+\indexentry{Bronchiolite|hyperpage}{83}
+\indexentry{Intoxication au CO|hyperpage}{86}
+\indexentry{malaise|hyperpage}{87}
+\indexentry{Canicule@marqueurs|hyperpage}{90}
+\indexentry{Gastroent\IeC {\'e}rites|hyperpage}{93}
+\indexentry{Mode de sortie|hyperpage}{101}
+\indexentry{orientation|hyperpage}{102}
+\indexentry{destination|hyperpage}{103}
+\indexentry{orientation|hyperpage}{107}
+\indexentry{Activit\IeC {\'e} r\IeC {\'e}gionale|hyperpage}{108}
+\indexentry{Passages@journaliers|hyperpage}{108}
+\indexentry{Retour \IeC {\`a} domicile|hyperpage}{110}
+\indexentry{exhaustivit\IeC {\'e}@mode de sortie|hyperpage}{114}
+\indexentry{SU SuSteOdile|hyperpage}{119}
+\indexentry{Ste Odile!SU|hyperpage}{119}
+\indexentry{SU des HUS|hyperpage}{120}
+\indexentry{HUS@SU|hyperpage}{120}
+\indexentry{SU Sainte Anne|hyperpage}{121}
+\indexentry{Sainte Anne@SU |hyperpage}{121}
+\indexentry{SU St Luc|hyperpage}{132}
+\indexentry{SU S\IeC {\'e}lestat|hyperpage}{133}
+\indexentry{S\IeC {\'e}lestat@SU|hyperpage}{133}
+\indexentry{SU Colmar|hyperpage}{134}
+\indexentry{Colmar!SU|hyperpage}{134}
+\indexentry{SU Guebwiller|hyperpage}{135}
+\indexentry{Guebwiller@SU|hyperpage}{135}
+\indexentry{AIT|hyperpage}{145}
+\indexentry{ANTARES|hyperpage}{145}
+\indexentry{AR|hyperpage}{145}
+\indexentry{ARS|hyperpage}{145}
+\indexentry{Accident Vasculaire C\IeC {\'e}r\IeC {\'e}bral|hyperpage}{145}
+\indexentry{Population|hyperpage}{145}
+\indexentry{Population@Population!compt\IeC {\'e}e \IeC {\`a} part|hyperpage}{145}
+\indexentry{Population@Population!totale|hyperpage}{146}
+\indexentry{Population@Population!municipale|hyperpage}{146}
+\indexentry{Unit\IeC {\'e} urbaine|hyperpage}{146}
+\indexentry{R (CRAN R)|hyperpage}{149}

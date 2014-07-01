@@ -27,7 +27,7 @@ print(mois_courant)
 ## [1] 9
 ```
 
-Trois items interviennent dans cetteanalyse:
+Trois items interviennent dans cette analyse:
 - le mode de sortie
 - la destination
 - l'orientation

@@ -4,7 +4,7 @@
 \usepackage{lmodern}
 \usepackage[utf8]{inputenc}
 % inclu un fichier de bibliothèques
-\include{rpu-2012.sty}
+\include{rpu_2012.sty}
 
 % la directive suivante permet d'utiliser le séparateur de milliers. 
 %Deux formulation sont utilisables mais exclusives l'une de l'autre. L'instruction "autolanguage" permet d'utiliser \nombre{} ou \np{}
@@ -80,6 +80,11 @@
 
 % Commandes
 \providecommand{\tabularnewline}{\\} % compatibilité avec Lyx
+<<<<<<< HEAD
+=======
+%\newcommand{\cette_annee}{\ensuremath{\mathbb{2013\xspace}}}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+>>>>>>> 229ed100e6b53c12de7d25f4b1202b67e6385124
 
 \begin{document}
 
@@ -146,6 +151,1448 @@ Le Réseau des Urgences en Alsace a été créé en août 2008 sous forme d'une 
 \newpage
 \chapter{Organisation géographique}
 
+<<<<<<< HEAD
+
+
+
+
+
+
+
+
+=======
+% geographie.Rnw
+
+L'Alsace est la plus petite région de France (n°42) avec la Corse. Elle est formée de deux départements, le bas-Rhin (67) et le haut-Rhin (68), dont les chef-lieu sont respectivement Strasbourg et Colmar.La préfecture régionale siège à Strasbourg comme l'agence régionale de l'hospitalisation \index{ARS} (ARS).
+
+La région est divisée en quatre secteurs sanitaires er douze tritoires de proximité.
+
+\section{Les secteurs sanitaires}
+\index{Alsace!secteurs sanitaires}
+\index{Secteurs sanitaires}
+
+L'alsace est divisée en quatre secteurs sanitaires
+\begin{enumerate}
+  \item secteur 1: Haguenau, Wissembourg et Saverne
+  \item secteur 2: Strasbourg
+  \item secteur 3: Sélestat et Colmar. C'est un territoire qui est à cheval sur les deux départements d'Alsace.
+  \item secteur 4: Mulhouse
+\end{enumerate}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/carte_secteurs_sanitaires} 
+
+\end{knitrout}
+
+
+
+\section{Les territoires de proximité}
+\index{Alsace!territoires de proximité}
+\index{Territoires de proximité}
+
+Il existe douze territoires de proximité:
+\begin{enumerate}
+  \item territoire 1: Wissembourg
+  \item territoire 2: Haguenau
+  \item territoire 3: Saverne
+  \item territoire 4: Strasbourg
+  \item territoire 5: Molsheim-Schirmeck
+  \item territoire 6: Sélestat-Obernai
+  \item territoire 7: Colmar
+  \item territoire 8: Guebwiller
+  \item territoire 9: Thann
+  \item territoire 10: Mulhouse
+  \item territoire 11: Altkirch
+  \item territoire 12: Saint-Louis
+\end{enumerate}
+
+% carte des territoires de santé
+\begin{figure}[ht]
+ \centering
+ \includegraphics[height=15cm,keepaspectratio=true]{../figure/zone_proximite.png}
+ % image.: 0x0 pixel, 0dpi, nanxnan cm, bb=
+ \caption{L'Alsace compte 12 territoires de proximité}
+ \label{fig:zp}
+\end{figure}
+
+\section{Démographie}
+\subsection{Généralités}
+\index{Alsace!démographie}
+
+En France, les populations légales sont calculées par l'INSEE sur la base de définitions réglementaires à partir de recensement de la population. 
+Les populations légales millésimées 2010 entrent en vigueur le 1er janvier 2013.  
+
+\subsubsection{Le concept de population municipale}
+
+Ce document utilise la \emph{Population municipale} \ref{Population_municipale} \index{Population@Population!municipale}  qui est la nouvelle dénomination de la population sans double comptes et qui correspond à la notion de \emph{population} utilisée usuellement en statistique.
+Le chiffre est donc inférieur de celui de la \emph{Population totale} qui est égale à la somme de la population municipale et de la population comptée à part d'une commune.
+Les chiffres de l'INSEE sont les suivants \footnote{http://www.insee.fr/fr/ppp/bases-de-donnees/recensement/populations-legales/france-regions.asp?annee=2010}:
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline 
+Région & Population\tabularnewline
+\hline 
+\hline 
+France métropolitaine et DOM & 64 612 939\tabularnewline
+\hline 
+Dont France métropolitaine & 62 765 235\tabularnewline
+\hline 
+Alsace & 1 845 687\tabularnewline
+\hline 
+Bas-Rhin & 1 095 905\tabularnewline
+\hline 
+Haut-Rhin & 749 782\tabularnewline
+\hline 
+\end{tabular}
+\caption[Populations légales 2010]{Populations légales 2010 des régions de France métropolitaine, Population
+municipale (Source : Recensement de la population 2010 - Limites territoriales
+au 1er janvier 2012) }
+\label{pop2010}
+\end{center}
+\end{table}
+
+\subsection{Classes d'age}
+Depuis la mise en place des serveurs régionaux, on a pris l'habitude de diviser la population en trois catégories selon l'age:
+\begin{enumerate}
+  \item Les moins de un an
+  \item de 1 an à 75 ans
+  \item les plus de 75 ans
+\end{enumerate}
+
+Les calculs sont effectués à partir du fichier \texttt{BTT\_TD\_POP1B\_2010} de l'INSEE qui recense l'ensemble de la population par commune et par tranches de un an. La version utilisée est celle du 1er janvier 2010 (tab.\ref{pop}). Le secteur de proximité de Strasbourg qui est aussi le plus peuplé, compte le plus grand nombre de personnes de 75 ans et plus (figure \ref{fig:75ans} page \pageref{fig:75ans})
+
+
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|l|r|r|}
+  \hline
+  Tranche d'age & Abréviation & Effectif & Pourcentage \\
+  \hline
+  \hline
+   Moins de 1 an & pop0 & \np{21655} & 1.17 \\
+   De 1 à 75 ans & pop1\_75 & \np{1677958} & 90.91 \\
+   Plus de 75 ans& pop75 & \np{146074} & 7.91 \\
+   \hline
+   Total & pop\_tot & \np{1845687} & 100.00 \\
+  \hline
+\end{tabular}
+\caption{Classe d'age en Alsace (janvier 2010)}
+\label{pop}
+\end{center}
+\end{table}
+
+% carte des plus de 75 ans
+\begin{figure}[ht]
+ \centering
+ \includegraphics[height=15cm,keepaspectratio=true]{../figure/75ans.png}
+ % image.: 0x0 pixel, 0dpi, nanxnan cm, bb=
+ \caption[Répartition des 75 ans et plus]{Les personnes de 75 ans et plus en Alsace en fonction du territoire de proximté (en pourcentage du nombre total de 75 ans et plus).}
+ \label{fig:75ans}
+\end{figure}
+
+\section{Les services d'accueil des urgences (SAU)}
+\index{Services d'urgence!en Alsace}
+\index{Alsace!services d'urgence}
+
+L'autorisation de pratiquer la médecine d'urgence est délivrée par l'ARS en cohérence avec le schéma régional de l'organisation des soins (SROS) dont les dispositions pour la période 2012-2016 ont été précisées par l'arrêté du 30 janvier 2012 \cite{14} et du 23 mai 2013 \cite{15}.
+
+Rélementairement, le CSP reconnait deux types de structures pouvant être autorisées à prendre en charge directement des patients pouvant relever d'une situation d'urgence
+\begin{enumerate}
+  \item les structures d'urgence (SU). Le CSP reconnait quatre types d'autorisations qui peuvent être dissociées:
+    \begin{itemize}
+      \item SAMU
+      \item SMUR
+      \item SU
+      \item SU pédiatrique
+    \end{itemize}
+
+  \item les plateaux techniques spécialisés d'accès direct (PTSAD: article R 6123-32-6 CSP) qui sont de quatres types en Alsace:
+    \begin{itemize}
+      \item Urgences main
+      \item Urgences cardiologiques
+      \item Urgences neuro vasculaires
+      \item Poly-traumatisés
+    \end{itemize}
+\end{enumerate}
+
+On peut trouver des PTSAD avec une autorisation SU mais qui ne concerne que la spécialité du plateau technique, des PTSAD non labellisé SU, des SU non labellisés pédiatriques mais ayant une activité pédiatrique exclusive.
+
+A la date du 23 mai 2013, l'Alsace compte 18 établissements ou structures autorisés pour l'activité de soins de médecine d'urgence (article R6123-1 du CSP) dont deux ayant une activité de PTDAD exclusive \cite{15}, 1 établissement labellisé SU pédiatrique.
+
+En pratique, à la question qui prend en charge 24h sur 24 des problèmes aigus de santé et/ou de permanence des soins, on se ramène a une listede 14 établissements pratiquant la médecine d'urgence au sens où on l'entend communément. Trois établissements ont une activité multisite. Au final cela représente 18 sites Les trois villes les plus importantes de la région concentrent la totalité des PTSAD.
+
+Celle-ci se pratique au sein de ce qu'il est communément appelé services d'urgence (SU). Le SROS 2 avait introduit une distinction entre les services accueillant les urgences en fonction de leurs capacités et plateau technique. On distinguait alors les UPATOU, les POSU et les SAU. Cette nomenclature qui reposait sur une réalité avait été bien assimilée par les professionnels de santé et beaucoup continuent de l'utiliser,même si elle n'a plus cours officiellement. 
+
+La clinique du Diaconat de Strasbourg,bien que disposant de cette autorisation, ne prend en charge que les urgences mains pour lequelles elle dispose d'une labellisation FESUM \footnote{Federation Européenne des Services d'Urgence de la Main}
+
+On prend également en compte la clinique Saint-Luc de Schirmeck qui fait fonctionner une policlinique recevant plus de \np{8000} passages par an. Officiellement, cet établissement de santé ne dispose pas de cette autorisation bien qu'elle en effectue la mission et est le seul établissement de proximité de la zone Molsheim-Schirmeck.
+
+Les HUS sont le seul établissement d'Alsace a posséder un SU pédiatrique labellisé. Les HUS ont également un service labellisé urgences main (FESUM) situé au CCOM d'Illkirch mais ce dernier n'est pas inclu dans les implantations de services d'urgence.
+
+Sont officiellement labellisés 18 sites (en y incluant SOS main Diaconnat mais pas la clinique St Luc). Ces données sont résumées dans le tableau \ref{tab:sualsace} page \pageref{tab:sualsace}
+
+\begin{landscape}
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline 
+Territoire & ZProximité & Etablissement & FINESS J & Site & FINESS G & SU & SU Ped & SMUR & SAMU\tabularnewline
+\hline 
+\hline 
+ \multirow{3}{*}{1} & Wissembourg & CH Wissembourg &  & id &  & oui &  & oui & \tabularnewline
+\cline{2-10} 
+ & Haguenau & CH Haguenau &  & id &  & oui &  & oui & \tabularnewline
+\cline{2-10} 
+ & Saverne & CH Saverne &  & id &  & oui &  & oui & \tabularnewline
+\hline 
+\multirow{7}{*}{2} & \multirow{6}{*}{Strasbourg} & \multirow{3}{*}{HUS} &  & NHC &  & oui &  &  & \tabularnewline
+\cline{4-10} 
+ &  &  &  & HTP &  & oui & oui & oui%
+\footnote{SMUR Néonatal%
+} & \tabularnewline
+\cline{4-10} 
+ &  &  &  & PL &  &  &  & oui & oui\tabularnewline
+\cline{3-10} 
+ &  & Ste Anne &  & id &  & oui &  &  & \tabularnewline
+\cline{3-10} 
+ &  & Ste Odile &  & id &  & oui &  &  & \tabularnewline
+\cline{3-10} 
+ &  & Diaconnat &  & id &  & oui%
+\footnote{SOS Mains%
+} &  &  & \tabularnewline
+\cline{2-10} 
+ & Schirmeck & St Luc &  & id &  &  &  &  & \tabularnewline
+\hline 
+\multirow{4}{*}{3} & Sélestat & CH Sélestat &  & id &  & oui &  & oui & \tabularnewline
+\cline{2-10} 
+ & \multirow{2}{*}{Colmar} & \multirow{2}{*}{CH Colmar} &  & HC &  & oui &  & oui & \tabularnewline
+\cline{4-10} 
+ &  &  &  & Parc &  &  & oui &  & \tabularnewline
+\cline{2-10} 
+ & Guebwiller & CH Guebwiller &  & id &  & oui &  &  & \tabularnewline
+\hline 
+\multirow{5}{*}{4} & \multirow{3}{*}{Mulhouse} & \multirow{2}{*}{CH Mulhouse} &  & EM &  & oui & oui & oui & oui\tabularnewline
+\cline{4-10} 
+ &  &  &  & St Louis &  & oui &  & oui%
+\footnote{antenne SMUR%
+} & \tabularnewline
+\cline{3-10} 
+ &  & Diaconnat-F &  & id &  & oui &  &  & \tabularnewline
+\cline{2-10} 
+ & Thann & CH Thann &  & id &  & oui &  &  & \tabularnewline
+\cline{2-10} 
+ & Altkirch & CH Altkirch &  & id &  & oui &  &  & \tabularnewline
+\hline
+\end{tabular}
+ \caption[Structures d'urgence]{Services d'urgence d'Alsace}
+
+\label{tab:sualsace}
+\end{center}
+\end{table}
+\end{landscape}
+
+\begin{figure}[ht]
+ \centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/carte_sau_2} 
+
+\end{knitrout}
+
+ \caption[Services d'urgenced'Alsace]{L'Alsace compte 14 services d'urgence labellisés sur 15 sites.}
+ \label{fig:su_alsace}
+\end{figure}
+
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|l|}
+  \hline
+& Finess utilisé & Finess géographique & Finess Juridique & Structure \\
+  \hline
+  \hline
+1 & 670780055 &   & 670780055 & HUS \\
+2 & 670780543 & 670000272 & 670780543 & CH Wissembourg \\
+3 & 670000397 & 670000397  & 670780691 & CH Selestat \\
+4 & 670780337 & 670000157 & 670780337 & CH Haguenau \\
+5 &   & 670000165 & 670780345 & CH Saverne \\
+6 & 670016237  & 670016237  & 670016211 & Clinique ste Odile \\
+7 &   & 670780212 & 670014604 & Clinique Ste Anne \\
+8 & 680000973 & 680000684 & 680000973 & CH Colmar \\
+9 & 680000197  & 680000197  & 680000049 & Clinique des trois frontières \\
+10 & 680000486 & 680000544  & 680000395 & CH Altkirch \\
+11 & 680000700 & 680000700 & 680001005 & CH Guebwiller \\
+12 & 680000627 & 680000627 & 680000486 & CH Mulhouse FG \\
+13 &   & 680000601 & 680000437 & CH Thann \\
+14 &   & 680000320  & 680000643 & Diaconat-Fonderie (St Sauveur) \\
+\hline
+\end{tabular}
+\caption{Service d'accueil des urgences d'Alsace}
+\label{summary}
+\end{center}
+\end{table}
+
+
+\newpage
+\chapter{Les acteurs}
+
+% acteurs.Rnw
+
+% penser au secteur libéral
+
+\section{Exhaustivité quantitative}
+
+
+
+On dédinit l'exhaustivité quantitative comme le nombre de RPU transmis par rapport au nombre de passages réels.
+Les données proviennent des RPU produits par les hôpitaux d'Alsace ayant l'autorisation de faire fonctionner un service d'urgence (SU). La liste des structures hospitalières ayant fournit des informations alimentant le présent rapport est fournie par la table \ref{tab1}, page \pageref{tab1}.
+
+Tous ces hôpitaux fournissent des données depuis le premier janvier 2013 sauf le CH Saverne qui a commencé en Juillet 2013.
+
+Deux structures ne fournissent pas encore de RPU. Il s'agit de la clinique Sainte-Anne à Strasbourg (Groupe hospitalier Saint-Vincent) et du Centre Hospitalier de Thann.
+
+Certaines données peuvent être recoupées avec celles du serveur régional mis en place en 2006 par l'ARS: 
+
+\fbox{Voir SAU2013}
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:11:36 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|r|r|l|r|}
+  \hline
+ & n & \% & Hôpitaux & Date d'inclusion \\ 
+  \hline
+3Fr & 13250 & 4.79 & Clinique des 3 frontières & 01/01/2013 \\ 
+  Alk & 6007 & 2.17 & CH Altkirch & 01/04/2013 \\ 
+  Col & 54517 & 19.72 & CH Colmar & 01/01/2013 \\ 
+  Dia & 24623 & 8.91 & Diaconat Fonderie & 01/01/2013 \\ 
+  Geb & 12743 & 4.61 & CH Guebwiller & 01/01/2013 \\ 
+  Hag & 29184 & 10.56 & CH Haguenau & 01/01/2013 \\ 
+  Hus & 31075 & 11.24 & Hôpitaux Universitaires de Strasbourg & 01/01/2013 \\ 
+  Mul & 46543 & 16.84 & CH Mulhouse & 07/01/2013 \\ 
+  Odi & 21710 & 7.85 & Clinique Ste Odile & 01/01/2013 \\ 
+  Sel & 18502 & 6.69 & CH Sélestat & 01/01/2013 \\ 
+  Wis & 10638 & 3.85 & CH Wissembourg & 01/01/2013 \\ 
+  Sav & 7660 & 2.77 & CH Saverne & 23/07/2013 \\ 
+   \hline
+\end{tabular}
+\caption{Structures hospitalières participantes en 2013} 
+\label{tab1}
+\end{table}
+
+
+
+\section{Exhaustivité qualitative}
+
+L'exhaustivité qualitative correspond à la fois à la complétude des items et à la cohérence de réponses.
+
+Les informations de nature administrative (code postal, commune d'origine, sexe, date de naissance,\dots ) sont correctement renseignées avec une exhaustivité de $100\%$.
+
+Les données à caractère plus médical comme le motif de consultation ou le diagnostic principal ont une exhaustivité moins bonne, de l'ordre de $70\%$.
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:11:36 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|r|}
+  \hline
+ & \% \\ 
+  \hline
+id & 0.00 \\ 
+  CODE\_POSTAL & 0.00 \\ 
+  COMMUNE & 0.00 \\ 
+  ENTREE & 0.00 \\ 
+  EXTRACT & 0.00 \\ 
+  FINESS & 0.00 \\ 
+  NAISSANCE & 0.00 \\ 
+  SEXE & 0.00 \\ 
+  AGE & 0.00 \\ 
+  secteur & 0.00 \\ 
+  SORTIE & 9.24 \\ 
+  MODE\_ENTREE & 10.15 \\ 
+  GRAVITE & 14.30 \\ 
+  MODE\_SORTIE & 14.60 \\ 
+  TRANSPORT & 22.78 \\ 
+  TRANSPORT\_PEC & 25.75 \\ 
+  DP & 33.60 \\ 
+  PROVENANCE & 35.36 \\ 
+  MOTIF & 36.52 \\ 
+  DESTINATION & 78.86 \\ 
+  ORIENTATION & 80.07 \\ 
+   \hline
+\end{tabular}
+\caption{Données manquantes en 2013} 
+\label{tab2}
+\end{table}
+
+
+
+Les informations sont résumées dans la table \ref{tab2}, page \pageref{tab2}.
+
+\section{Diagramme de complétude}
+
+On peut représenter sous forme d'un diagramme en radar (ou toile d'araignée) l'exhaustivité qualitative des données. Chaque item du RPU est représenté par le rayon d'une roue, gradué de 0 à 100\%. Sur chaque rayon, les points obtenus sont reliés entre eux pour dessiner un polygone qui figue la physionomie de l'ensemble des données.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##            id   CODE_POSTAL       COMMUNE   DESTINATION            DP 
+##          0.00          0.00          0.00         78.86         33.60 
+##        ENTREE       EXTRACT        FINESS       GRAVITE   MODE_ENTREE 
+##          0.00          0.00          0.00         14.30         10.15 
+##   MODE_SORTIE         MOTIF     NAISSANCE   ORIENTATION    PROVENANCE 
+##         14.60         36.52          0.00         80.07         35.36 
+##          SEXE        SORTIE     TRANSPORT TRANSPORT_PEC           AGE 
+##          0.00          9.24         22.78         25.75          0.00 
+##       secteur 
+##          0.00
+\end{verbatim}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: 'x' is NULL so the result will be NULL\\\#\# Warning: 'x' is NULL so the result will be NULL}}\end{kframe}
+\includegraphics[width=\maxwidth]{figure/radar} 
+
+\end{knitrout}
+
+
+Le renseignement des items varie entre $20\%$ et $100\%$. Cependant ces données sont à interpréter avec prudence. Ainsi l'item 4 qui correspond au mode de sortie ne distingue pas les non réponses des vrais retours à domicile (se reporter à la discussion page \pageref{ref:sortie})
+
+
+\newpage
+\chapter{RESURAL}
+
+% resural.Rnw
+\index{RESURAL}
+
+Le réseau des urgences en Alsace (RESURAL) est une association à but non lucratif, de droit local Alsace-Moselle, dont les statuts sont déposés au tribunal de Strasbourg. Le réseau a été fondé en août 2008. En son membre de droit les services d'urgence intra et extra-hospitaliers, adultes et pédiatriques, possédant une autorisation d'exercer cette spécialité, délivrée par l'agence régionale de santé (ARS). \index{ARS}
+
+Elle est domiciliée aux Hôpitaux Universitaires de Strasbourg.
+
+Elle est dirigée par un conseil d'administration et représentée par son preésident, le Docteur Bruno Goulesque.
+
+Son fonctionnement est assuré par une équipe de coordination, composée d'un médecin coordinateur à mi-temps et d'une assistante à mi-temps. Cette équipe est opérationnelle depuis le 1er février 2013.
+
+
+\newpage
+\chapter{L'observatoire des urgences en Alsace (ORUDAL)}
+
+% orudal.Rnw
+
+L'observatoire des urgences en Alsace (ORUDAL) est une structure informelle animée par le réseau des urgences en Alsace.
+\index{ORUDAL}
+\index{Observatoire des urgences en Alsace}
+
+Il est composé des organismes suivants:
+\begin{enumerate}
+  \item RESURAL \index{RESURAL}
+  \item ARS Alsace
+  \item CIRE-InVS
+  \item Alsace e-santé
+  \item CMUNE
+\end{enumerate}
+
+
+\section*{Les partenaires}
+
+  \subsection*{Agence Régionale de Santé}
+    \index{ARS}
+    
+  \subsection*{Alsace e-santé}
+    \index{Alsace e-santé}
+    
+  \subsection*{CIRE-INVS}
+    \index{CIRE-INVS}
+    
+  \subsection*{Collège de médecine d'urgence (CMUNE)}
+    \index{CMUNE}
+
+\section*{FEDORU}
+  \index{FEDORU}
+  
+La fédération des observatoires des urgences et structures apparentés a été crée en octobre 2013 à l'initiative de quelques organisme régionaux dont Résural sur une proposition de l'ORUPACA \index{ORUPACA}
+
+
+\newpage
+\chapter{Le Résumé du passage aux urgences}
+
+% rpu.Rnw
+
+\index{RPU}
+\index{Résumé du passage aux urgences}
+
+La création du résumé des passages aux urgences (RPU) remonte à 2002 \cite{11}. Sur la base d'un projet pilote mené par l'ORUMIP, la DHOS, à l'initiative de son directeur Edouard Couty, lance sur la base du volontariat, la collecte des RPU.
+
+\section*{RPU}
+
+% Les Résumés de Passage aux Urgences (RPU) ont été transmis par le Centre Hospitalier de Sélestat à partir de 2008. 
+% La table \emph{rpu} du serveur de test comporte nrow(d2) lignes et ncol(d2) colonnes. La période érudiée couvre toute l'année 2009 s'étend (du d2$date_entree[1] au d2$date_entree[nrow(d2)]), ce qui correspond à toutes les entrées de cette année. Les RPU sont saisis selon la version 5 du cahier des charges transmis par l'INVS (version du 31 janvier 2007).
+% \\
+Chaque passage aux urgences donne lieu à la création d'un RPU qui collecte les informations suivantes:
+\begin{enumerate}
+  \item l'établissement de santé, siège du SAU (FINESS géographique)
+  \item code postal de résidence
+  \item commune de résidence
+  \item date de naissance
+  \item sexe
+  \item date et heure d'entrée
+  \item mode d'entrée
+  \item provenance du patient
+  \item mode de transport
+  \item mode de prise en charge
+  \item le motif de recours aux urgences
+  \item la gravité
+  \item le diagnostic principal
+  \item le(s) diagnostic(s) associé(s)
+  \item les actes médicaux
+  \item le mode de sortie
+  \item l'orientation du patient
+  \item date et heure de sortie
+\end{enumerate}
+
+%%%%%%%%%%%%%%
+\subsubsection{L'identifiant (ID)}
+%%%%%%%%%%%%%%
+
+Ils'agit d'un code unique caractérisant le RPU. Il ne fait pas partie de la définition de l'INVS.Il a été rajouté par SAGEC à l'origine du serveur régional pour retrouver l'enregistrement en cas de problème et faciliter laliaison avec d'autres rubriques comme les diagnostiques associés.
+
+%%%%%%%%%%%%%%
+\subsubsection{L'établissement de santé}
+%%%%%%%%%%%%%%
+
+\index{FINESS}
+Il est identifié par son numéro FINESS. Le schéma de l'INVS ne précise pas quel FINESS utiliser et on trouve des FINESS juridiques et géographiques. Nous recommandons d'utiliser le FINESS géographique qi permet d'identifier la structure d'origine quand il s'agit d'établissements multisites.
+
+%%%%%%%%%%%%%%
+\subsubsection{Le code postal de résidence}
+%%%%%%%%%%%%%%
+
+\index{code postal}
+Lorsque le lieu de résidence se situe hors des limites du territoire national, il faut indiquer par convention $99999$.
+Si le code postal précis est inconnu : le numéro du département suivi de 999
+Pour les malades résidant hors de France : 99 suivi du code INSEE du pays \footnote{http://www.insee.fr/fr/methodes/nomenclatures/cog/pays.asp}
+Si le département ou le pays de résidence est inconnu : 99999
+
+%%%%%%%%%%%%%%
+\subsubsection{le motif de recours aux urgences}
+%%%%%%%%%%%%%%
+
+\index{motif de recours}
+Il faut utiliser l'un des motifs de recours préconisé par le ministère de la santé \cite{13} et codifiés par la SFMU. La dernière version est la version de juin 2013 du thésaurus de la SFMU accessible sur le site internet de cette dernière. Il comporte une liste d'environ $150$ recours avec leur équivalence CIM10.
+
+%%%%%%%%%%%%%%
+\subsubsection{Le mode de sortie}
+%%%%%%%%%%%%%%
+
+\index{mode de sortie}
+\index{retour à domicile}
+\label{ref:sortie}
+Les patients quittent les urgences soit parcequ'ils ne nécessitent pas d'hospitalisation (c'est un \emph{retour à domicile}), soit parcequ'ils sont hospitalisé dans la structure hospitalière (c'est une \emph{mutation}\index{mutation}) ou dans un autre établissement (on parle alors de \emph{transfert}\index{transfert}). Enfin il peut s'agir d'un \emph{décès}\index{décès} dans le service d'urgence.
+
+\begin{itemize}
+  \item « 6 » Mutation : le malade est hospitalisé vers une autre unité médicale de la même
+entité juridique \footnote{Dans les établissements privés visés aux alinéas d et e de l'article L162-22-6 du code de la sécurité sociale (CSS), si le patient provient d’un autre établissement de la même entité juridique, le mode desortie à utiliser est le 7}
+  \item « 7 » Transfert : le malade est hospitalisé dans une autre entité juridique
+  \item « 8 » Domicile : le malade retourne au domicile ou son substitut, tel une
+structure d'hébergement médico-social.
+  \item « 9 » Décès : le malade décède aux urgences
+\end{itemize}
+
+Cette rubrique est détaillée par les items \emph{destination} et \emph{orientation}
+
+%%%%%%%%%%%%%%
+\subsubsection{Destination}
+%%%%%%%%%%%%%%
+
+En cas de sortie par mutation ou transfert, il peut s'agir:
+\begin{itemize}
+  \item « 1 » Hospitalisation dans une unité de soins de courte durée (MCO)\index{MCO}
+  \item « 2 » Hospitalisation dans une unité de soins de suite ou de réadaptation (SSR)\index{SSR}
+  \item « 3 » Hospitalisation dans une unité de soins de longue durée (SLD)\index{SLD}
+  \item « 4 » Hospitalisation dans une unité de psychiatrie (PSY)\index{PSY}
+\end{itemize}
+
+En cas de sortie au domicile
+\begin{itemize}
+  \item « 6 » Retour au domicile dans le cadre d’une hospitalisation à domicile (HAD)\index{HAD}
+  \item « 7 » Retour vers une structure d'hébergement médico-social (HMS)\index{HMS}
+\end{itemize}
+
+On notera que dans cette formulation, le retour à domicile "normal" est implicite et celà génère une ambiguité car si la rubrique est laissée libre, on ne saitpas s'il s'agit d'une non réponse ou d'un retour simple à domicile.
+
+%%%%%%%%%%%%%%
+\subsubsection{Orientation}
+%%%%%%%%%%%%%%
+
+\index{orientation}
+L'orientation précise le devenir ou les circonstances associées. Cette rubrique est complémentaire du \emph{mode de sortie}. Malheureusement, elle souffre de la mêmelimitation:le retour à domicile simple est implicite.
+
+\begin{enumerate}
+  \item En cas de sortie par mutation ou transfert
+    \begin{itemize}
+      \item « HDT » hospitalisation sur la demande d’un tiers
+      \item « HO » hospitalisation d’office
+      \item « SC » hospitalisation dans une unité de Surveillance Continue
+      \item « SI » hospitalisation dans une unité de Soins Intensifs
+      \item « REA » hospitalisation dans une unité de Réanimation
+      \item « UHCD » hospitalisation dans une unité d’hospitalisation de courte durée
+      \item « MED » hospitalisation dans une unité de Médecine hors SC, SI, REA
+      \item « CHIR» hospitalisation dans une unité de Chirurgie hors SC, SI, REA
+      \item « OBST» hospitalisation dans une unité d’Obstétrique hors SC, SI, REA
+    \end{itemize}
+
+  \item En cas de sortie au domicile
+    \begin{itemize}
+      \item « FUGUE » sortie du service à l’insu du personnel soignant
+      \item « SCAM » sortie contre avis médical
+      \item « PSA » partie sans attendre prise en charge
+      \item « REO » réorientation directe sans soins (ex vers consultation spécialisée ou   lorsque le service d’accueil administratif est fermée)
+    \end{itemize}
+
+\end{enumerate}
+
+
+
+
+%========================================================== PARTIE 2
+\part{Activité des services d'urgence d'Alsace}
+
+\newpage
+\chapter{Activité régionale totale}
+\section{Nombre total de passages}
+
+% activite_regionale.Rnw
+
+%on fabrique un objet **a** qui fait la somme par date des passages aux urgences:
+
+
+
+% vérification:
+%   a[1:10]
+% 2013-01-01 2013-01-02 2013-01-03 2013-01-04 2013-01-05 2013-01-06 2013-01-07 2013-01-08 2013-01-09 2013-01-10 
+%        884        801        686        704        722        691        876        694        683        673 
+% On supprime l'enregistrement 211 correspondant au 31 juillet et qui ne contient que 2 éléments:
+%a[211]  2013-07-31 2 
+
+
+% Min. 1 st Qu.  Median    Mean 3rd Qu.    Max. 
+%   642.0   848.0   895.5   883.2   957.0  1050.0 
+
+L'ensemble des SU ont déclaré \np{276452} passages au 31 octobre 2013, 
+soit une moyenne de \np{912} passages par jour (extrèmes 642 et \np{1160})
+
+Passages par secteur sanitaire:
+
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr}
+  \hline
+ Territoire & RPU déclarés \\ 
+  \hline
+  1 & \np{47482} \\ 
+  2 & \np{52785} \\ 
+  3 & \np{85762} \\ 
+  4 & \np{90423} \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+Les données du secteur 2 sont très sous-estimées car il manque celles de la Clinique Sainte-Anne, des urgences pédiatriques de Hautepierre ainsi q'une part importante des RPU des urgences adulte des HUS.
+
+
+%affichage du graphique
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/activite_plot} 
+
+\end{knitrout}
+
+% Variante avec *xts*
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/activite_plot2} 
+
+\end{knitrout}
+
+
+\subsection*{En valeur absolue}
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:11:41 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{llr}
+  \hline
+ & Hôpital & RPU \\ 
+  \hline
+1 & 3Fr & 13250 \\ 
+  2 & Alk & 6007 \\ 
+  3 & Col & 54517 \\ 
+  4 & Dia & 24623 \\ 
+  5 & Geb & 12743 \\ 
+  6 & Hag & 29184 \\ 
+  7 & Hus & 31075 \\ 
+  8 & Mul & 46543 \\ 
+  9 & Odi & 21710 \\ 
+  10 & Sel & 18502 \\ 
+  11 & Wis & 10638 \\ 
+  12 & Sav & 7660 \\ 
+   \hline
+\end{tabular}
+\caption[Nombre de passages par service d'urgence]{Passages par service d'urgence} 
+\label{fig:passage_su}
+\end{table}
+
+\includegraphics[width=\maxwidth]{figure/val_abs} 
+
+
+
+\subsection*{En pourcentage}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/en_pourcentage} 
+
+\end{knitrout}
+
+
+\subsection*{Taux de recours aux urgences}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] 441062
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+Le taux de recours aux urgences \index{taux de recours aux urgences} (TRU) \index{TRU} est défini comme le nombre total de passages aux urgences, rapporté à la population de la région (INSEE 1er janvier 2010). En Lorraine, ce taux est estimé à 23,45\% en 2010 (\cite{2,3}). En supposant que la population alsacienne se comprte comme la population lorraine, le nombre de passages aux urgences devrait s'établir à \ensuremath{4.4106\times 10^{5}}.
+
+Le TRU 2013 estimé en Alsace à partir des RPU transmis est de 14.7\%.
+
+\subsection*{Activité par mois}
+%------------------------------
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{m} \hlkwb{<-} \hlkwd{month}\hlstd{(d1}\hlopt{$}\hlstd{ENTREE,} \hlkwc{label} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlkwd{table}\hlstd{(m)}
+\end{alltt}
+\begin{verbatim}
+## m
+##   Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov   Dec 
+## 25609 25004 26937 28428 27899 30038 30103 28333 26688 27413     0     0
+\end{verbatim}
+\begin{alltt}
+\hlkwd{barplot}\hlstd{(}\hlkwd{table}\hlstd{(m),} \hlkwc{ylab} \hlstd{=} \hlstr{"nombre"}\hlstd{,} \hlkwc{xlab} \hlstd{=} \hlstr{"mois"}\hlstd{,} \hlkwc{main} \hlstd{=} \hlstr{"2013 - Nombre de RPU par mois"}\hlstd{,}
+    \hlkwc{names.arg} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Jan"}\hlstd{,} \hlstr{"Fev"}\hlstd{,} \hlstr{"Mar"}\hlstd{,} \hlstr{"Avr"}\hlstd{,} \hlstr{"Mai"}\hlstd{,} \hlstr{"Jui"}\hlstd{,} \hlstr{"Jul"}\hlstd{,} \hlstr{"Aou"}\hlstd{,} \hlstr{"Sep"}\hlstd{,}
+        \hlstr{"Oct"}\hlstd{,} \hlstr{"Nov"}\hlstd{,} \hlstr{"Dec"}\hlstd{),} \hlkwc{las} \hlstd{=} \hlnum{2}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/parmois} 
+
+\end{knitrout}
+
+
+\subsection*{Activité par semaine}
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:11:43 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & m \\ 
+  \hline
+1 & 4488 \\ 
+  2 & 4909 \\ 
+  3 & 5975 \\ 
+  4 & 6593 \\ 
+  5 & 6509 \\ 
+  6 & 6354 \\ 
+  7 & 6262 \\ 
+  8 & 6193 \\ 
+  9 & 6028 \\ 
+  10 & 6426 \\ 
+  11 & 6152 \\ 
+  12 & 5735 \\ 
+  13 & 5926 \\ 
+  14 & 6698 \\ 
+  15 & 6632 \\ 
+  16 & 6667 \\ 
+  17 & 6538 \\ 
+  18 & 6462 \\ 
+  19 & 6628 \\ 
+  20 & 6720 \\ 
+  21 & 6314 \\ 
+  22 & 5615 \\ 
+  23 & 7116 \\ 
+  24 & 7213 \\ 
+  25 & 7193 \\ 
+  26 & 6569 \\ 
+  27 & 6566 \\ 
+  28 & 7083 \\ 
+  29 & 6391 \\ 
+  30 & 7069 \\ 
+  31 & 6995 \\ 
+  32 & 6726 \\ 
+  33 & 6436 \\ 
+  34 & 5998 \\ 
+  35 & 6049 \\ 
+  36 & 6191 \\ 
+  37 & 5888 \\ 
+  38 & 6331 \\ 
+  39 & 6536 \\ 
+  40 & 6160 \\ 
+  41 & 6210 \\ 
+  42 & 6217 \\ 
+  43 & 6200 \\ 
+  44 & 3491 \\ 
+   \hline
+\end{tabular}
+\caption[Activité par semaine]{Activité des SU par semaine en 2013} 
+\label{act_sem}
+\end{table}
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:11:43 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
+  \hline
+ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21 & 22 & 23 & 24 & 25 & 26 & 27 & 28 & 29 & 30 & 31 & 32 & 33 & 34 & 35 & 36 & 37 & 38 & 39 & 40 & 41 & 42 & 43 & 44 \\ 
+  \hline
+1 & 4488 & 4909 & 5975 & 6593 & 6509 & 6354 & 6262 & 6193 & 6028 & 6426 & 6152 & 5735 & 5926 & 6698 & 6632 & 6667 & 6538 & 6462 & 6628 & 6720 & 6314 & 5615 & 7116 & 7213 & 7193 & 6569 & 6566 & 7083 & 6391 & 7069 & 6995 & 6726 & 6436 & 5998 & 6049 & 6191 & 5888 & 6331 & 6536 & 6160 & 6210 & 6217 & 6200 & 3491 \\ 
+   \hline
+\end{tabular}
+\caption[Activité par semaine]{Activité des SU par semaine en 2013} 
+\label{act_sem2}
+\end{table}
+
+\includegraphics[width=\maxwidth]{figure/act_sem} 
+
+
+
+\subsection*{Activité par jour de la semaine}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{m} \hlkwb{<-} \hlkwd{wday}\hlstd{(d1}\hlopt{$}\hlstd{ENTREE,} \hlkwc{label} \hlstd{= T)}
+\hlkwd{table}\hlstd{(m)}
+\end{alltt}
+\begin{verbatim}
+## m
+##   Sun   Mon  Tues   Wed Thurs   Fri   Sat 
+## 40467 41972 38867 37947 39125 37837 40237
+\end{verbatim}
+\begin{alltt}
+\hlkwd{barplot}\hlstd{(}\hlkwd{table}\hlstd{(m),} \hlkwc{names.arg} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Dim"}\hlstd{,} \hlstr{"Lun"}\hlstd{,} \hlstr{"Mar"}\hlstd{,} \hlstr{"Mer"}\hlstd{,} \hlstr{"Jeu"}\hlstd{,} \hlstr{"Ven"}\hlstd{,} \hlstr{"Sam"}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/activite_semaine} 
+
+\end{knitrout}
+
+
+\subsection*{Activité horaire}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/activite_heure} 
+
+\end{knitrout}
+
+
+  
+
+\section{Passages aux urgences}
+
+% test2.Rnw
+
+L'activité horaire des services d'urgence en Alsace est totalement superposable à celui de l'ensemble des SU (figure \ref{passage:als} page \pageref{passage:als}). L'activité diminue fortement en nuit profonde à partir de une heure du matin pour redémarrer vers 9 heures et s'intensifier progressivement en matinée. Après un premier pic en fin de matinée, la croissance reprend pour culminer vers 19 heures, puis décroître lentement jusqu'en fin de soirée.
+
+Ce phénomène cyclique se répète tous les jours selon un profil immuable. La projection de ces données sur un graphique en radar représentant les 24 tranches horaires (figure \ref{radar:als} page \pageref{radar:als}) montre qu'il existe trois pics d'égale amplitude à 11, 15 et 19 heures. Ce point mérite d'être analysé car s'il se confirme, cela pourrait indiquer que le pointage de 11 heures permet d'avoir une prévision sur l'intensité de la fréquentation avant la garde du soir. On peut en rapprocher le fait que la médiane des passages se situe vers 14h, c'est à dire qu'au ointage de 15 heures on peut évaluer la quantité totale de patients qui vont se présenter dans les heures qui viennent.
+
+%----------------------------------------------------------------------------- Summary
+Résumé des horaires de passage aux urgences: les données figurent dans le tableau \ref{tab:24} page \pageref{tab:24}.
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:11:46 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrr}
+  \hline
+ & n & Min & Q25 & Moyenne & E-type & Médiane & Q75 & Max \\ 
+  \hline
+ & 276452.00 & 0.00 & 10.00 & 13.90 & 5.60 & 14.00 & 18.00 & 23.00 \\ 
+   \hline
+\end{tabular}
+\caption[horaires de passage]{Résumé des horaires de passage aux urgences} 
+\label{tab:24}
+\end{table}
+
+
+
+% \input{../blah.gen}
+%---------------------------------------------------------------------- HISTOGRAMME
+
+\begin{figure}
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/test23} 
+
+\end{knitrout}
+
+\end{center}
+\caption{Horaires d'arrivée aux urgences en Alsace 2013}
+\label{passage:als}
+\end{figure}
+%---------------------------------------------------------------------------- RADAR 1
+
+\begin{figure}
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/test25} 
+
+\end{knitrout}
+
+\end{center}
+\caption{Horaires d'arrivée aux urgences en Alsace 2013}
+\label{radar:als}
+\end{figure}
+
+%---------------------------------------------------------Radar HUS
+\begin{figure}
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/test2} 
+
+\end{knitrout}
+
+\end{center}
+\caption{HUS: répartition des arrivées et départs aux urgences}
+\label{passage:hus}
+\end{figure}
+
+%---------------------------------------------------------Radar Colmar
+\begin{figure}
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/test26} 
+
+\end{knitrout}
+
+\end{center}
+\caption{Secteurs 3 et 4: répartition des arrivées et départs aux urgences}
+\label{passage:col}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/test27} 
+
+\end{knitrout}
+
+\end{center}
+\caption{Secteurs 1 et 2: répartition des arrivées et départs aux urgences}
+\label{passage:secteur12}
+\end{figure}
+
+
+
+\subsection{Passages par tranches d'âge}
+
+% tranche-age.Rnw
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:11:50 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & a \\ 
+  \hline
+Moins de 1 an & 7151 \\ 
+  De 1 à 15 ans & 50031 \\ 
+  De 15 à 75 ans & 176834 \\ 
+  de 75 à 85 ans & 24836 \\ 
+  Plus de 85 ans & 17576 \\ 
+   \hline
+\end{tabular}
+\caption[Répartition des RPU par tranches d'age]{Répartition des RPU par tranches d'age} 
+\label{tab:tranche}
+\end{table}
+
+\includegraphics[width=\maxwidth]{figure/tranche} 
+
+
+
+
+\newpage
+\chapter{Motif de consultation}
+
+% motif.Rnw
+
+\index{motif de consultation}
+
+Le motif de consultation est l'un des items les plus mal renseigné. Cela est du en partie à l'absence de règles formelles concernant la saisie de cet élément. Une recommandation du ministère de la santé (juin 2013 \cite{12,13}) demande que le thésaurus 2013 de la SFMU \cite{9} soit utilisé.
+
+Le thésaurus est présenté sous la formed'un fichier Excel. L'onglet \emph{recours} liste environ \emph{150} motifs de recours aux urgences avec leur correspondance CIM10, répartis en 17 groupes. Aucune méthode n'est parfaite mais cette page constitue une bonne base d'harmonisation des données.
+
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:11:50 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrrrrrr}
+  \hline
+ & X3Fr & Alk & Col & Dia & Geb & Hag & Hus & Mul & Odi & Sel & Wis & Sav \\ 
+  \hline
+1 & 7.74 & 19.24 & 100.00 & 95.49 & 0.03 & 14.14 & 0.00 & 83.22 & 94.57 & 98.05 & 99.70 & 41.10 \\ 
+   \hline
+\end{tabular}
+\caption[motif de consultation]{Taux de réponse à l'item motif de consultation selon le services d'urgence} 
+\label{lab:motif}
+\end{table}
+
+\includegraphics[width=\maxwidth]{figure/motifss1} 
+
+\includegraphics[width=\maxwidth]{figure/motifss2} 
+
+
+
+\index{exhaustivité@motif}
+Le motif de consultation nest pas renseigné dans 54.44 \% des cas (table \ref{lab:motif}).
+
+Seuls six établissements ont un taux d'exhaustivité supérieur à 80\% pour cette rubrique.
+
+Cependant seuls quelques établissements saisissent cette information sous forme normalisée qui permet de l'exploiter. Dans les autres cas il s'agit de codes propre à l'établissement ou de texte libre inexploitable.
+
+Données non renseignées:
+\begin{itemize}
+  \item Guebwiller
+  \item HUS
+  \item Ste Anne
+  \item Tann
+\end{itemize}
+
+Données renseignées mais inexploitables:
+\begin{itemize}
+  \item Colmar
+  \item Sélestat
+  \item Haguenau
+\end{itemize}
+
+Données renseignées, exploitables mais à mettre en conformité avec le thésaurus:
+\begin{itemize}
+  \item Mulhouse
+  \item Wissembourg
+  \item Altkirch (exhaustivité)
+  \item Saverne
+  \item Ste Odile
+  \item Diaconnat Fonderie
+  \item Trois Frontières
+\end{itemize}
+
+
+\newpage
+\chapter{Modalité d'admission}
+
+% modalites.Rnw
+% modalités d'admission MODE_ENTREE
+
+\index{Mode d'entrée}
+
+\section*{Origine des patients}
+% REMARQUE dans environ 300 dossiers du mois de juin, l'item transfert est écrit "transfe  rt" ce qui nécessite un recodage.
+
+L'immense majorité des patients provient du domicile ou son équivalent. Une très faible part des passages aux urgences sont le fait de transferts d'autres établissements ou de mutations en provenance d'autres services du même établissement.
+
+
+\includegraphics[width=\maxwidth]{figure/mode_entree} 
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:11:51 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & Frequency &   \%(NA+) &   \%(NA-) \\ 
+  \hline
+Mutation & 3012.00 & 1.10 & 1.20 \\ 
+  Transfert & 2699.00 & 1.00 & 1.10 \\ 
+  Domicile & 242679.00 & 87.80 & 97.70 \\ 
+  NA's & 28062.00 & 10.20 & 0.00 \\ 
+    Total & 276452.00 & 100.00 & 100.00 \\ 
+   \hline
+\end{tabular}
+\caption[Origine des patients]{Origine des patients. Les deux colonnes de droite mesurent l'origine (en pourcentage) selon que l'on prenne en compte ou non les valeurs manquantes. } 
+\label{origine}
+\end{table}
+
+
+
+Dans 10.2 \% des cas, l'origine du patient n'est pas précisée.
+
+\section*{Mode de transport}
+\index{Mode de transport}
+
+La grande majorité des patients arrivent aux urgences par leurs propres moyens (PERSO). Lorsqu'ils font appel à un tiers, il s'agit le plus souvent d'une ambulance privée (AMBU), puis du SDIS (AMBU). Les transports par un vecteur médicalisé (SMUR) ou héliporté (HELI) sont rares. Enfin l'utilisation des forces de l'ordre (FO) comme moyen de transport reste marginale.
+
+
+\includegraphics[width=\maxwidth]{figure/transport} 
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:11:51 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & Frequency &   \%(NA+) &   \%(NA-) \\ 
+  \hline
+AMBU & 36447.00 & 13.20 & 17.10 \\ 
+  FO & 1182.00 & 0.40 & 0.60 \\ 
+  HELI & 176.00 & 0.10 & 0.10 \\ 
+  PERSO & 150394.00 & 54.40 & 70.50 \\ 
+  SMUR & 2211.00 & 0.80 & 1.00 \\ 
+  VSAB & 23061.00 & 8.30 & 10.80 \\ 
+  NA's & 62981.00 & 22.80 & 0.00 \\ 
+    Total & 276452.00 & 100.00 & 100.00 \\ 
+   \hline
+\end{tabular}
+\caption[Moyens de transport]{Moyens de transport utilisés pour se rendre à l'hôpital. Les deux colonnes de droite mesurent la fréquence du moyen utilise (en pourcentage) selon que l'on prenne en compte ou non les valeurs manquantes. } 
+\label{transport}
+\end{table}
+
+
+
+Dans 22.8 \% des cas, le moyen de transport utilisé par le patient pour rejoindre l'hôpial n'est pas précisé.
+
+\section*{Origine géographique}
+
+
+
+Les patients consultant aux urgences sont majoritairement issus de la région Alsace. Mais l'origine est très diverse, aussi bien en provenance des autres départements français qu'hors de France:
+% \begin{itemize}
+%   \item Alsace: cp_als (\Sexpr(round(cp_als*100/n,2) \%))
+%   \item hors Alsace: cp_hals
+%   \item dont hors de France: cp_monde
+% \end{itemize}
+
+
+
+\newpage
+\chapter{Durée de passage}
+
+% duree_passage.Rnw
+
+La durée de passage est le temps compris entre la date d'entrée et celle de sortie. Il s'agit d'une durée de transit total. Les données transmises par les RPU ne permettent pas de calculer les temps d'attente.
+
+\subsection{Cas général}
+
+
+
+
+La dispersion des durées de passage est très importante, variant de -247 à \np{9870} minutes. Les valeurs négatives sont considérées comme des valeurs manquantes. 
+Finalement \ensuremath{2.5554\times 10^{4}} ne sont pas renseignées (exhaustivité de -8.24 \% des RPU). 
+La durée de passage moyenne est de 163 minutes (ecart-type 198.06 minutes)
+Une transformation logarithmique des données permet de mieux représenter l'histogramme des durées de passage. 
+
+\begin{figure}[ht!]
+ \centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/log_passages} 
+
+\end{knitrout}
+
+ \caption{Durée de passage (log 10)}
+\end{figure}
+
+la transformation log produit une courbe normale où lamajorité des consultants ont une durée de présence comprise entre 10 et 1000 minutes (environ 17 heures). On nettoie les données en supprimant les enregistrements où presence = NA, puis on forme 3 sous-groupes:
+\begin{itemize}
+  \item a moins de 10 mn
+  \item b de 10 à 1000 mn
+  \item c plus de 1000 mn
+\end{itemize}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##      10      65     119     164     211    1000
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+Les durées de présences inférieures à 10 minutes proviennent à plus de 90\% des HUS (Erreur logicielle signalée au CRIH):
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# Origine despatients restants moins de 10 mn: ils proviennent}
+\hlcom{# majoritairement des HUS:}
+\hlstd{a} \hlkwb{<-} \hlstd{d2[d2}\hlopt{$}\hlstd{presence} \hlopt{<} \hlnum{10}\hlstd{,} \hlstr{"FINESS"}\hlstd{]}
+\hlkwd{rbind}\hlstd{(}\hlkwd{table}\hlstd{(a),} \hlkwd{round}\hlstd{(}\hlkwd{prop.table}\hlstd{(}\hlkwd{table}\hlstd{(a))} \hlopt{*} \hlnum{100}\hlstd{,} \hlnum{2}\hlstd{))}
+\end{alltt}
+\begin{verbatim}
+##        3Fr   Alk    Col    Dia   Geb    Hag      Hus    Mul   Odi   Sel
+## [1,] 155.0 62.00 240.00 192.00 91.00 114.00 17843.00 374.00 88.00 27.00
+## [2,]   0.8  0.32   1.24   0.99  0.47   0.59    91.83   1.92  0.45  0.14
+##         Wis    Sav
+## [1,] 132.00 112.00
+## [2,]   0.68   0.58
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Plus de 90% proviennent des HUS}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+
+Finalement, on conserve le groupe $b$ qui regroupe la majorité (91.33\%) des patients. On trouve dans ce groupe une durée de présence de 164 minutes (écart-type 148.085 minutes, médiane 119).
+
+\begin{figure}[ht!]
+ \centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/passages_clean_hist} 
+
+\end{knitrout}
+
+ \caption{Durée de passage aux urgences}
+\end{figure}
+
+\subsection{Moyenne des durées de passages par jour}
+
+
+
+
+\begin{figure}[ht!]
+ \centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/graphe_duree_moyenne_passage} 
+
+\end{knitrout}
+
+ \caption{Durée moyenne de passage aux urgences en 2013}
+\end{figure}
+
+
+
+\subsection{Cas particulier de Selestat}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: All formats failed to parse. No formats found.}}\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##       1      86     137     162     216     974     627
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/passage} 
+
+\end{knitrout}
+
+
+% RPU_2013_analyse à partir de la ligne 382
+
+\section*{Selon l'heure}
+
+Une période de 24 heures est habituellement divisée de la manière suivante:
+\begin{enumerate}
+  \item \emph{journée} de 8 heures à 20 heures
+  \item \emph{soirée} de 20 heures à minuit
+  \item  \emph{nuit profonde} de 0 heures à 8 heures
+\end{enumerate}
+
+
+
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## nuit profonde       journée        soirée          NA's 
+##         35709        202151         32836          5756
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/duree_heure1} 
+\begin{kframe}\begin{verbatim}
+## nuit profonde       journée        soirée 
+##         172.4         161.3         162.7
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/duree_heure2} 
+\begin{kframe}\begin{verbatim}
+## nuit profonde       journée        soirée 
+##         182.1         161.0         159.8
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/duree_heure3} 
+
+\end{knitrout}
+
+
+\section*{Selon l'âge}
+
+Le temps de passage augmente avec l'age.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## 15 ans et moins     16 à 74 ans  75 ans et plus 
+##            4711           11399            2392
+## 15 ans et moins     16 à 74 ans  75 ans et plus 
+##           118.5           163.0           244.8
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/duree_age1} 
+\begin{kframe}\begin{verbatim}
+## 15 ans et moins     16 à 74 ans  75 ans et plus            NA's 
+##           60246          175864           40332              10
+## 15 ans et moins     16 à 74 ans  75 ans et plus 
+##           113.7           169.3           219.2
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/duree_age2} 
+
+\end{knitrout}
+
+
+\section*{Selon le jour de la semaine}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{tapply}\hlstd{(sel}\hlopt{$}\hlstd{p,} \hlkwd{wday}\hlstd{(e,} \hlkwc{label} \hlstd{=} \hlnum{TRUE}\hlstd{), mean,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+##   Sun   Mon  Tues   Wed Thurs   Fri   Sat 
+## 142.9 174.8 167.4 159.9 165.3 158.5 165.3
+\end{verbatim}
+\begin{alltt}
+\hlcom{# selon le jour et la période}
+\hlstd{t} \hlkwb{<-} \hlkwd{table}\hlstd{(periode,} \hlkwd{wday}\hlstd{(e,} \hlkwc{label} \hlstd{=} \hlnum{TRUE}\hlstd{))}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: all arguments must have the same length}}\begin{alltt}
+\hlstd{t}
+\end{alltt}
+\begin{verbatim}
+## [1] 250898
+\end{verbatim}
+\begin{alltt}
+\hlcom{# tout le groupe}
+\hlkwd{tapply}\hlstd{(d1}\hlopt{$}\hlstd{presence,} \hlkwd{wday}\hlstd{(e,} \hlkwc{label} \hlstd{=} \hlnum{TRUE}\hlstd{), mean,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: arguments must have same length}}\begin{alltt}
+\hlkwd{boxplot}\hlstd{(d1}\hlopt{$}\hlstd{presence} \hlopt{~} \hlkwd{wday}\hlstd{(e,} \hlkwc{label} \hlstd{=} \hlnum{TRUE}\hlstd{),} \hlkwc{outline} \hlstd{= F,} \hlkwc{ylab} \hlstd{=} \hlstr{"durée de présence moyenne (mn)"}\hlstd{,}
+    \hlkwc{main} \hlstd{=} \hlstr{"Durée de présence moyenne selon le jour de la semaine"}\hlstd{)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: variable lengths differ (found for 'wday(e, label = TRUE)')}}\end{kframe}
+\end{knitrout}
+
+
+\subsection*{Pourcentage de passages en moins de 4 heures par établissement}
+
+
+
+
+A Sélestat, 80.33\% des patients quittent les urgences en moins de quatre heures.
+
+Pour l'ensemble des patients d'Alsace, 80.42\% quittent les urgences en moins de quatre heures.
+
+
+\section*{Selon l'orientation}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    SC  SCAM    SI 
+## 186.9 114.5    NA    NA 226.4 164.1 177.3 196.9    NA 280.0 158.3 193.2 
+##  UHCD 
+## 197.8
+##   DOM   MCO   SLD 
+## 147.3 215.1 208.5
+##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
+## 243.34 231.16 229.76 244.68 265.91 235.58 175.25 208.69  87.07 163.90 
+##   SCAM     SI   UHCD 
+## 277.07 255.99  90.48
+##   DOM   HAD   HMS   MCO   PSY   SLD   SSR 
+## 156.7 175.3 506.6 182.7 327.2 259.5 312.2
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/duree_orientation} 
+
+\end{knitrout}
+
+
+
+\section*{Selon la gravité}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##     1     2     3     4     5     D     P 
+## 106.1 152.1 220.4 213.8 220.0  42.5 151.1
+##     1     2     3     4     5     D     P 
+## 120.0 159.5 228.6 218.8 176.4 205.9 225.6
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/duree_gravite} 
+
+\end{knitrout}
+
+
+\section*{Selon la structure}
+\subsection{CH Sélestat}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##       1      86     137     162     216     974     627
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+
+\newpage
+\chapter{Codage diagnostique}
+>>>>>>> 229ed100e6b53c12de7d25f4b1202b67e6385124
+
+
+
+
+
+<<<<<<< HEAD
+=======
+Les motifs de recours aux urgences sont exprimés en fonction de la classification CIM10 \cite{10}.
+\index{motif de recours}
+\footnote{Classification Internationale des Maladies, 10ème révision (La CIM10 comporte environ 36000 maladies).}.
+\url{http://apps.who.int/classifications/icd10/browse/2008/fr}
+Le fichier comporte \np{183565} diagnostics principaux différents.
+répartis en 4469 classes de diagnostics.
+La comparaison entre le nombre de RPU reçus et le nombre de diagnostics renseignés permet d'établir l'exhaustivité des CIM10 à 66.4\% \index{exhaustivité!CIM10}
+>>>>>>> 229ed100e6b53c12de7d25f4b1202b67e6385124
+
+
+
+
+
+
+
+
+
+<<<<<<< HEAD
 
 
 
@@ -160,26 +1607,1644 @@ Le Réseau des Urgences en Alsace a été créé en août 2008 sous forme d'une 
 
 
 
+=======
+\begin{longtable}{|c|c|m{4cm}|c|c|c|}
+ \hline
+ Chapitre & Bloc & Titre & N & \% total  & \% non trauma \\
+ \hline
+ 
+I & A00–B99 & Certaines maladies infectieuses et parasitaires & 8718 & 4.75 & 10.97 \\
+ II&C00–D48&Tumeurs&861&0.47&1.08\\
+ 
+III&D50–D89&Maladies du sang et des organes hématopoïétiques et certains troubles du système immunitaire&403&0.22&0.51\\
+
+IV&E00–E90&Maladies endocriniennes, nutritionnelles et métaboliques&2065&1.12&2.6\\
+
+V&F00–F99&Troubles mentaux et du comportement&9815&5.35&12.35\\
+
+VI&G00–G99&Maladies du système nerveux&5452&2.97&6.86\\
+
+VII & H00–H59 & Maladies de l'oeil et de ses annexes & 5739 & 3.13&7.22\\
+
+VIII&H60–H95&Maladies de l'oreille et de l'apophyse mastoïde&4104&2.24&5.16\\
+
+IX&I00–I99&Maladies de l'appareil circulatoire&11116&6.06&13.98\\
+
+X&J00–J99&Maladies de l'appareil respiratoire&19740&10.75&24.83\\
+
+XI&K00–K93&Maladies de l'appareil digestif&14717&8.02&18.51\\
+
+XII&L00–L99&Maladies de la peau et du tissu cellulaire souscutané&5579&3.04&7.02\\
+
+XIII&M00–M99&Maladies du système ostéoarticulaire, des muscles et du tissu conjonctif&16718&9.11&21.03\\
+
+XIV&N00–N99&Maladies de l'appareil génitourinaire&9394&5.12&11.82\\
+
+XV&O00–O99&Grossesse, accouchement et puerpéralité&310&0.17&0.39\\
+
+XVI&P00–P96&Certaines affections dont l'origine se situe dans la période périnatale&325&0.18&0.41\\
+
+% XVII&Q00–Q99&Malformations congénitales et anomalies chromosomiques&cong&round(cong*100/total,digits=2)&round(cong*100/(total-traumato),digits=2)\\
+
+XVIII&R00–R99&Symptômes, signes et résultats anormaux d'examens cliniques et de laboratoire, non classés ailleurs&42725&23.28&53.74\\
+
+XIX&S00–T98&Lésions traumatiques, empoisonnements et certaines autres conséquences de causes externes&104064&56.69& \\
+
+XX&V01–Y98&Causes externes de morbidité et de mortalité& 5063&2.76&6.37\\
+
+XXI&Z00–Z99&Facteurs influant sur l'état de santé et motifs de recours aux services de santé&8159&4.44&4.44\\
+
+XXII&U00–U99&Codes d'utilisation particulière & 0&0&0\\
+
+  \hline
+\end{longtable}
+
+
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/class_cim10} 
+\begin{kframe}\begin{verbatim}
+## a :  
+##         Frequency Percent Cum. percent
+## S           62154    33.9         33.9
+## R           28281    15.4         49.3
+## J           12409     6.8         56.0
+## M           11118     6.1         62.1
+## K            9724     5.3         67.4
+## T            7568     4.1         71.5
+## I            7235     3.9         75.4
+## F            6638     3.6         79.1
+## H            6563     3.6         82.6
+## N            6245     3.4         86.0
+## Z            5441     3.0         89.0
+## A            3785     2.1         91.1
+## L            3738     2.0         93.1
+## G            3576     1.9         95.0
+## B            1893     1.0         96.1
+## W            1751     1.0         97.0
+## E            1357     0.7         97.8
+## D            1144     0.6         98.4
+## Y             801     0.4         98.8
+## X             604     0.3         99.2
+## V             513     0.3         99.4
+## C             419     0.2         99.7
+## P             212     0.1         99.8
+## O             195     0.1         99.9
+## r             108     0.1         99.9
+## Q              74     0.0        100.0
+## k              19     0.0        100.0
+##   Total    183565   100.0        100.0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Etude des AVC}
+\index{AVC}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Les AVC sont définis par la nomenclature I60 à I64, G45 Accidents ischémiques cérébraux transitoires (sauf G45.4 amnésie transitoire) et syndromes apparentés et G46 Syndromes vasculaires cérébraux au cours de maladies cérébrovasculaires
+
+La prévention et la prise en charge des accidents vasculaires cérébraux  Annexes 
+juin 2009
+
+Annexe : Liste exhaustive des codes CIM10 d’AVC
+
+\begin{longtable}{|l|l|}
+ \hline
+ Code & libellé\\
+ \hline
+ G450 & Syndrome vertébrobasilaire \\
+ G451 & Syndrome carotidien (hémisphérique) \\
+ G452 & Accident ischémique transitoire de territoires artériels précérébraux multiples et bilatéraux \\
+ G453 & Amaurose fugace \\
+ G454 & Amnésie globale transitoire : NON RETENU \\
+ G458 & Autres accidents ischémiques cérébraux transitoires et syndromes apparentés \\
+ G459 & Accident ischémique cérébral transitoire, sans précision \\
+ I600 & Hémorragie sousarachnoïdienne de labifurcation et du siphon carotidien \\
+ I601 & Hémorragie sousarachnoïdienne de l'artère cérébrale moyenne \\
+ I602 & Hémorragie sousarachnoïdienne de l'artère communicante antérieure \\
+ I603 & Hémorragie sousarachnoïdienne del'artère communicante postérieure \\
+ I604 & Hémorragie sousarachnoïdienne de l'artère basilaire \\
+ I605 & Hémorragie sousarachnoïdienne de l'artère vertébrale \\
+ I606 & Hémorragie sousarachnoïdienne d'autres artères intracrâniennes \\
+ I607 & Hémorragie sousarachnoïdienne d'une artère intracrânienne, sans précision \\
+ I608 & Autres hémorragies sousarachnoïdiennes \\
+ I609 & Hémorragie sousarachnoïdienne, sans précision \\
+ I610 & Hémorragie intracérébrale hémisphérique, souscorticale \\
+ I611 & Hémorragie intracérébrale hémisphérique, corticale \\
+ I612 & Hémorragie intracérébrale hémisphérique, non précisée \\
+ I613 & Hémorragie intracérébrale du tronc cérébral \\
+ I614 & Hémorragie intracérébrale cérébelleuse \\
+ I615 & Hémorragie intracérébrale intraventriculaire \\
+ I616 & Hémorragie intracérébrale,localisations multiples \\
+ I618 & Autres hémorragies intracérébrales \\
+ I619 & Hémorragie intracérébrale, sans précision \\
+ I620 & Hémorragie sousdurale (aiguë) (non traumatique) \\
+ I621 & Hémorragie extradurale non traumatique \\
+ I629 & Hémorragie intracrânienne (non traumatique), sans précision \\
+ I630 & Infarctus cérébral dû à une thrombose des artères précérébrales \\
+ I631 & Infarctus cérébral dû à une embolie des artères précérébrales \\
+ I632 & Infarctus cérébral dû à une occlusion ou sténose des artères précérébrales,de mécanisme non précisé \\
+ I633 & Infarctus cérébral dû à une thrombose des artères cérébrales \\
+ I634 & Infarctus cérébral dû à une embolie des artères cérébrales \\
+ I635 & Infarctus cérébral dû à une occlusion ou sténose des artères cérébrales, demécanisme non précisé \\
+ I636 & Infarctus cérébral dû à une thrombose veineuse cérébrale, non pyogène \\
+ I638 & Autres infarctus cérébraux \\
+ I639 & Infarctus cérébral, sans précision \\
+ I64 & Accident vasculaire cérébral, non précisé comme étant hémorragique ou par infarctus \\
+ G460 & Syndrome de l'artère cérébrale moyenne (I66.0) (1) \\
+ G461 & Syndrome de l'artère cérébrale antérieure (I66.1) (1) \\
+ G462 & Syndrome de l'artère cérébrale postérieure (I66.2) (1) \\
+ G463 & Syndromes vasculaires du tronc cérébral (I60I67) (1) \\
+ G464 & Syndrome cérébelleux vasculaire (I60I67) (1) \\
+ G465 & Syndrome lacunaire moteur pur (I60I67) (1) \\
+ G466 & Syndrome lacunaire sensitif pur (I60I67) (1) \\
+ G467 & Autres syndromes lacunaires (I60I67) (1) \\
+ G468 & Autres syndromes vasculaires cérébraux au cours de maladies cérébrovasculaires (I60I67) (1) \\
+  \hline
+\end{longtable}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# Création d'un dataframe DP}
+\hlstd{dpr} \hlkwb{<-} \hlstd{d1[}\hlopt{!}\hlkwd{is.na}\hlstd{(d1}\hlopt{$}\hlstd{DP),} \hlkwd{c}\hlstd{(}\hlstr{"DP"}\hlstd{,} \hlstr{"CODE_POSTAL"}\hlstd{,} \hlstr{"ENTREE"}\hlstd{,} \hlstr{"FINESS"}\hlstd{,} \hlstr{"GRAVITE"}\hlstd{,}
+    \hlstr{"ORIENTATION"}\hlstd{,} \hlstr{"MODE_SORTIE"}\hlstd{,} \hlstr{"AGE"}\hlstd{,} \hlstr{"SEXE"}\hlstd{,} \hlstr{"TRANSPORT"}\hlstd{)]}
+\hlcom{# correction d'erreurs:}
+\hlstd{dpr}\hlopt{$}\hlstd{DP[}\hlnum{37807}\hlstd{]} \hlkwb{<-} \hlstr{"N10"}
+\hlstd{dpr}\hlopt{$}\hlstd{DP[}\hlnum{47689}\hlstd{]} \hlkwb{<-} \hlstr{"R06.0"}
+\hlstd{dpr}\hlopt{$}\hlstd{DP[}\hlnum{68023}\hlstd{]} \hlkwb{<-} \hlstr{"C61"}
+\hlstd{dpr}\hlopt{$}\hlstd{DP[}\hlnum{73924}\hlstd{]} \hlkwb{<-} \hlstr{"N10"}
+\hlcom{# un peu de ménage:}
+\hlstd{dpr}\hlopt{$}\hlstd{DP} \hlkwb{<-} \hlkwd{gsub}\hlstd{(}\hlstr{"."}\hlstd{,} \hlstr{""}\hlstd{,} \hlkwd{as.character}\hlstd{(dpr}\hlopt{$}\hlstd{DP),} \hlkwc{fixed} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlstd{dpr}\hlopt{$}\hlstd{DP} \hlkwb{<-} \hlkwd{gsub}\hlstd{(}\hlstr{"+"}\hlstd{,} \hlstr{""}\hlstd{,} \hlkwd{as.character}\hlstd{(dpr}\hlopt{$}\hlstd{DP),} \hlkwc{fixed} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlcom{# extraction d'un DF avc:}
+\hlstd{AVC} \hlkwb{<-} \hlstd{dpr[}\hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,} \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{>=} \hlstr{"I60"} \hlopt{&} \hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,} \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{<} \hlstr{"I65"} \hlopt{|} \hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,}
+    \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{==} \hlstr{"G46"} \hlopt{|} \hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,} \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{==} \hlstr{"G45"}\hlstd{, ]}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+
+\subsection*{Horaire des AVC}
+\index{AVC!heure}
+
+Horaire des AVC, à comparer avec:
+\begin{itemize}
+  \item les crises d'épilepsie
+  \item la pression athmosphérique
+\end{itemize}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/heure_avc1} 
+
+\includegraphics[width=\maxwidth]{figure/heure_avc2} 
+\begin{kframe}\begin{verbatim}
+## h :  
+##         Frequency Percent Cum. percent
+## 0              40     1.7          1.7
+## 1              34     1.5          3.2
+## 2              32     1.4          4.6
+## 3              25     1.1          5.7
+## 4              16     0.7          6.4
+## 5              24     1.0          7.5
+## 6              21     0.9          8.4
+## 7              39     1.7         10.1
+## 8              84     3.7         13.8
+## 9             144     6.3         20.1
+## 10            195     8.5         28.6
+## 11            193     8.4         37.1
+## 12            158     6.9         44.0
+## 13            143     6.3         50.2
+## 14            160     7.0         57.2
+## 15            126     5.5         62.7
+## 16            148     6.5         69.2
+## 17            161     7.0         76.2
+## 18            132     5.8         82.0
+## 19            104     4.5         86.6
+## 20            133     5.8         92.4
+## 21             70     3.1         95.5
+## 22             57     2.5         97.9
+## 23             47     2.1        100.0
+##   Total      2286   100.0        100.0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+\subsection*{Selon le jour de la semaine}
+\index{AVC!age}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## w
+## Dim Lun Mar Mer Jeu Ven Sam 
+## 275 362 355 349 341 322 282
+## w
+##   Dim   Lun   Mar   Mer   Jeu   Ven   Sam 
+## 12.03 15.84 15.53 15.27 14.92 14.09 12.34
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/avc_jour_semaine} 
+
+\end{knitrout}
+
+Proportion théorique = 14.28\% par jour de la semaine.
+
+\subsection*{AVC et age}
+\index{AVC!age}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     1.0    61.0    75.0    71.1    83.0   112.0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+Le rapport de 2009 donne age moyen = 70.5 et age médian = 75 ans.
+
+\subsection*{AVC et sexe}
+\index{AVC!sexe}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##    F    I    M 
+## 1196    0 1090
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/avc_sexe1} 
+
+\includegraphics[width=\maxwidth]{figure/avc_sexe2} 
+
+\includegraphics[width=\maxwidth]{figure/avc_sexe3} 
+
+\includegraphics[width=\maxwidth]{figure/avc_sexe4} 
+
+\end{knitrout}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Accidents ischiémiques transitoires (AIT)}
+\index{AIT}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Recommandations pour la sélection des données PMSI MCO concernant l’AVC (Juin 2009)
+
+\begin{longtable}{|l|l|}
+ \hline
+ Code & libellé\\
+ \hline
+G450 & Syndrome vertébro-basilaire \\
+G451 & Syndrome carotidien (hémisphérique) \\
+G452 & Accident ischémique transitoire de territoires artériels précérébraux multiples et bilatéraux \\
+G453  & Amaurose fugace \\
+G458  & Autres accidents ischémiques cérébraux transitoires et syndromes apparentés \\
+G459  & Accident ischémique cérébral transitoire, sans précision \\  
+  \hline
+\end{longtable}
+
+Le thésaurus SFMU (2013) \cite{9} recommande d'utiliser G45.9 (ou G459) pour tout diagnostic d'AIT.
+\index{AIT!thésaurus}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/ait} 
+\begin{kframe}\begin{verbatim}
+## ait :  
+##         Frequency Percent Cum. percent
+## G450            4     0.7          0.7
+## G451            5     0.9          1.6
+## G452           13     2.2          3.8
+## G453            4     0.7          4.5
+## G458           37     6.4         10.9
+## G459          515    89.1        100.0
+##   Total       578   100.0        100.0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pneumonies}
+\index{pneumonies}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] "Pneumonies et AGE"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##       0      62      77      71      85      98
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+Les pneumopaties bactériennes sans précision sont cotées J15.9 Dans la CIM10.
+683 diagnostics de ce type ont été portés au SAU en 2013.
+
+Les pneumonies bactériennes concernent les adultes agés des deux sexes. L'age moyen est de 71 ans et la moitié de ces patients ont 77 ans et plus.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/pneumo} 
+
+\end{knitrout}
+
+
+En fonction de la gravité (CCMU):
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##    1    2    3    4    5    D    P NA's 
+##   15  298  308   50    5    0    0    7
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+En fonction de la destination:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## integer(0)
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+En fonction de l'orientation:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    SC  SCAM    SI 
+##    10     0     0     0   215     0     0     8     0     5     0     2 
+##  UHCD  NA's 
+##   212   231
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+Deux patients porteurs de problèmes respiratoires sont orienté en chirurgie : erreur ou manque de place en médecine ?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Syndrome grippal}
+\index{syndrome grippal}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/grippe} 
+
+\end{knitrout}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Asthme}
+\index{Asthme}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Classification selon la CIM10:
+\begin{itemize}
+  \item J45.0 Asthme à prédominance allergique
+  \item J45.1 Asthme non allergique
+  \item J45.8 Asthme associé 
+  \item J45.9 Asthme, sans précision
+  \item J46   Etat de mal asthmatique
+\end{itemize}
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:12:01 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & V1 \\ 
+  \hline
+J450 & 101 \\ 
+  J451 & 146 \\ 
+  J458 &   5 \\ 
+  J459 & 797 \\ 
+  J46 &  43 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\includegraphics[width=\maxwidth]{figure/asthme} 
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:12:01 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & Fréquence & Pourcentage & Pourcentage Cumul. \\ 
+  \hline
+J458 & 5.00 & 0.50 & 0.50 \\ 
+  J46 & 43.00 & 3.90 & 4.40 \\ 
+  J450 & 101.00 & 9.20 & 13.60 \\ 
+  J451 & 146.00 & 13.40 & 27.00 \\ 
+  J459 & 797.00 & 73.00 & 100.00 \\ 
+    Total & 1092.00 & 100.00 & 100.00 \\ 
+   \hline
+\end{tabular}
+\caption[Répartition des diagnostics d'asthme]{Répartition des diagnostics d'asthme chez les patients ayant consulté un  SU, en région Alsace en 2013} 
+\label{tab:asthme}
+\end{table}
+
+
+
+On note \np{1092} cas d'asthme en 2013.
+
+
+\includegraphics[width=\maxwidth]{figure/asthme21} 
+
+\includegraphics[width=\maxwidth]{figure/asthme22} 
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:12:01 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & Fréquence & Pourcentage & Pourcentage cumul. \\ 
+  \hline
+1 & 26.00 & 2.40 & 2.40 \\ 
+  2 & 20.00 & 1.80 & 4.20 \\ 
+  3 & 32.00 & 2.90 & 7.10 \\ 
+  4 & 23.00 & 2.10 & 9.20 \\ 
+  5 & 27.00 & 2.50 & 11.70 \\ 
+  6 & 19.00 & 1.70 & 13.50 \\ 
+  7 & 27.00 & 2.50 & 15.90 \\ 
+  8 & 21.00 & 1.90 & 17.90 \\ 
+  9 & 20.00 & 1.80 & 19.70 \\ 
+  10 & 21.00 & 1.90 & 21.60 \\ 
+  11 & 41.00 & 3.80 & 25.40 \\ 
+  12 & 22.00 & 2.00 & 27.40 \\ 
+  13 & 24.00 & 2.20 & 29.60 \\ 
+  14 & 27.00 & 2.50 & 32.10 \\ 
+  15 & 22.00 & 2.00 & 34.10 \\ 
+  16 & 40.00 & 3.70 & 37.70 \\ 
+  17 & 41.00 & 3.80 & 41.50 \\ 
+  18 & 27.00 & 2.50 & 44.00 \\ 
+  19 & 34.00 & 3.10 & 47.10 \\ 
+  20 & 37.00 & 3.40 & 50.50 \\ 
+  21 & 41.00 & 3.80 & 54.20 \\ 
+  22 & 26.00 & 2.40 & 56.60 \\ 
+  23 & 47.00 & 4.30 & 60.90 \\ 
+  24 & 31.00 & 2.80 & 63.70 \\ 
+  25 & 29.00 & 2.70 & 66.40 \\ 
+  26 & 14.00 & 1.30 & 67.70 \\ 
+  27 & 25.00 & 2.30 & 70.00 \\ 
+  28 & 17.00 & 1.60 & 71.50 \\ 
+  29 & 11.00 & 1.00 & 72.50 \\ 
+  30 & 15.00 & 1.40 & 73.90 \\ 
+  31 & 13.00 & 1.20 & 75.10 \\ 
+  32 & 19.00 & 1.70 & 76.80 \\ 
+  33 & 13.00 & 1.20 & 78.00 \\ 
+  34 & 14.00 & 1.30 & 79.30 \\ 
+  35 & 8.00 & 0.70 & 80.00 \\ 
+  36 & 17.00 & 1.60 & 81.60 \\ 
+  37 & 47.00 & 4.30 & 85.90 \\ 
+  38 & 31.00 & 2.80 & 88.70 \\ 
+  39 & 29.00 & 2.70 & 91.40 \\ 
+  40 & 16.00 & 1.50 & 92.90 \\ 
+  41 & 23.00 & 2.10 & 95.00 \\ 
+  42 & 19.00 & 1.70 & 96.70 \\ 
+  43 & 25.00 & 2.30 & 99.00 \\ 
+  44 & 11.00 & 1.00 & 100.00 \\ 
+    Total & 1092.00 & 100.00 & 100.00 \\ 
+   \hline
+\end{tabular}
+\caption[Fréquence des crises d'asthme]{Fréquence des crises d'asthme par semaine en 2013} 
+\label{tab:freq_asthme}
+\end{table}
+
+
+
+
+La population des patients consultant pour une crise d'astme est jeune (voir table \ref{tab:age_asthme} page \pageref{tab:age_asthme}).
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:12:01 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrr}
+  \hline
+ & moyenne & écart-type & médiane & min & max & n \\ 
+  \hline
+1 & 23.85 & 24.09 & 15.00 & 0.00 & 97.00 & 1092.00 \\ 
+   \hline
+\end{tabular}
+\caption[Asthme et age]{Age de la population consultant pour crise d'asthme} 
+\label{tab:age_asthme}
+\end{table}
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:12:01 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrr}
+  \hline
+ & 1 & 2 & 3 & 4 & 5 & D & P & NA's \\ 
+  \hline
+1 & 117 & 697 & 248 &  17 &   4 &   0 &   0 &   9 \\ 
+   \hline
+\end{tabular}
+\caption[Asthme et CCMU]{Gravité de la crise d'asthme en fonction de la CCMU} 
+\label{tab:ccmu_asthme}
+\end{table}
+
+
+
+Les crises sont de gravité moyenne avec une prédominance de CCMU 2 et 3 (voir table \ref{tab:ccmu_asthme} page \pageref{tab:ccmu_asthme}).
+Cependant le taux d'hospitalisation est important: 37.35 \%.
+\np{62} patients ont été orientés vers un service "chaud" (Réanimation, sins intensifs ou continus) soit 17.42 \% des patients hospitalisés pour asthme.
+
+Le bulletin épidémiologique (Le point épidémiologique du 24 octobre 2013 - Surveillance épidémiologique de la Cire Lorraine-Alsace) clôt la surveillance de l’asthme. Pour l’association SOS Médecins de Strasbourg, l’activité liée à l’asthme a été particulièrement marqué de mi-avril (semaine 16) à fin mai(semaine 22) puis en semaine 40. Concernant l’association de Mulhouse, seule une forte augmentation en semaine 39 a été observée depuis début avril.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Bronchiolite}
+\index{Bronchiolite}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CIM10: Bronchiolite aiguë
+
+Inclus:
+    avec bronchospasme
+\begin{itemize}
+  \item J21.0 Bronchiolite aiguë due au virus respiratoire syncytial [VRS]
+  \item J21.8 Bronchiolite aiguë due à d'autres micro-organismes précisés
+  \item J21.9 Bronchiolite aiguë, sans précision
+\end{itemize}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{bron} \hlkwb{<-} \hlstd{dpr[}\hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,} \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{==} \hlstr{"J21"}\hlstd{, ]}
+\hlstd{m} \hlkwb{<-} \hlkwd{month}\hlstd{(bron}\hlopt{$}\hlstd{ENTREE,} \hlkwc{label} \hlstd{= T)}
+\hlkwd{barplot}\hlstd{(}\hlkwd{table}\hlstd{(m),} \hlkwc{main} \hlstd{=} \hlstr{"Bronchiolites - 2013"}\hlstd{,} \hlkwc{xlab} \hlstd{=} \hlstr{"Mois"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/bron1} 
+\begin{kframe}\begin{alltt}
+\hlstd{s} \hlkwb{<-} \hlkwd{week}\hlstd{(bron}\hlopt{$}\hlstd{ENTREE)}
+\hlkwd{barplot}\hlstd{(}\hlkwd{table}\hlstd{(s),} \hlkwc{main} \hlstd{=} \hlstr{"Bronchiolites - 2013"}\hlstd{,} \hlkwc{xlab} \hlstd{=} \hlstr{"Semaines"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/bron2} 
+\begin{kframe}\begin{alltt}
+\hlkwd{summary}\hlstd{(bron)}
+\end{alltt}
+\begin{verbatim}
+##       DP             CODE_POSTAL     ENTREE              FINESS   
+##  Length:368         68200  : 71   Length:368         Mul    :295  
+##  Class :character   68100  : 51   Class :character   Sel    : 24  
+##  Mode  :character   68270  : 19   Mode  :character   Col    : 20  
+##                     68300  : 11                      Wis    : 13  
+##                     67160  :  9                      3Fr    :  9  
+##                     68110  :  9                      Geb    :  2  
+##                     (Other):198                      (Other):  5  
+##     GRAVITE     ORIENTATION     MODE_SORTIE       AGE        SEXE   
+##  2      :207   MED    : 81   NA       :  0   Min.   : 0.00   F:158  
+##  3      :112   SC     : 79   Mutation :165   1st Qu.: 0.00   I:  0  
+##  1      : 40   REA    :  3   Transfert:  0   Median : 0.00   M:210  
+##  4      :  3   UHCD   :  3   Domicile :173   Mean   : 1.24          
+##  5      :  3   SCAM   :  1   Décès    :  0   3rd Qu.: 0.00          
+##  (Other):  0   (Other):  0   NA's     : 30   Max.   :93.00          
+##  NA's   :  3   NA's   :201                                          
+##  TRANSPORT  
+##  AMBU :  8  
+##  FO   :  0  
+##  HELI :  0  
+##  PERSO:324  
+##  SMUR :  0  
+##  VSAB :  2  
+##  NA's : 34
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+Surreprésentation de Mul  
+taux hospitalisation: 50\%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Intoxication au CO}
+\index{Intoxication au CO}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CIM10 = T58
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{co} \hlkwb{<-} \hlstd{dpr[}\hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,} \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{==} \hlstr{"T58"}\hlstd{, ]}
+\hlstd{m} \hlkwb{<-} \hlkwd{month}\hlstd{(co}\hlopt{$}\hlstd{ENTREE,} \hlkwc{label} \hlstd{= T)}
+\hlkwd{table}\hlstd{(m)}
+\end{alltt}
+\begin{verbatim}
+## m
+## Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
+##   5  12  11   0   6   9   0   1   0   1   0   0
+\end{verbatim}
+\begin{alltt}
+\hlkwd{barplot}\hlstd{(}\hlkwd{table}\hlstd{(m),} \hlkwc{main} \hlstd{=} \hlstr{"Intoxication au CO - 2013"}\hlstd{,} \hlkwc{xlab} \hlstd{=} \hlstr{"Mois"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/co} 
+
+\end{knitrout}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Malaises}
+\index{malaise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/malaises} 
+
+\end{knitrout}
+
+
+malaise selon INVS (canicule):
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/malaises_invs1} 
+
+\includegraphics[width=\maxwidth]{figure/malaises_invs2} 
+
+\end{knitrout}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Marqueurs de canicule}
+\index{Canicule@marqueurs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Données hospitalières : nombre quotidien de passages dans des services d'urgence hospitaliers pour un diagnostic de malaise (codes Cim10 R42, R53 et R55), d'hyperthermie et autres effets directs de la chaleur (codes Cim10 T67 et X30), de déshydratation (code Cim10 E86) et d'hyponatrémie (code Cim10 E871)
+
+- X30  Exposition à une chaleur naturelle excessive
+- E86  Déplétion du volume du plasma ou du liquide extracellulaire, Déshydratation sauf choc hypovolémique
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/canicule1} 
+
+\includegraphics[width=\maxwidth]{figure/canicule2} 
+\begin{kframe}\begin{verbatim}
+## canicule$DP : 
+##         Frequency Percent Cum. percent
+## T670           57    73.1         73.1
+## T671            8    10.3         83.3
+## T672            3     3.8         87.2
+## T676            2     2.6         89.7
+## T677            6     7.7         97.4
+## T678            1     1.3         98.7
+## T679            1     1.3        100.0
+##   Total        78   100.0        100.0
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/canicule3} 
+
+\end{knitrout}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Gastro-entérites}
+\index{Gastroentérites}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CIM10 A09 : Diarrhée et gastro-entérite d'origine présumée infectieuse
+
+Inclus: Catarrhe intestinale (Colite,Entérite, Gastro-entérite,SAI hémorragique,septique), Diarrhée (SAI,dysentérique,épidémique), Maladie diarrhéique infectieuse SAI.
+Sont exclues: diarrhée non infectieuse (K52.9), néonatale (P78.3), maladies dues à des bactéries, des protozoaires, des virus et d'autres agents infectieux précisés (A00-A08)  
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{ge} \hlkwb{<-} \hlstd{dpr[}\hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,} \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{==} \hlstr{"A09"}\hlstd{, ]}
+\hlkwd{summary}\hlstd{(ge)}
+\end{alltt}
+\begin{verbatim}
+##       DP             CODE_POSTAL      ENTREE              FINESS    
+##  Length:2123        68100  : 252   Length:2123        Mul    :1100  
+##  Class :character   68200  : 250   Class :character   Col    : 304  
+##  Mode  :character   68300  : 139   Mode  :character   3Fr    : 200  
+##                     68000  : 117                      Wis    : 138  
+##                     68500  :  60                      Geb    : 114  
+##                     67160  :  57                      Sel    :  89  
+##                     (Other):1248                      (Other): 178  
+##     GRAVITE      ORIENTATION      MODE_SORTIE        AGE        SEXE    
+##  2      :1462   MED    : 202   NA       :   0   Min.   :  0.0   F:1057  
+##  1      : 427   UHCD   : 116   Mutation : 364   1st Qu.:  1.0   I:   0  
+##  3      : 202   SC     :  26   Transfert:   3   Median :  5.0   M:1066  
+##  4      :  14   CHIR   :   4   Domicile :1545   Mean   : 18.1           
+##  5      :   0   HO     :   1   Décès    :   0   3rd Qu.: 27.0           
+##  (Other):   0   (Other):   4   NA's     : 211   Max.   :100.0           
+##  NA's   :  18   NA's   :1770                                            
+##  TRANSPORT   
+##  AMBU : 203  
+##  FO   :   0  
+##  HELI :   0  
+##  PERSO:1651  
+##  SMUR :  10  
+##  VSAB :  55  
+##  NA's : 204
+\end{verbatim}
+\begin{alltt}
+\hlkwd{table}\hlstd{(ge}\hlopt{$}\hlstd{FINESS, ge}\hlopt{$}\hlstd{DP)}
+\end{alltt}
+\begin{verbatim}
+##      
+##        A09 A090 A099
+##   3Fr    0   40  160
+##   Alk    0    6    9
+##   Col  246   42   16
+##   Dia    0    0    0
+##   Geb    0   21   93
+##   Hag    0   35   14
+##   Hus    0   42   29
+##   Mul 1100    0    0
+##   Odi    0   12   31
+##   Sel    0   39   50
+##   Wis    0   66   72
+##   Sav    0    0    0
+\end{verbatim}
+\begin{alltt}
+\hlkwd{hist}\hlstd{(ge}\hlopt{$}\hlstd{AGE,} \hlkwc{main} \hlstd{=} \hlstr{"Gasto-entérites - 2013"}\hlstd{,} \hlkwc{xlab} \hlstd{=} \hlstr{"Age (années)"}\hlstd{,} \hlkwc{ylab} \hlstd{=} \hlstr{"nombre"}\hlstd{,}
+    \hlkwc{col} \hlstd{=} \hlstr{"gray90"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/ge1} 
+\begin{kframe}\begin{alltt}
+\hlkwd{boxplot}\hlstd{(ge}\hlopt{$}\hlstd{AGE,} \hlkwc{col} \hlstd{=} \hlstr{"yellow"}\hlstd{,} \hlkwc{main} \hlstd{=} \hlstr{"Gastro-entérite"}\hlstd{,} \hlkwc{ylab} \hlstd{=} \hlstr{"age (années)"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/ge2} 
+\begin{kframe}\begin{alltt}
+\hlstd{m} \hlkwb{<-} \hlkwd{month}\hlstd{(ge}\hlopt{$}\hlstd{ENTREE,} \hlkwc{label} \hlstd{= T)}
+\hlstd{x} \hlkwb{<-} \hlkwd{barplot}\hlstd{(}\hlkwd{table}\hlstd{(m),} \hlkwc{main} \hlstd{=} \hlstr{"Gestro-entérites - 2013"}\hlstd{,} \hlkwc{xlab} \hlstd{=} \hlstr{"Mois"}\hlstd{)}
+\hlkwd{lines}\hlstd{(}\hlkwc{x} \hlstd{= x,} \hlkwc{y} \hlstd{=} \hlkwd{table}\hlstd{(m),} \hlkwc{col} \hlstd{=} \hlstr{"red"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/ge3} 
+
+\end{knitrout}
+
+
+
+NOTE TECHNIQUE: tracer une ligne joignant les sommets des barres du barplot. On utilise lines avec les valeurs suivantes:
+- x = abcisse des colonnes. Elles sont contenues dans l'objet barplot. On peut les recueillir eplicitement par la fonction *str* (str(x)).
+- y = ordonnées des barres, récupérées avec la fonction *table* qui agglomère les données par mois
+Voir aussi: http://www.ats.ucla.edu/stat/r/faq/barplotplus.htm
+
+calculs à la manière de l'INVS
+
+nombre de diagnostics de GE / nb total de diagnostics par semaine:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mge} \hlkwb{<-} \hlkwd{month}\hlstd{(ge}\hlopt{$}\hlstd{ENTREE,} \hlkwc{label} \hlstd{= T)}
+\hlstd{mtot} \hlkwb{<-} \hlkwd{month}\hlstd{(dpr}\hlopt{$}\hlstd{ENTREE,} \hlkwc{label} \hlstd{= T)}
+\hlkwd{summary}\hlstd{(mtot)}
+\end{alltt}
+\begin{verbatim}
+##   Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov   Dec 
+## 17364 17156 18396 20302 19207 20772 20387 17993 15842 16146     0     0
+\end{verbatim}
+\begin{alltt}
+\hlkwd{summary}\hlstd{(mge)}
+\end{alltt}
+\begin{verbatim}
+## Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
+## 294 236 251 282 181 168 173 214 162 162   0   0
+\end{verbatim}
+\begin{alltt}
+\hlstd{a} \hlkwb{<-} \hlkwd{round}\hlstd{(}\hlkwd{summary}\hlstd{(mge)} \hlopt{*} \hlnum{100}\hlopt{/}\hlkwd{summary}\hlstd{(mtot),} \hlnum{2}\hlstd{)}
+\hlstd{a}
+\end{alltt}
+\begin{verbatim}
+##  Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec 
+## 1.69 1.38 1.36 1.39 0.94 0.81 0.85 1.19 1.02 1.00  NaN  NaN
+\end{verbatim}
+\begin{alltt}
+\hlkwd{barplot}\hlstd{(a)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/invs} 
+
+\end{knitrout}
+
+
+
+dpt: tous les cas de traumato (S00 à T98)
+
+dpnp:tous les cas de médecine  
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{dpt} \hlkwb{<-} \hlstd{dpr[}\hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,} \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{>=} \hlstr{"S00"} \hlopt{&} \hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,} \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{<} \hlstr{"T99"}\hlstd{, ]}
+\hlstd{dpnt} \hlkwb{<-} \hlstd{dpr[}\hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,} \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{<} \hlstr{"S00"} \hlopt{|} \hlkwd{substr}\hlstd{(dpr}\hlopt{$}\hlstd{DP,} \hlnum{1}\hlstd{,} \hlnum{3}\hlstd{)} \hlopt{>} \hlstr{"T98"}\hlstd{, ]}
+\hlstd{mnt} \hlkwb{<-} \hlkwd{month}\hlstd{(dpnt}\hlopt{$}\hlstd{ENTREE,} \hlkwc{label} \hlstd{= T)}
+\hlstd{a} \hlkwb{<-} \hlkwd{round}\hlstd{(}\hlkwd{summary}\hlstd{(mge)} \hlopt{*} \hlnum{100}\hlopt{/}\hlkwd{summary}\hlstd{(mnt),} \hlnum{2}\hlstd{)}
+\hlstd{a}
+\end{alltt}
+\begin{verbatim}
+##  Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec 
+## 2.65 2.07 2.17 2.20 1.59 1.38 1.40 1.92 1.66 1.59  NaN  NaN
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+ 
+
+
+\newpage
+\chapter{Modalités de sortie}
+
+% sortie.Rnw
+
+\section{Mode de sortie}
+\index{Mode de sortie}
+
+Le RPU connaît trois mode de sortie des urgences:
+\begin{enumerate}
+  \item le décès: le patient est déclaré décédé aux urgences.
+  \item le retour à domicile ou ce qui en tient lieu (y compris la voie publique)
+  \item l'hospitalisation (mutation ou transfert)
+  \begin{itemize}
+  \item mutation: le patient est hospitalisé dans une autre unité médicale de la même entité juridique sauf pour les établissements privés visés aux alinéas d et e de l'article L162-22-6 du code de la sécurité sociale.
+  \item transfert: le patient est hospitalisé dans une autre  entité juridique sauf pour les établissements privés visés aux alinéas d et e de l'article L162-22-6 du code de la sécurité sociale.
+\end{itemize}
+\end{enumerate}
+
+% Mode de SORTIE.png: 669x437 pixel, 72dpi, 23.60x15.42 cm, bb=0 0 669 437
+ \begin{figure}[h]
+ \centering
+ \includegraphics[width=9cm,height=7cm,bb=0 0 669 437]{figure/Mode de SORTIE.png}
+ \caption{Modes de sortie}
+\end{figure}
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:12:03 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|r|r|}
+  \hline
+ & n & \% \\ 
+  \hline
+Décès & 2 & 0.00 \\ 
+  Domicile & 177543 & 64.22 \\ 
+  Mutation & 54438 & 19.69 \\ 
+  $<$NA$>$ & 40349 & 14.60 \\ 
+  Transfert & 4120 & 1.49 \\ 
+   \hline
+\end{tabular}
+\caption[Mode de sortie des urgences]{Mode de sortie des urgences. <NA> est le nombre de non réponses à cet item} 
+\label{tab.sortie}
+\end{table}
+
+
+
+\section{Mode de sortie selon la structure}
+
+Les données par établissement sont résumées dans le tableau \ref{tab.sortie_etab} page \pageref{tab.sortie_etab}
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:12:03 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|r|r|r|r|r|r|}
+  \hline
+ & Décès & Domicile & Mutation & $<$NA$>$ & Transfert & Sum \\ 
+  \hline
+3Fr & 0.00 & 90.87 & 1.59 & 7.40 & 0.14 & 100.00 \\ 
+  Alk & 0.00 & 81.16 & 14.68 & 1.63 & 2.53 & 100.00 \\ 
+  Col & 0.00 & 73.11 & 22.99 & 2.02 & 1.88 & 100.00 \\ 
+  Dia & 0.00 & 82.51 & 9.64 & 7.24 & 0.61 & 100.00 \\ 
+  Geb & 0.00 & 46.32 & 1.73 & 50.80 & 1.15 & 100.00 \\ 
+  Hag & 0.00 & 56.58 & 23.91 & 14.93 & 4.58 & 100.00 \\ 
+  Hus & 0.00 & 2.42 & 54.50 & 43.08 & 0.00 & 100.00 \\ 
+  Mul & 0.00 & 62.13 & 14.17 & 23.46 & 0.25 & 100.01 \\ 
+  Odi & 0.00 & 93.61 & 0.00 & 1.96 & 4.43 & 100.00 \\ 
+  Sel & 0.01 & 79.02 & 20.96 & 0.01 & 0.00 & 100.00 \\ 
+  Wis & 0.00 & 75.87 & 22.18 & 0.69 & 1.27 & 100.01 \\ 
+  Sav & 0.00 & 69.92 & 19.26 & 9.79 & 1.03 & 100.00 \\ 
+   \hline
+\end{tabular}
+\caption[Mode de sortie selon l'établissement]{Mode de sortie des urgences selon l'établissement (en pourcentage). <NA> est le nombre de non réponses à cet item} 
+\label{tab.sortie_etab}
+\end{table}
+
+
+
+
+\section{Orientation}
+\index{orientation}
+
+Le mode de sortie est affiné par la rubrique ORIENTATION avec la ventilation suivante:
+
+\begin{itemize}
+  \item NA:    Pas d'informations
+  \item MCO:		Hospitalisation conventionnelle
+  \item SSR:		Soins de suite et de réadaptation
+  \item SLD:		Soins de longue durée
+  \item PSY: 		Psychiatrie
+  \item HAD:		Hospitalisation à domicile
+  \item HMS:		Hébergement médico-social
+\end{itemize}
+
+On notera que le retour à domicile proprement dit ne figure pas parmi les items et cette modalité est implicite. On peut supposer que les NA's correspondent à cette modalité. Cependant une ambiguité demeure car les non réponses sont aussi représentées par ce symbole.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# drop.levels permet d'éliminer le level 0 qui est nul}
+\hlstd{a} \hlkwb{<-} \hlkwd{drop.levels}\hlstd{(d1}\hlopt{$}\hlstd{ORIENTATION)}
+\hlkwd{summary}\hlstd{(a)}
+\end{alltt}
+\begin{verbatim}
+##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
+##   6182    220    107     25  14058     85   2582    835   1197   1160 
+##   SCAM     SI   UHCD   NA's 
+##    428   1158  27057 221358
+\end{verbatim}
+\begin{alltt}
+\hlkwd{table}\hlstd{(a,} \hlkwc{useNA} \hlstd{=} \hlstr{"always"}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## a
+##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
+##   6182    220    107     25  14058     85   2582    835   1197   1160 
+##   SCAM     SI   UHCD   <NA> 
+##    428   1158  27057 221358
+\end{verbatim}
+\begin{alltt}
+\hlkwd{table}\hlstd{(d1}\hlopt{$}\hlstd{DESTINATION, d1}\hlopt{$}\hlstd{GRAVITE)}
+\end{alltt}
+\begin{verbatim}
+##      
+##            1      2      3      4      5      D      P
+##   DOM  29443 145697   9628    583    131     24    500
+##   HAD      0      3      0      0      0      0      0
+##   HMS      3     15      2      0      0      0      0
+##   MCO   1923  22501  22405   2289    596      8    108
+##   PSY     46    241    137     11      7      0    519
+##   SLD      0      8      3      2      0      0      0
+##   SSR      1     63     28      2      0      0      0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+\section{Destination}
+\index{destination}
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:12:03 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & \% \\ 
+  \hline
+DOM & 78.86 \\ 
+  HAD & 0.00 \\ 
+  HMS & 0.01 \\ 
+  MCO & 20.73 \\ 
+  PSY & 0.36 \\ 
+  SLD & 0.01 \\ 
+  SSR & 0.03 \\ 
+   \hline
+\end{tabular}
+\caption{Destination des patients non rentrés à domicile après leur passage aux urgences} 
+\label{tab.dest.hosp}
+\end{table}
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:12:03 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & \% \\ 
+  \hline
+DOM & 78.86 \\ 
+  HAD & 0.00 \\ 
+  HMS & 0.01 \\ 
+  MCO & 20.73 \\ 
+  PSY & 0.36 \\ 
+  SLD & 0.01 \\ 
+  SSR & 0.03 \\ 
+   \hline
+\end{tabular}
+\caption{Devenir des patients à la sortie des urgences. DOM représentent ceux qui sont repartis vers leur domicile ou ce qui en tient lieu (sous l'hypothèse que toutes les non réponses correspondent à un retour à domicile).} 
+\label{tab.dest}
+\end{table}
+
+
+
+\section{Incohérences}
+\ref{sortie:erreurs}
+On isole le groupe "mode de sortie = domicile) et on relève les résultats de l'item "orientation":
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{a} \hlkwb{<-} \hlstd{d1[d1}\hlopt{$}\hlstd{MODE_SORTIE} \hlopt{==} \hlstr{"Domicile"}\hlstd{, ]}
+\hlkwd{summary}\hlstd{(}\hlkwd{as.factor}\hlstd{(a}\hlopt{$}\hlstd{ORIENTATION))}
+\end{alltt}
+\begin{verbatim}
+##   CHIR  FUGUE    HDT     HO    MED   OBST    PSA    REA    REO     SC 
+##    103    219     13      2     58      1   2538      9   1165      6 
+##   SCAM     SI   UHCD   NA's 
+##    428     23    228 213099
+\end{verbatim}
+\begin{alltt}
+\hlstd{t} \hlkwb{<-} \hlkwd{table}\hlstd{(}\hlkwd{as.factor}\hlstd{(a}\hlopt{$}\hlstd{ORIENTATION))}
+\hlkwd{round}\hlstd{(}\hlkwd{prop.table}\hlstd{(t)} \hlopt{*} \hlnum{100}\hlstd{,} \hlnum{2}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## 
+##  CHIR FUGUE   HDT    HO   MED  OBST   PSA   REA   REO    SC  SCAM    SI 
+##  2.15  4.57  0.27  0.04  1.21  0.02 52.95  0.19 24.31  0.13  8.93  0.48 
+##  UHCD 
+##  4.76
+\end{verbatim}
+\begin{alltt}
+\hlkwd{tab1}\hlstd{(}\hlkwd{as.factor}\hlstd{(a}\hlopt{$}\hlstd{ORIENTATION),} \hlkwc{sort.group} \hlstd{=} \hlstr{"decreasing"}\hlstd{,} \hlkwc{horiz} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{cex.names} \hlstd{=} \hlnum{0.8}\hlstd{,}
+    \hlkwc{xlab} \hlstd{=} \hlstr{""}\hlstd{,} \hlkwc{main} \hlstd{=} \hlstr{"Orientation des patients non hospitalisés"}\hlstd{,} \hlkwc{missing} \hlstd{= F)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/fausses_sorties} 
+\begin{kframe}\begin{verbatim}
+## as.factor(a$ORIENTATION) : 
+##         Frequency   %(NA+)   %(NA-)
+## NA's       213099     97.8      0.0
+## PSA          2538      1.2     53.0
+## REO          1165      0.5     24.3
+## SCAM          428      0.2      8.9
+## UHCD          228      0.1      4.8
+## FUGUE         219      0.1      4.6
+## CHIR          103      0.0      2.1
+## MED            58      0.0      1.2
+## SI             23      0.0      0.5
+## HDT            13      0.0      0.3
+## REA             9      0.0      0.2
+## SC              6      0.0      0.1
+## HO              2      0.0      0.0
+## OBST            1      0.0      0.0
+##   Total    217892    100.0    100.0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+Certaines orientations sont incompatibles avec une non hospitalisation:
+\begin{itemize}
+  \item HO
+  \item Obstétrique
+  \item Soins continus, soins intensifs et réanimation
+  \item UHCD, médecine et chirurgie
+  
+\end{itemize}
+
+
+
+
+\newpage
+\chapter{Modalités d'orientation}
+
+% orientation.Rnw
+
+\index{orientation}
+
+Le mode d'orientation au sens du RPU est une rubrique un peu fourre-tout regrouppant des hospitalisations comme des sorties "anormales" de la filère de soins (fugues, sotie contre avis, etc.).
+
+
+\newpage
+\chapter{Courbes d'activité régionale}
+
+% activite_su.Rnw
+% Courbe d'activité régionale
+\index{Activité régionale}
+ 
+%note\footnote{activite_su_Rnw}
+
+\section{Variation du nombre total de passages journaliers}
+\index{Passages@journaliers}
+
+
+\includegraphics[width=\maxwidth]{figure/passages_totaux1} 
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:12:05 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrr}
+  \hline
+ & n & Min & Q25 & Moyenne & E-type & Médiane & Q75 & Max \\ 
+  \hline
+ & 303.00 & 642.00 & 862.00 & 912.40 & 91.40 & 913.00 & 970.00 & 1162.00 \\ 
+   \hline
+\end{tabular}
+\caption[Passages totaux]{Passages totaux} 
+\label{tab:pt}
+\end{table}
+
+\includegraphics[width=\maxwidth]{figure/passages_totaux2} 
+
+\includegraphics[width=\maxwidth]{figure/passages_totaux3} 
+
+
+
+
+\section{Variation du pourcentage journalier de retour à domicile}
+\index{Retour à domicile}
+
+Le nombre de retours à domicile est obtenu à partir de la rubrique MODE\_SORTIE. Il s'agit en fait des patients qui n'ont pas été hospitalisés. Sont également comptabilisé dans cette rubrique les sorties atypiques.
+
+Les variation du retour journalier à domicile sont calculés de la manière suivante:
+\begin{description}
+  \item[numérateur] somme quotidienne où MODE\_SORTIE == Domicile
+  \item[dénominateur] somme quotidienne des ENTREE (correspond à q)
+\end{description}
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:12:06 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrr}
+  \hline
+ & n & Min & Q25 & Moyenne & E-type & Médiane & Q75 & Max \\ 
+  \hline
+ & 303.00 & 0.60 & 0.60 & 0.60 & 0.00 & 0.60 & 0.70 & 0.80 \\ 
+   \hline
+\end{tabular}
+\caption[Retour à domicile]{Retours à domicile - patients n'ayant été ni hospitalisés, ni transférés dans un autre établissement. Ce taux est plus faible en début d'année, lorsque les épisodes de tension sont plus fréquents.} 
+\label{tab:rd}
+\end{table}
+
+\includegraphics[width=\maxwidth]{figure/retour_dom} 
+
+
+
+On refait le calcul de q en tenant compte des non réponses:
+
+\includegraphics[width=\maxwidth]{figure/retour_dom2} 
+
+
+
+Si on considère que tout ce qui n'est pas un retour à domicile constitue une hospitalisation, on peut tracer un graphique, miroir du précédent. La ligne bleue représente la moyenne lissée sur sept jours. On notera le taux d'hospitalisation élévé du début de l'année, correspondant à une période de forte tension. Les fluctuations de ce paramètre (comme le retour à domicile) est une piste intéressante dans le cadre de la recherche d'indicateurs d'hôpital en tension, cependant les seuils d'alerte (triggers) restent à déterminer.
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:12:07 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrr}
+  \hline
+ & n & Min & Q25 & Moyenne & E-type & Médiane & Q75 & Max \\ 
+  \hline
+ & 303.00 & 0.20 & 0.20 & 0.20 & 0.00 & 0.30 & 0.30 & 0.30 \\ 
+   \hline
+\end{tabular}
+\caption[Hospitalisations]{Hospitalisations (ou transferts) sans les non réponses} 
+\label{tab:hosp}
+\end{table}
+   n Min Q25 Moyenne E-type Médiane Q75 Max
+ 303 0.2 0.2     0.2      0     0.3 0.3 0.3
+
+\includegraphics[width=\maxwidth]{figure/hospit} 
+
+
+
+
+Le taux de réponse pour cet item est de
+
+\includegraphics[width=\maxwidth]{figure/retour_dom3} 
+
+
+\index{exhaustivité@mode de sortie}
+
+
+%===================================================================== PARTIE 3
+\part{Activité par service d'urgence}
+
+\newpage
+
+\chapter{SU Wissembourg}
+\chapter{SU Haguenau}
+\chapter{SU Saverne}
+
+\chapter{SU Sainte Odile}
+
+% SuSteOdile.Rnw
+
+\index{SU SuSteOdile}
+\index{Ste Odile!SU}
+
+
+\chapter{SU des Hôpitaux universitaires}
+
+% SuHus.Rnw
+% Activité des SU des HUS
+
+\index{SU des HUS}
+\index{HUS@SU}
+
+Les Hôpitaux universitaires de Strasbourg ont une offre étendue en matière d'urgences et seuleument certaines activités génèrent des RPU.
+On compte:
+\begin{enumerate}
+  \item SU adulte du NHC
+  \item SU adulte de HTP
+  \item SU pédiatrique de HTP
+  \item SU SOS mains (CCOM)
+  \item SU Gynéco-obstétrique à HTP
+\end{enumerate}
+Auxquels il faut rajouter les services assurant un accueil des urgences 24h/24h et qui ne transitent pas par les SU. Ce sont les correspondants privilégiés du SAMU 67 et des transporteurs sanitaires (ASSU, VSAV, SMUR):
+\begin{enumerate}
+  \item Réanimations médicales de HTP et NHC
+  \item Réanimations chirurgicales de HTP et NHC
+  \item Réanimation pédiatrique polyvalente de HTP
+  \item Unité neuro-vasculaire (HTP)
+  \item SI cardio-vasculaire (NHC)
+\end{enumerate}
+
+\section{Activité globale}
+
+
+
+
+Entre le 2013-01-01 00:11:00 et le 2013-10-31 23:33:00, \np{31075} RPU ont été transmis, alors que \np{91652} dossiers ont été déclarés au serveur régional. 
+1, 1, 1, 1
+
+
+
+\chapter{SU Sainte Anne}
+
+% steAnne.Rnw
+\index{SU Sainte Anne}
+\index{Sainte Anne@SU }
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] NA
+##  [1] "date"         "finess"       "service"      "inf1an"      
+##  [5] "entre1_75ans" "sup75ans"     "total"        "hospitalises"
+##  [9] "UHCD"         "tranferts"    "hosp"         "tx_hosp"
+##   hospitalises  
+##  Min.   :0.000  
+##  1st Qu.:0.125  
+##  Median :0.181  
+##  Mean   :0.175  
+##  3rd Qu.:0.218  
+##  Max.   :0.345
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+Le SU Sainte Anne a reçu en 2013 un total de \np{12139} consultants, soit en moyenne 40 par jour.
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Sun Nov 24 19:12:08 2013
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrr}
+  \hline
+ & inf1an & entre1\_75ans & sup75ans & total & hospitalises & UHCD & tranferts \\ 
+  \hline
+s & 211.00 & 10611.00 & 1317.00 & 12139.00 & 4.00 & 1925.00 & 174.00 \\ 
+  p & 1.74 & 87.41 & 10.85 & 100.00 & 0.03 & 15.86 & 1.43 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+
+\subsection{Taux moyen de passages}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##            inf1an entre1_75ans sup75ans total hospitalises UHCD tranferts
+## 2013-01-01      2           27        1    30            0    5         0
+## 2013-01-02      0           30        6    36            0    7         0
+## 2013-01-03      2           26        5    33            0    9         0
+## 2013-01-04      1           25        6    32            0    8         1
+## 2013-01-05      1           28        4    33            0    7         1
+## 2013-01-06      0           28        3    31            0    4         0
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/stAnne_tx_moyen_passages1} 
+\begin{kframe}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: Can't plot lines for multivariate zoo object}}\end{kframe}
+\includegraphics[width=\maxwidth]{figure/stAnne_tx_moyen_passages2} 
+\begin{kframe}\begin{verbatim}
+##            inf1an entre1_75ans sup75ans total hospitalises UHCD tranferts
+## 2013-01-01      2           27        1    30            0    5         0
+## 2013-01-02      0           30        6    36            0    7         0
+## 2013-01-03      2           26        5    33            0    9         0
+## 2013-01-04      1           25        6    32            0    8         1
+## 2013-01-05      1           28        4    33            0    7         1
+## 2013-01-06      0           28        3    31            0    4         0
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/stAnne_tx_moyen_passages3} 
+
+\end{knitrout}
+
+
+\subsection{Taux d'hospitalisation}
+
+Le taux moyen d'hospitalisation \footnote{L'hospitalisation est la somme des mutations, transferts et UHCD.} est de NA\% par jour.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## 2013-01-01 2013-01-02 2013-01-03 2013-01-04 2013-01-05 2013-01-06 
+##     0.1667     0.1944     0.2727     0.2812     0.2424     0.1290
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/hospit_stAnne} 
+
+\end{knitrout}
+
+
+\subsection{Total des passages}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] 12139
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    22.0    34.0    40.0    39.9    45.0    69.0
+## [1] 7.961
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/stAnne_tot_passages1} 
+
+\includegraphics[width=\maxwidth]{figure/stAnne_tot_passages2} 
+
+\end{knitrout}
+
+
+\subsection{Passages de 1 à 75 ans}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] 10611
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    18.0    30.0    34.0    34.9    40.0    63.0
+## [1] 7.41
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/stAnne_1_75_passages1} 
+
+\includegraphics[width=\maxwidth]{figure/stAnne_1_75_passages2} 
+
+\end{knitrout}
+
+
+
+\subsection{Passages des plus de 75 ans}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] 1317
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.00    3.00    4.00    4.33    6.00   12.00
+## [1] 2.283
+\end{verbatim}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/stAnne_sup75_passages1} 
+
+\includegraphics[width=\maxwidth]{figure/stAnne_sup75_passages2} 
+
+\end{knitrout}
+
+
+
+\chapter{Polyclinique Saint-Luc}
+
+% stluc.Rnw
+\index{SU St Luc}
+
+\chapter{SU Sélestat}
+
+% SU_Selestat.Rnw
+\index{SU Sélestat}
+\index{Sélestat@SU}
+
+\chapter{SU Colmar}
+
+% SU_Colmar.Rnw
+\index{SU Colmar}
+\index{Colmar!SU}
+
+\chapter{SU Guebwiller}
+
+% SU_Guebwiller.Rnw
+
+\index{SU Guebwiller}
+\index{Guebwiller@SU}
+
+\chapter{SU Thann}
+\chapter{SU Altkirch}
+\chapter{SU Emile Muller}
+\chapter{SU Diaconnat-Fonderie}
+\chapter{SU Saint Louis}
+
+%===================================================================== PARTIE 4
+\part{Activité des SAMU d'Alsace}
+
+% A décommenter pour la partie technique uniquement
+
+% \chapter{Test un}
+% <<child='test.Rnw'>>=
+% @
+
+% \chapter{test deux}
+% <<>>=
+% str(d1)
+% summary(d1)
+% @
+
+%\index{test}
+%\index{Eclipse@Eclipse!solaire}
+%\index{Orbite!périgée@périgée}
+
+%===================================================================== PARTIE 5
+\part{Annexes}
+
+\newpage
+\appendix
+\chapter{Méthodologie}
+
+% methodologie.Rnw
+
+\section*{Taux de passage aux urgences}
+  \begin{displaymath}
+    \frac{\text{Nombre de passages déclarés par les SU}}{\text{Population globale d'Alsace}}
+  \end{displaymath}
+
+\section*{Taux de recours aux urgences}
+\begin{displaymath}
+    \frac{\text{Nombre de passages d' Alsace}}{\text{Population globale d'Alsace}}
+  \end{displaymath}
+Le Nombre de passages d' Alsace est la somme des passages dans les SU alsacien ET des passages de résidents alsacien dans des SU limitrophes.
+
+\section*{Taux d'intervention régional}
+\begin{displaymath}
+    \frac{\text{Nombre de patients pris en charge par les SMUR d'Alsace}\linebreak[4] \text{ quelque soit le code postal du lieu d'intervention}}{\text{Population globale d'Alsace}}
+  \end{displaymath}
+
+\section*{Taux de recours régional}
+\begin{displaymath}
+    \frac{\text{Nombre de patients pris en charge par un SMUR dont l'intervention a lieu sur le territoire régional }}{\text{Population globale d'Alsace}}
+  \end{displaymath}
+
+\section*{Rapport de masculinité ou sex-ratio}
+\begin{displaymath}
+    \frac{\text{Nombre d'Hommes}}{\text{Nombre de Femmes}} \times 100
+\end{displaymath}
+
+Une valeur supérieure à 1 indique qu'il y a plus d'hommes que de femmes.
+
+\section*{Définition de la semaine}
+La semaine est définie comme la péride complémentaire du week-end. La semaine s'étend du lundi $08:00$ heures au vendredi $19:59$.
+
+\section*{Définition du Week-end}
+L'offre de soins comme la fréquentation des SU n'est pas identique en coiurs de semaine et en fin de semaine. C'est pourquoi est introduite la notion temporelle de week-end.
+Le week-end est défini comme la période allant du vendredi soir 20h au lundi matin 07h59.
+
+\section*{Moyenne mobile}
+Une moyenne mobile permet de lisser une série de valeurs, permettant de gommer des fluctuations temporelles. La moyenne mobile d'odre $7$ est très utilisée pour analyser les données temporelles. Elle permet notamment d'atténuer les pics de fréquentation des SU le week-end.
+\begin{displaymath}
+    \frac{\text{somme des passages 7 jours consécutifs}}{7}
+\end{displaymath}
+Les moyennes mobiles sont généralement présentées sous forme "glissante", c'est à dire sous la forme d'une succession de groupe de sept éléments, décalés d'une journée.
+
+\section*{Pondération annuelle et mensuelle}
+Le nombre de jour dans un mois est variable d'un mois à l'autre. Il en va de même pour le nombre de jours d'une année, où du nombre de répétitions d'un jour donné de la semaine.
+
+
+\newpage
+\chapter{Glossaire}
+
+% glossaire.Rnw
+
+\glossary{AIT Accident (Vasculaire) Ischemique Transitoire}
+
+
+
+\subsection*{AIT}
+\index{AIT}
+Accident (Vasculaire) Ischemique Transitoire
+
+\subsection*{ANTARES}
+\index{ANTARES}
+Adaptation Nationale des Trasmissions Aux Risques Et Secours
+
+\subsection*{AR}
+\index{AR}
+Ambulance de Réanimation (voir UMH)
+
+\subsection*{ARS}
+\index{ARS}
+Agence Régionale de Santé
+
+\subsection*{AVC}
+\index{Accident Vasculaire Cérébral}
+
+\subsection*{Population}
+\index{Population}
+
+\subsection*{Population comptée à part}
+\index{Population@Population!comptée à part}
+Le concept de population comptée à part est défini par le décret n°2003-485 publié au Journal officiel du 8 juin 2003, relatif au recensement de la population.
+La population comptée à part comprend certaines personnes dont la résidence habituelle (au sens du décret) est dans une autre commune mais qui ont conservé une résidence sur le territoire de la commune :
+1. Les mineurs dont la résidence familiale est dans une autre commune mais qui résident, du fait de leurs études, dans la commune.
+2. Les personnes ayant une résidence familiale sur le territoire de la commune et résidant dans une communauté d'une autre commune, dès lors que la communauté relève de l'une des catégories suivantes :
+- services de moyen ou de long séjour des établissements publics ou privés de santé, établissements sociaux de moyen ou de long séjour, maisons de retraite, foyers et résidences sociales ;
+- communautés religieuses ;
+- casernes ou établissements militaires.
+3. Les personnes majeures âgées de moins de 25 ans ayant leur résidence familiale sur le territoire de la commune et qui résident dans une autre commune pour leurs études.
+4. Les personnes sans domicile fixe rattachées à la commune au sens de la loi du 3 janvier 1969 et non recensées dans la commune. \cite{8}
+
+
+\subsection*{Population totale}
+\index{Population@Population!totale}r
+Le concept de *population totale* est défini par le décret n°2003-485 publié au Journal officiel du 8 juin 2003, relatif au recensement de la population.
+
+La population totale d'une commune est égale à la somme de la population municipale et de la population comptée à part de la commune.
+La population totale d'un ensemble de communes est égale à la somme des populations totales des communes qui le composent.
+La population totale est une population légale à laquelle de très nombreux textes législatifs ou réglementaires font référence. A la différence de la population municipale, elle n'a pas d'utilisation statistique car elle comprend des doubles comptes dès lors que l'on s'intéresse à un ensemble de plusieurs communes \cite{7}.
+
+\subsection*{Population municipale}
+\index{Population@Population!municipale}
+Le concept de *population municipale* est défini par le décret n°2003-485 publié au Journal officiel du 8 juin 2003, relatif au recensement de la population.
+La population municipale comprend les personnes ayant leur résidence habituelle (au sens du décret) sur le territoire de la commune, dans un logement ou une communauté, les personnes détenues dans les établissements pénitentiaires de la commune, les personnes sans-abri recensées sur le territoire de la commune et les personnes résidant habituellement dans une habitation mobile recensée sur le territoire de la commune.
+La population municipale d'un ensemble de communes est égale à la somme des populations municipales des communes qui le composent.
+Le concept de \emph{population municipale} correspond désormais à la notion de \emph{population utilisée usuellement en statistique}. En effet, elle ne comporte pas de doubles comptes : chaque personne vivant en France est comptée une fois et une seule. En 1999, c'était le concept de population sans doubles comptes qui correspondait à la notion de population statistique \cite{6}.
+
+
+\subsection*{Unité urbaine}
+\index{Unité urbaine}
+La notion d'unité urbaine repose sur la continuité du bâti et le nombre d'habitants. On appelle unité urbaine une commune ou un ensemble de communes présentant une zone de bâti continu (pas de coupure de plus de 200 mètres entre deux constructions) qui compte au moins 2 000 habitants.
+Si l'unité urbaine se situe sur une seule commune, elle est dénommée ville isolée. Si l'unité urbaine s'étend sur plusieurs communes, et si chacune de ces communes concentre plus de la moitié de sa population dans la zone de bâti continu, elle est dénommée agglomération multicommunale.
+Sont considérées comme rurales les communes qui ne rentrent pas dans la constitution d'une unité urbaine : les communes sans zone de bâti continu de 2000 habitants, et celles dont moins de la moitié de la population municipale est dans une zone de bâti continu (INSEE \cite{4}).
+
+cellule régionale d’appui et de pilotage sanitaire (CRAPS)
+service zonal de défense et de sécurité (SZDS)
+plateforme de veille et d’urgence sanitaire (PVUS)
+cellule zonale d’appui (CZA). Structure de crise de l’ARS de zone, elle est constituée autour du SZDS qui assure une fonction de coordination en collaboration étroite avec la/les CRAPS activée(s) en ARS.
+Directeur général de la santé (DGS) ou le Haut fonctionnaire de défense et de sécurité (HFDS)
+Centre de crise sanitaire (CCS
+Centre opérationnel zonal renforcé (COZ-R) de l’état-major interministériel de zone de défense et de sécurité (EMIZDS).
+Système d’information sanitaire des alertes et crises (SISAC) de la DGS.
 
 
 
 
 
+\newpage
+\chapter{RPU}
+
+\newpage
+\chapter{A propos de ce document}
+
+% apropos.Rnw
+
+Ce document a été totalement rédigé à l'aide du logiciel R \cite{5} en respectant les recommandations de la \emph{Reproducible Research}. Le but de la recherche reproductible consiste à lier les données expérimentales et leur analyse par des instructions spécifiques de sorte que les résultats peuvent être reproduits, mieux compris et vérifiés.
+
+\subsubsection*{Le logiciel R \footnote{http://www.r-project.org/}}
+
+\index{R (CRAN R)}
+R est un langage de programmation et un environnement mathématique utilisés pour le traitement de données et l'analyse statistique. C'est un projet GNU fondé sur le langage S et sur l'environnement développé dans les laboratoires Bell par John Chambers et ses collègues. 
+\
+R est un logiciel libre distribué selon les termes de la licence GNU GPL et est disponible sous GNU/Linux, FreeBSD, NetBSD, OpenBSD, Mac OS X et Windows. R s'interface directement avec la pluspart des bases de données courantes: BO (Oracle), MySQL, PostgreeSql, etc. Il s'interface aussi avec un certain nombre de système d'information géographique (SIG) et sait lire nativement le format Shapefile utilisé par l'IGN.
+\
+Le logiciel R est interfacé avec le traitement de texte Latex par l'intermédiaire de la bibliothèque Sweave. Cette association permet de mélanger du texte et des formules mathématiques produisant les résultats et graphiques de ce document. En cas de modification des données, il suffit de recompiler le fichier source pour mettre à jour le document final.
 
 
+\newpage
+\chapter{Bibliographie}
+\bibliography{../../rpu}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\newpage
+\chapter{Index}
+\printindex
+>>>>>>> 229ed100e6b53c12de7d25f4b1202b67e6385124
 

@@ -87,7 +87,7 @@ source("../prologue.R")
 ```
 
 ```
-## [1] "Fichier courant: rpu2013d0109.Rda"
+## [1] "Fichier courant: rpu2013d0110.Rda"
 ```
 
 ```r
@@ -115,7 +115,7 @@ ndpr
 ```
 
 ```
-## [1] 167419
+## [1] 183565
 ```
 
 Exhaustivité
@@ -126,7 +126,7 @@ ex
 ```
 
 ```
-## [1] 67.23
+## [1] 66.4
 ```
 
 Nombre de diagnostic uniques:
@@ -137,7 +137,7 @@ a
 ```
 
 ```
-## [1] 4313
+## [1] 4471
 ```
 
 ```r
@@ -222,37 +222,67 @@ tère intracrânienne, sans précision
 #'@param navc liste des codes Cim10 utilisés
 
 avc <- dpr[substr(dpr$DP, 1, 3) >= "I60" & substr(dpr$DP, 1, 3) < "I65" | substr(dpr$DP, 
-    1, 3) == "G46"]
-```
-
-```
-## Error: undefined columns selected
-```
-
-```r
+    1, 3) == "G46", ]
 navc <- unique(avc)
+summary(as.factor(avc$DP))
 ```
 
 ```
-## Error: objet 'avc' introuvable
-```
-
-```r
-summary(as.factor(avc))
-```
-
-```
-## Error: objet 'avc' introuvable
+## G460 G462 G463 G464 G467 G468 I600 I601 I602 I606 I607 I608 I609 I610 I611 
+##    5    1    1   11   15    3    2    2    3    1    2   29   17   63   21 
+## I612 I613 I614 I615 I616 I618 I619 I620 I621 I629 I630 I631 I632 I633 I634 
+##   17    1    6    5   20    9   19   16    2   66   10    1    3   22   14 
+## I635 I636 I638 I639  I64 
+##   18    1   43  516  710
 ```
 
 ```r
 
-tab1(avc, horiz = TRUE, sort.group = "decreasing", main = "AVC aux urgences (hors filière UNV", 
+tab1(avc$DP, horiz = TRUE, sort.group = "decreasing", main = "AVC aux urgences (hors filière UNV", 
     missing = FALSE)
 ```
 
+![plot of chunk avc](figure/avc.png) 
+
 ```
-## Error: objet 'avc' introuvable
+## avc$DP : 
+##         Frequency Percent Cum. percent
+## I64           710    42.4         42.4
+## I639          516    30.8         73.2
+## I629           66     3.9         77.1
+## I610           63     3.8         80.9
+## I638           43     2.6         83.5
+## I608           29     1.7         85.2
+## I633           22     1.3         86.5
+## I611           21     1.3         87.8
+## I616           20     1.2         89.0
+## I619           19     1.1         90.1
+## I635           18     1.1         91.2
+## I612           17     1.0         92.2
+## I609           17     1.0         93.2
+## I620           16     1.0         94.1
+## G467           15     0.9         95.0
+## I634           14     0.8         95.9
+## G464           11     0.7         96.5
+## I630           10     0.6         97.1
+## I618            9     0.5         97.7
+## I614            6     0.4         98.0
+## I615            5     0.3         98.3
+## G460            5     0.3         98.6
+## I632            3     0.2         98.8
+## I602            3     0.2         99.0
+## G468            3     0.2         99.2
+## I621            2     0.1         99.3
+## I607            2     0.1         99.4
+## I601            2     0.1         99.5
+## I600            2     0.1         99.6
+## I636            1     0.1         99.7
+## I631            1     0.1         99.8
+## I613            1     0.1         99.8
+## I606            1     0.1         99.9
+## G463            1     0.1         99.9
+## G462            1     0.1        100.0
+##   Total      1675   100.0        100.0
 ```
 
 # Etude des AVC+AIT
@@ -282,31 +312,31 @@ Horaire des AVC
 ```
 ## h : 
 ##         Frequency Percent Cum. percent
-## 0              39     1.9          1.9
-## 1              28     1.3          3.2
-## 2              29     1.4          4.6
-## 3              25     1.2          5.8
-## 4              12     0.6          6.3
-## 5              19     0.9          7.2
-## 6              21     1.0          8.2
-## 7              34     1.6          9.9
-## 8              81     3.9         13.7
-## 9             133     6.3         20.1
-## 10            179     8.5         28.6
-## 11            178     8.5         37.1
-## 12            140     6.7         43.7
-## 13            134     6.4         50.1
-## 14            152     7.2         57.4
-## 15            122     5.8         63.2
-## 16            132     6.3         69.5
-## 17            150     7.1         76.6
-## 18            121     5.8         82.4
-## 19             91     4.3         86.7
-## 20            117     5.6         92.3
-## 21             67     3.2         95.5
-## 22             51     2.4         97.9
-## 23             44     2.1        100.0
-##   Total      2099   100.0        100.0
+## 0              40     1.7          1.7
+## 1              34     1.5          3.2
+## 2              32     1.4          4.6
+## 3              25     1.1          5.7
+## 4              16     0.7          6.4
+## 5              24     1.0          7.5
+## 6              21     0.9          8.4
+## 7              39     1.7         10.1
+## 8              84     3.7         13.8
+## 9             144     6.3         20.1
+## 10            195     8.5         28.6
+## 11            193     8.4         37.1
+## 12            158     6.9         44.0
+## 13            143     6.3         50.2
+## 14            160     7.0         57.2
+## 15            126     5.5         62.7
+## 16            148     6.5         69.2
+## 17            161     7.0         76.2
+## 18            132     5.8         82.0
+## 19            104     4.5         86.6
+## 20            133     5.8         92.4
+## 21             70     3.1         95.5
+## 22             57     2.5         97.9
+## 23             47     2.1        100.0
+##   Total      2286   100.0        100.0
 ```
 
 Selon le jour de la semaine
@@ -315,13 +345,13 @@ Selon le jour de la semaine
 ```
 ## w
 ##   Sun   Mon  Tues   Wed Thurs   Fri   Sat 
-##   253   333   324   309   317   297   266
+##   275   362   355   349   341   322   282
 ```
 
 ```
 ## w
 ##   Sun   Mon  Tues   Wed Thurs   Fri   Sat 
-## 12.05 15.86 15.44 14.72 15.10 14.15 12.67
+## 12.03 15.84 15.53 15.27 14.92 14.09 12.34
 ```
 
 ![plot of chunk avc_semaine](figure/avc_semaine.png) 
@@ -334,7 +364,7 @@ AVC selon le mois
 ```
 ## m
 ## Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
-## 232 191 220 270 251 258 250 242 185   0   0   0
+## 232 191 220 270 251 258 250 242 185 187   0   0
 ```
 
 ![plot of chunk avc_mois](figure/avc_mois1.png) ![plot of chunk avc_mois](figure/avc_mois2.png) 
@@ -342,19 +372,19 @@ AVC selon le mois
 ```
 ## m : 
 ##         Frequency Percent Cum. percent
-## Jan           232    11.1         11.1
-## Feb           191     9.1         20.2
-## Mar           220    10.5         30.6
-## Apr           270    12.9         43.5
-## May           251    12.0         55.5
-## Jun           258    12.3         67.7
-## Jul           250    11.9         79.7
-## Aug           242    11.5         91.2
-## Sep           185     8.8        100.0
-## Oct             0     0.0        100.0
+## Jan           232    10.1         10.1
+## Feb           191     8.4         18.5
+## Mar           220     9.6         28.1
+## Apr           270    11.8         39.9
+## May           251    11.0         50.9
+## Jun           258    11.3         62.2
+## Jul           250    10.9         73.1
+## Aug           242    10.6         83.7
+## Sep           185     8.1         91.8
+## Oct           187     8.2        100.0
 ## Nov             0     0.0        100.0
 ## Dec             0     0.0        100.0
-##   Total      2099   100.0        100.0
+##   Total      2286   100.0        100.0
 ```
 
 AVC par semaine
@@ -368,7 +398,7 @@ Age et AVC
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##       1      61      75      71      83     112
+##     1.0    61.0    75.0    71.1    83.0   112.0
 ```
 
 Le rapport de 2009 donne age moyen = 70.5 et age médian = 75 ans.
@@ -382,7 +412,7 @@ summary(AVC$SEXE)
 
 ```
 ##    F    I    M 
-## 1101    0  998
+## 1196    0 1090
 ```
 
 ```r
@@ -431,13 +461,13 @@ tab1(ait, missing = FALSE)
 ```
 ## ait : 
 ##         Frequency Percent Cum. percent
-## G450            4     0.8          0.8
-## G451            5     1.0          1.7
-## G452           13     2.5          4.2
-## G453            4     0.8          5.0
-## G458           37     7.0         12.0
-## G459          462    88.0        100.0
-##   Total       525   100.0        100.0
+## G450            4     0.7          0.7
+## G451            5     0.9          1.6
+## G452           13     2.2          3.8
+## G453            4     0.7          4.5
+## G458           37     6.4         10.9
+## G459          515    89.1        100.0
+##   Total       578   100.0        100.0
 ```
 
 
@@ -453,7 +483,7 @@ J46   Etat de mal asthmatique
 
 ```
 ## J450 J451 J458 J459  J46 
-##   96  136    5  723   41
+##  101  146    5  797   43
 ```
 
 ![plot of chunk asthme](figure/asthme1.png) 
@@ -461,12 +491,12 @@ J46   Etat de mal asthmatique
 ```
 ## as.factor(asthme$DP) : 
 ##         Frequency Percent Cum. percent
-## J450           96     9.6          9.6
-## J451          136    13.6         23.2
-## J458            5     0.5         23.7
-## J459          723    72.2         95.9
-## J46            41     4.1        100.0
-##   Total      1001   100.0        100.0
+## J450          101     9.2          9.2
+## J451          146    13.4         22.6
+## J458            5     0.5         23.1
+## J459          797    73.0         96.1
+## J46            43     3.9        100.0
+##   Total      1092   100.0        100.0
 ```
 
 ![plot of chunk asthme](figure/asthme2.png) ![plot of chunk asthme](figure/asthme3.png) 
@@ -474,58 +504,58 @@ J46   Etat de mal asthmatique
 ```
 ## table(s) : 
 ##         Frequency Percent Cum. percent
-## 3               1     2.5          2.5
-## 8               1     2.5          5.0
-## 11              1     2.5          7.5
-## 13              2     5.0         12.5
-## 14              2     5.0         17.5
-## 15              1     2.5         20.0
-## 17              2     5.0         25.0
-## 19              2     5.0         30.0
-## 20              2     5.0         35.0
-## 21              2     5.0         40.0
-## 22              2     5.0         45.0
-## 23              1     2.5         47.5
-## 24              1     2.5         50.0
-## 25              1     2.5         52.5
-## 26              2     5.0         57.5
-## 27              4    10.0         67.5
-## 29              2     5.0         72.5
-## 31              2     5.0         77.5
-## 32              1     2.5         80.0
-## 34              1     2.5         82.5
-## 37              1     2.5         85.0
-## 40              1     2.5         87.5
-## 41              3     7.5         95.0
-## 47              2     5.0        100.0
-##   Total        40   100.0        100.0
+## 8               1     2.3          2.3
+## 11              2     4.5          6.8
+## 13              2     4.5         11.4
+## 14              2     4.5         15.9
+## 15              1     2.3         18.2
+## 16              1     2.3         20.5
+## 17              2     4.5         25.0
+## 19              3     6.8         31.8
+## 20              2     4.5         36.4
+## 21              2     4.5         40.9
+## 22              2     4.5         45.5
+## 23              2     4.5         50.0
+## 24              1     2.3         52.3
+## 25              2     4.5         56.8
+## 26              2     4.5         61.4
+## 27              4     9.1         70.5
+## 29              2     4.5         75.0
+## 31              2     4.5         79.5
+## 32              1     2.3         81.8
+## 34              1     2.3         84.1
+## 37              1     2.3         86.4
+## 40              1     2.3         88.6
+## 41              3     6.8         95.5
+## 47              2     4.5        100.0
+##   Total        44   100.0        100.0
 ```
 
 ```
 ##       DP             CODE_POSTAL     ENTREE              FINESS   
-##  Length:1001        68000  :116   Length:1001        Mul    :335  
-##  Class :character   68200  : 72   Class :character   Col    :282  
-##  Mode  :character   68100  : 70   Mode  :character   Sel    : 97  
-##                     67600  : 33                      Hag    : 66  
-##                     67100  : 32                      Hus    : 54  
-##                     68500  : 31                      3Fr    : 49  
-##                     (Other):647                      (Other):118  
+##  Length:1092        68000  :125   Length:1092        Mul    :367  
+##  Class :character   68100  : 80   Class :character   Col    :309  
+##  Mode  :character   68200  : 79   Mode  :character   Sel    : 97  
+##                     68500  : 37                      Hag    : 76  
+##                     67100  : 34                      Hus    : 57  
+##                     67600  : 33                      3Fr    : 55  
+##                     (Other):704                      (Other):131  
 ##     GRAVITE     ORIENTATION     MODE_SORTIE       AGE       SEXE   
-##  2      :646   MED    :173   NA       :  0   Min.   : 0.0   F:504  
-##  3      :224   UHCD   : 95   Mutation :323   1st Qu.: 3.0   I:  0  
-##  1      :103   SC     : 45   Transfert: 13   Median :14.0   M:497  
-##  4      : 17   REA    :  7   Domicile :571   Mean   :23.7          
-##  5      :  3   CHIR   :  4   Décès    :  0   3rd Qu.:40.0          
-##  (Other):  0   (Other):  3   NA's     : 94   Max.   :97.0          
-##  NA's   :  8   NA's   :674                                         
+##  2      :697   MED    :184   NA       :  0   Min.   : 0.0   F:555  
+##  3      :248   UHCD   :104   Mutation :353   1st Qu.: 3.0   I:  0  
+##  1      :117   SC     : 54   Transfert: 16   Median :15.0   M:537  
+##  4      : 17   REA    :  8   Domicile :619   Mean   :23.9          
+##  5      :  4   CHIR   :  4   Décès    :  0   3rd Qu.:41.0          
+##  (Other):  0   (Other):  4   NA's     :104   Max.   :97.0          
+##  NA's   :  9   NA's   :734                                         
 ##  TRANSPORT  
-##  AMBU : 96  
+##  AMBU :107  
 ##  FO   :  1  
 ##  HELI :  1  
-##  PERSO:678  
-##  SMUR : 27  
-##  VSAB : 74  
-##  NA's :124
+##  PERSO:735  
+##  SMUR : 31  
+##  VSAB : 85  
+##  NA's :132
 ```
 
 Gravité des crises: prédominance CCMU  2  et 3 et qulques 4 ou 5 
@@ -544,11 +574,11 @@ table(asthme$DP, asthme$ORIENTATION)
 ```
 ##       
 ##        CHIR FUGUE HDT  HO MED OBST PSA REA REO  SC SCAM  SI UHCD
-##   J450    0     0   1   0   6    0   0   1   0   0    0   0   13
-##   J451    1     0   0   0  30    0   0   0   0  16    0   0    3
+##   J450    0     0   1   0   6    0   0   1   0   0    0   0   14
+##   J451    1     0   0   0  31    0   0   0   0  16    0   0    4
 ##   J458    0     0   0   0   2    0   0   1   0   0    0   0    0
-##   J459    2     0   0   0 120    2   0   4   0  21    0   0   77
-##   J46     1     0   0   0  15    0   0   1   0   8    0   0    2
+##   J459    2     0   0   0 130    2   0   4   0  30    1   0   84
+##   J46     1     0   0   0  15    0   0   2   0   8    0   0    2
 ```
 
 #### Remarques INVS:
@@ -568,22 +598,22 @@ summary(champ)
 ```
 
 ```
-##       DP             CODE_POSTAL    ENTREE              FINESS 
-##  Length:39          68200  : 6   Length:39          Mul    :9  
-##  Class :character   68300  : 3   Class :character   Col    :6  
-##  Mode  :character   67480  : 2   Mode  :character   3Fr    :5  
-##                     67500  : 2                      Geb    :5  
-##                     67600  : 2                      Hag    :5  
-##                     68500  : 2                      Sel    :5  
-##                     (Other):22                      (Other):4  
+##       DP             CODE_POSTAL    ENTREE              FINESS  
+##  Length:46          68200  : 7   Length:46          Mul    :11  
+##  Class :character   68300  : 3   Class :character   Col    : 9  
+##  Mode  :character   67480  : 2   Mode  :character   3Fr    : 5  
+##                     67500  : 2                      Geb    : 5  
+##                     67600  : 2                      Hag    : 5  
+##                     68150  : 2                      Sel    : 5  
+##                     (Other):28                      (Other): 6  
 ##     GRAVITE    ORIENTATION    MODE_SORTIE      AGE       SEXE   TRANSPORT 
-##  2      :21   UHCD   : 4   NA       : 0   Min.   : 0.0   F:17   AMBU :10  
-##  1      : 9   CHIR   : 1   Mutation : 6   1st Qu.:12.5   I: 0   FO   : 0  
-##  3      : 8   SC     : 1   Transfert: 0   Median :33.0   M:22   HELI : 0  
-##  4      : 0   FUGUE  : 0   Domicile :29   Mean   :31.2          PERSO:21  
-##  5      : 0   HDT    : 0   Décès    : 0   3rd Qu.:42.5          SMUR : 0  
-##  (Other): 0   (Other): 0   NA's     : 4   Max.   :91.0          VSAB : 4  
-##  NA's   : 1   NA's   :33                                        NA's : 4
+##  2      :26   UHCD   : 6   NA       : 0   Min.   : 0.0   F:21   AMBU :12  
+##  1      :10   CHIR   : 1   Mutation : 9   1st Qu.:19.2   I: 0   FO   : 0  
+##  3      : 9   SC     : 1   Transfert: 0   Median :34.5   M:25   HELI : 0  
+##  4      : 0   FUGUE  : 0   Domicile :33   Mean   :34.7          PERSO:24  
+##  5      : 0   HDT    : 0   Décès    : 0   3rd Qu.:50.0          SMUR : 0  
+##  (Other): 0   (Other): 0   NA's     : 4   Max.   :91.0          VSAB : 5  
+##  NA's   : 1   NA's   :38                                        NA's : 5
 ```
 
 Intoxication au CO
@@ -600,7 +630,7 @@ table(m)
 ```
 ## m
 ## Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
-##   5  12  11   0   6   9   0   1   0   0   0   0
+##   5  12  11   0   6   9   0   1   0   1   0   0
 ```
 
 ```r
@@ -642,29 +672,29 @@ summary(bron)
 
 ```
 ##       DP             CODE_POSTAL     ENTREE              FINESS   
-##  Length:323         68200  : 62   Length:323         Mul    :255  
-##  Class :character   68100  : 46   Class :character   Sel    : 24  
-##  Mode  :character   68270  : 16   Mode  :character   Col    : 18  
-##                     68300  :  9                      Wis    : 10  
-##                     68800  :  9                      3Fr    :  9  
-##                     68110  :  8                      Geb    :  2  
-##                     (Other):173                      (Other):  5  
+##  Length:368         68200  : 71   Length:368         Mul    :295  
+##  Class :character   68100  : 51   Class :character   Sel    : 24  
+##  Mode  :character   68270  : 19   Mode  :character   Col    : 20  
+##                     68300  : 11                      Wis    : 13  
+##                     67160  :  9                      3Fr    :  9  
+##                     68110  :  9                      Geb    :  2  
+##                     (Other):198                      (Other):  5  
 ##     GRAVITE     ORIENTATION     MODE_SORTIE       AGE        SEXE   
-##  2      :180   MED    : 72   NA       :  0   Min.   : 0.00   F:132  
-##  3      :101   SC     : 69   Mutation :146   1st Qu.: 0.00   I:  0  
-##  1      : 35   REA    :  3   Transfert:  0   Median : 0.00   M:191  
-##  5      :  3   UHCD   :  3   Domicile :150   Mean   : 1.39          
-##  4      :  2   SCAM   :  1   Décès    :  0   3rd Qu.: 0.00          
-##  (Other):  0   (Other):  0   NA's     : 27   Max.   :93.00          
-##  NA's   :  2   NA's   :175                                          
+##  2      :207   MED    : 81   NA       :  0   Min.   : 0.00   F:158  
+##  3      :112   SC     : 79   Mutation :165   1st Qu.: 0.00   I:  0  
+##  1      : 40   REA    :  3   Transfert:  0   Median : 0.00   M:210  
+##  4      :  3   UHCD   :  3   Domicile :173   Mean   : 1.24          
+##  5      :  3   SCAM   :  1   Décès    :  0   3rd Qu.: 0.00          
+##  (Other):  0   (Other):  0   NA's     : 30   Max.   :93.00          
+##  NA's   :  3   NA's   :201                                          
 ##  TRANSPORT  
-##  AMBU :  6  
+##  AMBU :  8  
 ##  FO   :  0  
 ##  HELI :  0  
-##  PERSO:285  
+##  PERSO:324  
 ##  SMUR :  0  
 ##  VSAB :  2  
-##  NA's : 30
+##  NA's : 34
 ```
 
 Surreprésentation de Mul  
@@ -711,29 +741,29 @@ summary(ge)
 
 ```
 ##       DP             CODE_POSTAL      ENTREE              FINESS    
-##  Length:1961        68100  : 232   Length:1961        Mul    :1001  
-##  Class :character   68200  : 221   Class :character   Col    : 284  
-##  Mode  :character   68300  : 134   Mode  :character   3Fr    : 194  
-##                     68000  : 111                      Wis    : 132  
-##                     68500  :  55                      Geb    : 105  
-##                     67160  :  53                      Sel    :  89  
-##                     (Other):1155                      (Other): 156  
-##     GRAVITE      ORIENTATION      MODE_SORTIE        AGE      SEXE   
-##  2      :1345   MED    : 189   NA       :   0   Min.   :  0   F:978  
-##  1      : 398   UHCD   : 106   Mutation : 336   1st Qu.:  1   I:  0  
-##  3      : 193   SC     :  21   Transfert:   3   Median :  5   M:983  
-##  4      :  14   CHIR   :   3   Domicile :1422   Mean   : 18          
-##  5      :   0   HO     :   1   Décès    :   0   3rd Qu.: 27          
-##  (Other):   0   (Other):   4   NA's     : 200   Max.   :100          
-##  NA's   :  11   NA's   :1637                                         
+##  Length:2123        68100  : 252   Length:2123        Mul    :1100  
+##  Class :character   68200  : 250   Class :character   Col    : 304  
+##  Mode  :character   68300  : 139   Mode  :character   3Fr    : 200  
+##                     68000  : 117                      Wis    : 138  
+##                     68500  :  60                      Geb    : 114  
+##                     67160  :  57                      Sel    :  89  
+##                     (Other):1248                      (Other): 178  
+##     GRAVITE      ORIENTATION      MODE_SORTIE        AGE        SEXE    
+##  2      :1462   MED    : 202   NA       :   0   Min.   :  0.0   F:1057  
+##  1      : 427   UHCD   : 116   Mutation : 364   1st Qu.:  1.0   I:   0  
+##  3      : 202   SC     :  26   Transfert:   3   Median :  5.0   M:1066  
+##  4      :  14   CHIR   :   4   Domicile :1545   Mean   : 18.1           
+##  5      :   0   HO     :   1   Décès    :   0   3rd Qu.: 27.0           
+##  (Other):   0   (Other):   4   NA's     : 211   Max.   :100.0           
+##  NA's   :  18   NA's   :1770                                            
 ##  TRANSPORT   
-##  AMBU : 191  
+##  AMBU : 203  
 ##  FO   :   0  
 ##  HELI :   0  
-##  PERSO:1521  
+##  PERSO:1651  
 ##  SMUR :  10  
-##  VSAB :  54  
-##  NA's : 185
+##  VSAB :  55  
+##  NA's : 204
 ```
 
 ```r
@@ -743,17 +773,17 @@ table(ge$FINESS, ge$DP)
 ```
 ##      
 ##        A09 A090 A099
-##   3Fr    0   37  157
-##   Alk    0    6    8
-##   Col  229   40   15
+##   3Fr    0   40  160
+##   Alk    0    6    9
+##   Col  246   42   16
 ##   Dia    0    0    0
-##   Geb    0   20   85
-##   Hag    0   26   10
-##   Hus    0   37   28
-##   Mul 1001    0    0
-##   Odi    0   11   30
+##   Geb    0   21   93
+##   Hag    0   35   14
+##   Hus    0   42   29
+##   Mul 1100    0    0
+##   Odi    0   12   31
 ##   Sel    0   39   50
-##   Wis    0   64   68
+##   Wis    0   66   72
 ##   Sav    0    0    0
 ```
 
@@ -795,7 +825,7 @@ summary(mtot)
 
 ```
 ##   Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov   Dec 
-## 17364 17156 18396 20302 19207 20772 20387 17993 15842     0     0     0
+## 17364 17156 18396 20302 19207 20772 20387 17993 15842 16146     0     0
 ```
 
 ```r
@@ -804,7 +834,7 @@ summary(mge)
 
 ```
 ## Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
-## 294 236 251 282 181 168 173 214 162   0   0   0
+## 294 236 251 282 181 168 173 214 162 162   0   0
 ```
 
 ```r
@@ -814,7 +844,7 @@ a
 
 ```
 ##  Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec 
-## 1.69 1.38 1.36 1.39 0.94 0.81 0.85 1.19 1.02  NaN  NaN  NaN
+## 1.69 1.38 1.36 1.39 0.94 0.81 0.85 1.19 1.02 1.00  NaN  NaN
 ```
 
 ```r
@@ -857,7 +887,7 @@ b
 
 ```
 ##      1      3      4      5      6      7     11     12     14     15 
-##      9  15585 134219  17376    216      5      1      1      1      2 
+##      9  17294 146861  19111    235     46      1      1      1      2 
 ##     16     18     19 
 ##      1      1      2
 ```
@@ -894,6 +924,47 @@ dpr[nchar(dpr$DP) > 6, c("FINESS", "DP")]
 ## 198071    Mul             S2250B6
 ## 205698    Mul     KK297) Gastrite
 ## 207226    Mul    SY099) Agression
+## 257288    Hag             S422 02
+## 259057    Hag             S223 01
+## 259068    Hag             S011 02
+## 260853    Hag             S400 01
+## 260863    Hag             S810 01
+## 260864    Hag             S810 01
+## 260870    Hag             S525 02
+## 260893    Hag             S800 01
+## 260897    Hag             S800 01
+## 261535    Hag             S202 02
+## 262527    Hag             S422 01
+## 262543    Hag             S823 01
+## 262546    Hag             S929 01
+## 263914    Hag             S422 01
+## 263916    Hag             S711 01
+## 264205    Hag             S400 01
+## 264210    Hag             S521 02
+## 264212    Hag             S223 02
+## 265378    Hag             T150 01
+## 266155    Hag             S826 02
+## 266209    Hag             S929 01
+## 266211    Hag             S510 01
+## 266215    Hag             S711 02
+## 267287    Hag             J189 02
+## 267302    Hag             I800 02
+## 267308    Hag             S724 02
+## 267344    Hag             S431 02
+## 267391    Hag             R073 01
+## 268055    Hag             S223 01
+## 268127    Hag             J189 02
+## 268143    Hag             S823 01
+## 268373    Hag             S834 01
+## 268422    Hag             S525 02
+## 268447    Hag             S834 02
+## 268452    Hag             S424 01
+## 270174    Hag             S810 02
+## 271100    Hag             S521 01
+## 272290    Hag             R073 01
+## 272324    Hag             H920 02
+## 274628    Hag             G560 02
+## 275030    Hag             S821 02
 ```
 
 La Dixième Révision (CIM10) utilise un code alphanumérique avec une lettre en
@@ -929,7 +1000,7 @@ summary(as.factor(a))
 
 ```
 ##    3    4    5    6 
-##  615 7016  964    8
+##  686 7760 1090    9
 ```
 
 ```r
@@ -938,6 +1009,7 @@ cw[nchar(cw) > 5]
 
 ```
 ## [1] "M62890" "I21900" "F10241" "M62800" "I21100" "M62890" "M62890" "M62890"
+## [9] "M62890"
 ```
 
 Le code M62890 (PMSI ?) correspond à la rhabdomyolyse, en CIM10 M62.8 (présent 5 fois sous ceete forme et 7 fois au total: "M62890" "M62800" "M6286"  "M62890" "M62890" "M62890" "M6285")
