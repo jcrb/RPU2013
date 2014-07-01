@@ -1,0 +1,6 @@
+# initialisation d'un projet R
+
+.First <- function(){
+  library("xts")
+  library("zoo")
+}
